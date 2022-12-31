@@ -2,8 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Pandas/Effective_Pandas.html",
       "/posts/Image_Processing_with_Python/Image_Processing.html",
-      "/posts/Programming with Python/Programming_with_Python.html",
+      "/posts/Programming_with_Python/Programming_with_Python.html",
       "/posts/Geospatial/Working with Geospatial Data in Python.html",
       "/posts/Audio_Feature_Extraction/Audio_Feature_Extraction.html",
       "/posts/Song Genre Classifier/Song Genre Classifier.html",

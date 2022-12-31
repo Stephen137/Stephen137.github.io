@@ -1,0 +1,22 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/Walk_with_fastai/Walkwithfastai.html",
+      "/posts/Image_Processing_with_Python/Image_Processing.html",
+      "/posts/Programming with Python/Programming_with_Python.html",
+      "/posts/Geospatial/Working with Geospatial Data in Python.html",
+      "/posts/Audio_Feature_Extraction/Audio_Feature_Extraction.html",
+      "/posts/Song Genre Classifier/Song Genre Classifier.html",
+      "/posts/PySpark/Spark.html",
+      "/posts/Krakow_Football/Krakow_Football.html",
+      "/posts/World Cup 2022/World_Cup_2022.html",
+      "/posts/Excel_meets_Python/Excel_meets_Python.html",
+      "/posts/Excelosaurus/Excelosaurus.html",
+      "/posts/Huggy Bear/huggy-bear.html",
+      "/posts/Cat_or_Dog/Cat_or_dog.html",
+      "/posts/Hello World/HelloWorld.html",
+      "/posts/Introducing/Introducing.html"
+    ]
+  }
+]
