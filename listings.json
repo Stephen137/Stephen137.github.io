@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/NumPy/Complete_Python_NumPy_Tutorial.html",
       "/posts/Pandas/Effective_Pandas.html",
       "/posts/Image_Processing_with_Python/Image_Processing.html",
       "/posts/Programming_with_Python/Programming_with_Python.html",
