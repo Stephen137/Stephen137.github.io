@@ -237,26 +237,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="install-the-required-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-the-required-packages">Install the required packages</h2>
 <p>::: {.cell _kg_hide-input=‘true’ _kg_hide-output=‘true’ outputId=‘ba21b811-767c-459a-ccdf-044758720a55’ papermill=‘{“duration”:23.212506,“end_time”:“2022-10-10T06:59:22.512822”,“exception”:false,“start_time”:“2022-10-10T06:58:59.300316”,“status”:“completed”}’ tags=‘[]’ execution_count=1}</p>
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install <span class="op">-</span>Uqq fastbook</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fastbook</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fastbook.setup_book()</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastbook <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.widgets <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <p>:::</p>
 </section>
 <section id="grab-our-images" class="level2">
 <h2 class="anchored" data-anchor-id="grab-our-images">Grab our images</h2>
 <p>Now, it’s time to get hold of our bear images. There are many images on the internet of each type of bear that we can use. We just need a way to find them and download them. One method is to use fastai’s <strong>search_images_ddg</strong> which grabs images from DuckDuckGo. Note that the number of images is restricted by default to a maximum of 200:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:4.683047,&quot;end_time&quot;:&quot;2022-10-10T06:59:27.273856&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T06:59:22.590809&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="2">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>search_images_ddg</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ims <span class="op">=</span> search_images_ddg(<span class="st">'grizzly bear'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(ims)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>200</code></pre>
 </div>
@@ -264,11 +258,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>NB: there’s no way to be sure exactly what images a search like this will find. The results can change over time. We’ve heard of at least one case of a community member who found some unpleasant pictures of dead bears in their search results. You’ll receive whatever images are found by the web search engine. If you’re running this at work, or with kids, etc, then be cautious before you display the downloaded images.</p>
 <p>Let’s take a look at an image:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.440797,&quot;end_time&quot;:&quot;2022-10-10T06:59:27.798329&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T06:59:27.357532&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="3">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dest <span class="op">=</span> <span class="st">'images/grizzly.jpg'</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>download_url(ims[<span class="dv">0</span>], dest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -300,26 +291,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.10387,&quot;end_time&quot;:&quot;2022-10-10T06:59:27.920857&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T06:59:27.816987&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="4">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> Image.<span class="bu">open</span>(dest)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>im.to_thumb(<span class="dv">128</span>,<span class="dv">128</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <p><img src="huggy-bear_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.019906,&quot;end_time&quot;:&quot;2022-10-10T06:59:27.953000&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T06:59:27.933094&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="5">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bear_types <span class="op">=</span> <span class="st">'grizzly'</span>,<span class="st">'black'</span>,<span class="st">'teddy'</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> Path(<span class="st">'bears'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>This seems to have worked nicely. Let’s use fastai’s <strong>download_images</strong> to download all the URLs for each of our search terms. We’ll put each in a separate folder:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:46.959168,&quot;end_time&quot;:&quot;2022-10-10T07:00:14.947114&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T06:59:27.987946&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="6">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> path.exists():</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    path.mkdir()</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> o <span class="kw">in</span> bear_types:</span>
@@ -327,15 +310,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        dest.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> search_images_ddg(<span class="ss">f'</span><span class="sc">{</span>o<span class="sc">}</span><span class="ss"> bear'</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        download_images(dest, urls<span class="op">=</span>results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Our folder has image files, as we’d expect:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.026916,&quot;end_time&quot;:&quot;2022-10-10T07:00:15.009393&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:14.982477&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="7">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fns <span class="op">=</span> get_image_files(path)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>(#295) [Path('bears/grizzly/bd6ab4a5-5126-492d-b69e-bd15e8f8db86.jpg'),Path('bears/grizzly/54c2968d-f1eb-473f-8979-abd2c6a1e9b9.jpg'),Path('bears/grizzly/06c6eeac-94a8-4634-a979-5de67ced9b3e.jpg'),Path('bears/grizzly/6d6c394c-596b-4953-b98c-f90df597d7c1.jpg'),Path('bears/grizzly/d0fb653a-1328-4f3d-95ce-1b5bc588ef04.jpg'),Path('bears/grizzly/b5179606-5957-4a29-8623-fa05ff910ccc.jpg'),Path('bears/grizzly/3e5bb95f-76bf-4847-9c86-a000077fc371.jpg'),Path('bears/grizzly/484483b9-7453-4e08-8487-9066da336bbb.jpg'),Path('bears/grizzly/d39dd49d-669a-4f15-96e7-9476875d859f.jpg'),Path('bears/grizzly/d3f5a27e-a2bc-474a-8acb-afd0708dee20.jpg')...]</code></pre>
 </div>
@@ -345,21 +324,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="cleaning-our-data">Cleaning our data</h2>
 <p>Often when we download files from the internet, there are a few that are corrupt. Let’s check:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:12.355311,&quot;end_time&quot;:&quot;2022-10-10T07:00:27.421419&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:15.066108&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="8">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>failed <span class="op">=</span> verify_images(fns)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>failed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>(#5) [Path('bears/grizzly/8ce9dba9-9dc8-4bf3-b392-097b28d86baf.jpg'),Path('bears/grizzly/13127ddd-1639-4b89-b81a-439c43a56fc6.jpg'),Path('bears/grizzly/e537fa0c-c6bf-43f3-acda-024af91b1745.jpg'),Path('bears/black/946c1956-6068-4468-bd3a-10af1fc2ae6a.jpg'),Path('bears/black/001594ba-562a-4ff0-8e3a-d84c654146ea.jpg')]</code></pre>
 </div>
 </div>
 <p>To remove all the failed images, you can use <strong>unlink</strong> on each of them. Note that, like most fastai functions that return a collection, <strong>verify_images</strong> returns an object of type L, which includes the map method. This calls the passed function on each element of the collection:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.020405,&quot;end_time&quot;:&quot;2022-10-10T07:00:27.476642&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:27.456237&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="9">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>failed.<span class="bu">map</span>(Path.unlink)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="from-data-to-dataloaders" class="level2">
@@ -374,29 +347,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Fastai has an extremely flexible system called the data block API. With this API you can fully customize every stage of the creation of your DataLoaders. Here is what we need to create a DataLoaders for the dataset that we just downloaded:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.023141,&quot;end_time&quot;:&quot;2022-10-10T07:00:27.604630&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:27.581489&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="10">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bears <span class="op">=</span> DataBlock(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    blocks<span class="op">=</span>(ImageBlock, CategoryBlock), </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    get_items<span class="op">=</span>get_image_files, </span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    splitter<span class="op">=</span>RandomSplitter(valid_pct<span class="op">=</span><span class="fl">0.2</span>, seed<span class="op">=</span><span class="dv">42</span>),</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    get_y<span class="op">=</span>parent_label,</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    item_tfms<span class="op">=</span>Resize(<span class="dv">128</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>This command has given us a <strong>DataBlock</strong> object. This is like a template for creating a DataLoaders. We still need to tell fastai the actual source of our data — in this case, the path where the images can be found:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:3.626964,&quot;end_time&quot;:&quot;2022-10-10T07:00:31.266565&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:27.639601&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="11">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> bears.dataloaders(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>A DataLoaders includes validation and training DataLoaders. DataLoader is a class that provides batches of a few items at a time to the GPU. When you loop through a DataLoader fastai will give you 64 (by default) items at a time, all stacked up into a single tensor. We can take a look at a few of those items by calling the <strong>show_batch</strong> method on a DataLoader:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:4.685602,&quot;end_time&quot;:&quot;2022-10-10T07:00:35.987721&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:31.302119&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="12">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dls.valid.show_batch(max_n<span class="op">=</span><span class="dv">4</span>, nrows<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <p><img src="huggy-bear_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
 </div>
@@ -406,23 +370,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="data-augmentation">Data Augmentation</h2>
 <p>Data augmentation refers to creating random variations of our input data, such that they appear different, but do not actually change the meaning of the data. Examples of common data augmentation techniques for images are rotation, flipping, perspective warping, brightness changes and contrast changes. By default <strong>Resize</strong> crops the images to fit a square shape of the size requested, using the full width or height. This can result in losing some important details. Alternatively, you can ask fastai to <strong>pad</strong> the images with zeros (black), or <strong>squish/stretch</strong> them:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:5.505994,&quot;end_time&quot;:&quot;2022-10-10T07:00:41.564083&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:36.058089&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="13">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bears <span class="op">=</span> bears.new(item_tfms<span class="op">=</span>Resize(<span class="dv">128</span>, ResizeMethod.Squish))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> bears.dataloaders(path)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>dls.valid.show_batch(max_n<span class="op">=</span><span class="dv">4</span>, nrows<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <p><img src="huggy-bear_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-papermill="{&quot;duration&quot;:5.088069,&quot;end_time&quot;:&quot;2022-10-10T07:00:46.669718&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:41.581649&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="14">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>bears <span class="op">=</span> bears.new(item_tfms<span class="op">=</span>Resize(<span class="dv">128</span>, ResizeMethod.Pad, pad_mode<span class="op">=</span><span class="st">'zeros'</span>))</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> bears.dataloaders(path)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>dls.valid.show_batch(max_n<span class="op">=</span><span class="dv">4</span>, nrows<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <p><img src="huggy-bear_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
@@ -432,12 +390,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In fact, an entirely untrained neural network knows nothing whatsoever about how images behave. It doesn’t even recognize that when an object is rotated by one degree, it still is a picture of the same thing! So actually training the neural network with examples of images where the objects are in slightly different places and slightly different sizes helps it to understand the basic concept of what an object is, and how it can be represented in an image.</p>
 <p>Here’s another example where we replace <strong>Resize</strong> with <strong>RandomResizedCrop</strong>, which is the transform that provides the behavior we just described. The most important parameter to pass in is <strong>min_scale</strong>, which determines how much of the image to select at minimum each time:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:2.032162,&quot;end_time&quot;:&quot;2022-10-10T07:00:48.759203&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:46.727041&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="15">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bears <span class="op">=</span> bears.new(item_tfms<span class="op">=</span>RandomResizedCrop(<span class="dv">128</span>, min_scale<span class="op">=</span><span class="fl">0.3</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> bears.dataloaders(path)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>dls.train.show_batch(max_n<span class="op">=</span><span class="dv">4</span>, nrows<span class="op">=</span><span class="dv">1</span>, unique<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <p><img src="huggy-bear_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
 </div>
@@ -445,12 +400,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We used <strong>unique=True</strong> to have the same image repeated with different versions of this RandomResizedCrop transform.</p>
 <p>For natural photo images such as the ones we are using here, a standard set of augmentations that we have found work pretty well are provided with the <strong>aug_transforms</strong> function. Because our images are now all the same size, we can apply these augmentations to an entire batch of them using the GPU, which will save a lot of time. To tell fastai we want to use these transforms on a batch, we use the <strong>batch_tfms</strong> parameter (note that we’re not using RandomResizedCrop in this example, so you can see the differences more clearly; we’re also using double the amount of augmentation compared to the default, for the same reason):</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:6.360836,&quot;end_time&quot;:&quot;2022-10-10T07:00:55.224681&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:48.863845&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="16">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>bears <span class="op">=</span> bears.new(item_tfms<span class="op">=</span>Resize(<span class="dv">128</span>), batch_tfms<span class="op">=</span>aug_transforms(mult<span class="op">=</span><span class="dv">2</span>))</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> bears.dataloaders(path)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>dls.train.show_batch(max_n<span class="op">=</span><span class="dv">8</span>, nrows<span class="op">=</span><span class="dv">2</span>, unique<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <p><img src="huggy-bear_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
@@ -461,21 +413,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="training-our-model-and-using-it-to-clean-our-data">Training our model and using it to clean our data</h2>
 <p>We don’t have a lot of data for our problem (200 pictures of each sort of bear at most), so to train our model, we’ll use RandomResizedCrop with an image size of 224 px, which is fairly standard for image classification, and default aug_transforms:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.108245,&quot;end_time&quot;:&quot;2022-10-10T07:00:55.506922&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:55.398677&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="17">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>bears <span class="op">=</span> bears.new(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    item_tfms<span class="op">=</span>RandomResizedCrop(<span class="dv">224</span>, min_scale<span class="op">=</span><span class="fl">0.5</span>),</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    batch_tfms<span class="op">=</span>aug_transforms())</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> bears.dataloaders(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>We can now create our Learner and fine-tune it in the usual way:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:168.095274,&quot;end_time&quot;:&quot;2022-10-10T07:03:43.677315&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:00:55.582041&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="18">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> vision_learner(dls, resnet18, metrics<span class="op">=</span>error_rate)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
   warnings.warn(
@@ -597,11 +543,8 @@ Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /hom
 <h2 class="anchored" data-anchor-id="confusion-matrix">Confusion Matrix</h2>
 <p>Now let’s see whether the mistakes the model is making are mainly thinking that grizzlies are teddies (that would be bad for safety!), or that grizzlies are black bears, or something else. To visualize this, we can create a <strong>confusion matrix</strong>:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:13.318148,&quot;end_time&quot;:&quot;2022-10-10T07:03:57.122358&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:03:43.804210&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="19">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">=</span> ClassificationInterpretation.from_learner(learn)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>interp.plot_confusion_matrix()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -655,10 +598,7 @@ Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /hom
 <p>It’s helpful to see where exactly our errors are occurring, to see whether they’re due to a dataset problem (e.g., images that aren’t bears at all, or are labeled incorrectly, etc.), or a model problem (perhaps it isn’t handling images taken with unusual lighting, or from a different angle, etc.). To do this, we can sort our images by their loss.</p>
 <p>The loss is a number that is higher if the model is incorrect (especially if it’s also confident of its incorrect answer), or if it’s correct, but not confident of its correct answer. In a couple of chapters we’ll learn in depth how loss is calculated and used in the training process. For now, plot_top_losses shows us the images with the highest loss in our dataset. As the title of the output says, each image is labeled with four things: prediction, actual (target label), loss, and probability. The probability here is the confidence level, from zero to one, that the model has assigned to its prediction:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.899649,&quot;end_time&quot;:&quot;2022-10-10T07:03:58.242835&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:03:57.343186&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="20">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>interp.plot_top_losses(<span class="dv">5</span>, nrows<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -691,12 +631,9 @@ Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /hom
 <h2 class="anchored" data-anchor-id="image-classifier-cleaner">Image Classifier Cleaner</h2>
 <p>fastai includes a handy GUI for data cleaning called <strong>ImageClassifierCleaner</strong> that allows you to choose a category and the training versus validation set and view the highest-loss images (in order), along with menus to allow images to be selected for removal or relabeling:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:35.674128,&quot;end_time&quot;:&quot;2022-10-10T07:04:34.269644&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:03:58.595516&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="21">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#hide_output</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>cleaner <span class="op">=</span> ImageClassifierCleaner(learn)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>cleaner</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 
 <style>
@@ -748,17 +685,11 @@ Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /hom
 <p>We can see that amongst our “black bears” is an image that contains two bears: one grizzly, one black. So, we should choose ‘Delete’ in the menu under this image</p>
 <p>ImageClassifierCleaner doesn’t actually do the deleting or changing of labels for you; it just returns the indices of items to change. So, for instance, to delete i.e.&nbsp;<strong>(unlink)</strong> all images selected for deletion, we would run:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.067291,&quot;end_time&quot;:&quot;2022-10-10T07:04:34.531689&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:04:34.464398&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="22">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx <span class="kw">in</span> cleaner.delete(): cleaner.fns[idx].unlink()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>To recatogrize i.e.<strong>(move)</strong> images for which we’ve selected a different category, we would run:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.040083,&quot;end_time&quot;:&quot;2022-10-10T07:04:34.663843&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:04:34.623760&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="23">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx,cat <span class="kw">in</span> cleaner.change(): shutil.move(<span class="bu">str</span>(cleaner.fns[idx]), path<span class="op">/</span>cat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="saving-our-model" class="level2">
@@ -767,10 +698,7 @@ Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /hom
 <p>This method even saves the definition of how to create your DataLoaders. This is important, because otherwise you would have to redefine how to transform your data in order to use your model in production. fastai automatically uses your validation set DataLoader for inference by default, so your data augmentation will not be applied, which is generally what you want.</p>
 <p>When you call export, fastai will save a file called “export.pkl”:</p>
 <div class="cell" data-papermill="{&quot;duration&quot;:0.152629,&quot;end_time&quot;:&quot;2022-10-10T07:04:34.965451&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-10-10T07:04:34.812822&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>learn.export(<span class="st">'export.pkl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>After a few seconds, your model will be downloaded to your computer, where you can then create your app that uses the model.</p>
 </section>

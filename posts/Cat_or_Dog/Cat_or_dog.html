@@ -235,8 +235,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>The first two steps only need to be run once on your GPU server. If you run the cell again, it will use the dataset and model that have already been downloaded, rather than downloading them again. Let’s take a look at the contents of the cell, and the results:</p>
 <p>::: {.cell _cell_guid=‘936cf7ef-02f7-4a8c-bcfe-f028b63b6b4c’ _kg_hide-output=‘true’ _uuid=‘803d9fc5-fed7-464c-b6b6-5efdd0af1961’ jupyter=‘{“outputs_hidden”:false}’ tags=‘[]’}</p>
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>Uqq fastbook</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastbook <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
@@ -249,7 +247,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> vision_learner(dls, resnet34, metrics<span class="op">=</span>error_rate)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>learn.fine_tune(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
   warnings.warn(
@@ -306,28 +303,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>So, how do we know if this model is any good? In the last column of the table you can see the error rate, which is the proportion of images that were incorrectly identified. The error rate serves as our metric—our measure of model quality, chosen to be intuitive and comprehensible. As you can see, the model is nearly perfect, even though the training time was only a few minutes (not including the one-time downloading of the dataset and the pretrained model). There are a lot of sources of small random variation involved in training models, however we generally see an error rate of well less than 0.02. In this example, the error rate is approx 0.008, which equates to 99.2% accuracy.</p>
 <p>Finally, let’s check that this model actually works by uploading a picture of Dúi for our model to classify:</p>
 <p>::: {.cell _cell_guid=‘392c10cc-9782-4c29-b131-6f42289856f8’ _uuid=‘eac26ec1-f23a-41ba-96e4-0eb504324959’ jupyter=‘{“outputs_hidden”:false}’ tags=‘[]’}</p>
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets <span class="im">as</span> widgets</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>uploader <span class="op">=</span> widgets.FileUpload()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>uploader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <p>:::</p>
 <p>::: {.cell _cell_guid=‘efa0ad57-03a5-43c1-abf1-ff8eb9d0600a’ _uuid=‘08497abe-f829-476a-ba24-bc5079922994’ jupyter=‘{“outputs_hidden”:false}’ tags=‘[]’}</p>
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> PILImage.create(uploader.data[<span class="dv">0</span>])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>display(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <p>:::</p>
 <p>Now let’s see what the model predicts:</p>
 <p>::: {.cell _cell_guid=‘f98c4e24-adf7-4272-a6e9-42236bd686df’ _uuid=‘a1e1b32c-476e-4fbc-8feb-7a902f5e58e3’ jupyter=‘{“outputs_hidden”:false}’ tags=‘[]’}</p>
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>is_cat,_,probs <span class="op">=</span> learn.predict(img)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Is Dúi a cat?: </span><span class="sc">{</span>is_cat<span class="sc">}</span><span class="ss">."</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Probability Dúi is a cat: </span><span class="sc">{</span>probs[<span class="dv">1</span>]<span class="sc">.</span>item()<span class="sc">:.6f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <p>:::</p>
 </section>
 <section id="conclusion" class="level2">
