@@ -2,74 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://stephen137.github.io/about.html</loc>
-    <lastmod>2023-01-03T20:57:53.875Z</lastmod>
+    <lastmod>2023-01-04T13:58:33.417Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/index.html</loc>
-    <lastmod>2023-01-03T20:57:54.325Z</lastmod>
+    <lastmod>2023-01-04T13:58:33.877Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Programming_with_Python/Programming_with_Python.html</loc>
-    <lastmod>2023-01-03T20:57:56.105Z</lastmod>
+    <lastmod>2023-01-04T13:58:36.027Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Image_Processing_with_Python/Image_Processing.html</loc>
-    <lastmod>2023-01-03T20:57:58.365Z</lastmod>
+    <lastmod>2023-01-04T13:58:38.777Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Audio_Feature_Extraction/Audio_Feature_Extraction.html</loc>
-    <lastmod>2023-01-03T20:58:02.445Z</lastmod>
+    <lastmod>2023-01-04T13:58:43.387Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Geospatial/Working with Geospatial Data in Python.html</loc>
-    <lastmod>2023-01-03T20:58:04.165Z</lastmod>
+    <lastmod>2023-01-04T13:58:45.407Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Hello World/HelloWorld.html</loc>
-    <lastmod>2023-01-03T20:58:04.365Z</lastmod>
+    <lastmod>2023-01-04T13:58:45.617Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial.html</loc>
-    <lastmod>2023-01-03T20:58:04.785Z</lastmod>
+    <lastmod>2023-01-04T13:58:46.117Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Krakow_Football/Krakow_Football.html</loc>
-    <lastmod>2023-01-03T20:58:05.385Z</lastmod>
+    <lastmod>2023-01-04T13:58:46.807Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Song Genre Classifier/Song Genre Classifier.html</loc>
-    <lastmod>2023-01-03T20:58:05.795Z</lastmod>
+    <lastmod>2023-01-04T13:58:47.257Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/PySpark/Spark.html</loc>
-    <lastmod>2023-01-03T20:58:06.465Z</lastmod>
+    <lastmod>2023-01-04T13:58:48.017Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Excelosaurus/Excelosaurus.html</loc>
-    <lastmod>2023-01-03T20:58:06.735Z</lastmod>
+    <lastmod>2023-01-04T13:58:48.307Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Introducing/Introducing.html</loc>
-    <lastmod>2023-01-03T20:58:06.935Z</lastmod>
+    <lastmod>2023-01-04T13:58:48.537Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Excel_meets_Python/Excel_meets_Python.html</loc>
-    <lastmod>2023-01-03T20:58:07.395Z</lastmod>
+    <lastmod>2023-01-04T13:58:49.057Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Cat_or_Dog/Cat_or_dog.html</loc>
-    <lastmod>2023-01-03T20:58:07.615Z</lastmod>
+    <lastmod>2023-01-04T13:58:49.297Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/World Cup 2022/World_Cup_2022.html</loc>
-    <lastmod>2023-01-03T20:58:08.145Z</lastmod>
+    <lastmod>2023-01-04T13:58:49.837Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Huggy Bear/huggy-bear.html</loc>
-    <lastmod>2023-01-03T20:58:08.735Z</lastmod>
+    <lastmod>2023-01-04T13:58:50.487Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Pandas/Effective_Pandas.html</loc>
-    <lastmod>2023-01-03T20:58:09.325Z</lastmod>
+    <lastmod>2023-01-04T13:58:51.137Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephen137.github.io/posts/Seaborn/Seaborn.html</loc>
+    <lastmod>2023-01-04T13:58:51.677Z</lastmod>
   </url>
 </urlset>
