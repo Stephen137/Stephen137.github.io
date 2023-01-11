@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Kaggle_Comp/Paddy_Doctor.html",
+      "/posts/Random_Forests/Random_Forests.html",
       "/posts/Seaborn/Seaborn.html",
       "/posts/NumPy/Complete_Python_NumPy_Tutorial.html",
       "/posts/Pandas/Effective_Pandas.html",

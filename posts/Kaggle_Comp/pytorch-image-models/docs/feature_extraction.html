@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown – feature_extraction</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../about.html">Stephen Barrie</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#feature-extraction" id="toc-feature-extraction" class="nav-link active" data-scroll-target="#feature-extraction">Feature Extraction</a>
+  <ul class="collapse">
+  <li><a href="#penultimate-layer-features-pre-classifier-features" id="toc-penultimate-layer-features-pre-classifier-features" class="nav-link" data-scroll-target="#penultimate-layer-features-pre-classifier-features">Penultimate Layer Features (Pre-Classifier Features)</a>
+  <ul class="collapse">
+  <li><a href="#unpooled" id="toc-unpooled" class="nav-link" data-scroll-target="#unpooled">Unpooled</a></li>
+  <li><a href="#pooled" id="toc-pooled" class="nav-link" data-scroll-target="#pooled">Pooled</a></li>
+  </ul></li>
+  <li><a href="#multi-scale-feature-maps-feature-pyramid" id="toc-multi-scale-feature-maps-feature-pyramid" class="nav-link" data-scroll-target="#multi-scale-feature-maps-feature-pyramid">Multi-scale Feature Maps (Feature Pyramid)</a>
+  <ul class="collapse">
+  <li><a href="#create-a-feature-map-extraction-model" id="toc-create-a-feature-map-extraction-model" class="nav-link" data-scroll-target="#create-a-feature-map-extraction-model">Create a feature map extraction model</a></li>
+  <li><a href="#query-the-feature-information" id="toc-query-the-feature-information" class="nav-link" data-scroll-target="#query-the-feature-information">Query the feature information</a></li>
+  <li><a href="#select-specific-feature-levels-or-limit-the-stride" id="toc-select-specific-feature-levels-or-limit-the-stride" class="nav-link" data-scroll-target="#select-specific-feature-levels-or-limit-the-stride">Select specific feature levels or limit the stride</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+<section id="feature-extraction" class="level1">
+<h1>Feature Extraction</h1>
+<p>All of the models in <code>timm</code> have consistent mechanisms for obtaining various types of features from the model for tasks besides classification.</p>
+<section id="penultimate-layer-features-pre-classifier-features" class="level2">
+<h2 class="anchored" data-anchor-id="penultimate-layer-features-pre-classifier-features">Penultimate Layer Features (Pre-Classifier Features)</h2>
+<p>The features from the penultimate model layer can be obtained in several ways without requiring model surgery (although feel free to do surgery). One must first decide if they want pooled or un-pooled features.</p>
+<section id="unpooled" class="level3">
+<h3 class="anchored" data-anchor-id="unpooled">Unpooled</h3>
+<p>There are three ways to obtain unpooled features.</p>
+<p>Without modifying the network, one can call <code>model.forward_features(input)</code> on any model instead of the usual <code>model(input)</code>. This will bypass the head classifier and global pooling for networks.</p>
+<p>If one wants to explicitly modify the network to return unpooled features, they can either create the model without a classifier and pooling, or remove it later. Both paths remove the parameters associated with the classifier from the network.</p>
+<section id="forward_features" class="level4">
+<h4 class="anchored" data-anchor-id="forward_features">forward_features()</h4>
+<p><code>python hl_lines="3 6" import torch import timm m = timm.create_model('xception41', pretrained=True) o = m(torch.randn(2, 3, 299, 299)) print(f'Original shape: {o.shape}') o = m.forward_features(torch.randn(2, 3, 299, 299)) print(f'Unpooled shape: {o.shape}')</code> Output:</p>
+<pre class="text"><code>Original shape: torch.Size([2, 1000])
+Unpooled shape: torch.Size([2, 2048, 10, 10])</code></pre>
+</section>
+<section id="create-with-no-classifier-and-pooling" class="level4">
+<h4 class="anchored" data-anchor-id="create-with-no-classifier-and-pooling">Create with no classifier and pooling</h4>
+<p><code>python hl_lines="3" import torch import timm m = timm.create_model('resnet50', pretrained=True, num_classes=0, global_pool='') o = m(torch.randn(2, 3, 224, 224)) print(f'Unpooled shape: {o.shape}')</code> Output:</p>
+<pre class="text"><code>Unpooled shape: torch.Size([2, 2048, 7, 7])</code></pre>
+</section>
+<section id="remove-it-later" class="level4">
+<h4 class="anchored" data-anchor-id="remove-it-later">Remove it later</h4>
+<p><code>python hl_lines="3 6" import torch import timm m = timm.create_model('densenet121', pretrained=True) o = m(torch.randn(2, 3, 224, 224)) print(f'Original shape: {o.shape}') m.reset_classifier(0, '') o = m(torch.randn(2, 3, 224, 224)) print(f'Unpooled shape: {o.shape}')</code> Output:</p>
+<pre class="text"><code>Original shape: torch.Size([2, 1000])
+Unpooled shape: torch.Size([2, 1024, 7, 7])</code></pre>
+</section>
+</section>
+<section id="pooled" class="level3">
+<h3 class="anchored" data-anchor-id="pooled">Pooled</h3>
+<p>To modify the network to return pooled features, one can use <code>forward_features()</code> and pool/flatten the result themselves, or modify the network like above but keep pooling intact.</p>
+<section id="create-with-no-classifier" class="level4">
+<h4 class="anchored" data-anchor-id="create-with-no-classifier">Create with no classifier</h4>
+<p><code>python hl_lines="3" import torch import timm m = timm.create_model('resnet50', pretrained=True, num_classes=0) o = m(torch.randn(2, 3, 224, 224)) print(f'Pooled shape: {o.shape}')</code> Output:</p>
+<pre class="text"><code>Pooled shape: torch.Size([2, 2048])</code></pre>
+</section>
+<section id="remove-it-later-1" class="level4">
+<h4 class="anchored" data-anchor-id="remove-it-later-1">Remove it later</h4>
+<p><code>python hl_lines="3 6" import torch import timm m = timm.create_model('ese_vovnet19b_dw', pretrained=True) o = m(torch.randn(2, 3, 224, 224)) print(f'Original shape: {o.shape}') m.reset_classifier(0) o = m(torch.randn(2, 3, 224, 224)) print(f'Pooled shape: {o.shape}')</code> Output:</p>
+<pre class="text"><code>Original shape: torch.Size([2, 1000])
+Pooled shape: torch.Size([2, 1024])</code></pre>
+</section>
+</section>
+</section>
+<section id="multi-scale-feature-maps-feature-pyramid" class="level2">
+<h2 class="anchored" data-anchor-id="multi-scale-feature-maps-feature-pyramid">Multi-scale Feature Maps (Feature Pyramid)</h2>
+<p>Object detection, segmentation, keypoint, and a variety of dense pixel tasks require access to feature maps from the backbone network at multiple scales. This is often done by modifying the original classification network. Since each network varies quite a bit in structure, it’s not uncommon to see only a few backbones supported in any given obj detection or segmentation library.</p>
+<p><code>timm</code> allows a consistent interface for creating any of the included models as feature backbones that output feature maps for selected levels.</p>
+<p>A feature backbone can be created by adding the argument <code>features_only=True</code> to any <code>create_model</code> call. By default 5 strides will be output from most models (not all have that many), with the first starting at 2 (some start at 1 or 4).</p>
+<section id="create-a-feature-map-extraction-model" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-feature-map-extraction-model">Create a feature map extraction model</h3>
+<p><code>python hl_lines="3" import torch import timm m = timm.create_model('resnest26d', features_only=True, pretrained=True) o = m(torch.randn(2, 3, 224, 224)) for x in o:   print(x.shape)</code> Output:</p>
+<pre class="text"><code>torch.Size([2, 64, 112, 112])
+torch.Size([2, 256, 56, 56])
+torch.Size([2, 512, 28, 28])
+torch.Size([2, 1024, 14, 14])
+torch.Size([2, 2048, 7, 7])</code></pre>
+</section>
+<section id="query-the-feature-information" class="level3">
+<h3 class="anchored" data-anchor-id="query-the-feature-information">Query the feature information</h3>
+<p>After a feature backbone has been created, it can be queried to provide channel or resolution reduction information to the downstream heads without requiring static config or hardcoded constants. The <code>.feature_info</code> attribute is a class encapsulating the information about the feature extraction points.</p>
+<p><code>python hl_lines="3 4" import torch import timm m = timm.create_model('regnety_032', features_only=True, pretrained=True) print(f'Feature channels: {m.feature_info.channels()}') o = m(torch.randn(2, 3, 224, 224)) for x in o:   print(x.shape)</code> Output:</p>
+<pre class="text"><code>Feature channels: [32, 72, 216, 576, 1512]
+torch.Size([2, 32, 112, 112])
+torch.Size([2, 72, 56, 56])
+torch.Size([2, 216, 28, 28])
+torch.Size([2, 576, 14, 14])
+torch.Size([2, 1512, 7, 7])</code></pre>
+</section>
+<section id="select-specific-feature-levels-or-limit-the-stride" class="level3">
+<h3 class="anchored" data-anchor-id="select-specific-feature-levels-or-limit-the-stride">Select specific feature levels or limit the stride</h3>
+<p>There are two additional creation arguments impacting the output features.</p>
+<ul>
+<li><code>out_indices</code> selects which indices to output</li>
+<li><code>output_stride</code> limits the feature output stride of the network (also works in classification mode BTW)</li>
+</ul>
+<p><code>out_indices</code> is supported by all models, but not all models have the same index to feature stride mapping. Look at the code or check feature_info to compare. The out indices generally correspond to the <code>C(i+1)th</code> feature level (a <code>2^(i+1)</code> reduction). For most models, index 0 is the stride 2 features, and index 4 is stride 32.</p>
+<p><code>output_stride</code> is achieved by converting layers to use dilated convolutions. Doing so is not always straightforward, some networks only support <code>output_stride=32</code>.</p>
+<p><code>python hl_lines="3 4 5" import torch import timm m = timm.create_model('ecaresnet101d', features_only=True, output_stride=8, out_indices=(2, 4), pretrained=True) print(f'Feature channels: {m.feature_info.channels()}') print(f'Feature reduction: {m.feature_info.reduction()}') o = m(torch.randn(2, 3, 320, 320)) for x in o:   print(x.shape)</code> Output:</p>
+<pre class="text"><code>Feature channels: [512, 2048]
+Feature reduction: [8, 8]
+torch.Size([2, 512, 40, 40])
+torch.Size([2, 2048, 40, 40])</code></pre>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
