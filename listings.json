@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Multi_Label_Classification/Multi_label_classification.html",
       "/posts/Scaling up/Scaling_up.html",
       "/posts/Paddy_Doctor/Paddy_Doctor.html",
       "/posts/Kaggle/Kaggle.html",
