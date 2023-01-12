@@ -2,7 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/Kaggle_Comp/Paddy_Doctor.html",
+      "/posts/Scaling up/Scaling_up.html",
+      "/posts/Paddy_Doctor/Paddy_Doctor.html",
+      "/posts/Kaggle/Kaggle.html",
       "/posts/Random_Forests/Random_Forests.html",
       "/posts/Seaborn/Seaborn.html",
       "/posts/NumPy/Complete_Python_NumPy_Tutorial.html",
