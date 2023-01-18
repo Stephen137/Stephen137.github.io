@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>This is my follow up to first part of <a href="https://www.youtube.com/watch?v=p4ZZq0736Po"><strong><em>Lesson 7: Practical Deep Learning for Coders 2022</em></strong></a> in which Jeremy introduces a technique known as <code>Gradient Accumulation</code> which allows us to train larger models, despite apparent GPU constraints.</p>
+<p>This is my follow up to the first part of <a href="https://www.youtube.com/watch?v=p4ZZq0736Po"><strong><em>Lesson 7: Practical Deep Learning for Coders 2022</em></strong></a> in which Jeremy introduces a technique known as <code>Gradient Accumulation</code> which allows us to train larger models, despite apparent GPU constraints.</p>
 <section id="overview" class="level3">
 <h3 class="anchored" data-anchor-id="overview">Overview</h3>
 <p>In this analysis our goal will be to train an ensemble of larger models with larger inputs. The challenge when training such models is generally GPU memory. Kaggle GPUs have 16280MiB of memory available, as at the time of writing. I like to try out my notebooks on my home PC, then upload them – but we still need them to run OK on Kaggle (especially if it’s a code competition, where this is required). Just because it runs OK at home doesn’t mean it’ll run OK on Kaggle.</p>

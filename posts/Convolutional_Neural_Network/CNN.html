@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-01-18">
+
+<title>Into the Unknown - Convolutional Neural Networks (CNNs)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Convolutional Neural Networks (CNNs)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Convolutional Neural Networks</div>
+                <div class="quarto-category">fastai</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 18, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#covolutional-neural-networks-cnns" id="toc-covolutional-neural-networks-cnns" class="nav-link active" data-scroll-target="#covolutional-neural-networks-cnns">Covolutional Neural Networks (CNNs)</a>
+  <ul class="collapse">
+  <li><a href="#the-magic-of-convolutions" id="toc-the-magic-of-convolutions" class="nav-link" data-scroll-target="#the-magic-of-convolutions">The Magic of Convolutions</a></li>
+  <li><a href="#how-it-used-to-look-like" id="toc-how-it-used-to-look-like" class="nav-link" data-scroll-target="#how-it-used-to-look-like">How it used to look like</a></li>
+  <li><a href="#how-it-looks-like-now" id="toc-how-it-looks-like-now" class="nav-link" data-scroll-target="#how-it-looks-like-now">How it looks like now</a></li>
+  <li><a href="#stride-2-convolutions" id="toc-stride-2-convolutions" class="nav-link" data-scroll-target="#stride-2-convolutions">Stride 2 convolutions</a></li>
+  <li><a href="#drop-out" id="toc-drop-out" class="nav-link" data-scroll-target="#drop-out">Drop out</a></li>
+  <li><a href="#average-pooling" id="toc-average-pooling" class="nav-link" data-scroll-target="#average-pooling">Average Pooling</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key takeaways</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="covolutional-neural-networks-cnns" class="level2">
+<h2 class="anchored" data-anchor-id="covolutional-neural-networks-cnns">Covolutional Neural Networks (CNNs)</h2>
+<p>This is my follow up to the second half of <a href="https://youtu.be/htiNBPxcXgo?t=2675"><strong><em>Lesson 8: Practical Deep Learning for Coders 2022</em></strong></a> in which Jeremy demonstrates the inner workings of a <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network#Stride">Convolutional Neural Network (CNN)</a> using Excel. In the video, which draws heavily on <a href="https://colab.research.google.com/github/fastai/fastbook/blob/master/13_convolutions.ipynb">Deep Learning for Coders with Fastai and PyTorch: AI Applications Without a PhD : Chapter 13</a>, Jeremy walks through the CNN architecture for a handwritten digit 7 in CSV format taken from the <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset</a>. To consolidate my understanding I replicated the same process for a sample handwritten digit 3.</p>
+<section id="the-magic-of-convolutions" class="level3">
+<h3 class="anchored" data-anchor-id="the-magic-of-convolutions">The Magic of Convolutions</h3>
+<p>I downloaded the MNIST dataset in csv format from <a href="(https://pjreddie.com/projects/mnist-in-csv/)">here</a>. Each row of the CSV file has 785 columns, the first column specifies which of the ten handwritten digits is represented (between 0 and 9). The remaining 784 columns contain values which lie on the scale 0 (white) to 255 (black). Why 0 to 255 you may ask? Well, it has to do with computer memory. The number 255 is written as <code>11111111</code> in binary form which is 8 bits. In our case we have a grayscale (or 1 channel image) so each pixel takes up 8 bits. Note that a colour image is most commonly represented by 3 channels (Reg, Green, Blue) in which case each pixel requires 24 bits.</p>
+<p>To see the digit visually we first have to re-arrange the 784 values into a 28 x 28 square, and then use conditional formatting to match the scale - darker for large values, lighter for low values:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/94909380-1e83-489f-ac43-b144e4dfab5b.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">3.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>One of the most powerful tools that machine learning practitioners have at their disposal is feature engineering. A feature is a transformation of the data which is designed to make it easier to model. In the context of an image, a feature is a visually distinctive attribute. For example, the number 7 is characterized by a horizontal edge near the top of the digit, and a top-right to bottom-left diagonal edge underneath that. On the other hand, the <code>number 3</code> is characterized by a diagonal edge in one direction at the top left and bottom right of the digit, the opposite diagonal at the bottom left and top right, horizontal edges at the middle, top, and bottom, and so forth. So what if we could extract information about where the edges occur in each image, and then use that information as our features, instead of raw pixels?</p>
+<p>It turns out that finding the edges in an image is a very common task in computer vision, and is surprisingly straightforward. To do it, we use something called a convolution. A convolution requires nothing more than multiplication, and addition—two operations that are responsible for the vast majority of work that we will see in every single deep learning model.</p>
+</section>
+<section id="how-it-used-to-look-like" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-used-to-look-like">How it used to look like</h3>
+<p>The underlying concept of CNNs has not changed although there have been architecture modifications. First, let’s look at a traditional CNN - how they generally used to be constructed. A convolution applies a <code>kernel</code> across an image. A kernel is a little matrix, such as the 3×3 matrix in the top right of the image below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/0d02a549-c91c-4803-9a3d-88bef25ded3f.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">kernel.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We can think of a convolution as a sliding window of little mini dot products of these 3 x 3 matrices or <code>kernels</code>. Note that they don’t have to be of size 3 x 3. We randomly initalize these kernels and then use Stochastic Gradient Descent(SGD) to optimize these parameters. We can repeat the same idea as we add layers.</p>
+<p>After the application of the first filter, we now have two <code>channels</code>:</p>
+<ul>
+<li>Channel 1: which picks out <code>horizontal</code> edges</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/bf6ac586-d8c9-4f70-af3b-875a911b734f.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">horizontal_detector.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Note that we clip the resulting value to zero by taking the maximum of 0 and the mini dot product, and our grid sizes have reduced from 28 x 28 to 26 x 26.</p>
+<ul>
+<li>Channnel 2: which picks out <code>vertical</code> edges</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/50077792-d4bd-4ef0-baaa-68240fe96bdb.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">vertical_detector.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>In the second layer we have 2 kernels applied to each channel:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/0a9092a9-b93d-442f-8a0f-2f1ac7fe2d5d.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">conv2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Note that our grid sizes have reduced further to 24 x 24 from our original 28 x 28.</p>
+<p>At this stage, instead of applying further kernels, we would instead use <code>MaxPool</code> which just takes the maximum value over say 2 x 2 grid areas, with no overlap:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/735e7850-7dcd-498d-8297-749469ba1536.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">maxpool.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>In the spreadsheet screenshot above, note that the maximum value of the 2 x 2 grid on the left is 3.54, which is the value returned in the MaxPool layer on the right. Note also that our grid size is now just 12 x 12 compared with our original size of 28 x 28.</p>
+<p>The final step would be to apply a <code>dense</code> layer which is just randomized weightings applied as SUMPRODUCT in excel over the Maxpool layer outputs, to give a final activation value for conversion to a probability using <a href="https://en.wikipedia.org/wiki/Softmax_function">Softmax</a>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/e9989b1e-ba56-41f7-ac06-f5c99a099513.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dense.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="how-it-looks-like-now" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-looks-like-now">How it looks like now</h3>
+<p>As intimated earlier, the architecture of modern CNNs is generally a slight variant of that illustrated above. In the above examples our <code>kernels</code> applied mini dot products across our initial image grid, with <code>no overlap</code>. As a result, it takes a lot of steps (and therfore layers) to reduce our grid into the number of <code>activations</code> that we are interested in - for our handwritten digits problem we would perhaps be interested in 10 activations, the probability for each of the 10 digits, or maybe just 1 - the probability of it being a particular digit.</p>
+</section>
+<section id="stride-2-convolutions" class="level3">
+<h3 class="anchored" data-anchor-id="stride-2-convolutions">Stride 2 convolutions</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/58cb6a62-d435-4b2d-96e7-4761bcd32e01.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">stride.png</figcaption><p></p>
+</figure>
+</div>
+<p>It’s all about getting there faster!</p>
+<p>Modern approaches tend to apply something called <code>stride 2</code> convolutions. This works by skipping over a column and row when sliding the <code>kernel</code> over our input grid. This effectively reduces the grid feature size by a factor of 4 (2 rows x 2 columns) each convolution, resulting in fewer steps to get down to the required number of activations.</p>
+</section>
+<section id="drop-out" class="level3">
+<h3 class="anchored" data-anchor-id="drop-out">Drop out</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/1122cebf-a4aa-41fd-ae7b-d27ebbeeb8a6.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">drop_out.png</figcaption><p></p>
+</figure>
+</div>
+<p>This isn’t our model giving up on the image classification problem! <code>Drop out</code> refers to the removal of different random bits of our image from each batch. Why would we want to do this? It sounds somewhat counter-intuitive - surely we want to give our model the best possible chance of classifying our image? Well, yes and no.</p>
+<p>Essentially there is, as with all models, an inherent compromise between a model that generalizes well to new images and getting good training results, with the risk of <code>overfitting</code>. You can think of <code>dropout</code> as a kind of <code>data augmentation</code>, except we are applying the corruption or augmentation to our activations, rather than our original input image. These <code>dropout</code> layers are really helpful for avoiding overfitting. Setting a higher drop out rate will mean that our model generalizes well to new images, but perform less well on the training set.</p>
+<p>Here is an example of how it works:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CNN_files/figure-html/42e260d6-1aa1-408e-8ea5-009f8dfae1b5.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dropout.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We generate a grid of random numbers to match the size of our 24 x 24 input layer, and then set our drop our rate (a value between o and 1) to create a <code>mask</code> to be applied to our image. In this case we have chosen a drop out rate of 0.4 - which basically removes 40% of the pixels - thus corrupting our image, forcing our model to interpret the underlying structure of the image, thus reducing the risk of overfitting.</p>
+</section>
+<section id="average-pooling" class="level3">
+<h3 class="anchored" data-anchor-id="average-pooling">Average Pooling</h3>
+<p>Nowadays there is no single dense layer matrix multiply at the end as illustrated previously. In addition, once we get down to say a 7 x 7 grid after stride convolutions, instead of doing a <code>Maxpool</code> generally we carry out an <a href="https://paperswithcode.com/method/average-pooling">Average Pooling</a>.</p>
+<p>Say, for example we have a bear detector image classifier - the model will basically be asking “Is there a bear in this part of the image?” for each of the say 49 remaining pixels in our final 7 x 7 activation. This works well for a single image that fills the whole grid, but if it is a small image in the corner, or a multi-image image then it might not be classified correctly (maybe only 1 out of the 49 pixels has a bear in it). So we might be better choosing Maxpool in this case.</p>
+<p>The key takeaway is that it is very important that we undestand the architecture of our model, especially the final layer, to take account of the specific task at hand and the nature of the data included in our model.</p>
+<p>Fast.ai in fact goes for a blend, and concatenates both MaxPool and AvgPool.</p>
+</section>
+<section id="key-takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways">Key takeaways</h3>
+<p>This blog does not by any means attempt to understate the complexity of CNNs, but hopefully by simplifying the concept it might help provide a satisfactory overview, and after working through an example of your own, you will have the confidence to dig deeper.</p>
+<p>An excellent and comprehensive coverage of CNNs is included in <a href="https://colab.research.google.com/github/fastai/fastbook/blob/master/13_convolutions.ipynb">Deep Learning for Coders with Fastai and PyTorch: AI Applications Without a PhD : Chapter 13</a>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

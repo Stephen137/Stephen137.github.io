@@ -465,7 +465,7 @@ Why not use skimage.io.imread()
 </div>
 <p>Thus if we have tools that will allow us to manipulate these arrays of numbers, we can manipulate the image. The numpy library can be particularly useful here, so let’s try that out using numpy array slicing. Notice that the default behavior of the imshow function appended row and column numbers that will be helpful to us as we try to address individual or groups of pixels. First let’s load another copy of our eight, and then make it look like a zero.</p>
 <p>To make it look like a zero, we need to change the number underlying the centremost pixel to be 1. With the help of those row and column headers, at this small scale we can determine the centre pixel is in row labeled 2 and column labeled 1. Using array slicing, we can then address and assign a new value to that position.</p>
-<p>zero = iio.imread(uri=“Images/eight.tif”) zero[2,1]= 1.0 ““” The follwing line of code creates a new figure for imshow to use in displaying our output. Without it, plt.imshow() would overwrite our previous image in the cell above ““” fig, ax = plt.subplots() plt.imshow(zero) print(zero)</p>
+<p>zero = iio.imread(uri=“Images/eight.tif”) zero[2,1]= 1.0 ““” The following line of code creates a new figure for imshow to use in displaying our output. Without it, plt.imshow() would overwrite our previous image in the cell above ““” fig, ax = plt.subplots() plt.imshow(zero) print(zero)</p>
 </section>
 <section id="co-ordinate-system" class="level3">
 <h3 class="anchored" data-anchor-id="co-ordinate-system">Co-ordinate system</h3>
