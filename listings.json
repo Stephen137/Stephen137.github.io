@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Financial Forecasting/Financial Forecasting.html",
       "/posts/Convolutional_Neural_Network/CNN.html",
       "/posts/Collaborative Filtering/collaborative-filtering-deep-dive.html",
       "/posts/Multi_Label_Classification/Multi_label_classification.html",
