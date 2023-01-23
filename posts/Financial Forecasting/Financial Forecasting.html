@@ -211,35 +211,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#income-statements" id="toc-income-statements" class="nav-link active" data-scroll-target="#income-statements">Income statements</a></li>
-  <li><a href="#forecasting-revenue-for-tesla" id="toc-forecasting-revenue-for-tesla" class="nav-link" data-scroll-target="#forecasting-revenue-for-tesla">Forecasting revenue for Tesla</a></li>
-  <li><a href="#balance-sheet-and-forecast-ratios" id="toc-balance-sheet-and-forecast-ratios" class="nav-link" data-scroll-target="#balance-sheet-and-forecast-ratios">Balance Sheet and forecast ratios</a>
+  <li><a href="#income-statements" id="toc-income-statements" class="nav-link active" data-scroll-target="#income-statements">1. Income statements</a>
   <ul class="collapse">
-  <li><a href="#calculating-balance-sheet-ratios-for-ford" id="toc-calculating-balance-sheet-ratios-for-ford" class="nav-link" data-scroll-target="#calculating-balance-sheet-ratios-for-ford">Calculating Balance Sheet ratios for Ford</a></li>
-  <li><a href="#forecasting-the-balance-sheet-for-ford" id="toc-forecasting-the-balance-sheet-for-ford" class="nav-link" data-scroll-target="#forecasting-the-balance-sheet-for-ford">Forecasting the Balance Sheet for Ford</a></li>
+  <li><a href="#tesla-motors-inc." id="toc-tesla-motors-inc." class="nav-link" data-scroll-target="#tesla-motors-inc.">1.1 Tesla Motors Inc.</a></li>
+  <li><a href="#forecasting-revenue-for-tesla" id="toc-forecasting-revenue-for-tesla" class="nav-link" data-scroll-target="#forecasting-revenue-for-tesla">1.2 Forecasting revenue for Tesla</a></li>
   </ul></li>
-  <li><a href="#financial-periods-and-how-to-work-with-them" id="toc-financial-periods-and-how-to-work-with-them" class="nav-link" data-scroll-target="#financial-periods-and-how-to-work-with-them">Financial periods and how to work with them</a>
+  <li><a href="#balance-sheet-and-forecast-ratios" id="toc-balance-sheet-and-forecast-ratios" class="nav-link" data-scroll-target="#balance-sheet-and-forecast-ratios">2. Balance Sheet and forecast ratios</a>
   <ul class="collapse">
-  <li><a href="#converting-quarters-into-months" id="toc-converting-quarters-into-months" class="nav-link" data-scroll-target="#converting-quarters-into-months">Converting quarters into months</a></li>
-  <li><a href="#merging-months-into-quarters" id="toc-merging-months-into-quarters" class="nav-link" data-scroll-target="#merging-months-into-quarters">Merging months into quarters</a></li>
-  <li><a href="#the-datetime-library" id="toc-the-datetime-library" class="nav-link" data-scroll-target="#the-datetime-library">The datetime library</a></li>
+  <li><a href="#calculating-accounts-receivable-debtors" id="toc-calculating-accounts-receivable-debtors" class="nav-link" data-scroll-target="#calculating-accounts-receivable-debtors">2.1 Calculating accounts receivable (debtors)</a></li>
+  <li><a href="#bad-debts" id="toc-bad-debts" class="nav-link" data-scroll-target="#bad-debts">2.2 Bad debts</a></li>
+  <li><a href="#calculating-accounts-payable-creditors" id="toc-calculating-accounts-payable-creditors" class="nav-link" data-scroll-target="#calculating-accounts-payable-creditors">2.3 Calculating accounts payable (creditors)</a></li>
+  <li><a href="#debtor-days-ratio" id="toc-debtor-days-ratio" class="nav-link" data-scroll-target="#debtor-days-ratio">2.4 Debtor days ratio</a></li>
+  <li><a href="#days-payable-outstanding" id="toc-days-payable-outstanding" class="nav-link" data-scroll-target="#days-payable-outstanding">2.5 Days payable outstanding</a></li>
+  <li><a href="#days-in-inventory" id="toc-days-in-inventory" class="nav-link" data-scroll-target="#days-in-inventory">2.6 Days in inventory</a></li>
+  <li><a href="#asset-turnover" id="toc-asset-turnover" class="nav-link" data-scroll-target="#asset-turnover">2.7 Asset Turnover</a></li>
   </ul></li>
-  <li><a href="#tips-and-tricks-when-working-with-datasets" id="toc-tips-and-tricks-when-working-with-datasets" class="nav-link" data-scroll-target="#tips-and-tricks-when-working-with-datasets">Tips and tricks when working with datasets</a>
+  <li><a href="#balance-sheet" id="toc-balance-sheet" class="nav-link" data-scroll-target="#balance-sheet">3. Balance Sheet</a>
   <ul class="collapse">
-  <li><a href="#working-with-datasets---month-totals" id="toc-working-with-datasets---month-totals" class="nav-link" data-scroll-target="#working-with-datasets---month-totals">Working with datasets - month totals</a></li>
-  <li><a href="#working-with-datasets---combining-datasets" id="toc-working-with-datasets---combining-datasets" class="nav-link" data-scroll-target="#working-with-datasets---combining-datasets">Working with datasets - combining datasets</a></li>
+  <li><a href="#calculating-balance-sheet-ratios-for-ford" id="toc-calculating-balance-sheet-ratios-for-ford" class="nav-link" data-scroll-target="#calculating-balance-sheet-ratios-for-ford">3.1 Calculating Balance Sheet ratios for Ford</a></li>
+  <li><a href="#forecasting-the-balance-sheet-for-ford" id="toc-forecasting-the-balance-sheet-for-ford" class="nav-link" data-scroll-target="#forecasting-the-balance-sheet-for-ford">3.2 Forecasting the Balance Sheet for Ford</a></li>
   </ul></li>
-  <li><a href="#exporting-data" id="toc-exporting-data" class="nav-link" data-scroll-target="#exporting-data">Exporting data</a></li>
-  <li><a href="#assumptions-and-variances-in-forecasts" id="toc-assumptions-and-variances-in-forecasts" class="nav-link" data-scroll-target="#assumptions-and-variances-in-forecasts">Assumptions and variances in forecasts</a>
+  <li><a href="#financial-periods-and-how-to-work-with-them" id="toc-financial-periods-and-how-to-work-with-them" class="nav-link" data-scroll-target="#financial-periods-and-how-to-work-with-them">4. Financial periods and how to work with them</a>
   <ul class="collapse">
-  <li><a href="#building-sensitive-forecast-models" id="toc-building-sensitive-forecast-models" class="nav-link" data-scroll-target="#building-sensitive-forecast-models">Building sensitive forecast models</a></li>
-  <li><a href="#weighted-probability" id="toc-weighted-probability" class="nav-link" data-scroll-target="#weighted-probability">Weighted probability</a></li>
-  <li><a href="#market-sentiment" id="toc-market-sentiment" class="nav-link" data-scroll-target="#market-sentiment">Market sentiment</a></li>
-  <li><a href="#dependencies-and-sensitivity" id="toc-dependencies-and-sensitivity" class="nav-link" data-scroll-target="#dependencies-and-sensitivity">Dependencies and sensitivity</a></li>
-  <li><a href="#working-with-variances-in-the-forecast" id="toc-working-with-variances-in-the-forecast" class="nav-link" data-scroll-target="#working-with-variances-in-the-forecast">Working with variances in the forecast</a></li>
-  <li><a href="#building-a-gap-analysis-between-forecasts" id="toc-building-a-gap-analysis-between-forecasts" class="nav-link" data-scroll-target="#building-a-gap-analysis-between-forecasts">Building a gap analysis between forecasts</a></li>
-  <li><a href="#setting-dependencies-for-netflix" id="toc-setting-dependencies-for-netflix" class="nav-link" data-scroll-target="#setting-dependencies-for-netflix">Setting dependencies for Netflix</a></li>
-  <li><a href="#calculating-an-alternative-forecast-for-netflix" id="toc-calculating-an-alternative-forecast-for-netflix" class="nav-link" data-scroll-target="#calculating-an-alternative-forecast-for-netflix">Calculating an alternative forecast for Netflix</a></li>
+  <li><a href="#converting-quarters-into-months" id="toc-converting-quarters-into-months" class="nav-link" data-scroll-target="#converting-quarters-into-months">4.1 Converting quarters into months</a></li>
+  <li><a href="#merging-months-into-quarters" id="toc-merging-months-into-quarters" class="nav-link" data-scroll-target="#merging-months-into-quarters">4.2 Merging months into quarters</a></li>
+  <li><a href="#the-datetime-library" id="toc-the-datetime-library" class="nav-link" data-scroll-target="#the-datetime-library">4.3 The datetime library</a></li>
+  <li><a href="#converting-date-formats---explicit" id="toc-converting-date-formats---explicit" class="nav-link" data-scroll-target="#converting-date-formats---explicit">4.4 Converting date formats - explicit</a></li>
+  </ul></li>
+  <li><a href="#tips-and-tricks-when-working-with-datasets" id="toc-tips-and-tricks-when-working-with-datasets" class="nav-link" data-scroll-target="#tips-and-tricks-when-working-with-datasets">5. Tips and tricks when working with datasets</a>
+  <ul class="collapse">
+  <li><a href="#working-with-datasets---month-totals" id="toc-working-with-datasets---month-totals" class="nav-link" data-scroll-target="#working-with-datasets---month-totals">5.1 Working with datasets - month totals</a></li>
+  <li><a href="#working-with-datasets---combining-datasets" id="toc-working-with-datasets---combining-datasets" class="nav-link" data-scroll-target="#working-with-datasets---combining-datasets">5.2 Working with datasets - combining datasets</a></li>
+  <li><a href="#exporting-data" id="toc-exporting-data" class="nav-link" data-scroll-target="#exporting-data">5.3 Exporting data</a></li>
+  </ul></li>
+  <li><a href="#assumptions-and-variances-in-forecasts" id="toc-assumptions-and-variances-in-forecasts" class="nav-link" data-scroll-target="#assumptions-and-variances-in-forecasts">6. Assumptions and variances in forecasts</a>
+  <ul class="collapse">
+  <li><a href="#building-sensitive-forecast-models" id="toc-building-sensitive-forecast-models" class="nav-link" data-scroll-target="#building-sensitive-forecast-models">6.1 Building sensitive forecast models</a></li>
+  <li><a href="#weighted-probability" id="toc-weighted-probability" class="nav-link" data-scroll-target="#weighted-probability">6.2 Weighted probability</a></li>
+  <li><a href="#market-sentiment" id="toc-market-sentiment" class="nav-link" data-scroll-target="#market-sentiment">6.3 Market sentiment</a></li>
+  <li><a href="#dependencies-and-sensitivity" id="toc-dependencies-and-sensitivity" class="nav-link" data-scroll-target="#dependencies-and-sensitivity">6.4 Dependencies and sensitivity</a></li>
+  <li><a href="#assigning-dependencies-for-sales-and-cogs" id="toc-assigning-dependencies-for-sales-and-cogs" class="nav-link" data-scroll-target="#assigning-dependencies-for-sales-and-cogs">6.5 Assigning dependencies for sales and COGS</a></li>
+  <li><a href="#building-a-sensitivity-analysis-for-gross-profit" id="toc-building-a-sensitivity-analysis-for-gross-profit" class="nav-link" data-scroll-target="#building-a-sensitivity-analysis-for-gross-profit">6.6 Building a sensitivity analysis for gross profit</a></li>
+  <li><a href="#assigning-dependencies-for-expenses" id="toc-assigning-dependencies-for-expenses" class="nav-link" data-scroll-target="#assigning-dependencies-for-expenses">6.7 Assigning dependencies for expenses</a></li>
+  <li><a href="#build-a-sensitivity-analysis-for-the-net-profit" id="toc-build-a-sensitivity-analysis-for-the-net-profit" class="nav-link" data-scroll-target="#build-a-sensitivity-analysis-for-the-net-profit">6.8 Build a sensitivity analysis for the net profit</a></li>
+  <li><a href="#working-with-variances-in-the-forecast" id="toc-working-with-variances-in-the-forecast" class="nav-link" data-scroll-target="#working-with-variances-in-the-forecast">6.9 Working with variances in the forecast</a></li>
+  <li><a href="#building-a-gap-analysis-between-forecasts" id="toc-building-a-gap-analysis-between-forecasts" class="nav-link" data-scroll-target="#building-a-gap-analysis-between-forecasts">6.10 Building a gap analysis between forecasts</a></li>
+  <li><a href="#setting-dependencies-for-netflix" id="toc-setting-dependencies-for-netflix" class="nav-link" data-scroll-target="#setting-dependencies-for-netflix">6.11 Setting dependencies for Netflix</a></li>
+  <li><a href="#calculating-an-alternative-forecast-for-netflix" id="toc-calculating-an-alternative-forecast-for-netflix" class="nav-link" data-scroll-target="#calculating-an-alternative-forecast-for-netflix">6.12 Calculating an alternative forecast for Netflix</a></li>
   <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key takeaways</a></li>
   </ul></li>
   </ul>
@@ -252,8 +270,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <p>In <strong>Financial Forecasting in Python</strong>, we will step into the role of CFO and learn how to advise a board of directors on key metrics while building a financial forecast, the basics of income statements and Balance Sheets, and cleaning messy financial data. During this blog we will examine real-life datasets from Netflix, Tesla, and Ford, using the <code>pandas</code> package. Following this blog we will be able to calculate financial metrics, work with assumptions and variances, and build our own forecast in Python.</p>
-<section id="income-statements" class="level3">
-<h3 class="anchored" data-anchor-id="income-statements">Income statements</h3>
+<section id="income-statements" class="level2">
+<h2 class="anchored" data-anchor-id="income-statements">1. Income statements</h2>
+<section id="tesla-motors-inc." class="level3">
+<h3 class="anchored" data-anchor-id="tesla-motors-inc.">1.1 Tesla Motors Inc.</h3>
 <p>In this example we have chosen to download the latest Income Statemet from Tesla Motors Inc.&nbsp;as a csv file. Let’s have a look at our raw data:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -347,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="forecasting-revenue-for-tesla" class="level3">
-<h3 class="anchored" data-anchor-id="forecasting-revenue-for-tesla">Forecasting revenue for Tesla</h3>
+<h3 class="anchored" data-anchor-id="forecasting-revenue-for-tesla">1.2 Forecasting revenue for Tesla</h3>
 <p>Let’s now append a new column with 2022 Forecast data, which we will assign the header “Forecast”. For this exercise, we would like to set the filtered_income_statement to only show the row ‘Revenue’.</p>
 <p>Remember, the TTM column is the most recent 12-month value that we will use for the 2022 forecast. Thus far, we have the following information for 2022:</p>
 <p>Total revenues for the 9 months to 30 September 2022 are 57,144 USD millions, up 58% on the 9 months to September 2021, so let’s ignore any seasonality and make a very crude estimate of revenue for 2022 for illustrative purposes of say 80,000 USD millions:</p>
@@ -401,10 +421,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Excellent, we successfully built a new table to include the 2022 forecast from a raw dataset.</p>
 </section>
+</section>
 <section id="balance-sheet-and-forecast-ratios" class="level2">
-<h2 class="anchored" data-anchor-id="balance-sheet-and-forecast-ratios">Balance Sheet and forecast ratios</h2>
-<section id="calculating-accounts-receivable-debtors" class="level4">
-<h4 class="anchored" data-anchor-id="calculating-accounts-receivable-debtors">Calculating accounts receivable (debtors)</h4>
+<h2 class="anchored" data-anchor-id="balance-sheet-and-forecast-ratios">2. Balance Sheet and forecast ratios</h2>
+<section id="calculating-accounts-receivable-debtors" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-accounts-receivable-debtors">2.1 Calculating accounts receivable (debtors)</h3>
 <p>When we sell something on credit, the credit portion is in the balance sheet under ‘Accounts Receivable’ or ‘Debtors’. For example, if credit sales are made in January with a 60-day payback period, they would be recorded in our ‘Debtors’ account in January, but only be paid (released) in March, and so on.</p>
 <p>In this exercise, we will create the following lists:</p>
 <ul>
@@ -434,8 +455,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="bad-debts" class="level4">
-<h4 class="anchored" data-anchor-id="bad-debts">Bad debts</h4>
+<section id="bad-debts" class="level3">
+<h3 class="anchored" data-anchor-id="bad-debts">2.2 Bad debts</h3>
 <p>When offering credit terms to customers, there is always a risk that the customer does not pay their debt. In the finance world, this is known as “bad debts”.</p>
 <p>As we have already recorded sales, we need to record the loss of sales now, as we never received the payment.</p>
 <p>This affects both the income statement and the balance sheet. In the income statement, we record a negative value in the sales for the month we write off the debt. In the balance sheet, we need to reduce our debtor’s asset.</p>
@@ -459,8 +480,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>You can see that our debtors amount is reduced by the amount of bad debts.</p>
 </section>
-<section id="calculating-accounts-payable-creditors" class="level4">
-<h4 class="anchored" data-anchor-id="calculating-accounts-payable-creditors">Calculating accounts payable (creditors)</h4>
+<section id="calculating-accounts-payable-creditors" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-accounts-payable-creditors">2.3 Calculating accounts payable (creditors)</h3>
 <p>Now we will look at a scenario where we are the ones being granted credit. This means that we can buy something, but only have to pay for this amount later.</p>
 <p>In this exercise, T-Z needs to buy nuts and bolts to produce 1000 units in January and 1200 units in February. The cost of nuts and bolts per unit is 0.25 USD. The credit terms are 50% cash upfront and 50% in 30 days.</p>
 <p>Therefore, the creditors’ value, in this case, would be paid the month directly after. This means that the creditors’ value would only reflect the current month’s credit purchases.</p>
@@ -484,8 +505,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>As we can see, the Balance Sheet shows us what our real cash situation looks like, as just because we made a sale does not mean money in the bank, and incurring an expense also does not mean we have to pay it right away!</p>
 </section>
-<section id="debtor-days-ratio" class="level4">
-<h4 class="anchored" data-anchor-id="debtor-days-ratio">Debtor days ratio</h4>
+<section id="debtor-days-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="debtor-days-ratio">2.4 Debtor days ratio</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Financial%20Forecasting_files/figure-html/cf709952-3233-4304-a146-4a8a9c464373.JPG" class="img-fluid figure-img"></p>
@@ -513,8 +534,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="days-payable-outstanding" class="level4">
-<h4 class="anchored" data-anchor-id="days-payable-outstanding">Days payable outstanding</h4>
+<section id="days-payable-outstanding" class="level3">
+<h3 class="anchored" data-anchor-id="days-payable-outstanding">2.5 Days payable outstanding</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Financial%20Forecasting_files/figure-html/93e97b27-ed58-4484-822a-fcd31bdf35be.JPG" class="img-fluid figure-img"></p>
@@ -539,8 +560,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="days-in-inventory" class="level4">
-<h4 class="anchored" data-anchor-id="days-in-inventory">Days in inventory</h4>
+<section id="days-in-inventory" class="level3">
+<h3 class="anchored" data-anchor-id="days-in-inventory">2.6 Days in inventory</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Financial%20Forecasting_files/figure-html/3d8b2a0a-dd5f-4357-8a29-11653949b71d.JPG" class="img-fluid figure-img"></p>
@@ -566,8 +587,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="asset-turnover" class="level4">
-<h4 class="anchored" data-anchor-id="asset-turnover">Asset Turnover</h4>
+<section id="asset-turnover" class="level3">
+<h3 class="anchored" data-anchor-id="asset-turnover">2.7 Asset Turnover</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Financial%20Forecasting_files/figure-html/5bd1ef99-6bcf-4c89-9977-3aeee7d4f888.JPG" class="img-fluid figure-img"></p>
@@ -596,8 +617,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
+</section>
+<section id="balance-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="balance-sheet">3. Balance Sheet</h2>
 <section id="calculating-balance-sheet-ratios-for-ford" class="level3">
-<h3 class="anchored" data-anchor-id="calculating-balance-sheet-ratios-for-ford">Calculating Balance Sheet ratios for Ford</h3>
+<h3 class="anchored" data-anchor-id="calculating-balance-sheet-ratios-for-ford">3.1 Calculating Balance Sheet ratios for Ford</h3>
 <p>Now we will look at a real life example, Ford Inc, a company producing motor vehicles. We will first upload a dataset: <code>balance_sheet</code> with the data for Ford Inc’s Balance Sheet as at 31 December 2017. The sales and cost of sales figures have been provided for 2017 within the <code>Key_Figures_Memo</code> dataset.</p>
 <p>We are only interested in one line on the balance sheet, the <code>Receivables</code> (another name for Debtors), and therefore need to create a filter for this. In this exercise, we will use <em>boolean indexing</em> to filter our dataset for Receivables in the <code>metric</code> column. We will first specify our metric of interest (<code>'Receivables'</code>), and then check whether the column of interest has this value in each row. This will generate a boolean series of <code>True</code> and <code>False</code> values. With this series, we can then filter our existing dataset.</p>
 <p>Once we have filtered our dataset, we can retrieve the receivables values from the most recent time period and calculate the debtor days ratio.</p>
@@ -672,7 +696,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Next, we will learn how to append this information into our forecast.</p>
 </section>
 <section id="forecasting-the-balance-sheet-for-ford" class="level3">
-<h3 class="anchored" data-anchor-id="forecasting-the-balance-sheet-for-ford">Forecasting the Balance Sheet for Ford</h3>
+<h3 class="anchored" data-anchor-id="forecasting-the-balance-sheet-for-ford">3.2 Forecasting the Balance Sheet for Ford</h3>
 <p>Now that we have the ratios for Ford, the management wishes to improve them for the 2018 financial year.</p>
 <p>There is one ratio in particular that management would like to be improved – the <code>debtor days</code> ratio, which is currently sitting at 146 days, while better than Nissan (244 days), is still much higher than Toyota, the industry leader (31 days).</p>
 <p>Management would like to bring the debtor days down to below 100 days.</p>
@@ -745,9 +769,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 </section>
 <section id="financial-periods-and-how-to-work-with-them" class="level2">
-<h2 class="anchored" data-anchor-id="financial-periods-and-how-to-work-with-them">Financial periods and how to work with them</h2>
+<h2 class="anchored" data-anchor-id="financial-periods-and-how-to-work-with-them">4. Financial periods and how to work with them</h2>
 <section id="converting-quarters-into-months" class="level3">
-<h3 class="anchored" data-anchor-id="converting-quarters-into-months">Converting quarters into months</h3>
+<h3 class="anchored" data-anchor-id="converting-quarters-into-months">4.1 Converting quarters into months</h3>
 <p>A company has a challenge in separating data into months. It has received the following data:</p>
 <ul>
 <li>Quarter 1 = 700</li>
@@ -772,7 +796,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="merging-months-into-quarters" class="level3">
-<h3 class="anchored" data-anchor-id="merging-months-into-quarters">Merging months into quarters</h3>
+<h3 class="anchored" data-anchor-id="merging-months-into-quarters">4.2 Merging months into quarters</h3>
 <p>Now we saw what to do when we wanted to split quarters into months for more detailed monthly information. But what happens when the opposite is true and we wish to combine data into fewer columns? This is typical when dealing with historical data, when monthly details may not be necessary, or when we need a highly consolidated version of the data for a report.</p>
 <p>The key here is to create an index, and then only add to the quarter total <code>quarter</code> in cycles of 3, or until the length of the list. We can do this with the following code:</p>
 <pre><code>if index % 3 == 0 or index == len(months):</code></pre>
@@ -801,7 +825,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s have a look at a library that can help us more when working with dates.</p>
 </section>
 <section id="the-datetime-library" class="level3">
-<h3 class="anchored" data-anchor-id="the-datetime-library">The datetime library</h3>
+<h3 class="anchored" data-anchor-id="the-datetime-library">4.3 The datetime library</h3>
 <p>Sales area A in Europe and Sales area B in Australia have different date formats.</p>
 <ul>
 <li>Sale A: 4000 on 14/02/2018</li>
@@ -830,8 +854,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 2018-03-02 00:00:00</code></pre>
 </div>
 </div>
-<section id="converting-date-formats---explicit" class="level4">
-<h4 class="anchored" data-anchor-id="converting-date-formats---explicit">Converting date formats - explicit</h4>
+</section>
+<section id="converting-date-formats---explicit" class="level3">
+<h3 class="anchored" data-anchor-id="converting-date-formats---explicit">4.4 Converting date formats - explicit</h3>
 <p>Let’s revisut one of the dates from the previous exercise.</p>
 <ul>
 <li>Sale A: 4000 on 14/02/2018</li>
@@ -863,9 +888,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-</section>
 <section id="tips-and-tricks-when-working-with-datasets" class="level2">
-<h2 class="anchored" data-anchor-id="tips-and-tricks-when-working-with-datasets">Tips and tricks when working with datasets</h2>
+<h2 class="anchored" data-anchor-id="tips-and-tricks-when-working-with-datasets">5. Tips and tricks when working with datasets</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Financial%20Forecasting_files/figure-html/a3bb4aee-9eb5-40ab-b130-381ea244b217.JPG" class="img-fluid figure-img"></p>
@@ -873,7 +897,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <section id="working-with-datasets---month-totals" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-datasets---month-totals">Working with datasets - month totals</h3>
+<h3 class="anchored" data-anchor-id="working-with-datasets---month-totals">5.1 Working with datasets - month totals</h3>
 <p>In this exercise, we will be exploring a dataset that has multiple sales in one month. We will create a script that will enable us to identify dates within the same month, and combine them into a new month total, and append this to the table.</p>
 <p>We will be using the dataset <code>df</code>, which represents data from one of our sales areas. Print it out in the console to have a look at the data. As you can see, there were two sales in March. We will combine these sales into a single month total. We can iterate over the dataset using the <code>.iteritems()</code> method.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -949,7 +973,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="working-with-datasets---combining-datasets" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-datasets---combining-datasets">Working with datasets - combining datasets</h3>
+<h3 class="anchored" data-anchor-id="working-with-datasets---combining-datasets">5.2 Working with datasets - combining datasets</h3>
 <p>In this example, we will be working with two datasets, df1 and df2. You will notice that they contain different date formatting.</p>
 <p>More specifically, df1 specifies the month by the name (e.g.&nbsp;02-Feb-18), whereas df2 specifies the month numerically (e.g.&nbsp;06/01/2018). Additionally, df1 uses a hyphen (-) as a separator, whereas df2 uses a forward slash (/) as a separator.</p>
 <p>We will be combining these two datasets to form a consolidated forecast for the quarter. To do this, we will need to parse the different date formats of df1 and df2.</p>
@@ -1045,9 +1069,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-</section>
-<section id="exporting-data" class="level2">
-<h2 class="anchored" data-anchor-id="exporting-data">Exporting data</h2>
+<section id="exporting-data" class="level3">
+<h3 class="anchored" data-anchor-id="exporting-data">5.3 Exporting data</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Financial%20Forecasting_files/figure-html/f7c32d26-639a-4f8a-8314-48e4b60fbe4b.JPG" class="img-fluid figure-img"></p>
@@ -1055,10 +1078,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
+</section>
 <section id="assumptions-and-variances-in-forecasts" class="level2">
-<h2 class="anchored" data-anchor-id="assumptions-and-variances-in-forecasts">Assumptions and variances in forecasts</h2>
+<h2 class="anchored" data-anchor-id="assumptions-and-variances-in-forecasts">6. Assumptions and variances in forecasts</h2>
 <section id="building-sensitive-forecast-models" class="level3">
-<h3 class="anchored" data-anchor-id="building-sensitive-forecast-models">Building sensitive forecast models</h3>
+<h3 class="anchored" data-anchor-id="building-sensitive-forecast-models">6.1 Building sensitive forecast models</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Financial%20Forecasting_files/figure-html/7974da6c-52e6-4054-96d0-b2b7fad5dd65.JPG" class="img-fluid figure-img"></p>
@@ -1073,7 +1097,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="weighted-probability" class="level3">
-<h3 class="anchored" data-anchor-id="weighted-probability">Weighted probability</h3>
+<h3 class="anchored" data-anchor-id="weighted-probability">6.2 Weighted probability</h3>
 <p>Txs Tools, a company selling hardware tools, is looking to expand out of their home market A into Market B. They have done some market research, and have received the following numeric probabilities:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1101,7 +1125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Have a look at the calculated weighted probability. We can see it reflects a weighted value between the highest and lowest sales figures. The weighted probability is a technique to manage the uncertainty in Txs Tools sales forecasting, and can give a more balanced view on expected sales numbers as opposed to just going for the lowest or highest number.</p>
 </section>
 <section id="market-sentiment" class="level3">
-<h3 class="anchored" data-anchor-id="market-sentiment">Market sentiment</h3>
+<h3 class="anchored" data-anchor-id="market-sentiment">6.3 Market sentiment</h3>
 <p>Txs Tools has forecast sales of 500 in January, with an expected increase of 5% per month for the rest of the quarter.</p>
 <p>However, this is dependent on the market sentiment. Based on historical trends, the following information has been provided:</p>
 <ul>
@@ -1132,15 +1156,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="dependencies-and-sensitivity" class="level3">
-<h3 class="anchored" data-anchor-id="dependencies-and-sensitivity">Dependencies and sensitivity</h3>
+<h3 class="anchored" data-anchor-id="dependencies-and-sensitivity">6.4 Dependencies and sensitivity</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Financial%20Forecasting_files/figure-html/ad75655e-bde9-49d3-90df-bfbc7044d537.JPG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">dep_sens.JPG</figcaption><p></p>
 </figure>
 </div>
-<section id="assigning-dependencies-for-sales-and-cogs" class="level4">
-<h4 class="anchored" data-anchor-id="assigning-dependencies-for-sales-and-cogs">Assigning dependencies for sales and COGS</h4>
+</section>
+<section id="assigning-dependencies-for-sales-and-cogs" class="level3">
+<h3 class="anchored" data-anchor-id="assigning-dependencies-for-sales-and-cogs">6.5 Assigning dependencies for sales and COGS</h3>
 <p>Txs Tools have built a monthly forecast for their gross profit. This will rely on dependencies for Sales and COGS.</p>
 <p>Set the dependencies for <code>sales</code> and <code>cogs</code> based on the information below:</p>
 <ul>
@@ -1186,8 +1211,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="building-a-sensitivity-analysis-for-gross-profit" class="level4">
-<h4 class="anchored" data-anchor-id="building-a-sensitivity-analysis-for-gross-profit">Building a sensitivity analysis for gross profit</h4>
+<section id="building-a-sensitivity-analysis-for-gross-profit" class="level3">
+<h3 class="anchored" data-anchor-id="building-a-sensitivity-analysis-for-gross-profit">6.6 Building a sensitivity analysis for gross profit</h3>
 <p>xs Tools is now ready to use these dependencies in the gross profit forecast.</p>
 <p>The following forecast unit sales have been provided:</p>
 <pre><code>Jul = 700 Aug = 350 Sep = 650</code></pre>
@@ -1223,8 +1248,8 @@ The gross profit forecast for a sale unit value of 650 is 4600 USD.</code></pre>
 </div>
 </div>
 </section>
-<section id="assigning-dependencies-for-expenses" class="level4">
-<h4 class="anchored" data-anchor-id="assigning-dependencies-for-expenses">Assigning dependencies for expenses</h4>
+<section id="assigning-dependencies-for-expenses" class="level3">
+<h3 class="anchored" data-anchor-id="assigning-dependencies-for-expenses">6.7 Assigning dependencies for expenses</h3>
 <p>Txs Tools wants to assign a dependency for its operating expenses, particularly admin salaries.</p>
 <p>The conditions are as follows:</p>
 <ul>
@@ -1248,8 +1273,8 @@ The gross profit forecast for a sale unit value of 650 is 4600 USD.</code></pre>
 </div>
 </div>
 </section>
-<section id="build-a-sensitivity-analysis-for-the-net-profit" class="level4">
-<h4 class="anchored" data-anchor-id="build-a-sensitivity-analysis-for-the-net-profit">Build a sensitivity analysis for the net profit</h4>
+<section id="build-a-sensitivity-analysis-for-the-net-profit" class="level3">
+<h3 class="anchored" data-anchor-id="build-a-sensitivity-analysis-for-the-net-profit">6.8 Build a sensitivity analysis for the net profit</h3>
 <p>Txs Tools has provided the following forecast admin cost in USD based on full-time employees:</p>
 <pre><code>Jul = 1500 Aug = 1500 Sep = 1500</code></pre>
 <p>Build the forecast net profit <code>forecast_net_profit</code> when <code>emp_leave</code> = [6, 6, 0] and the cost per temp employee is 80 USD.</p>
@@ -1283,9 +1308,8 @@ The forecast net profit is: 3100 USD.</code></pre>
 </div>
 </div>
 </section>
-</section>
 <section id="working-with-variances-in-the-forecast" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-variances-in-the-forecast">Working with variances in the forecast</h3>
+<h3 class="anchored" data-anchor-id="working-with-variances-in-the-forecast">6.9 Working with variances in the forecast</h3>
 <p>Identifying, quantifying, and investigating the difference between an old forecast and the new forecast is often referred to as <code>Gap Analysis</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1349,7 +1373,7 @@ The alternative forecast scenario is [4850, 1760, 3950]:</code></pre>
 </section>
 </section>
 <section id="building-a-gap-analysis-between-forecasts" class="level3">
-<h3 class="anchored" data-anchor-id="building-a-gap-analysis-between-forecasts">Building a gap analysis between forecasts</h3>
+<h3 class="anchored" data-anchor-id="building-a-gap-analysis-between-forecasts">6.10 Building a gap analysis between forecasts</h3>
 <p>Txs Tools now has two forecasts, the original forecast <code>forecast1</code> and the adjusted forecast <code>forecast2</code>.</p>
 <p>The dependencies have already been defined as <code>def dependencies(base_cost_price, base_sales_price, sales_usd)</code>, where <code>base_cost_price</code> = 7 and <code>base_sales_price</code> = 15, with <code>forecast2</code> based off the following adjusted sales unit values:</p>
 <ul>
@@ -1383,7 +1407,7 @@ The gap between forecasts is -650</code></pre>
 </ul>
 </section>
 <section id="setting-dependencies-for-netflix" class="level3">
-<h3 class="anchored" data-anchor-id="setting-dependencies-for-netflix">Setting dependencies for Netflix</h3>
+<h3 class="anchored" data-anchor-id="setting-dependencies-for-netflix">6.11 Setting dependencies for Netflix</h3>
 <p>Netflix compiled a forecast up to the 2019 financial year <code>netflix_f_is</code>, and has based the sales figures in 2019 on the following dependency:</p>
 <ul>
 <li>Number of active subscriptions, which are based on the success of Netflix original shows.</li>
@@ -1501,7 +1525,7 @@ The gap between forecasts is -650</code></pre>
 </div>
 </section>
 <section id="calculating-an-alternative-forecast-for-netflix" class="level3">
-<h3 class="anchored" data-anchor-id="calculating-an-alternative-forecast-for-netflix">Calculating an alternative forecast for Netflix</h3>
+<h3 class="anchored" data-anchor-id="calculating-an-alternative-forecast-for-netflix">6.12 Calculating an alternative forecast for Netflix</h3>
 <p>The original assumptions are as follows: the total amount of subscribers at a 78% success rate results in 39,000 subscribers. We used this to build the forecast numbers.</p>
 <p>However, the success rate for 2019 has been recalculated to have a probability of 65%, and the management has asked us to make an adjusted forecast based on this value.</p>
 <p>The ratio between the subscribers and sales is 1 subscriber to 0.46 USD sales, set to variable <code>sales_subs_ratio</code>.</p>
