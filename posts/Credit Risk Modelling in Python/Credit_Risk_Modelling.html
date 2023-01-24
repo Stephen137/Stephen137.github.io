@@ -177,7 +177,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="quarto-title column-body">
       <h1 class="title">Credit Risk Modeling in Python</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Credit Risk</div>
+                <div class="quarto-category">XGBoost</div>
+                <div class="quarto-category">Logistic Regression</div>
                 <div class="quarto-category">DataCamp</div>
               </div>
                   </div>
@@ -263,9 +264,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#visualizing-the-strategy" id="toc-visualizing-the-strategy" class="nav-link" data-scroll-target="#visualizing-the-strategy">4.9 Visualizing the strategy</a></li>
   <li><a href="#estimated-value-profiling" id="toc-estimated-value-profiling" class="nav-link" data-scroll-target="#estimated-value-profiling">4.10 Estimated value profiling</a></li>
   <li><a href="#total-expected-loss" id="toc-total-expected-loss" class="nav-link" data-scroll-target="#total-expected-loss">4.11 Total expected loss</a></li>
+  </ul></li>
   <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key takeaways</a></li>
   <li><a href="#leaving-thoughts-and-acknowledgements" id="toc-leaving-thoughts-and-acknowledgements" class="nav-link" data-scroll-target="#leaving-thoughts-and-acknowledgements">Leaving thoughts and acknowledgements</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -2881,7 +2882,7 @@ The <code>precision</code> score for non-loan defaults is the number of correctl
 <p>Decision trees are another standard credit risk model. We will go beyond decision trees by using the trendy XGBoost package in Python to create gradient boosted trees. After developing sophisticated models, we will stress test their performance and discuss column selection in unbalanced data.</p>
 <section id="trees-for-defaults" class="level3">
 <h3 class="anchored" data-anchor-id="trees-for-defaults">3.1 Trees for defaults</h3>
-<p>We will now train a <code>gradient boosted</code> tree model on the credit data, and see a sample of some of the predictions. Do you remember when we first looked at the predictions of the <code>logistic regressio</code> model? They didn’t look good. Do you think this model be different?</p>
+<p>We will now train a <code>Gradient Boosted Tree</code> model on the credit data, and see a sample of some of the predictions. Do you remember when we first looked at the predictions of the <code>logistic Regression</code> model? They didn’t look good. Do you think this model will be different?</p>
 <div class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train a model</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install xgboost</span>
@@ -3855,24 +3856,24 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 <p>Total expected loss: $27,084,153.38</p>
 <p>This is the total expected loss for the entire portfolio using the gradient boosted tree. 27 million US dollars may seem like a lot, but the total expected loss would have been over 28 million US dollars with the <code>logistic regression</code>. Some losses are unavoidable, but our work here might have saved the company a million dollars!</p>
 </section>
-<section id="key-takeaways" class="level3">
-<h3 class="anchored" data-anchor-id="key-takeaways">Key takeaways</h3>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key takeaways</h2>
 <p>Our first step was to prepare credit data for machine learning models:</p>
 <ul>
 <li>important to understand the data</li>
 <li>improving the data allows for high performing simple models</li>
 </ul>
-<p>We then developed, scored and now understand logistic Regressions and Gradient Boosted Trees.</p>
+<p>We then developed, scored and now understand <code>Logistic Regression</code> and <code>Gradient Boosted Trees</code>:</p>
+<ul>
+<li>these models are simple and explainable</li>
+<li>their performance on probabilities is acceptable</li>
+</ul>
 <p>We then analyzed the performance of models by changing the data, and now understand the financial impact of results.</p>
 <p>We implemented the model with an understanding of strategy. The models and framework covered:</p>
 <ul>
 <li>discrete-time hazard model (point in time): the probability of default is a point-in-time event</li>
 <li>structural model framework: the model explains the default even based on other factors</li>
-</ul>
-<p>Many machine learning models are available, but Logistic Regression and Tree Models were used:</p>
-<ul>
-<li>these models are simple and explainable</li>
-<li>their performance on probabilities is acceptable</li>
 </ul>
 <p>Many financial sectors prefer model interpretability:</p>
 <ul>
@@ -3880,8 +3881,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 <li><p>deep neural networks are often too complex</p></li>
 </ul>
 </section>
-<section id="leaving-thoughts-and-acknowledgements" class="level3">
-<h3 class="anchored" data-anchor-id="leaving-thoughts-and-acknowledgements">Leaving thoughts and acknowledgements</h3>
+<section id="leaving-thoughts-and-acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="leaving-thoughts-and-acknowledgements">Leaving thoughts and acknowledgements</h2>
 <p>Focus on the data:</p>
 <ul>
 <li>gather as much data as possible</li>
@@ -3898,7 +3899,6 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 <p>Thanks to <a href="https://www.linkedin.com/in/mikecrabtree2/">Michael Crabtree</a> for creating this course on <strong>DataCamp</strong>. It explains how to interpret the <em>coefficients</em> and <em>intercepts</em> of a <code>Logistic Regression</code> model particularly well in my view.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
