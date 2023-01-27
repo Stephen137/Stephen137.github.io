@@ -884,7 +884,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>So, the largest number of loan defaults <code>1,621</code> happen when the reason for the loan was to cover medical expenses. That is perhaps not surprising - in some cases the medical conditon might mean that the loan customer is unable to work and therefore might struggle to keep up with the loan repayments.</p>
-<p>Let’s now look at home ownership grouped by <code>loan_status</code> and `loan_grade’ :</p>
+<p>Let’s now look at home ownership grouped by <code>loan_status</code> and <code>loan_grade</code> :</p>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a cross table of home ownership, loan status, and grade</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(cr_loan[<span class="st">'person_home_ownership'</span>],[cr_loan[<span class="st">'loan_status'</span>],cr_loan[<span class="st">'loan_grade'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

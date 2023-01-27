@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Tableau/Tableau.html",
       "/posts/Credit Risk Modelling in Python/Credit_Risk_Modelling.html",
       "/posts/Financial Forecasting/Financial Forecasting.html",
       "/posts/Convolutional_Neural_Network/CNN.html",

@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-01-27">
+
+<title>Into the Unknown - Tableau</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Tableau</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Tableau</div>
+                <div class="quarto-category">DataCamp</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 27, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#getting-started-with-tableau" id="toc-getting-started-with-tableau" class="nav-link active" data-scroll-target="#getting-started-with-tableau">1. Getting started with Tableau</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1.1 Introduction</a></li>
+  <li><a href="#connecting-to-data" id="toc-connecting-to-data" class="nav-link" data-scroll-target="#connecting-to-data">1.2 Connecting to data</a></li>
+  <li><a href="#navigating-tableau" id="toc-navigating-tableau" class="nav-link" data-scroll-target="#navigating-tableau">1.3 Navigating Tableau</a></li>
+  <li><a href="#a-tour-of-the-interface" id="toc-a-tour-of-the-interface" class="nav-link" data-scroll-target="#a-tour-of-the-interface">1.4 A tour of the interface</a></li>
+  <li><a href="#how-to-create-visualizations-in-tableau" id="toc-how-to-create-visualizations-in-tableau" class="nav-link" data-scroll-target="#how-to-create-visualizations-in-tableau">1.5 How to create visualizations in Tableau</a></li>
+  </ul></li>
+  <li><a href="#building-and-customizing-visualizations" id="toc-building-and-customizing-visualizations" class="nav-link" data-scroll-target="#building-and-customizing-visualizations">2. Building and Customizing Visualizations</a>
+  <ul class="collapse">
+  <li><a href="#filtering-and-sorting" id="toc-filtering-and-sorting" class="nav-link" data-scroll-target="#filtering-and-sorting">2.1 Filtering and sorting</a></li>
+  <li><a href="#sorting-and-filtering-through-selection" id="toc-sorting-and-filtering-through-selection" class="nav-link" data-scroll-target="#sorting-and-filtering-through-selection">2.2 Sorting and filtering through selection</a></li>
+  <li><a href="#filtering-through-the-filter-shelf" id="toc-filtering-through-the-filter-shelf" class="nav-link" data-scroll-target="#filtering-through-the-filter-shelf">2.3 Filtering through the filter shelf</a></li>
+  <li><a href="#aggregation" id="toc-aggregation" class="nav-link" data-scroll-target="#aggregation">2.4 Aggregation</a></li>
+  <li><a href="#scatter-plots-and-aggregations" id="toc-scatter-plots-and-aggregations" class="nav-link" data-scroll-target="#scatter-plots-and-aggregations">2.5 Scatter plots and aggregations</a></li>
+  <li><a href="#calculated-fields" id="toc-calculated-fields" class="nav-link" data-scroll-target="#calculated-fields">2.6 Calculated fields</a></li>
+  <li><a href="#creating-calculated-fields" id="toc-creating-calculated-fields" class="nav-link" data-scroll-target="#creating-calculated-fields">2.7 Creating calculated fields</a></li>
+  </ul></li>
+  <li><a href="#digging-deeper" id="toc-digging-deeper" class="nav-link" data-scroll-target="#digging-deeper">3. Digging Deeper</a>
+  <ul class="collapse">
+  <li><a href="#mapping-our-data" id="toc-mapping-our-data" class="nav-link" data-scroll-target="#mapping-our-data">3.1 Mapping our data</a></li>
+  <li><a href="#creating-a-symbol-map" id="toc-creating-a-symbol-map" class="nav-link" data-scroll-target="#creating-a-symbol-map">3.2 Creating a symbol map</a></li>
+  <li><a href="#working-with-dates" id="toc-working-with-dates" class="nav-link" data-scroll-target="#working-with-dates">3.3 Working with dates</a></li>
+  <li><a href="#visualizing-dates" id="toc-visualizing-dates" class="nav-link" data-scroll-target="#visualizing-dates">3.4 Visualizing dates</a></li>
+  <li><a href="#reference-lines-trend-lines-and-forecasting" id="toc-reference-lines-trend-lines-and-forecasting" class="nav-link" data-scroll-target="#reference-lines-trend-lines-and-forecasting">3.5 Reference lines, trend lines, and forecasting</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Tableau is a widely used business intelligence (BI) and analytics software trusted by companies like Amazon, Experian, and Unilever to explore, visualize, and securely share data in the form of Workbooks and Dashboards. With its user-friendly drag-and-drop functionality it can be used by everyone to quickly clean, analyze, and visualize your team’s data. We’ll learn how to navigate Tableau’s interface and connect and present data using easy-to-understand visualizations. By the end of this training, we’ll have the skills we need to confidently explore Tableau and build impactful data dashboards. Let’s dive in.</p>
+<section id="getting-started-with-tableau" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started-with-tableau">1. Getting started with Tableau</h2>
+<p>We will get an understanding of Tableau’s fundamental concepts and features: how to connect to data sources, use Tableau’s drag-and-drop interface, and create compelling visualizations. We will explore an Airbnb dataset for the city of Amsterdam.</p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">1.1 Introduction</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/eef3fe24-4f6a-4554-8dce-a52ad724ffb1.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">tableau.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/c43ebea0-d665-4858-bb80-c349ed536b0f.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">tableau_versions.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="connecting-to-data" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-to-data">1.2 Connecting to data</h3>
+<section id="loading-workbooks" class="level4">
+<h4 class="anchored" data-anchor-id="loading-workbooks">1.2.1 Loading workbooks</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/5a88a1b9-8266-404b-8fdb-bd0687e158b5.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">game_revenue.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+In which year did mobile games overtake console games in terms of revenue?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2015</p>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-data" class="level4">
+<h4 class="anchored" data-anchor-id="loading-data">1.2.2 Loading data</h4>
+<p>In this exercise we will start by loading the <code>new_york.csv</code> dataset which we will use throughout this section.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/9da30139-b6b0-4da8-a09e-9b03a82a456c.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">new_york.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>The dashboard gives us an overview of our data - we can see there are 12 <code>fields</code> or columns and we have different data types indicated at the top of each column:</p>
+<p><code>#</code> numerical<br>
+<code>Abc</code> text<br>
+<code>globe</code> geographical</p>
+<p>Note that <code>continuous</code> data is green and <code>categorical</code> data is blue.</p>
+<p>The displayed column names can be changed although their remote field name will remain unchanged.</p>
+<p>We can see that there are 17,614 <code>rows</code> or <code>observations</code>.</p>
+</section>
+</section>
+<section id="navigating-tableau" class="level3">
+<h3 class="anchored" data-anchor-id="navigating-tableau">1.3 Navigating Tableau</h3>
+<section id="dimensions-and-measures" class="level4">
+<h4 class="anchored" data-anchor-id="dimensions-and-measures">1.3.1 Dimensions and measures</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/601c68e1-eb1e-45dc-ad3d-8c56f8a16e27.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dimensions_measures.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Now that we have connected our data sources let’s now look at the Worksheets interface, where we will create our visualizations:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/8adcdb45-c517-4416-8d54-ce42db633abc.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">new_york_worksheet.JPG</figcaption><p></p>
+</figure>
+</div>
+<p><code>Dimensions</code> positioned at the top of the data pane contain qualitative values such as names or dates - in our example <code>Id</code> <code>Neighborhood</code> <code>Room Type</code>.</p>
+<p><code>Measures</code> positioned below our dimensions contain numerical, quantitative values that can be measured and aggregated - in our example <code>Days Occupied in 2019</code> <code>Minimum Nights</code> <code>Price</code> and so on.</p>
+<p>Note that we have <code>Reviews Per Month</code> included here. This data is not qualitative, and should be converted to quantitative as shown below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/b514540a-c42f-4825-9c44-bfe19aa1cd56.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">convert_to_measure.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="a-tour-of-the-interface" class="level3">
+<h3 class="anchored" data-anchor-id="a-tour-of-the-interface">1.4 A tour of the interface</h3>
+<section id="new-york-neighbourhood-prices" class="level4">
+<h4 class="anchored" data-anchor-id="new-york-neighbourhood-prices">1.4.1 New York neighbourhood prices</h4>
+<p>Let’s visualize our data. Start by dragging the <code>Neighborhood</code> field to the <code>Rows</code> shelf :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/7c406748-0633-4e32-88f0-72a04189501f.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">new_york_neighb_prices_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Drag the <code>Price</code> field to the <code>Text Marks</code> card :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/f2fcf29c-6e14-4523-95c0-a8f62d1227d5.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">new_york_neighb_prices_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Getting the ‘SUM’ of prices does not make much sense.</p>
+<p>However on <code>SUM(Price)</code> at the bottom of the <code>Marks</code> field, click on the down arrow that appears and instead of <code>SUM</code> select <code>Average</code> as the measure :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/b5dd386b-7578-4824-aff1-96461ca8857b.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">new_york_neighb_prices_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is the average price of a listing in the Brooklyn Heights neighbourhood?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>367</p>
+</div>
+</div>
+</div>
+</section>
+<section id="segmenting-by-room-type" class="level4">
+<h4 class="anchored" data-anchor-id="segmenting-by-room-type">1.4.2 Segmenting by room type</h4>
+<p>Previously we found the average price of rooms in each neighbourhood. Now, we want to know the average number of days listings were occupied in 2019 segmented first by neighbourhood, but also by room type.</p>
+<p>First we need to replace <code>Price</code> from the <code>Marks</code> field with <code>Days Occupied In 2019</code>. We can do this by dragging <code>Price</code> outwith the <code>Marks</code> pane (until we see a red cross) and then dropping it, and then dragging in <code>Days Occupied In 2019</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/42b18209-e195-485c-8b32-bac9a420b8af.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">nyc_segment_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Then get the <code>AVG</code> instead of the SUM :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/f823c709-9fec-4688-a370-483dd95ba137.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">nyc_segment_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>And then segment by room type. We can do this by adding <code>Room Type</code> to the <code>Rows</code> shelf :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d49e1319-b6fe-405c-9766-bc99d21f98cb.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">nyc_segment_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How many days on average, were private rooms occupied in Bayside?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>116.5</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="how-to-create-visualizations-in-tableau" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-create-visualizations-in-tableau">1.5 How to create visualizations in Tableau</h3>
+<section id="creating-our-first-visualization" class="level4">
+<h4 class="anchored" data-anchor-id="creating-our-first-visualization">1.5.1 Creating our first visualization</h4>
+<p>In the previous section we created a table to find out the number of days listings were occupied in 2019 per neighbourhood and rooom type. However a table is tedious to look at, so we would prefer to visualize the results instead.</p>
+<p>However, there are 100+ neighbourhoods in New York, which can be challenging to visualize, so let’s use a prefiltered workbook focusing on a few popular areas for illustrative purposes:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/cbda7450-93da-49c5-98d8-a185cac3a3e1.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">NYC_filter_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Click <code>Show Me</code> in the top right and select the stacked barchart option. Note to show numerical values on the face of the bars, click on the <code>T</code> on the dashboard as highlighted below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/88ea0f13-0e2d-45a8-8b2e-da29a079be14.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">NYC_filter_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How many days on average, were private rooms occupied in the Bronxdale neighbourhood?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>106.3</p>
+</div>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that Tableau shows the visualizations that <em>can</em> be used, but it is up to us to customize based on the question being asked and the type of data.</p>
+</div>
+</div>
+</section>
+<section id="bringing-it-all-together" class="level4">
+<h4 class="anchored" data-anchor-id="bringing-it-all-together">1.5.2 Bringing it all together</h4>
+<p>To close this section, we will build a visualization on our own from scratch. We will compare occupancy and average prices for each neighbourhood and room type combinations. This would be excellent information to have to hand when deciding whether an investment may be worthwhile.</p>
+<p>Replace the average <code>Days Occupied In 2019</code> with <code>Price</code> on the bar chart by:</p>
+<ul>
+<li>dragging <code>Price</code> on top of <code>AVG([Days Occupied In 2019)]</code> in the <code>Rows</code> section</li>
+<li>changing the aggregation to <code>Average</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/64084ee3-fd3b-4d54-b16e-b5b23e39ae18.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">all_together.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is the highest average price for shared rooms?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>1,250</p>
+</div>
+</div>
+</div>
+<p>This value is suspicious - how can a shared room be that expensive and cost more than six times the price of an entire home? This outlier does not necessarily represent an error within our data, and there may a perfectly legitimate reason for the anomaly, however it must be investigated further.</p>
+</section>
+</section>
+</section>
+<section id="building-and-customizing-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="building-and-customizing-visualizations">2. Building and Customizing Visualizations</h2>
+<p>Let’s take it up a level and review the core concepts required for analyzing and exploring data in Tableau. We’ll learn how to slice and dice data with filters, create new columns using our own calculated fields, and aggregate dimensions and measures in a view. We will be working with education, social and infrastructure data.</p>
+<section id="filtering-and-sorting" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-and-sorting">2.1 Filtering and sorting</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/3d637e9e-cfad-4c98-bedd-94d9ef478639.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">filtering.JPG</figcaption><p></p>
+</figure>
+</div>
+<section id="the-order-of-filtering" class="level4">
+<h4 class="anchored" data-anchor-id="the-order-of-filtering">2.1.1 The order of filtering</h4>
+<p>The order of filtering is important when dealing with large datasets. The extract and data source filters are applied prior to loading our data into Tableau but we will focus on the <code>Dimension</code> and <code>Measure</code> filters.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/24ac5212-6503-4bdc-a058-a286e39d06e7.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">filter_types.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="sorting-and-filtering-through-selection" class="level3">
+<h3 class="anchored" data-anchor-id="sorting-and-filtering-through-selection">2.2 Sorting and filtering through selection</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/f6c425f0-b46d-4195-a3f9-e0d610c5d447.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dimension_filters.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/f396c281-69f3-4c13-b5a6-e77b0beb9839.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">measure_filters.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/5224184b-61b5-49dd-a133-be49aa535a2e.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">sorting.JPG</figcaption><p></p>
+</figure>
+</div>
+<section id="sorting-and-excluding-multiple-fields" class="level4">
+<h4 class="anchored" data-anchor-id="sorting-and-excluding-multiple-fields">2.2.1 Sorting and excluding multiple fields</h4>
+<p>Keep only values for <code>2017</code> and sort <code>Country</code> alphabetically :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/2341497f-1a5a-411e-a7cf-e8fceebb4ac0.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">sort_1.jpg</figcaption><p></p>
+</figure>
+</div>
+<p>Exclude <code>United Arab Emirates</code> from the list, sort by <code>Cell Phones per 100 people</code> in <em>descending</em> order, and keep only the first 10 countries that are listed:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/86580699-e58f-433c-b732-e6702e95c76a.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">sort_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Which country had the highest number of cell phones per 100 people in 2017?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Maldives</p>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-g7-countries" class="level4">
+<h4 class="anchored" data-anchor-id="comparing-g7-countries">2.2.2 Comparing G7 countries</h4>
+<p>The Group of Seven (G7) is an international organization consisting of Canada, France, Germany, Italy, Japan, the United Kingdom, and the United States. In this exercise we will filter data to look only at countries that are part of the G7 with <code>Broadband Subscribers per 100 people</code> greater than 30.</p>
+<p>Navigate to the G7 worksheet :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/01d257f8-a966-42da-b6fe-42c4bac5f0ca.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">G7_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Filter <code>Country</code> to show the countries that make up the G7 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/c8ca2ca1-2ab5-4e2b-973a-bd2a0e9949af.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">G7_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Filter <code>Broadband Subscribers per 100 ppl</code> to show where the value is at least <code>30</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/81d66053-d37c-4df6-aad6-b964c8ee6a98.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">G7_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Which G7 countries have consistently had at least a value of 30 for <code>Broadband Subscribers per 100 ppl</code> from 2009 onwards?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Canada, France, Germany</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="filtering-through-the-filter-shelf" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-through-the-filter-shelf">2.3 Filtering through the filter shelf</h3>
+<p>Notice that often our data includes <code>nulls</code>. This is misleading because it makes it look like the values are zero, but this might not be the case.</p>
+<section id="filtering-for-null-values" class="level4">
+<h4 class="anchored" data-anchor-id="filtering-for-null-values">2.3.1 Filtering for null values</h4>
+<p>Navigate to the <code>Cell vs Broadband</code> worksheet:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/8e6156d4-7d61-4fb3-ac34-edbfae0897d7.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">cell_vs_bband_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We want to know for which countries we lack values for the measures <code>Cell Phones per 100 People</code> and <code>Broadband Subscribers per 100 ppl</code></p>
+<p>Add <code>Cell Phones per 100 People</code> to the filters card. Select <code>Next</code> and navigate to the <code>Special</code> option in the pop-u. Select <code>Null Values</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d2c0578e-4bf9-4a22-8e33-c7f5100a68b4.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">cell_vs_bband_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Repeat the above instruction with the <code>Broadband Subscribers per 100 ppl</code> field :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/aa67a686-5af6-498d-a1c2-e1483ee62892.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">cell_vs_bband_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Which country has null values for both <code>Cell Phones per 100 People</code> and ’Broadband Subscribers per 100 ppl` in 2010?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Marshall Islands</p>
+</div>
+</div>
+</div>
+<p>Filtering for null values is a useful feature when cleaning and exploring our data, by identifying missing data for follow up.</p>
+</section>
+<section id="top-filters-on-tableau" class="level4">
+<h4 class="anchored" data-anchor-id="top-filters-on-tableau">2.3.2 Top filters on Tableau</h4>
+<p>Now we want to filter countries on their <strong>average</strong> <code>Cell Phones per 100 People</code> across years <code>2006-2015</code>. The <strong>sum</strong> aggregation is set as the default for <code>measures</code> so we’ll have to look out for this.</p>
+<p>Navigate to the <code>Top Filters</code> worksheet :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d8436c6a-5b6a-43f0-8ac6-b28742f51d13.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">top_filter_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a filter on <code>Country</code>. Use Tableau’s top filter option on the bottom two countries based on the <code>Cell Phones per 100 People</code> average:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/ad41f657-8df4-4422-9c10-46a4adee35e0.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">top_filter_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Which country has the second lowest average <code>Cell Phones per 100 People</code> ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Cuba.</p>
+</div>
+</div>
+</div>
+<p>As you may have noticed, there are many other aggregation options like median, count, minimum and variance. Let’s have a closer look at these now.</p>
+</section>
+</section>
+<section id="aggregation" class="level3">
+<h3 class="anchored" data-anchor-id="aggregation">2.4 Aggregation</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/e54dd3f5-7030-477f-aa33-bb0357502489.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">aggregation.JPG</figcaption><p></p>
+</figure>
+</div>
+<section id="aggregating-measures-and-dimensions" class="level4">
+<h4 class="anchored" data-anchor-id="aggregating-measures-and-dimensions">2.4.1 Aggregating measures and dimensions</h4>
+<p>Aggregating can be defined as gathering and summarizing data points for analytics. Aggregating <code>measures</code> is more common, but also some <code>dimensions</code> can be aggregated, depending on your use case.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/edae4950-0775-4204-a6e0-f0035aae1690.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">agg_measures.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/7cd76106-f1f7-431c-9cc3-5d5a3b828316.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">agg_dimensions.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="scatter-plots-and-aggregations" class="level3">
+<h3 class="anchored" data-anchor-id="scatter-plots-and-aggregations">2.5 Scatter plots and aggregations</h3>
+<section id="co2-emmisions-and-gdp-in-sub-regions" class="level4">
+<h4 class="anchored" data-anchor-id="co2-emmisions-and-gdp-in-sub-regions">2.5.1 CO2 Emmisions and GDP in Sub Regions</h4>
+<p>In this exercise we will create a scatter plot comparing <code>GDP per Capita</code> and <code>CO2 Emissions per Person</code>. The data points in the scatter plot should represent <code>Sub Regions</code>.</p>
+<p>Open the workbook <code>2_5_co2emissions_and_gdp_in_sub_regions.twbx</code> and ensure you are in the <code>CO2 and GDP</code> worksheet :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/6131fd63-a87e-48c4-9b4f-c707557425d9.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">CO2_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Create a scatter plot with <strong>average</strong> <code>GDP per Capita</code> on the x-axis and the <strong>average</strong> <code>CO2 Emissions per Person</code> on the y-axis :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/fc961066-0052-43de-9ef5-9a57e2fcc4ba.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">CO2_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Colour the points based on <code>Sub Regions</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/6b1139f7-0b71-406b-b537-5f183f4f4fde.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">CO2_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Based on our scatter plot the values for Eastern Asia and Caribbean sub regions are very different. True or False ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>False, the values are very similar, the data points overlap on the scatterplot.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="counting-on-gdp-per-capita" class="level4">
+<h4 class="anchored" data-anchor-id="counting-on-gdp-per-capita">2.5.2 Counting on GDP per capita</h4>
+<p>The aggregation options <code>Count</code> and <code>Count (Distinct)</code> are useful for analyzing dimensions and whether they have reached certain dimensions.</p>
+<p>Open the workbook <code>2_6_counting_on_gdp_per_capita.twbx</code> and navigate to the <code>GDP per Capita</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/24e7f361-e969-4bb0-9484-50ffa1de6936.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GDP_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Create a chart with <code>GDP per Capita (Grouped)</code> as rows and the distinct count of <code>GDP per Capita (Grouped)</code> as columns :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/5cd335a7-feb2-4ef9-8b0e-d8ca6455969e.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GDP_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Colour the bars based on <code>Sub Region</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/cefaca22-582e-4eb0-b29f-667c490a03c1.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GDP_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Which sub-region has been in all six GDP per Capita (Grouped) categories ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Western Asia.</p>
+</div>
+</div>
+</div>
+<p>Western Asia has been in all six categories since 1960 showing that it either had significant growth or a decline in GDP. We would have to see how Western Asia’s GDP has shifted over the years.</p>
+</section>
+<section id="standard-deviation-of-life-expectancy" class="level4">
+<h4 class="anchored" data-anchor-id="standard-deviation-of-life-expectancy">2.5.3 Standard deviation of life expectancy</h4>
+<p>Standard deviation is a useful aggregation for analyzing how much data varies. In this exercise we will use standard deviation to see how much life expectancy has varied across the years for different countries.</p>
+<p>Load the workbook <code>2_7_std_dev_of_life_expectancy.twbx</code> and navigate to the <code>Life Expectancy</code> worksheet :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/bbc8ec96-abb1-43f8-b01f-9778335f6a78.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">life_expectancy.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Create a bar chart with the bars representing each country’s standard deviation of life expectancy :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/e21ec0d2-3d1f-491d-ab10-600927cc9abe.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">life_expectancy_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Consider only the years from <code>1980 to 2000</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d2358057-3307-439f-a70a-1a594b74c88c.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">life_expectancy_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Which country has the highest standard deviation on the <code>Life Expectancy</code> measure ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Lebanon.</p>
+</div>
+</div>
+</div>
+<p>Lebanon has the highest standard deviation between the years 1980 to 2000. We would have to analyze further if this relatively large variation was due to increased or decreased quality of life.</p>
+</section>
+</section>
+<section id="calculated-fields" class="level3">
+<h3 class="anchored" data-anchor-id="calculated-fields">2.6 Calculated fields</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/db936c58-348b-452a-8246-3b823aad5cd2.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">calculated_fields.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/2d41f65b-35d2-4c2b-9bc8-2223945ce081.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/1802a201-fe30-4e9b-b075-f9f456183276.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">functions.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>There’s no need to memorize all of the functions because of Tableau’s handy built-in documentation :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/eaaba335-b5b3-4b77-9d15-fab2fa7f0d54.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">function_search.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="creating-calculated-fields" class="level3">
+<h3 class="anchored" data-anchor-id="creating-calculated-fields">2.7 Creating calculated fields</h3>
+<section id="calculated-field-for-rounding" class="level4">
+<h4 class="anchored" data-anchor-id="calculated-field-for-rounding">2.7.1 Calculated field for rounding</h4>
+<p>Open the workbook <code>2_8_calculated_field_for_rounding.twbx</code> and navigate to the <code>Rounding</code> worksheet :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/27e5f81c-66ad-4ca9-922f-f1d748d918c5.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">rounding.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Create a new calculated field called <code>Rounded Women 25-34</code> - use the built-in documentation and look up <code>ROUND()</code> and round the new column to whole numbers (0 decimal points) :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/efe076a6-22f5-4f0f-a0e9-c1332b7072aa.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">rounding_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Replace <code>Women 25-34</code> in the <code>Marks</code> field with our newly created field :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d5d339b5-fc01-4fdc-a2e0-58373651ed7f.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">rounding_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Remove any existing filters and create new filters for <code>Year</code> = 1976 and <code>&gt;=10</code> for our newly created field :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/47fd78fb-ede0-481d-8be3-ced859147122.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">rounding_4.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How many countries in 1976 had women in the 25-34 age range spending, on average, ten years or more in school ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol start="4" type="1">
+<li></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="ratio-between-genders" class="level4">
+<h4 class="anchored" data-anchor-id="ratio-between-genders">2.7.2 Ratio between genders</h4>
+<p>Another useful calculated field to make is a ratio. Ratios are ana excellent way to compare two values. In our case, we can compare the mean years of education between men and women using a ratio. The closer the ratio is to one, the more equal levels of education are between women and men.</p>
+<p>Load the workbook <code>2_9_ratio_between_genders.twbx</code> and navigate to the <code>Ratio</code> worksheet :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/3b53898b-8fe9-4754-b126-18a8f9cc06bd.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ratio_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Create a calculated field called <code>Men:Women (25-34)</code> which calculates the men:women ratio for years spent in school in the 25-34 age group. Add this new field as a column to the table by dragging it to the <code>Text</code> card and change the aggregation from sum to average :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/fbcb053d-93e6-4248-9a88-c64ded2a5458.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ratio_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is Russia’s <code>Men:Women (25-34)</code> ratio for years spent in school?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>0.9821.</p>
+</div>
+</div>
+</div>
+<p>Russia has a ratio of ~ 0.98 which means that Russian men have an average of 0.98 years of schooling for every year of schooling that Russian women receive.</p>
+<p>Let’s now create a field for the average across women <strong>and</strong> women in the age group <code>25-34</code>.</p>
+<p>Navigate to the <code>Average</code> worksheet:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/bfd1a142-9322-4c99-afa9-15d1a01ed197.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">average.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Create a new field called <code>25-34</code> that sums the values for men and women in the <code>25-34</code> age group and divides them by 2 to get the average:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/95627cf9-7675-4e86-916a-06f3726092a4.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">average_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add the new field to the table. Make sure to change the aggregation from <code>SUM</code> to <code>AVG</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/c1ccdca6-993d-4e98-8ff0-6e97ba528004.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">average_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is the highest <code>25-34</code> average for a country?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>13.40</p>
+</div>
+</div>
+</div>
+<p>Remember, this isn’t a weighted average. To make this calculation more accurate, we could add the country’s population data for each gender and age group. Then we could alter the calculated field’s formula to have weighted proportions.</p>
+</section>
+</section>
+</section>
+<section id="digging-deeper" class="level2">
+<h2 class="anchored" data-anchor-id="digging-deeper">3. Digging Deeper</h2>
+<p>Let’s dive deeper into analytics by learning how to visualize geographic data and plot data onto a map visualization. We’ll learn how to work with dates in Tableau and explore how the data changes with time. We will also learn how to add reference, trend, and forecasting lines to our views. We will do all of this exploring health statistics worldwide.</p>
+<section id="mapping-our-data" class="level3">
+<h3 class="anchored" data-anchor-id="mapping-our-data">3.1 Mapping our data</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/7195602e-ab6c-45db-8f1b-2568b570f9be.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">geog_types.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Note that Tableau does not geocode territories, as these are customized region/country groupings that are used differently by people and organizations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/6e79a701-0d19-41a9-820b-edcfeff3b425.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">filled_map.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/6b493bbe-b8b6-42f9-b62d-8be2a2f2444f.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol_maps.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="creating-a-symbol-map" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-symbol-map">3.2 Creating a symbol map</h3>
+<p>Open the workbook <code>3_1_your_first_symbol_map.twbx</code> and navigate to the <code>Symbol Map</code> worksheet. Initialize a symbol map with a circle in each country:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/2b0728bd-e463-48b8-9d07-6cc18960f55a.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol_map_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Adjust the sizes of the circles based on the country’s number of <code>Stomach Cancer</code> cases :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/952a5f4d-142f-4743-88be-d80b8b479cd0.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol_map_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Increase the size of the circles to make it easier to read the map :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/b0e98f27-f14d-408b-8f53-27f4124a9e0f.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol_map_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How many people were diagnosed with stomach cancer in the country with the highest stomach cancer cases?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>7,224,000</p>
+</div>
+</div>
+</div>
+<p>During the period 7,224,000 people were diagnosed with stomach cancer in China. Using automatically generated latitude and longitude, Tableau lets you quickly generate powerful spatial visualizations.</p>
+<p>Let’s add some colour to this map. We are asked to add some information about the countries’ population growth. To make the map clearer, we decide to add the coastline.</p>
+<p>Colour the circles based on the <em>average</em> <code>Population Growth</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/7888a3c3-d295-4b2b-b921-e94c9ad28ce5.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol_map_4.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a black border around the circles :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/5e20a038-71ef-4825-9b1d-79c8ed2901c8.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol_map_5.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Remove the halo :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/2af0852b-c3a4-4319-84c4-27ce2754d338.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol_map_6.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a <code>Map layer</code> responsible for showing the <code>Coastline</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/559d7ce4-ab40-48f5-85b6-51dec1be4aab.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol_map_7.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Was the population growth of the United Kingdom positive or negative?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Positive. The colour of the circle is blue which represents positive growth. The orange circles represent negative growth.</p>
+</div>
+</div>
+</div>
+<p>Lets’ combine everything we’ve learned so far. In this final exercise we will create a symbol map that will make it easy to look at the countries’ population and population growth rates. With this information the World Health Organization can decide on which countries they need to focus on preventing health risks due to overpopulation.</p>
+<p>Navigate to the <code>Population</code> worksheet and create a symbol map with varying circle sizes based on <code>Population</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d9342cfb-25df-4ac8-9fae-9e61e9d97e36.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">population.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Colour the circles based on <em>average</em> <code>Population Growth</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/7e74c0d8-ad02-458b-b32e-c181dba53c7b.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">population_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a black border around the circles, remove the halo, and filter year to include <code>2008</code> data :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/bf9129c1-d217-4c03-acdf-91a6d9477a70.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">population_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What was the average population growth of the country with the highest population in 2008?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>0.56 - China.</p>
+</div>
+</div>
+</div>
+<p>China had a growth rate of 0.56 in 2008. It’s positive but not as high as other countries on the map. India’s growth rate for example is 1.48. India might surpass China in terms of population during the following years. The World Health Organization should make sure that they think about India’s high population and rapid growth.</p>
+</section>
+<section id="working-with-dates" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-dates">3.3 Working with dates</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/0d3651ec-6825-4571-83c0-3bbb9bc9fdb0.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">date_data.JPG</figcaption><p></p>
+</figure>
+</div>
+<section id="date-hierarchies" class="level4">
+<h4 class="anchored" data-anchor-id="date-hierarchies">3.3.1 Date hierarchies</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/7e9caa8c-deec-4740-a530-3736f67f3990.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">date_hierarchy.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="visualizing-dates" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-dates">3.4 Visualizing dates</h3>
+<section id="our-data-by-year" class="level4">
+<h4 class="anchored" data-anchor-id="our-data-by-year">3.4.1 Our data by year</h4>
+<p>Our task is to analyze natality in Poland over the past 40 years. The World Health Organization is interested in how the number of births has evolved.</p>
+<p>Open workbook <code>3_4_your_data_by_year.twbx</code> and navigate to the <code>Births</code> worksheet. Create a linechart with the date (in years) as columns and the total number of births as rows :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/c0da65be-6ba5-42c5-b3c6-29d12507a8ea.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Filter the data on <code>Country</code> to only include <code>Poland</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/89ff95f6-cac1-431d-a4b3-d58ea9ea84b6.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What was the total number of births in Poland in 2017 ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>401,946.</p>
+</div>
+</div>
+</div>
+<p>The number of births in Poland declined between 1983 and 2003, increased in the years to 2009, and then dipped and resurfaced, centred around 2009 levels in the period 2009 to 2017. But what if we are interested in the births at a more granular level? Let’s analyze the data on a monthly level next.</p>
+</section>
+<section id="our-data-by-month" class="level4">
+<h4 class="anchored" data-anchor-id="our-data-by-month">3.4.2 Our data by month</h4>
+<p>The World Health Organization has asked us to focus specifically on the last five years available data and look at the monthly number of births.</p>
+<p>Open the workbook <code>3_5_your_data_by_month.twbx</code> and navigate to the <code>Births</code> worksheet. Display the date as <em>continuous</em> month values :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/637be041-c131-4101-ac58-8ddc35547bdf.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Filter the data on the <code>Years</code> 2013-2017 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/102baf09-0255-4b9a-b625-44e90e21fe0d.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births_4.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+In what month and year were the most babies born in Poland during the 2013-2017 period ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>July 2017.</p>
+</div>
+</div>
+</div>
+<p>In July 2017, a total number of 35,993 babies were born in Poland. Note how easy Tableau makes changing the granularity level of the date variable.</p>
+</section>
+<section id="birth-seasonality" class="level4">
+<h4 class="anchored" data-anchor-id="birth-seasonality">3.4.3 Birth seasonality</h4>
+<p>Let’s combine everything we have learned so far in our final exercise. We will create a line chart that will help the World Health Organization plan how many resources should be sent to Chile to ensure newborn care at birth throughout the year.</p>
+<p>Load the workbook <code>3_6_birth_seasonality.twbx</code> and navigate to the <code>Birth Seasonality</code> worksheet. Create a line chart with the date (in years) as columns and the total number of births as rows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/a40a83d0-eb3a-466e-b76e-9490e2de9776.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births_5.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Filter the data on <code>Country</code> to include only Chile :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/ee578118-359e-4882-b9ea-f5fc5dcd98d8.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births_6.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Display the date as <em>continuous</em> month values:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/df6d1009-f11c-45f6-ad0c-6cd48f24d202.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births_7.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Filter the data on the <code>Years</code> 1995-1999 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d4b63755-add8-4403-b9b2-f46792556dbf.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births_8.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+During which month were the fewest babies born in Chile during 1995-1999 ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>February 1999.</p>
+</div>
+</div>
+</div>
+<p>It looks like there is some seasonality in the natality data. During the 1995-1999 period, fewer babies were born each February, although note that this is most likely because February is the shortest month.</p>
+</section>
+</section>
+<section id="reference-lines-trend-lines-and-forecasting" class="level3">
+<h3 class="anchored" data-anchor-id="reference-lines-trend-lines-and-forecasting">3.5 Reference lines, trend lines, and forecasting</h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
