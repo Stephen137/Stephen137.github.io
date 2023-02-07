@@ -171,6 +171,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#visualizing-dates" id="toc-visualizing-dates" class="nav-link" data-scroll-target="#visualizing-dates">3.4 Visualizing dates</a></li>
   <li><a href="#reference-lines-trend-lines-and-forecasting" id="toc-reference-lines-trend-lines-and-forecasting" class="nav-link" data-scroll-target="#reference-lines-trend-lines-and-forecasting">3.5 Reference lines, trend lines, and forecasting</a></li>
   </ul></li>
+  <li><a href="#presenting-our-data" id="toc-presenting-our-data" class="nav-link" data-scroll-target="#presenting-our-data">4. Presenting Our Data</a>
+  <ul class="collapse">
+  <li><a href="#make-our-data-visually-appealing" id="toc-make-our-data-visually-appealing" class="nav-link" data-scroll-target="#make-our-data-visually-appealing">4.1 Make our data visually appealing</a></li>
+  <li><a href="#applying-visual-best-practices" id="toc-applying-visual-best-practices" class="nav-link" data-scroll-target="#applying-visual-best-practices">4.2 Applying visual best practices</a></li>
+  <li><a href="#dashboards-and-stories" id="toc-dashboards-and-stories" class="nav-link" data-scroll-target="#dashboards-and-stories">4.3 Dashboards and stories</a></li>
+  <li><a href="#creating-dashboards-and-stories" id="toc-creating-dashboards-and-stories" class="nav-link" data-scroll-target="#creating-dashboards-and-stories">4.4 Creating dashboards and stories</a></li>
+  <li><a href="#key-takeaways-and-acknowledgements" id="toc-key-takeaways-and-acknowledgements" class="nav-link" data-scroll-target="#key-takeaways-and-acknowledgements">Key Takeaways and Acknowledgements</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1238,8 +1246,576 @@ During which month were the fewest babies born in Chile during 1995-1999 ?
 </section>
 <section id="reference-lines-trend-lines-and-forecasting" class="level3">
 <h3 class="anchored" data-anchor-id="reference-lines-trend-lines-and-forecasting">3.5 Reference lines, trend lines, and forecasting</h3>
+<section id="reference-lines" class="level4">
+<h4 class="anchored" data-anchor-id="reference-lines">3.5.1 Reference lines</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/4e2f875f-f8c7-4ff9-9fce-e6fefd566d26.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">reference_line.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Our task is to analyze the number of births in Denmark over the last six years. We have been asked to add a <code>reference line</code> to our graph indicating the <code>minimum</code> monthly births over the period.</p>
+<p>Open up the workbook <code>3_7_reference_lines.twbx</code> and navigate to the <code>Reference, Trends &amp; Forecasting</code> worksheet. Create a <code>line chart</code> with the date (continuous month values) as columns and the total number of births as rows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/af8a985a-a0c5-41fe-8999-3fce81cf4016.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">total_births.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Filter the data on <code>Country</code> to only include <code>Denmark</code>, and <code>Date</code> to only include <code>2012-2017</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/2fc340ee-ef5d-4d9c-85d1-2391901fabbe.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">births_denmark.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a <code>reference line</code> indicating the <code>minimum</code> number of births in the chart :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/caafa1f8-ad22-4950-a4e0-561ae2eb2121.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">denmark_refline_min.png</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What was the minimum number of monthly births in Denmark during the 2012-2017 period ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>4,225.</p>
+</div>
+</div>
+</div>
+<p>In February 2015, 4,225 babies were born in Denmark. With the reference line chart, we can easily see how the number of births in a certain month compares to the minimum of that period.</p>
+</section>
+<section id="trend-lines" class="level4">
+<h4 class="anchored" data-anchor-id="trend-lines">3.5.2 Trend lines</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/f0bf14d3-7ddb-4e97-8e81-95b6148febc8.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">trend_lines.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Next, we are asked to investigate the trend in the number of <code>female</code> births during the same period. We can easily spot this by adding a <code>trend line</code>. Load the workbook <code>3_9_trend_lines.twbx</code> and filter to show only <code>female</code> births :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/27a4e87c-2641-4f18-be6d-b38b1a6d6d12.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">denmark_female_births.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a linear trend line for the number of births over time :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/84834b50-b085-4674-84d6-5c937b3a1448.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">denmark_female_trend.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Is there an upward or downward trend in the number of female births in Denmark during the 2012-2017 period ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Upward.</p>
+</div>
+</div>
+</div>
+<p>Overall, the number of female births in Denmark has been slowly increasing over the last couple of years. This is much easier to spot with the <code>trend line</code> added to our visualization.</p>
+</section>
+<section id="forecasting" class="level4">
+<h4 class="anchored" data-anchor-id="forecasting">3.5.3 Forecasting</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/8f4a82c7-372c-46ac-ad65-1a6ecc40d5f5.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">forecasting.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Forecasting is a valuable technique that can help us anticipate and make informed decisions for the future. Let’s do some forecasting. This time we are tasked with forecasting the number of female births in Denmark for the next year.</p>
+<p>Load the workbook <code>3_9_forecasting.twbx</code> and remove the trend line we created before. Add a <code>forecast</code> for the number of female births during 2018 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/b790edd0-2117-41bb-a0a2-0268581dbf01.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">denmark_forecast.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How many female births do we expect in Denmark in August 2018 ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2,890.</p>
+</div>
+</div>
+</div>
+<p>The forecast tells us that we can expect 2,890 new baby girls in Denmark in August 2018. Forecasting future events can put us in a position to be <code>proactive</code> instead of <em>reactive</em>.</p>
+</section>
+<section id="bringing-it-all-together-1" class="level4">
+<h4 class="anchored" data-anchor-id="bringing-it-all-together-1">3.5.4 Bringing it all together</h4>
+<p>Let’s combine what we’ve learned so far. Let’s create a line chart which that will make it easy to answer the following question:</p>
+<blockquote class="blockquote">
+<p>Is the forecasted number of births in Japan during December 2019 higher than the average over the last five years?</p>
+</blockquote>
+<p>Load the workbook <code>3_10_natality_forecast</code> and navigate to the <code>Natality Forecast</code> worksheet. Create a <code>line chart</code> with the date (continuous month values) as columns and the total number of births as rows :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/1bc85696-157b-44d9-9808-6c1c15a4e979.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">japan_births.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Filter the data on <code>Country</code> to only include Japan and on <code>Date</code> to only include years 2014-2018 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/59005666-fb3b-4560-909a-63aa82935c69.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">japan_births_filter.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a forecast for the number of births during 2019 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/91ab44a1-f738-4925-91cb-aaabde6c1f23.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">japan_forecast.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a reference line indicating the average number of births in the chart:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d7a8534f-e562-4f67-bbd1-d95bbf143e2c.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">japan_refline.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Is the forecasted number of births in Japan During December 2019 higher than the average over the last five years?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No.</p>
+</div>
+</div>
+</div>
+<p>The number of births in December 2019 is forecast to be lower so the World Health Organization might need to send over fewer resources during that period.</p>
+</section>
+</section>
+</section>
+<section id="presenting-our-data" class="level2">
+<h2 class="anchored" data-anchor-id="presenting-our-data">4. Presenting Our Data</h2>
+<p>Our data is full of interesting stories and insights still waiting to be told. Learn best practices for formatting and presenting visualisations to tell data-driven stories. Using a new dataset on video game sales we’ll be building our first dashboard!</p>
+<section id="make-our-data-visually-appealing" class="level3">
+<h3 class="anchored" data-anchor-id="make-our-data-visually-appealing">4.1 Make our data visually appealing</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/93c3e272-513c-44d3-bf10-7a340f9e3902.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">formatting.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/a286c83c-7830-4bd4-a4a3-6bc15add6731.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">format_levels.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="applying-visual-best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="applying-visual-best-practices">4.2 Applying visual best practices</h3>
+<section id="create-a-dual-axis-graph" class="level4">
+<h4 class="anchored" data-anchor-id="create-a-dual-axis-graph">4.2.1 Create a dual-axis graph</h4>
+<p>The video games dataset contains information on video game sales from 1990 until 2010. Our task is to investigate the dataset and uncover insights about the gaming industry. Our first job is to investigate global and European sales of Atari over time - we can do so by creating a <code>dual-axis</code> graph.</p>
+<p>Open WorkBook <code>4_1_dual_axis.twbx</code> and rename <code>Sheet 1</code> tab to <code>EU vs Global Sales</code> - drag <code>Release Year</code> to columns, and <code>Global Sales</code> to rows :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/2753490d-9fea-40a7-aa69-3db3e3c3af61.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">games.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Drag <code>EU sales</code> to the right of the graph until a dotted line appears. Synchronize and hide the right axis :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/0c28e19f-a116-42c6-bcb6-f3264aab57e6.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">games_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Change <code>Global Sales</code> from a line to a <code>bar</code> chart using the <code>Marks card</code>. This will make it more evident <code>Global Sales</code> is the sum of all regions :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d5459da0-3021-4cac-bfb6-f8229bbdd861.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">games_global_bar.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Clean up the graph and add a filter:</p>
+<ul>
+<li>centre the title of the graph</li>
+<li>rename the y-axis to <code>Video Game Sales (millions of units)</code></li>
+<li>filter <code>Publisher</code> for <code>Atari</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/1f3f8dc3-7621-4171-8ad1-1f117dd5e928.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">games_atari.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How many video games (million units) from Atari were sold in the release year 2010 ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>1.44</p>
+</div>
+</div>
+</div>
+<p>The visualization shows Atari game sales went downhill fast after a second successful stint in the ear;y 2000s, eventually resulting in their bankruptcy in 2013.</p>
+</section>
+<section id="expanding-a-dual-axis-graph" class="level4">
+<h4 class="anchored" data-anchor-id="expanding-a-dual-axis-graph">4.2.2 Expanding a dual-axis graph</h4>
+<p>Breaking video gaame sales down by <code>Genre</code> can reveal many insights. We have been asked to investigate <code>Nintendo's Puzzle</code> video game sales in North America.</p>
+<p>Duplicate the <code>EU vs Global Sales</code> worksheet and rename it <code>All Regions - Sales</code>. Next, drag <code>Measure Values</code> on top of <code>EU Sales</code> in the rows section. By doing this, Tableau automatically adds <strong><em>all</em></strong> <code>Measures</code> (highlighted in green) to the graph :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/232d382e-c5c6-4e6c-ade6-d61f224b2f50.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">games_measures.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Next, remove the following from <code>Measure Values</code> (below the Marks cars) that are not needed:</p>
+<ul>
+<li><code>Video Games - Sales.csv (count)</code>. This is a count of rows of the database generated by Tableau. In this case, it does not add any info</li>
+<li><code>Global Sales</code> The measure is already visualized on the bar chart on the left axis</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d472cd9f-886b-420d-8157-b64298536c95.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">games_measures_removed.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Expand the <code>tooltip</code> to allow us to hover over the bar :</p>
+<ul>
+<li>Add <code>EU Sales</code>, <code>Global Sales</code>, <code>NA Sales</code>, and <code>Other Sales</code> to <code>Tooltips</code> and edit to our liking:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/260350ce-9dca-4985-9390-d035367fcdaa.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">games_tooltips.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Include a <code>Genre</code> filter for <code>Puzzle</code> and change <code>Publisher</code> filter to <code>Nintendo</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/6e27cda6-ee2f-4e3e-843b-e0aef37512e2.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">games_nintendo.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is the amount of <code>Puzzle</code> genre video games sold (million units) by <code>Nintendo</code> in North America that were released in 1989 ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>26.34</p>
+</div>
+</div>
+</div>
+<p>The massive spike in the puzzle genre in 1989, is thanks to the success of Tetris. It accounts for almost 90% of sales from that release year!</p>
+</section>
+<section id="formatting-our-visualization" class="level4">
+<h4 class="anchored" data-anchor-id="formatting-our-visualization">4.2.3 Formatting our visualization</h4>
+<p>Time to play around with colours. Create a new worksheet and rename it <code>Global Sales Breakdown</code>. Create a bar chart of <code>Global Sales</code> by <code>Release Year</code>, centre the title of the graph, and change its font size to 16 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/7fc960d1-92b4-4b21-b58e-e6ab595b58f3.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">global_sales.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add different <code>Dimensions</code> to the colours pane to see what happens:</p>
+<ul>
+<li>add <code>Name</code> - ignore the warning and press <code>Add all members</code> :</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/b7779982-9040-4973-a2ef-98086e466e6c.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">global_sales_colour_name.JPG</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>replace <code>Name</code> with <code>Release Year</code> by dragging it on top :</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/abe31156-15e4-4c04-af61-99166e8fca39.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">global_sales_colour_release_year.JPG</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>replace <code>Release Year</code> with <code>Genre</code> by dragging it on top :</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/c0cc2b3a-1c1a-4d9d-a274-a082caf9544f.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">global_sales_colour_genre.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Out of the 3 dimensions (name, release year, genre) we dragged to colour, which one was the most useful ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Genre.</p>
+</div>
+</div>
+</div>
+<p>Genre is the only option that adds extra information to the graph and is thus the most useful.</p>
+</section>
+</section>
+<section id="dashboards-and-stories" class="level3">
+<h3 class="anchored" data-anchor-id="dashboards-and-stories">4.3 Dashboards and stories</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/dcd52efa-d142-4c82-b646-13df74c4618e.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dashboard.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/3a686ab5-0adb-41ca-b5af-4a8e96acee6d.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dashboards.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/92473ee2-ade6-4957-9244-b062dc231538.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">stories.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/2fb1d6cc-1e75-4b2a-8958-24b6e24e5998.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">story_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/73099f5c-5942-4571-80f0-efa42691c152.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">story_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<section id="worksheet-vs.-dashboard-vs.-story" class="level4">
+<h4 class="anchored" data-anchor-id="worksheet-vs.-dashboard-vs.-story">4.3.1 Worksheet vs.&nbsp;dashboard vs.&nbsp;story</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/56bca8d2-be7f-4cff-bbb4-47090e12aace.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">worksheet_dashboard_story.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="creating-dashboards-and-stories" class="level3">
+<h3 class="anchored" data-anchor-id="creating-dashboards-and-stories">4.4 Creating dashboards and stories</h3>
+<p>We have been asked to investigate how Playstation video game sales developed over time, which platform was the most popular, and which were its most popular games and genres. Let’s create a dashboard to answer these questions.</p>
+<section id="building-a-dashboard" class="level4">
+<h4 class="anchored" data-anchor-id="building-a-dashboard">4.4.1 Building a dashboard</h4>
+<p>Load the WorkBook <code>4_4_first_dashboard.twbx</code> and navigate to the empty dashboard <code>Playstation Overview 1994 - 2010</code>.</p>
+<p>Make <code>Platform analysis over time</code> visible on the dashboard, make the legend floating, and add the other three sheets so they appear in a 2 x 2 grid clockwise, like so:</p>
+<p>[Platform Analysis over Time] [Sales by Platform]</p>
+<p>[Top Video Games] [Sales by Genre]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/d555f181-e834-4d25-90dc-81b5f5eb9f94.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">playstation_dashboard.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is the genre of <code>GTA San Andreas</code>, the top selling Playstation game? Is it equal to the most popular Playstation genre?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Action. Yes.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="filters-and-dashboards" class="level4">
+<h4 class="anchored" data-anchor-id="filters-and-dashboards">4.4.2 Filters and dashboards</h4>
+<p>The dashboard is a great start but what if we are only interested in games from a specific publisher (like “Sony Entertainment”) for a particular game? Let’s make this possible by adding a <code>Publisher</code> filter and enabling the <code>Treemap</code> to function as a genre filter.</p>
+<p>Display the dashboard title, centre it and change the font size to 20 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/b1159be1-8b7c-48ae-b113-100d22e21cf7.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">playstation_dashboard_title.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add a <code>Publisher</code> filter, click on any graph and click on <code>Analysis</code> in the toolbar, navigate to <code>Filters</code> in the dropdown menu and select <code>Publisher</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/4ed0882d-fcde-4be7-ace6-9f4c7de1d28b.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">playstation_dashboard_filter.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Change the filter style to <code>Single Value (dropdown)</code> and drag the filter below the title without making it floating :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/1597bdea-c384-4c9d-b9a9-1589aa81afeb.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">playstation_dashboard_filter_edit.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Enable the option to use the <code>Treemap</code> as a filter. Note that the graph on the TOP RIGHT changes depending on how you select your filter(s) e.g.&nbsp;select the genre by clicking on <code>Racing</code> on the <em>Treemap</em> chart in the bottom right, and select <code>Sony Computer Entertainment</code> from the dropdown <em>Publisher</em> filter under the title :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/26b1e2a5-9898-4226-99ca-17f000fe561b.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">playstation_dashboard_racing.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How many video game units (millions) did Sony Computer Entertainment sell for the PS2 in the <code>Racing</code> genre?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>35.41.</p>
+</div>
+</div>
+</div>
+<p>Sopny Computer Entertainment sold 35.41 million units thanks to its success with the Gran Turismo series.</p>
+</section>
+<section id="creating-and-navigating-a-story" class="level4">
+<h4 class="anchored" data-anchor-id="creating-and-navigating-a-story">4.4.3 Creating and navigating a story</h4>
+<p>Load the WorkBook <code>4_6_first_story</code> and create a new story named <code>Competitor Analysis 1994 - 2010</code>. Centre the story’s title :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/eca20a96-039a-4e36-92cf-231dd59654d3.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">story.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Add the <code>Playstation</code>, <code>Nintendo</code>, and <code>Xbox</code> dashboards to the story. Rename the captions accordingly :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/9c3148a1-77ea-4ca2-8ca4-6cc363c5916e.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">story_ps_nintendo_xbox.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+The best selling <code>Shooter</code> on both the Playstation(PS) and the Xbox was <code>Call of Duty:Black Ops</code>. On which platform did it have the highest sales? <code>Playstation</code> or <code>Xbox</code> ?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/0adaf277-1319-4f56-b92b-bcfd38fc80df.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">shooter_playstation.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/b9cf941d-5c0a-49b6-9751-8007398ba4fd.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">shooter_xbox.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>The Playstation version of Call of Duty: Black Ops shifted 39.33 million units. The Xbox version sold 62.13 million.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What was the name of the best-selling Playstation 2 (PS2) game published by <code>Electronic Arts</code> in the <code>Simulation</code> genre ?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Tableau_files/figure-html/a7ecdcd5-05bc-4bb2-b46c-1040f909c4d5.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ps2_simulation_ea.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>The best selling <code>Simulation</code> genre game on the Playstation 2 (PS2) published by <code>Electronic Arts</code> was <code>The Sims</code> with sales of 2.77 million units globally.</p>
+</section>
+</section>
+<section id="key-takeaways-and-acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways-and-acknowledgements">Key Takeaways and Acknowledgements</h3>
+<p>Thanks to <a href="https://www.datacamp.com/instructors/maartenvdbroeck">Maarten Van den Broeck</a>, <a href="https://www.datacamp.com/instructors/lis-sulmont">Lis Sulmont</a>, <a href="https://www.datacamp.com/instructors/sara-billen">Sara Billen</a>, and <a href="https://www.datacamp.com/instructors/carlrosseel-73112126-9ed2-4866-942a-96fbf265b088">Carl Rosseel</a> for introducing me to Tableau.</p>
+<section id="section-1" class="level4">
+<h4 class="anchored" data-anchor-id="section-1">Section 1</h4>
+<p>We learned how to: - load data and workbooks and how to navigate the Tableau interface - build visualizations using stacked bar charts</p>
+</section>
+<section id="section-2" class="level4">
+<h4 class="anchored" data-anchor-id="section-2">Section 2</h4>
+<p>This focused on the core features needed to analyze and explore data in Tableau: - sliced, diced, and ordered data using sorting and filtering, and aggregation - created new columns from existing info (calculated fields)</p>
+</section>
+<section id="section-3" class="level4">
+<h4 class="anchored" data-anchor-id="section-3">Section 3</h4>
+<p>Took our visualization skills to the next level: - mapped geographical data - worked with dates - enhanced visualisations using reference lines, trend lines, and forecasting</p>
+</section>
+<section id="section-4" class="level4">
+<h4 class="anchored" data-anchor-id="section-4">Section 4</h4>
+<p>We learned: - how to improve and format our visualizations: - convey findings with Dashboards and Stories</p>
 
 
+</section>
 </section>
 </section>
 
