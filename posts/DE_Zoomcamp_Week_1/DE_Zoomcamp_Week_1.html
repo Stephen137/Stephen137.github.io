@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-03-10">
+
+<title>Into the Unknown - Data Engineering Zoomcamp - Week 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Engineering Zoomcamp - Week 1</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Docker</div>
+                <div class="quarto-category">GCP</div>
+                <div class="quarto-category">Terraform</div>
+                <div class="quarto-category">PostgreSQL</div>
+                <div class="quarto-category">DataTalksClub</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 10, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-1---basics-and-set-up" id="toc-week-1---basics-and-set-up" class="nav-link active" data-scroll-target="#week-1---basics-and-set-up">Week 1 - Basics and Set-up</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-google-cloud-platform-gcp" id="toc-introduction-to-google-cloud-platform-gcp" class="nav-link" data-scroll-target="#introduction-to-google-cloud-platform-gcp">1.1.1 Introduction to Google Cloud Platform (GCP)</a></li>
+  <li><a href="#introduction-to-docker" id="toc-introduction-to-docker" class="nav-link" data-scroll-target="#introduction-to-docker">1.2.1 Introduction to Docker</a></li>
+  <li><a href="#ingesting-ny-taxi-data-to-postgres" id="toc-ingesting-ny-taxi-data-to-postgres" class="nav-link" data-scroll-target="#ingesting-ny-taxi-data-to-postgres">1.2.2 Ingesting NY Taxi Data to Postgres</a></li>
+  <li><a href="#connecting-postgresql-and-pgadmin" id="toc-connecting-postgresql-and-pgadmin" class="nav-link" data-scroll-target="#connecting-postgresql-and-pgadmin">1.2.3 Connecting PostgreSQL and pgAdmin</a></li>
+  <li><a href="#docker-compose" id="toc-docker-compose" class="nav-link" data-scroll-target="#docker-compose">Docker-compose</a></li>
+  <li><a href="#docker-container-ip-address" id="toc-docker-container-ip-address" class="nav-link" data-scroll-target="#docker-container-ip-address">Docker Container IP Address</a></li>
+  <li><a href="#dockerizing-our-data-ingestion-file" id="toc-dockerizing-our-data-ingestion-file" class="nav-link" data-scroll-target="#dockerizing-our-data-ingestion-file">1.2.4 Dockerizing our data ingestion file</a></li>
+  <li><a href="#docker-compose-1" id="toc-docker-compose-1" class="nav-link" data-scroll-target="#docker-compose-1">1.2.5 Docker Compose</a></li>
+  <li><a href="#sql-refresher" id="toc-sql-refresher" class="nav-link" data-scroll-target="#sql-refresher">1.2.6 - SQL Refresher</a></li>
+  <li><a href="#introduction-to-terraform-concepts-gcp-pre-requisites" id="toc-introduction-to-terraform-concepts-gcp-pre-requisites" class="nav-link" data-scroll-target="#introduction-to-terraform-concepts-gcp-pre-requisites">1.3.1 Introduction to Terraform Concepts &amp; GCP Pre-Requisites</a></li>
+  <li><a href="#cloud-sdk" id="toc-cloud-sdk" class="nav-link" data-scroll-target="#cloud-sdk">Cloud SDK</a></li>
+  <li><a href="#installation-of-gcloud-cli" id="toc-installation-of-gcloud-cli" class="nav-link" data-scroll-target="#installation-of-gcloud-cli">Installation of gcloud CLI</a></li>
+  <li><a href="#creating-gcp-infrastructure-with-terraform" id="toc-creating-gcp-infrastructure-with-terraform" class="nav-link" data-scroll-target="#creating-gcp-infrastructure-with-terraform">1.3.2 Creating GCP Infrastructure with Terraform</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="week-1---basics-and-set-up" class="level2">
+<h2 class="anchored" data-anchor-id="week-1---basics-and-set-up">Week 1 - Basics and Set-up</h2>
+<p>This course will cover a number of technologies, including Google Cloud Platform (GCP): Cloud-based auto-scaling platform by Google, Google Cloud Storage (GCS): Data Lake, BigQuery: Data Warehouse, Terraform: Infrastructure-as-Code (IaC), Docker: Containerization, SQL: Data Analysis &amp; Exploration, Prefect: Workflow Orchestration, dbt: Data Transformation, Spark: Distributed Processing, Kafka: Streaming.</p>
+<p>An overview of the course architecture is included below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/e0d0cb1f-c49f-4b75-945d-377d45e5d0bb.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Architecture.png</figcaption><p></p>
+</figure>
+</div>
+<p>The first thing to do is to navigate to the <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp">course github page</a> and clone the course repo to your local machine :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/29b602a8-7b8b-4fb0-a07b-95d3cbfa9048.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">clone_repository.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>by running the following command in your terminal. I have a Windows machine but have a Linux environment installed, and use the <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview">Ubuntu on Windows</a> terminal.</p>
+<pre><code>git clone https://github.com/DataTalksClub/data-engineering-zoomcamp.git</code></pre>
+<p>I have a nifty terminal splitter called <a href="https://github.com/tmux/tmux/wiki">tmux</a> which allows me to have multiple terminals running - which comes in very handy sometimes!!! There’s a handy cheatsheet <a href="https://tmuxcheatsheet.com/">here</a> but basically <code>CTRL+B</code> is the way in to the magic :)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/3ff91892-70a4-4737-a25c-e836b1244a8b.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">tmux.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Other things we can do from the command line:</p>
+<pre><code>ls (lists all files in the directory)
+exit (self explanatory)
+rm -rf / (remove all files from directory)</code></pre>
+<p>We can use <code>sudo</code> to execute commands where we don’t have the necessary permissions.</p>
+<section id="introduction-to-google-cloud-platform-gcp" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-to-google-cloud-platform-gcp">1.1.1 Introduction to Google Cloud Platform (GCP)</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2d95e736-04da-4c8f-b8fc-01e23f92f9d5.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">What_is_GCP.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8fdc4f46-ecda-4760-a690-2f9b403183c8.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GCP.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a9c4e5d1-c861-4727-8a94-3aabc75a6891.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GCP_dashboard.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f9be03e6-c420-42ec-abb5-80a21f70bd5a.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GCP_cloud_storage.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/81ad66d8-518e-4e1c-96b4-13edf15f5ea0.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GCP_search_bar.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="introduction-to-docker" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-to-docker">1.2.1 Introduction to Docker</h3>
+<p>What is Docker? Why do we need it?</p>
+<p>Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.</p>
+<p>You can find out more from the <a href="https://docs.docker.com/get-started/overview/">source documentation</a>.</p>
+<ul>
+<li>Local experiments</li>
+<li>Integration tests (Continuous Integraton (CI) / Continuous Development (CD)) - Github Actions, Jenkins</li>
+<li>Reproducibility (isolated CONTAINER) ensures environment on local machine can be directly replicated ANYWHERE</li>
+<li>Running pipelines on the cloud (AWS Batch, Kubernetes jobs)</li>
+<li>Spark</li>
+<li>Serverless (AWS Lambda, [Google] Cloud functions)</li>
+</ul>
+<p>Let’s illustrate how Docker works with a simple example. First let’s create a Dockerfile within <code>Visual Studio Code (VSC)</code>. VSC can be accessed from the command line using :</p>
+<pre><code>code .</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/94927d12-fd68-4768-aa55-4e85724cf139.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dockerfile.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s first build an <code>image</code> - we’ll name it <code>test:pandas</code> by running the following command from within the terminal:</p>
+<pre><code>docker build -t test:pandas . # this searches in the current directory for a dockerfile and creates an image</code></pre>
+<p>and run the image using :</p>
+<pre><code>docker run -it test:pandas </code></pre>
+<p>This takes us to a bash command prompt, as this is our <code>entrypoint</code> as defined in our Dockerfile. We can then open up Python, import pandas and check which version we have:</p>
+<pre><code>python
+import pandas as pd
+pd.__version__    </code></pre>
+<p>The key point about images is that they are as the name suggests a snapshot of all file dependencies at the specific point in time that they are created.</p>
+<p>We can automate things further by creating a <code>data pipeline.py</code> file and configuring our Dockerfile to include this :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a4c52dd4-e94b-45bc-a40a-2580987453a2.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pipeline.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/dd06aca1-1f23-4fb2-8d1b-6f8eef677e17.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dockerfile_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s run the following commands in the terminal :</p>
+<pre><code>docker build -t test:pandas .
+docker run -it test:pandas
+
+
+root@f009333fb3e5:/app# pwd (`pwd` takes us to the CURRENT directory)
+/app   </code></pre>
+<p>We can see that this is <code>/app</code> as specified in <code>WORKDIR</code> in our Dockefile above. Finally, if we run our <code>pipeline.py</code> file:</p>
+<pre><code>python pipeline.py</code></pre>
+<p>we get the following output:</p>
+<pre><code>job finished successfully</code></pre>
+<p>This was the final item in our pipeline.py file :)</p>
+<p><code>Fine tuning our Docker container</code></p>
+<p>Let’s fine tune the configuration of our <code>pipleline</code> a bit more prior to scheduling a run:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f117e157-83eb-46d6-af9f-b9c7313af3f0.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pipeline_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We first rebuild using our usual command:</p>
+<pre><code>docker build -t test:pandas .</code></pre>
+<p>Say we want to schedule the run for a particular today - for illustrative purposes let’s use today’s date. We define <code>day</code> as system <em>argument</em> number 1 (argument 0 is the file name). We then pass in that argument (today’s date - 2023-03-05) in our command line prompt:</p>
+<pre><code>docker run -it test:pandas 2023-03-05</code></pre>
+<p>And we get the following output:</p>
+<p>[‘pipeline.py’, ‘2023-03-05’]</p>
+<p>job finished successfully for day = 2023-03-05</p>
+<p>The items inside [ ] are the <code>arguments</code> - number 0 is the file name <code>pipeline.py</code>, number 1 is the date as configured in our <code>pipepline</code>. We can include further arguments within our command line prompt e.g :</p>
+<pre><code>docker run -it test:pandas 2023-02-09 Incoming_137_new_album!</code></pre>
+<p>This returns the following output:</p>
+<p>[‘pipeline.py’, ‘2023-02-09’, ‘Incoming.’, ‘137’, ‘new’, ‘album!’] job finished successfully for day = 2023-02-09</p>
+<p>The additonal arguments specified are listed as we included</p>
+<pre><code>print(sys.arg)</code></pre>
+<p>in our <code>pipeline.py</code> file</p>
+</section>
+<section id="ingesting-ny-taxi-data-to-postgres" class="level3">
+<h3 class="anchored" data-anchor-id="ingesting-ny-taxi-data-to-postgres">1.2.2 Ingesting NY Taxi Data to Postgres</h3>
+<p><code>Downloading our datasets</code></p>
+<p>Let’s now go ahead and download the datasets that we will be working with over the next few weeks. We can do this from the command line using :</p>
+<pre><code>wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz 
+
+wget https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv</code></pre>
+<p>We can unzip the <code>.gz</code> file and retain the original using :</p>
+<pre><code>gzip -dk &lt;file_name.csv.gz&gt;</code></pre>
+<p>We can count number of lines using <code>wc</code> (word count) <code>-l</code> (lines) :</p>
+<pre><code>wc -l &lt;file_name&gt;     </code></pre>
+<p>We can look at say the first 100 rows:</p>
+<pre><code>head -n 100 &lt;file_name&gt;</code></pre>
+<p>We can then save this subset to csv using :</p>
+<pre><code>head -n 100 yellow_tripdata_2021-01.csv &gt; yellow_head.csv
+ </code></pre>
+<p>We can copy a file to the current directory using :</p>
+<pre><code>cp ~ &lt;/existing/file/path&gt; .     </code></pre>
+<p>We can look at a text data file from the command line using:</p>
+<pre><code>less &lt;file_name&gt;  </code></pre>
+<p>and exit the terminal using <code>CTRL + Z</code></p>
+<p><code>Explore our dataset</code></p>
+<p>Let’s now take a look at our data within Jupter Notebooks using pandas. We will only carry out limited pre-processing at this stage - the focus is to demonstrate how to take a csv file and ingest it to a database.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pd.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>'1.5.2'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'Data/yellow_tripdata_2021-01.csv'</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_194/843851997.py:1: DtypeWarning: Columns (6) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv('Data/yellow_tripdata_2021-01.csv')</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>VendorID</th>
+      <th>tpep_pickup_datetime</th>
+      <th>tpep_dropoff_datetime</th>
+      <th>passenger_count</th>
+      <th>trip_distance</th>
+      <th>RatecodeID</th>
+      <th>store_and_fwd_flag</th>
+      <th>PULocationID</th>
+      <th>DOLocationID</th>
+      <th>payment_type</th>
+      <th>fare_amount</th>
+      <th>extra</th>
+      <th>mta_tax</th>
+      <th>tip_amount</th>
+      <th>tolls_amount</th>
+      <th>improvement_surcharge</th>
+      <th>total_amount</th>
+      <th>congestion_surcharge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>2021-01-01 00:30:10</td>
+      <td>2021-01-01 00:36:12</td>
+      <td>1.0</td>
+      <td>2.10</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>142</td>
+      <td>43</td>
+      <td>2.0</td>
+      <td>8.00</td>
+      <td>3.00</td>
+      <td>0.5</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>11.80</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>2021-01-01 00:51:20</td>
+      <td>2021-01-01 00:52:19</td>
+      <td>1.0</td>
+      <td>0.20</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>238</td>
+      <td>151</td>
+      <td>2.0</td>
+      <td>3.00</td>
+      <td>0.50</td>
+      <td>0.5</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>4.30</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>2021-01-01 00:43:30</td>
+      <td>2021-01-01 01:11:06</td>
+      <td>1.0</td>
+      <td>14.70</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>132</td>
+      <td>165</td>
+      <td>1.0</td>
+      <td>42.00</td>
+      <td>0.50</td>
+      <td>0.5</td>
+      <td>8.65</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>51.95</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>2021-01-01 00:15:48</td>
+      <td>2021-01-01 00:31:01</td>
+      <td>0.0</td>
+      <td>10.60</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>138</td>
+      <td>132</td>
+      <td>1.0</td>
+      <td>29.00</td>
+      <td>0.50</td>
+      <td>0.5</td>
+      <td>6.05</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>36.35</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>2021-01-01 00:31:49</td>
+      <td>2021-01-01 00:48:21</td>
+      <td>1.0</td>
+      <td>4.94</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>68</td>
+      <td>33</td>
+      <td>1.0</td>
+      <td>16.50</td>
+      <td>0.50</td>
+      <td>0.5</td>
+      <td>4.06</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>24.36</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1369760</th>
+      <td>NaN</td>
+      <td>2021-01-25 08:32:04</td>
+      <td>2021-01-25 08:49:32</td>
+      <td>NaN</td>
+      <td>8.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>135</td>
+      <td>82</td>
+      <td>NaN</td>
+      <td>21.84</td>
+      <td>2.75</td>
+      <td>0.5</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>25.39</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1369761</th>
+      <td>NaN</td>
+      <td>2021-01-25 08:34:00</td>
+      <td>2021-01-25 09:04:00</td>
+      <td>NaN</td>
+      <td>5.86</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>42</td>
+      <td>161</td>
+      <td>NaN</td>
+      <td>26.67</td>
+      <td>2.75</td>
+      <td>0.5</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>30.22</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1369762</th>
+      <td>NaN</td>
+      <td>2021-01-25 08:37:00</td>
+      <td>2021-01-25 08:53:00</td>
+      <td>NaN</td>
+      <td>4.45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14</td>
+      <td>106</td>
+      <td>NaN</td>
+      <td>25.29</td>
+      <td>2.75</td>
+      <td>0.5</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>28.84</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1369763</th>
+      <td>NaN</td>
+      <td>2021-01-25 08:28:00</td>
+      <td>2021-01-25 08:50:00</td>
+      <td>NaN</td>
+      <td>10.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>175</td>
+      <td>216</td>
+      <td>NaN</td>
+      <td>28.24</td>
+      <td>2.75</td>
+      <td>0.5</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>31.79</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1369764</th>
+      <td>NaN</td>
+      <td>2021-01-25 08:38:00</td>
+      <td>2021-01-25 08:50:00</td>
+      <td>NaN</td>
+      <td>4.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>248</td>
+      <td>168</td>
+      <td>NaN</td>
+      <td>20.76</td>
+      <td>2.75</td>
+      <td>0.5</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>24.31</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1369765 rows × 18 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>VendorID                 float64
+tpep_pickup_datetime      object
+tpep_dropoff_datetime     object
+passenger_count          float64
+trip_distance            float64
+RatecodeID               float64
+store_and_fwd_flag        object
+PULocationID               int64
+DOLocationID               int64
+payment_type             float64
+fare_amount              float64
+extra                    float64
+mta_tax                  float64
+tip_amount               float64
+tolls_amount             float64
+improvement_surcharge    float64
+total_amount             float64
+congestion_surcharge     float64
+dtype: object</code></pre>
+</div>
+</div>
+<p><code>Generate table Schema</code></p>
+<p>To generate a schema for use within postgreSQL there is a module within pandas named <code>io</code> to convert to Data Definition Language (DDL) :</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.io.sql.get_schema(df, name<span class="op">=</span><span class="st">'yellow_taxi_data'</span>)) <span class="co"># name of Table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CREATE TABLE "yellow_taxi_data" (
+"VendorID" REAL,
+  "tpep_pickup_datetime" TEXT,
+  "tpep_dropoff_datetime" TEXT,
+  "passenger_count" REAL,
+  "trip_distance" REAL,
+  "RatecodeID" REAL,
+  "store_and_fwd_flag" TEXT,
+  "PULocationID" INTEGER,
+  "DOLocationID" INTEGER,
+  "payment_type" REAL,
+  "fare_amount" REAL,
+  "extra" REAL,
+  "mta_tax" REAL,
+  "tip_amount" REAL,
+  "tolls_amount" REAL,
+  "improvement_surcharge" REAL,
+  "total_amount" REAL,
+  "congestion_surcharge" REAL
+)</code></pre>
+</div>
+</div>
+<p>We can see immmediately that pick up and drop off datatype is <code>TEXT</code> but needs to be converted (parsed) to <code>datetime</code>. We can do this using pandas <code>to_datetime</code>:</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pd.to_datetime(df.tpep_pickup_datetime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>0         2021-01-01 00:30:10
+1         2021-01-01 00:51:20
+2         2021-01-01 00:43:30
+3         2021-01-01 00:15:48
+4         2021-01-01 00:31:49
+                  ...        
+1369760   2021-01-25 08:32:04
+1369761   2021-01-25 08:34:00
+1369762   2021-01-25 08:37:00
+1369763   2021-01-25 08:28:00
+1369764   2021-01-25 08:38:00
+Name: tpep_pickup_datetime, Length: 1369765, dtype: datetime64[ns]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pd.to_datetime(df.tpep_dropoff_datetime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>0         2021-01-01 00:36:12
+1         2021-01-01 00:52:19
+2         2021-01-01 01:11:06
+3         2021-01-01 00:31:01
+4         2021-01-01 00:48:21
+                  ...        
+1369760   2021-01-25 08:49:32
+1369761   2021-01-25 09:04:00
+1369762   2021-01-25 08:53:00
+1369763   2021-01-25 08:50:00
+1369764   2021-01-25 08:50:00
+Name: tpep_dropoff_datetime, Length: 1369765, dtype: datetime64[ns]</code></pre>
+</div>
+</div>
+<p>We now need to update our dataframe:</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.tpep_pickup_datetime <span class="op">=</span> pd.to_datetime(df.tpep_pickup_datetime)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df.tpep_dropoff_datetime <span class="op">=</span> pd.to_datetime(df.tpep_dropoff_datetime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.io.sql.get_schema(df, name<span class="op">=</span><span class="st">'yellow_taxi_data'</span>)) <span class="co"># name of Table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CREATE TABLE "yellow_taxi_data" (
+"VendorID" REAL,
+  "tpep_pickup_datetime" TIMESTAMP,
+  "tpep_dropoff_datetime" TIMESTAMP,
+  "passenger_count" REAL,
+  "trip_distance" REAL,
+  "RatecodeID" REAL,
+  "store_and_fwd_flag" TEXT,
+  "PULocationID" INTEGER,
+  "DOLocationID" INTEGER,
+  "payment_type" REAL,
+  "fare_amount" REAL,
+  "extra" REAL,
+  "mta_tax" REAL,
+  "tip_amount" REAL,
+  "tolls_amount" REAL,
+  "improvement_surcharge" REAL,
+  "total_amount" REAL,
+  "congestion_surcharge" REAL
+)</code></pre>
+</div>
+</div>
+<p><code>sqlalchemy</code></p>
+<p>Note that we have successfully updated our pick up and drop off to <code>Timestamp</code>. Simply copying and pasting the above <em>might</em> work but we need to create the above statement in a way that postgreSQL will understand for sure. For that we need to tell pandas that we want to put this into postgres. For this we can use <code>sqlalchemy</code>.</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">'postgresql://root:root@localhost:5432/ny_taxi'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.io.sql.get_schema(df, name<span class="op">=</span><span class="st">'yellow_taxi_data'</span>,con<span class="op">=</span>engine)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Our dataframe has 1.3m + rows, so it is prudent to break this down into batches for passing into postgreSQL :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df_iter <span class="op">=</span> pd.read_csv(<span class="st">'Data/yellow_tripdata_2021-01.csv'</span>, iterator<span class="op">=</span><span class="va">True</span>, chunksize<span class="op">=</span><span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="bu">next</span>(df_iter)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We want to set up the data headers first and then insert the data in chunks later :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To get our column names</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>df.head(n<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Upload column headers to postgres :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df.head(n<span class="op">=</span><span class="dv">0</span>).to_sql(name<span class="op">=</span><span class="st">'yellow_taxi_data'</span>, </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                    con<span class="op">=</span>engine, </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                    if_exists<span class="op">=</span><span class="st">'replace'</span>)         <span class="co">#if a table name with yellow_taxi_data exists then replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Upload first chunk of 100000 rows to postgres :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>df.to_sql(name<span class="op">=</span><span class="st">'yellow_taxi_data'</span>, </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                    con<span class="op">=</span>engine, </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                    if_exists<span class="op">=</span><span class="st">'append'</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Upload the rest of the dataframe:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    t_start <span class="op">=</span> time() <span class="co"># returns current timestamp in seconds</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> <span class="bu">next</span>(df_iter) </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    df.tpep_pickup_datetime <span class="op">=</span> pd.to_datetime(df.tpep_pickup_datetime)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    df.tpep_dropoff_datetime <span class="op">=</span> pd.to_datetime(df.tpep_dropoff_datetime)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    df.to_sql(name<span class="op">=</span><span class="st">'yellow_taxi_data'</span>, </span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>                    con<span class="op">=</span>engine, </span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>                    if_exists<span class="op">=</span><span class="st">'append'</span>)  </span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>    t_end <span class="op">=</span> time()</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> (<span class="st">'inserted another chunk, took </span><span class="sc">%.3f</span><span class="st"> second'</span> <span class="op">%</span> (t_end <span class="op">-</span> t_start)) <span class="co"># .3f means to 3 decimal places - the % in the text is a variable defined by % outside the text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above error can be ignored - it just means there are no more chunks to add our dataframe has been successfully uploaded in full to postgres.</p>
+</section>
+<section id="connecting-postgresql-and-pgadmin" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-postgresql-and-pgadmin">1.2.3 Connecting PostgreSQL and pgAdmin</h3>
+<p><code>PostgreSQL</code></p>
+<p>PostgreSQL, often simply “Postgres”, is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data, securely and supporting best practices, and retrieve it later, as requested by other software applications, be it those on the same computer or those running on another computer across a network (including the Internet). It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users. Recent versions also provide replication of the database itself for security and scalability.</p>
+<p>PostgreSQL implements the majority of the SQL:2011 standard, is ACID-compliant and transactional (including most DDL statements) avoiding locking issues using multiversion concurrency control (MVCC), provides immunity to dirty reads and full serializability; handles complex SQL queries using many indexing methods that are not available in other databases; has updateable views and materialized views, triggers, foreign keys; supports functions and stored procedures, and other expandability, and has a large number of extensions written by third parties. In addition to the possibility of working with the major proprietary and open source databases, PostgreSQL supports migration from them, by its extensive standard SQL support and available migration tools. And if proprietary extensions had been used, by its extensibility that can emulate many through some built-in and third-party open source compatibility extensions, such as for Oracle.</p>
+<p>We can run postgreSQL from the terminal :</p>
+<pre><code>  docker run -it \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="ny_taxi" \
+  -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data \
+  -p 5432:5432 \
+  --network=pg-network \
+  --name pg-database \
+  postgres:13</code></pre>
+<p>Let’s break this down and explain the configuration :</p>
+<pre><code>docker run -it    # -it means interactive terminal - allows us to stop it
+postgres:13       # this is our IMAGE   </code></pre>
+<p>Configure our environment using <code>-e</code> :</p>
+<pre><code> -e POSTGRES_USER="root" \              # user name
+ -e POSTGRES_PASSWORD="root" \          # password
+ -e POSTGRES_DB="ny_taxi" \             # database name</code></pre>
+<p>Configure our VOLUME using <code>-v</code><br>
+Note that because I am using Ununtu I need to map full path of existing directory using <code>$(pwd)</code> :</p>
+<pre><code> -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data \</code></pre>
+<p>Map a port on our host machine to a port on our CONTAINER using <code>-p</code> :</p>
+<pre><code> -p 5432:5432 \</code></pre>
+<p>If you get an error:</p>
+<blockquote class="blockquote">
+<p>initdb: error: directory “/var/lib/postgresql/data” exists but is not empty</p>
+</blockquote>
+<p>Remove the <code>ny_taxi_postgres_data</code> directory and run the command again.</p>
+<p>In Visual Studio Code it looks like there are no files in the directory despite a succesful connection to postgres. But the files are actually just hidden - and can be accessed using the <code>sudo</code> command in Ununtu.</p>
+<p>We can then initiate an interface with <code>PostgreSQL</code> via the command line using :</p>
+<pre><code>pgcli -h localhost -p 5432 -u root -d ny_taxi</code></pre>
+<p>-h = host<br>
+-p = port<br>
+-u = user<br>
+-d = database</p>
+<p>and check that our data has been successfully loaded to postgreSQL</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/c15f2283-899e-4400-af2b-acf37d1bd0c1.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">postgres_dataload.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We can then run queries from there:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a74a9b2d-aa39-4711-ae54-9300bdaf8d98.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">postgres_query.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>however we would be better to make use of a GUI tool which provides an improved visualization.</p>
+<p><code>pgAdmin</code></p>
+<p>pgAdmin is a web-based GUI tool used to interact with the Postgres database sessions, both locally and remote servers as well. It can be used to perform any sort of database administration required for a Postgres database. Although this is a GUI and can be installed, we don’t need to - we have Docker!</p>
+<p>First we create a network to ensure that pgAdmin can talk to postgreSQL.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/3dde63cf-9f35-4f90-9044-08bdd958b5b8.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_network.JPG</figcaption><p></p>
+</figure>
+</div>
+<p><code>Where's that confounded bridge</code></p>
+<p>The bridge network works as a private network internal to the host so containers on it can communicate. External access is granted by exposing ports to containers. Bridge networks are used when your applications run in standalone containers that need to communicate.</p>
+<p>In the picture above db and web can communicate with each other on a user created bridge network called mybridge.</p>
+<p>We can view the current networks running on our machine using:</p>
+<pre><code>docker network ls</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8a52ce50-c0d8-48a9-92a0-6aab297d744e.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_network_ls.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Docker inspect is a great way to retrieve low-level information on Docker objects. We can pick out any field from the returned JSON in a fairly straightforward manner.</p>
+<p>So let’s use it to get the IP Address from the <code>2_docker_sql_pgadmin-1</code> container using :</p>
+<pre><code>       docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' &lt;network ID&gt;
+       </code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/9f9462e6-3d2c-46a7-b6ae-89209be7cac6.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">container_IP.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We can then just pull pgAdmin by running the folllowing from the command line :</p>
+<pre><code>docker run -it \
+  -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+  -e PGADMIN_DEFAULT_PASSWORD="root" \
+  -p 8080:80 \
+  dpage/pgadmin4</code></pre>
+<p>We then go to our browser and type:</p>
+<pre><code>localhost8080</code></pre>
+<p>which takes us to the pgAdmin loginpage</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/3698bf62-33be-4e9f-8d67-930cbc782298.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pgadmin.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/c02d6569-c347-4bdc-bea1-ca11f42251e7.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pgadmin_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/94d4589c-5404-452b-9397-0988164c1951.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pgadmin_connection_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f3f00b8a-be38-411c-af40-7afe5132d050.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pg_admin_connected.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>As we can see that has successfully loaded the data to postgres : <img src="DE_Zoomcamp_Week_1_files/figure-html/2ee6137e-926b-42e8-abd4-b39d6fa99de8.JPG" class="img-fluid" alt="pg_admin_data_ingest.JPG"></p>
+</section>
+<section id="docker-compose" class="level3">
+<h3 class="anchored" data-anchor-id="docker-compose">Docker-compose</h3>
+</section>
+<section id="docker-container-ip-address" class="level3">
+<h3 class="anchored" data-anchor-id="docker-container-ip-address">Docker Container IP Address</h3>
+<p>By default, the container is assigned an IP address for every Docker network it connects to. And each network is created with a default subnet mask, using it as a pool later on to give away the IP addresses. Usually Docker uses the default 172.17. 0.0/16 subnet for container networking.</p>
+<p>Now to better understand it, we will execute a real use case.</p>
+<p>To illustrate this, we will use a postgreSQL and pgADmin environment, containing 2 Docker Containers, configured in the <code>yaml</code> file below:</p>
+<pre><code>services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - "./data/ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - "8080:80"</code></pre>
+<p>Now let’s start up those containers using:</p>
+<pre><code>docker-compose up -d</code></pre>
+<p>and see the two containers by running the command:</p>
+<pre><code>docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}"</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/7c106558-044e-45ec-a6e8-72324ab5352d.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">containers.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Next let’s check our Docker network using:</p>
+<pre><code>docker network ls</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/aee00ff6-99d2-43c2-9d0b-82dcbd559e94.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">new_network.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>There’s a new network called <code>2_docker_sql_default</code>. By default docker compose sets up a single network for your app. And your app’s network is given a name based on the “project name”, originated from the name of the directory it lives in. So since our directory is named <code>2_docker_sql</code>, this explains the new network.</p>
+<p>Next some examples on how to get the Docker IP Address.</p>
+<p><code>How to Get A Docker Container IP Address</code></p>
+<pre><code>docker network inspect -f '{{range .IPAM.Config}}{{.Subnet}}{{end}}' b7be6c0c20e1</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/e443c142-9d43-49a1-9b50-0d0c503fb492.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">network_inspect.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We don’t need to look up each Container’s IP individually:</p>
+<pre><code>docker network inspect -f '{{json .Containers}}' b7be6c0c20e1 | jq '.[] | .Name + ":" + .IPv4Address'</code></pre>
+<p>Note that we used <code>jq</code> help to parse the Containers map object which you may need to install.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/d1fc1240-f5b2-4406-a339-0d8412bfc646.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">networked_containers_IP.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>So we can see the IP addresses of our containers :</p>
+<ul>
+<li>pgdatabase-1 <code>172.20.0.3</code> clear</li>
+<li>pgadmin-1 <code>172.20.0.2</code></li>
+</ul>
+<p>This could prove useful when mapping our database container to pgadmin.</p>
+</section>
+<section id="dockerizing-our-data-ingestion-file" class="level3">
+<h3 class="anchored" data-anchor-id="dockerizing-our-data-ingestion-file">1.2.4 Dockerizing our data ingestion file</h3>
+<p>We can introduce further automation by creating a python data ingest script which:</p>
+<ul>
+<li>downloads the data</li>
+<li>does some basic pre-processing</li>
+<li>uploads the data in batches to postgresql</li>
+</ul>
+<p><code>ingest_data.py</code></p>
+<pre><code>#!/usr/bin/env python
+# coding: utf-8
+
+import os
+import argparse
+
+from time import time
+
+import pandas as pd
+from sqlalchemy import create_engine
+
+
+def main(params):
+    user = params.user
+    password = params.password
+    host = params.host 
+    port = params.port 
+    db = params.db
+    table_name = params.table_name
+    url = params.url
+
+    # the backup files are gzipped, and it's important to keep the correct extension
+    # for pandas to be able to open the file
+    if url.endswith('.csv.gz'):
+        csv_name = 'output.csv.gz'
+    else:
+        csv_name = 'output.csv'
+
+os.system(f"wget {url} -O {csv_name}")
+
+engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
+
+df_iter = pd.read_csv(csv_name, iterator=True, chunksize=100000)
+
+df = next(df_iter)
+
+df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
+df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
+
+df.head(n=0).to_sql(name=table_name, con=engine, if_exists='replace')
+
+df.to_sql(name=table_name, con=engine, if_exists='append')
+
+
+while True: 
+
+    try:
+        t_start = time()
+        
+        df = next(df_iter)
+
+        df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
+        df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
+
+        df.to_sql(name=table_name, con=engine, if_exists='append')
+
+        t_end = time()
+
+        print('inserted another chunk, took %.3f second' % (t_end - t_start))
+
+    except StopIteration:
+        print("Finished ingesting data into the postgres database")
+        break
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Ingest CSV data to Postgres')
+
+    parser.add_argument('--user', required=True, help='user name for postgres')
+    parser.add_argument('--password', required=True, help='password for postgres')
+    parser.add_argument('--host', required=True, help='host for postgres')
+    parser.add_argument('--port', required=True, help='port for postgres')
+    parser.add_argument('--db', required=True, help='database name for postgres')
+    parser.add_argument('--table_name', required=True, help='name of the table where we will write the results to')
+    parser.add_argument('--url', required=True, help='url of the csv file')
+
+    args = parser.parse_args()
+
+    main(args)</code></pre>
+<p>This command line prompt runs the python data ingest file :</p>
+<p>Create our network :</p>
+<pre><code>docker network create pg-network     </code></pre>
+<p>Run Postgres (change the path) :</p>
+<pre><code>  docker run -it \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="ny_taxi" \
+  -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data \
+  -p 5432:5432 \
+  --network=pg-network \
+  --name pg-database \
+  postgres:13</code></pre>
+<p>Run pgAdmin :</p>
+<pre><code>docker run -it \
+  -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+  -e PGADMIN_DEFAULT_PASSWORD="root" \
+  -p 8080:80 \
+  dpage/pgadmin4
+
+URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+
+python ingest_data.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trips \
+  --url=${URL}</code></pre>
+<p><code>Using docker</code></p>
+<p>Create the following Dockerfile :</p>
+<pre><code>FROM python:3.9.1
+
+RUN apt-get install wget    
+RUN pip install pandas sqlalchemy psycopg2  
+
+WORKDIR /app
+COPY ingest_data.py ingest_data.py
+
+ENTRYPOINT [ "python", "ingest_data.py" ]</code></pre>
+<p>Then run the following command line prompts :</p>
+<pre><code>docker build -t taxi_ingest:v001 .</code></pre>
+<p>Running this throws up the following error:</p>
+<pre><code>Docker - failed to solve with frontend dockerfile.v0: failed to read dockerfile: error from sender: open ny_taxi_postgres_data: permission denied.</code></pre>
+<p>This happens on Ubuntu/Linux systems when trying to run the command to build the Docker container again. A folder is created to host the Docker files. When the build command is executed again to rebuild the pipeline or create a new one the error is raised as there are no permissions on this new folder. Grant permissions by running this command :</p>
+<pre><code>sudo chmod -R 755 ny_taxi_postgres_data</code></pre>
+<p>Now we can run the <code>ingest_data.py</code> script from the command line :</p>
+<pre><code>URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+
+docker run -it \
+  --network=pg-network \
+  taxi_ingest:v001 \
+    --user=root \
+    --password=root \
+    --host=pg-database \
+    --port=5432 \
+    --db=ny_taxi \
+    --table_name=yellow_taxi_trips \
+
+    --url=${URL}</code></pre>
+<p>To get all the files on a <code>localhost</code> directory we can run the following command:</p>
+<pre><code>python -m http.server</code></pre>
+<p>To get the IP address of your computer you can run :</p>
+<pre><code>ifconfig</code></pre>
+</section>
+<section id="docker-compose-1" class="level3">
+<h3 class="anchored" data-anchor-id="docker-compose-1">1.2.5 Docker Compose</h3>
+<p>In the previous section we:</p>
+<ul>
+<li>ran postgres</li>
+<li>ran pgAdmin</li>
+</ul>
+<p>in one network using two docker commands.</p>
+<p>This works fine but there is a lot of configuration required. We can streamline the process by pooling everything together in one <code>yaml</code> file where we can configure multiple CONTAINERS. We can then run from the command line using <a href="https://docs.docker.com/compose/">docker-compose</a> :</p>
+<p>Let’s try <code>docker-compose</code> from the command line :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/81983855-aa08-40da-b26c-e2f19a94ce0a.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_compose.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Docker Compose comes as part of Windows Docker Desktop, but if like me, you are running things in Linux from the Ubuntu command line, then you need to activate the WSL integration:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a9cb290a-594d-47c3-b3b4-c17721acd275.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_compose_ubuntu.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Running <code>docker-compose</code> now works:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/9b6cf6ea-9441-4954-ac53-35f11e749e2e.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_compose_wsl_integration.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We can now create our <code>yaml</code> file named <code>docker-compose.yaml</code> :</p>
+<pre><code>services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - "./ny_taxi_postgres_data:/var/lib/postgres/data:rw"
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - "8080:80"</code></pre>
+<p>Ensure all existing containers, volumes and images are cleared and run using :</p>
+<pre><code>docker-compose up</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f8839838-8838-4a0c-8327-d9bda26ec2a2.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_compose_up.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Then we go to localhost 8080 and use the pgAdmin login details configured in the yaml file. Unfortunately the yaml file is not configured to ensure persistent state for pgAdmin, so we have to register a server again.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/4db885ca-f843-40ca-9e3d-ccc77421df23.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_localhost.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2880bbff-8777-400e-bf9a-4d4dfda240b9.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pgdatabase.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We can close the terminal using <code>CTRL + C</code> but then we should also run <code>docker-compose down</code>.</p>
+<p>A better way is to run with <code>docker-compose up -d</code> runs in <em>detached mode</em> which then allows us to bypass <code>CTRL + C</code> and go straight to <code>docker-compose down</code>.</p>
+</section>
+<section id="sql-refresher" class="level3">
+<h3 class="anchored" data-anchor-id="sql-refresher">1.2.6 - SQL Refresher</h3>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>df_zones <span class="op">=</span> pd.read_csv(<span class="st">'Data/taxi_zone_lookup.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Take a look at the first 5 rows :</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>df_zones.head(<span class="dv">140</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>LocationID</th>
+      <th>Borough</th>
+      <th>Zone</th>
+      <th>service_zone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>EWR</td>
+      <td>Newark Airport</td>
+      <td>EWR</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Queens</td>
+      <td>Jamaica Bay</td>
+      <td>Boro Zone</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Bronx</td>
+      <td>Allerton/Pelham Gardens</td>
+      <td>Boro Zone</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Manhattan</td>
+      <td>Alphabet City</td>
+      <td>Yellow Zone</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Staten Island</td>
+      <td>Arden Heights</td>
+      <td>Boro Zone</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>136</td>
+      <td>Bronx</td>
+      <td>Kingsbridge Heights</td>
+      <td>Boro Zone</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>137</td>
+      <td>Manhattan</td>
+      <td>Kips Bay</td>
+      <td>Yellow Zone</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>138</td>
+      <td>Queens</td>
+      <td>LaGuardia Airport</td>
+      <td>Airports</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>139</td>
+      <td>Queens</td>
+      <td>Laurelton</td>
+      <td>Boro Zone</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>140</td>
+      <td>Manhattan</td>
+      <td>Lenox Hill East</td>
+      <td>Yellow Zone</td>
+    </tr>
+  </tbody>
+</table>
+<p>140 rows × 4 columns</p>
+</div>
+</div>
+</div>
+<p>Upload to postgres :</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">'postgresql://root:root@localhost:5432/ny_taxi'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>df_zones.to_sql(name<span class="op">=</span><span class="st">'zones'</span>, con<span class="op">=</span>engine, if_exists<span class="op">=</span><span class="st">'replace'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>265</code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/cf29acd3-607b-4d0a-9250-5770e97ede66.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">taxi_zones.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now carry out some SQL queries on our tables:</p>
+<ul>
+<li>yellow_taxi_trips</li>
+<li>zones</li>
+</ul>
+<section id="joining-tables-in-sql" class="level4">
+<h4 class="anchored" data-anchor-id="joining-tables-in-sql">Joining tables in SQL</h4>
+<p>It will be useful to join these tables. There are different ways to do this. First let’s look at query which returns specified columns which combine certain information common to both tables - in this case <code>LocationID</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/22f7276f-0912-4b45-8b2b-24caebcf3b33.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">SQL_join_1.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Another way to construct the query is to explicitly use the <code>JOIN</code> command:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/ca20d1e5-dc17-4a82-841e-82a1bf39aa3d.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">SQL_join_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Both queries are equivalent.</p>
+<p>Say, we wanted to check for pick up or drop off locations which are in one table but not the other:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a29ec724-7b8c-4c01-8e82-154712b405d4.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pick_up.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/4f9029b2-c76f-4756-b78b-64c44ffc73ec.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">drop_off.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Both queries return no records so that means that all the records have pick up and drop off locations and all the IDs in the zones table are present in the taxis table. In some cases there might not be fully matching records. In this case we can use other join methods :</p>
+<p>For illustration purposes let’s remove a <code>LocationID</code> record from our <code>zones</code> table:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2a9be0d1-0575-4085-93ea-e06f94de8181.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">delete.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>And now when we query records that don’t match :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/704fb677-99e5-4439-ab94-0a99813f1ab7.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pulocation_unmatched.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We can use <code>LEFT JOIN</code> which will still return a record even where <code>LocationID</code> is not available :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/6c687151-f6e9-4448-90f5-aa0f15ee8a78.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">left_join.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>There are also <code>RIGHT JOIN</code> and <code>OUTER JOIN</code> statements but these will be covered further in <em>Week 4</em> .</p>
+</section>
+<section id="working-with-dates" class="level4">
+<h4 class="anchored" data-anchor-id="working-with-dates">Working with dates</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/4e0c2be2-5dbe-4fdf-a901-a807f131c607.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">day.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/7e892f2d-583f-4e91-80b0-dda1ec74d7cf.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">date.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="aggregating-in-sql" class="level4">
+<h4 class="anchored" data-anchor-id="aggregating-in-sql">Aggregating in SQL</h4>
+<p>Say we wanted to find how many records there were for each day. We can build on our date parsing above and use a <code>GROUP BY</code> and <code>ORDER BY</code> query :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2cf1bce5-0b8b-4a04-9dac-5c17ba50d9f6.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">group_order.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>If we wanted to see the day with the largest number of records we coud order by count:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/46bb5285-0315-4e57-842c-fcb4a240c4b1.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">order_count.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We can use a variety of aggregation methods. Note that we can use numbers to reference the ordering of <code>GROUP BY</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/d4addb62-1316-4dca-920d-9afc9b9091f6.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">group_by_number_ref.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We can also include multiple conditions in our <code>ORDER BY</code> clause :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/08cfb2a3-f855-475b-b1c2-40ed505a59b3.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">order_by_multiple.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/92f28eee-37a5-4a8d-824e-0da7e6899a28.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">GCP_navigate.JPG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="introduction-to-terraform-concepts-gcp-pre-requisites" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-to-terraform-concepts-gcp-pre-requisites">1.3.1 Introduction to Terraform Concepts &amp; GCP Pre-Requisites</h3>
+<p><a href="https://www.terraform.io/">Terraform</a> is an open-source infrastructure-as-code software tool created by HashiCorp. Users define and provide data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language, or optionally JSON.</p>
+<p>Build, change, and destroy Google Cloud Platform (GCP) infrastructure using Terraform. Step-by-step, command-line tutorials will walk you through the Terraform basics for the first time.</p>
+<p>https://learn.hashicorp.com/collections/terraform/gcp-get-started</p>
+<p><a href="https://developer.hashicorp.com/terraform/downloads">Terraform</a> can be installed using the following command line prompts in Ubuntu:</p>
+<pre><code>wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee\ /etc/apt/sources.list.d/hashicorp.list
+sudo apt update &amp;&amp; sudo apt install terraform</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/bf3a068b-5fd2-4a9e-9813-e5e26364d40e.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gcp_service_accounts.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f02202e0-2d8d-4b97-94ac-56b7406fe11c.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gcp_manage_keys.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/0399e4d0-b8e8-45bf-adac-7dd07d8e8563.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gcp_add_key.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>This will download a key in <code>json</code> format</p>
+</section>
+<section id="cloud-sdk" class="level3">
+<h3 class="anchored" data-anchor-id="cloud-sdk">Cloud SDK</h3>
+<p><a href="https://cloud.google.com/sdk">Cloud SDK</a> provides language-specific Cloud Client Libraries supporting each language’s natural conventions and styles. This makes it easier for you to interact with Google Cloud APIs in your language of choice. Client libraries also handle authentication, reduce the amount of necessary boilerplate code, and provide helper functions for pagination of large datasets and asynchronous handling of long-running operations.</p>
+<p>To check if we have it installed we can run the following prompt at the command line :</p>
+<pre><code>gloud -v</code></pre>
+<p>I did not have it so need to install:</p>
+<p>https://cloud.google.com/sdk/docs/install-sdk#deb</p>
+</section>
+<section id="installation-of-gcloud-cli" class="level3">
+<h3 class="anchored" data-anchor-id="installation-of-gcloud-cli">Installation of gcloud CLI</h3>
+<ol type="1">
+<li><p>Add the gcloud CLI distribution URI as a package source. If your distribution supports the signed-by option, run the following command:</p>
+<p>echo “deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main” | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list</p></li>
+<li><p>Import the Google Cloud public key. If your distribution’s apt-key command supports the –keyring argument, run the following command:</p>
+<p>curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key –keyring /usr/share/keyrings/cloud.google.gpg add -</p></li>
+<li><p>Update and install the gcloud CLI:</p>
+<p>sudo apt-get update &amp;&amp; sudo apt-get install google-cloud-cli</p></li>
+<li><p>(Optional) Install any of the <a href="https://cloud.google.com/sdk/docs/components#additional_components">additional components</a>.</p></li>
+<li><p>Run gcloud init to get started:</p>
+<p>gcloud init</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a4cf6088-dcaa-46f0-a008-4c560808ae08.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gcloud_init.JPG</figcaption><p></p>
+</figure>
+</div>
+<ol start="6" type="1">
+<li><p>Say yes to the above, and then in your browser, log in to your Google user account when prompted and click Allow to grant permission to access Google Cloud resources. Copy the verification code to the awaiting command line prompt</p></li>
+<li><p>At the command prompt, select a Google Cloud project from the list of projects where you have Owner, Editor or Viewer permissions:</p></li>
+<li><p>If you have the Compute Engine API enabled, gcloud init allows you to choose a default Compute Engine zone:</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8b2d4359-f2b3-4610-af82-4350a4207064.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">compute_engine_api.JPG</figcaption><p></p>
+</figure>
+</div>
+<ol start="9" type="1">
+<li><p>(Optional) To improve the screen reader experience, enable the accessibility/screen_reader property:</p>
+<p>gcloud config set accessibility/screen_reader true</p></li>
+</ol>
+<p>Now we need to export our key credentials from the json file at the command line:</p>
+<pre><code>export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/&lt;json_file_name&gt;.json</code></pre>
+<p>Finally, refresh token/session, and verify authentication:</p>
+<pre><code>gcloud auth application-default login</code></pre>
+<p>Then need to login from the browser to Google account once again and <code>Allow</code> and then copy verification code to terminal:</p>
+<p>We are now going to set up the following infrastructures within Google Cloud Platform (GCP):</p>
+<pre><code>- Google Cloud Storage (GCS): (a bucket in GCP environment where you can store files) Data Lake - raw data in organised fashion 
+- Big Query: Data Warehouse</code></pre>
+<p>We need to grant two additional service permissions:</p>
+<ul>
+<li>Storage Admin (the bucket itself) and Storage Object Admin (the objects within the bucket)</li>
+<li>BigQuery Admin</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/259ea342-2eb8-4348-a7f5-6cfede25831b.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gcp_additional_permissions.JPG</figcaption><p></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>In production there would be custom created access parameters, restricting access by certain people to certain files.</p>
+</blockquote>
+<p>We still require to enable the APIs:</p>
+<p>https://console.cloud.google.com/apis/library/iam.googleapis.com</p>
+<p>https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com</p>
+</section>
+<section id="creating-gcp-infrastructure-with-terraform" class="level3">
+<h3 class="anchored" data-anchor-id="creating-gcp-infrastructure-with-terraform">1.3.2 Creating GCP Infrastructure with Terraform</h3>
+<p>Now that we have everything set up within GCP let’s get started with the Terraform config. We need two files :</p>
+<ul>
+<li><code>main.tf</code> (which references the <code>variables.tf</code> file)</li>
+<li><code>variables.tf</code></li>
+</ul>
+<p><code>main.tf</code></p>
+<pre><code>terraform {
+  required_version = "&gt;= 1.0"
+  backend "local" {}  # Can change from "local" to "gcs" (for google) or "s3" (for aws), if you would like to preserve your tf-state online
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+    }
+  }
+}
+
+provider "google" {
+  project = var.project
+  region = var.region
+  // credentials = file(var.credentials)  # Use this if you do not want to set env-var GOOGLE_APPLICATION_CREDENTIALS
+}
+
+# Data Lake Bucket
+# Ref: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
+resource "google_storage_bucket" "data-lake-bucket" {
+  name          = "${local.data_lake_bucket}_${var.project}" # Concatenating DL bucket &amp; Project name for unique naming
+  location      = var.region
+
+  # Optional, but recommended settings:
+  storage_class = var.storage_class
+  uniform_bucket_level_access = true
+
+  versioning {
+    enabled     = true
+  }
+
+      lifecycle_rule {
+    action {
+      type = "Delete"
+    }
+    condition {
+      age = 30  // days
+    }
+  }
+
+  force_destroy = true
+}
+
+# DWH
+# Ref: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigquery_dataset
+resource "google_bigquery_dataset" "dataset" {
+  dataset_id = var.BQ_DATASET
+  project    = var.project
+  location   = var.region</code></pre>
+<p><code>variables.tf</code></p>
+<pre><code>locals {
+  data_lake_bucket = "dtc_data_lake"
+}
+
+variable "project" {
+  description = "data-engineering-377711"
+}
+
+variable "region" {
+  description = "Region for GCP resources. Choose as per your location: https://cloud.google.com/about/locations"
+  default = "europe-west6"
+  type = string
+}
+
+variable "storage_class" {
+  description = "Storage class type for your bucket. Check official docs for more info."
+  default = "STANDARD"
+}
+
+variable "BQ_DATASET" {
+  description = "BigQuery Dataset that raw data (from GCS) will be written to"
+  type = string
+  default = "trips_data_all"</code></pre>
+<p>Once we have configured the above Terraform files, there are only a few execution commands which makes it very convenient to work with.</p>
+<p><code>terraform init</code>: - Initializes &amp; configures the backend, installs plugins/providers, &amp; checks out an existing configuration from a version control</p>
+<p><code>terraform plan</code>: - Matches/previews local changes against a remote state, and proposes an Execution Plan.</p>
+<p><code>terraform apply</code>: - Asks for approval to the proposed plan, and applies changes to cloud</p>
+<p><code>!!!terraform destroy!!!</code>: - Removes your stack from the Cloud</p>
+<p>Let’s initialize state file (.tfstate) from the command line using</p>
+<pre><code>terraform init</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8bdadddb-1b0c-478b-a208-3cca846821d1.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">terraform_init.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Next, propose an execution plan using</p>
+<pre><code>terraform plan</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/75619ae1-56b6-43ea-8e0e-afca74eccfbe.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">terraform_plan.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We need to enter our GCP Project ID at the command prompt to progress.</p>
+<p>Now let’s ask for approval to the proposed plan, and apply the changes to cloud using</p>
+<pre><code>terraform apply</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8c4cef93-f00e-4d87-8e9e-f2973035a20b.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">terraform apply.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>Once again, we need to enter our GCP Project ID at the command prompt to progress:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/42c9c978-9780-4a14-a2c9-d6f62c201858.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">terraform apply_2.JPG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f2cf590d-b5d3-40c2-8379-0962dc57370c.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">terraform_apply_complete.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>We’re all set! Let’s return to our GCP account and confirm that we do now have a <code>data lake</code> bucket :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f5618fa1-446d-4852-bdb5-177acdbb8a8a.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gcp_bucket.JPG</figcaption><p></p>
+</figure>
+</div>
+<p>And also check that we have our Big Query :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/0a57b3a5-a412-4c75-9c3c-1c9b0fe6449d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">big_query.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="key-takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
+<p>The intro video to the course did stress that the set up would take more than a week! I started the set up on my own machine using Ubuntu on Windows 10 but ran into some dependency issues. I then went through the process for setting up a Virtual Machine on Google Cloud, but wasn’t completely comfortable working within that environment so in the end I went full circle and managed to resolve the previous issues I was having. Onwards and upwards! Looking forward to “Week 2” <code>Workflow Orchestration</code>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
