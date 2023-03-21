@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-03-21">
+
+<title>Into the Unknown - Data Engineering Zoomcamp - Week 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Engineering Zoomcamp - Week 3</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">GCP</div>
+                <div class="quarto-category">BigQuery</div>
+                <div class="quarto-category">Data Lakes</div>
+                <div class="quarto-category">ETL</div>
+                <div class="quarto-category">Prefect</div>
+                <div class="quarto-category">DataTalksClub</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 21, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-3---data-warehouse-and-bigquery" id="toc-week-3---data-warehouse-and-bigquery" class="nav-link active" data-scroll-target="#week-3---data-warehouse-and-bigquery">Week 3 - Data Warehouse and BigQuery</a>
+  <ul class="collapse">
+  <li><a href="#data-warehouse-and-bigquery" id="toc-data-warehouse-and-bigquery" class="nav-link" data-scroll-target="#data-warehouse-and-bigquery">3.1.1 Data Warehouse and BigQuery</a></li>
+  <li><a href="#partitioning-in-big-query" id="toc-partitioning-in-big-query" class="nav-link" data-scroll-target="#partitioning-in-big-query">Partitioning in Big Query</a></li>
+  <li><a href="#clustering-in-big-query" id="toc-clustering-in-big-query" class="nav-link" data-scroll-target="#clustering-in-big-query">Clustering in Big Query</a></li>
+  <li><a href="#partitioning-and-clustering" id="toc-partitioning-and-clustering" class="nav-link" data-scroll-target="#partitioning-and-clustering">3.1.2 Partitioning and Clustering</a></li>
+  <li><a href="#automatic-reclustering" id="toc-automatic-reclustering" class="nav-link" data-scroll-target="#automatic-reclustering">Automatic reclustering</a></li>
+  <li><a href="#biq-query-best-practices" id="toc-biq-query-best-practices" class="nav-link" data-scroll-target="#biq-query-best-practices">3.2.1 Biq Query Best Practices</a></li>
+  <li><a href="#internals-of-big-query-under-the-hood" id="toc-internals-of-big-query-under-the-hood" class="nav-link" data-scroll-target="#internals-of-big-query-under-the-hood">3.2.2 Internals of Big Query (under the hood)</a></li>
+  <li><a href="#record-oriented-vs-column-oriented-memory-storage" id="toc-record-oriented-vs-column-oriented-memory-storage" class="nav-link" data-scroll-target="#record-oriented-vs-column-oriented-memory-storage">Record-oriented vs column-oriented memory storage</a></li>
+  <li><a href="#dremel" id="toc-dremel" class="nav-link" data-scroll-target="#dremel">Dremel</a></li>
+  <li><a href="#bigquery-machine-learning" id="toc-bigquery-machine-learning" class="nav-link" data-scroll-target="#bigquery-machine-learning">3.3.1 BigQuery Machine Learning</a></li>
+  <li><a href="#which-algorithms-should-we-use" id="toc-which-algorithms-should-we-use" class="nav-link" data-scroll-target="#which-algorithms-should-we-use">Which algorithms should we use ?</a></li>
+  <li><a href="#building-a-linear-regression-model-in-bigquery" id="toc-building-a-linear-regression-model-in-bigquery" class="nav-link" data-scroll-target="#building-a-linear-regression-model-in-bigquery">Building a Linear Regression model in BigQuery</a></li>
+  <li><a href="#big-query-machine-learning-deployment" id="toc-big-query-machine-learning-deployment" class="nav-link" data-scroll-target="#big-query-machine-learning-deployment">3.3.2 Big Query Machine Learning Deployment</a></li>
+  <li><a href="#serving-saved-model-with-tensorflow-serving" id="toc-serving-saved-model-with-tensorflow-serving" class="nav-link" data-scroll-target="#serving-saved-model-with-tensorflow-serving">Serving saved model with Tensorflow Serving</a></li>
+  <li><a href="#creating-an-external-table" id="toc-creating-an-external-table" class="nav-link" data-scroll-target="#creating-an-external-table">Creating an external table</a></li>
+  <li><a href="#creating-a-table-in-big-query" id="toc-creating-a-table-in-big-query" class="nav-link" data-scroll-target="#creating-a-table-in-big-query">Creating a table in Big Query</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="week-3---data-warehouse-and-bigquery" class="level2">
+<h2 class="anchored" data-anchor-id="week-3---data-warehouse-and-bigquery">Week 3 - Data Warehouse and BigQuery</h2>
+<p>A <code>Data Warehouse</code> is an OLAP solution used for reporting and data analysis and generally includes raw, meta and summary data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/70ee6d4b-a9f7-43b6-820d-7ec5d4bb7b60.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">data_warehouse.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>BigQuery (BQ) is a widely used serverless Data Warehouse which has a lot of built in features such as:</p>
+<ul>
+<li>machine learning</li>
+<li>geospatial analysis</li>
+<li>business intelligence</li>
+</ul>
+<p>One of its key strengths is that Big Query maximises flexibility by separating the compute engine that analyses data from the storage.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/de264a26-0485-415e-9ac0-df069fae5389.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">week_3.JPG</figcaption><p></p>
+</figure>
+</div>
+<section id="data-warehouse-and-bigquery" class="level3">
+<h3 class="anchored" data-anchor-id="data-warehouse-and-bigquery">3.1.1 Data Warehouse and BigQuery</h3>
+<p>In <a href="https://en.wikipedia.org/wiki/Online_transaction_processing">OnLine Transaction Processing (OLTP)</a> information systems typically facilitate and manage transaction-oriented applications. This is contrasted with <a href="https://en.wikipedia.org/wiki/Online_analytical_processing">OnLine Analytical Processing (OLAP)</a> which is an approach to answer multi-dimensional analytical (MDA) queries swiftly in computing.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/145c4ddb-770a-4f44-af04-a36790ce2e7b.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">OLTP_OLAP_1.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/3cb207e9-03e9-4f8d-90b8-f197ab0f9848.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">OLTP_OLAP_2.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now take a closer look at BQ in particular our New York taxi project dataset. BQ generally caches data, but for our purposes let’s disable this to ensure consistent results:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/25432c8d-26ae-4d65-b344-fb119d867139.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">big_query_cache.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>BQ also provides a lot of open source public datasets e.g.&nbsp;<code>citibike_stations</code> and we can run a query and save the results or explore further using <code>Sheets</code>, <code>Looker Studio</code> or <code>Colab Notebook</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/a92762a6-186f-4139-8073-9e453ecb9474.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">citibike_stations.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>In terms of pricing there are two tiers - on demand pricing and flat rate pricing - depending on your specific requirements.</p>
+<p>As explained in the <a href="https://cloud.google.com/bigquery/docs/tables-intro">BQ docs</a> external tables are similar to standard BigQuery tables, in that these tables store their metadata and schema in BigQuery storage. However, their data resides in an external source. External tables are contained inside a dataset, and you manage them in the same way that you manage a standard BigQuery table.</p>
+<p>Let’s use the data we already have stored in our data bucket and create an external table. In my particular case, project name is <code>taxi-rides-ny-137</code>, dataset name is <code>de_zoomcamp</code> and we are going to create a table named <code>external_yellow_tripdata</code>.</p>
+<p>The files I have in GCS are <code>parquet</code> format and we copy the path ids and include as <code>uris</code> :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE EXTERNAL TABLE `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.external_yellow_tripdata`</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>OPTIONS (</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">format</span> <span class="op">=</span> <span class="st">'PARQUET'</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  uris <span class="op">=</span> [<span class="st">'gs://dtc_data_lake_taxi-rides-ny-137/data/yellow/yellow_tripdata_2021-01.parquet'</span>, <span class="st">'gs://dtc_data_lake_taxi-rides-ny-137/data/yellow/yellow_tripdata_2021-02.parquet'</span>, <span class="st">'gs://dtc_data_lake_taxi-rides-ny-137/data/yellow/yellow_tripdata_2021-03.parquet'</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We run the query and our table is created. BQ is able to pick up the schema (column name and data type) directly from the parquet file :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/49588a9e-70a9-4acd-9238-c0f5db0af5c7.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">external_yellow_trip_table_schema.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/64cac1d8-c06b-4e5d-bc33-c17a1b78ae9a.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">external_yellow_trip_table_details.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now run a quick query on this table :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/69817a34-ca97-443c-a311-ab4331817f65.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">external_yellow_trip_table_query.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="partitioning-in-big-query" class="level3">
+<h3 class="anchored" data-anchor-id="partitioning-in-big-query">Partitioning in Big Query</h3>
+<p>A partitioned table is divided into segments, called partitions, that make it easier to manage and query your data. By dividing a large table into smaller partitions, you can improve query performance and control costs by reducing the number of bytes read by a query. You partition tables by specifying a partition column which is used to segment the table.</p>
+<p>Further information is provided in the <a href="https://cloud.google.com/bigquery/docs/partitioned-tables">BQ docs</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/92740acb-fb57-41ae-ae0f-f846f7a290a0.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">partition.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s first create a <code>non-partioned table</code> to demonstrate the benefits of a <code>partitioned table</code> :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Create a non partitioned table from external table</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE TABLE taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_non_partitoned AS</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>SELECT <span class="op">*</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>FROM taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.external_yellow_tripdata<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/dd37074e-bf0b-4adf-94d7-521a1695be38.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">non_partition.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>As we can see the pick up times are not in chronological order. Now let’s create a partitioned table which partitions by the column `tpep_pickup_datetime’:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a partitioned table from external table</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE TABLE taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_partitoned</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>PARTITION BY</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  DATE(tpep_pickup_datetime) AS</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>SELECT <span class="op">*</span> FROM taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.external_yellow_tripdata<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/018a24b8-40e4-42c4-a6e5-8b975e766247.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">partitioned.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>As we can see our trip pickup times are now sorted in chronological order. Let’s take a closer look at how the partitioning is workng in practice.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's look into the partitions</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>SELECT table_name, partition_id, total_rows</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>FROM `de_zoomcamp.INFORMATION_SCHEMA.PARTITIONS`</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>WHERE table_name <span class="op">=</span> <span class="st">'yellow_tripdata_partitoned'</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ORDER BY total_rows DESC<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/d0d0149e-805c-4eef-93a1-806b9f61733a.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">partition_info.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We can see the partitioning (splits) by date. Let’s move on to another interesting feature concept in BQ known as <code>Clustering</code>.</p>
+</section>
+<section id="clustering-in-big-query" class="level3">
+<h3 class="anchored" data-anchor-id="clustering-in-big-query">Clustering in Big Query</h3>
+<p>Clustered tables in BigQuery are tables that have a user-defined column sort order using clustered columns. <a href="https://cloud.google.com/bigquery/docs/clustered-tables">Clustered tables</a> can improve query performance and reduce query costs.</p>
+<p>In BigQuery, a clustered column is a user-defined table property that sorts <a href="https://cloud.google.com/bigquery/docs/storage_overview#storage_layout">storage blocks</a> based on the values in the clustered columns. The storage blocks are adaptively sized based on the size of the table. A clustered table maintains the sort properties in the context of each operation that modifies it. Queries that filter or aggregate by the clustered columns only scan the relevant blocks based on the clustered columns instead of the entire table or table partition. As a result, BigQuery might not be able to accurately estimate the bytes to be processed by the query or the query costs, but it attempts to reduce the total bytes at execution.</p>
+<p>When you cluster a table using multiple columns, the column order determines which columns take precedence when BigQuery sorts and groups the data into storage blocks.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/59f258a9-ef38-4851-a47d-e5e84c47803a.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">clustering.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s develop the partitioned table we created previously and create a new table with cluster functionality - by <code>VendorID</code> :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a partition and cluster table</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE TABLE taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_partitioned_clustered</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>PARTITION BY DATE(tpep_pickup_datetime)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>CLUSTER BY VendorID AS</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>SELECT <span class="op">*</span> FROM taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.external_yellow_tripdata<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We obtain an error warning as the VendorID data type is <code>Float</code>. We need to convert to integer in order to cluster. We can modify table schemas <a href="https://cloud.google.com/bigquery/docs/managing-table-schemas">cast a column’s data type</a> including casting data types, by overwriting or saving to a new destination table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>SELECT <span class="op">*</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> CAST(VendorID AS INT64) AS Vendor_ID</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>FROM taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.external_yellow_tripdata</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>WHERE VendorID IS NOT NULL</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can configure our query further by clicking on <code>More</code> and specifying the destination etc.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/e4ad694c-4824-414d-b740-0520f3fce5f1.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">cast.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>OK so with a new column <code>Vendor_ID</code> now created with type <code>int64</code> let’s now proceed to create our partioned, clustered table:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a partition and cluster table</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE TABLE taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_partitoned_clustered</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>PARTITION BY DATE(tpep_pickup_datetime)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>CLUSTER BY Vendor_ID AS</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>SELECT <span class="op">*</span> FROM taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.external_yellow_tripdata_cast<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/b46ee5cf-f50f-4505-9bd4-fab552bfb035.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">partition_cluster.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>To illustrate the cost savings available through using clustering, the clustered table uses <code>66.25 MB</code> against <code>68.73MB</code> for the partioned table, a saving of 3.6%. The costs savings become more pronounced as the size of the dataset increases.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/0e98a06e-5901-4945-946a-d1c1d7a33376.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">partition_memory.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/cf0b5541-515b-4f1d-a6a7-3f5d7aa27e42.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">partition_cluster_memory.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="partitioning-and-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="partitioning-and-clustering">3.1.2 Partitioning and Clustering</h3>
+<p>Whilst, partitioning and clustering can enhance query performance, it is important to be aware that they do generate some computational overhead (meta data reads and maintenance). As a general guide, we should only consider using partitioning and clustering for tables with a data size of 1GB +.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/2e716443-57de-4797-a48a-268d5457c41b.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">BQ_partition.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>The default ingestion time is daily, however you may require more granularity in which case BQ also offers hourly partitioning. Note that the number of partitions is limited to 4000.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/e9aa8b00-0a3e-4300-afd7-e2b7c94b2e76.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">BQ_clustering.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/3176236d-4917-4084-b1cb-b67cffdd200d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">clustering_columns.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s have a look at a comparison between the two and the criteria to consider when choosing one, or the other, or both.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/47671cef-dc12-4a4b-b8a6-e289af981ccd.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">partition_vs_cluster.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Clustering should be used where :</p>
+<ul>
+<li>partitioning results in a small amount of data (~ &lt; 1 GB) per partition</li>
+<li>partitioning results in a large number of partitions (beyond the 4k limit)</li>
+<li>partitioning results in our mutation operations modifying the majority of partitions in the table frequently (e.g.&nbsp;every few minutes)</li>
+</ul>
+</section>
+<section id="automatic-reclustering" class="level3">
+<h3 class="anchored" data-anchor-id="automatic-reclustering">Automatic reclustering</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/8931ea16-2875-44f7-88ac-ad18745ba278.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">automatic_reclustering.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="biq-query-best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="biq-query-best-practices">3.2.1 Biq Query Best Practices</h3>
+<p>Generally most of our efforts are focused on :</p>
+<ol type="1">
+<li>cost reduction</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/e29879e1-20cc-421a-8f4a-4a0bb405f467.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">cost_reduction.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>improved query performance</li>
+</ol>
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/16c0d794-4e42-4747-ac0b-e19ae722e29f.PNG" class="img-fluid" alt="performance.PNG"> <img src="DE_Zoomcamp_Week3_files/figure-html/c27540e0-b15f-4cb8-885c-45445323d8ff.PNG" class="img-fluid" alt="performance_2.PNG"></p>
+<p>If we place the largest table first then it will be distributed evenly, and with the smallest table placed second it will be <code>broadcasted</code> to all of the nodes, which is computationally efficient. We will cover the internal workings of Biq Query in the next section.</p>
+</section>
+<section id="internals-of-big-query-under-the-hood" class="level3">
+<h3 class="anchored" data-anchor-id="internals-of-big-query-under-the-hood">3.2.2 Internals of Big Query (under the hood)</h3>
+<p>Whilst it is possible to work with Big Query (as with say machine learning) without a detailed understanding of what is going on <code>under the hood</code> it is helpful to have a high-level overview so that we can build our query structure in a way that maximises efficiency and minimises cost.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/e25186d7-2955-4b46-a4ba-a94c840f04d8.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">BQ_arch.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="record-oriented-vs-column-oriented-memory-storage" class="level3">
+<h3 class="anchored" data-anchor-id="record-oriented-vs-column-oriented-memory-storage">Record-oriented vs column-oriented memory storage</h3>
+<p>We touched earlier on the idea of <code>broadcasting</code> which is a computationally efficient method of reading data. The following diagram helps illustrate the concept :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/a32f0601-6a15-44f8-97f0-ea5ad6417f30.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">record_column.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>A <code>record-oriented</code> structure is similar to how csv’s work - they are easy to process and understand. Big Query uses the alternative <code>column-oriented</code> structure which helps provide better aggregation performance.</p>
+</section>
+<section id="dremel" class="level3">
+<h3 class="anchored" data-anchor-id="dremel">Dremel</h3>
+<p>Dremel is a scalable, interactive ad-hoc query system for analysis of read-only nested data. By combining multi-level execution trees and columnar data layout, it is capable of running aggregation queries over trillion-row tables in seconds. The system scales to thousands of CPUs and petabytes of data, and has thousands of users at Google. If you want to dig deeper you can read <a href="https://research.google/pubs/pub36632/">this publication</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/9262075d-f29f-4c7d-be0d-9dbfad58c2a4.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dremel.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Some additional resources are included below :</p>
+<p><a href="https://cloud.google.com/bigquery/docs/how-to">BigQuery How-to guides</a></p>
+<p><a href="https://panoply.io/data-warehouse-guide/bigquery-architecture/">A Deep Dive Into Google BigQuery Architecture</a></p>
+<p><a href="https://www.goldsborough.me/distributed-systems/2019/05/18//21-09-00-a_look_at_dremel/">A Look at Dremel</a></p>
+</section>
+<section id="bigquery-machine-learning" class="level3">
+<h3 class="anchored" data-anchor-id="bigquery-machine-learning">3.3.1 BigQuery Machine Learning</h3>
+<p>BigQuery makes machine learning techniques accessible to those without any in depth knowledge of Python and its traditional machine learning libraries such as <code>PyTorch</code> or <code>scikit-learn</code>. A dangerous thing if handled without care. Nevertheless it is useful to be able to leverage machine learning to unlock even richer insights from our data.</p>
+<p>A model can be built within BigQuery with no need to export data into a different system.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/f670cfb1-c18f-4905-a152-d12031de0563.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ML_bigquery_price1.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/2ffe6c4c-d146-48b6-85b0-a51af8230a4e.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ML_bigquery_price2.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>A typical machine learning flow is illustrated below. Big Query can handle the train/test split, feature engineering, parameter tuning, cross validation etc and ultimately model deployment using a Docker image.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/2afbe178-f81e-4c06-84ce-f3766eaf881f.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ML_flow.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="which-algorithms-should-we-use" class="level3">
+<h3 class="anchored" data-anchor-id="which-algorithms-should-we-use">Which algorithms should we use ?</h3>
+<p>Our particular use case will drive our algorithm selection. An illustration is included below which provides examples of which algorithms might be appropriate depending on what it is that you want to do :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/5d5ec721-d7fd-4f30-a245-618c9a67d81d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">algorithms.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="building-a-linear-regression-model-in-bigquery" class="level3">
+<h3 class="anchored" data-anchor-id="building-a-linear-regression-model-in-bigquery">Building a Linear Regression model in BigQuery</h3>
+<p>A wide range of models can be created within BQ - see the <a href="https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create">attached documentation</a>. We are going to build a <code>Linear Regression</code> model which predicts the tip amount (our <code>target variable</code>) based on some selected input variable columns - or <code>features</code>as they are often referred to. We will be revisiting our <code>yellow_tripdata_partitioned</code> table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT THE COLUMNS (FEATURES) OF INTEREST</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>SELECT passenger_count, trip_distance, PULocationID, DOLocationID, payment_type, fare_amount, tolls_amount, tip_amount</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>FROM taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_partitoned</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>WHERE fare_amount <span class="op">!=</span> <span class="dv">0</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Feature preprocessing is one of the most important steps in developing a machine learning model. It consists of the creation of features as well as the cleaning of the data. Sometimes, the creation of features is also referred as “feature engineering”. BigQuery ML supports two types of feature preprocessing:</p>
+<ul>
+<li><p><a href="https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-auto-preprocessing">Automatic preprocessing</a></p></li>
+<li><p><a href="https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-preprocessing-functions">Manual preprocessing</a></p></li>
+</ul>
+<p>Data types are important when building a machine learning model - essentially all input features need to be <code>numerical</code>. Our table includes some <code>categorical</code> data which although not strictly numerical can be coerced by something called <code>one-hot-encoding</code>. BQ can do this for us but we first have to cast the categorical datatypes <code>PULocationID</code>, <code>DOLocationID</code>, and <code>payment_type</code> from <code>INTEGER</code> to <code>STRING</code>.</p>
+<p>Let’s create a new table which for our machine learning model :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CREATE A ML TABLE WITH APPROPRIATE DATA TYPES</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE TABLE `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_ml` (</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>`passenger_count` INTEGER,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>`trip_distance` FLOAT64,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>`PULocationID` STRING,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>`DOLocationID` STRING,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>`payment_type` STRING,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>`fare_amount` FLOAT64,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>`tolls_amount` FLOAT64,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>`tip_amount` FLOAT64</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>) AS (</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>SELECT CAST(passenger_count AS INTEGER) , trip_distance, cast(PULocationID AS STRING), CAST(DOLocationID AS STRING),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>CAST(payment_type AS STRING), fare_amount, tolls_amount, tip_amount</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>FROM `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_partitoned` WHERE fare_amount <span class="op">!=</span> <span class="dv">0</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/d4e7ec73-77a2-4da9-8604-a399b804a59f.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ML_table.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now go ahead and create our linear regression model :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CREATE MODEL WITH DEFAULT SETTING</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE MODEL `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.tip_model`</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>OPTIONS</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>(model_type<span class="op">=</span><span class="st">'linear_reg'</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>input_label_cols<span class="op">=</span>[<span class="st">'tip_amount'</span>],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>DATA_SPLIT_METHOD<span class="op">=</span><span class="st">'AUTO_SPLIT'</span>) AS</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>`taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_ml`</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>WHERE</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>tip_amount IS NOT NULL<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/bbe24e49-c8d4-4b9c-b064-f48879ad927d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">taxi_tip_lin_reg_model.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>That didn’t take too long - just 32 seconds to build our Linear Regression model! We can find out more about our model here :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/504a3578-4ec2-4d5e-a4be-b60564793461.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">tip_model.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Note that this is by no means an optimal model - our aim here is to illustrate how to build and deploy a simple model using BigQuery.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/21c05ad6-54a1-4eb8-99d1-b013825307bb.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">tip_model_evaluation.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now get some <code>summary statistics</code> for our model <code>features</code> - that is the columns from our table which our model will use to try to map or predict the level of tip :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CHECK FEATURES</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>SELECT <span class="op">*</span> FROM ML.FEATURE_INFO(MODEL `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.tip_model`)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/3317f767-1989-49f9-9eb3-68ed56348952.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">lin_reg_model_summary_stats.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Next, let’s evaluate our model :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># EVALUATE THE MODEL</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ML.EVALUATE(MODEL `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.tip_model`,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>`taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_ml`</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>WHERE</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>tip_amount IS NOT NULL</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/a6417651-b57f-4d26-a81d-6359847ac907.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">model_evaluate.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And now let’s make some predictions on the <code>test</code> data which was held out from the training dataset (as part of the train/test split). The idea is that the model makes predictions using input features that it has not seen before, which provides us with some assurance on how well the model will perform.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAKE PREDICTIONS</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ML.PREDICT(MODEL `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.tip_model`,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>`taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_ml`</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>WHERE</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>tip_amount IS NOT NULL</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/e9cfebe0-42bf-48f7-92c2-8c301d326848.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">taxi_tip_predict.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>There is a trade off to be made with machine learning models. As model complexity increases performance is likely to improve, however the danger is that we do not fully understand what is going on <code>under the hood</code>. You may have heard the term <code>black box</code> being used to describe such models.</p>
+<p>If you want to understand I highly recommend this book <a href="https://christophm.github.io/interpretable-ml-book/">Interpretable Machine Learning</a> by <a href="https://christophmolnar.com/">Christoph Molnar</a> which is an excellent reference guide.</p>
+<p>BQ does provide some assistance with model interpretation - in the form of <code>explain_predict</code> :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PREDICT AND EXPLAIN</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>ML.EXPLAIN_PREDICT(MODEL `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.tip_model`,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>`taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_ml`</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>WHERE</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>tip_amount IS NOT NULL</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>), STRUCT(<span class="dv">3</span> <span class="im">as</span> top_k_features))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/bc505b79-6ef5-431e-8bed-ace40cdf9b91.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">taxi_tip_model_explain_predict.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>BQ also allows us to refine our model by way of hyper parameter tuning :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HYPER PARAM TUNNING</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE MODEL `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.tip_hyperparam_model`</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>OPTIONS</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>(model_type<span class="op">=</span><span class="st">'linear_reg'</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>input_label_cols<span class="op">=</span>[<span class="st">'tip_amount'</span>],</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>DATA_SPLIT_METHOD<span class="op">=</span><span class="st">'AUTO_SPLIT'</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>num_trials<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>max_parallel_trials<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>l1_reg<span class="op">=</span>hparam_range(<span class="dv">0</span>, <span class="dv">20</span>),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>l2_reg<span class="op">=</span>hparam_candidates([<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>])) AS</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>`taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp</span>.yellow_tripdata_ml`</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>WHERE</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>tip_amount IS NOT NULL<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/df01080b-dc5f-43ff-b507-1fbe73a08c40.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">hyper_param.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Unfortunately hyperparameter tuning is not supported for my region - <code>europe-central2</code>. See the attached <a href="https://cloud.google.com/bigquery-ml/docs/locations">documentation</a> for details.</p>
+<blockquote class="blockquote">
+<p>Come to think of it I do recall Alexey flagging the importance of regions back at the start of the course! Both my bucket and dataset regions were set as Central Europe, but based on the recommendations I have seen on the course Slack - I created a new bucket and dataset with region set to US.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HYPER PARAM TUNNING</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>CREATE OR REPLACE MODEL `taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp_ml</span>.tip_hyperparam_model`</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>OPTIONS</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>(model_type<span class="op">=</span><span class="st">'linear_reg'</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>input_label_cols<span class="op">=</span>[<span class="st">'tip_amount'</span>],</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>DATA_SPLIT_METHOD<span class="op">=</span><span class="st">'AUTO_SPLIT'</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>num_trials<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>max_parallel_trials<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>l1_reg<span class="op">=</span>hparam_range(<span class="dv">0</span>, <span class="dv">20</span>),</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>l2_reg<span class="op">=</span>hparam_candidates([<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>])) AS</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>`taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="fl">137.</span><span class="er">de_zoomcamp_ml</span>.yellow_tripdata_ml`</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>WHERE</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>tip_amount IS NOT NULL<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/514cc215-b68e-4c8f-8a8f-14bcaa5e8985.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">hyper_param_model.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="big-query-machine-learning-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="big-query-machine-learning-deployment">3.3.2 Big Query Machine Learning Deployment</h3>
+<p>Now that we have built our model let’s now go ahead and deploy this in a Docker image.</p>
+<p>In order to access Google Cloud from the command line, you will usually have to authorize the Google Cloud CLI. See the docs <a href="https://cloud.google.com/sdk/docs/authorizing">here</a> for more info. We already set this up earlier in the course.</p>
+<p>So let us now export our model to Google Cloud Storage from the command line using:</p>
+<pre><code>bq --project_id taxi-rides-ny-137 extract -m de_zoomcamp_ml.tip_model gs://de_zoomcamp_ml/models</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/1e540a25-f6f0-464e-a990-c5e406a6df20.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">model_gcs.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And we can see our model is now stored in Google Cloud Storage.</p>
+<p>The next step is to create a new directory to save our model locally</p>
+<pre><code>mkdir /tmp/model</code></pre>
+<p>and then from within that directory run :</p>
+<pre><code>gsutil cp -r gs://de_zoomcamp_ml/models /tmp/model</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/874b37e3-b7b2-4e99-a072-1c7832d75bea.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">model_local_temp.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Next create a version subdirectory. This step sets a version number (1 in this case) for the model :</p>
+<pre><code>mkdir -p serving_dir/tip_model/1</code></pre>
+<p>Copy all the temp model data into this directory :</p>
+<pre><code>cp -r /tmp/model/models/* serving_dir/tip_model/1</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/25a2f5b9-cc36-4e57-b226-34601964af6d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">serving_dir.PNG</figcaption><p></p>
+</figure>
+</div>
+<pre><code>rm - r tmp/model</code></pre>
+</section>
+<section id="serving-saved-model-with-tensorflow-serving" class="level3">
+<h3 class="anchored" data-anchor-id="serving-saved-model-with-tensorflow-serving">Serving saved model with Tensorflow Serving</h3>
+<p>Once we have our model saved, and Tensorflow Serving correctly installed with Docker, we are going to serve it as an API endpoint. It is worth mentioning that Tensorflow Serving allows two types of API endpoint,  <code>REST</code> and <code>gRPC</code>.</p>
+<ul>
+<li><p><code>REST</code> is a communication “protocol” used by web applications. It defines a communication style on how clients communicate with web services. REST clients communicate with the server using the standard HTTP methods like GET, POST, DELETE, etc. The payloads of the requests are mostly encoded in JSON format.</p></li>
+<li><p><code>gRPC</code> on the other hand is a communication protocol initially developed at Google. The standard data format used with gRPC is called the protocol buffer. gRPC provides low- latency communication and smaller payloads than REST and is preferred when working with extremely large files during inference.</p></li>
+</ul>
+<p>In this tutorial, we’ll use a REST endpoint, since it is easier to use and inspect. It should also be noted that Tensorflow Serving will provision both endpoints when we run it, so we do not need to worry about extra configuration and setup.</p>
+<p>The next thing to do is to pull our Docker tensorflow serving image :</p>
+<pre><code>docker pull tensorflow/serving</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/f4680b7c-1f3a-4c37-b833-b3f3b9be737d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_pull.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And now let’s run the Docker container :</p>
+<p>docker run -p 8501:8501 -h 0.0.0.0 –mount type=bind,source=$(pwd)/serving_dir/tip_model,target=/models/tip_model -e MODEL_NAME=tip_model -t tensorflow/serving</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/f65a209a-d558-480b-a4d2-aa4d44d1dcae.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docker_tensor_flow_serving.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Now that the endpoint is up and running, we can make inference calls to it via an HTTP request. I was not able to connect to the <a href="https://www.postman.com/">Postman API</a> however I was able to carry out inference within this Jupyter NoteBook using the Python <code>requests</code> and <code>json</code> libraries as demonstrated below :</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># define input fetaures that we want to make prediction on</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"instances"</span>: [{<span class="st">"passenger_count"</span>:<span class="dv">1</span>, <span class="st">"trip_distance"</span>:<span class="fl">22.2</span>, <span class="st">"PULocationID"</span>:<span class="st">"193"</span>, <span class="st">"DOLocationID"</span>:<span class="st">"264"</span>, <span class="st">"payment_type"</span>:<span class="st">"1"</span>, <span class="st">"fare_amount"</span>:<span class="fl">20.4</span>,<span class="st">"tolls_amount"</span>:<span class="fl">0.0</span>}]}</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>data_json <span class="op">=</span> json.dumps(data)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># define the REST endpoint URL</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"http://localhost:8501/v1/models/tip_model:predict"</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">"content-type"</span>:<span class="st">"application/json"</span>}</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>json_response <span class="op">=</span> requests.post(url, data <span class="op">=</span> data_json, headers <span class="op">=</span> headers)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json_response.json())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>{‘predictions’: [[2.2043918289692783]]}</p>
+<p>So the predicted taxi tip is $2.20 for the input features provided.</p>
+<p>The requests package is used to construct and send an HTTP call to a server, while the json package will be used to parse the data (image) before sending it. The prediction URL is made up of a few important parts. A general structure may look like the one below:</p>
+<p>http://{HOST}:{PORT}/v1/models/{MODEL_NAME}:{VERB}</p>
+<ul>
+<li>HOST: The domain name or IP address of your model server</li>
+<li>PORT: The server port for your URL. By default, TF Serving uses 8501 for REST endpoint.</li>
+<li>MODEL_NAME: The name of the model you’re serving.</li>
+<li>VERB: The verb has to do with your model signature. You can specify one of predict, classify or regress.</li>
+</ul>
+</section>
+<section id="creating-an-external-table" class="level3">
+<h3 class="anchored" data-anchor-id="creating-an-external-table">Creating an external table</h3>
+<p>Let’s now have a go at some exercises to get a feel for Big Query. The data we will be working with is <a href="https://github.com/DataTalksClub/nyc-tlc-data/releases/tag/fhv">here</a> - specifically the <code>2019</code> year.</p>
+<p>I have uploaded the files in <code>.gz</code> format to my data bucket</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/e1323f57-7f1f-4409-a688-c852da8d60fb.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">fhv_bucket.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/424b9369-1295-43bf-b5e0-0f724a9b2158.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">bucket_URI.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now create an <code>external</code> table.</p>
+<p>First thing to do is create a dataset :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/8234df11-a418-49e9-91b3-bc0ecdb2b73d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">create_dataset.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And the create our <code>external</code> table :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/0dcfe829-27fa-418b-8efd-37798c3573d1.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">fhv_external_table.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="creating-a-table-in-big-query" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-table-in-big-query">Creating a table in Big Query</h3>
+<p>OK, let’s create a BigQuery table. This takes a bit longer than an external table. It’s funny how impatient we have become - I was concerned it had crashed, but 98 seconds to load 43 <code>million</code> records is not exactly slow!!!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/c0ce4ca0-3f61-45ae-946d-632b552868cb.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">fhv_BQ.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol type="1">
+<li>What is the count for fhv vehicle records for year 2019?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/640289e5-8766-4b19-9203-c4ccc0b011a8.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">q1.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>Write a query to count the distinct number of affiliated_base_number for the entire dataset on both the tables.</li>
+</ol>
+<p>What is the estimated amount of data that will be read when this query is executed on the External Table?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/589928d9-43a9-4546-b951-4819779b45a0.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">q2_external.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>What is the estimated amount of data that will be read when this query is executed on the BQ Table?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/b461ad32-caad-431e-8ad2-f8481a5aee2a.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">q2_BQ.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>The BigQuery table is estimated to consume 317.94MB however as the external data is not held within BQ no estimate is available for the BQ query.</p>
+<ol start="3" type="1">
+<li>How many records have both a blank (null) PUlocationID and DOlocationID in the entire dataset?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/c2efc855-ac6b-4ed3-b8f9-c913154ffab6.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">q3.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>What is the best strategy to optimize the table if query always filter by pickup_datetime and order by affiliated_base_number?</li>
+</ol>
+<p>Partitioning will give us the filter, and clustering will provide us with the ordering so the optimized strategy would be :</p>
+<pre><code>Partition by pickup_datetime Cluster on affiliated_base_number</code></pre>
+<p>Note that <code>Affiliated_base_number</code> is a string data type which we cannot partition on.</p>
+<ol start="5" type="1">
+<li>Implement the optimized solution you chose for question 4.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/9f7f145a-183d-47eb-a83a-997f34454c63.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">q5_part_clust_table.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Write a query to retrieve the distinct <code>Affiliated_base_number</code> between <code>pickup_datetime</code> 2019/03/01 and 2019/03/31 (inclusive).</p>
+<p>Use the BQ table you created earlier in your <code>FROM</code> clause and note the estimated bytes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/c3c2c68f-9b65-4d7a-864e-2b0f2265d98c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">q5_BQ.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Now change the table in the <code>FROM</code> clause to the partitioned table you created for question 4 and note the estimated bytes processed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week3_files/figure-html/4a6d16fe-bae2-44ff-ad55-f103c6f3b1ad.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">q5_partitioned.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We can see that there is a huge cost saving by partitioning - just 23.05MB compard with 647.87MB!</p>
+<ol start="6" type="1">
+<li>Where is the data stored in the External Table you created?</li>
+</ol>
+<p>The data used to create our external table is stored in our GCS bucket - we referenced the URI on creation.</p>
+<ol start="7" type="1">
+<li>Is it best practice in Big Query to always cluster your data?</li>
+</ol>
+<p>No.&nbsp;If your data is &lt; 1GB the additional meta data overhead could outweigh any performance boost obtained from clustering.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
