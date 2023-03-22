@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-03-22">
+
+<title>Into the Unknown - Data Engineering Zoomcamp - Week 4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Engineering Zoomcamp - Week 4</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">dbt</div>
+                <div class="quarto-category">Google Data Studio</div>
+                <div class="quarto-category">Metabase</div>
+                <div class="quarto-category">DataTalksClub</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 22, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-4---analytics-engineering" id="toc-week-4---analytics-engineering" class="nav-link active" data-scroll-target="#week-4---analytics-engineering">Week 4 - Analytics Engineering</a>
+  <ul class="collapse">
+  <li><a href="#how-to-set-up-dbt-for-using-bigquery" id="toc-how-to-set-up-dbt-for-using-bigquery" class="nav-link" data-scroll-target="#how-to-set-up-dbt-for-using-bigquery">How to set up dbt for using BigQuery</a></li>
+  <li><a href="#create-a-dbt-cloud-project" id="toc-create-a-dbt-cloud-project" class="nav-link" data-scroll-target="#create-a-dbt-cloud-project">Create a dbt cloud project</a></li>
+  <li><a href="#add-github-repository" id="toc-add-github-repository" class="nav-link" data-scroll-target="#add-github-repository">Add GitHub repository</a></li>
+  <li><a href="#review-your-project-settings" id="toc-review-your-project-settings" class="nav-link" data-scroll-target="#review-your-project-settings">Review your project settings</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="week-4---analytics-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="week-4---analytics-engineering">Week 4 - Analytics Engineering</h2>
+<p>Goal: Transforming the data previously loaded in to our data warehouse (in my case BigQuery) to Analytical Views developing a <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/README.md">dbt project</a>.</p>
+<p>To recap I already have the following prequisite datasets in a Google Cloud Storage data lake and have created external tables:</p>
+<ul>
+<li><p>Yellow trip data (109,047,518 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/37072954-6175-4aeb-b15d-44db33da91c9.PNG" class="img-fluid" alt="yellow_trip_data.PNG"></p></li>
+<li><p>fhv trip data (43,244,696) <img src="DE_Zoomcamp_Week_4_files/figure-html/adaa502c-e8d6-43c8-bd1c-21dd41149a42.PNG" class="img-fluid" alt="fhv_trip_data.PNG"></p></li>
+<li><p>Green trip data (7,778,101 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/cb73b94b-a7eb-440d-8100-4cb06bfbdfc8.PNG" class="img-fluid" alt="green_trip_data.PNG"></p></li>
+</ul>
+<section id="how-to-set-up-dbt-for-using-bigquery" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-set-up-dbt-for-using-bigquery">How to set up dbt for using BigQuery</h3>
+<p><a href="https://docs.getdbt.com/tutorial/setting-up">Official documentation</a></p>
+<section id="create-a-bigquery-service-account" class="level4">
+<h4 class="anchored" data-anchor-id="create-a-bigquery-service-account">Create a BigQuery service account</h4>
+<p>In order to connect we need the service account JSON file generated from bigquery:</p>
+<ol type="1">
+<li>Open the <a href="https://console.cloud.google.com/apis/credentials/wizard">BigQuery credential wizard</a> to create a service account in your taxi project</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/09e95e7a-6cd7-4f0e-b0dc-60244f638131.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_bq_1.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/6edfbce1-c0c4-4a0f-a68a-5232ed41762f.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_bq_2.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>You can either grant the specific roles the account will need or simply use bq admin, as you’ll be the sole user of both accounts and data.</li>
+</ol>
+<p><em>Note: if you decide to use specific roles instead of BQ Admin, some users reported that they needed to add also viewer role to avoid encountering denied access errors</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d89b8144-665e-49e0-9ee2-b1d5111edde8.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_bq_3.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Now that the service account has been created we need to add and download a JSON key, go to the keys section, navigate to <code>ADD KEY</code> then select <code>Create new key</code> from the dropdown. Select key type JSON and once you click on create it will get inmediately downloaded for you to use.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/4e70441a-5943-4d11-ac51-a7fa5a0c0849.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_bq_4.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="create-a-dbt-cloud-project" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-dbt-cloud-project">Create a dbt cloud project</h3>
+<ol type="1">
+<li>Create a dbt cloud account from <a href="https://www.getdbt.com/pricing/">their website</a> (free for solo developers)</li>
+<li>Once you have logged in into dbt cloud you will be prompt to create a new project</li>
+</ol>
+<p>You are going to need:</p>
+<ul>
+<li>access to your data warehouse (bigquery - set up in weeks 2 and 3)</li>
+<li>admin access to your repo, where you will have the dbt project.</li>
+</ul>
+<p><em>Note: For the sake of showing the creation of a project from scratch I’ve created a new empty repository just for this week project.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/eb6d2702-d4e5-4a41-8b3d-ec5e5194031c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">project_setup.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li><p>Name your project</p></li>
+<li><p>Choose Bigquery as your data warehouse:</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b780785f-348c-4c25-88aa-813e2e0f7d00.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbase_connection.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="5" type="1">
+<li>Upload the key you downloaded from BQ on the create from file option. This will fill out most fields related to the production credentials. Scroll down to the end of the page and set up your development credentials.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/fd1ab2d5-e34a-4f7e-ba51-4ae426b587cc.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_bq_5.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/0887af15-4358-41b1-afaf-dd4f72c0b4e1.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_bq_6.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b0b5ae3c-24c0-42aa-90c1-29d39e501b4d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_test.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="add-github-repository" class="level3">
+<h3 class="anchored" data-anchor-id="add-github-repository">Add GitHub repository</h3>
+<p>Note: This step could be skipped by using a managed repository if you don’t have your own GitHub repo for the course.</p>
+<ol type="1">
+<li>Select git clone and paste the SSH key from your repo.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/577b74fc-87c6-4c0c-b42c-99b7108fd697.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">github_repo.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>You will get a deploy key, head to your GH repo and go to the settings tab. Under security you’ll find the menu <em>deploy keys</em>. Click on <code>Add deploy key</code> and paste the deploy key provided by dbt cloud. Make sure to tick on “write access”.</li>
+</ol>
+</section>
+<section id="review-your-project-settings" class="level3">
+<h3 class="anchored" data-anchor-id="review-your-project-settings">Review your project settings</h3>
+<p>At the end, if you go to your projects it should look some like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b043d527-a8e1-4bd2-a86c-0eb1bdcf6605.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_project.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/a02f158a-f3b4-4034-bf72-22609fea3fce.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">week_4.JPG</figcaption><p></p>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

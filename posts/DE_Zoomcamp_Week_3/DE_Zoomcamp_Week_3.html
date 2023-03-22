@@ -245,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A <code>Data Warehouse</code> is an OLAP solution used for reporting and data analysis and generally includes raw, meta and summary data.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/70ee6d4b-a9f7-43b6-820d-7ec5d4bb7b60.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/70ee6d4b-a9f7-43b6-820d-7ec5d4bb7b60.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">data_warehouse.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -258,36 +258,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>One of its key strengths is that Big Query maximises flexibility by separating the compute engine that analyses data from the storage.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/de264a26-0485-415e-9ac0-df069fae5389.JPG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/de264a26-0485-415e-9ac0-df069fae5389.JPG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">week_3.JPG</figcaption><p></p>
 </figure>
 </div>
 <section id="data-warehouse-and-bigquery" class="level3">
 <h3 class="anchored" data-anchor-id="data-warehouse-and-bigquery">3.1.1 Data Warehouse and BigQuery</h3>
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/40e31b3b-24f1-4632-a167-94fc27cea629.png" class="img-fluid" alt="download.png">In <a href="https://en.wikipedia.org/wiki/Online_transaction_processing">OnLine Transaction Processing (OLTP)</a> information systems typically facilitate and manage transaction-oriented applications. This is contrasted with <a href="https://en.wikipedia.org/wiki/Online_analytical_processing">OnLine Analytical Processing (OLAP)</a> which is an approach to answer multi-dimensional analytical (MDA) queries swiftly in computing.</p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/40e31b3b-24f1-4632-a167-94fc27cea629.png" class="img-fluid" alt="download.png">In <a href="https://en.wikipedia.org/wiki/Online_transaction_processing">OnLine Transaction Processing (OLTP)</a> information systems typically facilitate and manage transaction-oriented applications. This is contrasted with <a href="https://en.wikipedia.org/wiki/Online_analytical_processing">OnLine Analytical Processing (OLAP)</a> which is an approach to answer multi-dimensional analytical (MDA) queries swiftly in computing.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/145c4ddb-770a-4f44-af04-a36790ce2e7b.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/145c4ddb-770a-4f44-af04-a36790ce2e7b.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">OLTP_OLAP_1.PNG</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/3cb207e9-03e9-4f8d-90b8-f197ab0f9848.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/3cb207e9-03e9-4f8d-90b8-f197ab0f9848.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">OLTP_OLAP_2.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>Let’s now take a closer look at BQ in particular our New York taxi project dataset. BQ generally caches data, but for our purposes let’s disable this to ensure consistent results:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/25432c8d-26ae-4d65-b344-fb119d867139.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/25432c8d-26ae-4d65-b344-fb119d867139.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">big_query_cache.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>BQ also provides a lot of open source public datasets e.g.&nbsp;<code>citibike_stations</code> and we can run a query and save the results or explore further using <code>Sheets</code>, <code>Looker Studio</code> or <code>Colab Notebook</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/a92762a6-186f-4139-8073-9e453ecb9474.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/a92762a6-186f-4139-8073-9e453ecb9474.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">citibike_stations.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -305,20 +305,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We run the query and our table is created. BQ is able to pick up the schema (column name and data type) directly from the parquet file :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/49588a9e-70a9-4acd-9238-c0f5db0af5c7.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/49588a9e-70a9-4acd-9238-c0f5db0af5c7.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">external_yellow_trip_table_schema.PNG</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/64cac1d8-c06b-4e5d-bc33-c17a1b78ae9a.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/64cac1d8-c06b-4e5d-bc33-c17a1b78ae9a.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">external_yellow_trip_table_details.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>Let’s now run a quick query on this table :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/69817a34-ca97-443c-a311-ab4331817f65.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/69817a34-ca97-443c-a311-ab4331817f65.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">external_yellow_trip_table_query.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -329,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Further information is provided in the <a href="https://cloud.google.com/bigquery/docs/partitioned-tables">BQ docs</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/92740acb-fb57-41ae-ae0f-f846f7a290a0.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/92740acb-fb57-41ae-ae0f-f846f7a290a0.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">partition.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -342,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/dd37074e-bf0b-4adf-94d7-521a1695be38.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/dd37074e-bf0b-4adf-94d7-521a1695be38.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">non_partition.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -356,7 +356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/018a24b8-40e4-42c4-a6e5-8b975e766247.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/018a24b8-40e4-42c4-a6e5-8b975e766247.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">partitioned.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -370,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/d0d0149e-805c-4eef-93a1-806b9f61733a.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/d0d0149e-805c-4eef-93a1-806b9f61733a.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">partition_info.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -383,7 +383,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When you cluster a table using multiple columns, the column order determines which columns take precedence when BigQuery sorts and groups the data into storage blocks.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/59f258a9-ef38-4851-a47d-e5e84c47803a.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/59f258a9-ef38-4851-a47d-e5e84c47803a.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">clustering.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -406,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can configure our query further by clicking on <code>More</code> and specifying the destination etc.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/e4ad694c-4824-414d-b740-0520f3fce5f1.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/e4ad694c-4824-414d-b740-0520f3fce5f1.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">cast.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -420,20 +420,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/b46ee5cf-f50f-4505-9bd4-fab552bfb035.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/b46ee5cf-f50f-4505-9bd4-fab552bfb035.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">partition_cluster.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>To illustrate the cost savings available through using clustering, the clustered table uses <code>66.25 MB</code> against <code>68.73MB</code> for the partioned table, a saving of 3.6%. The costs savings become more pronounced as the size of the dataset increases.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/0e98a06e-5901-4945-946a-d1c1d7a33376.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/0e98a06e-5901-4945-946a-d1c1d7a33376.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">partition_memory.PNG</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/cf0b5541-515b-4f1d-a6a7-3f5d7aa27e42.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/cf0b5541-515b-4f1d-a6a7-3f5d7aa27e42.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">partition_cluster_memory.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -443,27 +443,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Whilst, partitioning and clustering can enhance query performance, it is important to be aware that they do generate some computational overhead (meta data reads and maintenance). As a general guide, we should only consider using partitioning and clustering for tables with a data size of 1GB +.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/2e716443-57de-4797-a48a-268d5457c41b.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/2e716443-57de-4797-a48a-268d5457c41b.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">BQ_partition.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>The default ingestion time is daily, however you may require more granularity in which case BQ also offers hourly partitioning. Note that the number of partitions is limited to 4000.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/e9aa8b00-0a3e-4300-afd7-e2b7c94b2e76.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/e9aa8b00-0a3e-4300-afd7-e2b7c94b2e76.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">BQ_clustering.PNG</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/3176236d-4917-4084-b1cb-b67cffdd200d.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/3176236d-4917-4084-b1cb-b67cffdd200d.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">clustering_columns.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>Let’s have a look at a comparison between the two and the criteria to consider when choosing one, or the other, or both.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/47671cef-dc12-4a4b-b8a6-e289af981ccd.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/47671cef-dc12-4a4b-b8a6-e289af981ccd.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">partition_vs_cluster.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -478,7 +478,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="automatic-reclustering">Automatic reclustering</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/8931ea16-2875-44f7-88ac-ad18745ba278.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/8931ea16-2875-44f7-88ac-ad18745ba278.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">automatic_reclustering.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -491,14 +491,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/e29879e1-20cc-421a-8f4a-4a0bb405f467.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/e29879e1-20cc-421a-8f4a-4a0bb405f467.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">cost_reduction.PNG</figcaption><p></p>
 </figure>
 </div>
 <ol start="2" type="1">
 <li>improved query performance</li>
 </ol>
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/16c0d794-4e42-4747-ac0b-e19ae722e29f.PNG" class="img-fluid" alt="performance.PNG"> <img src="DE_Zoomcamp_Week3_files/figure-html/c27540e0-b15f-4cb8-885c-45445323d8ff.PNG" class="img-fluid" alt="performance_2.PNG"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/16c0d794-4e42-4747-ac0b-e19ae722e29f.PNG" class="img-fluid" alt="performance.PNG"> <img src="DE_Zoomcamp_Week_3_files/figure-html/c27540e0-b15f-4cb8-885c-45445323d8ff.PNG" class="img-fluid" alt="performance_2.PNG"></p>
 <p>If we place the largest table first then it will be distributed evenly, and with the smallest table placed second it will be <code>broadcasted</code> to all of the nodes, which is computationally efficient. We will cover the internal workings of Biq Query in the next section.</p>
 </section>
 <section id="internals-of-big-query-under-the-hood" class="level3">
@@ -506,7 +506,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Whilst it is possible to work with Big Query (as with say machine learning) without a detailed understanding of what is going on <code>under the hood</code> it is helpful to have a high-level overview so that we can build our query structure in a way that maximises efficiency and minimises cost.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/e25186d7-2955-4b46-a4ba-a94c840f04d8.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/e25186d7-2955-4b46-a4ba-a94c840f04d8.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">BQ_arch.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -516,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We touched earlier on the idea of <code>broadcasting</code> which is a computationally efficient method of reading data. The following diagram helps illustrate the concept :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/a32f0601-6a15-44f8-97f0-ea5ad6417f30.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/a32f0601-6a15-44f8-97f0-ea5ad6417f30.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">record_column.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -527,7 +527,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dremel is a scalable, interactive ad-hoc query system for analysis of read-only nested data. By combining multi-level execution trees and columnar data layout, it is capable of running aggregation queries over trillion-row tables in seconds. The system scales to thousands of CPUs and petabytes of data, and has thousands of users at Google. If you want to dig deeper you can read <a href="https://research.google/pubs/pub36632/">this publication</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/9262075d-f29f-4c7d-be0d-9dbfad58c2a4.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/9262075d-f29f-4c7d-be0d-9dbfad58c2a4.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">dremel.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -542,20 +542,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A model can be built within BigQuery with no need to export data into a different system.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/f670cfb1-c18f-4905-a152-d12031de0563.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/f670cfb1-c18f-4905-a152-d12031de0563.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">ML_bigquery_price1.PNG</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/2ffe6c4c-d146-48b6-85b0-a51af8230a4e.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/2ffe6c4c-d146-48b6-85b0-a51af8230a4e.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">ML_bigquery_price2.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>A typical machine learning flow is illustrated below. Big Query can handle the train/test split, feature engineering, parameter tuning, cross validation etc and ultimately model deployment using a Docker image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/2afbe178-f81e-4c06-84ce-f3766eaf881f.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/2afbe178-f81e-4c06-84ce-f3766eaf881f.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">ML_flow.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -565,7 +565,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Our particular use case will drive our algorithm selection. An illustration is included below which provides examples of which algorithms might be appropriate depending on what it is that you want to do :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/5d5ec721-d7fd-4f30-a245-618c9a67d81d.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/5d5ec721-d7fd-4f30-a245-618c9a67d81d.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">algorithms.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -605,7 +605,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/d4e7ec73-77a2-4da9-8604-a399b804a59f.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/d4e7ec73-77a2-4da9-8604-a399b804a59f.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">ML_table.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -626,21 +626,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/bbe24e49-c8d4-4b9c-b064-f48879ad927d.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/bbe24e49-c8d4-4b9c-b064-f48879ad927d.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">taxi_tip_lin_reg_model.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>That didn’t take too long - just 32 seconds to build our Linear Regression model! We can find out more about our model here :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/504a3578-4ec2-4d5e-a4be-b60564793461.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/504a3578-4ec2-4d5e-a4be-b60564793461.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">tip_model.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>Note that this is by no means an optimal model - our aim here is to illustrate how to build and deploy a simple model using BigQuery.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/21c05ad6-54a1-4eb8-99d1-b013825307bb.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/21c05ad6-54a1-4eb8-99d1-b013825307bb.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">tip_model_evaluation.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -651,7 +651,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/3317f767-1989-49f9-9eb3-68ed56348952.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/3317f767-1989-49f9-9eb3-68ed56348952.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">lin_reg_model_summary_stats.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -673,7 +673,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/a6417651-b57f-4d26-a81d-6359847ac907.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/a6417651-b57f-4d26-a81d-6359847ac907.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">model_evaluate.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -695,7 +695,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/e9cfebe0-42bf-48f7-92c2-8c301d326848.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/e9cfebe0-42bf-48f7-92c2-8c301d326848.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">taxi_tip_predict.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -719,7 +719,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/bc505b79-6ef5-431e-8bed-ace40cdf9b91.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/bc505b79-6ef5-431e-8bed-ace40cdf9b91.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">taxi_tip_model_explain_predict.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -744,7 +744,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/df01080b-dc5f-43ff-b507-1fbe73a08c40.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/df01080b-dc5f-43ff-b507-1fbe73a08c40.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">hyper_param.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -772,7 +772,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/514cc215-b68e-4c8f-8a8f-14bcaa5e8985.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/514cc215-b68e-4c8f-8a8f-14bcaa5e8985.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">hyper_param_model.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -785,7 +785,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>bq --project_id taxi-rides-ny-137 extract -m de_zoomcamp_ml.tip_model gs://de_zoomcamp_ml/models</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/1e540a25-f6f0-464e-a990-c5e406a6df20.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/1e540a25-f6f0-464e-a990-c5e406a6df20.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">model_gcs.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -796,7 +796,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>gsutil cp -r gs://de_zoomcamp_ml/models /tmp/model</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/874b37e3-b7b2-4e99-a072-1c7832d75bea.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/874b37e3-b7b2-4e99-a072-1c7832d75bea.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">model_local_temp.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -806,7 +806,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>cp -r /tmp/model/models/* serving_dir/tip_model/1</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/25a2f5b9-cc36-4e57-b226-34601964af6d.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/25a2f5b9-cc36-4e57-b226-34601964af6d.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">serving_dir.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -824,7 +824,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>docker pull tensorflow/serving</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/f4680b7c-1f3a-4c37-b833-b3f3b9be737d.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/f4680b7c-1f3a-4c37-b833-b3f3b9be737d.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">docker_pull.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -832,7 +832,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>docker run -p 8501:8501 -h 0.0.0.0 –mount type=bind,source=$(pwd)/serving_dir/tip_model,target=/models/tip_model -e MODEL_NAME=tip_model -t tensorflow/serving</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/f65a209a-d558-480b-a4d2-aa4d44d1dcae.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/f65a209a-d558-480b-a4d2-aa4d44d1dcae.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">docker_tensor_flow_serving.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -872,13 +872,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>I have uploaded the files in <code>.gz</code> format to my data bucket</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/e1323f57-7f1f-4409-a688-c852da8d60fb.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/e1323f57-7f1f-4409-a688-c852da8d60fb.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">fhv_bucket.PNG</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/424b9369-1295-43bf-b5e0-0f724a9b2158.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/424b9369-1295-43bf-b5e0-0f724a9b2158.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">bucket_URI.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -886,14 +886,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>First thing to do is create a dataset :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/8234df11-a418-49e9-91b3-bc0ecdb2b73d.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/8234df11-a418-49e9-91b3-bc0ecdb2b73d.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">create_dataset.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>And the create our <code>external</code> table :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/0dcfe829-27fa-418b-8efd-37798c3573d1.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/0dcfe829-27fa-418b-8efd-37798c3573d1.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">fhv_external_table.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -903,7 +903,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>OK, let’s create a BigQuery table. This takes a bit longer than an external table. It’s funny how impatient we have become - I was concerned it had crashed, but 98 seconds to load 43 <code>million</code> records is not exactly slow!!!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/c0ce4ca0-3f61-45ae-946d-632b552868cb.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/c0ce4ca0-3f61-45ae-946d-632b552868cb.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">fhv_BQ.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -912,7 +912,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/640289e5-8766-4b19-9203-c4ccc0b011a8.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/640289e5-8766-4b19-9203-c4ccc0b011a8.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">q1.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -922,14 +922,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What is the estimated amount of data that will be read when this query is executed on the External Table?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/589928d9-43a9-4546-b951-4819779b45a0.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/589928d9-43a9-4546-b951-4819779b45a0.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">q2_external.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>What is the estimated amount of data that will be read when this query is executed on the BQ Table?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/b461ad32-caad-431e-8ad2-f8481a5aee2a.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/b461ad32-caad-431e-8ad2-f8481a5aee2a.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">q2_BQ.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -939,7 +939,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/c2efc855-ac6b-4ed3-b8f9-c913154ffab6.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/c2efc855-ac6b-4ed3-b8f9-c913154ffab6.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">q3.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -954,7 +954,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/9f7f145a-183d-47eb-a83a-997f34454c63.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/9f7f145a-183d-47eb-a83a-997f34454c63.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">q5_part_clust_table.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -962,14 +962,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Use the BQ table you created earlier in your <code>FROM</code> clause and note the estimated bytes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/c3c2c68f-9b65-4d7a-864e-2b0f2265d98c.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/c3c2c68f-9b65-4d7a-864e-2b0f2265d98c.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">q5_BQ.PNG</figcaption><p></p>
 </figure>
 </div>
 <p>Now change the table in the <code>FROM</code> clause to the partitioned table you created for question 4 and note the estimated bytes processed.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week3_files/figure-html/4a6d16fe-bae2-44ff-ad55-f103c6f3b1ad.PNG" class="img-fluid figure-img"></p>
+<p><img src="DE_Zoomcamp_Week_3_files/figure-html/4a6d16fe-bae2-44ff-ad55-f103c6f3b1ad.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">q5_partitioned.PNG</figcaption><p></p>
 </figure>
 </div>
