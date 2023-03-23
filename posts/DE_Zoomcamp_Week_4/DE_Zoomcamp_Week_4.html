@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Stephen Barrie">
-<meta name="dcterms.date" content="2023-03-22">
+<meta name="dcterms.date" content="2023-03-23">
 
 <title>Into the Unknown - Data Engineering Zoomcamp - Week 4</title>
 <style>
@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 22, 2023</p>
+        <p class="date">March 23, 2023</p>
       </div>
     </div>
       
@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="week-4---analytics-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="week-4---analytics-engineering">Week 4 - Analytics Engineering</h2>
 <p>Goal: Transforming the data previously loaded in to our data warehouse (in my case BigQuery) to Analytical Views developing a <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/README.md">dbt project</a>.</p>
-<p>To recap I already have the following prequisite datasets in a Google Cloud Storage data lake and have created external tables:</p>
+<p>I have already ingested the prerequisite datasets to Google Cloud Storage using the <a href="https://www.prefect.io/">Prefect</a> work orchestration solution, and have created the following external tables in BigQuery:</p>
 <ul>
 <li><p>Yellow trip data (109,047,518 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/37072954-6175-4aeb-b15d-44db33da91c9.PNG" class="img-fluid" alt="yellow_trip_data.PNG"></p></li>
 <li><p>fhv trip data (43,244,696) <img src="DE_Zoomcamp_Week_4_files/figure-html/adaa502c-e8d6-43c8-bd1c-21dd41149a42.PNG" class="img-fluid" alt="fhv_trip_data.PNG"></p></li>

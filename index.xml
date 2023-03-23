@@ -15,7 +15,7 @@
 <link>https://stephen137.github.io/index.html</link>
 </image>
 <generator>quarto-1.1</generator>
-<lastBuildDate>Tue, 21 Mar 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 22 Mar 2023 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Data Engineering Zoomcamp - Week 4</title>
   <dc:creator>Stephen Barrie</dc:creator>
@@ -28,7 +28,7 @@
 <section id="week-4---analytics-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="week-4---analytics-engineering">Week 4 - Analytics Engineering</h2>
 <p>Goal: Transforming the data previously loaded in to our data warehouse (in my case BigQuery) to Analytical Views developing a <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/README.md">dbt project</a>.</p>
-<p>To recap I already have the following prequisite datasets in a Google Cloud Storage data lake and have created external tables:</p>
+<p>I have already ingested the prerequisite datasets to Google Cloud Storage using the <a href="https://www.prefect.io/">Prefect</a> work orchestration solution, and have created the following external tables in BigQuery:</p>
 <ul>
 <li><p>Yellow trip data (109,047,518 rows) <img src="https://stephen137.github.io/posts/DE_Zoomcamp_Week_4/DE_Zoomcamp_Week_4_files/figure-html/37072954-6175-4aeb-b15d-44db33da91c9.PNG" class="img-fluid" alt="yellow_trip_data.PNG"></p></li>
 <li><p>fhv trip data (43,244,696) <img src="https://stephen137.github.io/posts/DE_Zoomcamp_Week_4/DE_Zoomcamp_Week_4_files/figure-html/adaa502c-e8d6-43c8-bd1c-21dd41149a42.PNG" class="img-fluid" alt="fhv_trip_data.PNG"></p></li>
@@ -168,7 +168,7 @@
   <category>Metabase</category>
   <category>DataTalksClub</category>
   <guid>https://stephen137.github.io/posts/DE_Zoomcamp_Week_4/DE_Zoomcamp_Week_4.html</guid>
-  <pubDate>Tue, 21 Mar 2023 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 22 Mar 2023 23:00:00 GMT</pubDate>
   <media:content url="https://stephen137.github.io/posts/DE_Zoomcamp_Week_4/analytics_engineering.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
