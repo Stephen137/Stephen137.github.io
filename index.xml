@@ -342,40 +342,70 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 </div>
 <p>And run the model once again using the following command within the dbt terminal:</p>
 <pre><code>dbt run --select stg_green_tripdata    </code></pre>
-<p>09:09:43 Began running node model.taxi_rides_ny.stg_green_tripdata 09:09:43 1 of 1 START sql view model dbt_stephen_barrie.stg_green_tripdata ………….. [RUN] 09:09:43 Acquiring new bigquery connection ‘model.taxi_rides_ny.stg_green_tripdata’ 09:09:43 Began compiling node model.taxi_rides_ny.stg_green_tripdata 09:09:43 Writing injected SQL for node “model.taxi_rides_ny.stg_green_tripdata” 09:09:43 Timing info for model.taxi_rides_ny.stg_green_tripdata (compile): 2023-03-27 09:09:43.922045 =&gt; 2023-03-27 09:09:43.940627 09:09:43 Began executing node model.taxi_rides_ny.stg_green_tripdata 09:09:43 Writing runtime sql for node “model.taxi_rides_ny.stg_green_tripdata” 09:09:43 Opening a new connection, currently in state closed 09:09:43 On model.taxi_rides_ny.stg_green_tripdata: /* {“app”: “dbt”, “dbt_version”: “1.4.5”, “profile_name”: “user”, “target_name”: “default”, “node_id”: “model.taxi_rides_ny.stg_green_tripdata”} */</p>
-<p>create or replace view <code>taxi-rides-ny-137</code>.<code>dbt_stephen_barrie</code>.<code>stg_green_tripdata</code> OPTIONS() as</p>
-<p>select – identifiers cast(vendorid as integer) as vendorid, cast(ratecodeid as integer) as ratecodeid, cast(pulocationid as integer) as pickup_locationid, cast(dolocationid as integer) as dropoff_locationid,</p>
-<pre><code>-- timestamps
-cast(lpep_pickup_datetime as timestamp) as pickup_datetime,
-cast(lpep_dropoff_datetime as timestamp) as dropoff_datetime,
-
--- trip info
-store_and_fwd_flag,
-cast(passenger_count as integer) as passenger_count,
-cast(trip_distance as numeric) as trip_distance,
-cast(trip_type as integer) as trip_type,
-
--- payment info
-cast(fare_amount as numeric) as fare_amount,
-cast(extra as numeric) as extra,
-cast(mta_tax as numeric) as mta_tax,
-cast(tip_amount as numeric) as tip_amount,
-cast(tolls_amount as numeric) as tolls_amount,
-cast(ehail_fee as numeric) as ehail_fee,
-cast(improvement_surcharge as numeric) as improvement_surcharge,
-cast(total_amount as numeric) as total_amount,
-cast(payment_type as integer) as payment_type,
-case payment_type
-    when 1 then 'Credit card'
-    when 2 then 'Cash'
-    when 3 then 'No charge'
-    when 4 then 'Dispute'
-    when 5 then 'Unknown'
-    when 6 then 'Voided trip'
-end as payment_type_description,
-cast(congestion_surcharge as numeric) as congestion_surcharge</code></pre>
-<p>from <code>taxi-rides-ny-137</code>.<code>trips_data_all</code>.<code>green_tripdata</code> limit 100;</p>
-<p>09:09:44 BigQuery adapter: https://console.cloud.google.com/bigquery?project=taxi-rides-ny-137&amp;j=bq:europe-central2:8ca3c78e-ccc7-4992-95bd-bcdb0df40f4e&amp;page=queryresults 09:09:45 Timing info for model.taxi_rides_ny.stg_green_tripdata (execute): 2023-03-27 09:09:43.941082 =&gt; 2023-03-27 09:09:45.000530 09:09:45 Sending event: {‘category’: ‘dbt’, ‘action’: ‘run_model’, ‘label’: ‘40e82f39-51cb-4467-afa1-3237172c4c5d’, ‘context’: [&lt;snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb6833835e0&gt;]} 09:09:45 1 of 1 OK created sql view model dbt_stephen_barrie.stg_green_tripdata ……… [[32mCREATE VIEW (0 processed)[0m in 1.08s] 09:09:45 Finished running node model.taxi_rides_ny.stg_green_tripdata</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  Began running node model.taxi_rides_ny.stg_green_tripdata</span>
+<span id="cb4-2"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  <span class="dv" style="color: #AD0000;">1</span> of <span class="dv" style="color: #AD0000;">1</span> START sql view model dbt_stephen_barrie.stg_green_tripdata .............. [RUN]</span>
+<span id="cb4-3"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  Acquiring new bigquery connection <span class="st" style="color: #20794D;">'model.taxi_rides_ny.stg_green_tripdata'</span></span>
+<span id="cb4-4"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  Began compiling node model.taxi_rides_ny.stg_green_tripdata</span>
+<span id="cb4-5"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  Writing injected SQL <span class="cf" style="color: #003B4F;">for</span> node <span class="st" style="color: #20794D;">"model.taxi_rides_ny.stg_green_tripdata"</span></span>
+<span id="cb4-6"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  Timing info <span class="cf" style="color: #003B4F;">for</span> model.taxi_rides_ny.stg_green_tripdata (<span class="bu" style="color: null;">compile</span>): <span class="dv" style="color: #AD0000;">2023</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">27</span> <span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="fl" style="color: #AD0000;">43.922045</span> <span class="op" style="color: #5E5E5E;">=&gt;</span> <span class="dv" style="color: #AD0000;">2023</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">27</span> <span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="fl" style="color: #AD0000;">43.940627</span></span>
+<span id="cb4-7"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  Began executing node model.taxi_rides_ny.stg_green_tripdata</span>
+<span id="cb4-8"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  Writing runtime sql <span class="cf" style="color: #003B4F;">for</span> node <span class="st" style="color: #20794D;">"model.taxi_rides_ny.stg_green_tripdata"</span></span>
+<span id="cb4-9"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  Opening a new connection, currently <span class="kw" style="color: #003B4F;">in</span> state closed</span>
+<span id="cb4-10"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">43</span>  On model.taxi_rides_ny.stg_green_tripdata: <span class="op" style="color: #5E5E5E;">/*</span> {<span class="st" style="color: #20794D;">"app"</span>: <span class="st" style="color: #20794D;">"dbt"</span>, <span class="st" style="color: #20794D;">"dbt_version"</span>: <span class="st" style="color: #20794D;">"1.4.5"</span>, <span class="st" style="color: #20794D;">"profile_name"</span>: <span class="st" style="color: #20794D;">"user"</span>, <span class="st" style="color: #20794D;">"target_name"</span>: <span class="st" style="color: #20794D;">"default"</span>, <span class="st" style="color: #20794D;">"node_id"</span>: <span class="st" style="color: #20794D;">"model.taxi_rides_ny.stg_green_tripdata"</span>} <span class="op" style="color: #5E5E5E;">*/</span></span>
+<span id="cb4-11"></span>
+<span id="cb4-12"></span>
+<span id="cb4-13">  create <span class="kw" style="color: #003B4F;">or</span> replace view `taxi<span class="op" style="color: #5E5E5E;">-</span>rides<span class="op" style="color: #5E5E5E;">-</span>ny<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">137</span>`.`dbt_stephen_barrie`.`stg_green_tripdata`</span>
+<span id="cb4-14">  OPTIONS()</span>
+<span id="cb4-15">  <span class="im" style="color: #00769E;">as</span> </span>
+<span id="cb4-16"></span>
+<span id="cb4-17">select</span>
+<span id="cb4-18">    <span class="op" style="color: #5E5E5E;">--</span> identifiers</span>
+<span id="cb4-19">    cast(vendorid <span class="im" style="color: #00769E;">as</span> integer) <span class="im" style="color: #00769E;">as</span> vendorid,</span>
+<span id="cb4-20">    cast(ratecodeid <span class="im" style="color: #00769E;">as</span> integer) <span class="im" style="color: #00769E;">as</span> ratecodeid,</span>
+<span id="cb4-21">    cast(pulocationid <span class="im" style="color: #00769E;">as</span> integer) <span class="im" style="color: #00769E;">as</span>  pickup_locationid,</span>
+<span id="cb4-22">    cast(dolocationid <span class="im" style="color: #00769E;">as</span> integer) <span class="im" style="color: #00769E;">as</span> dropoff_locationid,</span>
+<span id="cb4-23"></span>
+<span id="cb4-24">    <span class="op" style="color: #5E5E5E;">--</span> timestamps</span>
+<span id="cb4-25">    cast(lpep_pickup_datetime <span class="im" style="color: #00769E;">as</span> timestamp) <span class="im" style="color: #00769E;">as</span> pickup_datetime,</span>
+<span id="cb4-26">    cast(lpep_dropoff_datetime <span class="im" style="color: #00769E;">as</span> timestamp) <span class="im" style="color: #00769E;">as</span> dropoff_datetime,</span>
+<span id="cb4-27"></span>
+<span id="cb4-28">    <span class="op" style="color: #5E5E5E;">--</span> trip info</span>
+<span id="cb4-29">    store_and_fwd_flag,</span>
+<span id="cb4-30">    cast(passenger_count <span class="im" style="color: #00769E;">as</span> integer) <span class="im" style="color: #00769E;">as</span> passenger_count,</span>
+<span id="cb4-31">    cast(trip_distance <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> trip_distance,</span>
+<span id="cb4-32">    cast(trip_type <span class="im" style="color: #00769E;">as</span> integer) <span class="im" style="color: #00769E;">as</span> trip_type,</span>
+<span id="cb4-33"></span>
+<span id="cb4-34">    <span class="op" style="color: #5E5E5E;">--</span> payment info</span>
+<span id="cb4-35">    cast(fare_amount <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> fare_amount,</span>
+<span id="cb4-36">    cast(extra <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> extra,</span>
+<span id="cb4-37">    cast(mta_tax <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> mta_tax,</span>
+<span id="cb4-38">    cast(tip_amount <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> tip_amount,</span>
+<span id="cb4-39">    cast(tolls_amount <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> tolls_amount,</span>
+<span id="cb4-40">    cast(ehail_fee <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> ehail_fee,</span>
+<span id="cb4-41">    cast(improvement_surcharge <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> improvement_surcharge,</span>
+<span id="cb4-42">    cast(total_amount <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> total_amount,</span>
+<span id="cb4-43">    cast(payment_type <span class="im" style="color: #00769E;">as</span> integer) <span class="im" style="color: #00769E;">as</span> payment_type,</span>
+<span id="cb4-44">    <span class="cf" style="color: #003B4F;">case</span> payment_type</span>
+<span id="cb4-45">        when <span class="dv" style="color: #AD0000;">1</span> then <span class="st" style="color: #20794D;">'Credit card'</span></span>
+<span id="cb4-46">        when <span class="dv" style="color: #AD0000;">2</span> then <span class="st" style="color: #20794D;">'Cash'</span></span>
+<span id="cb4-47">        when <span class="dv" style="color: #AD0000;">3</span> then <span class="st" style="color: #20794D;">'No charge'</span></span>
+<span id="cb4-48">        when <span class="dv" style="color: #AD0000;">4</span> then <span class="st" style="color: #20794D;">'Dispute'</span></span>
+<span id="cb4-49">        when <span class="dv" style="color: #AD0000;">5</span> then <span class="st" style="color: #20794D;">'Unknown'</span></span>
+<span id="cb4-50">        when <span class="dv" style="color: #AD0000;">6</span> then <span class="st" style="color: #20794D;">'Voided trip'</span></span>
+<span id="cb4-51">    end <span class="im" style="color: #00769E;">as</span> payment_type_description,</span>
+<span id="cb4-52">    cast(congestion_surcharge <span class="im" style="color: #00769E;">as</span> numeric) <span class="im" style="color: #00769E;">as</span> congestion_surcharge</span>
+<span id="cb4-53"></span>
+<span id="cb4-54"><span class="im" style="color: #00769E;">from</span> `taxi<span class="op" style="color: #5E5E5E;">-</span>rides<span class="op" style="color: #5E5E5E;">-</span>ny<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">137</span>`.`trips_data_all`.`green_tripdata`</span>
+<span id="cb4-55">limit <span class="dv" style="color: #AD0000;">100</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb4-56"></span>
+<span id="cb4-57"></span>
+<span id="cb4-58"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">44</span>  BigQuery adapter: https:<span class="op" style="color: #5E5E5E;">//</span>console.cloud.google.com<span class="op" style="color: #5E5E5E;">/</span>bigquery?project<span class="op" style="color: #5E5E5E;">=</span>taxi<span class="op" style="color: #5E5E5E;">-</span>rides<span class="op" style="color: #5E5E5E;">-</span>ny<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">137</span><span class="op" style="color: #5E5E5E;">&amp;</span>j<span class="op" style="color: #5E5E5E;">=</span>bq:europe<span class="op" style="color: #5E5E5E;">-</span>central2:<span class="dv" style="color: #AD0000;">8</span><span class="er" style="color: #AD0000;">ca3c78e</span><span class="op" style="color: #5E5E5E;">-</span>ccc7<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">4992</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">95</span><span class="er" style="color: #AD0000;">bd</span><span class="op" style="color: #5E5E5E;">-</span>bcdb0df40f4e<span class="op" style="color: #5E5E5E;">&amp;</span>page<span class="op" style="color: #5E5E5E;">=</span>queryresults</span>
+<span id="cb4-59"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">45</span>  Timing info <span class="cf" style="color: #003B4F;">for</span> model.taxi_rides_ny.stg_green_tripdata (execute): <span class="dv" style="color: #AD0000;">2023</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">27</span> <span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="fl" style="color: #AD0000;">43.941082</span> <span class="op" style="color: #5E5E5E;">=&gt;</span> <span class="dv" style="color: #AD0000;">2023</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">27</span> <span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="fl" style="color: #AD0000;">45.000530</span></span>
+<span id="cb4-60"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">45</span>  Sending event: {<span class="st" style="color: #20794D;">'category'</span>: <span class="st" style="color: #20794D;">'dbt'</span>, <span class="st" style="color: #20794D;">'action'</span>: <span class="st" style="color: #20794D;">'run_model'</span>, <span class="st" style="color: #20794D;">'label'</span>: <span class="st" style="color: #20794D;">'40e82f39-51cb-4467-afa1-3237172c4c5d'</span>, <span class="st" style="color: #20794D;">'context'</span>: [<span class="op" style="color: #5E5E5E;">&lt;</span>snowplow_tracker.self_describing_json.SelfDescribingJson <span class="bu" style="color: null;">object</span> at <span class="bn" style="color: #AD0000;">0x7fb6833835e0</span><span class="op" style="color: #5E5E5E;">&gt;</span>]}</span>
+<span id="cb4-61"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">45</span>  <span class="dv" style="color: #AD0000;">1</span> of <span class="dv" style="color: #AD0000;">1</span> OK created sql view model dbt_stephen_barrie.stg_green_tripdata ......... [[<span class="dv" style="color: #AD0000;">32</span><span class="er" style="color: #AD0000;">mCREATE</span> VIEW (<span class="dv" style="color: #AD0000;">0</span> processed)[<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">m</span> <span class="kw" style="color: #003B4F;">in</span> <span class="fl" style="color: #AD0000;">1.08</span><span class="er" style="color: #AD0000;">s</span>]</span>
+<span id="cb4-62"><span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">0</span><span class="er" style="color: #AD0000;">9</span>:<span class="dv" style="color: #AD0000;">45</span>  Finished running node model.taxi_rides_ny.stg_green_tripdata</span></code></pre></div>
+</div>
 <p>We can also see the compiled code:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
