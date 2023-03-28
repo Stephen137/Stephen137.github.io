@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Stephen Barrie">
-<meta name="dcterms.date" content="2023-03-23">
+<meta name="dcterms.date" content="2023-03-28">
 
 <title>Into the Unknown - Data Engineering Zoomcamp - Week 4</title>
 <style>
@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -112,8 +175,8 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">Data Engineering Zoomcamp - Week 4</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">dbt</div>
-                <div class="quarto-category">Google Data Studio</div>
-                <div class="quarto-category">Metabase</div>
+                <div class="quarto-category">BigQuery</div>
+                <div class="quarto-category">Looker</div>
                 <div class="quarto-category">DataTalksClub</div>
               </div>
                   </div>
@@ -132,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 23, 2023</p>
+        <p class="date">March 28, 2023</p>
       </div>
     </div>
       
@@ -149,10 +212,21 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#week-4---analytics-engineering" id="toc-week-4---analytics-engineering" class="nav-link active" data-scroll-target="#week-4---analytics-engineering">Week 4 - Analytics Engineering</a>
   <ul class="collapse">
+  <li><a href="#analytics-engineering-basics" id="toc-analytics-engineering-basics" class="nav-link" data-scroll-target="#analytics-engineering-basics">4.1.1 Analytics Engineering Basics</a></li>
+  <li><a href="#what-is-dbt" id="toc-what-is-dbt" class="nav-link" data-scroll-target="#what-is-dbt">4.1.2 What is dbt ?</a></li>
   <li><a href="#how-to-set-up-dbt-for-using-bigquery" id="toc-how-to-set-up-dbt-for-using-bigquery" class="nav-link" data-scroll-target="#how-to-set-up-dbt-for-using-bigquery">How to set up dbt for using BigQuery</a></li>
   <li><a href="#create-a-dbt-cloud-project" id="toc-create-a-dbt-cloud-project" class="nav-link" data-scroll-target="#create-a-dbt-cloud-project">Create a dbt cloud project</a></li>
   <li><a href="#add-github-repository" id="toc-add-github-repository" class="nav-link" data-scroll-target="#add-github-repository">Add GitHub repository</a></li>
   <li><a href="#review-your-project-settings" id="toc-review-your-project-settings" class="nav-link" data-scroll-target="#review-your-project-settings">Review your project settings</a></li>
+  <li><a href="#start-your-dbt-project-bigquery-and-dbt-cloud" id="toc-start-your-dbt-project-bigquery-and-dbt-cloud" class="nav-link" data-scroll-target="#start-your-dbt-project-bigquery-and-dbt-cloud">4.2.1 Start Your dbt Project: BigQuery and dbt Cloud</a></li>
+  <li><a href="#build-the-first-dbt-models" id="toc-build-the-first-dbt-models" class="nav-link" data-scroll-target="#build-the-first-dbt-models">4.3.1 Build the First dbt Models</a></li>
+  <li><a href="#testing-and-documenting-the-project" id="toc-testing-and-documenting-the-project" class="nav-link" data-scroll-target="#testing-and-documenting-the-project">4.3.2 Testing and Documenting the Project</a></li>
+  <li><a href="#deploying-a-dbt-project" id="toc-deploying-a-dbt-project" class="nav-link" data-scroll-target="#deploying-a-dbt-project">Deploying a dbt project</a></li>
+  <li><a href="#deployment-using-dbt-cloud" id="toc-deployment-using-dbt-cloud" class="nav-link" data-scroll-target="#deployment-using-dbt-cloud">4.4.1 Deployment Using dbt Cloud</a></li>
+  <li><a href="#visualising-the-data-with-looker-f.k.a-google-data-studio" id="toc-visualising-the-data-with-looker-f.k.a-google-data-studio" class="nav-link" data-scroll-target="#visualising-the-data-with-looker-f.k.a-google-data-studio">4.5.1 Visualising the data with Looker (f.k.a Google Data Studio)</a></li>
+  <li><a href="#visualising-the-data-with-metabase" id="toc-visualising-the-data-with-metabase" class="nav-link" data-scroll-target="#visualising-the-data-with-metabase">4.5.2 Visualising the data with Metabase</a></li>
+  <li><a href="#advanced-knowledge" id="toc-advanced-knowledge" class="nav-link" data-scroll-target="#advanced-knowledge">Advanced knowledge</a></li>
+  <li><a href="#workshop-maximizing-confidence-in-your-data-model-changes-with-dbt-and-piperider" id="toc-workshop-maximizing-confidence-in-your-data-model-changes-with-dbt-and-piperider" class="nav-link" data-scroll-target="#workshop-maximizing-confidence-in-your-data-model-changes-with-dbt-and-piperider">Workshop: Maximizing Confidence in Your Data Model Changes with dbt and PipeRider</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -165,13 +239,91 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="week-4---analytics-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="week-4---analytics-engineering">Week 4 - Analytics Engineering</h2>
-<p>Goal: Transforming the data previously loaded in to our data warehouse (in my case BigQuery) to Analytical Views developing a <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/README.md">dbt project</a>.</p>
-<p>I have already ingested the prerequisite datasets to Google Cloud Storage using the <a href="https://www.prefect.io/">Prefect</a> work orchestration solution, and have created the following external tables in BigQuery:</p>
+<p>Goal: Transforming the data previously loaded in to our data warehouse (in my case BigQuery) by building models using a <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/README.md">dbt project</a>, testing and deploying those models in a production environment, before finally visualizing the data in Looker.</p>
+<p>Note that I have already ingested the prerequisite datasets to Google Cloud Storage using the <a href="https://www.prefect.io/">Prefect</a> work orchestration solution, and have created the following external tables in BigQuery:</p>
 <ul>
 <li><p>Yellow trip data (109,047,518 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/37072954-6175-4aeb-b15d-44db33da91c9.PNG" class="img-fluid" alt="yellow_trip_data.PNG"></p></li>
 <li><p>fhv trip data (43,244,696) <img src="DE_Zoomcamp_Week_4_files/figure-html/adaa502c-e8d6-43c8-bd1c-21dd41149a42.PNG" class="img-fluid" alt="fhv_trip_data.PNG"></p></li>
 <li><p>Green trip data (7,778,101 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/cb73b94b-a7eb-440d-8100-4cb06bfbdfc8.PNG" class="img-fluid" alt="green_trip_data.PNG"></p></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3ace9e5b-b482-44c0-ab33-eaf8cef0228a.JPG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">week_4.JPG</figcaption><p></p>
+</figure>
+</div>
+<section id="analytics-engineering-basics" class="level3">
+<h3 class="anchored" data-anchor-id="analytics-engineering-basics">4.1.1 Analytics Engineering Basics</h3>
+<section id="what-is-analytics-engineering" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-analytics-engineering">What is Analytics Engineering ?</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b5371c91-2d1d-4e51-83a1-bbd40a852819.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">data_team_roles.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cf600eff-4089-4708-a3bc-afda73970197.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">tooling.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="data-modeling-concepts" class="level4">
+<h4 class="anchored" data-anchor-id="data-modeling-concepts">Data Modeling Concepts</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/c7953f75-d4c6-4648-9f31-1211d4833565.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">elt_etl.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/148f708b-1d74-4038-982b-aaee4ce91d03.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">kimball.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/823ffca9-47c7-4c1e-b9af-e1b7465d82b8.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">elements_dimensional_modelling.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/93bfcdd8-f4e9-49f1-a59b-7ab0484c1050.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">architect_dimension_modeling.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="what-is-dbt" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-dbt">4.1.2 What is dbt ?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/77794918-2902-4f20-be56-5d554e42a149.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">what_is_dbt.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d98e022d-d296-4282-8371-21c24632ecd9.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">how_does_dbt_work.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/153b1441-a97d-4ce6-9870-629b34ccda6c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">how_to_use_dbt.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cc5cc6f4-de2f-4129-96d6-6653ca23469c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">how_are_we_going_to_use_dbt.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
 <section id="how-to-set-up-dbt-for-using-bigquery" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-set-up-dbt-for-using-bigquery">How to set up dbt for using BigQuery</h3>
 <p><a href="https://docs.getdbt.com/tutorial/setting-up">Official documentation</a></p>
@@ -220,12 +372,11 @@ ul.task-list li input[type="checkbox"] {
 <li>Create a dbt cloud account from <a href="https://www.getdbt.com/pricing/">their website</a> (free for solo developers)</li>
 <li>Once you have logged in into dbt cloud you will be prompt to create a new project</li>
 </ol>
-<p>You are going to need:</p>
+<p>We are going to need:</p>
 <ul>
-<li>access to your data warehouse (bigquery - set up in weeks 2 and 3)</li>
-<li>admin access to your repo, where you will have the dbt project.</li>
+<li>access to our data warehouse (BigQuery - set up in weeks 2 and 3)</li>
+<li>admin access to our repo, where we will have the dbt project</li>
 </ul>
-<p><em>Note: For the sake of showing the creation of a project from scratch I’ve created a new empty repository just for this week project.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="DE_Zoomcamp_Week_4_files/figure-html/eb6d2702-d4e5-4a41-8b3d-ec5e5194031c.PNG" class="img-fluid figure-img"></p>
@@ -233,8 +384,8 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <ol start="3" type="1">
-<li><p>Name your project</p></li>
-<li><p>Choose Bigquery as your data warehouse:</p></li>
+<li><p>Name our project</p></li>
+<li><p>Choose Bigquery as our data warehouse:</p></li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -289,12 +440,953 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figcaption class="figure-caption">dbt_project.PNG</figcaption><p></p>
 </figure>
 </div>
+</section>
+<section id="start-your-dbt-project-bigquery-and-dbt-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="start-your-dbt-project-bigquery-and-dbt-cloud">4.2.1 Start Your dbt Project: BigQuery and dbt Cloud</h3>
+<p>You’ll notice after initializing your project that the main branch will be read-only. This is because any changes to code cannot and should not be made directly in the base branch. A new branch must be created in the dbt Cloud IDE in order to make any changes to your project.</p>
+<p>You can perform git tasks (such as create a new branch) with the <code>Commit and Sync</code> button. Once you commit the initial “changes” even though you haven’t made any changes because it’s read only! you can then create a new branch from the same place, and make edits within that branch.</p>
+<p>Once you have created the new branch - edit the <code>dbt_project_yaml</code> to as per below and save the file:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/a02f158a-f3b4-4034-bf72-22609fea3fce.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">week_4.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca789475-2997-4795-8973-6b22b76dbbcf.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_yaml.PNG</figcaption><p></p>
 </figure>
 </div>
+</section>
+<section id="build-the-first-dbt-models" class="level3">
+<h3 class="anchored" data-anchor-id="build-the-first-dbt-models">4.3.1 Build the First dbt Models</h3>
+<section id="anatomy-of-a-dbt-model-written-code-vs-compiled-sources" class="level4">
+<h4 class="anchored" data-anchor-id="anatomy-of-a-dbt-model-written-code-vs-compiled-sources">Anatomy of a dbt model: written code vs compiled sources</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca30e80a-cca5-4cbc-916d-17292195ee18.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_model_anatomy.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="sources-seeds-and-ref" class="level4">
+<h4 class="anchored" data-anchor-id="sources-seeds-and-ref">Sources, seeds and ref</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/7630b65d-b815-4974-8c7b-d558d069fbe6.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_model_FROM_clause.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b3357e81-d884-454f-8975-bb519e5f0ac1.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_model_FROM_clause_ref.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now go back to our dbt IDE and create two new directories for the models we will be creating:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/7ef7d7a6-c19e-4705-89d9-bce7bf6cc204.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">models_directories.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>The first directory <code>Staging</code> will be used for our raw data. Let’s create a <code>schema.yml</code> file to use the <code>source</code> macro to resolve the correct schema, build the correct dependencies, and generate the lineage automatically:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/190d268e-438a-496b-9b25-2686d4c67aaf.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">staging_schema_yml.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Now let’s create a sql file :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b4b36f3a-1d6e-4031-b2a1-ba10873275f5.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">staging_green_sql.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We can run this model using one of the following commands within the dbt terminal:</p>
+<pre><code>dbt run  # Builds models in your target database.
+dbt run -m stg_green_tripdata.sql
+dbt run --select stg_green_tripdata  # Builds a specific model.
+dbt run --select stg_green_tripdata+  # Builds a specific model and its children.
+dbt run --select +stg_green_tripdata  # Builds a specific model and its ancestors.
+dbt run --select +stg_green_tripdata+  # Builds a specific model and its children and ancestors.</code></pre>
+<p>Let’s go with :</p>
+<pre><code>dbt run -m stg_green_tripdata.sql</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cdb9b0c1-bd31-4ce4-aed0-1dd114bf5b3e.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">model_run_error_region.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>I ran into an error because of inconsistent regions. The data buckets and BigQuery tables have to be configured to the same region. I reconfigured my staging table to <code>Central Europe 2</code> to be consistent with my data bucket and the model ran successfully!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cf71db17-d1e0-4636-8926-12492e5826c8.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_green_tripdata_modelrun.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>If we now head to <code>BigQuery</code> we can see that our sql table has been created :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/df13f474-cf86-46c5-bc1f-25afc949f4e7.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">BQ_stg_green_tripdata.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="macros" class="level4">
+<h4 class="anchored" data-anchor-id="macros">Macros</h4>
+<p><a href="https://docs.getdbt.com/docs/build/jinja-macros#macros">Macros</a> in Jinja are pieces of code that can be reused multiple times – they are analogous to “functions” in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in <code>.sql</code> files, typically in your <code>macros</code> directory <a href="https://docs.getdbt.com/reference/project-configs/macro-paths">(docs)</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b30a4c48-fe8f-4d94-bbda-c811ca7ad478.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">macros.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now create a macros file for our project :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d2e685e5-b007-44e8-a6fa-41a768b4abaa.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">get_payment_type_macro.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And let’s add that macro to our <code>stg_green_tripdata.sql</code> file :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/080cdaae-c330-4a2a-b01b-0795648f863b.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">staging_green_sql_updated.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And run the model once again using the following command within the dbt terminal:</p>
+<pre><code>dbt run --select stg_green_tripdata    </code></pre>
+<p>09:09:43 Began running node model.taxi_rides_ny.stg_green_tripdata 09:09:43 1 of 1 START sql view model dbt_stephen_barrie.stg_green_tripdata ………….. [RUN] 09:09:43 Acquiring new bigquery connection ‘model.taxi_rides_ny.stg_green_tripdata’ 09:09:43 Began compiling node model.taxi_rides_ny.stg_green_tripdata 09:09:43 Writing injected SQL for node “model.taxi_rides_ny.stg_green_tripdata” 09:09:43 Timing info for model.taxi_rides_ny.stg_green_tripdata (compile): 2023-03-27 09:09:43.922045 =&gt; 2023-03-27 09:09:43.940627 09:09:43 Began executing node model.taxi_rides_ny.stg_green_tripdata 09:09:43 Writing runtime sql for node “model.taxi_rides_ny.stg_green_tripdata” 09:09:43 Opening a new connection, currently in state closed 09:09:43 On model.taxi_rides_ny.stg_green_tripdata: /* {“app”: “dbt”, “dbt_version”: “1.4.5”, “profile_name”: “user”, “target_name”: “default”, “node_id”: “model.taxi_rides_ny.stg_green_tripdata”} */</p>
+<p>create or replace view <code>taxi-rides-ny-137</code>.<code>dbt_stephen_barrie</code>.<code>stg_green_tripdata</code> OPTIONS() as</p>
+<p>select – identifiers cast(vendorid as integer) as vendorid, cast(ratecodeid as integer) as ratecodeid, cast(pulocationid as integer) as pickup_locationid, cast(dolocationid as integer) as dropoff_locationid,</p>
+<pre><code>-- timestamps
+cast(lpep_pickup_datetime as timestamp) as pickup_datetime,
+cast(lpep_dropoff_datetime as timestamp) as dropoff_datetime,
+
+-- trip info
+store_and_fwd_flag,
+cast(passenger_count as integer) as passenger_count,
+cast(trip_distance as numeric) as trip_distance,
+cast(trip_type as integer) as trip_type,
+
+-- payment info
+cast(fare_amount as numeric) as fare_amount,
+cast(extra as numeric) as extra,
+cast(mta_tax as numeric) as mta_tax,
+cast(tip_amount as numeric) as tip_amount,
+cast(tolls_amount as numeric) as tolls_amount,
+cast(ehail_fee as numeric) as ehail_fee,
+cast(improvement_surcharge as numeric) as improvement_surcharge,
+cast(total_amount as numeric) as total_amount,
+cast(payment_type as integer) as payment_type,
+case payment_type
+    when 1 then 'Credit card'
+    when 2 then 'Cash'
+    when 3 then 'No charge'
+    when 4 then 'Dispute'
+    when 5 then 'Unknown'
+    when 6 then 'Voided trip'
+end as payment_type_description,
+cast(congestion_surcharge as numeric) as congestion_surcharge</code></pre>
+<p>from <code>taxi-rides-ny-137</code>.<code>trips_data_all</code>.<code>green_tripdata</code> limit 100;</p>
+<p>09:09:44 BigQuery adapter: https://console.cloud.google.com/bigquery?project=taxi-rides-ny-137&amp;j=bq:europe-central2:8ca3c78e-ccc7-4992-95bd-bcdb0df40f4e&amp;page=queryresults 09:09:45 Timing info for model.taxi_rides_ny.stg_green_tripdata (execute): 2023-03-27 09:09:43.941082 =&gt; 2023-03-27 09:09:45.000530 09:09:45 Sending event: {‘category’: ‘dbt’, ‘action’: ‘run_model’, ‘label’: ‘40e82f39-51cb-4467-afa1-3237172c4c5d’, ‘context’: [&lt;snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb6833835e0&gt;]} 09:09:45 1 of 1 OK created sql view model dbt_stephen_barrie.stg_green_tripdata ……… [[32mCREATE VIEW (0 processed)[0m in 1.08s] 09:09:45 Finished running node model.taxi_rides_ny.stg_green_tripdata</p>
+<p>We can also see the compiled code:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b6997cf-8a54-49d2-9348-152313f9d82c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">compiled_code_stg_green.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="packages" class="level4">
+<h4 class="anchored" data-anchor-id="packages">Packages</h4>
+<p>dbt packages are essentially standalone dbt projects, with models and macros that tackle a specific problem area. As a dbt user, by adding a package to our project, the package’s models and macros will become part of our own project.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e1dc92d9-bb4d-47ca-a51e-f619a5f8de16.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">packages.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s create a <code>packages.yaml</code> file to include the following :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/95ef9435-4ea1-4417-8df5-516d71bdb461.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">packages_yml.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>To install this package and download the dependencies run the following command in the dbt terminal:</p>
+<pre><code>dbt deps   </code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/bb99a88b-7fd9-4b7f-bad0-0b5d0f1d1107.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_deps.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>A number of folders and files have now been created:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/eb7a00cd-503f-4c0b-82f5-d0fbf374d589.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_packages.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s return to our model and update our <code>stg_green_tripdata.sql</code> file to make use of a macro:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/4cefee22-bfb0-4564-885d-67dd5cd67eee.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">macro_surrogate.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Now let’s run the command from the dbt IDE :</p>
+<pre><code>dbt run --select stg_green_tripdata</code></pre>
+<p>And we can see the compiled code extract:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/48e4a1a0-d1e4-44a4-afa6-b840eda51387.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">surrogate_compiled.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="variables" class="level4">
+<h4 class="anchored" data-anchor-id="variables">Variables</h4>
+<p>dbt provides a mechanism, <a href="https://docs.getdbt.com/reference/dbt-jinja-functions/var">variables</a>, to provide data to models for compilation. Variables can be used to <a href="https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22">configure timezones</a>, <a href="https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23">avoid hardcoding table names</a> or otherwise provide data to models to configure how they are compiled.</p>
+<p>See <a href="https://docs.getdbt.com/docs/build/project-variables">Project variables</a> for further details.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d7f17b1d-b638-467f-a20b-6dbfce2271d7.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">variables.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now introduce the above <code>is_test_run</code> variable into our <code>stg_green_tripdata.sql</code> file which will allow us to control from the command line whether we execute a <code>test_run</code> with a limit of 100 rows, or a full run, with no limit:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/681543bb-e6d6-4f4c-a83a-44d9b368c417.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">limit_variable.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And run the model from the IDE first, <code>without</code> specifying our variable function, and so the run will default to <code>True</code> and the limit of 100 rows will be applied :</p>
+<pre><code>dbt run --select stg_green_tripdata</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cd971f17-1a17-4406-bfca-4652be25d63d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">limit_100.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>But if we run again, this time specifying our variable as <code>False</code> then the 100 row limit will not be applied :</p>
+<pre><code>dbt run --select stg_green_tripdata --var 'is_test_run: false'</code></pre>
+<p>We can see from our Big Query table that we now have <code>6,835,902</code> rows :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/4e083276-3a37-49e2-8131-1723532c5cc2.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">green_tripdata_BQ_no_limit.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>OK, now that we have built our <code>green_tripdata</code> model let’s replicate these steps for our <code>yellow_tripdata</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/dc319591-d297-496f-ba42-c6526a5a4924.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">staging_yellow.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Now use <code>dbt run</code> because we have two models:</p>
+<pre><code>dbt run --var 'is_test_run: false'</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/460fb15b-068c-4b3b-ba87-2af94566b43b.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">green_and_yellow.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And if we check Big Query we can see our <code>stg_yellow_tripdata table</code> has been added with `107,991,349 rows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3d39debf-0580-40d3-ad5f-568075be1f95.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">yellow_trip_data_BQ.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="dbt-seeds" class="level4">
+<h4 class="anchored" data-anchor-id="dbt-seeds">dbt Seeds</h4>
+<p>Seeds are CSV files in your dbt project (typically in your <code>seeds</code> directory), that dbt can load into your data warehouse using the <code>dbt seed</code> command. Typically these are small files that contain data that will not chnage that often. See <a href="https://docs.getdbt.com/docs/build/seeds">Seeds</a> for further detail.</p>
+<p>Let’s add the <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/data/taxi_zone_lookup.csv">taxi zone look up csv file</a> by creating a new file within the <code>seeds</code> directory and simply copying and pasitng the contents of the raw csv file:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/71d363ff-349a-4325-9df2-6543c71faf0d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">taxi_zone_lookup.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>and then run the following command from the dbt terminal:</p>
+<pre><code>dbt seed</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/18beb23b-e512-4d48-a6b5-ffc2ca2be321.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_seed.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And head back to BigQuery and we find our table created with 265 rows :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/a92c3593-4640-41f0-b16c-cd5709c896c6.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">taxi_zone_lookup_BQ.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We can specify the data types of the csv fil, by modifying our <code>dbt_project.yml</code> file - otherwise default types will be applied :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e378e659-fc6d-47c5-a8b5-4be7807ec1b4.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_seed_project_yml.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>If we slightly modify data(for example, change 1,“EWR”,“Newark Airport”,“EWR” to 1,“NEWR”,“Newark Airport”,“NEWR”) in the csv file, and then run the following command:</p>
+<pre><code>dbt seed --full-refresh</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/708e7d41-3eb1-4c4f-b28a-26332ad73e2b.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">updated_seed.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s now create a model from this seed. First, create a new file within the <code>core</code> directory called <code>dim_zones.sql</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5dac4bda-3a6a-44f6-bf5f-1960739662a3.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dim_zones.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Ideally, we want everything in the directory to be tables to have efficient queries.</p>
+<p>Now, create the model <code>fact_trips.sql</code> within the <code>core</code> directory :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d170590e-ad1a-42b2-935e-74ba57353d62.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">fact_trips.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And we can have this nice visualization of the lineage :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e6d4946b-cde1-4508-b4d4-6c2fabad420a.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">fact_trips_lineage.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>The <code>dbt run</code> command will create everything, except the seeds:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/31b38a16-0e0e-419f-b695-4ab949b21898.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">fact_trips_error.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>I ran into an error and after quite a bit of head scratching, it arose because the order of my columns was not consistent between my <code>yellow</code> and <code>green</code> tables. The following are basic rules for combining the result sets of two queries by using UNION:</p>
+<ul>
+<li>The number and the order of the columns must be the same in all queries.</li>
+<li>The data types must be compatible.</li>
+</ul>
+<p>After synchronizing the column order it ran successfully:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/0c040389-06d2-452f-b3cf-492048866c1f.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_run.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And I now have my <code>fact_trips</code> table in BQ:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/24138c28-6723-4734-80c0-ca88e38dc901.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">fact_trips_BQ.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>However we also want to run the seeds, so we will use the command <code>dbt build --select fact_trips</code> to run only the <code>fact_trips</code> model :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/8149fd85-90bb-4456-a29c-037cc6ad90b8.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">select_fact_trips.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>The command <code>dbt build --select +fact_trips --var 'is_test_run: false'</code> will run everything that <code>fact_trips</code> needs. dbt already knows the dependencies :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e8396c50-e764-4abc-8556-65478c1706ff.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">select_plus_fact_trips.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And we can see in BQ that our <code>fact_trips</code> table now has <code>113,324,889</code> rows :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/6996c69c-4553-4545-9ef2-7ccc3b6557d7.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">fact_trips_BQ_updated.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="testing-and-documenting-the-project" class="level3">
+<h3 class="anchored" data-anchor-id="testing-and-documenting-the-project">4.3.2 Testing and Documenting the Project</h3>
+<p>Tests are assertions you make about your models and other resources in your dbt project (e.g.&nbsp;sources, seeds and snapshots). When you run dbt test, dbt will tell you if each test in your project passes or fails.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3093a92a-37de-47b9-aec3-f63dd346ae64.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">tests.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>See <a href="https://docs.getdbt.com/docs/build/tests">Tests</a> for further details.</p>
+<section id="documentation" class="level4">
+<h4 class="anchored" data-anchor-id="documentation">Documentation</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e1e27707-042c-4c47-bd43-9adf1eb0172e.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">documentation.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>For further detail about documentation see <a href="https://docs.getdbt.com/docs/collaborate/documentation">here</a>.</p>
+</section>
+</section>
+<section id="deploying-a-dbt-project" class="level3">
+<h3 class="anchored" data-anchor-id="deploying-a-dbt-project">Deploying a dbt project</h3>
+<p>Let’s create a <code>dm_monthly_zone_revenue.sql</code> file :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/2d6946f8-d66e-490a-a278-3f93804a6651.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dm_monthly_zone_revenue.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Then build the table and its dependencies using:</p>
+<pre><code>dbt build --select +dm_monthly_zone_revenue --var 'is_test_run: false'</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/2a4c0e54-4bd8-4c4c-9ca2-cd8365c52ad1.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dm_monthly_zone_revenue_build.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And we can see that we now have the table in BQ :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/81ce0463-9049-4f12-90da-21a2fc21f781.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dm_monthly_zone_revenue_BQ.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Then, we update the `schema.yml` <span class="bu">file</span> <span class="kw">in</span> `models<span class="op">/</span>staging` to define the model. This section <span class="kw">is</span> used <span class="kw">in</span> particular to document the model <span class="kw">and</span> to add tests:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>models/staging/schema.yml</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>sources:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: staging</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#For bigquery:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      database: taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="dv">137</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># For postgres:</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># database: production</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      schema: trips_data_all</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># loaded_at_field: record_loaded_at</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>      tables:</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> name: green_tripdata</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> name: yellow_tripdata</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>         <span class="co"># freshness:</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>           <span class="co"># error_after: {count: 6, period: hour}</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>models:</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: stg_green_tripdata</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>      description: <span class="op">&gt;</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        Trip made by green taxis, also known <span class="im">as</span> boro taxis <span class="kw">and</span> street<span class="op">-</span>hail liveries.</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        Green taxis may respond to street hails,but only <span class="kw">in</span> the areas indicated <span class="kw">in</span> green on the</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">map</span> (i.e. above W <span class="dv">110</span> St<span class="op">/</span>E <span class="dv">96</span><span class="er">th</span> St <span class="kw">in</span> Manhattan <span class="kw">and</span> <span class="kw">in</span> the boroughs).</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        The records were collected <span class="kw">and</span> provided to the NYC Taxi <span class="kw">and</span> Limousine Commission (TLC) by</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>        technology service providers. </span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>      columns:</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: tripid</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>            description: Primary key <span class="cf">for</span> this table, generated <span class="cf">with</span> a concatenation of vendorid<span class="op">+</span>pickup_datetime</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>                <span class="op">-</span> unique:</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>                    severity: warn</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>                <span class="op">-</span> not_null:</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>                    severity: warn</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: VendorID </span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>                A code indicating the TPEP provider that provided the record.</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span><span class="op">=</span> Creative Mobile Technologies, LLC<span class="op">;</span> </span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>                <span class="dv">2</span><span class="op">=</span> VeriFone Inc.</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: pickup_datetime </span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>            description: The date <span class="kw">and</span> time when the meter was engaged.</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: dropoff_datetime </span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>            description: The date <span class="kw">and</span> time when the meter was disengaged.</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Passenger_count </span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>            description: The number of passengers <span class="kw">in</span> the vehicle. This <span class="kw">is</span> a driver<span class="op">-</span>entered value.</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Trip_distance </span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>            description: The elapsed trip distance <span class="kw">in</span> miles reported by the taximeter.</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Pickup_locationid</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>            description: locationid where the meter was engaged.</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> relationships:</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>                  to: ref(<span class="st">'taxi_zone_lookup'</span>)</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>                  field: locationid</span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: dropoff_locationid </span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>            description: locationid where the meter was engaged.</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> relationships:</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>                  to: ref(<span class="st">'taxi_zone_lookup'</span>)</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>                  field: locationid</span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: RateCodeID </span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>                The final rate code <span class="kw">in</span> effect at the end of the trip.</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">1</span><span class="op">=</span> Standard rate</span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">2</span><span class="op">=</span>JFK</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">3</span><span class="op">=</span>Newark</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">4</span><span class="op">=</span>Nassau <span class="kw">or</span> Westchester</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span><span class="op">=</span>Negotiated fare</span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">6</span><span class="op">=</span>Group ride</span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Store_and_fwd_flag </span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>              This flag indicates whether the trip record was held <span class="kw">in</span> vehicle</span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>              memory before sending to the vendor, aka “store <span class="kw">and</span> forward,”</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>              because the vehicle did <span class="kw">not</span> have a connection to the server.</span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>                Y<span class="op">=</span> store <span class="kw">and</span> forward trip</span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>                N<span class="op">=</span> <span class="kw">not</span> a store <span class="kw">and</span> forward trip</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Dropoff_longitude </span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>            description: Longitude where the meter was disengaged.</span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Dropoff_latitude </span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>            description: Latitude where the meter was disengaged.</span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Payment_type </span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>              A numeric code signifying how the passenger paid <span class="cf">for</span> the trip.</span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> accepted_values:</span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>                  values: <span class="st">"</span><span class="sc">{{</span><span class="st"> var('payment_type_values') </span><span class="sc">}}</span><span class="st">"</span></span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>                  quote: false</span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: payment_type_description</span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>            description: Description of the payment_type code</span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Fare_amount </span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>              The time<span class="op">-</span><span class="kw">and</span><span class="op">-</span>distance fare calculated by the meter.</span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>              Extra Miscellaneous extras <span class="kw">and</span> surcharges. Currently, this only includes</span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>              the $<span class="fl">0.50</span> <span class="kw">and</span> $<span class="dv">1</span> rush hour <span class="kw">and</span> overnight charges.</span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>              MTA_tax $<span class="fl">0.50</span> MTA tax that <span class="kw">is</span> automatically triggered based on the metered</span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>              rate <span class="kw">in</span> use.</span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Improvement_surcharge </span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>              $<span class="fl">0.30</span> improvement surcharge assessed trips at the flag drop. The</span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>              improvement surcharge began being levied <span class="kw">in</span> <span class="fl">2015.</span></span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Tip_amount </span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a>              Tip amount. This field <span class="kw">is</span> automatically populated <span class="cf">for</span> credit card</span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a>              tips. Cash tips are <span class="kw">not</span> included.</span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Tolls_amount </span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a>            description: Total amount of <span class="bu">all</span> tolls paid <span class="kw">in</span> trip.</span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Total_amount </span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a>            description: The total amount charged to passengers. Does <span class="kw">not</span> include cash tips.</span>
+<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: stg_yellow_tripdata</span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a>      description: <span class="op">&gt;</span> </span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a>        Trips made by New York City<span class="st">'s iconic yellow taxis. </span></span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a><span class="er">        Yellow taxis are the only vehicles permitted to respond to a street hail from a passenger in all five</span></span>
+<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a><span class="er">        boroughs. They may also be hailed using an e-hail app like Curb or Arro.</span></span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a><span class="er">        The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by</span></span>
+<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a><span class="er">        technology service providers. </span></span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a><span class="er">      columns:</span></span>
+<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: tripid</span></span>
+<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Primary key for this table, generated with a concatenation of vendorid+pickup_datetime</span></span>
+<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a><span class="er">                - unique:</span></span>
+<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a><span class="er">                    severity: warn</span></span>
+<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a><span class="er">                - not_null:</span></span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a><span class="er">                    severity: warn</span></span>
+<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: VendorID </span></span>
+<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a><span class="er">                A code indicating the TPEP provider that provided the record.</span></span>
+<span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a><span class="er">                1= Creative Mobile Technologies, LLC; </span></span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a><span class="er">                2= VeriFone Inc.</span></span>
+<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: pickup_datetime </span></span>
+<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The date and time when the meter was engaged.</span></span>
+<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: dropoff_datetime </span></span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The date and time when the meter was disengaged.</span></span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Passenger_count </span></span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The number of passengers in the vehicle. This is a driver-entered value.</span></span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Trip_distance </span></span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The elapsed trip distance in miles reported by the taximeter.</span></span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Pickup_locationid</span></span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a><span class="er">            description: locationid where the meter was engaged.</span></span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a><span class="er">              - relationships:</span></span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a><span class="er">                  to: ref('taxi_zone_lookup')</span></span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a><span class="er">                  field: locationid</span></span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: dropoff_locationid </span></span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a><span class="er">            description: locationid where the meter was engaged.</span></span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a><span class="er">              - relationships:</span></span>
+<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a><span class="er">                  to: ref('taxi_zone_lookup')</span></span>
+<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a><span class="er">                  field: locationid</span></span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
+<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: RateCodeID </span></span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt;</span></span>
+<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a><span class="er">                The final rate code in effect at the end of the trip.</span></span>
+<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a><span class="er">                  1= Standard rate</span></span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a><span class="er">                  2=JFK</span></span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a><span class="er">                  3=Newark</span></span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a><span class="er">                  4=Nassau or Westchester</span></span>
+<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a><span class="er">                  5=Negotiated fare</span></span>
+<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a><span class="er">                  6=Group ride</span></span>
+<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Store_and_fwd_flag </span></span>
+<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a><span class="er">              This flag indicates whether the trip record was held in vehicle</span></span>
+<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a><span class="er">              memory before sending to the vendor, aka “store and forward,”</span></span>
+<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a><span class="er">              because the vehicle did not have a connection to the server.</span></span>
+<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a><span class="er">                Y= store and forward trip</span></span>
+<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a><span class="er">                N= not a store and forward trip</span></span>
+<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Dropoff_longitude </span></span>
+<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Longitude where the meter was disengaged.</span></span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Dropoff_latitude </span></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Latitude where the meter was disengaged.</span></span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Payment_type </span></span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt;</span></span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a><span class="er">              A numeric code signifying how the passenger paid for the trip.</span></span>
+<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a><span class="er">              - accepted_values:</span></span>
+<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a><span class="er">                  values: "{{ var('payment_type_values') }}"</span></span>
+<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a><span class="er">                  quote: false</span></span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: payment_type_description</span></span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Description of the payment_type code</span></span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Fare_amount </span></span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a><span class="er">              The time-and-distance fare calculated by the meter.</span></span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a><span class="er">              Extra Miscellaneous extras and surcharges. Currently, this only includes</span></span>
+<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a><span class="er">              the $0.50 and $1 rush hour and overnight charges.</span></span>
+<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a><span class="er">              MTA_tax $0.50 MTA tax that is automatically triggered based on the metered</span></span>
+<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a><span class="er">              rate in use.</span></span>
+<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Improvement_surcharge </span></span>
+<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a><span class="er">              $0.30 improvement surcharge assessed trips at the flag drop. The</span></span>
+<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a><span class="er">              improvement surcharge began being levied in 2015.</span></span>
+<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Tip_amount </span></span>
+<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a><span class="er">              Tip amount. This field is automatically populated for credit card</span></span>
+<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a><span class="er">              tips. Cash tips are not included.</span></span>
+<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Tolls_amount </span></span>
+<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Total amount of all tolls paid in trip.</span></span>
+<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Total_amount </span></span>
+<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The total amount charged to passengers. Does not include cash tips.                </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we modify the <code>dbt_project.yml</code> to define the <code>payment_type_values</code> variable :</p>
+<p><code>dbt.project/yml</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Name your project! Project names should contain only lowercase characters</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and underscores. A good package name should reflect your organization's</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># name or the intended use of these models</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>name: <span class="st">'taxi_rides_ny'</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>version: <span class="st">'1.0.0'</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>config<span class="op">-</span>version: <span class="dv">2</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This setting configures which "profile" dbt uses for this project.</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>profile: <span class="st">'pg-dbt-workshop'</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># These configurations specify where dbt should look for different types of files.</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The `source-paths` config, for example, states that models in this project can be</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># found in the "models/" directory. You probably won't need to change these!</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>model<span class="op">-</span>paths: [<span class="st">"models"</span>]</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>analysis<span class="op">-</span>paths: [<span class="st">"analysis"</span>]</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>test<span class="op">-</span>paths: [<span class="st">"tests"</span>]</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>seed<span class="op">-</span>paths: [<span class="st">"seeds"</span>]</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>macro<span class="op">-</span>paths: [<span class="st">"macros"</span>]</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>snapshot<span class="op">-</span>paths: [<span class="st">"snapshots"</span>]</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>target<span class="op">-</span>path: <span class="st">"target"</span>  <span class="co"># directory which will store compiled SQL files</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>clean<span class="op">-</span>targets:         <span class="co"># directories to be removed by `dbt clean`</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"target"</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"dbt_packages"</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"dbt_modules"</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuring models</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Full documentation: https://docs.getdbt.com/docs/configuring-models</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co"># In this example config, we tell dbt to build all models in the example/ directory</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="co"># as tables. These settings can be overridden in the individual model files</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># using the `{{ config(...) }}` macro.</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>models:</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  taxi_rides_ny:</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Applies to all files under models/.../</span></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>      staging:</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>          materialized: view</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>      core:</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>          materialized: table</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="bu">vars</span>:</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>  payment_type_values: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>seeds: </span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>    taxi_rides_ny:</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>        taxi_zone_lookup:</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>            <span class="op">+</span>column_types:</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>                locationid: numeric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we can run <code>dbt test</code> or one of the following commands:</p>
+<pre><code>dbt test                               # Run tests on data in deployed models.
+dbt test --select stg_green_tripdata   # Run tests on data in specified model.
+dbt test --select stg_green_tripdata+  # Run tests on data in specified model and its children.
+dbt test --select +stg_green_tripdata  # Run tests on data in specified model and its ancestors.
+dbt build  # Run the seeds, run the tests and run the models.</code></pre>
+<p>Let’s use <code>dbt test</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b82bf8c8-daae-4092-9f4a-bfea227d237c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_test_warn.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We see that the column <code>tripid</code> from the <code>stg_green_tripdata</code> table is not unique after all. So let’s update our sql files - to keep only the first row of duplicates, with the condition <code>where rn = 1</code> - rn means <code>row number</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/a93c53be-184e-4d84-8835-9a0a1ff96c93.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">green_trip_data_updated.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/27059e9f-9fec-4261-a801-d1a33ffe42a1.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">yellow_trip_data_updated.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>For further detail on duplicates, see <a href="https://database.guide/4-ways-to-check-for-duplicate-rows-in-sql-server/">4 Ways to Check for Duplicate Rows in SQL Server</a>.</p>
+<p>Let’s now run everything we have built so far with <code>dbt build</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1c495f07-0619-47e8-88df-f0bae8116af5.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_build_all_pass.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>As we can see, this time, all tests have passed.</p>
+<p>The final thing to do is to complete our project is to add a <code>schema.yml</code> file for our core models :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>models:</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: dim_zones</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      List of unique zones idefied by locationid.</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      Includes the service zone they correspond to (Green <span class="kw">or</span> yellow).</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: fact_trips</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>      Taxi trips corresponding to both service zones (Green <span class="kw">and</span> yellow).</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>      The table contains records where both pickup <span class="kw">and</span> dropoff locations are valid <span class="kw">and</span> known zones.</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>      Each record corresponds to a trip uniquely identified by tripid.</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: dm_monthly_zone_revenue</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>      Aggregated table of <span class="bu">all</span> taxi trips corresponding to both service zones (Green <span class="kw">and</span> yellow) per pickup zone, month <span class="kw">and</span> service.</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>      The table contains monthly sums of the fare elements used to calculate the monthly revenue.</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>      The table contains also monthly indicators like number of trips, <span class="kw">and</span> average trip distance.</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    columns:</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>      <span class="op">-</span> name: revenue_monthly_total_amount</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        description: Monthly <span class="bu">sum</span> of the the total_amount of the fare charged <span class="cf">for</span> the trip per pickup zone, month <span class="kw">and</span> service.</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        tests:</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">-</span> not_null:</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>                severity: error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and a <code>macros_properties.yml</code> file for completeness :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>macros:</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: get_payment_type_description</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>      This macro receives a payment_type <span class="kw">and</span> returns the corresponding description.</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    arguments:</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">-</span> name: payment_type</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">type</span>: <span class="bu">int</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        description: <span class="op">&gt;</span> </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>          payment_type value.</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>          Must be one of the accepted values, otherwise the macro will <span class="cf">return</span> null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>See <a href="https://docs.getdbt.com/reference/resource-properties/tests">Tests</a> and <a href="https://docs.getdbt.com/reference/resource-configs/severity">Configuring test severity</a> for more information about tests.</p>
+</section>
+<section id="deployment-using-dbt-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="deployment-using-dbt-cloud">4.4.1 Deployment Using dbt Cloud</h3>
+<p>Now that we have created a complete project, and tested it, and know that everything runs error-free it is time to <code>deploy</code> our project using <a href="https://en.wikipedia.org/wiki/Version_control"><strong>version control</strong></a> and <a href="https://en.wikipedia.org/wiki/CI/CD"><strong>CI/CD</strong></a> in a production environment.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/393038d4-5ff8-4bb6-873e-b27923cd694c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">deployment.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/107ef1c8-9d2f-46cd-aaab-a01347997fa0.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_production.PNG</figcaption><p></p>
+</figure>
+</div>
+<section id="continuous-integration-ci" class="level4">
+<h4 class="anchored" data-anchor-id="continuous-integration-ci">Continuous Integration (CI)</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/c76b9ae5-b0dd-4b15-8b43-b3e2630b1910.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">continuous_integration.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>For further detail on enabling CI in dbt Cloud see <a href="https://docs.getdbt.com/docs/deploy/cloud-ci-job">the documentation</a>.</p>
+</section>
+<section id="creating-a-production-environment" class="level4">
+<h4 class="anchored" data-anchor-id="creating-a-production-environment">Creating a Production environment</h4>
+<p>In dbt cloud, commit my-new-branch and pull request. Then in our GitHub repository <a href="https://github.com/Stephen137/taxi_rides_ny">taxi_rides_ny</a>, merge this pull request to our main branch.</p>
+<p>Now head back to the dbt IDE. We already have a <em>development</em> environment :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/703f8085-b501-4be6-881c-ac599de68d14.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">development.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>But let’s now create a <em>production</em> environment :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f105bed6-a75a-4e04-9a1e-3a70808db484.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">production.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And now let’s create a <code>Job</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3a282be8-9589-42d9-a4d6-2ef452a92240.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">create_job_1.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f9f66339-ca24-4a9f-b4c7-2153dc7023f6.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">create_job_2.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/9d3fd0fd-357d-489a-9281-50f39e3d5717.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">create_job_3.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Note that in order to have access to <a href="https://docs.getdbt.com/docs/deploy/webhooks">Webhooks</a> you need to have either a <code>Team</code> or <code>Enterprise</code> subscription.</p>
+<p>Let’s now run the job :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1a2828ff-8651-47e8-b4d4-5665b0b32318.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_build_run.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/139cc43d-eb2f-4536-89e6-7ca62fdebc90.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_run_overview.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Under <code>Artifacts</code> we can see the compiled code together with the manifest :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/4335873b-74c0-4af8-895c-cade7e0f09b7.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">artefacts.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>and the documentation :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/eeec5dd1-194e-4ec8-8d73-55d22cbb757c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">docs.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We can also see the Lineage Graph for our models :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/be47cc0b-f60e-4dec-8993-c3704f0c95b4.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">production_lineage_graph.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1bd18f1a-038a-455d-974b-caffcf1cfa52.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">lineage_graph_2.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s head back to the dbt cloud IDE and account settings and within Artifacts link the documentation to our <code>dbt build</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/173f2f8c-5d7e-412f-abb1-d76041da48c1.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">artifact_link.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Now that we have now successfully transformed our data using dbt models and tested and deployed those models, the final step is to visualize our data.</p>
+</section>
+</section>
+<section id="visualising-the-data-with-looker-f.k.a-google-data-studio" class="level3">
+<h3 class="anchored" data-anchor-id="visualising-the-data-with-looker-f.k.a-google-data-studio">4.5.1 Visualising the data with Looker (f.k.a Google Data Studio)</h3>
+<p>Now that we have successfully transformed our data using dbt, it is time to visualise that data. Let’s first take a look at <code>Looker</code> formerly known as <code>Google Data Studio</code>, an online tool for converting data into customizable informative reports and dashboards introduced by Google on March 15, 2016 as part of the enterprise Google Analytics 360 suite.</p>
+<p>In May 2016, Google announced a free version of Data Studio for individuals and small teams. See https://en.wikipedia.org/wiki/Looker_Studio.</p>
+<p>Go to <a href="https://lookerstudio.google.com/overview">Looker Studio</a> and click <code>USE IT FOR FREE</code>. Make sure you are signed in to the correct Google account. The first thing we need to do is create a data source. There are 23 different <code>connectors</code> at the time of writing. We will be using <code>BigQuery</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/70bd7375-3548-4708-ad53-6b0cc561c946.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">google_connectors.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We will be working with the table <code>fact_trips</code> table of our <code>taxi-rides-ny</code> project created in our dbt <code>production</code> environment :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/2ced51f2-c189-4564-a16d-9c16abd78dd0.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">looker_BQ.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>After connecting we are taken to the main dashboard. Although <code>dimensions</code> and <code>facts</code> should be familiar terms to those with knowledge of <a href="https://en.wikipedia.org/wiki/Dimensional_modeling">dimensional modeling</a> the name <code>fact_trips</code> can be changed to something that is more palatable for other stakeholders.</p>
+<p>We can see all 27 columns and their data types. Default aggregation is applied on some, but these can and should be removed where this is not appropriate, e.g.&nbsp;categorical data. Columns can be added from here. Descriptions can also be added to provide useful information for other users of the data.</p>
+<p>Note at the top there is a <code>Data Freshness</code> tab - the default setting is 12 hours but can be changed.</p>
+<p>At the bottom there is a default <code>Metric</code> named <code>Record Count</code> which is useful - others can be added from here.</p>
+<p>After modifying the default aggregations go ahead and create a report :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/2e4c1436-436a-44e6-99b8-460d489d7ce0.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">looker_create_report.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s choose a time series chart to begin with :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/0b369a89-bb07-4260-bca2-ee4fa589e638.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">looker_time_series.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We can see right away that the date range is 2001 to 2082! This is because we didn’t filter the data and we have some outliers. We can define our date range by using <code>Add a control</code> from the dropdown, and dragging the filter above our chart.</p>
+<p>There is a wide variety of visualizations available to us. For illustrative purposes we will :</p>
+<ul>
+<li>create a scorecard for <code>Total trips recorded</code></li>
+<li>create a pie chart for <code>Service type distribution</code></li>
+<li>create a table with a heatmap for <code>Trips per pickup zone</code></li>
+<li>create a stacked column chart for <code>Trips per month and year</code>. We need to create a new field to allow us to filter by month</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/c294b73c-1978-475a-89be-69bd3e6eef45.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">new_field_formula.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>The final result is an aesthetic visualization ready for sharing. There is an email delivery scheduler which is very useful for providing for example weekly KPIs for key stakeholders :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/c7996384-1e46-4ce4-9479-c25f1fd5ecf5.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dashboard.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="visualising-the-data-with-metabase" class="level3">
+<h3 class="anchored" data-anchor-id="visualising-the-data-with-metabase">4.5.2 Visualising the data with Metabase</h3>
+<p>We have seen what Looker can do, but there is also another visualization package called <strong>Metabase</strong>. There is a <a href="https://www.metabase.com/">cloud version</a> but also a free <a href="https://www.metabase.com/start/oss/">open source version</a> where you can grab the Docker image for local hosting.</p>
+<p>To learn more about Metabase check out the Metabase <a href="https://www.metabase.com/learn/visualization/">docs and tutorials</a>.</p>
+</section>
+<section id="advanced-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-knowledge">Advanced knowledge</h3>
+<ul>
+<li><a href="https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models">Make a model Incremental</a></li>
+<li><a href="https://docs.getdbt.com/reference/resource-configs/tags">Use of tags</a></li>
+<li><a href="https://docs.getdbt.com/docs/building-a-dbt-project/hooks-operations">Hooks</a></li>
+<li><a href="https://docs.getdbt.com/docs/building-a-dbt-project/analyses">Analysis</a></li>
+<li><a href="https://docs.getdbt.com/docs/building-a-dbt-project/snapshots">Snapshots</a></li>
+<li><a href="https://docs.getdbt.com/docs/building-a-dbt-project/exposures">Exposure</a></li>
+<li><a href="https://docs.getdbt.com/docs/building-a-dbt-project/metrics">Metrics</a></li>
+</ul>
+</section>
+<section id="workshop-maximizing-confidence-in-your-data-model-changes-with-dbt-and-piperider" class="level3">
+<h3 class="anchored" data-anchor-id="workshop-maximizing-confidence-in-your-data-model-changes-with-dbt-and-piperider">Workshop: Maximizing Confidence in Your Data Model Changes with dbt and PipeRider</h3>
+<p><a href="https://www.youtube.com/watch?v=O-tyUOQccSs">Maximizing Confidence in Your Data Model Changes with dbt and PipeRider</a></p>
+<p>To learn how to use PipeRider together with dbt for detecting changes in model and data, <a href="https://github.com/InfuseAI/taxi_rides_ny_duckdb">sign up for a workshop here</a>.</p>
 
 
 </section>
