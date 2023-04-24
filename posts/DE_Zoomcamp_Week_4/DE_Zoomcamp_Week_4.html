@@ -370,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="create-a-dbt-cloud-project">Create a dbt cloud project</h3>
 <ol type="1">
 <li>Create a dbt cloud account from <a href="https://www.getdbt.com/pricing/">their website</a> (free for solo developers)</li>
-<li>Once you have logged in into dbt cloud you will be prompt to create a new project</li>
+<li>Once you have logged in into dbt cloud you will be prompted to create a new project</li>
 </ol>
 <p>We are going to need:</p>
 <ul>
@@ -385,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <ol start="3" type="1">
 <li><p>Name our project</p></li>
-<li><p>Choose Bigquery as our data warehouse:</p></li>
+<li><p>Choose BigQuery as our data warehouse:</p></li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -733,7 +733,7 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 </section>
 <section id="dbt-seeds" class="level4">
 <h4 class="anchored" data-anchor-id="dbt-seeds">dbt Seeds</h4>
-<p>Seeds are CSV files in your dbt project (typically in your <code>seeds</code> directory), that dbt can load into your data warehouse using the <code>dbt seed</code> command. Typically these are small files that contain data that will not chnage that often. See <a href="https://docs.getdbt.com/docs/build/seeds">Seeds</a> for further detail.</p>
+<p>Seeds are CSV files in your dbt project (typically in your <code>seeds</code> directory), that dbt can load into your data warehouse using the <code>dbt seed</code> command. Typically these are small files that contain data that will not change that often. See <a href="https://docs.getdbt.com/docs/build/seeds">Seeds</a> for further detail.</p>
 <p>Let’s add the <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/data/taxi_zone_lookup.csv">taxi zone look up csv file</a> by creating a new file within the <code>seeds</code> directory and simply copying and pasitng the contents of the raw csv file:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -756,7 +756,7 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p></p><figcaption class="figure-caption">taxi_zone_lookup_BQ.PNG</figcaption><p></p>
 </figure>
 </div>
-<p>We can specify the data types of the csv fil, by modifying our <code>dbt_project.yml</code> file - otherwise default types will be applied :</p>
+<p>We can specify the data types of the csv fill, by modifying our <code>dbt_project.yml</code> file - otherwise default types will be applied :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="DE_Zoomcamp_Week_4_files/figure-html/e378e659-fc6d-47c5-a8b5-4be7807ec1b4.PNG" class="img-fluid figure-img"></p>
@@ -887,265 +887,263 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p></p><figcaption class="figure-caption">dm_monthly_zone_revenue_BQ.PNG</figcaption><p></p>
 </figure>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Then, we update the `schema.yml` <span class="bu">file</span> <span class="kw">in</span> `models<span class="op">/</span>staging` to define the model. This section <span class="kw">is</span> used <span class="kw">in</span> particular to document the model <span class="kw">and</span> to add tests:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Then, we update the <code>schema.yml</code> file in <code>models/staging</code> to define the model. This section is used in particular to document the model and to add tests:</p>
 <p><code>models/staging/schema.yml</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>sources:</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: staging</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#For bigquery:</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      database: taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="dv">137</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># For postgres:</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># database: production</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      schema: trips_data_all</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># loaded_at_field: record_loaded_at</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>      tables:</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> name: green_tripdata</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> name: yellow_tripdata</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>         <span class="co"># freshness:</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>           <span class="co"># error_after: {count: 6, period: hour}</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>models:</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: stg_green_tripdata</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>      description: <span class="op">&gt;</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        Trip made by green taxis, also known <span class="im">as</span> boro taxis <span class="kw">and</span> street<span class="op">-</span>hail liveries.</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        Green taxis may respond to street hails,but only <span class="kw">in</span> the areas indicated <span class="kw">in</span> green on the</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">map</span> (i.e. above W <span class="dv">110</span> St<span class="op">/</span>E <span class="dv">96</span><span class="er">th</span> St <span class="kw">in</span> Manhattan <span class="kw">and</span> <span class="kw">in</span> the boroughs).</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        The records were collected <span class="kw">and</span> provided to the NYC Taxi <span class="kw">and</span> Limousine Commission (TLC) by</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>        technology service providers. </span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>      columns:</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: tripid</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>            description: Primary key <span class="cf">for</span> this table, generated <span class="cf">with</span> a concatenation of vendorid<span class="op">+</span>pickup_datetime</span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>                <span class="op">-</span> unique:</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>                    severity: warn</span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>                <span class="op">-</span> not_null:</span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>                    severity: warn</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: VendorID </span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>                A code indicating the TPEP provider that provided the record.</span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span><span class="op">=</span> Creative Mobile Technologies, LLC<span class="op">;</span> </span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>                <span class="dv">2</span><span class="op">=</span> VeriFone Inc.</span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: pickup_datetime </span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>            description: The date <span class="kw">and</span> time when the meter was engaged.</span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: dropoff_datetime </span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>            description: The date <span class="kw">and</span> time when the meter was disengaged.</span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Passenger_count </span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>            description: The number of passengers <span class="kw">in</span> the vehicle. This <span class="kw">is</span> a driver<span class="op">-</span>entered value.</span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Trip_distance </span>
-<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>            description: The elapsed trip distance <span class="kw">in</span> miles reported by the taximeter.</span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Pickup_locationid</span>
-<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>            description: locationid where the meter was engaged.</span>
-<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> relationships:</span>
-<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>                  to: ref(<span class="st">'taxi_zone_lookup'</span>)</span>
-<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>                  field: locationid</span>
-<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
-<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: dropoff_locationid </span>
-<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>            description: locationid where the meter was engaged.</span>
-<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> relationships:</span>
-<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>                  to: ref(<span class="st">'taxi_zone_lookup'</span>)</span>
-<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>                  field: locationid</span>
-<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: RateCodeID </span>
-<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
-<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>                The final rate code <span class="kw">in</span> effect at the end of the trip.</span>
-<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">1</span><span class="op">=</span> Standard rate</span>
-<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">2</span><span class="op">=</span>JFK</span>
-<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">3</span><span class="op">=</span>Newark</span>
-<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">4</span><span class="op">=</span>Nassau <span class="kw">or</span> Westchester</span>
-<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span><span class="op">=</span>Negotiated fare</span>
-<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">6</span><span class="op">=</span>Group ride</span>
-<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Store_and_fwd_flag </span>
-<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
-<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>              This flag indicates whether the trip record was held <span class="kw">in</span> vehicle</span>
-<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>              memory before sending to the vendor, aka “store <span class="kw">and</span> forward,”</span>
-<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>              because the vehicle did <span class="kw">not</span> have a connection to the server.</span>
-<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>                Y<span class="op">=</span> store <span class="kw">and</span> forward trip</span>
-<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>                N<span class="op">=</span> <span class="kw">not</span> a store <span class="kw">and</span> forward trip</span>
-<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Dropoff_longitude </span>
-<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>            description: Longitude where the meter was disengaged.</span>
-<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Dropoff_latitude </span>
-<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>            description: Latitude where the meter was disengaged.</span>
-<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Payment_type </span>
-<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
-<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>              A numeric code signifying how the passenger paid <span class="cf">for</span> the trip.</span>
-<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> accepted_values:</span>
-<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>                  values: <span class="st">"</span><span class="sc">{{</span><span class="st"> var('payment_type_values') </span><span class="sc">}}</span><span class="st">"</span></span>
-<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
-<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>                  quote: false</span>
-<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: payment_type_description</span>
-<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>            description: Description of the payment_type code</span>
-<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Fare_amount </span>
-<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
-<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>              The time<span class="op">-</span><span class="kw">and</span><span class="op">-</span>distance fare calculated by the meter.</span>
-<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>              Extra Miscellaneous extras <span class="kw">and</span> surcharges. Currently, this only includes</span>
-<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>              the $<span class="fl">0.50</span> <span class="kw">and</span> $<span class="dv">1</span> rush hour <span class="kw">and</span> overnight charges.</span>
-<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>              MTA_tax $<span class="fl">0.50</span> MTA tax that <span class="kw">is</span> automatically triggered based on the metered</span>
-<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>              rate <span class="kw">in</span> use.</span>
-<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Improvement_surcharge </span>
-<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
-<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>              $<span class="fl">0.30</span> improvement surcharge assessed trips at the flag drop. The</span>
-<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>              improvement surcharge began being levied <span class="kw">in</span> <span class="fl">2015.</span></span>
-<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Tip_amount </span>
-<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
-<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a>              Tip amount. This field <span class="kw">is</span> automatically populated <span class="cf">for</span> credit card</span>
-<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a>              tips. Cash tips are <span class="kw">not</span> included.</span>
-<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Tolls_amount </span>
-<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a>            description: Total amount of <span class="bu">all</span> tolls paid <span class="kw">in</span> trip.</span>
-<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Total_amount </span>
-<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a>            description: The total amount charged to passengers. Does <span class="kw">not</span> include cash tips.</span>
-<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: stg_yellow_tripdata</span>
-<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a>      description: <span class="op">&gt;</span> </span>
-<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a>        Trips made by New York City<span class="st">'s iconic yellow taxis. </span></span>
-<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a><span class="er">        Yellow taxis are the only vehicles permitted to respond to a street hail from a passenger in all five</span></span>
-<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a><span class="er">        boroughs. They may also be hailed using an e-hail app like Curb or Arro.</span></span>
-<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a><span class="er">        The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by</span></span>
-<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a><span class="er">        technology service providers. </span></span>
-<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a><span class="er">      columns:</span></span>
-<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: tripid</span></span>
-<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Primary key for this table, generated with a concatenation of vendorid+pickup_datetime</span></span>
-<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a><span class="er">                - unique:</span></span>
-<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a><span class="er">                    severity: warn</span></span>
-<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a><span class="er">                - not_null:</span></span>
-<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a><span class="er">                    severity: warn</span></span>
-<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: VendorID </span></span>
-<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a><span class="er">                A code indicating the TPEP provider that provided the record.</span></span>
-<span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a><span class="er">                1= Creative Mobile Technologies, LLC; </span></span>
-<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a><span class="er">                2= VeriFone Inc.</span></span>
-<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: pickup_datetime </span></span>
-<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The date and time when the meter was engaged.</span></span>
-<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: dropoff_datetime </span></span>
-<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The date and time when the meter was disengaged.</span></span>
-<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Passenger_count </span></span>
-<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The number of passengers in the vehicle. This is a driver-entered value.</span></span>
-<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Trip_distance </span></span>
-<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The elapsed trip distance in miles reported by the taximeter.</span></span>
-<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Pickup_locationid</span></span>
-<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a><span class="er">            description: locationid where the meter was engaged.</span></span>
-<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a><span class="er">              - relationships:</span></span>
-<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a><span class="er">                  to: ref('taxi_zone_lookup')</span></span>
-<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a><span class="er">                  field: locationid</span></span>
-<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
-<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: dropoff_locationid </span></span>
-<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a><span class="er">            description: locationid where the meter was engaged.</span></span>
-<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a><span class="er">              - relationships:</span></span>
-<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a><span class="er">                  to: ref('taxi_zone_lookup')</span></span>
-<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a><span class="er">                  field: locationid</span></span>
-<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
-<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: RateCodeID </span></span>
-<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt;</span></span>
-<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a><span class="er">                The final rate code in effect at the end of the trip.</span></span>
-<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a><span class="er">                  1= Standard rate</span></span>
-<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a><span class="er">                  2=JFK</span></span>
-<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a><span class="er">                  3=Newark</span></span>
-<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a><span class="er">                  4=Nassau or Westchester</span></span>
-<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a><span class="er">                  5=Negotiated fare</span></span>
-<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a><span class="er">                  6=Group ride</span></span>
-<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Store_and_fwd_flag </span></span>
-<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a><span class="er">              This flag indicates whether the trip record was held in vehicle</span></span>
-<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a><span class="er">              memory before sending to the vendor, aka “store and forward,”</span></span>
-<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a><span class="er">              because the vehicle did not have a connection to the server.</span></span>
-<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a><span class="er">                Y= store and forward trip</span></span>
-<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a><span class="er">                N= not a store and forward trip</span></span>
-<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Dropoff_longitude </span></span>
-<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Longitude where the meter was disengaged.</span></span>
-<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Dropoff_latitude </span></span>
-<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Latitude where the meter was disengaged.</span></span>
-<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Payment_type </span></span>
-<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt;</span></span>
-<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a><span class="er">              A numeric code signifying how the passenger paid for the trip.</span></span>
-<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a><span class="er">              - accepted_values:</span></span>
-<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a><span class="er">                  values: "{{ var('payment_type_values') }}"</span></span>
-<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
-<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a><span class="er">                  quote: false</span></span>
-<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: payment_type_description</span></span>
-<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Description of the payment_type code</span></span>
-<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Fare_amount </span></span>
-<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a><span class="er">              The time-and-distance fare calculated by the meter.</span></span>
-<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a><span class="er">              Extra Miscellaneous extras and surcharges. Currently, this only includes</span></span>
-<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a><span class="er">              the $0.50 and $1 rush hour and overnight charges.</span></span>
-<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a><span class="er">              MTA_tax $0.50 MTA tax that is automatically triggered based on the metered</span></span>
-<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a><span class="er">              rate in use.</span></span>
-<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Improvement_surcharge </span></span>
-<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a><span class="er">              $0.30 improvement surcharge assessed trips at the flag drop. The</span></span>
-<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a><span class="er">              improvement surcharge began being levied in 2015.</span></span>
-<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Tip_amount </span></span>
-<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a><span class="er">              Tip amount. This field is automatically populated for credit card</span></span>
-<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a><span class="er">              tips. Cash tips are not included.</span></span>
-<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Tolls_amount </span></span>
-<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Total amount of all tolls paid in trip.</span></span>
-<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Total_amount </span></span>
-<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The total amount charged to passengers. Does not include cash tips.                </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sources:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: staging</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#For bigquery:</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      database: taxi<span class="op">-</span>rides<span class="op">-</span>ny<span class="op">-</span><span class="dv">137</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># For postgres:</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># database: production</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>      schema: trips_data_all</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># loaded_at_field: record_loaded_at</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>      tables:</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> name: green_tripdata</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> name: yellow_tripdata</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>         <span class="co"># freshness:</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>           <span class="co"># error_after: {count: 6, period: hour}</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>models:</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: stg_green_tripdata</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>      description: <span class="op">&gt;</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        Trip made by green taxis, also known <span class="im">as</span> boro taxis <span class="kw">and</span> street<span class="op">-</span>hail liveries.</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        Green taxis may respond to street hails,but only <span class="kw">in</span> the areas indicated <span class="kw">in</span> green on the</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">map</span> (i.e. above W <span class="dv">110</span> St<span class="op">/</span>E <span class="dv">96</span><span class="er">th</span> St <span class="kw">in</span> Manhattan <span class="kw">and</span> <span class="kw">in</span> the boroughs).</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        The records were collected <span class="kw">and</span> provided to the NYC Taxi <span class="kw">and</span> Limousine Commission (TLC) by</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>        technology service providers. </span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>      columns:</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: tripid</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>            description: Primary key <span class="cf">for</span> this table, generated <span class="cf">with</span> a concatenation of vendorid<span class="op">+</span>pickup_datetime</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>                <span class="op">-</span> unique:</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>                    severity: warn</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>                <span class="op">-</span> not_null:</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>                    severity: warn</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: VendorID </span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>                A code indicating the TPEP provider that provided the record.</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span><span class="op">=</span> Creative Mobile Technologies, LLC<span class="op">;</span> </span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>                <span class="dv">2</span><span class="op">=</span> VeriFone Inc.</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: pickup_datetime </span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>            description: The date <span class="kw">and</span> time when the meter was engaged.</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: dropoff_datetime </span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>            description: The date <span class="kw">and</span> time when the meter was disengaged.</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Passenger_count </span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>            description: The number of passengers <span class="kw">in</span> the vehicle. This <span class="kw">is</span> a driver<span class="op">-</span>entered value.</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Trip_distance </span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>            description: The elapsed trip distance <span class="kw">in</span> miles reported by the taximeter.</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Pickup_locationid</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>            description: locationid where the meter was engaged.</span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> relationships:</span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>                  to: ref(<span class="st">'taxi_zone_lookup'</span>)</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>                  field: locationid</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: dropoff_locationid </span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>            description: locationid where the meter was engaged.</span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> relationships:</span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>                  to: ref(<span class="st">'taxi_zone_lookup'</span>)</span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>                  field: locationid</span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: RateCodeID </span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>                The final rate code <span class="kw">in</span> effect at the end of the trip.</span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">1</span><span class="op">=</span> Standard rate</span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">2</span><span class="op">=</span>JFK</span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">3</span><span class="op">=</span>Newark</span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">4</span><span class="op">=</span>Nassau <span class="kw">or</span> Westchester</span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span><span class="op">=</span>Negotiated fare</span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">6</span><span class="op">=</span>Group ride</span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Store_and_fwd_flag </span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>              This flag indicates whether the trip record was held <span class="kw">in</span> vehicle</span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>              memory before sending to the vendor, aka “store <span class="kw">and</span> forward,”</span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>              because the vehicle did <span class="kw">not</span> have a connection to the server.</span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a>                Y<span class="op">=</span> store <span class="kw">and</span> forward trip</span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a>                N<span class="op">=</span> <span class="kw">not</span> a store <span class="kw">and</span> forward trip</span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Dropoff_longitude </span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>            description: Longitude where the meter was disengaged.</span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Dropoff_latitude </span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>            description: Latitude where the meter was disengaged.</span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Payment_type </span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a>              A numeric code signifying how the passenger paid <span class="cf">for</span> the trip.</span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> accepted_values:</span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a>                  values: <span class="st">"</span><span class="sc">{{</span><span class="st"> var('payment_type_values') </span><span class="sc">}}</span><span class="st">"</span></span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a>                  quote: false</span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: payment_type_description</span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>            description: Description of the payment_type code</span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Fare_amount </span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a>              The time<span class="op">-</span><span class="kw">and</span><span class="op">-</span>distance fare calculated by the meter.</span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a>              Extra Miscellaneous extras <span class="kw">and</span> surcharges. Currently, this only includes</span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>              the $<span class="fl">0.50</span> <span class="kw">and</span> $<span class="dv">1</span> rush hour <span class="kw">and</span> overnight charges.</span>
+<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a>              MTA_tax $<span class="fl">0.50</span> MTA tax that <span class="kw">is</span> automatically triggered based on the metered</span>
+<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a>              rate <span class="kw">in</span> use.</span>
+<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Improvement_surcharge </span>
+<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a>              $<span class="fl">0.30</span> improvement surcharge assessed trips at the flag drop. The</span>
+<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a>              improvement surcharge began being levied <span class="kw">in</span> <span class="fl">2015.</span></span>
+<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Tip_amount </span>
+<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a>              Tip amount. This field <span class="kw">is</span> automatically populated <span class="cf">for</span> credit card</span>
+<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a>              tips. Cash tips are <span class="kw">not</span> included.</span>
+<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Tolls_amount </span>
+<span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a>            description: Total amount of <span class="bu">all</span> tolls paid <span class="kw">in</span> trip.</span>
+<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Total_amount </span>
+<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a>            description: The total amount charged to passengers. Does <span class="kw">not</span> include cash tips.</span>
+<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: stg_yellow_tripdata</span>
+<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a>      description: <span class="op">&gt;</span> </span>
+<span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a>        Trips made by New York City<span class="st">'s iconic yellow taxis. </span></span>
+<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a><span class="er">        Yellow taxis are the only vehicles permitted to respond to a street hail from a passenger in all five</span></span>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a><span class="er">        boroughs. They may also be hailed using an e-hail app like Curb or Arro.</span></span>
+<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a><span class="er">        The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by</span></span>
+<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a><span class="er">        technology service providers. </span></span>
+<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a><span class="er">      columns:</span></span>
+<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: tripid</span></span>
+<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Primary key for this table, generated with a concatenation of vendorid+pickup_datetime</span></span>
+<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a><span class="er">                - unique:</span></span>
+<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a><span class="er">                    severity: warn</span></span>
+<span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a><span class="er">                - not_null:</span></span>
+<span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a><span class="er">                    severity: warn</span></span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: VendorID </span></span>
+<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a><span class="er">                A code indicating the TPEP provider that provided the record.</span></span>
+<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a><span class="er">                1= Creative Mobile Technologies, LLC; </span></span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a><span class="er">                2= VeriFone Inc.</span></span>
+<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: pickup_datetime </span></span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The date and time when the meter was engaged.</span></span>
+<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: dropoff_datetime </span></span>
+<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The date and time when the meter was disengaged.</span></span>
+<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Passenger_count </span></span>
+<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The number of passengers in the vehicle. This is a driver-entered value.</span></span>
+<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Trip_distance </span></span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The elapsed trip distance in miles reported by the taximeter.</span></span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Pickup_locationid</span></span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a><span class="er">            description: locationid where the meter was engaged.</span></span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a><span class="er">              - relationships:</span></span>
+<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a><span class="er">                  to: ref('taxi_zone_lookup')</span></span>
+<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a><span class="er">                  field: locationid</span></span>
+<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
+<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: dropoff_locationid </span></span>
+<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a><span class="er">            description: locationid where the meter was engaged.</span></span>
+<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a><span class="er">              - relationships:</span></span>
+<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a><span class="er">                  to: ref('taxi_zone_lookup')</span></span>
+<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a><span class="er">                  field: locationid</span></span>
+<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: RateCodeID </span></span>
+<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt;</span></span>
+<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a><span class="er">                The final rate code in effect at the end of the trip.</span></span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a><span class="er">                  1= Standard rate</span></span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a><span class="er">                  2=JFK</span></span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a><span class="er">                  3=Newark</span></span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a><span class="er">                  4=Nassau or Westchester</span></span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a><span class="er">                  5=Negotiated fare</span></span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a><span class="er">                  6=Group ride</span></span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Store_and_fwd_flag </span></span>
+<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a><span class="er">              This flag indicates whether the trip record was held in vehicle</span></span>
+<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a><span class="er">              memory before sending to the vendor, aka “store and forward,”</span></span>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a><span class="er">              because the vehicle did not have a connection to the server.</span></span>
+<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a><span class="er">                Y= store and forward trip</span></span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a><span class="er">                N= not a store and forward trip</span></span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Dropoff_longitude </span></span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Longitude where the meter was disengaged.</span></span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Dropoff_latitude </span></span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Latitude where the meter was disengaged.</span></span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Payment_type </span></span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt;</span></span>
+<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a><span class="er">              A numeric code signifying how the passenger paid for the trip.</span></span>
+<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a><span class="er">              - accepted_values:</span></span>
+<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a><span class="er">                  values: "{{ var('payment_type_values') }}"</span></span>
+<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a><span class="er">                  quote: false</span></span>
+<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: payment_type_description</span></span>
+<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Description of the payment_type code</span></span>
+<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Fare_amount </span></span>
+<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a><span class="er">              The time-and-distance fare calculated by the meter.</span></span>
+<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a><span class="er">              Extra Miscellaneous extras and surcharges. Currently, this only includes</span></span>
+<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a><span class="er">              the $0.50 and $1 rush hour and overnight charges.</span></span>
+<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a><span class="er">              MTA_tax $0.50 MTA tax that is automatically triggered based on the metered</span></span>
+<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a><span class="er">              rate in use.</span></span>
+<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Improvement_surcharge </span></span>
+<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a><span class="er">              $0.30 improvement surcharge assessed trips at the flag drop. The</span></span>
+<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a><span class="er">              improvement surcharge began being levied in 2015.</span></span>
+<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Tip_amount </span></span>
+<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
+<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a><span class="er">              Tip amount. This field is automatically populated for credit card</span></span>
+<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a><span class="er">              tips. Cash tips are not included.</span></span>
+<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Tolls_amount </span></span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Total amount of all tolls paid in trip.</span></span>
+<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Total_amount </span></span>
+<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The total amount charged to passengers. Does not include cash tips.                </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we modify the <code>dbt_project.yml</code> to define the <code>payment_type_values</code> variable :</p>
 <p><code>dbt.project/yml</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Name your project! Project names should contain only lowercase characters</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and underscores. A good package name should reflect your organization's</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># name or the intended use of these models</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>name: <span class="st">'taxi_rides_ny'</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>version: <span class="st">'1.0.0'</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>config<span class="op">-</span>version: <span class="dv">2</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This setting configures which "profile" dbt uses for this project.</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>profile: <span class="st">'pg-dbt-workshop'</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># These configurations specify where dbt should look for different types of files.</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The `source-paths` config, for example, states that models in this project can be</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># found in the "models/" directory. You probably won't need to change these!</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>model<span class="op">-</span>paths: [<span class="st">"models"</span>]</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>analysis<span class="op">-</span>paths: [<span class="st">"analysis"</span>]</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>test<span class="op">-</span>paths: [<span class="st">"tests"</span>]</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>seed<span class="op">-</span>paths: [<span class="st">"seeds"</span>]</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>macro<span class="op">-</span>paths: [<span class="st">"macros"</span>]</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>snapshot<span class="op">-</span>paths: [<span class="st">"snapshots"</span>]</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>target<span class="op">-</span>path: <span class="st">"target"</span>  <span class="co"># directory which will store compiled SQL files</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>clean<span class="op">-</span>targets:         <span class="co"># directories to be removed by `dbt clean`</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"target"</span></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"dbt_packages"</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"dbt_modules"</span></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuring models</span></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Full documentation: https://docs.getdbt.com/docs/configuring-models</span></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co"># In this example config, we tell dbt to build all models in the example/ directory</span></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="co"># as tables. These settings can be overridden in the individual model files</span></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># using the `{{ config(...) }}` macro.</span></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>models:</span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  taxi_rides_ny:</span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Applies to all files under models/.../</span></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>      staging:</span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>          materialized: view</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>      core:</span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>          materialized: table</span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="bu">vars</span>:</span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>  payment_type_values: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>seeds: </span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>    taxi_rides_ny:</span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>        taxi_zone_lookup:</span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>            <span class="op">+</span>column_types:</span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>                locationid: numeric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Name your project! Project names should contain only lowercase characters</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and underscores. A good package name should reflect your organization's</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># name or the intended use of these models</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>name: <span class="st">'taxi_rides_ny'</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>version: <span class="st">'1.0.0'</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>config<span class="op">-</span>version: <span class="dv">2</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This setting configures which "profile" dbt uses for this project.</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>profile: <span class="st">'pg-dbt-workshop'</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># These configurations specify where dbt should look for different types of files.</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The `source-paths` config, for example, states that models in this project can be</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># found in the "models/" directory. You probably won't need to change these!</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>model<span class="op">-</span>paths: [<span class="st">"models"</span>]</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>analysis<span class="op">-</span>paths: [<span class="st">"analysis"</span>]</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>test<span class="op">-</span>paths: [<span class="st">"tests"</span>]</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>seed<span class="op">-</span>paths: [<span class="st">"seeds"</span>]</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>macro<span class="op">-</span>paths: [<span class="st">"macros"</span>]</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>snapshot<span class="op">-</span>paths: [<span class="st">"snapshots"</span>]</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>target<span class="op">-</span>path: <span class="st">"target"</span>  <span class="co"># directory which will store compiled SQL files</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>clean<span class="op">-</span>targets:         <span class="co"># directories to be removed by `dbt clean`</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"target"</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"dbt_packages"</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> <span class="st">"dbt_modules"</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuring models</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Full documentation: https://docs.getdbt.com/docs/configuring-models</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="co"># In this example config, we tell dbt to build all models in the example/ directory</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co"># as tables. These settings can be overridden in the individual model files</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="co"># using the `{{ config(...) }}` macro.</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>models:</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  taxi_rides_ny:</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Applies to all files under models/.../</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>      staging:</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>          materialized: view</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>      core:</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>          materialized: table</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="bu">vars</span>:</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>  payment_type_values: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>seeds: </span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    taxi_rides_ny:</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>        taxi_zone_lookup:</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>            <span class="op">+</span>column_types:</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>                locationid: numeric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then, we can run <code>dbt test</code> or one of the following commands:</p>
 <pre><code>dbt test                               # Run tests on data in deployed models.
@@ -1184,45 +1182,45 @@ dbt build  # Run the seeds, run the tests and run the models.</code></pre>
 <p>As we can see, this time, all tests have passed.</p>
 <p>The final thing to do is to complete our project is to add a <code>schema.yml</code> file for our core models :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>models:</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: dim_zones</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      List of unique zones idefied by locationid.</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      Includes the service zone they correspond to (Green <span class="kw">or</span> yellow).</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: fact_trips</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>      Taxi trips corresponding to both service zones (Green <span class="kw">and</span> yellow).</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>      The table contains records where both pickup <span class="kw">and</span> dropoff locations are valid <span class="kw">and</span> known zones.</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>      Each record corresponds to a trip uniquely identified by tripid.</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: dm_monthly_zone_revenue</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>      Aggregated table of <span class="bu">all</span> taxi trips corresponding to both service zones (Green <span class="kw">and</span> yellow) per pickup zone, month <span class="kw">and</span> service.</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>      The table contains monthly sums of the fare elements used to calculate the monthly revenue.</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>      The table contains also monthly indicators like number of trips, <span class="kw">and</span> average trip distance.</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    columns:</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>      <span class="op">-</span> name: revenue_monthly_total_amount</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        description: Monthly <span class="bu">sum</span> of the the total_amount of the fare charged <span class="cf">for</span> the trip per pickup zone, month <span class="kw">and</span> service.</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        tests:</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">-</span> not_null:</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>                severity: error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>models:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: dim_zones</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      List of unique zones idefied by locationid.</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      Includes the service zone they correspond to (Green <span class="kw">or</span> yellow).</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: fact_trips</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>      Taxi trips corresponding to both service zones (Green <span class="kw">and</span> yellow).</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>      The table contains records where both pickup <span class="kw">and</span> dropoff locations are valid <span class="kw">and</span> known zones.</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>      Each record corresponds to a trip uniquely identified by tripid.</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: dm_monthly_zone_revenue</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>      Aggregated table of <span class="bu">all</span> taxi trips corresponding to both service zones (Green <span class="kw">and</span> yellow) per pickup zone, month <span class="kw">and</span> service.</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>      The table contains monthly sums of the fare elements used to calculate the monthly revenue.</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>      The table contains also monthly indicators like number of trips, <span class="kw">and</span> average trip distance.</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    columns:</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>      <span class="op">-</span> name: revenue_monthly_total_amount</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        description: Monthly <span class="bu">sum</span> of the the total_amount of the fare charged <span class="cf">for</span> the trip per pickup zone, month <span class="kw">and</span> service.</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        tests:</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">-</span> not_null:</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>                severity: error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and a <code>macros_properties.yml</code> file for completeness :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>macros:</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: get_payment_type_description</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>      This macro receives a payment_type <span class="kw">and</span> returns the corresponding description.</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    arguments:</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">-</span> name: payment_type</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">type</span>: <span class="bu">int</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        description: <span class="op">&gt;</span> </span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>          payment_type value.</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>          Must be one of the accepted values, otherwise the macro will <span class="cf">return</span> null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>macros:</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> name: get_payment_type_description</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    description: <span class="op">&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      This macro receives a payment_type <span class="kw">and</span> returns the corresponding description.</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    arguments:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">-</span> name: payment_type</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">type</span>: <span class="bu">int</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        description: <span class="op">&gt;</span> </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>          payment_type value.</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>          Must be one of the accepted values, otherwise the macro will <span class="cf">return</span> null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>See <a href="https://docs.getdbt.com/reference/resource-properties/tests">Tests</a> and <a href="https://docs.getdbt.com/reference/resource-configs/severity">Configuring test severity</a> for more information about tests.</p>
 </section>

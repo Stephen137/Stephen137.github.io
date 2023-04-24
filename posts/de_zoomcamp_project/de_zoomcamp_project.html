@@ -1,0 +1,3581 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-04-21">
+
+<title>Into the Unknown - Data Engineering Zoomcamp - Final Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Engineering Zoomcamp - Final Project</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Terraform</div>
+                <div class="quarto-category">Prefect</div>
+                <div class="quarto-category">GCS</div>
+                <div class="quarto-category">BigQuery</div>
+                <div class="quarto-category">dbt</div>
+                <div class="quarto-category">Looker</div>
+                <div class="quarto-category">DataTalksClub</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 21, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#de-zoomcamp---final-project" id="toc-de-zoomcamp---final-project" class="nav-link active" data-scroll-target="#de-zoomcamp---final-project">DE Zoomcamp - Final Project</a>
+  <ul class="collapse">
+  <li><a href="#spotify-1.2-million---project-overview" id="toc-spotify-1.2-million---project-overview" class="nav-link" data-scroll-target="#spotify-1.2-million---project-overview">Spotify 1.2 million - Project Overview</a></li>
+  <li><a href="#project-architecture-technologies" id="toc-project-architecture-technologies" class="nav-link" data-scroll-target="#project-architecture-technologies">0. Project architecture &amp; technologies</a></li>
+  <li><a href="#set-up-configuration" id="toc-set-up-configuration" class="nav-link" data-scroll-target="#set-up-configuration">1. Set up &amp; configuration</a></li>
+  <li><a href="#data-pick-up-preproceesing" id="toc-data-pick-up-preproceesing" class="nav-link" data-scroll-target="#data-pick-up-preproceesing">2. Data-pick up &amp; preproceesing</a></li>
+  <li><a href="#workflow-orchestration" id="toc-workflow-orchestration" class="nav-link" data-scroll-target="#workflow-orchestration">3. Workflow Orchestration</a></li>
+  <li><a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation">4. Data Transformation</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">5. Visualization</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="de-zoomcamp---final-project" class="level2">
+<h2 class="anchored" data-anchor-id="de-zoomcamp---final-project">DE Zoomcamp - Final Project</h2>
+<section id="spotify-1.2-million---project-overview" class="level3">
+<h3 class="anchored" data-anchor-id="spotify-1.2-million---project-overview">Spotify 1.2 million - Project Overview</h3>
+<p>It’s time to pull everything together I’ve learned during this course and complete an end to end data pipeline project. As a musician I decided to chose a dataset of personal interest to me :</p>
+<ul>
+<li>audio features of over 1.2 million songs obtained with the Spotify API</li>
+</ul>
+<p>Acknowledgements to <a href="https://github.com/RodolfoFigueroa">Rodolfo Figueroa</a> for curating the dataset. Kaggle assigned the dataset a solid Usability score of 8.24 which is a good starting point. Whilst this is primarily a data engineering project I will also be carrying out some data pre-processing.</p>
+<p>Data logistics is no different from any other form of logistics, in that it will not be possible to move our data from source, in my case a <a href="https://www.kaggle.com/datasets/rodolfofigueroa/spotify-12m-songs">raw csv file held on Kaggle</a> to destination, in my case <a href="https://lookerstudio.google.com/overview">Looker Studio</a> without a few bumps along the way. But by carrying out some preliminary data exploration, and harnessing workflow orchestration tools, we can make the journey as smooth as possible.</p>
+<p>So sit back and enjoy the ride ;)</p>
+</section>
+<section id="project-architecture-technologies" class="level3">
+<h3 class="anchored" data-anchor-id="project-architecture-technologies">0. Project architecture &amp; technologies</h3>
+<p>Outlined below is an overview of the architecture and technologies that I will be using to unveil some insights from the raw data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/87b214a2-f95c-48d8-a6ae-46e46714961f.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Architecture_Technologies.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="set-up-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-configuration">1. Set up &amp; configuration</h3>
+<p><code>Reproducability</code></p>
+<p>I use <code>Unbuntu on Windows 20.04.5</code> and like to run things locally from the command line wherever possible, however this project does make use of cloud applications.</p>
+<p>A pre-requisite for reproducability of this project is having a Google Cloud account. I set mine up at the beginning of this course. You can follow [these instructions] (https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_1_basics_n_setup/1_terraform_gcp/2_gcp_overview.md#setup-for-access) to get up and running.</p>
+<p>For the purposes of this specific project, I used <a href="(Infrastructure-as-Code)">Terraform (Infrastructure-as-Code)</a> to automate my cloud resources configuration. I had already set this up locally at the beginning of the course and so only required the following two files to configure my data bucket in Google Cloud Storage, and my Data Warehouse, BigQuery.</p>
+<p><code>main.tf</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>terraform {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  required_version <span class="op">=</span> <span class="st">"&gt;= 1.0"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  backend <span class="st">"local"</span> {}  <span class="co"># Can change from "local" to "gcs" (for google) or "s3" (for aws), if you would like to preserve your tf-state online</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  required_providers {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    google <span class="op">=</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      source  <span class="op">=</span> <span class="st">"hashicorp/google"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>provider <span class="st">"google"</span> {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  project <span class="op">=</span> var.project</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  region <span class="op">=</span> var.region</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">//</span> credentials <span class="op">=</span> <span class="bu">file</span>(var.credentials)  <span class="co"># Use this if you do not want to set env-var GOOGLE_APPLICATION_CREDENTIALS</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Lake Bucket</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Ref: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>resource <span class="st">"google_storage_bucket"</span> <span class="st">"data-lake-bucket"</span> {</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  name          <span class="op">=</span> <span class="st">"$</span><span class="sc">{local.data_lake_bucket}</span><span class="st">_$</span><span class="sc">{var.project}</span><span class="st">"</span> <span class="co"># Concatenating DL bucket &amp; Project name for unique naming</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  location      <span class="op">=</span> var.region</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Optional, but recommended settings:</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  storage_class <span class="op">=</span> var.storage_class</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  uniform_bucket_level_access <span class="op">=</span> true</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  versioning {</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    enabled     <span class="op">=</span> true</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  lifecycle_rule {</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    action {</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>      <span class="bu">type</span> <span class="op">=</span> <span class="st">"Delete"</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    condition {</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      age <span class="op">=</span> <span class="dv">30</span>  <span class="op">//</span> days</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  force_destroy <span class="op">=</span> true</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># DWH</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Ref: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigquery_dataset</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>resource <span class="st">"google_bigquery_dataset"</span> <span class="st">"dataset"</span> {</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  dataset_id <span class="op">=</span> var.BQ_DATASET</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  project    <span class="op">=</span> var.project</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  location   <span class="op">=</span> var.region</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>variables.tf</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">locals</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  data_lake_bucket <span class="op">=</span> <span class="st">"spotify"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>variable <span class="st">"project"</span> {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  description <span class="op">=</span> <span class="st">"de-zoomcamp-project137"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>variable <span class="st">"region"</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  description <span class="op">=</span> <span class="st">"Region for GCP resources. Choose as per your location: https://cloud.google.com/about/locations"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  default <span class="op">=</span> <span class="st">"europe-west6"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">type</span> <span class="op">=</span> string</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>variable <span class="st">"storage_class"</span> {</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  description <span class="op">=</span> <span class="st">"Storage class type for your bucket. Check official docs for more info."</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  default <span class="op">=</span> <span class="st">"STANDARD"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>variable <span class="st">"BQ_DATASET"</span> {</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  description <span class="op">=</span> <span class="st">"BigQuery Dataset that raw data (from GCS) will be written to"</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="bu">type</span> <span class="op">=</span> string</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  default <span class="op">=</span> <span class="st">"spotify"</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once you have configured these files you can simply run the following prompts from the command line :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Refresh service-account's auth-token for this session</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>gcloud auth application<span class="op">-</span>default login</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize state file (.tfstate)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>terraform init</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check changes to new infra plan</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>terraform plan <span class="op">-</span>var<span class="op">=</span><span class="st">"project=&lt;your-gcp-project-id&gt;"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Asks for approval to the proposed plan, and applies changes to cloud</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>terraform <span class="bu">apply</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For further assistance refer to this <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/week_1_basics_n_setup/1_terraform_gcp/terraform">detailed guide on Local Setup for Terraform and GCP</a>.</p>
+</section>
+<section id="data-pick-up-preproceesing" class="level3">
+<h3 class="anchored" data-anchor-id="data-pick-up-preproceesing">2. Data-pick up &amp; preproceesing</h3>
+<p>I was unable to download the file using the link address to the file on Kaggle :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/392ee20a-44b7-448b-8d85-b2ad797dd96b.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">kaggle_download.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>As a workaround I resorted to clicking on the <code>Download</code> icon to save the file locally. We can access the file size (memory) and number of rows from the command line using the following commands :</p>
+<pre><code>du -h &lt;file_name&gt;
+wc -l &lt;file_name&gt;  </code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/6af60789-c7d5-4f91-aed5-bc09adcbb956.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">spotify_csv.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Let’s get to know our data :</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'Prefect/data/spotify.csv'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>album</th>
+      <th>album_id</th>
+      <th>artists</th>
+      <th>artist_ids</th>
+      <th>track_number</th>
+      <th>disc_number</th>
+      <th>explicit</th>
+      <th>danceability</th>
+      <th>...</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>year</th>
+      <th>release_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7lmeHLHBe4nmXzuXc0HDjk</td>
+      <td>Testify</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>2eia0myWFgoHuttJytCxgX</td>
+      <td>['Rage Against The Machine']</td>
+      <td>['2d0hyoQ5ynDBnkvAbJKORj']</td>
+      <td>1</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.470</td>
+      <td>...</td>
+      <td>0.0727</td>
+      <td>0.02610</td>
+      <td>0.000011</td>
+      <td>0.3560</td>
+      <td>0.503</td>
+      <td>117.906</td>
+      <td>210133</td>
+      <td>4.0</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1wsRitfRRtWyEapl0q22o8</td>
+      <td>Guerrilla Radio</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>2eia0myWFgoHuttJytCxgX</td>
+      <td>['Rage Against The Machine']</td>
+      <td>['2d0hyoQ5ynDBnkvAbJKORj']</td>
+      <td>2</td>
+      <td>1</td>
+      <td>True</td>
+      <td>0.599</td>
+      <td>...</td>
+      <td>0.1880</td>
+      <td>0.01290</td>
+      <td>0.000071</td>
+      <td>0.1550</td>
+      <td>0.489</td>
+      <td>103.680</td>
+      <td>206200</td>
+      <td>4.0</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1hR0fIFK2qRG3f3RF70pb7</td>
+      <td>Calm Like a Bomb</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>2eia0myWFgoHuttJytCxgX</td>
+      <td>['Rage Against The Machine']</td>
+      <td>['2d0hyoQ5ynDBnkvAbJKORj']</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.315</td>
+      <td>...</td>
+      <td>0.4830</td>
+      <td>0.02340</td>
+      <td>0.000002</td>
+      <td>0.1220</td>
+      <td>0.370</td>
+      <td>149.749</td>
+      <td>298893</td>
+      <td>4.0</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2lbASgTSoDO7MTuLAXlTW0</td>
+      <td>Mic Check</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>2eia0myWFgoHuttJytCxgX</td>
+      <td>['Rage Against The Machine']</td>
+      <td>['2d0hyoQ5ynDBnkvAbJKORj']</td>
+      <td>4</td>
+      <td>1</td>
+      <td>True</td>
+      <td>0.440</td>
+      <td>...</td>
+      <td>0.2370</td>
+      <td>0.16300</td>
+      <td>0.000004</td>
+      <td>0.1210</td>
+      <td>0.574</td>
+      <td>96.752</td>
+      <td>213640</td>
+      <td>4.0</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1MQTmpYOZ6fcMQc56Hdo7T</td>
+      <td>Sleep Now In the Fire</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>2eia0myWFgoHuttJytCxgX</td>
+      <td>['Rage Against The Machine']</td>
+      <td>['2d0hyoQ5ynDBnkvAbJKORj']</td>
+      <td>5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.426</td>
+      <td>...</td>
+      <td>0.0701</td>
+      <td>0.00162</td>
+      <td>0.105000</td>
+      <td>0.0789</td>
+      <td>0.539</td>
+      <td>127.059</td>
+      <td>205600</td>
+      <td>4.0</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div>
+</div>
+</div>
+<p>On first look the dataset appears to be fairly clean - the <code>artists</code> name are wrapped in <code>[' ']</code> and some of the values for track features are taken to a large number of decimal places. We’ll include these clean up as a <code>flow</code> as part of a data ingestion script using <code>Prefect</code> which will read the csv, convert to parquet format, and upload to Google Cloud Storage.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1204025 entries, 0 to 1204024
+Data columns (total 24 columns):
+ #   Column            Non-Null Count    Dtype  
+---  ------            --------------    -----  
+ 0   id                1204025 non-null  object 
+ 1   name              1204025 non-null  object 
+ 2   album             1204025 non-null  object 
+ 3   album_id          1204025 non-null  object 
+ 4   artists           1204025 non-null  object 
+ 5   artist_ids        1204025 non-null  object 
+ 6   track_number      1204025 non-null  int64  
+ 7   disc_number       1204025 non-null  int64  
+ 8   explicit          1204025 non-null  bool   
+ 9   danceability      1204025 non-null  float64
+ 10  energy            1204025 non-null  float64
+ 11  key               1204025 non-null  int64  
+ 12  loudness          1204025 non-null  float64
+ 13  mode              1204025 non-null  int64  
+ 14  speechiness       1204025 non-null  float64
+ 15  acousticness      1204025 non-null  float64
+ 16  instrumentalness  1204025 non-null  float64
+ 17  liveness          1204025 non-null  float64
+ 18  valence           1204025 non-null  float64
+ 19  tempo             1204025 non-null  float64
+ 20  duration_ms       1204025 non-null  int64  
+ 21  time_signature    1204025 non-null  float64
+ 22  year              1204025 non-null  int64  
+ 23  release_date      1204025 non-null  object 
+dtypes: bool(1), float64(10), int64(6), object(7)
+memory usage: 212.4+ MB</code></pre>
+</div>
+</div>
+<p><code>df.info</code> gives us the number of entries, in our case <code>1,204,025</code>, columns <code>24</code>, number of non-null entries for each column (in our case same as number of entries, so no NULL values), and the datatype for each column.</p>
+<p>It is vital to ensure that the data is in the correct format for our analytics project. Off the bat, I can see that the <code>year</code> and <code>release_date</code> datatypes will need to be converted to a date type.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>track_number</th>
+      <th>disc_number</th>
+      <th>danceability</th>
+      <th>energy</th>
+      <th>key</th>
+      <th>loudness</th>
+      <th>mode</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+      <td>1.204025e+06</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>7.656352e+00</td>
+      <td>1.055906e+00</td>
+      <td>4.930565e-01</td>
+      <td>5.095363e-01</td>
+      <td>5.194151e+00</td>
+      <td>-1.180870e+01</td>
+      <td>6.714595e-01</td>
+      <td>8.438219e-02</td>
+      <td>4.467511e-01</td>
+      <td>2.828605e-01</td>
+      <td>2.015994e-01</td>
+      <td>4.279866e-01</td>
+      <td>1.176344e+02</td>
+      <td>2.488399e+05</td>
+      <td>3.832494e+00</td>
+      <td>2.007328e+03</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5.994977e+00</td>
+      <td>2.953752e-01</td>
+      <td>1.896694e-01</td>
+      <td>2.946839e-01</td>
+      <td>3.536731e+00</td>
+      <td>6.982132e+00</td>
+      <td>4.696827e-01</td>
+      <td>1.159914e-01</td>
+      <td>3.852014e-01</td>
+      <td>3.762844e-01</td>
+      <td>1.804591e-01</td>
+      <td>2.704846e-01</td>
+      <td>3.093705e+01</td>
+      <td>1.622104e+05</td>
+      <td>5.611826e-01</td>
+      <td>1.210117e+01</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000e+00</td>
+      <td>1.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-6.000000e+01</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>1.000000e+03</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>3.000000e+00</td>
+      <td>1.000000e+00</td>
+      <td>3.560000e-01</td>
+      <td>2.520000e-01</td>
+      <td>2.000000e+00</td>
+      <td>-1.525400e+01</td>
+      <td>0.000000e+00</td>
+      <td>3.510000e-02</td>
+      <td>3.760000e-02</td>
+      <td>7.600000e-06</td>
+      <td>9.680000e-02</td>
+      <td>1.910000e-01</td>
+      <td>9.405400e+01</td>
+      <td>1.740900e+05</td>
+      <td>4.000000e+00</td>
+      <td>2.002000e+03</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>7.000000e+00</td>
+      <td>1.000000e+00</td>
+      <td>5.010000e-01</td>
+      <td>5.240000e-01</td>
+      <td>5.000000e+00</td>
+      <td>-9.791000e+00</td>
+      <td>1.000000e+00</td>
+      <td>4.460000e-02</td>
+      <td>3.890000e-01</td>
+      <td>8.080000e-03</td>
+      <td>1.250000e-01</td>
+      <td>4.030000e-01</td>
+      <td>1.167260e+02</td>
+      <td>2.243390e+05</td>
+      <td>4.000000e+00</td>
+      <td>2.009000e+03</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.000000e+01</td>
+      <td>1.000000e+00</td>
+      <td>6.330000e-01</td>
+      <td>7.660000e-01</td>
+      <td>8.000000e+00</td>
+      <td>-6.717000e+00</td>
+      <td>1.000000e+00</td>
+      <td>7.230000e-02</td>
+      <td>8.610000e-01</td>
+      <td>7.190000e-01</td>
+      <td>2.450000e-01</td>
+      <td>6.440000e-01</td>
+      <td>1.370460e+02</td>
+      <td>2.858400e+05</td>
+      <td>4.000000e+00</td>
+      <td>2.015000e+03</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>5.000000e+01</td>
+      <td>1.300000e+01</td>
+      <td>1.000000e+00</td>
+      <td>1.000000e+00</td>
+      <td>1.100000e+01</td>
+      <td>7.234000e+00</td>
+      <td>1.000000e+00</td>
+      <td>9.690000e-01</td>
+      <td>9.960000e-01</td>
+      <td>1.000000e+00</td>
+      <td>1.000000e+00</td>
+      <td>1.000000e+00</td>
+      <td>2.489340e+02</td>
+      <td>6.061090e+06</td>
+      <td>5.000000e+00</td>
+      <td>2.020000e+03</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>This gives us a very useful overview of our dataset and can highlight anomalies worthy of further investigation. <code>min</code> and <code>max</code> in particular allow us to make a very quick sense check of the range of the data, and might unveil potential outliers.</p>
+<p>Take a look at our <code>year</code> column - the range of values are <code>0 to 2020</code>. So, it looks like imputed values have been used where information was not available. This may cause problems later when we attempt to convert the datatype for <code>year</code> which is currently <code>int64</code>.</p>
+<p>We can use <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html">.iloc</a> to <em>access</em> a group of rows and columns by index or <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html">.loc</a> to <em>access</em> a group of rows and columns by name :</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.loc[df[<span class="st">'year'</span>] <span class="op">==</span> <span class="dv">0</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>album</th>
+      <th>album_id</th>
+      <th>artists</th>
+      <th>artist_ids</th>
+      <th>track_number</th>
+      <th>disc_number</th>
+      <th>explicit</th>
+      <th>danceability</th>
+      <th>...</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>year</th>
+      <th>release_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>815351</th>
+      <td>035h5flqzwF6I5CTfsdHPA</td>
+      <td>Jimmy Neutron</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>1</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.795</td>
+      <td>...</td>
+      <td>0.0519</td>
+      <td>0.01560</td>
+      <td>0.439</td>
+      <td>0.0860</td>
+      <td>0.389</td>
+      <td>109.985</td>
+      <td>183000</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815352</th>
+      <td>49x05fLGDKCsCUA7CG0VpY</td>
+      <td>I Luv You</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>2</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.762</td>
+      <td>...</td>
+      <td>0.0950</td>
+      <td>0.88700</td>
+      <td>0.909</td>
+      <td>0.1060</td>
+      <td>0.728</td>
+      <td>92.962</td>
+      <td>145161</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815353</th>
+      <td>4mNLlSoZOqoPauBAF3bIpx</td>
+      <td>My Heart</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.671</td>
+      <td>...</td>
+      <td>0.0662</td>
+      <td>0.00956</td>
+      <td>0.902</td>
+      <td>0.0455</td>
+      <td>0.893</td>
+      <td>97.865</td>
+      <td>176561</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815354</th>
+      <td>7w5iwI0wnIiopbCFNe1Txo</td>
+      <td>I Am (Invincible)</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>4</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.759</td>
+      <td>...</td>
+      <td>0.1280</td>
+      <td>0.00544</td>
+      <td>0.895</td>
+      <td>0.0538</td>
+      <td>0.537</td>
+      <td>89.989</td>
+      <td>192000</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815355</th>
+      <td>2Tfy2R2uiWVwxHQUT6oGNp</td>
+      <td>Flower Power</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.657</td>
+      <td>...</td>
+      <td>0.2810</td>
+      <td>0.01800</td>
+      <td>0.245</td>
+      <td>0.2410</td>
+      <td>0.964</td>
+      <td>179.904</td>
+      <td>138666</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815356</th>
+      <td>05cTbSPQyha6z7opYwH67O</td>
+      <td>Heard It Low</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>6</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.728</td>
+      <td>...</td>
+      <td>0.0673</td>
+      <td>0.00785</td>
+      <td>0.275</td>
+      <td>0.0865</td>
+      <td>0.662</td>
+      <td>90.010</td>
+      <td>138667</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815357</th>
+      <td>1fYK5xB8csOXVEqApkzzm0</td>
+      <td>Hangin On</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>7</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.822</td>
+      <td>...</td>
+      <td>0.0758</td>
+      <td>0.11500</td>
+      <td>0.881</td>
+      <td>0.1210</td>
+      <td>0.766</td>
+      <td>119.998</td>
+      <td>142620</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815358</th>
+      <td>4G51c7cWzB6CLaRq9sYj2w</td>
+      <td>God Loves You</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>8</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.845</td>
+      <td>...</td>
+      <td>0.0662</td>
+      <td>0.00274</td>
+      <td>0.548</td>
+      <td>0.0393</td>
+      <td>0.472</td>
+      <td>120.090</td>
+      <td>161000</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815359</th>
+      <td>45fcUAjXlzDxTwSzoUaO6l</td>
+      <td>You In My Life</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>9</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.957</td>
+      <td>...</td>
+      <td>0.0623</td>
+      <td>0.13300</td>
+      <td>0.857</td>
+      <td>0.0968</td>
+      <td>0.258</td>
+      <td>112.987</td>
+      <td>214867</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815360</th>
+      <td>35TcKSN5hsGcZLrFPkUvIv</td>
+      <td>I Wonder</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>10</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.659</td>
+      <td>...</td>
+      <td>0.0581</td>
+      <td>0.00196</td>
+      <td>0.854</td>
+      <td>0.3710</td>
+      <td>0.877</td>
+      <td>146.020</td>
+      <td>180822</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 24 columns</p>
+</div>
+</div>
+</div>
+<p>So, the tracks from the album <code>Optimism 2</code> by the artist <code>iCizzle</code> have been given a <code>year</code> value of <code>0</code>. A quick <a href="https://www.google.com/search?q=Icizzle+Optimism+2&amp;stick=H4sIAAAAAAAAAONgFuLSz9U3KDeoSLfMVuLVT9c3NEwzMzYpKDS31BLyLS3OTHYsKsksLgnJd8xJKs1dxCrkmZxZVZWTquBfUJKZm1mcq2AEAKUBcIxGAAAA&amp;sa=X&amp;ved=2ahUKEwjY8uCX07b-AhUO_ioKHZarBwQQri56BAgkEBU&amp;biw=1920&amp;bih=973&amp;dpr=1">internet search</a> and we can see the year should be <code>2018</code>. Now that we have located our anomalies, we can update these values using <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html">.loc</a> :</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">815351</span>:<span class="dv">815360</span>,<span class="st">'year'</span>] <span class="op">=</span> <span class="dv">2018</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s check that worked :</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">815351</span>:<span class="dv">815360</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>album</th>
+      <th>album_id</th>
+      <th>artists</th>
+      <th>artist_ids</th>
+      <th>track_number</th>
+      <th>disc_number</th>
+      <th>explicit</th>
+      <th>danceability</th>
+      <th>...</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>year</th>
+      <th>release_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>815351</th>
+      <td>035h5flqzwF6I5CTfsdHPA</td>
+      <td>Jimmy Neutron</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>1</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.795</td>
+      <td>...</td>
+      <td>0.0519</td>
+      <td>0.01560</td>
+      <td>0.439</td>
+      <td>0.0860</td>
+      <td>0.389</td>
+      <td>109.985</td>
+      <td>183000</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815352</th>
+      <td>49x05fLGDKCsCUA7CG0VpY</td>
+      <td>I Luv You</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>2</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.762</td>
+      <td>...</td>
+      <td>0.0950</td>
+      <td>0.88700</td>
+      <td>0.909</td>
+      <td>0.1060</td>
+      <td>0.728</td>
+      <td>92.962</td>
+      <td>145161</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815353</th>
+      <td>4mNLlSoZOqoPauBAF3bIpx</td>
+      <td>My Heart</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.671</td>
+      <td>...</td>
+      <td>0.0662</td>
+      <td>0.00956</td>
+      <td>0.902</td>
+      <td>0.0455</td>
+      <td>0.893</td>
+      <td>97.865</td>
+      <td>176561</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815354</th>
+      <td>7w5iwI0wnIiopbCFNe1Txo</td>
+      <td>I Am (Invincible)</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>4</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.759</td>
+      <td>...</td>
+      <td>0.1280</td>
+      <td>0.00544</td>
+      <td>0.895</td>
+      <td>0.0538</td>
+      <td>0.537</td>
+      <td>89.989</td>
+      <td>192000</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815355</th>
+      <td>2Tfy2R2uiWVwxHQUT6oGNp</td>
+      <td>Flower Power</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.657</td>
+      <td>...</td>
+      <td>0.2810</td>
+      <td>0.01800</td>
+      <td>0.245</td>
+      <td>0.2410</td>
+      <td>0.964</td>
+      <td>179.904</td>
+      <td>138666</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815356</th>
+      <td>05cTbSPQyha6z7opYwH67O</td>
+      <td>Heard It Low</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>6</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.728</td>
+      <td>...</td>
+      <td>0.0673</td>
+      <td>0.00785</td>
+      <td>0.275</td>
+      <td>0.0865</td>
+      <td>0.662</td>
+      <td>90.010</td>
+      <td>138667</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815357</th>
+      <td>1fYK5xB8csOXVEqApkzzm0</td>
+      <td>Hangin On</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>7</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.822</td>
+      <td>...</td>
+      <td>0.0758</td>
+      <td>0.11500</td>
+      <td>0.881</td>
+      <td>0.1210</td>
+      <td>0.766</td>
+      <td>119.998</td>
+      <td>142620</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815358</th>
+      <td>4G51c7cWzB6CLaRq9sYj2w</td>
+      <td>God Loves You</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>8</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.845</td>
+      <td>...</td>
+      <td>0.0662</td>
+      <td>0.00274</td>
+      <td>0.548</td>
+      <td>0.0393</td>
+      <td>0.472</td>
+      <td>120.090</td>
+      <td>161000</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815359</th>
+      <td>45fcUAjXlzDxTwSzoUaO6l</td>
+      <td>You In My Life</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>9</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.957</td>
+      <td>...</td>
+      <td>0.0623</td>
+      <td>0.13300</td>
+      <td>0.857</td>
+      <td>0.0968</td>
+      <td>0.258</td>
+      <td>112.987</td>
+      <td>214867</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <th>815360</th>
+      <td>35TcKSN5hsGcZLrFPkUvIv</td>
+      <td>I Wonder</td>
+      <td>Optimism 2</td>
+      <td>211vSdhxt58A943r9QWRKo</td>
+      <td>['iCizzle']</td>
+      <td>['7arv4matK2uKJrdtPSxU4i']</td>
+      <td>10</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.659</td>
+      <td>...</td>
+      <td>0.0581</td>
+      <td>0.00196</td>
+      <td>0.854</td>
+      <td>0.3710</td>
+      <td>0.877</td>
+      <td>146.020</td>
+      <td>180822</td>
+      <td>4.0</td>
+      <td>2018</td>
+      <td>0000</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 24 columns</p>
+</div>
+</div>
+</div>
+<p>We have successfully updated the release year to <code>2018</code>. Let’s check the range of dates once more :</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.year.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>count    1.204025e+06
+mean     2.007345e+03
+std      1.062889e+01
+min      1.900000e+03
+25%      2.002000e+03
+50%      2.009000e+03
+75%      2.015000e+03
+max      2.020000e+03
+Name: year, dtype: float64</code></pre>
+</div>
+</div>
+<p>So, the minimum year is now 1900. Again, this seems like it might be another imputed value. Let’s check :</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.loc[df[<span class="st">'year'</span>] <span class="op">==</span> <span class="dv">1900</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>album</th>
+      <th>album_id</th>
+      <th>artists</th>
+      <th>artist_ids</th>
+      <th>track_number</th>
+      <th>disc_number</th>
+      <th>explicit</th>
+      <th>danceability</th>
+      <th>...</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>year</th>
+      <th>release_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>450071</th>
+      <td>3xPatAieFSuGIuQfHMDvSw</td>
+      <td>Arabian Waltz</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>1</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.533</td>
+      <td>...</td>
+      <td>0.0576</td>
+      <td>0.875</td>
+      <td>0.859</td>
+      <td>0.0887</td>
+      <td>0.8350</td>
+      <td>115.746</td>
+      <td>493867</td>
+      <td>3.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450072</th>
+      <td>5vpx0WtYVtKOFu4V65NkUi</td>
+      <td>Dreams Of A Dying City</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>2</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.476</td>
+      <td>...</td>
+      <td>0.0334</td>
+      <td>0.843</td>
+      <td>0.893</td>
+      <td>0.1060</td>
+      <td>0.5710</td>
+      <td>92.340</td>
+      <td>730667</td>
+      <td>1.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450073</th>
+      <td>0G7vBbeWCcRISsHwcivFgl</td>
+      <td>Ornette Never Sleeps</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.605</td>
+      <td>...</td>
+      <td>0.0457</td>
+      <td>0.912</td>
+      <td>0.693</td>
+      <td>0.1170</td>
+      <td>0.7250</td>
+      <td>139.820</td>
+      <td>421760</td>
+      <td>4.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450074</th>
+      <td>6YjrfDT2TPp6pflsCSBHPH</td>
+      <td>Georgina</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>4</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.406</td>
+      <td>...</td>
+      <td>0.0433</td>
+      <td>0.849</td>
+      <td>0.866</td>
+      <td>0.1020</td>
+      <td>0.6200</td>
+      <td>93.729</td>
+      <td>672707</td>
+      <td>4.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450075</th>
+      <td>2Nq317w5G1gmuhilTCiiqR</td>
+      <td>No Visa</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.577</td>
+      <td>...</td>
+      <td>0.0430</td>
+      <td>0.936</td>
+      <td>0.865</td>
+      <td>0.0999</td>
+      <td>0.5010</td>
+      <td>96.415</td>
+      <td>601027</td>
+      <td>4.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450076</th>
+      <td>6PzeE7vvynVguz04STK6RL</td>
+      <td>The Pain After</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>6</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.291</td>
+      <td>...</td>
+      <td>0.0477</td>
+      <td>0.956</td>
+      <td>0.939</td>
+      <td>0.1460</td>
+      <td>0.0959</td>
+      <td>71.087</td>
+      <td>566840</td>
+      <td>3.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459980</th>
+      <td>4DZ63H1bRMmiTcXiQhERxv</td>
+      <td>Catania</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>1</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.465</td>
+      <td>...</td>
+      <td>0.0742</td>
+      <td>0.414</td>
+      <td>0.089</td>
+      <td>0.0936</td>
+      <td>0.3790</td>
+      <td>163.939</td>
+      <td>465000</td>
+      <td>5.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459981</th>
+      <td>6QqZn286ICbbhTjNBPlgNY</td>
+      <td>Nashwa</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>2</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.436</td>
+      <td>...</td>
+      <td>0.0683</td>
+      <td>0.802</td>
+      <td>0.758</td>
+      <td>0.1070</td>
+      <td>0.1580</td>
+      <td>171.006</td>
+      <td>578000</td>
+      <td>5.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459982</th>
+      <td>5Mw5YkQkHuGqYQL5XMrUOI</td>
+      <td>An Evening With Jerry</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.511</td>
+      <td>...</td>
+      <td>0.0350</td>
+      <td>0.211</td>
+      <td>0.550</td>
+      <td>0.1900</td>
+      <td>0.2530</td>
+      <td>144.884</td>
+      <td>423000</td>
+      <td>4.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459983</th>
+      <td>4SNCi2xa3dkM0HPTQ1AFBP</td>
+      <td>When The Lights Go Out</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>4</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.414</td>
+      <td>...</td>
+      <td>0.0602</td>
+      <td>0.826</td>
+      <td>0.880</td>
+      <td>0.1180</td>
+      <td>0.0783</td>
+      <td>154.842</td>
+      <td>433960</td>
+      <td>4.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459984</th>
+      <td>1XEbjKZygiDllK5WpEB73O</td>
+      <td>Story Teller</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.595</td>
+      <td>...</td>
+      <td>0.0458</td>
+      <td>0.537</td>
+      <td>0.658</td>
+      <td>0.3540</td>
+      <td>0.3370</td>
+      <td>109.885</td>
+      <td>532173</td>
+      <td>4.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459985</th>
+      <td>5V4pmHLdq0fhEw5DjkaW2w</td>
+      <td>Ornette Never Sleps</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>6</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.470</td>
+      <td>...</td>
+      <td>0.0569</td>
+      <td>0.593</td>
+      <td>0.914</td>
+      <td>0.1050</td>
+      <td>0.8140</td>
+      <td>158.412</td>
+      <td>243867</td>
+      <td>3.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459986</th>
+      <td>6BeB08lGiB6zd8Fn7BBhb1</td>
+      <td>Nadim</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>7</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.474</td>
+      <td>...</td>
+      <td>0.0532</td>
+      <td>0.401</td>
+      <td>0.561</td>
+      <td>0.0785</td>
+      <td>0.3010</td>
+      <td>162.807</td>
+      <td>513000</td>
+      <td>4.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459987</th>
+      <td>1WRapjF1HuE2rXUVBGKXXt</td>
+      <td>Wishing Well</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>8</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.521</td>
+      <td>...</td>
+      <td>0.0594</td>
+      <td>0.828</td>
+      <td>0.792</td>
+      <td>0.1040</td>
+      <td>0.2420</td>
+      <td>127.288</td>
+      <td>325000</td>
+      <td>4.0</td>
+      <td>1900</td>
+      <td>1900-01-01</td>
+    </tr>
+  </tbody>
+</table>
+<p>14 rows × 24 columns</p>
+</div>
+</div>
+</div>
+<p>So, the tracks with a <code>year</code> value of <code>1900</code> all relate to the artist <code>Rabih Abou-Khalil</code>. Another quick <a href="https://www.discogs.com/artist/504348-Rabih-Abou-Khalil">internet search</a> and we can see the actual year for the album <code>Al-Jadida</code> is <code>1991</code> and for the album <code>Arabian Waltz</code> is <code>1996</code>.</p>
+<p>Let’s update these :</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">450071</span>:<span class="dv">450076</span>,<span class="st">'year'</span>] <span class="op">=</span> <span class="dv">1996</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">459980</span>:<span class="dv">459987</span>,<span class="st">'year'</span>] <span class="op">=</span> <span class="dv">1991</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and check that’s worked :</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">450071</span>:<span class="dv">450076</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>album</th>
+      <th>album_id</th>
+      <th>artists</th>
+      <th>artist_ids</th>
+      <th>track_number</th>
+      <th>disc_number</th>
+      <th>explicit</th>
+      <th>danceability</th>
+      <th>...</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>year</th>
+      <th>release_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>450071</th>
+      <td>3xPatAieFSuGIuQfHMDvSw</td>
+      <td>Arabian Waltz</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>1</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.533</td>
+      <td>...</td>
+      <td>0.0576</td>
+      <td>0.875</td>
+      <td>0.859</td>
+      <td>0.0887</td>
+      <td>0.8350</td>
+      <td>115.746</td>
+      <td>493867</td>
+      <td>3.0</td>
+      <td>1996</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450072</th>
+      <td>5vpx0WtYVtKOFu4V65NkUi</td>
+      <td>Dreams Of A Dying City</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>2</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.476</td>
+      <td>...</td>
+      <td>0.0334</td>
+      <td>0.843</td>
+      <td>0.893</td>
+      <td>0.1060</td>
+      <td>0.5710</td>
+      <td>92.340</td>
+      <td>730667</td>
+      <td>1.0</td>
+      <td>1996</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450073</th>
+      <td>0G7vBbeWCcRISsHwcivFgl</td>
+      <td>Ornette Never Sleeps</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.605</td>
+      <td>...</td>
+      <td>0.0457</td>
+      <td>0.912</td>
+      <td>0.693</td>
+      <td>0.1170</td>
+      <td>0.7250</td>
+      <td>139.820</td>
+      <td>421760</td>
+      <td>4.0</td>
+      <td>1996</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450074</th>
+      <td>6YjrfDT2TPp6pflsCSBHPH</td>
+      <td>Georgina</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>4</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.406</td>
+      <td>...</td>
+      <td>0.0433</td>
+      <td>0.849</td>
+      <td>0.866</td>
+      <td>0.1020</td>
+      <td>0.6200</td>
+      <td>93.729</td>
+      <td>672707</td>
+      <td>4.0</td>
+      <td>1996</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450075</th>
+      <td>2Nq317w5G1gmuhilTCiiqR</td>
+      <td>No Visa</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.577</td>
+      <td>...</td>
+      <td>0.0430</td>
+      <td>0.936</td>
+      <td>0.865</td>
+      <td>0.0999</td>
+      <td>0.5010</td>
+      <td>96.415</td>
+      <td>601027</td>
+      <td>4.0</td>
+      <td>1996</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>450076</th>
+      <td>6PzeE7vvynVguz04STK6RL</td>
+      <td>The Pain After</td>
+      <td>Arabian Waltz</td>
+      <td>1ggHQJ48NFfYhGu6VznK8K</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>6</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.291</td>
+      <td>...</td>
+      <td>0.0477</td>
+      <td>0.956</td>
+      <td>0.939</td>
+      <td>0.1460</td>
+      <td>0.0959</td>
+      <td>71.087</td>
+      <td>566840</td>
+      <td>3.0</td>
+      <td>1996</td>
+      <td>1900-01-01</td>
+    </tr>
+  </tbody>
+</table>
+<p>6 rows × 24 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">459980</span>:<span class="dv">459987</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>album</th>
+      <th>album_id</th>
+      <th>artists</th>
+      <th>artist_ids</th>
+      <th>track_number</th>
+      <th>disc_number</th>
+      <th>explicit</th>
+      <th>danceability</th>
+      <th>...</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>year</th>
+      <th>release_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>459980</th>
+      <td>4DZ63H1bRMmiTcXiQhERxv</td>
+      <td>Catania</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>1</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.465</td>
+      <td>...</td>
+      <td>0.0742</td>
+      <td>0.414</td>
+      <td>0.089</td>
+      <td>0.0936</td>
+      <td>0.3790</td>
+      <td>163.939</td>
+      <td>465000</td>
+      <td>5.0</td>
+      <td>1991</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459981</th>
+      <td>6QqZn286ICbbhTjNBPlgNY</td>
+      <td>Nashwa</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>2</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.436</td>
+      <td>...</td>
+      <td>0.0683</td>
+      <td>0.802</td>
+      <td>0.758</td>
+      <td>0.1070</td>
+      <td>0.1580</td>
+      <td>171.006</td>
+      <td>578000</td>
+      <td>5.0</td>
+      <td>1991</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459982</th>
+      <td>5Mw5YkQkHuGqYQL5XMrUOI</td>
+      <td>An Evening With Jerry</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.511</td>
+      <td>...</td>
+      <td>0.0350</td>
+      <td>0.211</td>
+      <td>0.550</td>
+      <td>0.1900</td>
+      <td>0.2530</td>
+      <td>144.884</td>
+      <td>423000</td>
+      <td>4.0</td>
+      <td>1991</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459983</th>
+      <td>4SNCi2xa3dkM0HPTQ1AFBP</td>
+      <td>When The Lights Go Out</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>4</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.414</td>
+      <td>...</td>
+      <td>0.0602</td>
+      <td>0.826</td>
+      <td>0.880</td>
+      <td>0.1180</td>
+      <td>0.0783</td>
+      <td>154.842</td>
+      <td>433960</td>
+      <td>4.0</td>
+      <td>1991</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459984</th>
+      <td>1XEbjKZygiDllK5WpEB73O</td>
+      <td>Story Teller</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.595</td>
+      <td>...</td>
+      <td>0.0458</td>
+      <td>0.537</td>
+      <td>0.658</td>
+      <td>0.3540</td>
+      <td>0.3370</td>
+      <td>109.885</td>
+      <td>532173</td>
+      <td>4.0</td>
+      <td>1991</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459985</th>
+      <td>5V4pmHLdq0fhEw5DjkaW2w</td>
+      <td>Ornette Never Sleps</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>6</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.470</td>
+      <td>...</td>
+      <td>0.0569</td>
+      <td>0.593</td>
+      <td>0.914</td>
+      <td>0.1050</td>
+      <td>0.8140</td>
+      <td>158.412</td>
+      <td>243867</td>
+      <td>3.0</td>
+      <td>1991</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459986</th>
+      <td>6BeB08lGiB6zd8Fn7BBhb1</td>
+      <td>Nadim</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>7</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.474</td>
+      <td>...</td>
+      <td>0.0532</td>
+      <td>0.401</td>
+      <td>0.561</td>
+      <td>0.0785</td>
+      <td>0.3010</td>
+      <td>162.807</td>
+      <td>513000</td>
+      <td>4.0</td>
+      <td>1991</td>
+      <td>1900-01-01</td>
+    </tr>
+    <tr>
+      <th>459987</th>
+      <td>1WRapjF1HuE2rXUVBGKXXt</td>
+      <td>Wishing Well</td>
+      <td>Al-Jadida</td>
+      <td>2T6FKoeG7EXR0WAsFyXbSq</td>
+      <td>['Rabih Abou-Khalil']</td>
+      <td>['7cM9Y2LNnnmmqivaEuH8vT']</td>
+      <td>8</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.521</td>
+      <td>...</td>
+      <td>0.0594</td>
+      <td>0.828</td>
+      <td>0.792</td>
+      <td>0.1040</td>
+      <td>0.2420</td>
+      <td>127.288</td>
+      <td>325000</td>
+      <td>4.0</td>
+      <td>1991</td>
+      <td>1900-01-01</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 24 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.year.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>count    1.204025e+06
+mean     2.007346e+03
+std      1.062270e+01
+min      1.908000e+03
+25%      2.002000e+03
+50%      2.009000e+03
+75%      2.015000e+03
+max      2.020000e+03
+Name: year, dtype: float64</code></pre>
+</div>
+</div>
+<p>The minimum year is now 1908 which seems plausible :</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.loc[df[<span class="st">'year'</span>] <span class="op">==</span> <span class="dv">1908</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>album</th>
+      <th>album_id</th>
+      <th>artists</th>
+      <th>artist_ids</th>
+      <th>track_number</th>
+      <th>disc_number</th>
+      <th>explicit</th>
+      <th>danceability</th>
+      <th>...</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>time_signature</th>
+      <th>year</th>
+      <th>release_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>358067</th>
+      <td>2WXXkuoiDuZlyC4vAJUk4U</td>
+      <td>Hard Times</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['A.C. Reed']</td>
+      <td>['1i31XKLddtEeOIr0nPcxdj']</td>
+      <td>1</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.708</td>
+      <td>...</td>
+      <td>0.0589</td>
+      <td>0.6930</td>
+      <td>0.000354</td>
+      <td>0.0700</td>
+      <td>0.774</td>
+      <td>88.159</td>
+      <td>198533</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358068</th>
+      <td>1GUvbwCftGCU9HTeg1DPAW</td>
+      <td>She's Fine</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['A.C. Reed']</td>
+      <td>['1i31XKLddtEeOIr0nPcxdj']</td>
+      <td>2</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.501</td>
+      <td>...</td>
+      <td>0.0372</td>
+      <td>0.2020</td>
+      <td>0.001450</td>
+      <td>0.1070</td>
+      <td>0.868</td>
+      <td>82.489</td>
+      <td>258227</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358069</th>
+      <td>1Z3cZzxa2ulQSnqoPxp9oM</td>
+      <td>Moving Out Of The Ghetto</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['A.C. Reed']</td>
+      <td>['1i31XKLddtEeOIr0nPcxdj']</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.755</td>
+      <td>...</td>
+      <td>0.0784</td>
+      <td>0.4030</td>
+      <td>0.001180</td>
+      <td>0.1780</td>
+      <td>0.869</td>
+      <td>102.780</td>
+      <td>233733</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358070</th>
+      <td>44Ag9ocysgC0TYZWQ8q2YD</td>
+      <td>Going To New York</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['A.C. Reed']</td>
+      <td>['1i31XKLddtEeOIr0nPcxdj']</td>
+      <td>4</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.707</td>
+      <td>...</td>
+      <td>0.0471</td>
+      <td>0.3480</td>
+      <td>0.000081</td>
+      <td>0.3100</td>
+      <td>0.919</td>
+      <td>110.260</td>
+      <td>219173</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358071</th>
+      <td>3SDq5YWtxDUS05jNM1YDHk</td>
+      <td>Big Leg Woman</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Scotty And The Rib Tips']</td>
+      <td>['1P2BhUJ1N1bRIF52GZiJFS']</td>
+      <td>5</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.673</td>
+      <td>...</td>
+      <td>0.0637</td>
+      <td>0.3690</td>
+      <td>0.001570</td>
+      <td>0.0359</td>
+      <td>0.843</td>
+      <td>94.547</td>
+      <td>221400</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358072</th>
+      <td>0nJeoE8gNObc99KLYjcGSO</td>
+      <td>Careless With Our Love</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Scotty And The Rib Tips']</td>
+      <td>['1P2BhUJ1N1bRIF52GZiJFS']</td>
+      <td>6</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.505</td>
+      <td>...</td>
+      <td>0.0713</td>
+      <td>0.1960</td>
+      <td>0.000005</td>
+      <td>0.0613</td>
+      <td>0.456</td>
+      <td>202.935</td>
+      <td>182733</td>
+      <td>3.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358073</th>
+      <td>4iwPEc7B6Jdnm9yBCbRbHi</td>
+      <td>Road Block</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Scotty And The Rib Tips']</td>
+      <td>['1P2BhUJ1N1bRIF52GZiJFS']</td>
+      <td>7</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.716</td>
+      <td>...</td>
+      <td>0.0979</td>
+      <td>0.4400</td>
+      <td>0.002170</td>
+      <td>0.3640</td>
+      <td>0.764</td>
+      <td>113.089</td>
+      <td>169733</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358074</th>
+      <td>27gACliKLkeFZoYwrCzEM0</td>
+      <td>Poison Ivy</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Scotty And The Rib Tips']</td>
+      <td>['1P2BhUJ1N1bRIF52GZiJFS']</td>
+      <td>8</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.749</td>
+      <td>...</td>
+      <td>0.0589</td>
+      <td>0.5290</td>
+      <td>0.000372</td>
+      <td>0.0603</td>
+      <td>0.773</td>
+      <td>105.896</td>
+      <td>197467</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358075</th>
+      <td>2EpGTGT25A1o6p4q4dLOHN</td>
+      <td>I Dare You</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Lovie Lee']</td>
+      <td>['6cOz9TMiL8lfsFoWkxvqKM']</td>
+      <td>9</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.478</td>
+      <td>...</td>
+      <td>0.0656</td>
+      <td>0.7300</td>
+      <td>0.000020</td>
+      <td>0.3310</td>
+      <td>0.688</td>
+      <td>155.212</td>
+      <td>168200</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358076</th>
+      <td>1BHivexEpJ8inJqoBZyOQ0</td>
+      <td>Nobody Knows My Troubles</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Lovie Lee']</td>
+      <td>['6cOz9TMiL8lfsFoWkxvqKM']</td>
+      <td>10</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.433</td>
+      <td>...</td>
+      <td>0.0493</td>
+      <td>0.7210</td>
+      <td>0.000083</td>
+      <td>0.0646</td>
+      <td>0.366</td>
+      <td>177.106</td>
+      <td>318627</td>
+      <td>3.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358077</th>
+      <td>73c2SKi5JPvRf7Exzf3hvz</td>
+      <td>Sweet Little Girl</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Lovie Lee']</td>
+      <td>['6cOz9TMiL8lfsFoWkxvqKM']</td>
+      <td>11</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.568</td>
+      <td>...</td>
+      <td>0.0654</td>
+      <td>0.6880</td>
+      <td>0.000000</td>
+      <td>0.1480</td>
+      <td>0.857</td>
+      <td>133.396</td>
+      <td>193933</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358078</th>
+      <td>6XW31kg7cuN17LzgHj1pzM</td>
+      <td>Naptown</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Lovie Lee']</td>
+      <td>['6cOz9TMiL8lfsFoWkxvqKM']</td>
+      <td>12</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.574</td>
+      <td>...</td>
+      <td>0.0785</td>
+      <td>0.5130</td>
+      <td>0.000000</td>
+      <td>0.0795</td>
+      <td>0.891</td>
+      <td>136.918</td>
+      <td>185000</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358079</th>
+      <td>4bdbkXLaoccDNp6lLsZWRG</td>
+      <td>Drown In My Own Tears</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Lacy Gibson']</td>
+      <td>['54sySc5ynnkqxkG2dEMLQe']</td>
+      <td>13</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.639</td>
+      <td>...</td>
+      <td>0.0753</td>
+      <td>0.4260</td>
+      <td>0.000584</td>
+      <td>0.1240</td>
+      <td>0.488</td>
+      <td>97.814</td>
+      <td>280573</td>
+      <td>1.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358080</th>
+      <td>5YuV9oboI6FNhj45w15Bn2</td>
+      <td>Crying For My Baby</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Lacy Gibson']</td>
+      <td>['54sySc5ynnkqxkG2dEMLQe']</td>
+      <td>14</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.432</td>
+      <td>...</td>
+      <td>0.1030</td>
+      <td>0.1080</td>
+      <td>0.000752</td>
+      <td>0.3420</td>
+      <td>0.267</td>
+      <td>173.133</td>
+      <td>168893</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358081</th>
+      <td>0FwueIBJWE6EGlv2ipQGpv</td>
+      <td>Feel So Bad</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Lacy Gibson']</td>
+      <td>['54sySc5ynnkqxkG2dEMLQe']</td>
+      <td>15</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.507</td>
+      <td>...</td>
+      <td>0.0380</td>
+      <td>0.0637</td>
+      <td>0.014600</td>
+      <td>0.5270</td>
+      <td>0.795</td>
+      <td>158.532</td>
+      <td>234640</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358082</th>
+      <td>5zkdTRxprxh88V9nbNedlf</td>
+      <td>Wish Me Well</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Lacy Gibson']</td>
+      <td>['54sySc5ynnkqxkG2dEMLQe']</td>
+      <td>16</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.628</td>
+      <td>...</td>
+      <td>0.0745</td>
+      <td>0.4820</td>
+      <td>0.086400</td>
+      <td>0.0704</td>
+      <td>0.607</td>
+      <td>137.612</td>
+      <td>177627</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358083</th>
+      <td>4yS6s6PM2i9Q88Jo64gdQf</td>
+      <td>Have You Ever Loved A Woman</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Sons of the Blues']</td>
+      <td>['5of0zoRrZzeThokJuAPbgq']</td>
+      <td>17</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.513</td>
+      <td>...</td>
+      <td>0.0455</td>
+      <td>0.3690</td>
+      <td>0.013000</td>
+      <td>0.5120</td>
+      <td>0.268</td>
+      <td>151.070</td>
+      <td>370067</td>
+      <td>3.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358084</th>
+      <td>77CZxGGtBGywPx3Mlak3ji</td>
+      <td>Berlin Wall</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Sons of the Blues']</td>
+      <td>['5of0zoRrZzeThokJuAPbgq']</td>
+      <td>18</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.738</td>
+      <td>...</td>
+      <td>0.1990</td>
+      <td>0.3180</td>
+      <td>0.000289</td>
+      <td>0.0868</td>
+      <td>0.600</td>
+      <td>123.120</td>
+      <td>265640</td>
+      <td>4.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+    <tr>
+      <th>358085</th>
+      <td>7nPwFsty5ABGNCsZHuj3b0</td>
+      <td>Prisoner Of The Blues</td>
+      <td>Living Chicago Blues, Vol. 3</td>
+      <td>6l9iPFb3IBKZxrCwphkvH4</td>
+      <td>['Sons of the Blues']</td>
+      <td>['5of0zoRrZzeThokJuAPbgq']</td>
+      <td>19</td>
+      <td>1</td>
+      <td>False</td>
+      <td>0.654</td>
+      <td>...</td>
+      <td>0.1440</td>
+      <td>0.2090</td>
+      <td>0.015400</td>
+      <td>0.0862</td>
+      <td>0.390</td>
+      <td>160.127</td>
+      <td>253667</td>
+      <td>3.0</td>
+      <td>1908</td>
+      <td>1908-08-01</td>
+    </tr>
+  </tbody>
+</table>
+<p>19 rows × 24 columns</p>
+</div>
+</div>
+</div>
+<p>OK, well let’s perform some final tidy up before we bake the data wrangling into a Python script.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop([<span class="st">'id'</span>, <span class="st">'album_id'</span>, <span class="st">'artist_ids'</span>, <span class="st">'track_number'</span>, <span class="st">'disc_number'</span>, <span class="st">'time_signature'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'artists'</span>] <span class="op">=</span> df[<span class="st">'artists'</span>].<span class="bu">str</span>.strip(<span class="st">"['']"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'danceability'</span>] <span class="op">=</span> df[<span class="st">'danceability'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'energy'</span>] <span class="op">=</span> df[<span class="st">'energy'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'loudness'</span>] <span class="op">=</span> df[<span class="st">'loudness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'speechiness'</span>] <span class="op">=</span> df[<span class="st">'speechiness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'acousticness'</span>] <span class="op">=</span> df[<span class="st">'acousticness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'instrumentalness'</span>] <span class="op">=</span> df[<span class="st">'instrumentalness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'liveness'</span>] <span class="op">=</span> df[<span class="st">'liveness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'valence'</span>] <span class="op">=</span> df[<span class="st">'valence'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"tempo"</span>] <span class="op">=</span> df[<span class="st">"tempo"</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'year'</span>] <span class="op">=</span> df[<span class="st">'year'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"duration_s"</span>] <span class="op">=</span> (df[<span class="st">"duration_ms"</span>] <span class="op">/</span> <span class="dv">1000</span>).astype(<span class="bu">int</span>).<span class="bu">round</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>name</th>
+      <th>album</th>
+      <th>artists</th>
+      <th>explicit</th>
+      <th>danceability</th>
+      <th>energy</th>
+      <th>key</th>
+      <th>loudness</th>
+      <th>mode</th>
+      <th>speechiness</th>
+      <th>acousticness</th>
+      <th>instrumentalness</th>
+      <th>liveness</th>
+      <th>valence</th>
+      <th>tempo</th>
+      <th>duration_ms</th>
+      <th>year</th>
+      <th>release_date</th>
+      <th>duration_s</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Testify</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>Rage Against The Machine</td>
+      <td>False</td>
+      <td>0.47</td>
+      <td>0.98</td>
+      <td>7</td>
+      <td>-5.40</td>
+      <td>1</td>
+      <td>0.07</td>
+      <td>0.03</td>
+      <td>0.0</td>
+      <td>0.36</td>
+      <td>0.50</td>
+      <td>117</td>
+      <td>210133</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Guerrilla Radio</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>Rage Against The Machine</td>
+      <td>True</td>
+      <td>0.60</td>
+      <td>0.96</td>
+      <td>11</td>
+      <td>-5.76</td>
+      <td>1</td>
+      <td>0.19</td>
+      <td>0.01</td>
+      <td>0.0</td>
+      <td>0.16</td>
+      <td>0.49</td>
+      <td>103</td>
+      <td>206200</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Calm Like a Bomb</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>Rage Against The Machine</td>
+      <td>False</td>
+      <td>0.32</td>
+      <td>0.97</td>
+      <td>7</td>
+      <td>-5.42</td>
+      <td>1</td>
+      <td>0.48</td>
+      <td>0.02</td>
+      <td>0.0</td>
+      <td>0.12</td>
+      <td>0.37</td>
+      <td>149</td>
+      <td>298893</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+      <td>298</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mic Check</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>Rage Against The Machine</td>
+      <td>True</td>
+      <td>0.44</td>
+      <td>0.97</td>
+      <td>11</td>
+      <td>-5.83</td>
+      <td>0</td>
+      <td>0.24</td>
+      <td>0.16</td>
+      <td>0.0</td>
+      <td>0.12</td>
+      <td>0.57</td>
+      <td>96</td>
+      <td>213640</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sleep Now In the Fire</td>
+      <td>The Battle Of Los Angeles</td>
+      <td>Rage Against The Machine</td>
+      <td>False</td>
+      <td>0.43</td>
+      <td>0.93</td>
+      <td>2</td>
+      <td>-6.73</td>
+      <td>1</td>
+      <td>0.07</td>
+      <td>0.00</td>
+      <td>0.1</td>
+      <td>0.08</td>
+      <td>0.54</td>
+      <td>127</td>
+      <td>205600</td>
+      <td>1999</td>
+      <td>1999-11-02</td>
+      <td>205</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1204025 entries, 0 to 1204024
+Data columns (total 19 columns):
+ #   Column            Non-Null Count    Dtype  
+---  ------            --------------    -----  
+ 0   name              1204025 non-null  object 
+ 1   album             1204025 non-null  object 
+ 2   artists           1204025 non-null  object 
+ 3   explicit          1204025 non-null  bool   
+ 4   danceability      1204025 non-null  float64
+ 5   energy            1204025 non-null  float64
+ 6   key               1204025 non-null  int64  
+ 7   loudness          1204025 non-null  float64
+ 8   mode              1204025 non-null  int64  
+ 9   speechiness       1204025 non-null  float64
+ 10  acousticness      1204025 non-null  float64
+ 11  instrumentalness  1204025 non-null  float64
+ 12  liveness          1204025 non-null  float64
+ 13  valence           1204025 non-null  float64
+ 14  tempo             1204025 non-null  int64  
+ 15  duration_ms       1204025 non-null  int64  
+ 16  year              1204025 non-null  object 
+ 17  release_date      1204025 non-null  object 
+ 18  duration_s        1204025 non-null  int64  
+dtypes: bool(1), float64(8), int64(5), object(5)
+memory usage: 166.5+ MB</code></pre>
+</div>
+</div>
+</section>
+<section id="workflow-orchestration" class="level3">
+<h3 class="anchored" data-anchor-id="workflow-orchestration">3. Workflow Orchestration</h3>
+<p>I decided to use the <a href="https://www.prefect.io/">Prefect</a> work orchestration tool to streamline my data flows. Prefect is a modern open source dataflow automation platform that will allow us to add observability and orchestration by utilizing python to write tasks and flows decorators to build, run and monitor pipelines at scale. We can also make use of Prefect’s block connectors which allows communication with Google Cloud services.</p>
+<p>Again, in terms of reproducability of this project, the asssumption is that you have already followed the inital Prefect set up. A brief overview of the process is included below :</p>
+<p>Clone the <a href="https://github.com/discdiver/prefect-zoomcamp">Prefect repo</a> from the command line:</p>
+<pre><code>git clone https://github.com/discdiver/prefect-zoomcamp.git</code></pre>
+<p>Next, create a python environment :</p>
+<pre><code>conda create -n zoomcamp python=3.9   </code></pre>
+<p>Once created we need to activate it:</p>
+<pre><code>conda activate zoomcamp</code></pre>
+<p>To deactivate an environment use:</p>
+<pre><code>conda deactivate  </code></pre>
+<p>Note from the terminal that we are no longer running in <code>base</code> but our newly created <code>zoomcamp</code> environment. Then install all package dependencies with:</p>
+<pre><code>pip install -r requirements.txt</code></pre>
+<p>For more detailed coverage see <a href="https://github.com/discdiver/prefect-zoomcamp">attached</a>.</p>
+<p>Note, that I had also configured my GCP Credentials and Google Cloud Storage <a href="https://www.prefect.io/guide/blog/blocks-connectors-for-code/0">Prefect connector blocks</a> during week 2 of the course :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/5696ecf7-432e-4113-97aa-666f585738db.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gcp_cred_block.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/7b2ef705-54ec-4b2a-8545-45c9ab2d1d03.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gcs_bucket_block.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>The basic config template is included below for reference :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> prefect_gcp <span class="im">import</span> GcpCredentials</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> prefect_gcp.cloud_storage <span class="im">import</span> GcsBucket</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative to creating GCP blocks in the UI</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># copy your own service_account_info dictionary from the json file you downloaded from google</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># IMPORTANT - do not store credentials in a publicly available repository!</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>credentials_block <span class="op">=</span> GcpCredentials(</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    service_account_info<span class="op">=</span>{}  <span class="co"># enter your credentials from the json file</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>credentials_block.save(<span class="st">"zoom-gcp-creds"</span>, overwrite<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>bucket_block <span class="op">=</span> GcsBucket(</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    gcp_credentials<span class="op">=</span>GcpCredentials.load(<span class="st">"zoom-gcp-creds"</span>),</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    bucket<span class="op">=</span><span class="st">"prefect-de-zoomcamp"</span>,  <span class="co"># insert your  GCS bucket name</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>bucket_block.save(<span class="st">"zoom-gcs"</span>, overwrite<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once you are ready to run your flows you can make use of the Prefect UI to visualise the flows by entering the following at the command line:</p>
+<pre><code>prefect orion start</code></pre>
+<p>and then navigating to the dashboard at http://127.0.0.1:4200</p>
+<p>I created the following Python script to grab the local csv, clean up using pandas, convert to parquet, and upload to Google Cloud Storage. I ran the file from the command line using :</p>
+<pre><code>python etl_web_to_gcs.py</code></pre>
+<p><code>etl_web_to_gcs.py</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> prefect <span class="im">import</span> flow, task</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> prefect_gcp.cloud_storage <span class="im">import</span> GcsBucket</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyarrow <span class="im">as</span> pa</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> randint</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="at">@task</span>(retries<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch(dataset_url: <span class="bu">str</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Read data into pandas DataFrame"""</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(dataset_url)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="at">@task</span>(log_prints<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean(df: pd.DataFrame) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>   <span class="co">"""Some pandas transforms and print basic info"""</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>   df <span class="op">=</span> df.drop([<span class="st">'id'</span>, <span class="st">'album_id'</span>, <span class="st">'artist_ids'</span>, <span class="st">'track_number'</span>, <span class="st">'disc_number'</span>, <span class="st">'time_signature'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>   df.loc[<span class="dv">815351</span>:<span class="dv">815360</span>,<span class="st">'year'</span>] <span class="op">=</span> <span class="dv">2018</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>   df.loc[<span class="dv">450071</span>:<span class="dv">450076</span>,<span class="st">'year'</span>] <span class="op">=</span> <span class="dv">1996</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>   df.loc[<span class="dv">459980</span>:<span class="dv">459987</span>,<span class="st">'year'</span>] <span class="op">=</span> <span class="dv">1991</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'artists'</span>] <span class="op">=</span> df[<span class="st">'artists'</span>].<span class="bu">str</span>.strip(<span class="st">"['']"</span>)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'danceability'</span>] <span class="op">=</span> df[<span class="st">'danceability'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'energy'</span>] <span class="op">=</span> df[<span class="st">'energy'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'loudness'</span>] <span class="op">=</span> df[<span class="st">'loudness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'speechiness'</span>] <span class="op">=</span> df[<span class="st">'speechiness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'acousticness'</span>] <span class="op">=</span> df[<span class="st">'acousticness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'instrumentalness'</span>] <span class="op">=</span> df[<span class="st">'instrumentalness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'liveness'</span>] <span class="op">=</span> df[<span class="st">'liveness'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'valence'</span>] <span class="op">=</span> df[<span class="st">'valence'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">"tempo"</span>] <span class="op">=</span> df[<span class="st">"tempo"</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">'year_date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'year'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>)</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>   df[<span class="st">"duration_s"</span>] <span class="op">=</span> (df[<span class="st">"duration_ms"</span>] <span class="op">/</span> <span class="dv">1000</span>).astype(<span class="bu">int</span>).<span class="bu">round</span>(<span class="dv">0</span>)</span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(df.head(<span class="dv">2</span>))</span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(<span class="ss">f"columns: </span><span class="sc">{</span>df<span class="sc">.</span>dtypes<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>   <span class="bu">print</span>(<span class="ss">f"rows: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> df</span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a><span class="at">@task</span>()</span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> write_local(df: pd.DataFrame, dataset_file: <span class="bu">str</span>) <span class="op">-&gt;</span> Path:</span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>   <span class="co">"""Write DataFrame out locally as parquet file"""</span></span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>   path <span class="op">=</span> Path(<span class="ss">f"data/</span><span class="sc">{</span>dataset_file<span class="sc">}</span><span class="ss">.parquet"</span>)</span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>   df.to_parquet(path, compression<span class="op">=</span><span class="st">"gzip"</span>)</span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> path</span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a><span class="at">@task</span>()</span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> write_gcs(path: Path) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Upload local parquet file to GCS"""</span></span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>    gcs_block <span class="op">=</span> GcsBucket.load(<span class="st">"de-zoomcamp"</span>)</span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>    gcs_block.upload_from_path(from_path<span class="op">=</span>path, to_path<span class="op">=</span>path)</span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span></span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a><span class="at">@flow</span>()</span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> etl_web_to_gcs() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""The main ETL function"""</span></span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a>    dataset_file <span class="op">=</span> <span class="st">"spotify"</span></span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>    dataset_url <span class="op">=</span> <span class="st">"data/spotify.csv"</span></span>
+<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> fetch(dataset_url)</span>
+<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a>    df_clean <span class="op">=</span> clean(df)</span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a>    path <span class="op">=</span> write_local(df_clean,dataset_file)</span>
+<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a>    write_gcs(path)</span>
+<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a>    etl_web_to_gcs()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/7ad7c67f-ad97-46bb-b9ee-35234470a604.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">prefect_etl_web_to_gcs_1.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/12163578-de87-4fde-a7d3-97912bb79930.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">prefect_etl_web_to_gcs_2.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>That has completed successfully. The parquet file has been uploaded to our data lake :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/874c4434-bcd0-41b8-a2bd-e91a92bf4a05.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">bucket.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>I created the following Python script to take the parquet file from Google Cloud Storage and write to BigQuery as a table, and ran the file from the command line using :</p>
+<pre><code>python etl_web_to_gcs.py</code></pre>
+<p><code>etl_gcs_to_bq.py</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> prefect <span class="im">import</span> flow, task</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> prefect_gcp.cloud_storage <span class="im">import</span> GcsBucket</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> prefect_gcp <span class="im">import</span> GcpCredentials</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="at">@task</span>(retries<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_from_gcs() <span class="op">-&gt;</span> Path:</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Download data from GCS"""</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    gcs_path <span class="op">=</span> Path(<span class="ss">f"data/spotify.parquet"</span>)</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    gcs_block <span class="op">=</span> GcsBucket.load(<span class="st">"de-zoomcamp"</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    gcs_block.get_directory(from_path<span class="op">=</span>gcs_path, local_path<span class="op">=</span><span class="ss">f"./data/"</span>)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Path(<span class="ss">f"</span><span class="sc">{</span>gcs_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="at">@task</span>()</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transform(path: Path) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Print some basic info"""</span></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_parquet(path)</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df.head(<span class="dv">2</span>))</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"columns: </span><span class="sc">{</span>df<span class="sc">.</span>dtypes<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"rows: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="at">@task</span>()</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> write_bq(df: pd.DataFrame) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Write DataFrame to BiqQuery"""</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>    gcp_credentials_block <span class="op">=</span> GcpCredentials.load(<span class="st">"de-gcp-creds"</span>)</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>    df.to_gbq(</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>        destination_table<span class="op">=</span><span class="st">"spotify.spotify_one_point_two_million"</span>,</span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>        project_id<span class="op">=</span><span class="st">"de-zoomcamp-project137"</span>,</span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>        credentials<span class="op">=</span>gcp_credentials_block.get_credentials_from_service_account(),</span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>        chunksize<span class="op">=</span><span class="dv">500_000</span>,</span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>        if_exists<span class="op">=</span><span class="st">"replace"</span>,</span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a><span class="at">@flow</span>()</span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> etl_gcs_to_bq():</span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Main ETL flow to load data into Big Query"""</span></span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>    path <span class="op">=</span> extract_from_gcs()</span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> transform(path)</span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>    write_bq(df)</span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a>    etl_gcs_to_bq()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/76f5cd10-cb55-4f03-9449-1642c8fe0c60.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">prefect_etl_gcs_to_bq.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/ebcd0e19-6416-4012-b985-cbd80987da89.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">prefect_etl_gcs_to_bq_1.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>That has also completed successfully. A table has been created in BigQuery from the data held in Google Cloud Storage :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/74f1ea15-aeb9-42a3-a4c5-e2180f6006c2.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">big_query.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="data-transformation" class="level3">
+<h3 class="anchored" data-anchor-id="data-transformation">4. Data Transformation</h3>
+<section id="set-up-dbt-cloud-within-bigquery" class="level4">
+<h4 class="anchored" data-anchor-id="set-up-dbt-cloud-within-bigquery">Set up dbt cloud within BigQuery</h4>
+<p>We need to create a dedicated service account within Big Query to enable communication with dbt cloud.</p>
+<ol type="1">
+<li>Open the <a href="https://console.cloud.google.com/apis/credentials/wizard">BigQuery credential wizard</a> to create a service account in your project :</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/6aa42ad2-af4f-42f7-8fcc-f67f1c7a821f.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">big_query_dbt.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/6ccd2f96-c51c-4323-8402-7ccbdf4ba261.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_service_account.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>You can either grant the specific roles the account will need or simply use <code>BigQuery Admin</code>, as you’ll be the sole user of both accounts and data.</li>
+</ol>
+<p><em>Note: if you decide to use specific roles instead of BQ Admin, some users reported that they needed to add also viewer role to avoid encountering denied access errors.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/4a26d5f5-691b-4a1e-a330-c56690390076.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_service_account_grantaccess.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Now that the service account has been created we need to add and download a JSON key, go to the keys section, select “create new key”. Select key type JSON and once you click on <code>CREATE</code> it will get inmediately downloaded for you to use.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/bfa9f000-9502-47ef-ac78-1a97bb35e180.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_service_account_key.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="create-a-dbt-cloud-project" class="level4">
+<h4 class="anchored" data-anchor-id="create-a-dbt-cloud-project">Create a dbt cloud project</h4>
+<ol type="1">
+<li>Create a dbt cloud account from <a href="https://www.getdbt.com/pricing/">their website</a> (free for freelance developers)</li>
+<li>Once you have logged in you will be prompted to <code>Complete Project Setup</code></li>
+<li>Naming your project - a default name <code>Analytics</code> is given</li>
+<li>Choose BigQuery as your data warehouse:</li>
+<li>Upload the key you downloaded from BigQuery. This will populate most fields related to the production credentials.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/11d0078d-9068-4fe2-8b82-71d92461960b.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_project_setup.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Scroll down to the end of the page, set up your development credentials, and run the connection test and hit <code>Next</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/31205978-0fbd-426a-acd3-dc4d471e5c9d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_development_credentials.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="add-github-repository" class="level4">
+<h4 class="anchored" data-anchor-id="add-github-repository">Add GitHub repository</h4>
+<ol type="1">
+<li>Select git clone and paste the SSH key from your repo. Then hit <code>Import</code></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/e223d392-aa63-43ae-a6ff-0f7504434eb9.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">project_github_repo.PNG</figcaption><p></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>You will get a deploy key :</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/feaebd52-825e-4b1c-aa5f-4f26ac12f161.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Head to your GH repo and go to the settings tab. Under security you’ll find the menu <em>deploy keys</em>. Click on <code>Add deploy key</code> and paste the deploy key provided by dbt cloud. Make sure to tick on “write access”.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/7ec9600e-f758-4e00-8b4f-3f980f6f5988.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">add_dbt_deploy_key_to_github.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>For a detailed set up guide <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/dbt_cloud_setup.md">see here</a>.</p>
+<p><code>Initialize dbt project</code></p>
+<p>This builds out your folder structure with example models.</p>
+<p>Make your initial commit by clicking <code>Commit and sync</code>. Use the commit message “initial commit” and click <code>Commit</code>. Note that the files are read-only and you have to <code>Create branch</code> before you can edit or add new files :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/21f02bab-a579-44a3-9fb8-0800d7dbf850.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_initial_commit.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Once you have created a branch you can edit and add new files. Essentially we only need three files to build our model :</p>
+<p><code>dbt.project.yml</code></p>
+<p>The basic config below can be tailored to meet your own needs. The key fields are :</p>
+<p><code>name</code> &lt;spotify_dbt&gt; This will be the name of the dataset created in BiqQuery on successful run of the transformation model</p>
+<p><code>models</code>:<br>
+&lt;spotify_dbt&gt; This should match the name specified above</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Name your project! Project names should contain only lowercase characters</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and underscores. A good package name should reflect your organization's</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># name or the intended use of these models</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>name: <span class="st">'spotify_dbt'</span> <span class="co"># This will be the name of the dataset dbt will create in BigQuery</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>version: <span class="st">'1.0.0'</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>config<span class="op">-</span>version: <span class="dv">2</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># This setting configures which "profile" dbt uses for this project.</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>profile: <span class="st">'default'</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co"># These configurations specify where dbt should look for different types of files.</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The `source-paths` config, for example, states that models in this project can be</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># found in the "models/" directory. You probably won't need to change these!</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>model<span class="op">-</span>paths: [<span class="st">"models"</span>]</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>analysis<span class="op">-</span>paths: [<span class="st">"analyses"</span>]</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>test<span class="op">-</span>paths: [<span class="st">"tests"</span>]</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>seed<span class="op">-</span>paths: [<span class="st">"seeds"</span>]</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>macro<span class="op">-</span>paths: [<span class="st">"macros"</span>]</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>snapshot<span class="op">-</span>paths: [<span class="st">"snapshots"</span>]</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>target<span class="op">-</span>path: <span class="st">"target"</span>  <span class="co"># directory which will store compiled SQL files</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>clean<span class="op">-</span>targets:         <span class="co"># directories to be removed by `dbt clean`</span></span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> <span class="st">"target"</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> <span class="st">"dbt_packages"</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuring models</span></span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Full documentation: https://docs.getdbt.com/docs/configuring-models</span></span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="co"># In this example config, we tell dbt to build all models in the example/ directory</span></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a><span class="co"># as tables. These settings can be overridden in the individual model files</span></span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a><span class="co"># using the `{{ config(...) }}` macro.</span></span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>models:</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>  spotify_dbt:</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Applies to all files under models/.../</span></span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>      staging:</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>          materialized: view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>schema.yml</code></p>
+<p>Note that this file also includes the <code>source</code> i.e.&nbsp;the location of the data that the transforms included in our model are to be performed on :</p>
+<p><code>name</code> : &lt;spotify&gt; Choose a name for this <code>source</code> variable, This will be referenced in the model.sql file<br>
+<code>database</code>: &lt;de-zoomcamp-project137&gt; BigQuery project reference</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>version: <span class="dv">2</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>sources:</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: spotify <span class="co"># Choose a name. This will be the 'source' referred to in the </span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>      database: de<span class="op">-</span>zoomcamp<span class="op">-</span>project137 <span class="co"># BigQuery project reference</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>      tables:</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> name: spotify_one_point_two_million <span class="co"># Choose a name for the table to be created in BigQuery</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>models:</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> name: spotify_one_point_two_million</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>      description: <span class="op">&gt;</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>        Curated by Rodolfo Gigueroa, over <span class="fl">1.2</span> million songs downloaded <span class="im">from</span> the MusicBrainz catalog <span class="kw">and</span> <span class="dv">24</span> track features obtained using the Spotify</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>        API. </span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>      columns:</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: <span class="bu">id</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>              The base<span class="op">-</span><span class="dv">62</span> identifier found at the end of the Spotify URI <span class="cf">for</span> an artist, track, album, playlist, etc. Unlike a Spotify URI, a Spotify ID</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>              does <span class="kw">not</span> clearly identify the <span class="bu">type</span> of resource<span class="op">;</span> that information <span class="kw">is</span> provided elsewhere <span class="kw">in</span> the call. </span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: name </span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>            description: The name of the track                         </span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: album</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>            description: The name of the album. In case of an album takedown, the value may be an empty string.</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: album_id</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>            description: The Spotify ID <span class="cf">for</span> the album.</span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: artists</span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>            description: The name(s) of the artist(s).</span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: artist_ids</span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>            description: The Spotify ID <span class="cf">for</span> the artist(s).</span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: track_number</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>            description: The number of the track. If an album has several discs, the track number <span class="kw">is</span> the number on the specified disc.</span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: disc_number</span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>            description: The disc number (usually <span class="dv">1</span> unless the album consists of more than one disc).</span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: explicit</span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>            description: Whether <span class="kw">or</span> <span class="kw">not</span> the track has explicit lyrics ( true <span class="op">=</span> yes it does<span class="op">;</span> false <span class="op">=</span> no it does <span class="kw">not</span> OR unknown).</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: danceability</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>             Danceability describes how suitable a track <span class="kw">is</span> <span class="cf">for</span> dancing based on a combination of musical elements including tempo, rhythm stability, </span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a>             beat strength, <span class="kw">and</span> overall regularity. A value of <span class="fl">0.0</span> <span class="kw">is</span> least danceable <span class="kw">and</span> <span class="fl">1.0</span> <span class="kw">is</span> most danceable.           </span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: energy </span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a>             Energy <span class="kw">is</span> a measure <span class="im">from</span> <span class="fl">0.0</span> to <span class="fl">1.0</span> <span class="kw">and</span> represents a perceptual measure of intensity <span class="kw">and</span> activity. Typically, energetic tracks feel fast,</span>
+<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a>             loud, <span class="kw">and</span> noisy. For example, death metal has high energy, <span class="cf">while</span> a Bach prelude scores low on the scale. Perceptual features contributing</span>
+<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a>             to this attribute include dynamic <span class="bu">range</span>, perceived loudness, timbre, onset rate, <span class="kw">and</span> general entropy.</span>
+<span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: key</span>
+<span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a>             The key the track <span class="kw">is</span> <span class="kw">in</span>. Integers <span class="bu">map</span> to pitches using standard Pitch Class notation. E.g. <span class="dv">0</span> <span class="op">=</span> C, <span class="dv">1</span> <span class="op">=</span> C♯<span class="op">/</span>D♭, <span class="dv">2</span> <span class="op">=</span> D, <span class="kw">and</span> so on. If no key </span>
+<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a>             was detected, the value <span class="kw">is</span> <span class="op">-</span><span class="fl">1.</span></span>
+<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: loudness</span>
+<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>             The overall loudness of a track <span class="kw">in</span> decibels (dB). Loudness values are averaged across the entire track <span class="kw">and</span> are useful <span class="cf">for</span> comparing </span>
+<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a>             relative loudness of tracks. Loudness <span class="kw">is</span> the quality of a sound that <span class="kw">is</span> the primary psychological correlate of physical strength </span>
+<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a>             (amplitude). Values typically <span class="bu">range</span> between <span class="op">-</span><span class="dv">60</span> <span class="kw">and</span> <span class="dv">0</span> db.</span>
+<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: mode</span>
+<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a>              Mode indicates the modality (major <span class="kw">or</span> minor) of a track, the <span class="bu">type</span> of scale <span class="im">from</span> which its melodic content <span class="kw">is</span> derived. Major <span class="kw">is</span> represented</span>
+<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a>              by <span class="dv">1</span> <span class="kw">and</span> minor <span class="kw">is</span> <span class="fl">0.</span></span>
+<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: speechiness</span>
+<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a>              Speechiness detects the presence of spoken words <span class="kw">in</span> a track. The more exclusively speech<span class="op">-</span>like the recording (e.g. talk show, audio book, </span>
+<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a>              poetry), the closer to <span class="fl">1.0</span> the attribute value. Values above <span class="fl">0.66</span> describe tracks that are probably made entirely of spoken words. Values </span>
+<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a>              between <span class="fl">0.33</span> <span class="kw">and</span> <span class="fl">0.66</span> describe tracks that may contain both music <span class="kw">and</span> speech, either <span class="kw">in</span> sections <span class="kw">or</span> layered, including such cases <span class="im">as</span> rap </span>
+<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a>              music. Values below <span class="fl">0.33</span> most likely represent music <span class="kw">and</span> other non<span class="op">-</span>speech<span class="op">-</span>like tracks.         </span>
+<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: acousticness</span>
+<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a>            description: A confidence measure <span class="im">from</span> <span class="fl">0.0</span> to <span class="fl">1.0</span> of whether the track <span class="kw">is</span> acoustic. <span class="fl">1.0</span> represents high confidence the track <span class="kw">is</span> acoustic.</span>
+<span id="cb37-65"><a href="#cb37-65" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: instrumentalness</span>
+<span id="cb37-66"><a href="#cb37-66" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-67"><a href="#cb37-67" aria-hidden="true" tabindex="-1"></a>             Predicts whether a track contains no vocals. <span class="st">"Ooh"</span> <span class="kw">and</span> <span class="st">"aah"</span> sounds are treated <span class="im">as</span> instrumental <span class="kw">in</span> this context. Rap <span class="kw">or</span> spoken word tracks </span>
+<span id="cb37-68"><a href="#cb37-68" aria-hidden="true" tabindex="-1"></a>             are clearly <span class="st">"vocal"</span>. The closer the instrumentalness value <span class="kw">is</span> to <span class="fl">1.0</span>, the greater likelihood the track contains no vocal content. Values above </span>
+<span id="cb37-69"><a href="#cb37-69" aria-hidden="true" tabindex="-1"></a>             <span class="fl">0.5</span> are intended to represent instrumental tracks, but confidence <span class="kw">is</span> higher <span class="im">as</span> the value approaches <span class="fl">1.0</span>.</span>
+<span id="cb37-70"><a href="#cb37-70" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: liveness</span>
+<span id="cb37-71"><a href="#cb37-71" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-72"><a href="#cb37-72" aria-hidden="true" tabindex="-1"></a>             Detects the presence of an audience <span class="kw">in</span> the recording. Higher liveness values represent an increased probability that the track was performed </span>
+<span id="cb37-73"><a href="#cb37-73" aria-hidden="true" tabindex="-1"></a>             live. A value above <span class="fl">0.8</span> provides strong likelihood that the track <span class="kw">is</span> live.</span>
+<span id="cb37-74"><a href="#cb37-74" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: valence</span>
+<span id="cb37-75"><a href="#cb37-75" aria-hidden="true" tabindex="-1"></a>            description: A measure <span class="im">from</span> <span class="fl">0.0</span> to <span class="fl">1.0</span> describing the musical positiveness conveyed by a track. Tracks <span class="cf">with</span> high valence sound more positive (e.g. happy, cheerful, euphoric), <span class="cf">while</span> tracks <span class="cf">with</span> low valence sound more negative (e.g. sad, depressed, angry).</span>
+<span id="cb37-76"><a href="#cb37-76" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: tempo</span>
+<span id="cb37-77"><a href="#cb37-77" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-78"><a href="#cb37-78" aria-hidden="true" tabindex="-1"></a>             The overall estimated tempo of a track <span class="kw">in</span> beats per minute (BPM). In musical terminology, tempo <span class="kw">is</span> the speed <span class="kw">or</span> pace of a given piece <span class="kw">and</span> </span>
+<span id="cb37-79"><a href="#cb37-79" aria-hidden="true" tabindex="-1"></a>             derives directly <span class="im">from</span> the average beat duration.</span>
+<span id="cb37-80"><a href="#cb37-80" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: duration_ms</span>
+<span id="cb37-81"><a href="#cb37-81" aria-hidden="true" tabindex="-1"></a>            description: The duration of the track <span class="kw">in</span> milliseconds.</span>
+<span id="cb37-82"><a href="#cb37-82" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: time_signature</span>
+<span id="cb37-83"><a href="#cb37-83" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb37-84"><a href="#cb37-84" aria-hidden="true" tabindex="-1"></a>             An estimated time signature. The time signature (meter) <span class="kw">is</span> a notational convention to specify how many beats are <span class="kw">in</span> each bar (<span class="kw">or</span> measure). </span>
+<span id="cb37-85"><a href="#cb37-85" aria-hidden="true" tabindex="-1"></a>             The time signature ranges <span class="im">from</span> <span class="dv">3</span> to <span class="dv">7</span> indicating time signatures of <span class="st">"3/4"</span>, to <span class="st">"7/4"</span>.</span>
+<span id="cb37-86"><a href="#cb37-86" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: year</span>
+<span id="cb37-87"><a href="#cb37-87" aria-hidden="true" tabindex="-1"></a>            description: The year <span class="kw">in</span> which the track was released</span>
+<span id="cb37-88"><a href="#cb37-88" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: release_date</span>
+<span id="cb37-89"><a href="#cb37-89" aria-hidden="true" tabindex="-1"></a>            description: Release date of the track <span class="kw">in</span> the <span class="bu">format</span> <span class="dv">2023</span><span class="op">-</span><span class="dv">0</span><span class="er">4</span><span class="op">-</span><span class="dv">17</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>spotify_one_point_two_million.sql</code></p>
+<p>Although this is a <code>.sql</code> file this is actually our transformation <code>model</code>. Note the first line configuration overrides the <code>materialized</code> setting that I configured in my <code>dbt.project.yml</code> file.</p>
+<p>Note also the following :</p>
+<pre><code>FROM {{ source('spotify', 'spotify_one_point_two_million')}}</code></pre>
+<p>This specifies that dbt will apply transformations on my dataset in BiqQuery named <code>spotify</code> and specifically, on the table named <code>spotify_one_point_two_million</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>{{ config(materialized<span class="op">=</span><span class="st">'table'</span>) }}</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>SELECT </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">--</span> identifiers</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    name,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    album,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    artists,</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    explicit,</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    danceability,</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    energy,</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    {{ get_key_description(<span class="st">'key'</span>) }} AS key_description, </span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    loudness,</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    {{ get_modality_description(<span class="st">'mode'</span>) }} AS modality_description, </span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    speechiness,</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    acousticness,</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    instrumentalness,</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>    liveness,</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    valence,</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>    tempo,</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>    duration_s,</span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>    year_date,</span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>     CASE</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1900-01-01 00:00:00 UTC'</span> AND <span class="st">'1909-12-31 00:00:00 UTC'</span> THEN <span class="st">'Naughts'</span></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1910-01-01 00:00:00 UTC'</span> AND <span class="st">'1919-12-31 00:00:00 UTC'</span> THEN <span class="st">'Tens'</span></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1920-01-01 00:00:00 UTC'</span> AND <span class="st">'1929-12-31 00:00:00 UTC'</span> THEN <span class="st">'Roaring Twenties'</span></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1930-01-01 00:00:00 UTC'</span> AND <span class="st">'1939-12-31 00:00:00 UTC'</span> THEN <span class="st">'Dirty Thirties'</span></span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1940-01-01 00:00:00 UTC'</span> AND <span class="st">'1949-12-31 00:00:00 UTC'</span> THEN <span class="st">'Forties'</span></span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1950-01-01 00:00:00 UTC'</span> AND <span class="st">'1959-12-31 00:00:00 UTC'</span> THEN <span class="st">'Fabulous Fifties'</span></span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1960-01-01 00:00:00 UTC'</span> AND <span class="st">'1969-12-31 00:00:00 UTC'</span> THEN <span class="st">'Swinging Sixties'</span></span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1970-01-01 00:00:00 UTC'</span> AND <span class="st">'1979-12-31 00:00:00 UTC'</span> THEN <span class="st">'Seventies'</span></span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1980-01-01 00:00:00 UTC'</span> AND <span class="st">'1989-12-31 00:00:00 UTC'</span> THEN <span class="st">'Eighties'</span></span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'1990-01-01 00:00:00 UTC'</span> AND <span class="st">'1999-12-31 00:00:00 UTC'</span> THEN <span class="st">'Nineties'</span></span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'2000-01-01 00:00:00 UTC'</span> AND <span class="st">'2009-12-31 00:00:00 UTC'</span> THEN <span class="st">'Noughties'</span></span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a>        WHEN year_date BETWEEN <span class="st">'2010-01-01 00:00:00 UTC'</span> AND <span class="st">'2019-12-31 00:00:00 UTC'</span> THEN <span class="st">'Teens'</span></span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a>        WHEN year_date <span class="op">=</span> <span class="st">'2020-01-01 00:00:00 UTC'</span> THEN <span class="st">'2020'</span></span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a>    END AS Decade,</span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>    CASE</span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>        WHEN valence <span class="op">&gt;</span> <span class="fl">0.5</span> THEN <span class="st">'Happy'</span></span>
+<span id="cb39-39"><a href="#cb39-39" aria-hidden="true" tabindex="-1"></a>        WHEN valence <span class="op">&lt;</span> <span class="fl">0.5</span> THEN <span class="st">'Sad'</span></span>
+<span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a>        ELSE <span class="st">'Ambivalent'</span></span>
+<span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a>    END AS Happy_Sad</span>
+<span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a>FROM {{ source(<span class="st">'spotify'</span>, <span class="st">'spotify_one_point_two_million'</span>)}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You might wonder what this syntax is :</p>
+<pre><code>{{ get_key_description('key') }} AS key_description, </code></pre>
+<p>Macros in <a href="https://docs.getdbt.com/docs/build/jinja-macros">Jinja</a> are pieces of code that can be reused multiple times – they are analogous to “functions” in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in <code>.sql</code> files :</p>
+<p><code>get_key_description</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a> {<span class="co">#</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    This macro returns the description of the key</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#}</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>{<span class="op">%</span> macro get_key_description(key) <span class="op">-%</span>}</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    case {{ key }}</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">0</span> then <span class="st">'C'</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">1</span> then <span class="st">'C#'</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">2</span> then <span class="st">'D'</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">3</span> then <span class="st">'D#'</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">4</span> then <span class="st">'E'</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">5</span> then <span class="st">'F'</span></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">6</span> then <span class="st">'F#'</span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">7</span> then <span class="st">'G'</span></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">8</span> then <span class="st">'G#'</span></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">9</span> then <span class="st">'A'</span></span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">10</span> then <span class="st">'A#'</span></span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">11</span> then <span class="st">'B'</span></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>{<span class="op">%-</span> endmacro <span class="op">%</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>get_modality_description</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a> {<span class="co">#</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    This macro returns the description of the modality</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#}</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>{<span class="op">%</span> macro get_modality_description(mode) <span class="op">-%</span>}</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    case {{ mode }}</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">0</span> then <span class="st">'Minor'</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>        when <span class="dv">1</span> then <span class="st">'Major'</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>{<span class="op">%-</span> endmacro <span class="op">%</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have our files set up we are ready to run our model. We can see from the lineage that all the connections are complete :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/cbf84737-541b-46f6-b121-46d8b06a5915.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_lineage.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>We can run the model from the dbt console using :</p>
+<pre><code>dbt run -m &lt;model_name.sql&gt;</code></pre>
+<p>And we can see from the system log that the run was successful :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/61a5f60d-e700-4833-98b4-7baadd99894a.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">dbt_system_log.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>And we have our table created in Big Query with <code>1,204,025</code> rows as expected.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/57eda9cc-3966-4b3f-a629-37338c2b2983.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">biq_query_table.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="visualization" class="level3">
+<h3 class="anchored" data-anchor-id="visualization">5. Visualization</h3>
+<p>We’ve come a long way since downloading our raw csv file from Kaggle. Our journey is almost over. It’s time now to visualize our data and gather some insights. For this purpose I will be using <a href="https://cloud.google.com/looker-studio">Looker Studio</a>. This will allow us to connect to our newly created table in BigQuery and create a Dashboard.</p>
+<p>The first thing we need to do is create a data source. There are 23 different <code>connectors</code> at the time of writing. We will be using <code>BigQuery</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/53d97ff7-13e5-4c7b-836c-a2f96d838752.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">looker_connectors.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Our recent dataset and table are sitting there ready for connection :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/bc55aa38-e69d-4e76-936d-aea8ffd51419.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">looker_dataset.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Hit <code>CONNECT</code> and we see our fields or columns are there with default settings attached which can be modified if required. Finally hit <code>CREATE REPORT</code> and you are taken to a blank canvass dashboard where the magic begins :)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/54baf35c-551c-4957-8532-add6836d4491.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">blank_canvass.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>For a complete guide you can check out the <a href="https://cloud.google.com/looker#section-5">Looker Documentation</a>, but the console is very intuitive, and a few strokes of the brush (or clicks of the keyboard) and I was able to produce this :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="de_zoomcamp_project_files/figure-html/493f3890-b94a-45f8-a985-9f1e2ae3cca8.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Looker.PNG</figcaption><p></p>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
