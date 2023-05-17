@@ -2,146 +2,150 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://stephen137.github.io/about.html</loc>
-    <lastmod>2023-05-16T11:00:47.593Z</lastmod>
+    <lastmod>2023-05-17T14:01:29.559Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/index.html</loc>
-    <lastmod>2023-05-16T11:00:48.213Z</lastmod>
+    <lastmod>2023-05-17T14:01:30.169Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Programming_with_Python/Programming_with_Python.html</loc>
-    <lastmod>2023-05-16T11:00:50.073Z</lastmod>
+    <lastmod>2023-05-17T14:01:32.019Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/DE_Zoomcamp_Week_3/DE_Zoomcamp_Week_3.html</loc>
-    <lastmod>2023-05-16T11:00:50.693Z</lastmod>
+    <lastmod>2023-05-17T14:01:32.649Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/DE_Zoomcamp_Week_5/DE_Zoomcamp_Week_5.html</loc>
-    <lastmod>2023-05-16T11:00:51.713Z</lastmod>
+    <lastmod>2023-05-17T14:01:33.689Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Image_Processing_with_Python/Image_Processing.html</loc>
-    <lastmod>2023-05-16T11:00:54.213Z</lastmod>
+    <lastmod>2023-05-17T14:01:36.259Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Audio_Feature_Extraction/Audio_Feature_Extraction.html</loc>
-    <lastmod>2023-05-16T11:00:59.033Z</lastmod>
+    <lastmod>2023-05-17T14:01:40.609Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Geospatial/Working with Geospatial Data in Python.html</loc>
-    <lastmod>2023-05-16T11:01:01.013Z</lastmod>
+    <lastmod>2023-05-17T14:01:42.509Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Hello World/HelloWorld.html</loc>
-    <lastmod>2023-05-16T11:01:01.213Z</lastmod>
+    <lastmod>2023-05-17T14:01:42.719Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial.html</loc>
-    <lastmod>2023-05-16T11:01:01.733Z</lastmod>
+    <lastmod>2023-05-17T14:01:43.239Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Paddy_Doctor/Paddy_Doctor.html</loc>
-    <lastmod>2023-05-16T11:01:02.593Z</lastmod>
+    <lastmod>2023-05-17T14:01:44.109Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Scaling up/Scaling_up.html</loc>
-    <lastmod>2023-05-16T11:01:02.973Z</lastmod>
+    <lastmod>2023-05-17T14:01:44.469Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Financial Forecasting/Financial Forecasting.html</loc>
-    <lastmod>2023-05-16T11:01:03.643Z</lastmod>
+    <lastmod>2023-05-17T14:01:45.069Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Collaborative Filtering/collaborative-filtering-deep-dive.html</loc>
-    <lastmod>2023-05-16T11:01:04.503Z</lastmod>
+    <lastmod>2023-05-17T14:01:45.949Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Kaggle/Kaggle.html</loc>
-    <lastmod>2023-05-16T11:01:04.713Z</lastmod>
+    <lastmod>2023-05-17T14:01:46.159Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Multi_Label_Classification/Multi_label_classification.html</loc>
-    <lastmod>2023-05-16T11:01:05.023Z</lastmod>
+    <lastmod>2023-05-17T14:01:46.489Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Krakow_Football/Krakow_Football.html</loc>
-    <lastmod>2023-05-16T11:01:05.703Z</lastmod>
+    <lastmod>2023-05-17T14:01:47.119Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Song Genre Classifier/Song Genre Classifier.html</loc>
-    <lastmod>2023-05-16T11:01:06.163Z</lastmod>
+    <lastmod>2023-05-17T14:01:47.529Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/DE_Zoomcamp_Week_2/DE_Zoomcamp_Week_2.html</loc>
-    <lastmod>2023-05-16T11:01:06.753Z</lastmod>
+    <lastmod>2023-05-17T14:01:48.079Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/PySpark/Spark.html</loc>
-    <lastmod>2023-05-16T11:01:07.513Z</lastmod>
+    <lastmod>2023-05-17T14:01:48.749Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Random_Forests/Random_Forests.html</loc>
-    <lastmod>2023-05-16T11:01:08.103Z</lastmod>
+    <lastmod>2023-05-17T14:01:49.279Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Excelosaurus/Excelosaurus.html</loc>
-    <lastmod>2023-05-16T11:01:08.403Z</lastmod>
+    <lastmod>2023-05-17T14:01:49.569Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Introducing/Introducing.html</loc>
-    <lastmod>2023-05-16T11:01:08.603Z</lastmod>
+    <lastmod>2023-05-17T14:01:49.779Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Excel_meets_Python/Excel_meets_Python.html</loc>
-    <lastmod>2023-05-16T11:01:09.133Z</lastmod>
+    <lastmod>2023-05-17T14:01:50.259Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Convolutional_Neural_Network/CNN.html</loc>
-    <lastmod>2023-05-16T11:01:09.443Z</lastmod>
+    <lastmod>2023-05-17T14:01:50.559Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Cat_or_Dog/Cat_or_dog.html</loc>
-    <lastmod>2023-05-16T11:01:09.673Z</lastmod>
+    <lastmod>2023-05-17T14:01:50.779Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Tableau/Tableau.html</loc>
-    <lastmod>2023-05-16T11:01:10.693Z</lastmod>
+    <lastmod>2023-05-17T14:01:51.739Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/World Cup 2022/World_Cup_2022.html</loc>
-    <lastmod>2023-05-16T11:01:11.283Z</lastmod>
+    <lastmod>2023-05-17T14:01:52.289Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/DE_Zoomcamp_Week_1/DE_Zoomcamp_Week_1.html</loc>
-    <lastmod>2023-05-16T11:01:11.863Z</lastmod>
+    <lastmod>2023-05-17T14:01:52.929Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/DE_Zoomcamp_Week_4/DE_Zoomcamp_Week_4.html</loc>
-    <lastmod>2023-05-16T11:01:12.693Z</lastmod>
+    <lastmod>2023-05-17T14:01:53.709Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Huggy Bear/huggy-bear.html</loc>
-    <lastmod>2023-05-16T11:01:13.363Z</lastmod>
+    <lastmod>2023-05-17T14:01:54.349Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Pandas/Effective_Pandas.html</loc>
-    <lastmod>2023-05-16T11:01:14.093Z</lastmod>
+    <lastmod>2023-05-17T14:01:54.989Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Credit Risk Modelling in Python/Credit_Risk_Modelling.html</loc>
-    <lastmod>2023-05-16T11:01:15.283Z</lastmod>
+    <lastmod>2023-05-17T14:01:56.009Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Seaborn/Seaborn.html</loc>
-    <lastmod>2023-05-16T11:01:15.873Z</lastmod>
+    <lastmod>2023-05-17T14:01:56.519Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1.html</loc>
+    <lastmod>2023-05-17T14:01:56.979Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/Biomedical Image Analysis in Python/Biomedical_Image_Analysis_in_Python.html</loc>
-    <lastmod>2023-05-16T11:01:17.653Z</lastmod>
+    <lastmod>2023-05-17T14:01:58.509Z</lastmod>
   </url>
   <url>
     <loc>https://stephen137.github.io/posts/DE_Zoomcamp_Final_Project/de_zoomcamp_project.html</loc>
-    <lastmod>2023-05-16T11:01:18.303Z</lastmod>
+    <lastmod>2023-05-17T14:01:59.109Z</lastmod>
   </url>
 </urlset>
