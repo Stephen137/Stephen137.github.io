@@ -1038,7 +1038,7 @@ Name: Time_mins, dtype: float64</code></pre>
 
  ]]></description>
   <category>pandas</category>
-  <category>Seaborn</category>
+  <category>seaborn</category>
   <category>Data Cleansing</category>
   <category>parkrun</category>
   <guid>https://stephen137.github.io/posts/Parkrun/Parkrun.html</guid>
