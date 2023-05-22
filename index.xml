@@ -15,11 +15,1040 @@
 <link>https://stephen137.github.io/index.html</link>
 </image>
 <generator>quarto-1.1</generator>
-<lastBuildDate>Tue, 16 May 2023 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 21 May 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>parkrun Kraków 20/05/2023 | #461</title>
+  <dc:creator>Stephen Barrie</dc:creator>
+  <link>https://stephen137.github.io/posts/Parkrun/Parkrun.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="parkrun-kraków-20052023-461" class="level1">
+<h1>parkrun Kraków 20/05/2023 | #461</h1>
+<section id="overview-motivation" class="level2">
+<h2 class="anchored" data-anchor-id="overview-motivation">Overview | Motivation</h2>
+<p>A couple of weeks ago I signed up for <a href="'https://www.parkrun.pl/krakow'">parkrun Kraków</a>. I had a dry run on 6 May, just to see how it all worked. There was a bit of a mix up with the scanning and my ‘official’ time was a bit artificial, but on Saturday I took part in my first proper parkrun.</p>
+<p>It turns out it was the 10 year anniversary of the event in Kraków, and there was a great atmosphere, and quite a few more runners than on my dry run!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/9653929b-1388-49fc-bf41-8726abd6ea53.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">happy_birthday.jpg</figcaption><p></p>
+</figure>
+</div>
+<p>After the race I thought it would be fun to do a bit of a data dive on this race. My aim was to gain an insight into the distribution of competitors across age and sex, and I was particularly interested in discovering whether being affiliated with a running club results in a faster race time (as you might expect) compared to unattached runners like me.</p>
+<section id="results-summary" class="level3">
+<h3 class="anchored" data-anchor-id="results-summary">Results summary</h3>
+<div class="cell" data-execution_count="330">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Number of runners: </span><span class="sc" style="color: #5E5E5E;">{</span>number_of_runners<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-2"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'My race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>my_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-3"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time for my sex and age group (mins):</span><span class="sc" style="color: #5E5E5E;">{</span>fastest_time_my_sex_age_group<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-4"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time for my sex and age group (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_time_my_sex_age_group<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-5"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-6"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-7"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest male race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_male<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-8"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median male race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_male_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-9"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest female race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_female<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-10"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median female race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_female_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-11"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_club<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-12"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_club<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-13"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest non-affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_unattached<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb1-14"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median non-affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_unattached<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of runners: 333
+My race time (mins): 24.95
+Fastest race time for my sex and age group (mins):20.63
+Median race time for my sex and age group (mins): 26.43
+Fastest race time (mins): 16.48
+Median race time (mins): 27.08
+Fastest male race time (mins): 16.48
+Median male race time (mins): 24.83
+Fastest female race time (mins): 19.28
+Median female race time (mins): 29.30
+Fastest affiliated race time (mins): 17.55
+Median affiliated race time (mins): 26.20
+Fastest non-affiliated race time (mins): 16.48
+Median non-affiliated race time (mins): 27.66</code></pre>
+</div>
+</div>
+</section>
+<section id="thoughts" class="level3">
+<h3 class="anchored" data-anchor-id="thoughts">Thoughts</h3>
+<div class="cell" data-execution_count="334">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Overall, I was quite pleased with my time. I had a target of 25 mins in mind which I beat - by 3 seconds! and I did beat the median time for my age and sex. As you might expect, runners who are attached to an officially running club generally outperform those that are not. Attached runners median race time was </span><span class="sc" style="color: #5E5E5E;">{</span>median_club<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> mins, as against </span><span class="sc" style="color: #5E5E5E;">{</span>median_unattached<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> mins for amateur runners like myself. On the day however it was an unattached runner who was first over the line with a winning time of </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_race_time<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> mins.'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Overall, I was quite pleased with my time. I had a target of 25 mins in mind which I beat - by 3 seconds! and I did beat the median time for my age and sex. As you might expect, runners who are attached to an officially running club generally outperform those that are not. Attached runners median race time was 26.2 mins, as against 27.66 mins for amateur runners like myself. On the day however it was an unattached runner who was first over the line with a winning time of 16.48 mins.</code></pre>
+</div>
+</div>
+</section>
+<section id="data-source" class="level3">
+<h3 class="anchored" data-anchor-id="data-source">Data source</h3>
+<p>The results are published each week on the <a href="https://www.parkrun.pl/krakow/results/latestresults/">official website</a>. I could not find an API and so I just copied and pasted form the table into a csv file for cleansing using <a href="https://pandas.pydata.org/">pandas</a>, and visualisation using <a href="https://seaborn.pydata.org/">Seaborn</a>.</p>
+<p>It turns out that there was a lot more cleaning required than I first thought! Often the case with smaller datasets.</p>
+</section>
+<section id="import-the-required-packages" class="level3">
+<h3 class="anchored" data-anchor-id="import-the-required-packages">Import the required packages</h3>
+<div class="cell" data-execution_count="173">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
+<span id="cb5-2"><span class="im" style="color: #00769E;">import</span> seaborn <span class="im" style="color: #00769E;">as</span> sns</span>
+<span id="cb5-3"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span></code></pre></div>
+</div>
+</section>
+<section id="load-in-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="load-in-the-data">Load in the data</h3>
+<div class="cell" data-execution_count="186">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> pd.read_csv(<span class="st" style="color: #20794D;">'results_20_05_2023.csv'</span>, encoding<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'latin'</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="exploratory-data-analysis-cleansing" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-data-analysis-cleansing">Exploratory Data Analysis | Cleansing</h3>
+<div class="cell" data-execution_count="187">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;"># Drop name column for anonymity</span></span>
+<span id="cb7-2">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.drop(<span class="st" style="color: #20794D;">'UCZESTNIK'</span>, axis<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb7-3"></span>
+<span id="cb7-4"><span class="co" style="color: #5E5E5E;"># preview our data</span></span>
+<span id="cb7-5">parkrun_krakow_20_05_23</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="187">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>POZYCJA</th>
+      <th>P?E?</th>
+      <th>KATEGORIA WIEKOWA</th>
+      <th>KLUB</th>
+      <th>CZAS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>M??czyzna</td>
+      <td>VM35-39</td>
+      <td>NaN</td>
+      <td>16:29</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>M??czyzna</td>
+      <td>VM40-44</td>
+      <td>#AdamCzerwi?skiTeam</td>
+      <td>17:33</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>M??czyzna</td>
+      <td>VM35-39</td>
+      <td>ITMBW Kraków</td>
+      <td>17:56</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>M??czyzna</td>
+      <td>VM35-39</td>
+      <td>Wawel Kraków</td>
+      <td>18:07</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>350</th>
+      <td>351</td>
+      <td>M??czyzna</td>
+      <td>VM45-49</td>
+      <td>NaN</td>
+      <td>51:30:00</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>352</td>
+      <td>M??czyzna</td>
+      <td>VM90-94</td>
+      <td>NaN</td>
+      <td>54:54:00</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>353</td>
+      <td>Kobieta</td>
+      <td>VW60-64</td>
+      <td>Biegam bo lubie Gdynia</td>
+      <td>54:55:00</td>
+    </tr>
+    <tr>
+      <th>353</th>
+      <td>354</td>
+      <td>Kobieta</td>
+      <td>VW50-54</td>
+      <td>#YOLOTEAMKRK</td>
+      <td>54:55:00</td>
+    </tr>
+    <tr>
+      <th>354</th>
+      <td>355</td>
+      <td>M??czyzna</td>
+      <td>VM75-79</td>
+      <td>NaN</td>
+      <td>54:55:00</td>
+    </tr>
+  </tbody>
+</table>
+<p>355 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<p>Let’s rename the columns, which are in Polish at the moment. We can see that we also have some problems with Polish letters not being recognised. We’ll deal with this also.</p>
+<div class="cell" data-execution_count="188">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;"># Rename columns</span></span>
+<span id="cb8-2">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.rename(columns<span class="op" style="color: #5E5E5E;">=</span>{<span class="st" style="color: #20794D;">'POZYCJA'</span>: <span class="st" style="color: #20794D;">'Position'</span>, <span class="st" style="color: #20794D;">''</span>: <span class="st" style="color: #20794D;">'Name'</span>, <span class="st" style="color: #20794D;">'P?E?'</span>: <span class="st" style="color: #20794D;">'Sex'</span>,<span class="st" style="color: #20794D;">'KATEGORIA WIEKOWA'</span>: <span class="st" style="color: #20794D;">'Age_Group'</span>,<span class="st" style="color: #20794D;">'KLUB'</span>: <span class="st" style="color: #20794D;">'Club_Runner?'</span>, <span class="st" style="color: #20794D;">'CZAS'</span>: <span class="st" style="color: #20794D;">'Time'</span>})</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="189">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">parkrun_krakow_20_05_23.info()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 355 entries, 0 to 354
+Data columns (total 5 columns):
+ #   Column        Non-Null Count  Dtype 
+---  ------        --------------  ----- 
+ 0   Position      355 non-null    int64 
+ 1   Sex           333 non-null    object
+ 2   Age_Group     333 non-null    object
+ 3   Club_Runner?  115 non-null    object
+ 4   Time          333 non-null    object
+dtypes: int64(1), object(4)
+memory usage: 14.0+ KB</code></pre>
+</div>
+</div>
+<p>We can see that although there are 355 observations for ‘Position’, we only have 333 observations for ‘Time’. It often happens that runners participate who have not officially signed up and so although their position is logged, no further details are available.</p>
+</section>
+<section id="nan-values" class="level3">
+<h3 class="anchored" data-anchor-id="nan-values">NaN values</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/14e569cd-a522-42a3-b421-0dd38b179101.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">NAN.jpg</figcaption><p></p>
+</figure>
+</div>
+<div class="cell" data-execution_count="190">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="190">
+<pre><code>Position          0
+Sex              22
+Age_Group        22
+Club_Runner?    240
+Time             22
+dtype: int64</code></pre>
+</div>
+</div>
+<p>As anticipated we have 22 <code>NaN</code> values for <code>Sex</code>, <code>Age_Group</code> and <code>Time</code>. So let’s remove all observations where no race time was recorded :</p>
+<div class="cell" data-execution_count="193">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.dropna(subset<span class="op" style="color: #5E5E5E;">=</span>[<span class="st" style="color: #20794D;">'Time'</span>])</span></code></pre></div>
+</div>
+<p>And check our NaNs again :</p>
+<div class="cell" data-execution_count="194">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="194">
+<pre><code>Position          0
+Sex               0
+Age_Group         0
+Club_Runner?    218
+Time              0
+dtype: int64</code></pre>
+</div>
+</div>
+<p>We still have to deal with the <code>Club_Runner</code> discrepancies. A value is only included if a runner is affiliated to a running club. Non-affiliated runners are treated as <code>NaN</code>. Let’s replace non-affiliated with <code>No</code> and affiliated with <code>Yes</code> :</p>
+<div class="cell" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;"># Replace values based on conditions</span></span>
+<span id="cb16-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>].fillna(<span class="st" style="color: #20794D;">'No'</span>, inplace<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span>
+<span id="cb16-3">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>] <span class="op" style="color: #5E5E5E;">=</span> np.where(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>] <span class="op" style="color: #5E5E5E;">!=</span> <span class="st" style="color: #20794D;">'No'</span>, <span class="st" style="color: #20794D;">'Yes'</span>, <span class="st" style="color: #20794D;">'No'</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="196">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="196">
+<pre><code>Position        0
+Sex             0
+Age_Group       0
+Club_Runner?    0
+Time            0
+dtype: int64</code></pre>
+</div>
+</div>
+<p>Excellent. We have cleaned up all <code>NaN</code> values. Let’s have a look at our datatypes :</p>
+</section>
+<section id="datatypes" class="level3">
+<h3 class="anchored" data-anchor-id="datatypes">Datatypes</h3>
+<div class="cell" data-execution_count="203">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">parkrun_krakow_20_05_23.dtypes</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="203">
+<pre><code>Position         int64
+Sex             object
+Age_Group       object
+Club_Runner?    object
+Time            object
+dtype: object</code></pre>
+</div>
+</div>
+<p>We have a problem here. Our race times are an ‘object’. We will need to convert this. Let’s create a new column <code>Time_mins</code> :</p>
+</section>
+<section id="time" class="level3">
+<h3 class="anchored" data-anchor-id="time">Time</h3>
+<div class="cell" data-execution_count="204">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;"># Split the string into minutes and seconds components</span></span>
+<span id="cb21-2">time_components <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time'</span>].<span class="bu" style="color: null;">str</span>.split(<span class="st" style="color: #20794D;">':'</span>)</span>
+<span id="cb21-3"></span>
+<span id="cb21-4"><span class="co" style="color: #5E5E5E;"># Convert the minutes and seconds components to integers</span></span>
+<span id="cb21-5">minutes <span class="op" style="color: #5E5E5E;">=</span> time_components.<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">0</span>].astype(<span class="bu" style="color: null;">int</span>)</span>
+<span id="cb21-6">seconds <span class="op" style="color: #5E5E5E;">=</span> time_components.<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">1</span>].astype(<span class="bu" style="color: null;">int</span>)</span>
+<span id="cb21-7"></span>
+<span id="cb21-8"><span class="co" style="color: #5E5E5E;"># Calculate the decimal representation of minutes</span></span>
+<span id="cb21-9">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>] <span class="op" style="color: #5E5E5E;">=</span> minutes <span class="op" style="color: #5E5E5E;">+</span> seconds <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">60.0</span></span>
+<span id="cb21-10"></span>
+<span id="cb21-11"><span class="co" style="color: #5E5E5E;"># Round the "minutes" column to 2 decimal places</span></span>
+<span id="cb21-12">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>] <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">round</span>(<span class="dv" style="color: #AD0000;">2</span>)</span>
+<span id="cb21-13"></span>
+<span id="cb21-14"><span class="co" style="color: #5E5E5E;"># Output the result</span></span>
+<span id="cb21-15"><span class="bu" style="color: null;">print</span>(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>])</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0      16.48
+1      17.55
+3      17.93
+4      18.12
+5      18.35
+       ...  
+350    51.50
+351    54.90
+352    54.92
+353    54.92
+354    54.92
+Name: Time_mins, Length: 333, dtype: float64</code></pre>
+</div>
+</div>
+<p>We now have race times as <code>float</code> that is in minutes (rounded to 2 decimal places).</p>
+</section>
+<section id="categorical-variables" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-variables">Categorical variables</h3>
+<div class="cell" data-execution_count="206">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">parkrun_krakow_20_05_23.nunique()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="206">
+<pre><code>Position        333
+Sex               2
+Age_Group        29
+Club_Runner?      2
+Time            311
+Time_mins       311
+dtype: int64</code></pre>
+</div>
+</div>
+<p>Ok, so we have :</p>
+<ul>
+<li>311 unique times, so quite a few crossing the line together</li>
+<li>2 different sexes - M (Male) and F (Female)</li>
+<li>29 different age groups</li>
+<li>2 distinct values for Club_Runner - Yes or No - as defined earlier</li>
+</ul>
+<div class="cell" data-execution_count="207">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1">parkrun_krakow_20_05_23.info()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Int64Index: 333 entries, 0 to 354
+Data columns (total 6 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   Position      333 non-null    int64  
+ 1   Sex           333 non-null    object 
+ 2   Age_Group     333 non-null    object 
+ 3   Club_Runner?  333 non-null    object 
+ 4   Time          333 non-null    object 
+ 5   Time_mins     333 non-null    float64
+dtypes: float64(1), int64(1), object(4)
+memory usage: 18.2+ KB</code></pre>
+</div>
+</div>
+</section>
+<section id="cosmetic-changes" class="level3">
+<h3 class="anchored" data-anchor-id="cosmetic-changes">Cosmetic changes</h3>
+<p>Let’s do some general tidy up. We can use string slicing to remove leading characters in the <code>Age_Group</code> column :</p>
+<div class="cell" data-execution_count="208">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;"># Remove the first two characters from the strings in the "Age_Group" column</span></span>
+<span id="cb27-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>]<span class="op" style="color: #5E5E5E;">=</span>parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>].<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">2</span>:]</span></code></pre></div>
+</div>
+<p>Let’s also tidy up the narrative in the <code>Sex</code> column, by replacing <code>Mezczyzna</code> with <code>M</code> and <code>Kobieta</code> with <code>F</code> :</p>
+<div class="cell" data-execution_count="210">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><span class="co" style="color: #5E5E5E;"># Replace strings starting with 'M' to 'M' in the "Sex" column</span></span>
+<span id="cb28-2">parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>].<span class="bu" style="color: null;">str</span>.startswith(<span class="st" style="color: #20794D;">'M'</span>), <span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'M'</span></span>
+<span id="cb28-3"></span>
+<span id="cb28-4"><span class="co" style="color: #5E5E5E;"># Replace strings starting with 'K' to 'F' in the "Sex" column</span></span>
+<span id="cb28-5">parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>].<span class="bu" style="color: null;">str</span>.startswith(<span class="st" style="color: #20794D;">'K'</span>), <span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'F'</span></span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="211">
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1">parkrun_krakow_20_05_23</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="211">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Sex</th>
+      <th>Age_Group</th>
+      <th>Club_Runner?</th>
+      <th>Time</th>
+      <th>Time_mins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>No</td>
+      <td>16:29</td>
+      <td>16.48</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>M</td>
+      <td>40-44</td>
+      <td>Yes</td>
+      <td>17:33</td>
+      <td>17.55</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>Yes</td>
+      <td>17:56</td>
+      <td>17.93</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>Yes</td>
+      <td>18:07</td>
+      <td>18.12</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>M</td>
+      <td>40-44</td>
+      <td>Yes</td>
+      <td>18:21</td>
+      <td>18.35</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>350</th>
+      <td>351</td>
+      <td>M</td>
+      <td>45-49</td>
+      <td>No</td>
+      <td>51:30:00</td>
+      <td>51.50</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>352</td>
+      <td>M</td>
+      <td>90-94</td>
+      <td>No</td>
+      <td>54:54:00</td>
+      <td>54.90</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>353</td>
+      <td>F</td>
+      <td>60-64</td>
+      <td>Yes</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+    </tr>
+    <tr>
+      <th>353</th>
+      <td>354</td>
+      <td>F</td>
+      <td>50-54</td>
+      <td>Yes</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+    </tr>
+    <tr>
+      <th>354</th>
+      <td>355</td>
+      <td>M</td>
+      <td>75-79</td>
+      <td>No</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+    </tr>
+  </tbody>
+</table>
+<p>333 rows × 6 columns</p>
+</div>
+</div>
+</div>
+<p>Looking much tidier. Let’s now return to the <code>Age Groupings</code>. These are currently a categorical variable, but let’s simplify things by creating a new column <code>Age_Midpoint</code> that splits the string, converts to integer, and takes the mid-value of the range :</p>
+<div class="cell" data-execution_count="216">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="co" style="color: #5E5E5E;"># Define conversion function</span></span>
+<span id="cb30-2"><span class="kw" style="color: #003B4F;">def</span> get_age_midpoint(age_group):</span>
+<span id="cb30-3">    <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">'-'</span> <span class="kw" style="color: #003B4F;">in</span> age_group:</span>
+<span id="cb30-4">        age_range <span class="op" style="color: #5E5E5E;">=</span> age_group.split(<span class="st" style="color: #20794D;">'-'</span>)</span>
+<span id="cb30-5">        age_start <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_range[<span class="dv" style="color: #AD0000;">0</span>])</span>
+<span id="cb30-6">        age_end <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_range[<span class="dv" style="color: #AD0000;">1</span>])</span>
+<span id="cb30-7">        age_midpoint <span class="op" style="color: #5E5E5E;">=</span> (age_start <span class="op" style="color: #5E5E5E;">+</span> age_end) <span class="op" style="color: #5E5E5E;">//</span> <span class="dv" style="color: #AD0000;">2</span></span>
+<span id="cb30-8">    <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb30-9">        age_midpoint <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_group)</span>
+<span id="cb30-10">    <span class="cf" style="color: #003B4F;">return</span> age_midpoint    </span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="217">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="co" style="color: #5E5E5E;"># Apply the conversion function to the Age_Group column</span></span>
+<span id="cb31-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>].<span class="bu" style="color: null;">apply</span>(get_age_midpoint)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="218">
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">parkrun_krakow_20_05_23</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="218">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Sex</th>
+      <th>Age_Group</th>
+      <th>Club_Runner?</th>
+      <th>Time</th>
+      <th>Time_mins</th>
+      <th>Age_Midpoint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>No</td>
+      <td>16:29</td>
+      <td>16.48</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>M</td>
+      <td>40-44</td>
+      <td>Yes</td>
+      <td>17:33</td>
+      <td>17.55</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>Yes</td>
+      <td>17:56</td>
+      <td>17.93</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>Yes</td>
+      <td>18:07</td>
+      <td>18.12</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>M</td>
+      <td>40-44</td>
+      <td>Yes</td>
+      <td>18:21</td>
+      <td>18.35</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>350</th>
+      <td>351</td>
+      <td>M</td>
+      <td>45-49</td>
+      <td>No</td>
+      <td>51:30:00</td>
+      <td>51.50</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>352</td>
+      <td>M</td>
+      <td>90-94</td>
+      <td>No</td>
+      <td>54:54:00</td>
+      <td>54.90</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>353</td>
+      <td>F</td>
+      <td>60-64</td>
+      <td>Yes</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>353</th>
+      <td>354</td>
+      <td>F</td>
+      <td>50-54</td>
+      <td>Yes</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>354</th>
+      <td>355</td>
+      <td>M</td>
+      <td>75-79</td>
+      <td>No</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>77</td>
+    </tr>
+  </tbody>
+</table>
+<p>333 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<p>Great, we now have our new column with a single integer value.</p>
+</section>
+<section id="key-headline-figures" class="level3">
+<h3 class="anchored" data-anchor-id="key-headline-figures">Key headline figures</h3>
+<div class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1">number_of_runners <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Position'</span>].count()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1">fastest_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="143">
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1">average_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].mean()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="144">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1">median_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span></code></pre></div>
+</div>
+<p>I know that I finished in position 131, and so I can use <code>.loc</code> to access the my row index :</p>
+<div class="cell" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1">row <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Position'</span>] <span class="op" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">131</span>]</span>
+<span id="cb37-2">row</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="165">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Position</th>
+      <th>Sex</th>
+      <th>Age_Group</th>
+      <th>Club_Runner?</th>
+      <th>Time</th>
+      <th>Time_mins</th>
+      <th>Age_Midpoint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>130</th>
+      <td>131</td>
+      <td>M</td>
+      <td>45-49</td>
+      <td>No</td>
+      <td>24:57:00</td>
+      <td>24.95</td>
+      <td>47</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>and then assign my race time to an appropriate variable :</p>
+<div class="cell" data-execution_count="168">
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1">my_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.loc[<span class="dv" style="color: #AD0000;">130</span>,<span class="st" style="color: #20794D;">'Time_mins'</span>]</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="239">
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Number of runners: </span><span class="sc" style="color: #5E5E5E;">{</span>number_of_runners<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb39-2"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'My race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>my_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb39-3"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb39-4"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of runners: 333
+My race time (mins): 24.95
+Fastest race time (mins): 16.48
+Median race time (mins): 27.08</code></pre>
+</div>
+</div>
+</section>
+<section id="visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="visualizations">Visualizations</h3>
+</section>
+<section id="number-of-runners" class="level3">
+<h3 class="anchored" data-anchor-id="number-of-runners">Number of runners</h3>
+<div class="cell" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of males and females</span></span>
+<span id="cb41-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>,</span>
+<span id="cb41-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb41-4"></span>
+<span id="cb41-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb41-6">plt.xlabel (<span class="st" style="color: #20794D;">'Sex'</span>)</span>
+<span id="cb41-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
+<span id="cb41-8"></span>
+<span id="cb41-9"><span class="co" style="color: #5E5E5E;"># Add count values on top of each bar</span></span>
+<span id="cb41-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
+<span id="cb41-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
+<span id="cb41-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span><span class="bu" style="color: null;">round</span>(count)<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
+<span id="cb41-13"></span>
+<span id="cb41-14">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="235">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of runners in each Age Grouping</span></span>
+<span id="cb42-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>,</span>
+<span id="cb42-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb42-4"></span>
+<span id="cb42-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb42-6">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb42-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
+<span id="cb42-8"></span>
+<span id="cb42-9"><span class="co" style="color: #5E5E5E;"># Add rounded count values on top of each bar (rounded to 2 decimal places)</span></span>
+<span id="cb42-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
+<span id="cb42-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
+<span id="cb42-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span>count<span class="sc" style="color: #5E5E5E;">:.0f}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
+<span id="cb42-13"></span>
+<span id="cb42-14">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="233">
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of males and females</span></span>
+<span id="cb43-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>,</span>
+<span id="cb43-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb43-4"></span>
+<span id="cb43-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb43-6">plt.xlabel (<span class="st" style="color: #20794D;">'Club runner?'</span>)</span>
+<span id="cb43-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
+<span id="cb43-8"></span>
+<span id="cb43-9"><span class="co" style="color: #5E5E5E;"># Add count values on top of each bar</span></span>
+<span id="cb43-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
+<span id="cb43-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
+<span id="cb43-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span><span class="bu" style="color: null;">round</span>(count)<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
+<span id="cb43-13"></span>
+<span id="cb43-14">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="median-race-times" class="level3">
+<h3 class="anchored" data-anchor-id="median-race-times">Median race times</h3>
+<div class="cell" data-execution_count="240">
+<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by sex</span></span>
+<span id="cb44-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>, </span>
+<span id="cb44-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb44-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb44-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.median) </span>
+<span id="cb44-6"></span>
+<span id="cb44-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb44-8">plt.xlabel (<span class="st" style="color: #20794D;">'Sex'</span>)</span>
+<span id="cb44-9">plt.ylabel (<span class="st" style="color: #20794D;">'Median race time (mins)'</span>)</span>
+<span id="cb44-10"></span>
+<span id="cb44-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="241">
+<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by sex</span></span>
+<span id="cb45-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>, </span>
+<span id="cb45-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb45-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb45-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.median) </span>
+<span id="cb45-6"></span>
+<span id="cb45-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb45-8">plt.xlabel (<span class="st" style="color: #20794D;">'Sex'</span>)</span>
+<span id="cb45-9">plt.ylabel (<span class="st" style="color: #20794D;">'Median race time (mins)'</span>)</span>
+<span id="cb45-10"></span>
+<span id="cb45-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="242">
+<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by running club membership</span></span>
+<span id="cb46-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>, </span>
+<span id="cb46-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb46-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb46-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.median) </span>
+<span id="cb46-6"></span>
+<span id="cb46-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb46-8">plt.xlabel (<span class="st" style="color: #20794D;">'Club runner?'</span>)</span>
+<span id="cb46-9">plt.ylabel (<span class="st" style="color: #20794D;">'Median race time (mins)'</span>)</span>
+<span id="cb46-10"></span>
+<span id="cb46-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex">Scatterplot of all race times across age groupings and by sex</h3>
+<div class="cell" data-execution_count="232">
+<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><span class="co" style="color: #5E5E5E;"># Use the 'hue' argument to provide a factor variable</span></span>
+<span id="cb47-2">sns.scatterplot(x<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"Age_Midpoint"</span>, y<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"Time_mins"</span>, data<span class="op" style="color: #5E5E5E;">=</span>parkrun_krakow_20_05_23, hue<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'Sex'</span>, alpha<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.8</span>)</span>
+<span id="cb47-3"> </span>
+<span id="cb47-4"><span class="co" style="color: #5E5E5E;"># Move the legend to an empty part of the plot</span></span>
+<span id="cb47-5">plt.legend(loc<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'lower right'</span>)</span>
+<span id="cb47-6"></span>
+<span id="cb47-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb47-8">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb47-9">plt.ylabel (<span class="st" style="color: #20794D;">'Race time (mins)'</span>)</span>
+<span id="cb47-10"></span>
+<span id="cb47-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="boxplots-of-race-times-across-age-groupings-and-by-sex" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots-of-race-times-across-age-groupings-and-by-sex">Boxplots of race times across age groupings and by sex</h3>
+<div class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><span class="co" style="color: #5E5E5E;"># create box plots of run time per age group</span></span>
+<span id="cb48-2"><span class="co" style="color: #5E5E5E;"># use hue to allow comparison between male and female</span></span>
+<span id="cb48-3">sns.boxplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>,</span>
+<span id="cb48-4">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb48-5">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23, </span>
+<span id="cb48-6">            hue <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>)</span>
+<span id="cb48-7"></span>
+<span id="cb48-8"><span class="co" style="color: #5E5E5E;"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
+<span id="cb48-9"><span class="co" style="color: #5E5E5E;"># loc=0 moves legend to the best position</span></span>
+<span id="cb48-10">plt.legend(loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>)</span>
+<span id="cb48-11"></span>
+<span id="cb48-12">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb48-13">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb48-14">plt.ylabel (<span class="st" style="color: #20794D;">'Race time (mins)'</span>)</span>
+<span id="cb48-15"></span>
+<span id="cb48-16">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="fastest-race-times-across-age-groupings" class="level3">
+<h3 class="anchored" data-anchor-id="fastest-race-times-across-age-groupings">Fastest race times across age groupings</h3>
+<div class="cell" data-execution_count="238">
+<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing min race time</span></span>
+<span id="cb49-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>, </span>
+<span id="cb49-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb49-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb49-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">min</span>)  </span>
+<span id="cb49-6"></span>
+<span id="cb49-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb49-8">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb49-9">plt.ylabel (<span class="st" style="color: #20794D;">'Fastest race time (mins)'</span>)</span>
+<span id="cb49-10"></span>
+<span id="cb49-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="workings" class="level3">
+<h3 class="anchored" data-anchor-id="workings">Workings</h3>
+<div class="cell" data-execution_count="270">
+<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1">group_by_sex <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.groupby([<span class="st" style="color: #20794D;">'Sex'</span>])</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="271">
+<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1">group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="271">
+<pre><code>Sex
+F    19.28
+M    16.48
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="247">
+<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1">fastest_female <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb53-2">fastest_female</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="247">
+<pre><code>19.28</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="248">
+<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1">fastest_male <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb55-2">fastest_male</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="248">
+<pre><code>16.48</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="221">
+<div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1">group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="221">
+<pre><code>Sex
+F    29.305
+M    24.830
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="250">
+<div class="sourceCode cell-code" id="cb59" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1">median_female_time <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb59-2">median_female_time</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="250">
+<pre><code>29.305</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="251">
+<div class="sourceCode cell-code" id="cb61" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1">median_male_time <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb61-2">median_male_time</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="251">
+<pre><code>24.83</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="277">
+<div class="sourceCode cell-code" id="cb63" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1">group_by_club <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.groupby([<span class="st" style="color: #20794D;">'Club_Runner?'</span>])</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="273">
+<div class="sourceCode cell-code" id="cb64" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1">group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="273">
+<pre><code>Club_Runner?
+No     16.48
+Yes    17.55
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="261">
+<div class="sourceCode cell-code" id="cb66" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1">fastest_club <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb66-2">fastest_club</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="261">
+<pre><code>17.55</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="264">
+<div class="sourceCode cell-code" id="cb68" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1">median_club <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb68-2">median_club</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="264">
+<pre><code>26.2</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="267">
+<div class="sourceCode cell-code" id="cb70" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1">fastest_unattached <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb70-2">fastest_unattached</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="267">
+<pre><code>16.48</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="266">
+<div class="sourceCode cell-code" id="cb72" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1">median_unattached <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb72-2">median_unattached</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="266">
+<pre><code>27.66</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="328">
+<div class="sourceCode cell-code" id="cb74" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1">fastest_time_my_sex_age_group <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">47</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'M'</span>)][<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span>
+<span id="cb74-2">fastest_time_my_sex_age_group</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="328">
+<pre><code>20.63</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="329">
+<div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1">median_time_my_sex_age_group <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">47</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'M'</span>)][<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span>
+<span id="cb76-2">median_time_my_sex_age_group </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="329">
+<pre><code>26.43</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>pandas</category>
+  <category>Seaborn</category>
+  <category>Data Cleansing</category>
+  <category>parkrun</category>
+  <guid>https://stephen137.github.io/posts/Parkrun/Parkrun.html</guid>
+  <pubDate>Sun, 21 May 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://stephen137.github.io/posts/Parkrun/pre_race.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Machine Learning Operations(MLOps) Zoomcamp - Module 1</title>
   <dc:creator>Stephen Barrie</dc:creator>
-  <link>https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1.html</link>
+  <link>https://stephen137.github.io/posts/MLOps_Zoomcamp_Module_1/MLOps_Zoomcamp_Week_1.html</link>
   <description><![CDATA[ 
 
 
@@ -115,7 +1144,7 @@ Create a separate directory for the installation</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1_files/figure-html/34f69f9d-da18-47cb-98ad-4228a7942840.PNG" class="img-fluid figure-img"></p>
+<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Module_1/MLOps_Zoomcamp_Week_1_files/figure-html/34f69f9d-da18-47cb-98ad-4228a7942840.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">nano.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -131,7 +1160,7 @@ Run Docker</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1_files/figure-html/dae46866-a236-45df-a516-22d242a7fe2d.PNG" class="img-fluid figure-img"></p>
+<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Module_1/MLOps_Zoomcamp_Week_1_files/figure-html/dae46866-a236-45df-a516-22d242a7fe2d.PNG" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">hello_world.PNG</figcaption><p></p>
 </figure>
 </div>
@@ -705,7 +1734,7 @@ memory usage: 376.0+ MB</code></pre>
 <p>Outliers can have a substantial impact on statistical analyses and machine learning models. They can skew summary statistics, such as the mean and standard deviation, leading to biased estimations. Outliers can also influence the fitting of models, affecting the coefficients or parameters estimated.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1_files/figure-html/499e5089-6454-4d42-b82d-03e03c317641.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Module_1/MLOps_Zoomcamp_Week_1_files/figure-html/499e5089-6454-4d42-b82d-03e03c317641.jpg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">back_to_the_future.jpg</figcaption><p></p>
 </figure>
 </div>
@@ -1227,7 +2256,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <pre><code>&lt;matplotlib.legend.Legend at 0x7f316d9d4400&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1_files/figure-html/cell-32-output-3.png" class="img-fluid"></p>
+<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Module_1/MLOps_Zoomcamp_Week_1_files/figure-html/cell-32-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1326,7 +2355,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1_files/figure-html/cc92412b-e5b6-4283-9781-448f83ce02ee.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://stephen137.github.io/posts/MLOps_Zoomcamp_Module_1/MLOps_Zoomcamp_Week_1_files/figure-html/cc92412b-e5b6-4283-9781-448f83ce02ee.jpg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">pickle.jpg</figcaption><p></p>
 </figure>
 </div>
@@ -1367,9 +2396,9 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
  ]]></description>
   <category>MLOps</category>
   <category>DataTalksClub</category>
-  <guid>https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1.html</guid>
+  <guid>https://stephen137.github.io/posts/MLOps_Zoomcamp_Module_1/MLOps_Zoomcamp_Week_1.html</guid>
   <pubDate>Tue, 16 May 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOPS.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://stephen137.github.io/posts/MLOps_Zoomcamp_Module_1/MLOPS.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Biomedical Image Analysis in Python</title>
@@ -28866,1101 +29895,6 @@ Important
   <guid>https://stephen137.github.io/posts/Seaborn/Seaborn.html</guid>
   <pubDate>Tue, 03 Jan 2023 23:00:00 GMT</pubDate>
   <media:content url="https://stephen137.github.io/posts/Seaborn/seaborn.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Numpy Tutorial</title>
-  <dc:creator>Stephen Barrie</dc:creator>
-  <link>https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="numpy" class="level2">
-<h2 class="anchored" data-anchor-id="numpy">NumPy</h2>
-<p>NumPy is the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more.</p>
-<p>At the core of the NumPy package, is the ndarray object. This encapsulates n-dimensional arrays of homogeneous data types, with many operations being performed in compiled code for performance. There are several important differences between NumPy arrays and the standard Python sequences.</p>
-<p>See <a href="https://numpy.org/doc/stable/user/whatisnumpy.html">the documentation</a> for further information.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/fb75bee0-c105-4879-b113-820b4388e815.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">arrays.JPG</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="numpy-v-lists" class="level2">
-<h2 class="anchored" data-anchor-id="numpy-v-lists">NumPy [ ] v Lists ( )</h2>
-<section id="why-is-numpy-faster" class="level3">
-<h3 class="anchored" data-anchor-id="why-is-numpy-faster">Why is NumPy faster?</h3>
-<p>NumPy has a significant speed advantage over <a href="https://docs.python.org/3/tutorial/introduction.html#lists">Lists</a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/8b5c36f6-6e6d-4e8b-b09a-e65abffba35b.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">speed.JPG</figcaption><p></p>
-</figure>
-</div>
-<p>Let’s find out why…</p>
-<ol type="1">
-<li>Less memory is used to represent data</li>
-</ol>
-<p>Say for example the number 5. This is represented in binary form as follows:</p>
-<ul>
-<li><strong>int8</strong> which takes up 8 bits (or 1 byte) of memory and is represented in binary form as 00000101</li>
-</ul>
-<p>NumPy can cast this to:</p>
-<ul>
-<li><strong>int16</strong> which takes up 16 bits (or 2 bytes) of memory and is represented in binary form as 00000000 00000101</li>
-<li><strong>int32</strong> which takes up 32 bits (or 4 bytes) of memory and is represented in binary form as 00000000 00000000 00000000 00000101</li>
-<li><strong>int64</strong> which takes up 64 bits (or 8 bytes) of memory and is represented in binary form as 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000101</li>
-</ul>
-<p><strong>Lists</strong> use a built in <strong><em>int</em></strong> type for Python which consists of four different things:</p>
-<ul>
-<li>object value</li>
-<li>object type</li>
-<li>reference count</li>
-<li>size of value</li>
-</ul>
-<p>each of which use up memory:</p>
-<ul>
-<li>object value: 8 bytes 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000101</li>
-<li>object type: 8 bytes 11001010 10111110 01100001 01000100 11111100 00000000 11001100 01011111</li>
-<li>reference count: 8 bytes 00000001 00111101 11111110 10111100 00011010 11011101 10100100 11011000</li>
-<li>size of value: 4 bytes 00000000 00000000 00000000 00011100</li>
-</ul>
-<ol start="2" type="1">
-<li><p>No type checking when iterating through objects</p></li>
-<li><p>NumPy utilizes <a href="https://www.geeksforgeeks.org/difference-between-contiguous-and-noncontiguous-memory-allocation/">contiguous memory</a> which enables <a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">Single Instruction Multiple Data (SIMD)</a> Vector Processing to be harnessed, and effective <a href="https://en.wikipedia.org/wiki/Cache_(computing)">cache</a> utilization</p></li>
-</ol>
-</section>
-<section id="how-do-lists-differ-from-numpy" class="level3">
-<h3 class="anchored" data-anchor-id="how-do-lists-differ-from-numpy">How do Lists differ from NumPy?</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/324b742c-c7ef-41da-ba97-5fa1612afb35.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">differences.JPG</figcaption><p></p>
-</figure>
-</div>
-<p>NumPy allows itemwise computation:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/19cabc9b-d908-4a9f-858d-2ec66579923e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">multiply.JPG</figcaption><p></p>
-</figure>
-</div>
-</section>
-</section>
-<section id="applications-of-numpy" class="level2">
-<h2 class="anchored" data-anchor-id="applications-of-numpy">Applications of NumPy</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/3f6fa33c-b8b1-4762-8df4-79aeed4e6e92.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">applications.JPG</figcaption><p></p>
-</figure>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-SciPy
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>NumPy can perform complex mathematical operations, although the <a href="https://docs.scipy.org/doc/scipy/tutorial/index.html">SciPy</a> library allows even more advanced computation.</p>
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># load in </span></span>
-<span id="cb1-2"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;"># which version?</span></span>
-<span id="cb2-2">np.__version__</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>'1.22.4'</code></pre>
-</div>
-</div>
-</section>
-<section id="the-basics" class="level2">
-<h2 class="anchored" data-anchor-id="the-basics">The Basics</h2>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;"># create an array of integers</span></span>
-<span id="cb4-2">a <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>])</span>
-<span id="cb4-3">a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>array([1, 2, 3])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;"># create an array of floating point numbers</span></span>
-<span id="cb6-2">b <span class="op" style="color: #5E5E5E;">=</span> np.array([[<span class="fl" style="color: #AD0000;">9.0</span>,<span class="fl" style="color: #AD0000;">8.0</span>,<span class="fl" style="color: #AD0000;">7.0</span>],[<span class="fl" style="color: #AD0000;">6.0</span>,<span class="fl" style="color: #AD0000;">5.0</span>,<span class="fl" style="color: #AD0000;">4.0</span>]])</span>
-<span id="cb6-3">b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>array([[9., 8., 7.],
-       [6., 5., 4.]])</code></pre>
-</div>
-</div>
-<section id="shape-of-a-numpy-array" class="level3">
-<h3 class="anchored" data-anchor-id="shape-of-a-numpy-array">Shape of a NumPy array</h3>
-<p>Every NumPy array can be queried for its shape. A shape is a tuple of the format (n_rows, n_cols).</p>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;"># Grab the array shape</span></span>
-<span id="cb8-2">a.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>(3,)</code></pre>
-</div>
-</div>
-<p>Since there is no value after the comma, this is a one-dimensional array.</p>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;"># Grab the array dimension</span></span>
-<span id="cb10-2">a.ndim</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>1</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;"># Grab the array shape</span></span>
-<span id="cb12-2">b.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>(2, 3)</code></pre>
-</div>
-</div>
-<p>(2, 3) means that the matrix has 2 rows and 3 columns.</p>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;"># Grab the array dimension</span></span>
-<span id="cb14-2">b.ndim</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>2</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;"># Get type</span></span>
-<span id="cb16-2">a.dtype</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>dtype('int64')</code></pre>
-</div>
-</div>
-<p>This is the default size, but we can assign a lower int value to save memory:</p>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">a <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>], dtype<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'int16'</span>)</span>
-<span id="cb18-2">a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>array([1, 2, 3], dtype=int16)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;"># Get size - how many bytes?</span></span>
-<span id="cb20-2">a.itemsize</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>2</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;"># Get size - how many bytes?</span></span>
-<span id="cb22-2">b.itemsize</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>8</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;"># Get total number of elements</span></span>
-<span id="cb24-2">a.size</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-<pre><code>3</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="co" style="color: #5E5E5E;"># Get total size</span></span>
-<span id="cb26-2">a.size <span class="op" style="color: #5E5E5E;">*</span> a.itemsize</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>6</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><span class="co" style="color: #5E5E5E;"># Get total size</span></span>
-<span id="cb28-2">a.nbytes</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>6</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="indexing---accessing-specific-elements-rows-columns-etc" class="level2">
-<h2 class="anchored" data-anchor-id="indexing---accessing-specific-elements-rows-columns-etc">Indexing - accessing specific elements, rows, columns etc</h2>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Indexing
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Remember - the first index of a NumPy array is <strong>zero!</strong> and not one</p>
-</div>
-</div>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1">c <span class="op" style="color: #5E5E5E;">=</span> np.array([[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">6</span>,<span class="dv" style="color: #AD0000;">7</span>],[<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">9</span>,<span class="dv" style="color: #AD0000;">10</span>,<span class="dv" style="color: #AD0000;">11</span>,<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">13</span>,<span class="dv" style="color: #AD0000;">14</span>]])</span>
-<span id="cb30-2"><span class="bu" style="color: null;">print</span>(c)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 1  2  3  4  5  6  7]
- [ 8  9 10 11 12 13 14]]</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">c.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>(2, 7)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><span class="co" style="color: #5E5E5E;"># Get a specific element from row, column (r,c)</span></span>
-<span id="cb34-2">c[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">5</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
-<pre><code>13</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><span class="co" style="color: #5E5E5E;"># Get a specific element from row, column (r,c)</span></span>
-<span id="cb36-2">c[<span class="dv" style="color: #AD0000;">1</span>,<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>13</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><span class="co" style="color: #5E5E5E;"># Get a specific ROW</span></span>
-<span id="cb38-2">c[<span class="dv" style="color: #AD0000;">0</span>, :]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
-<pre><code>array([1, 2, 3, 4, 5, 6, 7])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><span class="co" style="color: #5E5E5E;"># Get a specific COLUMN</span></span>
-<span id="cb40-2">c[:, <span class="dv" style="color: #AD0000;">2</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
-<pre><code>array([ 3, 10])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><span class="co" style="color: #5E5E5E;"># Getting a little more fancy [start_index : end_index : step_size]</span></span>
-<span id="cb42-2"><span class="co" style="color: #5E5E5E;"># Row 0, then columns 1 to 6 (excluding 6) in steps of 2</span></span>
-<span id="cb42-3">c [<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">1</span>:<span class="dv" style="color: #AD0000;">6</span>:<span class="dv" style="color: #AD0000;">2</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
-<pre><code>array([2, 4, 6])</code></pre>
-</div>
-</div>
-</section>
-<section id="indexing---changing-specific-elements" class="level2">
-<h2 class="anchored" data-anchor-id="indexing---changing-specific-elements">Indexing - changing specific elements</h2>
-<div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><span class="co" style="color: #5E5E5E;"># change row 1, column 5 value (13) to 20</span></span>
-<span id="cb44-2">c[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">5</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span></span>
-<span id="cb44-3"><span class="bu" style="color: null;">print</span>(c)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 1  2  3  4  5  6  7]
- [ 8  9 10 11 12 20 14]]</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><span class="co" style="color: #5E5E5E;"># change column 2 [3,10] to [21,28]</span></span>
-<span id="cb46-2">c[:,<span class="dv" style="color: #AD0000;">2</span>] <span class="op" style="color: #5E5E5E;">=</span> [<span class="dv" style="color: #AD0000;">21</span>,<span class="dv" style="color: #AD0000;">28</span>]</span>
-<span id="cb46-3"><span class="bu" style="color: null;">print</span>(c)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 1  2 21  4  5  6  7]
- [ 8  9 28 11 12 20 14]]</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><span class="co" style="color: #5E5E5E;"># 3-d example</span></span>
-<span id="cb48-2">d <span class="op" style="color: #5E5E5E;">=</span> np.array([[[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>],[<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">4</span>]],[[<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">6</span>],[<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">8</span>]]])</span>
-<span id="cb48-3"><span class="bu" style="color: null;">print</span>(d)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[[1 2]
-  [3 4]]
-
- [[5 6]
-  [7 8]]]</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><span class="co" style="color: #5E5E5E;"># Get specific example (work from outside in)</span></span>
-<span id="cb50-2"></span>
-<span id="cb50-3"><span class="co" style="color: #5E5E5E;"># the first index reference [0] relates to the first grouping</span></span>
-<span id="cb50-4"><span class="co" style="color: #5E5E5E;"># [1, 2]</span></span>
-<span id="cb50-5"><span class="co" style="color: #5E5E5E;"># [3, 4]</span></span>
-<span id="cb50-6"></span>
-<span id="cb50-7"><span class="co" style="color: #5E5E5E;"># the second index reference [1] relates to the second row within that grouping [3, 4]</span></span>
-<span id="cb50-8"></span>
-<span id="cb50-9"><span class="co" style="color: #5E5E5E;"># the third index reference [1] specifies the second column from the second row of the grouping [3,4] i.e 4</span></span>
-<span id="cb50-10"></span>
-<span id="cb50-11">d[<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">1</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
-<pre><code>4</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><span class="co" style="color: #5E5E5E;"># Get specific example (work from outside in)</span></span>
-<span id="cb52-2"></span>
-<span id="cb52-3"><span class="co" style="color: #5E5E5E;"># the first index reference : means we are selecting from both groupings</span></span>
-<span id="cb52-4"><span class="co" style="color: #5E5E5E;"># [1 2]</span></span>
-<span id="cb52-5"><span class="co" style="color: #5E5E5E;"># [3 4]</span></span>
-<span id="cb52-6"></span>
-<span id="cb52-7"><span class="co" style="color: #5E5E5E;"># [5 6]</span></span>
-<span id="cb52-8"><span class="co" style="color: #5E5E5E;"># [7 8]</span></span>
-<span id="cb52-9"></span>
-<span id="cb52-10"><span class="co" style="color: #5E5E5E;"># the second index reference [1] relates to the second row from each of the groupings i.e. [3,4] and [7,8]</span></span>
-<span id="cb52-11"></span>
-<span id="cb52-12"><span class="co" style="color: #5E5E5E;"># the third index reference [:] specifies all values within those rows </span></span>
-<span id="cb52-13"></span>
-<span id="cb52-14">d[:,<span class="dv" style="color: #AD0000;">1</span>,:]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
-<pre><code>array([[3, 4],
-       [7, 8]])</code></pre>
-</div>
-</div>
-</section>
-<section id="initializing-different-array-types" class="level2">
-<h2 class="anchored" data-anchor-id="initializing-different-array-types">Initializing Different Array Types</h2>
-<div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><span class="co" style="color: #5E5E5E;"># All 0s matrix specifying shape</span></span>
-<span id="cb54-2"></span>
-<span id="cb54-3">np.zeros(<span class="dv" style="color: #AD0000;">5</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
-<pre><code>array([0., 0., 0., 0., 0.])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><span class="co" style="color: #5E5E5E;"># All 0s 2 x 3 matrix specifying shape</span></span>
-<span id="cb56-2"></span>
-<span id="cb56-3">np.zeros((<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
-<pre><code>array([[0., 0., 0.],
-       [0., 0., 0.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb58" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><span class="co" style="color: #5E5E5E;"># All 0s 2 x 3 x 4 matrix </span></span>
-<span id="cb58-2"></span>
-<span id="cb58-3"><span class="co" style="color: #5E5E5E;"># first reference = number of groupings</span></span>
-<span id="cb58-4"><span class="co" style="color: #5E5E5E;"># second reference = number of rows</span></span>
-<span id="cb58-5"><span class="co" style="color: #5E5E5E;"># third reference = number of columns</span></span>
-<span id="cb58-6">np.zeros((<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">4</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="54">
-<pre><code>array([[[0., 0., 0., 0.],
-        [0., 0., 0., 0.],
-        [0., 0., 0., 0.]],
-
-       [[0., 0., 0., 0.],
-        [0., 0., 0., 0.],
-        [0., 0., 0., 0.]]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><span class="co" style="color: #5E5E5E;"># All 1s matrix</span></span>
-<span id="cb60-2"></span>
-<span id="cb60-3">np.ones((<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">2</span>), dtype<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'int16'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>array([[[1, 1],
-        [1, 1]],
-
-       [[1, 1],
-        [1, 1]],
-
-       [[1, 1],
-        [1, 1]],
-
-       [[1, 1],
-        [1, 1]]], dtype=int16)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb62" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><span class="co" style="color: #5E5E5E;"># Any other number .full</span></span>
-<span id="cb62-2"></span>
-<span id="cb62-3">np.full((<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">2</span>), <span class="dv" style="color: #AD0000;">137</span>, dtype<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'float32'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>array([[137., 137.],
-       [137., 137.]], dtype=float32)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb64" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><span class="co" style="color: #5E5E5E;"># Any other number .full_like</span></span>
-<span id="cb64-2"><span class="co" style="color: #5E5E5E;"># creates a new array full of 4s matching the shape of the d array we previously created</span></span>
-<span id="cb64-3"></span>
-<span id="cb64-4">np.full_like(d,<span class="dv" style="color: #AD0000;">4</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>array([[[4, 4],
-        [4, 4]],
-
-       [[4, 4],
-        [4, 4]]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb66" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><span class="co" style="color: #5E5E5E;"># random decimals</span></span>
-<span id="cb66-2"><span class="co" style="color: #5E5E5E;"># using random.rand</span></span>
-<span id="cb66-3"></span>
-<span id="cb66-4">np.random.rand(<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">7</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>array([[[0.16735136, 0.86937755, 0.30866395, 0.05841447, 0.28817268,
-         0.55635487, 0.87087044],
-        [0.95692978, 0.45277212, 0.87002198, 0.59516086, 0.56308885,
-         0.71476549, 0.64600732],
-        [0.06479773, 0.83108022, 0.0321547 , 0.3054754 , 0.72857438,
-         0.56460774, 0.72935517]]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb68" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><span class="co" style="color: #5E5E5E;"># random decimals following shape of previously defined array</span></span>
-<span id="cb68-2"><span class="co" style="color: #5E5E5E;"># using random.random_sample</span></span>
-<span id="cb68-3"></span>
-<span id="cb68-4">np.random.random_sample(d.shape)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>array([[[0.04212123, 0.39748958],
-        [0.63778666, 0.3396428 ]],
-
-       [[0.33967012, 0.49291645],
-        [0.97990323, 0.45722717]]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb70" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><span class="co" style="color: #5E5E5E;"># random integers</span></span>
-<span id="cb70-2"><span class="co" style="color: #5E5E5E;"># first argument is range of integers to sample from (upper limit is EXclusive)</span></span>
-<span id="cb70-3"><span class="co" style="color: #5E5E5E;"># second argument is shape - established by size=</span></span>
-<span id="cb70-4"></span>
-<span id="cb70-5">np.random.randint(<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">13</span>, size<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">3</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>array([[10, 10, 10],
-       [12, 12, 12],
-       [10,  7,  9]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb72" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><span class="co" style="color: #5E5E5E;"># identity matrix</span></span>
-<span id="cb72-2"><span class="co" style="color: #5E5E5E;"># ones on main diagonal and zeros elsewhere</span></span>
-<span id="cb72-3"><span class="co" style="color: #5E5E5E;"># only one pararmeter as this is a square matrix</span></span>
-<span id="cb72-4"></span>
-<span id="cb72-5">np.identity(<span class="dv" style="color: #AD0000;">7</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
-<pre><code>array([[1., 0., 0., 0., 0., 0., 0.],
-       [0., 1., 0., 0., 0., 0., 0.],
-       [0., 0., 1., 0., 0., 0., 0.],
-       [0., 0., 0., 1., 0., 0., 0.],
-       [0., 0., 0., 0., 1., 0., 0.],
-       [0., 0., 0., 0., 0., 1., 0.],
-       [0., 0., 0., 0., 0., 0., 1.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb74" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><span class="co" style="color: #5E5E5E;"># repeat a matrix using .repeat</span></span>
-<span id="cb74-2"><span class="co" style="color: #5E5E5E;"># first argument is array to be repeated</span></span>
-<span id="cb74-3"><span class="co" style="color: #5E5E5E;"># second argument is how many times to be repeated</span></span>
-<span id="cb74-4"><span class="co" style="color: #5E5E5E;"># axis 0 refers to rows</span></span>
-<span id="cb74-5"></span>
-<span id="cb74-6">arr <span class="op" style="color: #5E5E5E;">=</span> np.array([[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">7</span>]])</span>
-<span id="cb74-7">r1 <span class="op" style="color: #5E5E5E;">=</span> np.repeat(arr,<span class="dv" style="color: #AD0000;">3</span>,axis<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>)</span>
-<span id="cb74-8"><span class="bu" style="color: null;">print</span>(r1)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1 3 7]
- [1 3 7]
- [1 3 7]]</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><span class="co" style="color: #5E5E5E;"># repeat a matrix using .repeat</span></span>
-<span id="cb76-2"><span class="co" style="color: #5E5E5E;"># first argument is array to be repeated</span></span>
-<span id="cb76-3"><span class="co" style="color: #5E5E5E;"># second argument is how many times to be repeated</span></span>
-<span id="cb76-4"><span class="co" style="color: #5E5E5E;"># axis 1 refers to columns</span></span>
-<span id="cb76-5"></span>
-<span id="cb76-6">arr <span class="op" style="color: #5E5E5E;">=</span> np.array([[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">7</span>]])</span>
-<span id="cb76-7">r1 <span class="op" style="color: #5E5E5E;">=</span> np.repeat(arr,<span class="dv" style="color: #AD0000;">3</span>,axis<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span>
-<span id="cb76-8"><span class="bu" style="color: null;">print</span>(r1)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1 1 1 3 3 3 7 7 7]]</code></pre>
-</div>
-</div>
-<p>How might we go about initializing the matrix below?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/0d9f9bb2-415c-468a-9c13-567a35eb5b59.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">matrix.JPG</figcaption><p></p>
-</figure>
-</div>
-<div class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb78" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><span class="co" style="color: #5E5E5E;"># create a 5 x 5 1s matrix for the outer layer</span></span>
-<span id="cb78-2">outputs <span class="op" style="color: #5E5E5E;">=</span>np.ones((<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">5</span>))</span>
-<span id="cb78-3">outputs</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
-<pre><code>array([[1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1.],
-       [1., 1., 1., 1., 1.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb80" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><span class="co" style="color: #5E5E5E;"># create a 3 x 3 zero matric for the middle layer</span></span>
-<span id="cb80-2">z <span class="op" style="color: #5E5E5E;">=</span> np.zeros ((<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">3</span>))</span>
-<span id="cb80-3">z</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
-<pre><code>array([[0., 0., 0.],
-       [0., 0., 0.],
-       [0., 0., 0.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb82" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><span class="co" style="color: #5E5E5E;"># fil in middle element i.e row 1 column 1 with a 9</span></span>
-<span id="cb82-2">z[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">1</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">9</span></span>
-<span id="cb82-3">z</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
-<pre><code>array([[0., 0., 0.],
-       [0., 9., 0.],
-       [0., 0., 0.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb84" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><span class="co" style="color: #5E5E5E;"># replace outer layer with inner layers</span></span>
-<span id="cb84-2">outputs[<span class="dv" style="color: #AD0000;">1</span>:<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">1</span>:<span class="dv" style="color: #AD0000;">4</span>] <span class="op" style="color: #5E5E5E;">=</span> z</span>
-<span id="cb84-3">outputs</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
-<pre><code>array([[1., 1., 1., 1., 1.],
-       [1., 0., 0., 0., 1.],
-       [1., 0., 9., 0., 1.],
-       [1., 0., 0., 0., 1.],
-       [1., 1., 1., 1., 1.]])</code></pre>
-</div>
-</div>
-</section>
-<section id="be-careful-when-copying-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="be-careful-when-copying-arrays">Be careful when copying arrays</h2>
-<div class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb86" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1">a <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>])</span>
-<span id="cb86-2">a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
-<pre><code>array([1, 2, 3])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb88" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><span class="co" style="color: #5E5E5E;"># if you equate two arrays then any changes impact BOTH</span></span>
-<span id="cb88-2"><span class="co" style="color: #5E5E5E;"># this is NOT making a copy!</span></span>
-<span id="cb88-3">b <span class="op" style="color: #5E5E5E;">=</span> a</span>
-<span id="cb88-4">b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
-<pre><code>array([1, 2, 3])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb90" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><span class="co" style="color: #5E5E5E;"># To illustrate let's change the first element of b</span></span>
-<span id="cb90-2">b[<span class="dv" style="color: #AD0000;">0</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">137</span></span>
-<span id="cb90-3">b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="63">
-<pre><code>array([137,   2,   3])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb92" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><span class="co" style="color: #5E5E5E;"># note the first element in a has also changed!</span></span>
-<span id="cb92-2">a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="64">
-<pre><code>array([137,   2,   3])</code></pre>
-</div>
-</div>
-<p>In order to make a copy we have to use .copy:</p>
-<div class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb94" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1">a <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>])</span>
-<span id="cb94-2">a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
-<pre><code>array([1, 2, 3])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb96" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1">b <span class="op" style="color: #5E5E5E;">=</span> a.copy()</span>
-<span id="cb96-2">b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="66">
-<pre><code>array([1, 2, 3])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb98" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1">b[<span class="dv" style="color: #AD0000;">0</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">137</span></span>
-<span id="cb98-2">b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
-<pre><code>array([137,   2,   3])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb100" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1">a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
-<pre><code>array([1, 2, 3])</code></pre>
-</div>
-</div>
-</section>
-<section id="mathematics" class="level2">
-<h2 class="anchored" data-anchor-id="mathematics">Mathematics</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb102" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1">We can carry out element wise arithmetic using NumPy</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb103" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1">a <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">4</span>])</span>
-<span id="cb103-2">a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="70">
-<pre><code>array([1, 2, 3, 4])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb105" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><span class="co" style="color: #5E5E5E;"># add 2 to every element within the array</span></span>
-<span id="cb105-2">a <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">2</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="71">
-<pre><code>array([3, 4, 5, 6])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb107" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><span class="co" style="color: #5E5E5E;"># deduct 2 from every element within the array</span></span>
-<span id="cb107-2">a <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">2</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="74">
-<pre><code>array([-1,  0,  1,  2])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb109" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><span class="co" style="color: #5E5E5E;"># multiply every element within the array by 2</span></span>
-<span id="cb109-2">a <span class="op" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">2</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="75">
-<pre><code>array([2, 4, 6, 8])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb111" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><span class="co" style="color: #5E5E5E;"># divide every element within the array by 2</span></span>
-<span id="cb111-2">a <span class="op" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
-<pre><code>array([0.5, 1. , 1.5, 2. ])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb113" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1">b <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">0</span>])</span>
-<span id="cb113-2">a <span class="op" style="color: #5E5E5E;">+</span> b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
-<pre><code>array([2, 2, 4, 4])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb115" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1">a <span class="op" style="color: #5E5E5E;">**</span> <span class="dv" style="color: #AD0000;">3</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
-<pre><code>array([ 1,  8, 27, 64])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb117" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><span class="co" style="color: #5E5E5E;"># Take the sin </span></span>
-<span id="cb117-2">np.sin(a)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="79">
-<pre><code>array([ 0.84147098,  0.90929743,  0.14112001, -0.7568025 ])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb119" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><span class="co" style="color: #5E5E5E;"># Take the cos</span></span>
-<span id="cb119-2">np.cos(a)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="80">
-<pre><code>array([ 0.54030231, -0.41614684, -0.9899925 , -0.65364362])</code></pre>
-</div>
-</div>
-<p>For a comprehensive outline of the mathematical operations possible using NumPy see <a href="https://numpy.org/doc/stable/reference/routines.math.html">the documentation</a>.</p>
-<section id="matrix-multiplication" class="level3">
-<h3 class="anchored" data-anchor-id="matrix-multiplication">Matrix Multiplication</h3>
-<p>Note that for matrix multiplication the number of rows of one of the matrices needs to match the number of columns of the other matrix:</p>
-<div class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb121" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><span class="co" style="color: #5E5E5E;"># 2 rows x 3 columns</span></span>
-<span id="cb121-2">a <span class="op" style="color: #5E5E5E;">=</span> np.ones ((<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>))</span>
-<span id="cb121-3">a</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="85">
-<pre><code>array([[1., 1., 1.],
-       [1., 1., 1.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb123" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><span class="co" style="color: #5E5E5E;"># 3 rows x 2 columns</span></span>
-<span id="cb123-2">b <span class="op" style="color: #5E5E5E;">=</span> np.full((<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">2</span>), <span class="dv" style="color: #AD0000;">2</span>)</span>
-<span id="cb123-3">b</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="86">
-<pre><code>array([[2, 2],
-       [2, 2],
-       [2, 2]])</code></pre>
-</div>
-</div>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Matrix Multiplication
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Matrix multiplication can only be performed where the number of rows in Matrix A match the number of columns in Matrix B. For example we can multiply a 2 row x [3] column matrix by a [3] row x 2 column matrix. The resulting matrixc is a 2 x 2 matrix - the [3]s cancel out leaving the outer 2s.</p>
-</div>
-</div>
-<div class="cell" data-execution_count="87">
-<div class="sourceCode cell-code" id="cb125" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><span class="co" style="color: #5E5E5E;"># Let's try to multiply together</span></span>
-<span id="cb125-2">a <span class="op" style="color: #5E5E5E;">*</span> b</span></code></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ValueError: operands could not be broadcast together with shapes (2,3) (3,2) </code></pre>
-</div>
-</div>
-<p>Hold on - why is this not working?! Our matrix multiplication criteria is satisfied - the number of rows in matrix <em>a</em> = 2 which matches the number of columns in matrix <em>b</em>. Don’t panic! We just have to use the <strong><em>.matmul()</em></strong> function instead:</p>
-<div class="cell" data-execution_count="88">
-<div class="sourceCode cell-code" id="cb127" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><span class="co" style="color: #5E5E5E;"># Let's try again using .matmul</span></span>
-<span id="cb127-2">np.matmul(a,b)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="88">
-<pre><code>array([[6., 6.],
-       [6., 6.]])</code></pre>
-</div>
-</div>
-</section>
-<section id="determinant-of-a-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="determinant-of-a-matrix">Determinant of a matrix</h3>
-<p>The determinant of a 2 × 2 matrix is:</p>
-<p></p>
-<p>For simplicity let’s use an identity matrix to illustrate. Recall that the identity matric has 1s on the leading diagonal and 0s elsewhere:</p>
-<div class="cell" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb129" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1">i<span class="op" style="color: #5E5E5E;">=</span> np.identity(<span class="dv" style="color: #AD0000;">2</span>)</span>
-<span id="cb129-2">i </span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="95">
-<pre><code>array([[1., 0.],
-       [0., 1.]])</code></pre>
-</div>
-</div>
-<p>An identity matrix using the above formula should have a determinant of 1:</p>
-<div class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb131" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><span class="co" style="color: #5E5E5E;"># calc the determinant of identity matrix i</span></span>
-<span id="cb131-2">np.linalg.det(i)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="96">
-<pre><code>1.0</code></pre>
-</div>
-</div>
-<p>There are many other linear algebra operations that can be performed. See the <a href="https://numpy.org/doc/stable/reference/routines.linalg.html">documentation</a> for more detail.</p>
-</section>
-</section>
-<section id="summary-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="summary-statistics">Summary statistics</h2>
-<div class="cell" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb133" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1">stats <span class="op" style="color: #5E5E5E;">=</span> np.array([[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>],[<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">6</span>]])</span>
-<span id="cb133-2">stats</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="98">
-<pre><code>array([[1, 2, 3],
-       [4, 5, 6]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb135" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1">np.<span class="bu" style="color: null;">min</span>(stats)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="99">
-<pre><code>1</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb137" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1">np.<span class="bu" style="color: null;">max</span>(stats)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="100">
-<pre><code>6</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb139" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1">np.mean(stats)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
-<pre><code>3.5</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb141" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1">np.std(stats)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="103">
-<pre><code>1.707825127659933</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb143" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1">np.<span class="bu" style="color: null;">sum</span>(stats)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="104">
-<pre><code>21</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb145" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><span class="co" style="color: #5E5E5E;"># sum by row going downwards (axis = 0)</span></span>
-<span id="cb145-2">np.<span class="bu" style="color: null;">sum</span>(stats, axis <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
-<pre><code>array([5, 7, 9])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb147" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><span class="co" style="color: #5E5E5E;"># sum by column going across (axis = 1)</span></span>
-<span id="cb147-2">np.<span class="bu" style="color: null;">sum</span>(stats, axis <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="106">
-<pre><code>array([ 6, 15])</code></pre>
-</div>
-</div>
-</section>
-<section id="reorganizing-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="reorganizing-arrays">Reorganizing arrays</h2>
-<div class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb149" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1">before <span class="op" style="color: #5E5E5E;">=</span> np.array([[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">4</span>],</span>
-<span id="cb149-2">                   [<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">6</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">8</span>]])</span>
-<span id="cb149-3">before</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="109">
-<pre><code>array([[1, 2, 3, 4],
-       [5, 6, 7, 8]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb151" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1">before.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="108">
-<pre><code>(2, 4)</code></pre>
-</div>
-</div>
-<p>In some cases we might want to change the shape of the array:</p>
-<div class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb153" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1">after <span class="op" style="color: #5E5E5E;">=</span> before.reshape(<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">1</span>)</span>
-<span id="cb153-2">after</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="110">
-<pre><code>array([[1],
-       [2],
-       [3],
-       [4],
-       [5],
-       [6],
-       [7],
-       [8]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb155" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1">after <span class="op" style="color: #5E5E5E;">=</span> before.reshape(<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">2</span>)</span>
-<span id="cb155-2">after</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
-<pre><code>array([[[1, 2],
-        [3, 4]],
-
-       [[5, 6],
-        [7, 8]]])</code></pre>
-</div>
-</div>
-<section id="vertcally-stacking-vectors" class="level3">
-<h3 class="anchored" data-anchor-id="vertcally-stacking-vectors">Vertcally stacking vectors</h3>
-<div class="cell" data-execution_count="115">
-<div class="sourceCode cell-code" id="cb157" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1">v1 <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">4</span>])</span>
-<span id="cb157-2">v2 <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">6</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">8</span>])</span>
-<span id="cb157-3"></span>
-<span id="cb157-4"></span>
-<span id="cb157-5">np.vstack([v1,v2])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="115">
-<pre><code>array([[1, 2, 3, 4],
-       [5, 6, 7, 8]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb159" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><span class="co" style="color: #5E5E5E;"># we can stack as much as we want any in any order</span></span>
-<span id="cb159-2">np.vstack([v1,v2,v2,v2,v1,v1,v2])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="116">
-<pre><code>array([[1, 2, 3, 4],
-       [5, 6, 7, 8],
-       [5, 6, 7, 8],
-       [5, 6, 7, 8],
-       [1, 2, 3, 4],
-       [1, 2, 3, 4],
-       [5, 6, 7, 8]])</code></pre>
-</div>
-</div>
-</section>
-<section id="horizontally-stacking-vectors" class="level3">
-<h3 class="anchored" data-anchor-id="horizontally-stacking-vectors">Horizontally stacking vectors</h3>
-<div class="cell" data-execution_count="121">
-<div class="sourceCode cell-code" id="cb161" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1">h1 <span class="op" style="color: #5E5E5E;">=</span> np.ones((<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">4</span>))</span>
-<span id="cb161-2">h2 <span class="op" style="color: #5E5E5E;">=</span> np.zeros((<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">2</span>))</span>
-<span id="cb161-3"></span>
-<span id="cb161-4">h1</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="121">
-<pre><code>array([[1., 1., 1., 1.],
-       [1., 1., 1., 1.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="122">
-<div class="sourceCode cell-code" id="cb163" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1">h2</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="122">
-<pre><code>array([[0., 0.],
-       [0., 0.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb165" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb165-1">np.hstack([h1,h2])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="123">
-<pre><code>array([[1., 1., 1., 1., 0., 0.],
-       [1., 1., 1., 1., 0., 0.]])</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="other-use-cases" class="level2">
-<h2 class="anchored" data-anchor-id="other-use-cases">Other use cases</h2>
-<div class="cell" data-execution_count="128">
-<div class="sourceCode cell-code" id="cb167" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb167-1"><span class="co" style="color: #5E5E5E;"># Load data from file using .genfromtxt</span></span>
-<span id="cb167-2"><span class="co" style="color: #5E5E5E;"># automatically cast as float type</span></span>
-<span id="cb167-3"></span>
-<span id="cb167-4">filedata <span class="op" style="color: #5E5E5E;">=</span> np.genfromtxt(<span class="st" style="color: #20794D;">'NumPy.txt'</span>, delimiter<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">','</span>)</span>
-<span id="cb167-5">filedata</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="128">
-<pre><code>array([[  1.,  13.,  21.,  11., 196.,  75.,   4.,   3.,  34.,   6.,   7.,
-          8.,   0.,   1.,   2.,   3.,   4.,   5.],
-       [  3.,  42.,  12.,  33., 766.,  75.,   4.,  55.,   6.,   4.,   3.,
-          4.,   5.,   6.,   7.,   0.,  11.,  12.],
-       [  1.,  22.,  33.,  11., 999.,  11.,   2.,   1.,  78.,   0.,   1.,
-          2.,   9.,   8.,   7.,   1.,  76.,  88.]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="130">
-<div class="sourceCode cell-code" id="cb169" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><span class="co" style="color: #5E5E5E;"># cast the data as int32</span></span>
-<span id="cb169-2">filedata <span class="op" style="color: #5E5E5E;">=</span> filedata.astype(<span class="st" style="color: #20794D;">'int32'</span>)</span>
-<span id="cb169-3">filedata</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="130">
-<pre><code>array([[  1,  13,  21,  11, 196,  75,   4,   3,  34,   6,   7,   8,   0,
-          1,   2,   3,   4,   5],
-       [  3,  42,  12,  33, 766,  75,   4,  55,   6,   4,   3,   4,   5,
-          6,   7,   0,  11,  12],
-       [  1,  22,  33,  11, 999,  11,   2,   1,  78,   0,   1,   2,   9,
-          8,   7,   1,  76,  88]], dtype=int32)</code></pre>
-</div>
-</div>
-<section id="boolean-masking-and-advanced-indexing" class="level3">
-<h3 class="anchored" data-anchor-id="boolean-masking-and-advanced-indexing">Boolean masking and advanced indexing</h3>
-<div class="cell" data-execution_count="131">
-<div class="sourceCode cell-code" id="cb171" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb171-1"><span class="co" style="color: #5E5E5E;"># this returns a boolean for every vlaue based on our condition</span></span>
-<span id="cb171-2">filedata <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">50</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="131">
-<pre><code>array([[False, False, False, False,  True,  True, False, False, False,
-        False, False, False, False, False, False, False, False, False],
-       [False, False, False, False,  True,  True, False,  True, False,
-        False, False, False, False, False, False, False, False, False],
-       [False, False, False, False,  True, False, False, False,  True,
-        False, False, False, False, False, False, False,  True,  True]])</code></pre>
-</div>
-</div>
-<p>This is good but not very helpful. We really want to extract the values:</p>
-<div class="cell" data-execution_count="132">
-<div class="sourceCode cell-code" id="cb173" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1"><span class="co" style="color: #5E5E5E;"># this is better as this returns the values that meet our condition</span></span>
-<span id="cb173-2">filedata[filedata <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">50</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="132">
-<pre><code>array([196,  75, 766,  75,  55, 999,  78,  76,  88], dtype=int32)</code></pre>
-</div>
-</div>
-</section>
-<section id="indexing-with-a-list" class="level3">
-<h3 class="anchored" data-anchor-id="indexing-with-a-list">Indexing with a List</h3>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb175" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1">a <span class="op" style="color: #5E5E5E;">=</span> np.array([<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">5</span>,<span class="dv" style="color: #AD0000;">6</span>,<span class="dv" style="color: #AD0000;">7</span>,<span class="dv" style="color: #AD0000;">8</span>,<span class="dv" style="color: #AD0000;">9</span>])</span>
-<span id="cb175-2"></span>
-<span id="cb175-3"><span class="co" style="color: #5E5E5E;"># Let's grab 2, 3 and 9</span></span>
-<span id="cb175-4">a[[<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span>]]</span></code></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>NameError: name 'np' is not defined</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="137">
-<div class="sourceCode cell-code" id="cb177" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1">np.<span class="bu" style="color: null;">any</span>(filedata <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">50</span>, axis <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="137">
-<pre><code>array([False, False, False, False,  True,  True, False,  True,  True,
-       False, False, False, False, False, False, False,  True,  True])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb179" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb179-1">np.<span class="bu" style="color: null;">any</span>(filedata <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">50</span>, axis <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="138">
-<pre><code>array([ True,  True,  True])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="139">
-<div class="sourceCode cell-code" id="cb181" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb181-1">np.<span class="bu" style="color: null;">all</span>(filedata <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">50</span>, axis <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="139">
-<pre><code>array([False, False, False, False,  True, False, False, False, False,
-       False, False, False, False, False, False, False, False, False])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="140">
-<div class="sourceCode cell-code" id="cb183" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb183-1">np.<span class="bu" style="color: null;">all</span>(filedata <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">50</span>, axis <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="140">
-<pre><code>array([False, False, False])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="145">
-<div class="sourceCode cell-code" id="cb185" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1">(filedata <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">50</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (filedata <span class="op" style="color: #5E5E5E;">&lt;</span> <span class="dv" style="color: #AD0000;">100</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="145">
-<pre><code>array([[False, False, False, False, False,  True, False, False, False,
-        False, False, False, False, False, False, False, False, False],
-       [False, False, False, False, False,  True, False,  True, False,
-        False, False, False, False, False, False, False, False, False],
-       [False, False, False, False, False, False, False, False,  True,
-        False, False, False, False, False, False, False,  True,  True]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="148">
-<div class="sourceCode cell-code" id="cb187" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb187-1"><span class="co" style="color: #5E5E5E;"># ~ means NOT and negates the condition specified</span></span>
-<span id="cb187-2">(<span class="op" style="color: #5E5E5E;">~</span>((filedata <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">50</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (filedata <span class="op" style="color: #5E5E5E;">&lt;</span> <span class="dv" style="color: #AD0000;">100</span>)))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="148">
-<pre><code>array([[ True,  True,  True,  True,  True, False,  True,  True,  True,
-         True,  True,  True,  True,  True,  True,  True,  True,  True],
-       [ True,  True,  True,  True,  True, False,  True, False,  True,
-         True,  True,  True,  True,  True,  True,  True,  True,  True],
-       [ True,  True,  True,  True,  True,  True,  True,  True, False,
-         True,  True,  True,  True,  True,  True,  True, False, False]])</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="wrap-up" class="level2">
-<h2 class="anchored" data-anchor-id="wrap-up">Wrap up</h2>
-<p>How would we index the blue highlighted section of the matrix below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/709b5942-abff-427c-9ac4-4fb0e0790ddf.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">indexing_blue.JPG</figcaption><p></p>
-</figure>
-</div>
-<p>First we index the row range, and then the column range:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb189" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb189-1">a[<span class="dv" style="color: #AD0000;">2</span>:<span class="dv" style="color: #AD0000;">4</span>, <span class="dv" style="color: #AD0000;">0</span>:<span class="dv" style="color: #AD0000;">2</span>]</span></code></pre></div>
-</div>
-<p>How would we index the green highlighted section of the matrix below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/d3ac8c45-c464-4d21-a0b7-ece845dc4559.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">indexing_green.JPG</figcaption><p></p>
-</figure>
-</div>
-<p>We can do this by using two different lists within our indexing. The first list contains the row indices and the second list contains the column indices:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb190" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1">a[ [<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>], [<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">3</span>,<span class="dv" style="color: #AD0000;">4</span>] ]</span></code></pre></div>
-</div>
-<p>How would we index the red highlighted section of the matrix below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial_files/figure-html/1948a527-e510-41ac-862f-450b9268c553.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">indexing_red.JPG</figcaption><p></p>
-</figure>
-</div>
-<p>Again, we can do this by using two different lists. The first list contains the required rows, and the second list contains the required column range:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb191" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb191-1">a [[<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">4</span>,<span class="dv" style="color: #AD0000;">5</span>], <span class="dv" style="color: #AD0000;">3</span>:]</span></code></pre></div>
-</div>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>Thanks once again to <strong><a href="https://twitter.com/svpino">Santiago</a></strong> for signposting this video posted by <strong><a href="https://github.com/KeithGalli">Keith Galli</a></strong>. This blog was written after interactively working through it.</p>
-<div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb192" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb192-1"><span class="op" style="color: #5E5E5E;">%%</span>HTML</span>
-<span id="cb192-2"><span class="op" style="color: #5E5E5E;">&lt;</span>iframe width<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"560"</span> height<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"315"</span> src<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"https://www.youtube.com/embed/QUT1VHiLmmI"</span> title<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"YouTube video player"</span> frameborder<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"0"</span> allow<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"</span> allowfullscreen<span class="op" style="color: #5E5E5E;">&gt;&lt;/</span>iframe<span class="op" style="color: #5E5E5E;">&gt;</span></span></code></pre></div>
-<div class="cell-output cell-output-display">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QUT1VHiLmmI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>NumPy</category>
-  <guid>https://stephen137.github.io/posts/NumPy/Complete_Python_NumPy_Tutorial.html</guid>
-  <pubDate>Mon, 02 Jan 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://stephen137.github.io/posts/NumPy/NumPy.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
