@@ -15,7 +15,7 @@
 <link>https://stephen137.github.io/index.html</link>
 </image>
 <generator>quarto-1.1</generator>
-<lastBuildDate>Sun, 21 May 2023 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 22 May 2023 22:00:00 GMT</lastBuildDate>
 <item>
   <title>parkrun Kraków 20/05/2023 | #461</title>
   <dc:creator>Stephen Barrie</dc:creator>
@@ -38,50 +38,6 @@
 </figure>
 </div>
 <p>After the race I thought it would be fun to do a bit of a data dive on this race. My aim was to gain an insight into the distribution of competitors across age and sex, and I was particularly interested in discovering whether being affiliated with a running club results in a faster race time (as you might expect) compared to unattached runners like me.</p>
-<section id="results-summary" class="level3">
-<h3 class="anchored" data-anchor-id="results-summary">Results summary</h3>
-<div class="cell" data-execution_count="330">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Number of runners: </span><span class="sc" style="color: #5E5E5E;">{</span>number_of_runners<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-2"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'My race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>my_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-3"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time for my sex and age group (mins):</span><span class="sc" style="color: #5E5E5E;">{</span>fastest_time_my_sex_age_group<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-4"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time for my sex and age group (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_time_my_sex_age_group<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-5"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-6"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-7"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest male race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_male<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-8"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median male race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_male_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-9"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest female race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_female<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-10"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median female race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_female_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-11"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_club<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-12"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_club<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-13"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest non-affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_unattached<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb1-14"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median non-affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_unattached<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of runners: 333
-My race time (mins): 24.95
-Fastest race time for my sex and age group (mins):20.63
-Median race time for my sex and age group (mins): 26.43
-Fastest race time (mins): 16.48
-Median race time (mins): 27.08
-Fastest male race time (mins): 16.48
-Median male race time (mins): 24.83
-Fastest female race time (mins): 19.28
-Median female race time (mins): 29.30
-Fastest affiliated race time (mins): 17.55
-Median affiliated race time (mins): 26.20
-Fastest non-affiliated race time (mins): 16.48
-Median non-affiliated race time (mins): 27.66</code></pre>
-</div>
-</div>
-</section>
-<section id="thoughts" class="level3">
-<h3 class="anchored" data-anchor-id="thoughts">Thoughts</h3>
-<div class="cell" data-execution_count="334">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Overall, I was quite pleased with my time. I had a target of 25 mins in mind which I beat - by 3 seconds! and I did beat the median time for my age and sex. As you might expect, runners who are attached to an officially running club generally outperform those that are not. Attached runners median race time was </span><span class="sc" style="color: #5E5E5E;">{</span>median_club<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> mins, as against </span><span class="sc" style="color: #5E5E5E;">{</span>median_unattached<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> mins for amateur runners like myself. On the day however it was an unattached runner who was first over the line with a winning time of </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_race_time<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> mins.'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Overall, I was quite pleased with my time. I had a target of 25 mins in mind which I beat - by 3 seconds! and I did beat the median time for my age and sex. As you might expect, runners who are attached to an officially running club generally outperform those that are not. Attached runners median race time was 26.2 mins, as against 27.66 mins for amateur runners like myself. On the day however it was an unattached runner who was first over the line with a winning time of 16.48 mins.</code></pre>
-</div>
-</div>
-</section>
 <section id="data-source" class="level3">
 <h3 class="anchored" data-anchor-id="data-source">Data source</h3>
 <p>The results are published each week on the <a href="https://www.parkrun.pl/krakow/results/latestresults/">official website</a>. I could not find an API and so I just copied and pasted form the table into a csv file for cleansing using <a href="https://pandas.pydata.org/">pandas</a>, and visualisation using <a href="https://seaborn.pydata.org/">Seaborn</a>.</p>
@@ -89,27 +45,38 @@ Median non-affiliated race time (mins): 27.66</code></pre>
 </section>
 <section id="import-the-required-packages" class="level3">
 <h3 class="anchored" data-anchor-id="import-the-required-packages">Import the required packages</h3>
-<div class="cell" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
-<span id="cb5-2"><span class="im" style="color: #00769E;">import</span> seaborn <span class="im" style="color: #00769E;">as</span> sns</span>
-<span id="cb5-3"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span></code></pre></div>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;">as</span> plt</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;">import</span> seaborn <span class="im" style="color: #00769E;">as</span> sns</span>
+<span id="cb1-4"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span></code></pre></div>
 </div>
 </section>
-<section id="load-in-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="load-in-the-data">Load in the data</h3>
-<div class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> pd.read_csv(<span class="st" style="color: #20794D;">'results_20_05_2023.csv'</span>, encoding<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'latin'</span>)</span></code></pre></div>
+<section id="load-in-the-data-and-retrive-my-race-time" class="level3">
+<h3 class="anchored" data-anchor-id="load-in-the-data-and-retrive-my-race-time">Load in the data and retrive my race time</h3>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> pd.read_csv(<span class="st" style="color: #20794D;">'krakow_20_05_23.csv'</span>, encoding<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'latin'</span>)</span></code></pre></div>
 </div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">my_row <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'UCZESTNIK'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Stephen BARRIE"</span>]</span>
+<span id="cb3-2">my_race_time <span class="op" style="color: #5E5E5E;">=</span> my_row[<span class="st" style="color: #20794D;">'CZAS'</span>]</span>
+<span id="cb3-3">my_race_time </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>130    24:57:00
+Name: CZAS, dtype: object</code></pre>
+</div>
+</div>
+<p>Overall, I was quite pleased with my time. I had a target of 25 minutes in mind which I beat - by 3 seconds!</p>
 </section>
 <section id="exploratory-data-analysis-cleansing" class="level3">
 <h3 class="anchored" data-anchor-id="exploratory-data-analysis-cleansing">Exploratory Data Analysis | Cleansing</h3>
-<div class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;"># Drop name column for anonymity</span></span>
-<span id="cb7-2">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.drop(<span class="st" style="color: #20794D;">'UCZESTNIK'</span>, axis<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span>
-<span id="cb7-3"></span>
-<span id="cb7-4"><span class="co" style="color: #5E5E5E;"># preview our data</span></span>
-<span id="cb7-5">parkrun_krakow_20_05_23</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="187">
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;"># Drop name column for anonymity</span></span>
+<span id="cb5-2">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.drop(<span class="st" style="color: #20794D;">'UCZESTNIK'</span>, axis<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb5-3"></span>
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;"># preview our data</span></span>
+<span id="cb5-5">parkrun_krakow_20_05_23</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 
 <div>
 
@@ -220,12 +187,12 @@ Median non-affiliated race time (mins): 27.66</code></pre>
 </div>
 </div>
 <p>Let’s rename the columns, which are in Polish at the moment. We can see that we also have some problems with Polish letters not being recognised. We’ll deal with this also.</p>
-<div class="cell" data-execution_count="188">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;"># Rename columns</span></span>
-<span id="cb8-2">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.rename(columns<span class="op" style="color: #5E5E5E;">=</span>{<span class="st" style="color: #20794D;">'POZYCJA'</span>: <span class="st" style="color: #20794D;">'Position'</span>, <span class="st" style="color: #20794D;">''</span>: <span class="st" style="color: #20794D;">'Name'</span>, <span class="st" style="color: #20794D;">'P?E?'</span>: <span class="st" style="color: #20794D;">'Sex'</span>,<span class="st" style="color: #20794D;">'KATEGORIA WIEKOWA'</span>: <span class="st" style="color: #20794D;">'Age_Group'</span>,<span class="st" style="color: #20794D;">'KLUB'</span>: <span class="st" style="color: #20794D;">'Club_Runner?'</span>, <span class="st" style="color: #20794D;">'CZAS'</span>: <span class="st" style="color: #20794D;">'Time'</span>})</span></code></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;"># Rename columns</span></span>
+<span id="cb6-2">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.rename(columns<span class="op" style="color: #5E5E5E;">=</span>{<span class="st" style="color: #20794D;">'POZYCJA'</span>: <span class="st" style="color: #20794D;">'Position'</span>, <span class="st" style="color: #20794D;">''</span>: <span class="st" style="color: #20794D;">'Name'</span>, <span class="st" style="color: #20794D;">'P?E?'</span>: <span class="st" style="color: #20794D;">'Sex'</span>,<span class="st" style="color: #20794D;">'KATEGORIA WIEKOWA'</span>: <span class="st" style="color: #20794D;">'Age_Group'</span>,<span class="st" style="color: #20794D;">'KLUB'</span>: <span class="st" style="color: #20794D;">'Club_Runner?'</span>, <span class="st" style="color: #20794D;">'CZAS'</span>: <span class="st" style="color: #20794D;">'Time'</span>})</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">parkrun_krakow_20_05_23.info()</span></code></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">parkrun_krakow_20_05_23.info()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 355 entries, 0 to 354
@@ -251,9 +218,9 @@ memory usage: 14.0+ KB</code></pre>
 <p></p><figcaption class="figure-caption">NAN.jpg</figcaption><p></p>
 </figure>
 </div>
-<div class="cell" data-execution_count="190">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="190">
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Position          0
 Sex              22
 Age_Group        22
@@ -263,13 +230,13 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>As anticipated we have 22 <code>NaN</code> values for <code>Sex</code>, <code>Age_Group</code> and <code>Time</code>. So let’s remove all observations where no race time was recorded :</p>
-<div class="cell" data-execution_count="193">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.dropna(subset<span class="op" style="color: #5E5E5E;">=</span>[<span class="st" style="color: #20794D;">'Time'</span>])</span></code></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">parkrun_krakow_20_05_23 <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.dropna(subset<span class="op" style="color: #5E5E5E;">=</span>[<span class="st" style="color: #20794D;">'Time'</span>])</span></code></pre></div>
 </div>
 <p>And check our NaNs again :</p>
-<div class="cell" data-execution_count="194">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="194">
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Position          0
 Sex               0
 Age_Group         0
@@ -279,14 +246,14 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>We still have to deal with the <code>Club_Runner</code> discrepancies. A value is only included if a runner is affiliated to a running club. Non-affiliated runners are treated as <code>NaN</code>. Let’s replace non-affiliated with <code>No</code> and affiliated with <code>Yes</code> :</p>
-<div class="cell" data-execution_count="195">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;"># Replace values based on conditions</span></span>
-<span id="cb16-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>].fillna(<span class="st" style="color: #20794D;">'No'</span>, inplace<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span>
-<span id="cb16-3">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>] <span class="op" style="color: #5E5E5E;">=</span> np.where(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>] <span class="op" style="color: #5E5E5E;">!=</span> <span class="st" style="color: #20794D;">'No'</span>, <span class="st" style="color: #20794D;">'Yes'</span>, <span class="st" style="color: #20794D;">'No'</span>)</span></code></pre></div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;"># Replace values based on conditions</span></span>
+<span id="cb14-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>].fillna(<span class="st" style="color: #20794D;">'No'</span>, inplace<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span>
+<span id="cb14-3">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>] <span class="op" style="color: #5E5E5E;">=</span> np.where(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Club_Runner?'</span>] <span class="op" style="color: #5E5E5E;">!=</span> <span class="st" style="color: #20794D;">'No'</span>, <span class="st" style="color: #20794D;">'Yes'</span>, <span class="st" style="color: #20794D;">'No'</span>)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="196">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="196">
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">parkrun_krakow_20_05_23.isna().<span class="bu" style="color: null;">sum</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>Position        0
 Sex             0
 Age_Group       0
@@ -299,9 +266,9 @@ dtype: int64</code></pre>
 </section>
 <section id="datatypes" class="level3">
 <h3 class="anchored" data-anchor-id="datatypes">Datatypes</h3>
-<div class="cell" data-execution_count="203">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">parkrun_krakow_20_05_23.dtypes</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="203">
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">parkrun_krakow_20_05_23.dtypes</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>Position         int64
 Sex             object
 Age_Group       object
@@ -314,22 +281,22 @@ dtype: object</code></pre>
 </section>
 <section id="time" class="level3">
 <h3 class="anchored" data-anchor-id="time">Time</h3>
-<div class="cell" data-execution_count="204">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;"># Split the string into minutes and seconds components</span></span>
-<span id="cb21-2">time_components <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time'</span>].<span class="bu" style="color: null;">str</span>.split(<span class="st" style="color: #20794D;">':'</span>)</span>
-<span id="cb21-3"></span>
-<span id="cb21-4"><span class="co" style="color: #5E5E5E;"># Convert the minutes and seconds components to integers</span></span>
-<span id="cb21-5">minutes <span class="op" style="color: #5E5E5E;">=</span> time_components.<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">0</span>].astype(<span class="bu" style="color: null;">int</span>)</span>
-<span id="cb21-6">seconds <span class="op" style="color: #5E5E5E;">=</span> time_components.<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">1</span>].astype(<span class="bu" style="color: null;">int</span>)</span>
-<span id="cb21-7"></span>
-<span id="cb21-8"><span class="co" style="color: #5E5E5E;"># Calculate the decimal representation of minutes</span></span>
-<span id="cb21-9">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>] <span class="op" style="color: #5E5E5E;">=</span> minutes <span class="op" style="color: #5E5E5E;">+</span> seconds <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">60.0</span></span>
-<span id="cb21-10"></span>
-<span id="cb21-11"><span class="co" style="color: #5E5E5E;"># Round the "minutes" column to 2 decimal places</span></span>
-<span id="cb21-12">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>] <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">round</span>(<span class="dv" style="color: #AD0000;">2</span>)</span>
-<span id="cb21-13"></span>
-<span id="cb21-14"><span class="co" style="color: #5E5E5E;"># Output the result</span></span>
-<span id="cb21-15"><span class="bu" style="color: null;">print</span>(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>])</span></code></pre></div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="co" style="color: #5E5E5E;"># Split the string into minutes and seconds components</span></span>
+<span id="cb19-2">time_components <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time'</span>].<span class="bu" style="color: null;">str</span>.split(<span class="st" style="color: #20794D;">':'</span>)</span>
+<span id="cb19-3"></span>
+<span id="cb19-4"><span class="co" style="color: #5E5E5E;"># Convert the minutes and seconds components to integers</span></span>
+<span id="cb19-5">minutes <span class="op" style="color: #5E5E5E;">=</span> time_components.<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">0</span>].astype(<span class="bu" style="color: null;">int</span>)</span>
+<span id="cb19-6">seconds <span class="op" style="color: #5E5E5E;">=</span> time_components.<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">1</span>].astype(<span class="bu" style="color: null;">int</span>)</span>
+<span id="cb19-7"></span>
+<span id="cb19-8"><span class="co" style="color: #5E5E5E;"># Calculate the decimal representation of minutes</span></span>
+<span id="cb19-9">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>] <span class="op" style="color: #5E5E5E;">=</span> minutes <span class="op" style="color: #5E5E5E;">+</span> seconds <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">60.0</span></span>
+<span id="cb19-10"></span>
+<span id="cb19-11"><span class="co" style="color: #5E5E5E;"># Round the "minutes" column to 2 decimal places</span></span>
+<span id="cb19-12">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>] <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">round</span>(<span class="dv" style="color: #AD0000;">2</span>)</span>
+<span id="cb19-13"></span>
+<span id="cb19-14"><span class="co" style="color: #5E5E5E;"># Output the result</span></span>
+<span id="cb19-15"><span class="bu" style="color: null;">print</span>(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>])</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0      16.48
 1      17.55
@@ -349,9 +316,9 @@ Name: Time_mins, Length: 333, dtype: float64</code></pre>
 </section>
 <section id="categorical-variables" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-variables">Categorical variables</h3>
-<div class="cell" data-execution_count="206">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">parkrun_krakow_20_05_23.nunique()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="206">
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1">parkrun_krakow_20_05_23.nunique()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>Position        333
 Sex               2
 Age_Group        29
@@ -366,45 +333,27 @@ dtype: int64</code></pre>
 <li>311 unique times, so quite a few crossing the line together</li>
 <li>2 different sexes - M (Male) and F (Female)</li>
 <li>29 different age groups</li>
-<li>2 distinct values for Club_Runner - Yes or No - as defined earlier</li>
+<li>2 distinct values for Club_Runner (Yes or No - as defined earlier)</li>
 </ul>
-<div class="cell" data-execution_count="207">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1">parkrun_krakow_20_05_23.info()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-Int64Index: 333 entries, 0 to 354
-Data columns (total 6 columns):
- #   Column        Non-Null Count  Dtype  
----  ------        --------------  -----  
- 0   Position      333 non-null    int64  
- 1   Sex           333 non-null    object 
- 2   Age_Group     333 non-null    object 
- 3   Club_Runner?  333 non-null    object 
- 4   Time          333 non-null    object 
- 5   Time_mins     333 non-null    float64
-dtypes: float64(1), int64(1), object(4)
-memory usage: 18.2+ KB</code></pre>
-</div>
-</div>
 </section>
 <section id="cosmetic-changes" class="level3">
 <h3 class="anchored" data-anchor-id="cosmetic-changes">Cosmetic changes</h3>
 <p>Let’s do some general tidy up. We can use string slicing to remove leading characters in the <code>Age_Group</code> column :</p>
-<div class="cell" data-execution_count="208">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;"># Remove the first two characters from the strings in the "Age_Group" column</span></span>
-<span id="cb27-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>]<span class="op" style="color: #5E5E5E;">=</span>parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>].<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">2</span>:]</span></code></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="co" style="color: #5E5E5E;"># Remove the first two characters from the strings in the "Age_Group" column</span></span>
+<span id="cb23-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>]<span class="op" style="color: #5E5E5E;">=</span>parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>].<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">2</span>:]</span></code></pre></div>
 </div>
 <p>Let’s also tidy up the narrative in the <code>Sex</code> column, by replacing <code>Mezczyzna</code> with <code>M</code> and <code>Kobieta</code> with <code>F</code> :</p>
-<div class="cell" data-execution_count="210">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><span class="co" style="color: #5E5E5E;"># Replace strings starting with 'M' to 'M' in the "Sex" column</span></span>
-<span id="cb28-2">parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>].<span class="bu" style="color: null;">str</span>.startswith(<span class="st" style="color: #20794D;">'M'</span>), <span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'M'</span></span>
-<span id="cb28-3"></span>
-<span id="cb28-4"><span class="co" style="color: #5E5E5E;"># Replace strings starting with 'K' to 'F' in the "Sex" column</span></span>
-<span id="cb28-5">parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>].<span class="bu" style="color: null;">str</span>.startswith(<span class="st" style="color: #20794D;">'K'</span>), <span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'F'</span></span></code></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;"># Replace strings starting with 'M' to 'M' in the "Sex" column</span></span>
+<span id="cb24-2">parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>].<span class="bu" style="color: null;">str</span>.startswith(<span class="st" style="color: #20794D;">'M'</span>), <span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'M'</span></span>
+<span id="cb24-3"></span>
+<span id="cb24-4"><span class="co" style="color: #5E5E5E;"># Replace strings starting with 'K' to 'F' in the "Sex" column</span></span>
+<span id="cb24-5">parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>].<span class="bu" style="color: null;">str</span>.startswith(<span class="st" style="color: #20794D;">'K'</span>), <span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'F'</span></span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="211">
-<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1">parkrun_krakow_20_05_23</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="211">
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1">parkrun_krakow_20_05_23</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
 
 <div>
 
@@ -527,25 +476,25 @@ memory usage: 18.2+ KB</code></pre>
 </div>
 </div>
 <p>Looking much tidier. Let’s now return to the <code>Age Groupings</code>. These are currently a categorical variable, but let’s simplify things by creating a new column <code>Age_Midpoint</code> that splits the string, converts to integer, and takes the mid-value of the range :</p>
-<div class="cell" data-execution_count="216">
-<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="co" style="color: #5E5E5E;"># Define conversion function</span></span>
-<span id="cb30-2"><span class="kw" style="color: #003B4F;">def</span> get_age_midpoint(age_group):</span>
-<span id="cb30-3">    <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">'-'</span> <span class="kw" style="color: #003B4F;">in</span> age_group:</span>
-<span id="cb30-4">        age_range <span class="op" style="color: #5E5E5E;">=</span> age_group.split(<span class="st" style="color: #20794D;">'-'</span>)</span>
-<span id="cb30-5">        age_start <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_range[<span class="dv" style="color: #AD0000;">0</span>])</span>
-<span id="cb30-6">        age_end <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_range[<span class="dv" style="color: #AD0000;">1</span>])</span>
-<span id="cb30-7">        age_midpoint <span class="op" style="color: #5E5E5E;">=</span> (age_start <span class="op" style="color: #5E5E5E;">+</span> age_end) <span class="op" style="color: #5E5E5E;">//</span> <span class="dv" style="color: #AD0000;">2</span></span>
-<span id="cb30-8">    <span class="cf" style="color: #003B4F;">else</span>:</span>
-<span id="cb30-9">        age_midpoint <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_group)</span>
-<span id="cb30-10">    <span class="cf" style="color: #003B4F;">return</span> age_midpoint    </span></code></pre></div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="co" style="color: #5E5E5E;"># Define conversion function</span></span>
+<span id="cb26-2"><span class="kw" style="color: #003B4F;">def</span> get_age_midpoint(age_group):</span>
+<span id="cb26-3">    <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">'-'</span> <span class="kw" style="color: #003B4F;">in</span> age_group:</span>
+<span id="cb26-4">        age_range <span class="op" style="color: #5E5E5E;">=</span> age_group.split(<span class="st" style="color: #20794D;">'-'</span>)</span>
+<span id="cb26-5">        age_start <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_range[<span class="dv" style="color: #AD0000;">0</span>])</span>
+<span id="cb26-6">        age_end <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_range[<span class="dv" style="color: #AD0000;">1</span>])</span>
+<span id="cb26-7">        age_midpoint <span class="op" style="color: #5E5E5E;">=</span> (age_start <span class="op" style="color: #5E5E5E;">+</span> age_end) <span class="op" style="color: #5E5E5E;">//</span> <span class="dv" style="color: #AD0000;">2</span></span>
+<span id="cb26-8">    <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb26-9">        age_midpoint <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_group)</span>
+<span id="cb26-10">    <span class="cf" style="color: #003B4F;">return</span> age_midpoint    </span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="217">
-<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="co" style="color: #5E5E5E;"># Apply the conversion function to the Age_Group column</span></span>
-<span id="cb31-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>].<span class="bu" style="color: null;">apply</span>(get_age_midpoint)</span></code></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;"># Apply the conversion function to the Age_Group column</span></span>
+<span id="cb27-2">parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Group'</span>].<span class="bu" style="color: null;">apply</span>(get_age_midpoint)</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="218">
-<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">parkrun_krakow_20_05_23</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="218">
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">parkrun_krakow_20_05_23</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 
 <div>
 
@@ -679,27 +628,491 @@ memory usage: 18.2+ KB</code></pre>
 </div>
 </div>
 </div>
-<p>Great, we now have our new column with a single integer value.</p>
+<p>Great, we now have our new column with a single integer value. Let’s now visualize our processed data, using <a href="https://seaborn.pydata.org/">Seaborn</a>.</p>
 </section>
-<section id="key-headline-figures" class="level3">
-<h3 class="anchored" data-anchor-id="key-headline-figures">Key headline figures</h3>
-<div class="cell" data-execution_count="124">
-<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1">number_of_runners <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Position'</span>].count()</span></code></pre></div>
+<section id="visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="visualizations">Visualizations</h3>
+</section>
+<section id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex">Scatterplot of all race times across age groupings and by sex</h3>
+<p>Scatterplots are an excellent visualization, and we can even introduce a third variable (Sex) by the use of colour. It allows us to see at a glance the age and sex profile of all race times.</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><span class="co" style="color: #5E5E5E;"># Use the 'hue' argument to provide a factor variable</span></span>
+<span id="cb29-2">sns.scatterplot(x<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"Age_Midpoint"</span>, y<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"Time_mins"</span>, data<span class="op" style="color: #5E5E5E;">=</span>parkrun_krakow_20_05_23, hue<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'Sex'</span>, alpha<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.8</span>)</span>
+<span id="cb29-3"> </span>
+<span id="cb29-4"><span class="co" style="color: #5E5E5E;"># Move the legend to an empty part of the plot</span></span>
+<span id="cb29-5">plt.legend(loc<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'lower right'</span>)</span>
+<span id="cb29-6"></span>
+<span id="cb29-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb29-8">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb29-9">plt.ylabel (<span class="st" style="color: #20794D;">'Race time (mins)'</span>)</span>
+<span id="cb29-10"></span>
+<span id="cb29-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
 </div>
-<div class="cell" data-execution_count="142">
-<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1">fastest_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1">average_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].mean()</span></code></pre></div>
+<p>We can see that the fastest race time recorded was by a male around the age of 37 or so, and there is a general concentration of male runners aged 37 to 57 recording race times of 25 minutes or less.</p>
+</section>
+<section id="scatterplot-of-all-race-times-across-age-groupings-and-by-running-club-affiliation" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-of-all-race-times-across-age-groupings-and-by-running-club-affiliation">Scatterplot of all race times across age groupings and by running club affiliation</h3>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="co" style="color: #5E5E5E;"># Use the 'hue' argument to provide a factor variable</span></span>
+<span id="cb30-2">sns.scatterplot(x<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"Age_Midpoint"</span>, y<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"Time_mins"</span>, data<span class="op" style="color: #5E5E5E;">=</span>parkrun_krakow_20_05_23, hue<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'Club_Runner?'</span>, alpha<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.8</span>)</span>
+<span id="cb30-3"> </span>
+<span id="cb30-4"><span class="co" style="color: #5E5E5E;"># Move the legend to an empty part of the plot</span></span>
+<span id="cb30-5">plt.legend(loc<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'lower right'</span>)</span>
+<span id="cb30-6"></span>
+<span id="cb30-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb30-8">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb30-9">plt.ylabel (<span class="st" style="color: #20794D;">'Race time (mins)'</span>)</span>
+<span id="cb30-10"></span>
+<span id="cb30-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
 </div>
-<div class="cell" data-execution_count="144">
-<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1">median_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span></code></pre></div>
 </div>
-<p>I know that I finished in position 131, and so I can use <code>.loc</code> to access the my row index :</p>
-<div class="cell" data-execution_count="165">
-<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1">row <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Position'</span>] <span class="op" style="color: #5E5E5E;">==</span><span class="dv" style="color: #AD0000;">131</span>]</span>
-<span id="cb37-2">row</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="165">
+<p>We can see that the fastest race time recorded by someone around the age of 37 or so who is not affiliated with a running club. The times recorded for club runners generally appear to be lower, with only three over 45 minutes, compared with 10 for non-attached runners.</p>
+</section>
+<section id="boxplots-of-race-times-across-age-groupings-and-by-sex" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots-of-race-times-across-age-groupings-and-by-sex">Boxplots of race times across age groupings and by sex</h3>
+<p>A box plot, also known as a box-and-whisker plot, is a graphical representation that summarizes the distribution of a dataset. It displays key statistical measures, including the minimum, maximum, median, and quartiles.</p>
+<p>The box in the plot represents the interquartile range (IQR), which is the range between the first quartile (Q1) and the third quartile (Q3). The median is represented by a line or a dot within the box.</p>
+<p>Whiskers extend from the box and indicate the minimum and maximum values within a certain range, typically defined by a multiple of the IQR. Values outside this range are considered outliers and can be plotted as individual points or asterisks.</p>
+<p>Box plots are useful for comparing distributions, identifying skewness or symmetry, detecting outliers, and understanding the spread and central tendency of the data. They provide a concise visual summary of the dataset’s main characteristics.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="co" style="color: #5E5E5E;"># create box plots of run time per age group</span></span>
+<span id="cb31-2"><span class="co" style="color: #5E5E5E;"># use hue to allow comparison between male and female</span></span>
+<span id="cb31-3">sns.boxplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>,</span>
+<span id="cb31-4">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb31-5">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23, </span>
+<span id="cb31-6">            hue <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>)</span>
+<span id="cb31-7"></span>
+<span id="cb31-8"><span class="co" style="color: #5E5E5E;"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
+<span id="cb31-9"><span class="co" style="color: #5E5E5E;"># loc=0 moves legend to the best position</span></span>
+<span id="cb31-10">plt.legend(loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>)</span>
+<span id="cb31-11"></span>
+<span id="cb31-12">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb31-13">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb31-14">plt.ylabel (<span class="st" style="color: #20794D;">'Race time (mins)'</span>)</span>
+<span id="cb31-15"></span>
+<span id="cb31-16">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see from the above that for all age categories (with the exception of age 62) median race times (as denoted by the line within the box) for males are lower. We can also see that there is a wide range of times in the female age 37 category (from a low of around 25 minutes to a high of around 47 minutes) and also in the male age categories, 62, 67, and 77.</p>
+</section>
+<section id="boxplots-of-race-times-across-age-groupings-and-by-running-club-affiliation" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots-of-race-times-across-age-groupings-and-by-running-club-affiliation">Boxplots of race times across age groupings and by running club affiliation</h3>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="co" style="color: #5E5E5E;"># create box plots of run time per age group</span></span>
+<span id="cb32-2"><span class="co" style="color: #5E5E5E;"># use hue to allow comparison between male and female</span></span>
+<span id="cb32-3">sns.boxplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>,</span>
+<span id="cb32-4">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb32-5">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23, </span>
+<span id="cb32-6">            hue <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>)</span>
+<span id="cb32-7"></span>
+<span id="cb32-8"><span class="co" style="color: #5E5E5E;"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
+<span id="cb32-9"><span class="co" style="color: #5E5E5E;"># loc=0 moves legend to the best position</span></span>
+<span id="cb32-10">plt.legend(loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>)</span>
+<span id="cb32-11"></span>
+<span id="cb32-12">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb32-13">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb32-14">plt.ylabel (<span class="st" style="color: #20794D;">'Race time (mins)'</span>)</span>
+<span id="cb32-15"></span>
+<span id="cb32-16">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see at a glance that whilst the lowest time was recorded by a non-club runner, generally the race times for club runners are less stretched out. They mostly fall within the 20 to 35 minutes range.</p>
+</section>
+<section id="number-of-runners" class="level3">
+<h3 class="anchored" data-anchor-id="number-of-runners">Number of runners</h3>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of males and females</span></span>
+<span id="cb33-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>,</span>
+<span id="cb33-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb33-4"></span>
+<span id="cb33-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb33-6">plt.xlabel (<span class="st" style="color: #20794D;">'Sex'</span>)</span>
+<span id="cb33-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
+<span id="cb33-8"></span>
+<span id="cb33-9"><span class="co" style="color: #5E5E5E;"># Add count values on top of each bar</span></span>
+<span id="cb33-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
+<span id="cb33-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
+<span id="cb33-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span><span class="bu" style="color: null;">round</span>(count)<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
+<span id="cb33-13"></span>
+<span id="cb33-14">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Males represented 61% of the race entries.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of runners in each Age Grouping</span></span>
+<span id="cb34-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>,</span>
+<span id="cb34-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb34-4"></span>
+<span id="cb34-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb34-6">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb34-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
+<span id="cb34-8"></span>
+<span id="cb34-9"><span class="co" style="color: #5E5E5E;"># Add rounded count values on top of each bar (rounded to 2 decimal places)</span></span>
+<span id="cb34-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
+<span id="cb34-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
+<span id="cb34-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span>count<span class="sc" style="color: #5E5E5E;">:.0f}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
+<span id="cb34-13"></span>
+<span id="cb34-14">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see a high concentration of runners (65%) fall within the 32 to 47 midpoint age.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of males and females</span></span>
+<span id="cb35-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>,</span>
+<span id="cb35-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb35-4"></span>
+<span id="cb35-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb35-6">plt.xlabel (<span class="st" style="color: #20794D;">'Club runner?'</span>)</span>
+<span id="cb35-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
+<span id="cb35-8"></span>
+<span id="cb35-9"><span class="co" style="color: #5E5E5E;"># Add count values on top of each bar</span></span>
+<span id="cb35-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
+<span id="cb35-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
+<span id="cb35-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span><span class="bu" style="color: null;">round</span>(count)<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
+<span id="cb35-13"></span>
+<span id="cb35-14">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The majority (65%) of runners are not affiliated with any running club.</p>
+</section>
+<section id="median-race-times" class="level3">
+<h3 class="anchored" data-anchor-id="median-race-times">Median race times</h3>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by sex</span></span>
+<span id="cb36-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>, </span>
+<span id="cb36-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb36-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb36-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.median) </span>
+<span id="cb36-6"></span>
+<span id="cb36-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb36-8">plt.xlabel (<span class="st" style="color: #20794D;">'Sex'</span>)</span>
+<span id="cb36-9">plt.ylabel (<span class="st" style="color: #20794D;">'Median race time (mins)'</span>)</span>
+<span id="cb36-10"></span>
+<span id="cb36-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The median race time for males was just under 25 minutes, and for females it was just under</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by running club membership</span></span>
+<span id="cb37-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>, </span>
+<span id="cb37-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb37-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb37-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.median) </span>
+<span id="cb37-6"></span>
+<span id="cb37-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb37-8">plt.xlabel (<span class="st" style="color: #20794D;">'Club runner?'</span>)</span>
+<span id="cb37-9">plt.ylabel (<span class="st" style="color: #20794D;">'Median race time (mins)'</span>)</span>
+<span id="cb37-10"></span>
+<span id="cb37-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>As expected, the median race time for club runners was lower than unattached runners.</p>
+</section>
+<section id="fastest-race-times-across-age-groupings" class="level3">
+<h3 class="anchored" data-anchor-id="fastest-race-times-across-age-groupings">Fastest race times across age groupings</h3>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing min race time</span></span>
+<span id="cb38-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>, </span>
+<span id="cb38-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
+<span id="cb38-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb38-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">min</span>)  </span>
+<span id="cb38-6"></span>
+<span id="cb38-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
+<span id="cb38-8">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
+<span id="cb38-9">plt.ylabel (<span class="st" style="color: #20794D;">'Fastest race time (mins)'</span>)</span>
+<span id="cb38-10"></span>
+<span id="cb38-11">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The fastest race times are concentrated in the 22 to 52 age range, although there are some excellent times recorded in the 67 age group, before Father Time joins the party!</p>
+</section>
+<section id="workings" class="level3">
+<h3 class="anchored" data-anchor-id="workings">Workings</h3>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1">number_of_runners <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Position'</span>].count()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1">fastest_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1">median_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1">group_by_sex <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.groupby([<span class="st" style="color: #20794D;">'Sex'</span>])</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1">group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>Sex
+F    19.28
+M    16.48
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1">fastest_female <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb45-2">fastest_female</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>19.28</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1">fastest_male <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb47-2">fastest_male</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>16.48</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1">group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>Sex
+F    29.305
+M    24.830
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1">median_female_time <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb51-2">median_female_time</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>29.305</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1">median_male_time <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb53-2">median_male_time</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>24.83</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1">group_by_club <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.groupby([<span class="st" style="color: #20794D;">'Club_Runner?'</span>])</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1">group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>Club_Runner?
+No     16.48
+Yes    17.55
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb58" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1">fastest_club <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb58-2">fastest_club</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>17.55</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1">median_club <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb60-2">median_club</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>26.2</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb62" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1">fastest_unattached <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb62-2">fastest_unattached</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>16.48</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb64" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1">median_unattached <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb64-2">median_unattached</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>27.66</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb66" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1">fastest_time_my_sex_age_group <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">47</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'M'</span>)][<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span>
+<span id="cb66-2">fastest_time_my_sex_age_group</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>20.63</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb68" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1">median_time_my_sex_age_group <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">47</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'M'</span>)][<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span>
+<span id="cb68-2">median_time_my_sex_age_group </span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<pre><code>26.43</code></pre>
+</div>
+</div>
+</section>
+<section id="results-summary" class="level3">
+<h3 class="anchored" data-anchor-id="results-summary">Results Summary</h3>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb70" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Number of runners: </span><span class="sc" style="color: #5E5E5E;">{</span>number_of_runners<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-2"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'My race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>my_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-3"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time for my sex and age group (mins):</span><span class="sc" style="color: #5E5E5E;">{</span>fastest_time_my_sex_age_group<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-4"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time for my sex and age group (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_time_my_sex_age_group<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-5"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-6"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-7"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest male race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_male<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-8"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median male race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_male_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-9"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest female race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_female<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-10"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median female race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_female_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-11"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_club<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-12"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_club<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-13"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest non-affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_unattached<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb70-14"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median non-affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_unattached<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of runners: 333
+My race time (mins): 24.95
+Fastest race time for my sex and age group (mins):20.63
+Median race time for my sex and age group (mins): 26.43
+Fastest race time (mins): 16.48
+Median race time (mins): 27.08
+Fastest male race time (mins): 16.48
+Median male race time (mins): 24.83
+Fastest female race time (mins): 19.28
+Median female race time (mins): 29.30
+Fastest affiliated race time (mins): 17.55
+Median affiliated race time (mins): 26.20
+Fastest non-affiliated race time (mins): 16.48
+Median non-affiliated race time (mins): 27.66</code></pre>
+</div>
+</div>
+</section>
+<section id="customized-functions" class="level3">
+<h3 class="anchored" data-anchor-id="customized-functions">Customized functions</h3>
+<p>I worked through the cleansing as I was going along to demonstrate the concepts involved, however it is quite clumsy and scattered around. A better way would be to introduce some structure and create a customized function that will allow me to quickly pre-process any future race results using the same methodology.</p>
+<p>Note, that this could be improved further by harnessing a workflow orchestration tool such as <a href="https://www.prefect.io/">Prefect</a> and creating an ingestion script that takes the raw data, preprocesses it, and moves into bucket storage on <a href="https://cloud.google.com/gcp?&amp;gad=1">Google Cloud Platform(GCP)</a> for further querying in BigData, and visualization using e.g <a href="https://lookerstudio.google.com/">Looker Studio</a>.</p>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb72" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><span class="co" style="color: #5E5E5E;"># Convert age grouping to mid-point</span></span>
+<span id="cb72-2"><span class="kw" style="color: #003B4F;">def</span> get_age_midpoint(age_group):</span>
+<span id="cb72-3">    <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">'-'</span> <span class="kw" style="color: #003B4F;">in</span> age_group:</span>
+<span id="cb72-4">        age_range <span class="op" style="color: #5E5E5E;">=</span> age_group.split(<span class="st" style="color: #20794D;">'-'</span>)</span>
+<span id="cb72-5">        age_start <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_range[<span class="dv" style="color: #AD0000;">0</span>])</span>
+<span id="cb72-6">        age_end <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_range[<span class="dv" style="color: #AD0000;">1</span>])</span>
+<span id="cb72-7">        age_midpoint <span class="op" style="color: #5E5E5E;">=</span> (age_start <span class="op" style="color: #5E5E5E;">+</span> age_end) <span class="op" style="color: #5E5E5E;">//</span> <span class="dv" style="color: #AD0000;">2</span></span>
+<span id="cb72-8">    <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb72-9">        age_midpoint <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">int</span>(age_group)</span>
+<span id="cb72-10">    <span class="cf" style="color: #003B4F;">return</span> age_midpoint  </span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb73" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
+<span id="cb73-2"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
+<span id="cb73-3"></span>
+<span id="cb73-4"><span class="kw" style="color: #003B4F;">def</span> process_race_results(race_date):</span>
+<span id="cb73-5">    </span>
+<span id="cb73-6">    <span class="co" style="color: #5E5E5E;"># Step 1: Read the CSV file</span></span>
+<span id="cb73-7">    filename <span class="op" style="color: #5E5E5E;">=</span> <span class="ss" style="color: #20794D;">f"krakow_</span><span class="sc" style="color: #5E5E5E;">{</span>race_date<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span></span>
+<span id="cb73-8">    df <span class="op" style="color: #5E5E5E;">=</span> pd.read_csv(<span class="ss" style="color: #20794D;">f"</span><span class="sc" style="color: #5E5E5E;">{</span>filename<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">.csv"</span>, encoding<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'latin'</span>)</span>
+<span id="cb73-9">        </span>
+<span id="cb73-10">    <span class="co" style="color: #5E5E5E;"># Step 2: Drop the 'UCZESTNIK' column</span></span>
+<span id="cb73-11">    df <span class="op" style="color: #5E5E5E;">=</span> df.drop(columns<span class="op" style="color: #5E5E5E;">=</span>[<span class="st" style="color: #20794D;">'UCZESTNIK'</span>])</span>
+<span id="cb73-12"></span>
+<span id="cb73-13">    <span class="co" style="color: #5E5E5E;"># Step 3: Rename the columns</span></span>
+<span id="cb73-14">    df <span class="op" style="color: #5E5E5E;">=</span> df.rename(columns<span class="op" style="color: #5E5E5E;">=</span>{<span class="st" style="color: #20794D;">'POZYCJA'</span>: <span class="st" style="color: #20794D;">'Position'</span>, <span class="st" style="color: #20794D;">''</span>: <span class="st" style="color: #20794D;">'Name'</span>, <span class="st" style="color: #20794D;">'P?E?'</span>: <span class="st" style="color: #20794D;">'Sex'</span>, <span class="st" style="color: #20794D;">'KATEGORIA WIEKOWA'</span>: <span class="st" style="color: #20794D;">'Age_Group'</span>,</span>
+<span id="cb73-15">                            <span class="st" style="color: #20794D;">'KLUB'</span>: <span class="st" style="color: #20794D;">'Club_Runner?'</span>, <span class="st" style="color: #20794D;">'CZAS'</span>: <span class="st" style="color: #20794D;">'Time'</span>})</span>
+<span id="cb73-16"></span>
+<span id="cb73-17">    <span class="co" style="color: #5E5E5E;"># Step 4: Drop rows with 'NaN' in 'Time' column</span></span>
+<span id="cb73-18">    df <span class="op" style="color: #5E5E5E;">=</span> df.dropna(subset<span class="op" style="color: #5E5E5E;">=</span>[<span class="st" style="color: #20794D;">'Time'</span>])</span>
+<span id="cb73-19"></span>
+<span id="cb73-20">    <span class="co" style="color: #5E5E5E;"># Step 5: Replace 'NaN' values in 'Club_Runner?' column with 'No'</span></span>
+<span id="cb73-21">    df[<span class="st" style="color: #20794D;">'Club_Runner?'</span>].fillna(<span class="st" style="color: #20794D;">'No'</span>, inplace<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span>
+<span id="cb73-22">    df[<span class="st" style="color: #20794D;">'Club_Runner?'</span>] <span class="op" style="color: #5E5E5E;">=</span> np.where(df[<span class="st" style="color: #20794D;">'Club_Runner?'</span>] <span class="op" style="color: #5E5E5E;">!=</span> <span class="st" style="color: #20794D;">'No'</span>, <span class="st" style="color: #20794D;">'Yes'</span>, <span class="st" style="color: #20794D;">'No'</span>)</span>
+<span id="cb73-23"></span>
+<span id="cb73-24">    <span class="co" style="color: #5E5E5E;"># Step 6: Convert 'Time' values from string to float, rounded to 2 decimal places</span></span>
+<span id="cb73-25">    <span class="co" style="color: #5E5E5E;"># Split the string into minutes and seconds components</span></span>
+<span id="cb73-26">    time_components <span class="op" style="color: #5E5E5E;">=</span> df[<span class="st" style="color: #20794D;">'Time'</span>].<span class="bu" style="color: null;">str</span>.split(<span class="st" style="color: #20794D;">':'</span>)</span>
+<span id="cb73-27">    <span class="co" style="color: #5E5E5E;"># Convert the minutes and seconds components to integers</span></span>
+<span id="cb73-28">    minutes <span class="op" style="color: #5E5E5E;">=</span> time_components.<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">0</span>].astype(<span class="bu" style="color: null;">int</span>)</span>
+<span id="cb73-29">    seconds <span class="op" style="color: #5E5E5E;">=</span> time_components.<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">1</span>].astype(<span class="bu" style="color: null;">int</span>)</span>
+<span id="cb73-30">    <span class="co" style="color: #5E5E5E;"># Calculate the decimal representation of minutes</span></span>
+<span id="cb73-31">    df[<span class="st" style="color: #20794D;">'Time_mins'</span>] <span class="op" style="color: #5E5E5E;">=</span> minutes <span class="op" style="color: #5E5E5E;">+</span> seconds <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">60.0</span></span>
+<span id="cb73-32">    <span class="co" style="color: #5E5E5E;"># Round the "minutes" column to 2 decimal places</span></span>
+<span id="cb73-33">    df[<span class="st" style="color: #20794D;">'Time_mins'</span>] <span class="op" style="color: #5E5E5E;">=</span> df[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">round</span>(<span class="dv" style="color: #AD0000;">2</span>)</span>
+<span id="cb73-34">    </span>
+<span id="cb73-35">    <span class="co" style="color: #5E5E5E;"># Step 7: Remove leading two characters from 'Age_Group' column</span></span>
+<span id="cb73-36">    df[<span class="st" style="color: #20794D;">'Age_Group'</span>] <span class="op" style="color: #5E5E5E;">=</span> df[<span class="st" style="color: #20794D;">'Age_Group'</span>].<span class="bu" style="color: null;">str</span>[<span class="dv" style="color: #AD0000;">2</span>:]</span>
+<span id="cb73-37"></span>
+<span id="cb73-38">    <span class="co" style="color: #5E5E5E;"># Step 8: Replace values in 'Sex' column with 'M' or 'F' based on the starting character</span></span>
+<span id="cb73-39">    df[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">=</span> df[<span class="st" style="color: #20794D;">'Sex'</span>].<span class="bu" style="color: null;">apply</span>(<span class="kw" style="color: #003B4F;">lambda</span> x: <span class="st" style="color: #20794D;">'M'</span> <span class="cf" style="color: #003B4F;">if</span> x.startswith(<span class="st" style="color: #20794D;">'M'</span>) <span class="cf" style="color: #003B4F;">else</span> <span class="st" style="color: #20794D;">'F'</span>)</span>
+<span id="cb73-40"></span>
+<span id="cb73-41">    <span class="co" style="color: #5E5E5E;"># Step 9: Convert 'Age_Group' values in the format '35-39' to the mid-point of the range</span></span>
+<span id="cb73-42">    <span class="co" style="color: #5E5E5E;"># Apply the conversion function to the Age_Group column</span></span>
+<span id="cb73-43">    df[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">=</span> df[<span class="st" style="color: #20794D;">'Age_Group'</span>].<span class="bu" style="color: null;">apply</span>(get_age_midpoint)</span>
+<span id="cb73-44">        </span>
+<span id="cb73-45">    <span class="co" style="color: #5E5E5E;"># GroupBys for Headline figures</span></span>
+<span id="cb73-46">    number_of_runners <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Position'</span>].count()</span>
+<span id="cb73-47">    fastest_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span>
+<span id="cb73-48">    fastest_time_my_sex_age_group <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">47</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'M'</span>)][<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span>
+<span id="cb73-49">    median_time_my_sex_age_group <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">47</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'M'</span>)][<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span>
+<span id="cb73-50">    fastest_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span>
+<span id="cb73-51">    median_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span>
+<span id="cb73-52">    fastest_male <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb73-53">    median_male_time <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb73-54">    fastest_female <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb73-55">    median_female_time <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb73-56">    fastest_club <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb73-57">    median_club <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">1</span>]</span>
+<span id="cb73-58">    fastest_unattached <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb73-59">    median_unattached <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">0</span>]</span>
+<span id="cb73-60">    </span>
+<span id="cb73-61">    <span class="co" style="color: #5E5E5E;"># Headline figures</span></span>
+<span id="cb73-62">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Number of runners: </span><span class="sc" style="color: #5E5E5E;">{</span>number_of_runners<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-63">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time for my sex and age group (mins):</span><span class="sc" style="color: #5E5E5E;">{</span>fastest_time_my_sex_age_group<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-64">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time for my sex and age group (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_time_my_sex_age_group<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-65">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-66">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-67">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest male race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_male<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-68">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median male race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_male_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-69">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest female race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_female<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-70">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median female race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_female_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-71">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_club<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-72">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_club<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-73">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest non-affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_unattached<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-74">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median non-affiliated race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_unattached<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb73-75">    </span>
+<span id="cb73-76">    <span class="cf" style="color: #003B4F;">return</span> df</span></code></pre></div>
+</div>
+<p>I now just need to pass in the following arguments to the pre-processing function to achieve the same results as before:</p>
+<div class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb74" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1">race_date <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'20_05_23'</span></span>
+<span id="cb74-2">processed_results <span class="op" style="color: #5E5E5E;">=</span> process_race_results(race_date)</span>
+<span id="cb74-3">processed_results</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of runners: 333
+Fastest race time for my sex and age group (mins):20.63
+Median race time for my sex and age group (mins): 26.43
+Fastest race time (mins): 16.48
+Median race time (mins): 27.08
+Fastest male race time (mins): 16.48
+Median male race time (mins): 24.83
+Fastest female race time (mins): 19.28
+Median female race time (mins): 29.30
+Fastest affiliated race time (mins): 17.55
+Median affiliated race time (mins): 26.20
+Fastest non-affiliated race time (mins): 16.48
+Median non-affiliated race time (mins): 27.66</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="74">
 
 <div>
 
@@ -718,316 +1131,119 @@ memory usage: 18.2+ KB</code></pre>
   </thead>
   <tbody>
     <tr>
-      <th>130</th>
-      <td>131</td>
+      <th>0</th>
+      <td>1</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>No</td>
+      <td>16:29</td>
+      <td>16.48</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>M</td>
+      <td>40-44</td>
+      <td>Yes</td>
+      <td>17:33</td>
+      <td>17.55</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>Yes</td>
+      <td>17:56</td>
+      <td>17.93</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>Yes</td>
+      <td>18:07</td>
+      <td>18.12</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>M</td>
+      <td>40-44</td>
+      <td>Yes</td>
+      <td>18:21</td>
+      <td>18.35</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>350</th>
+      <td>351</td>
       <td>M</td>
       <td>45-49</td>
       <td>No</td>
-      <td>24:57:00</td>
-      <td>24.95</td>
+      <td>51:30:00</td>
+      <td>51.50</td>
       <td>47</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>352</td>
+      <td>M</td>
+      <td>90-94</td>
+      <td>No</td>
+      <td>54:54:00</td>
+      <td>54.90</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>353</td>
+      <td>F</td>
+      <td>60-64</td>
+      <td>Yes</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>353</th>
+      <td>354</td>
+      <td>F</td>
+      <td>50-54</td>
+      <td>Yes</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>354</th>
+      <td>355</td>
+      <td>M</td>
+      <td>75-79</td>
+      <td>No</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>77</td>
     </tr>
   </tbody>
 </table>
+<p>333 rows × 7 columns</p>
 </div>
-</div>
-</div>
-<p>and then assign my race time to an appropriate variable :</p>
-<div class="cell" data-execution_count="168">
-<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1">my_race_time <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.loc[<span class="dv" style="color: #AD0000;">130</span>,<span class="st" style="color: #20794D;">'Time_mins'</span>]</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="239">
-<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Number of runners: </span><span class="sc" style="color: #5E5E5E;">{</span>number_of_runners<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb39-2"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'My race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>my_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb39-3"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Fastest race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>fastest_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span>
-<span id="cb39-4"><span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f'Median race time (mins): </span><span class="sc" style="color: #5E5E5E;">{</span>median_race_time<span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of runners: 333
-My race time (mins): 24.95
-Fastest race time (mins): 16.48
-Median race time (mins): 27.08</code></pre>
-</div>
-</div>
-</section>
-<section id="visualizations" class="level3">
-<h3 class="anchored" data-anchor-id="visualizations">Visualizations</h3>
-</section>
-<section id="number-of-runners" class="level3">
-<h3 class="anchored" data-anchor-id="number-of-runners">Number of runners</h3>
-<div class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of males and females</span></span>
-<span id="cb41-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>,</span>
-<span id="cb41-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
-<span id="cb41-4"></span>
-<span id="cb41-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb41-6">plt.xlabel (<span class="st" style="color: #20794D;">'Sex'</span>)</span>
-<span id="cb41-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
-<span id="cb41-8"></span>
-<span id="cb41-9"><span class="co" style="color: #5E5E5E;"># Add count values on top of each bar</span></span>
-<span id="cb41-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
-<span id="cb41-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
-<span id="cb41-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span><span class="bu" style="color: null;">round</span>(count)<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
-<span id="cb41-13"></span>
-<span id="cb41-14">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="235">
-<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of runners in each Age Grouping</span></span>
-<span id="cb42-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>,</span>
-<span id="cb42-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
-<span id="cb42-4"></span>
-<span id="cb42-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb42-6">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
-<span id="cb42-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
-<span id="cb42-8"></span>
-<span id="cb42-9"><span class="co" style="color: #5E5E5E;"># Add rounded count values on top of each bar (rounded to 2 decimal places)</span></span>
-<span id="cb42-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
-<span id="cb42-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
-<span id="cb42-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span>count<span class="sc" style="color: #5E5E5E;">:.0f}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
-<span id="cb42-13"></span>
-<span id="cb42-14">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="233">
-<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of males and females</span></span>
-<span id="cb43-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>,</span>
-<span id="cb43-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
-<span id="cb43-4"></span>
-<span id="cb43-5">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb43-6">plt.xlabel (<span class="st" style="color: #20794D;">'Club runner?'</span>)</span>
-<span id="cb43-7">plt.ylabel (<span class="st" style="color: #20794D;">'Number of runners'</span>)</span>
-<span id="cb43-8"></span>
-<span id="cb43-9"><span class="co" style="color: #5E5E5E;"># Add count values on top of each bar</span></span>
-<span id="cb43-10"><span class="cf" style="color: #003B4F;">for</span> p <span class="kw" style="color: #003B4F;">in</span> ax.patches:</span>
-<span id="cb43-11">    count <span class="op" style="color: #5E5E5E;">=</span> p.get_height()</span>
-<span id="cb43-12">    ax.annotate(<span class="ss" style="color: #20794D;">f'</span><span class="sc" style="color: #5E5E5E;">{</span><span class="bu" style="color: null;">round</span>(count)<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>, (p.get_x() <span class="op" style="color: #5E5E5E;">+</span> p.get_width() <span class="op" style="color: #5E5E5E;">/</span> <span class="fl" style="color: #AD0000;">2.</span>, p.get_height()), ha<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, va<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'center'</span>, xytext<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">5</span>), textcoords<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'offset points'</span>)</span>
-<span id="cb43-13"></span>
-<span id="cb43-14">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="median-race-times" class="level3">
-<h3 class="anchored" data-anchor-id="median-race-times">Median race times</h3>
-<div class="cell" data-execution_count="240">
-<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by sex</span></span>
-<span id="cb44-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>, </span>
-<span id="cb44-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
-<span id="cb44-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
-<span id="cb44-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.median) </span>
-<span id="cb44-6"></span>
-<span id="cb44-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb44-8">plt.xlabel (<span class="st" style="color: #20794D;">'Sex'</span>)</span>
-<span id="cb44-9">plt.ylabel (<span class="st" style="color: #20794D;">'Median race time (mins)'</span>)</span>
-<span id="cb44-10"></span>
-<span id="cb44-11">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="241">
-<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by sex</span></span>
-<span id="cb45-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>, </span>
-<span id="cb45-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
-<span id="cb45-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
-<span id="cb45-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.median) </span>
-<span id="cb45-6"></span>
-<span id="cb45-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb45-8">plt.xlabel (<span class="st" style="color: #20794D;">'Sex'</span>)</span>
-<span id="cb45-9">plt.ylabel (<span class="st" style="color: #20794D;">'Median race time (mins)'</span>)</span>
-<span id="cb45-10"></span>
-<span id="cb45-11">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="242">
-<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by running club membership</span></span>
-<span id="cb46-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>, </span>
-<span id="cb46-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
-<span id="cb46-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
-<span id="cb46-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.median) </span>
-<span id="cb46-6"></span>
-<span id="cb46-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb46-8">plt.xlabel (<span class="st" style="color: #20794D;">'Club runner?'</span>)</span>
-<span id="cb46-9">plt.ylabel (<span class="st" style="color: #20794D;">'Median race time (mins)'</span>)</span>
-<span id="cb46-10"></span>
-<span id="cb46-11">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex" class="level3">
-<h3 class="anchored" data-anchor-id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex">Scatterplot of all race times across age groupings and by sex</h3>
-<div class="cell" data-execution_count="232">
-<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><span class="co" style="color: #5E5E5E;"># Use the 'hue' argument to provide a factor variable</span></span>
-<span id="cb47-2">sns.scatterplot(x<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"Age_Midpoint"</span>, y<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"Time_mins"</span>, data<span class="op" style="color: #5E5E5E;">=</span>parkrun_krakow_20_05_23, hue<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'Sex'</span>, alpha<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.8</span>)</span>
-<span id="cb47-3"> </span>
-<span id="cb47-4"><span class="co" style="color: #5E5E5E;"># Move the legend to an empty part of the plot</span></span>
-<span id="cb47-5">plt.legend(loc<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'lower right'</span>)</span>
-<span id="cb47-6"></span>
-<span id="cb47-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb47-8">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
-<span id="cb47-9">plt.ylabel (<span class="st" style="color: #20794D;">'Race time (mins)'</span>)</span>
-<span id="cb47-10"></span>
-<span id="cb47-11">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="boxplots-of-race-times-across-age-groupings-and-by-sex" class="level3">
-<h3 class="anchored" data-anchor-id="boxplots-of-race-times-across-age-groupings-and-by-sex">Boxplots of race times across age groupings and by sex</h3>
-<div class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><span class="co" style="color: #5E5E5E;"># create box plots of run time per age group</span></span>
-<span id="cb48-2"><span class="co" style="color: #5E5E5E;"># use hue to allow comparison between male and female</span></span>
-<span id="cb48-3">sns.boxplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>,</span>
-<span id="cb48-4">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
-<span id="cb48-5">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23, </span>
-<span id="cb48-6">            hue <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Sex'</span>)</span>
-<span id="cb48-7"></span>
-<span id="cb48-8"><span class="co" style="color: #5E5E5E;"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
-<span id="cb48-9"><span class="co" style="color: #5E5E5E;"># loc=0 moves legend to the best position</span></span>
-<span id="cb48-10">plt.legend(loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>)</span>
-<span id="cb48-11"></span>
-<span id="cb48-12">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb48-13">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
-<span id="cb48-14">plt.ylabel (<span class="st" style="color: #20794D;">'Race time (mins)'</span>)</span>
-<span id="cb48-15"></span>
-<span id="cb48-16">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="fastest-race-times-across-age-groupings" class="level3">
-<h3 class="anchored" data-anchor-id="fastest-race-times-across-age-groupings">Fastest race times across age groupings</h3>
-<div class="cell" data-execution_count="238">
-<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing min race time</span></span>
-<span id="cb49-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Age_Midpoint'</span>, </span>
-<span id="cb49-3">            y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Time_mins'</span>, </span>
-<span id="cb49-4">            data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23,</span>
-<span id="cb49-5">           estimator <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">min</span>)  </span>
-<span id="cb49-6"></span>
-<span id="cb49-7">plt.title (<span class="st" style="color: #20794D;">'parkrun Kraków #461'</span>)</span>
-<span id="cb49-8">plt.xlabel (<span class="st" style="color: #20794D;">'Mid point of age grouping'</span>)</span>
-<span id="cb49-9">plt.ylabel (<span class="st" style="color: #20794D;">'Fastest race time (mins)'</span>)</span>
-<span id="cb49-10"></span>
-<span id="cb49-11">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="workings" class="level3">
-<h3 class="anchored" data-anchor-id="workings">Workings</h3>
-<div class="cell" data-execution_count="270">
-<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1">group_by_sex <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.groupby([<span class="st" style="color: #20794D;">'Sex'</span>])</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="271">
-<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1">group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="271">
-<pre><code>Sex
-F    19.28
-M    16.48
-Name: Time_mins, dtype: float64</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="247">
-<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1">fastest_female <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">0</span>]</span>
-<span id="cb53-2">fastest_female</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="247">
-<pre><code>19.28</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="248">
-<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1">fastest_male <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">1</span>]</span>
-<span id="cb55-2">fastest_male</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="248">
-<pre><code>16.48</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="221">
-<div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1">group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="221">
-<pre><code>Sex
-F    29.305
-M    24.830
-Name: Time_mins, dtype: float64</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="250">
-<div class="sourceCode cell-code" id="cb59" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1">median_female_time <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">0</span>]</span>
-<span id="cb59-2">median_female_time</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="250">
-<pre><code>29.305</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="251">
-<div class="sourceCode cell-code" id="cb61" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1">median_male_time <span class="op" style="color: #5E5E5E;">=</span> group_by_sex[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">1</span>]</span>
-<span id="cb61-2">median_male_time</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="251">
-<pre><code>24.83</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="277">
-<div class="sourceCode cell-code" id="cb63" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1">group_by_club <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23.groupby([<span class="st" style="color: #20794D;">'Club_Runner?'</span>])</span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="273">
-<div class="sourceCode cell-code" id="cb64" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1">group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="273">
-<pre><code>Club_Runner?
-No     16.48
-Yes    17.55
-Name: Time_mins, dtype: float64</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="261">
-<div class="sourceCode cell-code" id="cb66" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1">fastest_club <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">1</span>]</span>
-<span id="cb66-2">fastest_club</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="261">
-<pre><code>17.55</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="264">
-<div class="sourceCode cell-code" id="cb68" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1">median_club <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">1</span>]</span>
-<span id="cb68-2">median_club</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="264">
-<pre><code>26.2</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="267">
-<div class="sourceCode cell-code" id="cb70" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1">fastest_unattached <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()[<span class="dv" style="color: #AD0000;">0</span>]</span>
-<span id="cb70-2">fastest_unattached</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="267">
-<pre><code>16.48</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="266">
-<div class="sourceCode cell-code" id="cb72" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1">median_unattached <span class="op" style="color: #5E5E5E;">=</span> group_by_club[<span class="st" style="color: #20794D;">'Time_mins'</span>].median()[<span class="dv" style="color: #AD0000;">0</span>]</span>
-<span id="cb72-2">median_unattached</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="266">
-<pre><code>27.66</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="328">
-<div class="sourceCode cell-code" id="cb74" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1">fastest_time_my_sex_age_group <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">47</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'M'</span>)][<span class="st" style="color: #20794D;">'Time_mins'</span>].<span class="bu" style="color: null;">min</span>()</span>
-<span id="cb74-2">fastest_time_my_sex_age_group</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="328">
-<pre><code>20.63</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="329">
-<div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1">median_time_my_sex_age_group <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Age_Midpoint'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">47</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (parkrun_krakow_20_05_23[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'M'</span>)][<span class="st" style="color: #20794D;">'Time_mins'</span>].median()</span>
-<span id="cb76-2">median_time_my_sex_age_group </span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="329">
-<pre><code>26.43</code></pre>
 </div>
 </div>
 
@@ -1042,7 +1258,7 @@ Name: Time_mins, dtype: float64</code></pre>
   <category>Data Cleansing</category>
   <category>parkrun</category>
   <guid>https://stephen137.github.io/posts/Parkrun/Parkrun.html</guid>
-  <pubDate>Sun, 21 May 2023 22:00:00 GMT</pubDate>
+  <pubDate>Mon, 22 May 2023 22:00:00 GMT</pubDate>
   <media:content url="https://stephen137.github.io/posts/Parkrun/pre_race.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>

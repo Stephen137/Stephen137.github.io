@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Stephen Barrie">
-<meta name="dcterms.date" content="2023-05-22">
+<meta name="dcterms.date" content="2023-05-23">
 
 <title>Into the Unknown - parkrun Kraków 20/05/2023 | #461</title>
 <style>
@@ -198,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 22, 2023</p>
+        <p class="date">May 23, 2023</p>
       </div>
     </div>
       
@@ -217,25 +217,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#overview-motivation" id="toc-overview-motivation" class="nav-link" data-scroll-target="#overview-motivation">Overview | Motivation</a>
   <ul class="collapse">
-  <li><a href="#results-summary" id="toc-results-summary" class="nav-link" data-scroll-target="#results-summary">Results summary</a></li>
-  <li><a href="#thoughts" id="toc-thoughts" class="nav-link" data-scroll-target="#thoughts">Thoughts</a></li>
   <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data source</a></li>
   <li><a href="#import-the-required-packages" id="toc-import-the-required-packages" class="nav-link" data-scroll-target="#import-the-required-packages">Import the required packages</a></li>
-  <li><a href="#load-in-the-data" id="toc-load-in-the-data" class="nav-link" data-scroll-target="#load-in-the-data">Load in the data</a></li>
+  <li><a href="#load-in-the-data-and-retrive-my-race-time" id="toc-load-in-the-data-and-retrive-my-race-time" class="nav-link" data-scroll-target="#load-in-the-data-and-retrive-my-race-time">Load in the data and retrive my race time</a></li>
   <li><a href="#exploratory-data-analysis-cleansing" id="toc-exploratory-data-analysis-cleansing" class="nav-link" data-scroll-target="#exploratory-data-analysis-cleansing">Exploratory Data Analysis | Cleansing</a></li>
   <li><a href="#nan-values" id="toc-nan-values" class="nav-link" data-scroll-target="#nan-values">NaN values</a></li>
   <li><a href="#datatypes" id="toc-datatypes" class="nav-link" data-scroll-target="#datatypes">Datatypes</a></li>
   <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time">Time</a></li>
   <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables">Categorical variables</a></li>
   <li><a href="#cosmetic-changes" id="toc-cosmetic-changes" class="nav-link" data-scroll-target="#cosmetic-changes">Cosmetic changes</a></li>
-  <li><a href="#key-headline-figures" id="toc-key-headline-figures" class="nav-link" data-scroll-target="#key-headline-figures">Key headline figures</a></li>
   <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
+  <li><a href="#scatterplot-of-all-race-times-across-age-groupings-and-by-sex" id="toc-scatterplot-of-all-race-times-across-age-groupings-and-by-sex" class="nav-link" data-scroll-target="#scatterplot-of-all-race-times-across-age-groupings-and-by-sex">Scatterplot of all race times across age groupings and by sex</a></li>
+  <li><a href="#scatterplot-of-all-race-times-across-age-groupings-and-by-running-club-affiliation" id="toc-scatterplot-of-all-race-times-across-age-groupings-and-by-running-club-affiliation" class="nav-link" data-scroll-target="#scatterplot-of-all-race-times-across-age-groupings-and-by-running-club-affiliation">Scatterplot of all race times across age groupings and by running club affiliation</a></li>
+  <li><a href="#boxplots-of-race-times-across-age-groupings-and-by-sex" id="toc-boxplots-of-race-times-across-age-groupings-and-by-sex" class="nav-link" data-scroll-target="#boxplots-of-race-times-across-age-groupings-and-by-sex">Boxplots of race times across age groupings and by sex</a></li>
+  <li><a href="#boxplots-of-race-times-across-age-groupings-and-by-running-club-affiliation" id="toc-boxplots-of-race-times-across-age-groupings-and-by-running-club-affiliation" class="nav-link" data-scroll-target="#boxplots-of-race-times-across-age-groupings-and-by-running-club-affiliation">Boxplots of race times across age groupings and by running club affiliation</a></li>
   <li><a href="#number-of-runners" id="toc-number-of-runners" class="nav-link" data-scroll-target="#number-of-runners">Number of runners</a></li>
   <li><a href="#median-race-times" id="toc-median-race-times" class="nav-link" data-scroll-target="#median-race-times">Median race times</a></li>
-  <li><a href="#scatterplot-of-all-race-times-across-age-groupings-and-by-sex" id="toc-scatterplot-of-all-race-times-across-age-groupings-and-by-sex" class="nav-link" data-scroll-target="#scatterplot-of-all-race-times-across-age-groupings-and-by-sex">Scatterplot of all race times across age groupings and by sex</a></li>
-  <li><a href="#boxplots-of-race-times-across-age-groupings-and-by-sex" id="toc-boxplots-of-race-times-across-age-groupings-and-by-sex" class="nav-link" data-scroll-target="#boxplots-of-race-times-across-age-groupings-and-by-sex">Boxplots of race times across age groupings and by sex</a></li>
   <li><a href="#fastest-race-times-across-age-groupings" id="toc-fastest-race-times-across-age-groupings" class="nav-link" data-scroll-target="#fastest-race-times-across-age-groupings">Fastest race times across age groupings</a></li>
   <li><a href="#workings" id="toc-workings" class="nav-link" data-scroll-target="#workings">Workings</a></li>
+  <li><a href="#results-summary" id="toc-results-summary" class="nav-link" data-scroll-target="#results-summary">Results Summary</a></li>
+  <li><a href="#customized-functions" id="toc-customized-functions" class="nav-link" data-scroll-target="#customized-functions">Customized functions</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -260,50 +261,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>After the race I thought it would be fun to do a bit of a data dive on this race. My aim was to gain an insight into the distribution of competitors across age and sex, and I was particularly interested in discovering whether being affiliated with a running club results in a faster race time (as you might expect) compared to unattached runners like me.</p>
-<section id="results-summary" class="level3">
-<h3 class="anchored" data-anchor-id="results-summary">Results summary</h3>
-<div class="cell" data-execution_count="330">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of runners: </span><span class="sc">{</span>number_of_runners<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'My race time (mins): </span><span class="sc">{</span>my_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest race time for my sex and age group (mins):</span><span class="sc">{</span>fastest_time_my_sex_age_group<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median race time for my sex and age group (mins): </span><span class="sc">{</span>median_time_my_sex_age_group<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest race time (mins): </span><span class="sc">{</span>fastest_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median race time (mins): </span><span class="sc">{</span>median_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest male race time (mins): </span><span class="sc">{</span>fastest_male<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median male race time (mins): </span><span class="sc">{</span>median_male_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest female race time (mins): </span><span class="sc">{</span>fastest_female<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median female race time (mins): </span><span class="sc">{</span>median_female_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest affiliated race time (mins): </span><span class="sc">{</span>fastest_club<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median affiliated race time (mins): </span><span class="sc">{</span>median_club<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest non-affiliated race time (mins): </span><span class="sc">{</span>fastest_unattached<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median non-affiliated race time (mins): </span><span class="sc">{</span>median_unattached<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of runners: 333
-My race time (mins): 24.95
-Fastest race time for my sex and age group (mins):20.63
-Median race time for my sex and age group (mins): 26.43
-Fastest race time (mins): 16.48
-Median race time (mins): 27.08
-Fastest male race time (mins): 16.48
-Median male race time (mins): 24.83
-Fastest female race time (mins): 19.28
-Median female race time (mins): 29.30
-Fastest affiliated race time (mins): 17.55
-Median affiliated race time (mins): 26.20
-Fastest non-affiliated race time (mins): 16.48
-Median non-affiliated race time (mins): 27.66</code></pre>
-</div>
-</div>
-</section>
-<section id="thoughts" class="level3">
-<h3 class="anchored" data-anchor-id="thoughts">Thoughts</h3>
-<div class="cell" data-execution_count="334">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Overall, I was quite pleased with my time. I had a target of 25 mins in mind which I beat - by 3 seconds! and I did beat the median time for my age and sex. As you might expect, runners who are attached to an officially running club generally outperform those that are not. Attached runners median race time was </span><span class="sc">{</span>median_club<span class="sc">}</span><span class="ss"> mins, as against </span><span class="sc">{</span>median_unattached<span class="sc">}</span><span class="ss"> mins for amateur runners like myself. On the day however it was an unattached runner who was first over the line with a winning time of </span><span class="sc">{</span>fastest_race_time<span class="sc">}</span><span class="ss"> mins.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Overall, I was quite pleased with my time. I had a target of 25 mins in mind which I beat - by 3 seconds! and I did beat the median time for my age and sex. As you might expect, runners who are attached to an officially running club generally outperform those that are not. Attached runners median race time was 26.2 mins, as against 27.66 mins for amateur runners like myself. On the day however it was an unattached runner who was first over the line with a winning time of 16.48 mins.</code></pre>
-</div>
-</div>
-</section>
 <section id="data-source" class="level3">
 <h3 class="anchored" data-anchor-id="data-source">Data source</h3>
 <p>The results are published each week on the <a href="https://www.parkrun.pl/krakow/results/latestresults/">official website</a>. I could not find an API and so I just copied and pasted form the table into a csv file for cleansing using <a href="https://pandas.pydata.org/">pandas</a>, and visualisation using <a href="https://seaborn.pydata.org/">Seaborn</a>.</p>
@@ -311,27 +268,38 @@ Median non-affiliated race time (mins): 27.66</code></pre>
 </section>
 <section id="import-the-required-packages" class="level3">
 <h3 class="anchored" data-anchor-id="import-the-required-packages">Import the required packages</h3>
-<div class="cell" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="load-in-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="load-in-the-data">Load in the data</h3>
-<div class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23 <span class="op">=</span> pd.read_csv(<span class="st">'results_20_05_2023.csv'</span>, encoding<span class="op">=</span><span class="st">'latin'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="load-in-the-data-and-retrive-my-race-time" class="level3">
+<h3 class="anchored" data-anchor-id="load-in-the-data-and-retrive-my-race-time">Load in the data and retrive my race time</h3>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23 <span class="op">=</span> pd.read_csv(<span class="st">'krakow_20_05_23.csv'</span>, encoding<span class="op">=</span><span class="st">'latin'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_row <span class="op">=</span> parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st">'UCZESTNIK'</span>] <span class="op">==</span> <span class="st">"Stephen BARRIE"</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_race_time <span class="op">=</span> my_row[<span class="st">'CZAS'</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>my_race_time </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>130    24:57:00
+Name: CZAS, dtype: object</code></pre>
+</div>
+</div>
+<p>Overall, I was quite pleased with my time. I had a target of 25 minutes in mind which I beat - by 3 seconds!</p>
 </section>
 <section id="exploratory-data-analysis-cleansing" class="level3">
 <h3 class="anchored" data-anchor-id="exploratory-data-analysis-cleansing">Exploratory Data Analysis | Cleansing</h3>
-<div class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop name column for anonymity</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23 <span class="op">=</span> parkrun_krakow_20_05_23.drop(<span class="st">'UCZESTNIK'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview our data</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="187">
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop name column for anonymity</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23 <span class="op">=</span> parkrun_krakow_20_05_23.drop(<span class="st">'UCZESTNIK'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># preview our data</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 
 <div>
 
@@ -442,12 +410,12 @@ Median non-affiliated race time (mins): 27.66</code></pre>
 </div>
 </div>
 <p>Let’s rename the columns, which are in Polish at the moment. We can see that we also have some problems with Polish letters not being recognised. We’ll deal with this also.</p>
-<div class="cell" data-execution_count="188">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23 <span class="op">=</span> parkrun_krakow_20_05_23.rename(columns<span class="op">=</span>{<span class="st">'POZYCJA'</span>: <span class="st">'Position'</span>, <span class="st">''</span>: <span class="st">'Name'</span>, <span class="st">'P?E?'</span>: <span class="st">'Sex'</span>,<span class="st">'KATEGORIA WIEKOWA'</span>: <span class="st">'Age_Group'</span>,<span class="st">'KLUB'</span>: <span class="st">'Club_Runner?'</span>, <span class="st">'CZAS'</span>: <span class="st">'Time'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23 <span class="op">=</span> parkrun_krakow_20_05_23.rename(columns<span class="op">=</span>{<span class="st">'POZYCJA'</span>: <span class="st">'Position'</span>, <span class="st">''</span>: <span class="st">'Name'</span>, <span class="st">'P?E?'</span>: <span class="st">'Sex'</span>,<span class="st">'KATEGORIA WIEKOWA'</span>: <span class="st">'Age_Group'</span>,<span class="st">'KLUB'</span>: <span class="st">'Club_Runner?'</span>, <span class="st">'CZAS'</span>: <span class="st">'Time'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 355 entries, 0 to 354
@@ -473,9 +441,9 @@ memory usage: 14.0+ KB</code></pre>
 <p></p><figcaption class="figure-caption">NAN.jpg</figcaption><p></p>
 </figure>
 </div>
-<div class="cell" data-execution_count="190">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="190">
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Position          0
 Sex              22
 Age_Group        22
@@ -485,13 +453,13 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>As anticipated we have 22 <code>NaN</code> values for <code>Sex</code>, <code>Age_Group</code> and <code>Time</code>. So let’s remove all observations where no race time was recorded :</p>
-<div class="cell" data-execution_count="193">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23 <span class="op">=</span> parkrun_krakow_20_05_23.dropna(subset<span class="op">=</span>[<span class="st">'Time'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23 <span class="op">=</span> parkrun_krakow_20_05_23.dropna(subset<span class="op">=</span>[<span class="st">'Time'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And check our NaNs again :</p>
-<div class="cell" data-execution_count="194">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="194">
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Position          0
 Sex               0
 Age_Group         0
@@ -501,14 +469,14 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>We still have to deal with the <code>Club_Runner</code> discrepancies. A value is only included if a runner is affiliated to a running club. Non-affiliated runners are treated as <code>NaN</code>. Let’s replace non-affiliated with <code>No</code> and affiliated with <code>Yes</code> :</p>
-<div class="cell" data-execution_count="195">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace values based on conditions</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Club_Runner?'</span>].fillna(<span class="st">'No'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Club_Runner?'</span>] <span class="op">=</span> np.where(parkrun_krakow_20_05_23[<span class="st">'Club_Runner?'</span>] <span class="op">!=</span> <span class="st">'No'</span>, <span class="st">'Yes'</span>, <span class="st">'No'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace values based on conditions</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Club_Runner?'</span>].fillna(<span class="st">'No'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Club_Runner?'</span>] <span class="op">=</span> np.where(parkrun_krakow_20_05_23[<span class="st">'Club_Runner?'</span>] <span class="op">!=</span> <span class="st">'No'</span>, <span class="st">'Yes'</span>, <span class="st">'No'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="196">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="196">
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>Position        0
 Sex             0
 Age_Group       0
@@ -521,9 +489,9 @@ dtype: int64</code></pre>
 </section>
 <section id="datatypes" class="level3">
 <h3 class="anchored" data-anchor-id="datatypes">Datatypes</h3>
-<div class="cell" data-execution_count="203">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="203">
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>Position         int64
 Sex             object
 Age_Group       object
@@ -536,22 +504,22 @@ dtype: object</code></pre>
 </section>
 <section id="time" class="level3">
 <h3 class="anchored" data-anchor-id="time">Time</h3>
-<div class="cell" data-execution_count="204">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the string into minutes and seconds components</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>time_components <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the minutes and seconds components to integers</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> time_components.<span class="bu">str</span>[<span class="dv">0</span>].astype(<span class="bu">int</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>seconds <span class="op">=</span> time_components.<span class="bu">str</span>[<span class="dv">1</span>].astype(<span class="bu">int</span>)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the decimal representation of minutes</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>] <span class="op">=</span> minutes <span class="op">+</span> seconds <span class="op">/</span> <span class="fl">60.0</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Round the "minutes" column to 2 decimal places</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>] <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the result</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the string into minutes and seconds components</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>time_components <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the minutes and seconds components to integers</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> time_components.<span class="bu">str</span>[<span class="dv">0</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>seconds <span class="op">=</span> time_components.<span class="bu">str</span>[<span class="dv">1</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the decimal representation of minutes</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>] <span class="op">=</span> minutes <span class="op">+</span> seconds <span class="op">/</span> <span class="fl">60.0</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Round the "minutes" column to 2 decimal places</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>] <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the result</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0      16.48
 1      17.55
@@ -571,9 +539,9 @@ Name: Time_mins, Length: 333, dtype: float64</code></pre>
 </section>
 <section id="categorical-variables" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-variables">Categorical variables</h3>
-<div class="cell" data-execution_count="206">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="206">
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>Position        333
 Sex               2
 Age_Group        29
@@ -588,45 +556,27 @@ dtype: int64</code></pre>
 <li>311 unique times, so quite a few crossing the line together</li>
 <li>2 different sexes - M (Male) and F (Female)</li>
 <li>29 different age groups</li>
-<li>2 distinct values for Club_Runner - Yes or No - as defined earlier</li>
+<li>2 distinct values for Club_Runner (Yes or No - as defined earlier)</li>
 </ul>
-<div class="cell" data-execution_count="207">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-Int64Index: 333 entries, 0 to 354
-Data columns (total 6 columns):
- #   Column        Non-Null Count  Dtype  
----  ------        --------------  -----  
- 0   Position      333 non-null    int64  
- 1   Sex           333 non-null    object 
- 2   Age_Group     333 non-null    object 
- 3   Club_Runner?  333 non-null    object 
- 4   Time          333 non-null    object 
- 5   Time_mins     333 non-null    float64
-dtypes: float64(1), int64(1), object(4)
-memory usage: 18.2+ KB</code></pre>
-</div>
-</div>
 </section>
 <section id="cosmetic-changes" class="level3">
 <h3 class="anchored" data-anchor-id="cosmetic-changes">Cosmetic changes</h3>
 <p>Let’s do some general tidy up. We can use string slicing to remove leading characters in the <code>Age_Group</code> column :</p>
-<div class="cell" data-execution_count="208">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the first two characters from the strings in the "Age_Group" column</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Age_Group'</span>]<span class="op">=</span>parkrun_krakow_20_05_23[<span class="st">'Age_Group'</span>].<span class="bu">str</span>[<span class="dv">2</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the first two characters from the strings in the "Age_Group" column</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Age_Group'</span>]<span class="op">=</span>parkrun_krakow_20_05_23[<span class="st">'Age_Group'</span>].<span class="bu">str</span>[<span class="dv">2</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s also tidy up the narrative in the <code>Sex</code> column, by replacing <code>Mezczyzna</code> with <code>M</code> and <code>Kobieta</code> with <code>F</code> :</p>
-<div class="cell" data-execution_count="210">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace strings starting with 'M' to 'M' in the "Sex" column</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st">'Sex'</span>].<span class="bu">str</span>.startswith(<span class="st">'M'</span>), <span class="st">'Sex'</span>] <span class="op">=</span> <span class="st">'M'</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace strings starting with 'K' to 'F' in the "Sex" column</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st">'Sex'</span>].<span class="bu">str</span>.startswith(<span class="st">'K'</span>), <span class="st">'Sex'</span>] <span class="op">=</span> <span class="st">'F'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace strings starting with 'M' to 'M' in the "Sex" column</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st">'Sex'</span>].<span class="bu">str</span>.startswith(<span class="st">'M'</span>), <span class="st">'Sex'</span>] <span class="op">=</span> <span class="st">'M'</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace strings starting with 'K' to 'F' in the "Sex" column</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st">'Sex'</span>].<span class="bu">str</span>.startswith(<span class="st">'K'</span>), <span class="st">'Sex'</span>] <span class="op">=</span> <span class="st">'F'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="211">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="211">
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
 
 <div>
 
@@ -749,25 +699,25 @@ memory usage: 18.2+ KB</code></pre>
 </div>
 </div>
 <p>Looking much tidier. Let’s now return to the <code>Age Groupings</code>. These are currently a categorical variable, but let’s simplify things by creating a new column <code>Age_Midpoint</code> that splits the string, converts to integer, and takes the mid-value of the range :</p>
-<div class="cell" data-execution_count="216">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define conversion function</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_age_midpoint(age_group):</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'-'</span> <span class="kw">in</span> age_group:</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        age_range <span class="op">=</span> age_group.split(<span class="st">'-'</span>)</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        age_start <span class="op">=</span> <span class="bu">int</span>(age_range[<span class="dv">0</span>])</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        age_end <span class="op">=</span> <span class="bu">int</span>(age_range[<span class="dv">1</span>])</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        age_midpoint <span class="op">=</span> (age_start <span class="op">+</span> age_end) <span class="op">//</span> <span class="dv">2</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>        age_midpoint <span class="op">=</span> <span class="bu">int</span>(age_group)</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> age_midpoint    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define conversion function</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_age_midpoint(age_group):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'-'</span> <span class="kw">in</span> age_group:</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        age_range <span class="op">=</span> age_group.split(<span class="st">'-'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        age_start <span class="op">=</span> <span class="bu">int</span>(age_range[<span class="dv">0</span>])</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        age_end <span class="op">=</span> <span class="bu">int</span>(age_range[<span class="dv">1</span>])</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>        age_midpoint <span class="op">=</span> (age_start <span class="op">+</span> age_end) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>        age_midpoint <span class="op">=</span> <span class="bu">int</span>(age_group)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> age_midpoint    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="217">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the conversion function to the Age_Group column</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Age_Midpoint'</span>] <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Age_Group'</span>].<span class="bu">apply</span>(get_age_midpoint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the conversion function to the Age_Group column</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23[<span class="st">'Age_Midpoint'</span>] <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Age_Group'</span>].<span class="bu">apply</span>(get_age_midpoint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="218">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="218">
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>parkrun_krakow_20_05_23</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 
 <div>
 
@@ -901,27 +851,491 @@ memory usage: 18.2+ KB</code></pre>
 </div>
 </div>
 </div>
-<p>Great, we now have our new column with a single integer value.</p>
+<p>Great, we now have our new column with a single integer value. Let’s now visualize our processed data, using <a href="https://seaborn.pydata.org/">Seaborn</a>.</p>
 </section>
-<section id="key-headline-figures" class="level3">
-<h3 class="anchored" data-anchor-id="key-headline-figures">Key headline figures</h3>
-<div class="cell" data-execution_count="124">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>number_of_runners <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Position'</span>].count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="visualizations">Visualizations</h3>
+</section>
+<section id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex">Scatterplot of all race times across age groupings and by sex</h3>
+<p>Scatterplots are an excellent visualization, and we can even introduce a third variable (Sex) by the use of colour. It allows us to see at a glance the age and sex profile of all race times.</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the 'hue' argument to provide a factor variable</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"Age_Midpoint"</span>, y<span class="op">=</span><span class="st">"Time_mins"</span>, data<span class="op">=</span>parkrun_krakow_20_05_23, hue<span class="op">=</span><span class="st">'Sex'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Move the legend to an empty part of the plot</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Race time (mins)'</span>)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
 </div>
-<div class="cell" data-execution_count="142">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>fastest_race_time <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>average_race_time <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can see that the fastest race time recorded was by a male around the age of 37 or so, and there is a general concentration of male runners aged 37 to 57 recording race times of 25 minutes or less.</p>
+</section>
+<section id="scatterplot-of-all-race-times-across-age-groupings-and-by-running-club-affiliation" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-of-all-race-times-across-age-groupings-and-by-running-club-affiliation">Scatterplot of all race times across age groupings and by running club affiliation</h3>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the 'hue' argument to provide a factor variable</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"Age_Midpoint"</span>, y<span class="op">=</span><span class="st">"Time_mins"</span>, data<span class="op">=</span>parkrun_krakow_20_05_23, hue<span class="op">=</span><span class="st">'Club_Runner?'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Move the legend to an empty part of the plot</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Race time (mins)'</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
 </div>
-<div class="cell" data-execution_count="144">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>median_race_time <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>I know that I finished in position 131, and so I can use <code>.loc</code> to access the my row index :</p>
-<div class="cell" data-execution_count="165">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>row <span class="op">=</span> parkrun_krakow_20_05_23.loc[parkrun_krakow_20_05_23[<span class="st">'Position'</span>] <span class="op">==</span><span class="dv">131</span>]</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="165">
+<p>We can see that the fastest race time recorded by someone around the age of 37 or so who is not affiliated with a running club. The times recorded for club runners generally appear to be lower, with only three over 45 minutes, compared with 10 for non-attached runners.</p>
+</section>
+<section id="boxplots-of-race-times-across-age-groupings-and-by-sex" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots-of-race-times-across-age-groupings-and-by-sex">Boxplots of race times across age groupings and by sex</h3>
+<p>A box plot, also known as a box-and-whisker plot, is a graphical representation that summarizes the distribution of a dataset. It displays key statistical measures, including the minimum, maximum, median, and quartiles.</p>
+<p>The box in the plot represents the interquartile range (IQR), which is the range between the first quartile (Q1) and the third quartile (Q3). The median is represented by a line or a dot within the box.</p>
+<p>Whiskers extend from the box and indicate the minimum and maximum values within a certain range, typically defined by a multiple of the IQR. Values outside this range are considered outliers and can be plotted as individual points or asterisks.</p>
+<p>Box plots are useful for comparing distributions, identifying skewness or symmetry, detecting outliers, and understanding the spread and central tendency of the data. They provide a concise visual summary of the dataset’s main characteristics.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create box plots of run time per age group</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use hue to allow comparison between male and female</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x <span class="op">=</span> <span class="st">'Age_Midpoint'</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23, </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">'Sex'</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co"># loc=0 moves legend to the best position</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Race time (mins)'</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see from the above that for all age categories (with the exception of age 62) median race times (as denoted by the line within the box) for males are lower. We can also see that there is a wide range of times in the female age 37 category (from a low of around 25 minutes to a high of around 47 minutes) and also in the male age categories, 62, 67, and 77.</p>
+</section>
+<section id="boxplots-of-race-times-across-age-groupings-and-by-running-club-affiliation" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots-of-race-times-across-age-groupings-and-by-running-club-affiliation">Boxplots of race times across age groupings and by running club affiliation</h3>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create box plots of run time per age group</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use hue to allow comparison between male and female</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x <span class="op">=</span> <span class="st">'Age_Midpoint'</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23, </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">'Club_Runner?'</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co"># loc=0 moves legend to the best position</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Race time (mins)'</span>)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see at a glance that whilst the lowest time was recorded by a non-club runner, generally the race times for club runners are less stretched out. They mostly fall within the 20 to 35 minutes range.</p>
+</section>
+<section id="number-of-runners" class="level3">
+<h3 class="anchored" data-anchor-id="number-of-runners">Number of runners</h3>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a count of number of males and females</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.countplot(x <span class="op">=</span> <span class="st">'Sex'</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Sex'</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Number of runners'</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add count values on top of each bar</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> ax.patches:</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> p.get_height()</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="ss">f'</span><span class="sc">{</span><span class="bu">round</span>(count)<span class="sc">}</span><span class="ss">'</span>, (p.get_x() <span class="op">+</span> p.get_width() <span class="op">/</span> <span class="fl">2.</span>, p.get_height()), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Males represented 61% of the race entries.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a count of number of runners in each Age Grouping</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.countplot(x <span class="op">=</span> <span class="st">'Age_Midpoint'</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Number of runners'</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add rounded count values on top of each bar (rounded to 2 decimal places)</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> ax.patches:</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> p.get_height()</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="ss">f'</span><span class="sc">{</span>count<span class="sc">:.0f}</span><span class="ss">'</span>, (p.get_x() <span class="op">+</span> p.get_width() <span class="op">/</span> <span class="fl">2.</span>, p.get_height()), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see a high concentration of runners (65%) fall within the 32 to 47 midpoint age.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a count of number of males and females</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.countplot(x <span class="op">=</span> <span class="st">'Club_Runner?'</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> parkrun_krakow_20_05_23)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Club runner?'</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Number of runners'</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add count values on top of each bar</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> ax.patches:</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> p.get_height()</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="ss">f'</span><span class="sc">{</span><span class="bu">round</span>(count)<span class="sc">}</span><span class="ss">'</span>, (p.get_x() <span class="op">+</span> p.get_width() <span class="op">/</span> <span class="fl">2.</span>, p.get_height()), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The majority (65%) of runners are not affiliated with any running club.</p>
+</section>
+<section id="median-race-times" class="level3">
+<h3 class="anchored" data-anchor-id="median-race-times">Median race times</h3>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing median race time by sex</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'Sex'</span>, </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>           estimator <span class="op">=</span> np.median) </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Sex'</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Median race time (mins)'</span>)</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The median race time for males was just under 25 minutes, and for females it was just under</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing median race time by running club membership</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'Club_Runner?'</span>, </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>           estimator <span class="op">=</span> np.median) </span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Club runner?'</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Median race time (mins)'</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>As expected, the median race time for club runners was lower than unattached runners.</p>
+</section>
+<section id="fastest-race-times-across-age-groupings" class="level3">
+<h3 class="anchored" data-anchor-id="fastest-race-times-across-age-groupings">Fastest race times across age groupings</h3>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing min race time</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'Age_Midpoint'</span>, </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>           estimator <span class="op">=</span> np.<span class="bu">min</span>)  </span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Fastest race time (mins)'</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Parkrun_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The fastest race times are concentrated in the 22 to 52 age range, although there are some excellent times recorded in the 67 age group, before Father Time joins the party!</p>
+</section>
+<section id="workings" class="level3">
+<h3 class="anchored" data-anchor-id="workings">Workings</h3>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>number_of_runners <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Position'</span>].count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fastest_race_time <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>median_race_time <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>group_by_sex <span class="op">=</span> parkrun_krakow_20_05_23.groupby([<span class="st">'Sex'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>group_by_sex[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>Sex
+F    19.28
+M    16.48
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>fastest_female <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">0</span>]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>fastest_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>19.28</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fastest_male <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">1</span>]</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>fastest_male</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>16.48</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>group_by_sex[<span class="st">'Time_mins'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>Sex
+F    29.305
+M    24.830
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>median_female_time <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].median()[<span class="dv">0</span>]</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>median_female_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>29.305</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>median_male_time <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].median()[<span class="dv">1</span>]</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>median_male_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>24.83</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>group_by_club <span class="op">=</span> parkrun_krakow_20_05_23.groupby([<span class="st">'Club_Runner?'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>group_by_club[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>Club_Runner?
+No     16.48
+Yes    17.55
+Name: Time_mins, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>fastest_club <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">1</span>]</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>fastest_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>17.55</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>median_club <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].median()[<span class="dv">1</span>]</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>median_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>26.2</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>fastest_unattached <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">0</span>]</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>fastest_unattached</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>16.48</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>median_unattached <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].median()[<span class="dv">0</span>]</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>median_unattached</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>27.66</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>fastest_time_my_sex_age_group <span class="op">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st">'Age_Midpoint'</span>] <span class="op">==</span> <span class="dv">47</span>) <span class="op">&amp;</span> (parkrun_krakow_20_05_23[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">'M'</span>)][<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>fastest_time_my_sex_age_group</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>20.63</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>median_time_my_sex_age_group <span class="op">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st">'Age_Midpoint'</span>] <span class="op">==</span> <span class="dv">47</span>) <span class="op">&amp;</span> (parkrun_krakow_20_05_23[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">'M'</span>)][<span class="st">'Time_mins'</span>].median()</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>median_time_my_sex_age_group </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<pre><code>26.43</code></pre>
+</div>
+</div>
+</section>
+<section id="results-summary" class="level3">
+<h3 class="anchored" data-anchor-id="results-summary">Results Summary</h3>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of runners: </span><span class="sc">{</span>number_of_runners<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'My race time (mins): </span><span class="sc">{</span>my_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest race time for my sex and age group (mins):</span><span class="sc">{</span>fastest_time_my_sex_age_group<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median race time for my sex and age group (mins): </span><span class="sc">{</span>median_time_my_sex_age_group<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest race time (mins): </span><span class="sc">{</span>fastest_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median race time (mins): </span><span class="sc">{</span>median_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest male race time (mins): </span><span class="sc">{</span>fastest_male<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median male race time (mins): </span><span class="sc">{</span>median_male_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest female race time (mins): </span><span class="sc">{</span>fastest_female<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median female race time (mins): </span><span class="sc">{</span>median_female_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest affiliated race time (mins): </span><span class="sc">{</span>fastest_club<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median affiliated race time (mins): </span><span class="sc">{</span>median_club<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest non-affiliated race time (mins): </span><span class="sc">{</span>fastest_unattached<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median non-affiliated race time (mins): </span><span class="sc">{</span>median_unattached<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of runners: 333
+My race time (mins): 24.95
+Fastest race time for my sex and age group (mins):20.63
+Median race time for my sex and age group (mins): 26.43
+Fastest race time (mins): 16.48
+Median race time (mins): 27.08
+Fastest male race time (mins): 16.48
+Median male race time (mins): 24.83
+Fastest female race time (mins): 19.28
+Median female race time (mins): 29.30
+Fastest affiliated race time (mins): 17.55
+Median affiliated race time (mins): 26.20
+Fastest non-affiliated race time (mins): 16.48
+Median non-affiliated race time (mins): 27.66</code></pre>
+</div>
+</div>
+</section>
+<section id="customized-functions" class="level3">
+<h3 class="anchored" data-anchor-id="customized-functions">Customized functions</h3>
+<p>I worked through the cleansing as I was going along to demonstrate the concepts involved, however it is quite clumsy and scattered around. A better way would be to introduce some structure and create a customized function that will allow me to quickly pre-process any future race results using the same methodology.</p>
+<p>Note, that this could be improved further by harnessing a workflow orchestration tool such as <a href="https://www.prefect.io/">Prefect</a> and creating an ingestion script that takes the raw data, preprocesses it, and moves into bucket storage on <a href="https://cloud.google.com/gcp?&amp;gad=1">Google Cloud Platform(GCP)</a> for further querying in BigData, and visualization using e.g <a href="https://lookerstudio.google.com/">Looker Studio</a>.</p>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert age grouping to mid-point</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_age_midpoint(age_group):</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'-'</span> <span class="kw">in</span> age_group:</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>        age_range <span class="op">=</span> age_group.split(<span class="st">'-'</span>)</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>        age_start <span class="op">=</span> <span class="bu">int</span>(age_range[<span class="dv">0</span>])</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>        age_end <span class="op">=</span> <span class="bu">int</span>(age_range[<span class="dv">1</span>])</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>        age_midpoint <span class="op">=</span> (age_start <span class="op">+</span> age_end) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>        age_midpoint <span class="op">=</span> <span class="bu">int</span>(age_group)</span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> age_midpoint  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_race_results(race_date):</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 1: Read the CSV file</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>    filename <span class="op">=</span> <span class="ss">f"krakow_</span><span class="sc">{</span>race_date<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(<span class="ss">f"</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">.csv"</span>, encoding<span class="op">=</span><span class="st">'latin'</span>)</span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 2: Drop the 'UCZESTNIK' column</span></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'UCZESTNIK'</span>])</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 3: Rename the columns</span></span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">'POZYCJA'</span>: <span class="st">'Position'</span>, <span class="st">''</span>: <span class="st">'Name'</span>, <span class="st">'P?E?'</span>: <span class="st">'Sex'</span>, <span class="st">'KATEGORIA WIEKOWA'</span>: <span class="st">'Age_Group'</span>,</span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'KLUB'</span>: <span class="st">'Club_Runner?'</span>, <span class="st">'CZAS'</span>: <span class="st">'Time'</span>})</span>
+<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 4: Drop rows with 'NaN' in 'Time' column</span></span>
+<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">'Time'</span>])</span>
+<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-20"><a href="#cb73-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 5: Replace 'NaN' values in 'Club_Runner?' column with 'No'</span></span>
+<span id="cb73-21"><a href="#cb73-21" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Club_Runner?'</span>].fillna(<span class="st">'No'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb73-22"><a href="#cb73-22" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Club_Runner?'</span>] <span class="op">=</span> np.where(df[<span class="st">'Club_Runner?'</span>] <span class="op">!=</span> <span class="st">'No'</span>, <span class="st">'Yes'</span>, <span class="st">'No'</span>)</span>
+<span id="cb73-23"><a href="#cb73-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-24"><a href="#cb73-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 6: Convert 'Time' values from string to float, rounded to 2 decimal places</span></span>
+<span id="cb73-25"><a href="#cb73-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Split the string into minutes and seconds components</span></span>
+<span id="cb73-26"><a href="#cb73-26" aria-hidden="true" tabindex="-1"></a>    time_components <span class="op">=</span> df[<span class="st">'Time'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>)</span>
+<span id="cb73-27"><a href="#cb73-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert the minutes and seconds components to integers</span></span>
+<span id="cb73-28"><a href="#cb73-28" aria-hidden="true" tabindex="-1"></a>    minutes <span class="op">=</span> time_components.<span class="bu">str</span>[<span class="dv">0</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb73-29"><a href="#cb73-29" aria-hidden="true" tabindex="-1"></a>    seconds <span class="op">=</span> time_components.<span class="bu">str</span>[<span class="dv">1</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb73-30"><a href="#cb73-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the decimal representation of minutes</span></span>
+<span id="cb73-31"><a href="#cb73-31" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Time_mins'</span>] <span class="op">=</span> minutes <span class="op">+</span> seconds <span class="op">/</span> <span class="fl">60.0</span></span>
+<span id="cb73-32"><a href="#cb73-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Round the "minutes" column to 2 decimal places</span></span>
+<span id="cb73-33"><a href="#cb73-33" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Time_mins'</span>] <span class="op">=</span> df[<span class="st">'Time_mins'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb73-34"><a href="#cb73-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb73-35"><a href="#cb73-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 7: Remove leading two characters from 'Age_Group' column</span></span>
+<span id="cb73-36"><a href="#cb73-36" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Age_Group'</span>] <span class="op">=</span> df[<span class="st">'Age_Group'</span>].<span class="bu">str</span>[<span class="dv">2</span>:]</span>
+<span id="cb73-37"><a href="#cb73-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-38"><a href="#cb73-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 8: Replace values in 'Sex' column with 'M' or 'F' based on the starting character</span></span>
+<span id="cb73-39"><a href="#cb73-39" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Sex'</span>] <span class="op">=</span> df[<span class="st">'Sex'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'M'</span> <span class="cf">if</span> x.startswith(<span class="st">'M'</span>) <span class="cf">else</span> <span class="st">'F'</span>)</span>
+<span id="cb73-40"><a href="#cb73-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-41"><a href="#cb73-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 9: Convert 'Age_Group' values in the format '35-39' to the mid-point of the range</span></span>
+<span id="cb73-42"><a href="#cb73-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Apply the conversion function to the Age_Group column</span></span>
+<span id="cb73-43"><a href="#cb73-43" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Age_Midpoint'</span>] <span class="op">=</span> df[<span class="st">'Age_Group'</span>].<span class="bu">apply</span>(get_age_midpoint)</span>
+<span id="cb73-44"><a href="#cb73-44" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb73-45"><a href="#cb73-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GroupBys for Headline figures</span></span>
+<span id="cb73-46"><a href="#cb73-46" aria-hidden="true" tabindex="-1"></a>    number_of_runners <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Position'</span>].count()</span>
+<span id="cb73-47"><a href="#cb73-47" aria-hidden="true" tabindex="-1"></a>    fastest_race_time <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span>
+<span id="cb73-48"><a href="#cb73-48" aria-hidden="true" tabindex="-1"></a>    fastest_time_my_sex_age_group <span class="op">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st">'Age_Midpoint'</span>] <span class="op">==</span> <span class="dv">47</span>) <span class="op">&amp;</span> (parkrun_krakow_20_05_23[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">'M'</span>)][<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span>
+<span id="cb73-49"><a href="#cb73-49" aria-hidden="true" tabindex="-1"></a>    median_time_my_sex_age_group <span class="op">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st">'Age_Midpoint'</span>] <span class="op">==</span> <span class="dv">47</span>) <span class="op">&amp;</span> (parkrun_krakow_20_05_23[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">'M'</span>)][<span class="st">'Time_mins'</span>].median()</span>
+<span id="cb73-50"><a href="#cb73-50" aria-hidden="true" tabindex="-1"></a>    fastest_race_time <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span>
+<span id="cb73-51"><a href="#cb73-51" aria-hidden="true" tabindex="-1"></a>    median_race_time <span class="op">=</span> parkrun_krakow_20_05_23[<span class="st">'Time_mins'</span>].median()</span>
+<span id="cb73-52"><a href="#cb73-52" aria-hidden="true" tabindex="-1"></a>    fastest_male <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">1</span>]</span>
+<span id="cb73-53"><a href="#cb73-53" aria-hidden="true" tabindex="-1"></a>    median_male_time <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].median()[<span class="dv">1</span>]</span>
+<span id="cb73-54"><a href="#cb73-54" aria-hidden="true" tabindex="-1"></a>    fastest_female <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">0</span>]</span>
+<span id="cb73-55"><a href="#cb73-55" aria-hidden="true" tabindex="-1"></a>    median_female_time <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].median()[<span class="dv">0</span>]</span>
+<span id="cb73-56"><a href="#cb73-56" aria-hidden="true" tabindex="-1"></a>    fastest_club <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">1</span>]</span>
+<span id="cb73-57"><a href="#cb73-57" aria-hidden="true" tabindex="-1"></a>    median_club <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].median()[<span class="dv">1</span>]</span>
+<span id="cb73-58"><a href="#cb73-58" aria-hidden="true" tabindex="-1"></a>    fastest_unattached <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">0</span>]</span>
+<span id="cb73-59"><a href="#cb73-59" aria-hidden="true" tabindex="-1"></a>    median_unattached <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].median()[<span class="dv">0</span>]</span>
+<span id="cb73-60"><a href="#cb73-60" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb73-61"><a href="#cb73-61" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Headline figures</span></span>
+<span id="cb73-62"><a href="#cb73-62" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Number of runners: </span><span class="sc">{</span>number_of_runners<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb73-63"><a href="#cb73-63" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Fastest race time for my sex and age group (mins):</span><span class="sc">{</span>fastest_time_my_sex_age_group<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-64"><a href="#cb73-64" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Median race time for my sex and age group (mins): </span><span class="sc">{</span>median_time_my_sex_age_group<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-65"><a href="#cb73-65" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Fastest race time (mins): </span><span class="sc">{</span>fastest_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-66"><a href="#cb73-66" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Median race time (mins): </span><span class="sc">{</span>median_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-67"><a href="#cb73-67" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Fastest male race time (mins): </span><span class="sc">{</span>fastest_male<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-68"><a href="#cb73-68" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Median male race time (mins): </span><span class="sc">{</span>median_male_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-69"><a href="#cb73-69" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Fastest female race time (mins): </span><span class="sc">{</span>fastest_female<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-70"><a href="#cb73-70" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Median female race time (mins): </span><span class="sc">{</span>median_female_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-71"><a href="#cb73-71" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Fastest affiliated race time (mins): </span><span class="sc">{</span>fastest_club<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-72"><a href="#cb73-72" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Median affiliated race time (mins): </span><span class="sc">{</span>median_club<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-73"><a href="#cb73-73" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Fastest non-affiliated race time (mins): </span><span class="sc">{</span>fastest_unattached<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-74"><a href="#cb73-74" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Median non-affiliated race time (mins): </span><span class="sc">{</span>median_unattached<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb73-75"><a href="#cb73-75" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb73-76"><a href="#cb73-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I now just need to pass in the following arguments to the pre-processing function to achieve the same results as before:</p>
+<div class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>race_date <span class="op">=</span> <span class="st">'20_05_23'</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>processed_results <span class="op">=</span> process_race_results(race_date)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>processed_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of runners: 333
+Fastest race time for my sex and age group (mins):20.63
+Median race time for my sex and age group (mins): 26.43
+Fastest race time (mins): 16.48
+Median race time (mins): 27.08
+Fastest male race time (mins): 16.48
+Median male race time (mins): 24.83
+Fastest female race time (mins): 19.28
+Median female race time (mins): 29.30
+Fastest affiliated race time (mins): 17.55
+Median affiliated race time (mins): 26.20
+Fastest non-affiliated race time (mins): 16.48
+Median non-affiliated race time (mins): 27.66</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="74">
 
 <div>
 
@@ -940,316 +1354,119 @@ memory usage: 18.2+ KB</code></pre>
   </thead>
   <tbody>
     <tr>
-      <th>130</th>
-      <td>131</td>
+      <th>0</th>
+      <td>1</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>No</td>
+      <td>16:29</td>
+      <td>16.48</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>M</td>
+      <td>40-44</td>
+      <td>Yes</td>
+      <td>17:33</td>
+      <td>17.55</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>Yes</td>
+      <td>17:56</td>
+      <td>17.93</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>M</td>
+      <td>35-39</td>
+      <td>Yes</td>
+      <td>18:07</td>
+      <td>18.12</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>M</td>
+      <td>40-44</td>
+      <td>Yes</td>
+      <td>18:21</td>
+      <td>18.35</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>350</th>
+      <td>351</td>
       <td>M</td>
       <td>45-49</td>
       <td>No</td>
-      <td>24:57:00</td>
-      <td>24.95</td>
+      <td>51:30:00</td>
+      <td>51.50</td>
       <td>47</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>352</td>
+      <td>M</td>
+      <td>90-94</td>
+      <td>No</td>
+      <td>54:54:00</td>
+      <td>54.90</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>353</td>
+      <td>F</td>
+      <td>60-64</td>
+      <td>Yes</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>353</th>
+      <td>354</td>
+      <td>F</td>
+      <td>50-54</td>
+      <td>Yes</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>354</th>
+      <td>355</td>
+      <td>M</td>
+      <td>75-79</td>
+      <td>No</td>
+      <td>54:55:00</td>
+      <td>54.92</td>
+      <td>77</td>
     </tr>
   </tbody>
 </table>
+<p>333 rows × 7 columns</p>
 </div>
-</div>
-</div>
-<p>and then assign my race time to an appropriate variable :</p>
-<div class="cell" data-execution_count="168">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_race_time <span class="op">=</span> parkrun_krakow_20_05_23.loc[<span class="dv">130</span>,<span class="st">'Time_mins'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="239">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of runners: </span><span class="sc">{</span>number_of_runners<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'My race time (mins): </span><span class="sc">{</span>my_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Fastest race time (mins): </span><span class="sc">{</span>fastest_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median race time (mins): </span><span class="sc">{</span>median_race_time<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of runners: 333
-My race time (mins): 24.95
-Fastest race time (mins): 16.48
-Median race time (mins): 27.08</code></pre>
-</div>
-</div>
-</section>
-<section id="visualizations" class="level3">
-<h3 class="anchored" data-anchor-id="visualizations">Visualizations</h3>
-</section>
-<section id="number-of-runners" class="level3">
-<h3 class="anchored" data-anchor-id="number-of-runners">Number of runners</h3>
-<div class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a count of number of males and females</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.countplot(x <span class="op">=</span> <span class="st">'Sex'</span>,</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> parkrun_krakow_20_05_23)</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Sex'</span>)</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Number of runners'</span>)</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add count values on top of each bar</span></span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> ax.patches:</span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> p.get_height()</span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="ss">f'</span><span class="sc">{</span><span class="bu">round</span>(count)<span class="sc">}</span><span class="ss">'</span>, (p.get_x() <span class="op">+</span> p.get_width() <span class="op">/</span> <span class="fl">2.</span>, p.get_height()), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>)</span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="235">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a count of number of runners in each Age Grouping</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.countplot(x <span class="op">=</span> <span class="st">'Age_Midpoint'</span>,</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> parkrun_krakow_20_05_23)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Number of runners'</span>)</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add rounded count values on top of each bar (rounded to 2 decimal places)</span></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> ax.patches:</span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> p.get_height()</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="ss">f'</span><span class="sc">{</span>count<span class="sc">:.0f}</span><span class="ss">'</span>, (p.get_x() <span class="op">+</span> p.get_width() <span class="op">/</span> <span class="fl">2.</span>, p.get_height()), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>)</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="233">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a count of number of males and females</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.countplot(x <span class="op">=</span> <span class="st">'Club_Runner?'</span>,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> parkrun_krakow_20_05_23)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Club runner?'</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Number of runners'</span>)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add count values on top of each bar</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> ax.patches:</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> p.get_height()</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="ss">f'</span><span class="sc">{</span><span class="bu">round</span>(count)<span class="sc">}</span><span class="ss">'</span>, (p.get_x() <span class="op">+</span> p.get_width() <span class="op">/</span> <span class="fl">2.</span>, p.get_height()), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>)</span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="median-race-times" class="level3">
-<h3 class="anchored" data-anchor-id="median-race-times">Median race times</h3>
-<div class="cell" data-execution_count="240">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing median race time by sex</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'Sex'</span>, </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>           estimator <span class="op">=</span> np.median) </span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Sex'</span>)</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Median race time (mins)'</span>)</span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="241">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing median race time by sex</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'Sex'</span>, </span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23,</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>           estimator <span class="op">=</span> np.median) </span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Sex'</span>)</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Median race time (mins)'</span>)</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="242">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing median race time by running club membership</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'Club_Runner?'</span>, </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23,</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>           estimator <span class="op">=</span> np.median) </span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Club runner?'</span>)</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Median race time (mins)'</span>)</span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex" class="level3">
-<h3 class="anchored" data-anchor-id="scatterplot-of-all-race-times-across-age-groupings-and-by-sex">Scatterplot of all race times across age groupings and by sex</h3>
-<div class="cell" data-execution_count="232">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the 'hue' argument to provide a factor variable</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"Age_Midpoint"</span>, y<span class="op">=</span><span class="st">"Time_mins"</span>, data<span class="op">=</span>parkrun_krakow_20_05_23, hue<span class="op">=</span><span class="st">'Sex'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Move the legend to an empty part of the plot</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Race time (mins)'</span>)</span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="boxplots-of-race-times-across-age-groupings-and-by-sex" class="level3">
-<h3 class="anchored" data-anchor-id="boxplots-of-race-times-across-age-groupings-and-by-sex">Boxplots of race times across age groupings and by sex</h3>
-<div class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create box plots of run time per age group</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use hue to allow comparison between male and female</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x <span class="op">=</span> <span class="st">'Age_Midpoint'</span>,</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23, </span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">'Sex'</span>)</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># loc=0 moves legend to the best position</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Race time (mins)'</span>)</span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="fastest-race-times-across-age-groupings" class="level3">
-<h3 class="anchored" data-anchor-id="fastest-race-times-across-age-groupings">Fastest race times across age groupings</h3>
-<div class="cell" data-execution_count="238">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing min race time</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'Age_Midpoint'</span>, </span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'Time_mins'</span>, </span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> parkrun_krakow_20_05_23,</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>           estimator <span class="op">=</span> np.<span class="bu">min</span>)  </span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>plt.title (<span class="st">'parkrun Kraków #461'</span>)</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel (<span class="st">'Mid point of age grouping'</span>)</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel (<span class="st">'Fastest race time (mins)'</span>)</span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Parkrun_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="workings" class="level3">
-<h3 class="anchored" data-anchor-id="workings">Workings</h3>
-<div class="cell" data-execution_count="270">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>group_by_sex <span class="op">=</span> parkrun_krakow_20_05_23.groupby([<span class="st">'Sex'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="271">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>group_by_sex[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="271">
-<pre><code>Sex
-F    19.28
-M    16.48
-Name: Time_mins, dtype: float64</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="247">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>fastest_female <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">0</span>]</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>fastest_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="247">
-<pre><code>19.28</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="248">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>fastest_male <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">1</span>]</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>fastest_male</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="248">
-<pre><code>16.48</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="221">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>group_by_sex[<span class="st">'Time_mins'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="221">
-<pre><code>Sex
-F    29.305
-M    24.830
-Name: Time_mins, dtype: float64</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="250">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>median_female_time <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].median()[<span class="dv">0</span>]</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>median_female_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="250">
-<pre><code>29.305</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="251">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>median_male_time <span class="op">=</span> group_by_sex[<span class="st">'Time_mins'</span>].median()[<span class="dv">1</span>]</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>median_male_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="251">
-<pre><code>24.83</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="277">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>group_by_club <span class="op">=</span> parkrun_krakow_20_05_23.groupby([<span class="st">'Club_Runner?'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="273">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>group_by_club[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="273">
-<pre><code>Club_Runner?
-No     16.48
-Yes    17.55
-Name: Time_mins, dtype: float64</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="261">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>fastest_club <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">1</span>]</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>fastest_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="261">
-<pre><code>17.55</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="264">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>median_club <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].median()[<span class="dv">1</span>]</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>median_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="264">
-<pre><code>26.2</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="267">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>fastest_unattached <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].<span class="bu">min</span>()[<span class="dv">0</span>]</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>fastest_unattached</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="267">
-<pre><code>16.48</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="266">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>median_unattached <span class="op">=</span> group_by_club[<span class="st">'Time_mins'</span>].median()[<span class="dv">0</span>]</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>median_unattached</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="266">
-<pre><code>27.66</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="328">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>fastest_time_my_sex_age_group <span class="op">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st">'Age_Midpoint'</span>] <span class="op">==</span> <span class="dv">47</span>) <span class="op">&amp;</span> (parkrun_krakow_20_05_23[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">'M'</span>)][<span class="st">'Time_mins'</span>].<span class="bu">min</span>()</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>fastest_time_my_sex_age_group</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="328">
-<pre><code>20.63</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="329">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>median_time_my_sex_age_group <span class="op">=</span> parkrun_krakow_20_05_23[(parkrun_krakow_20_05_23[<span class="st">'Age_Midpoint'</span>] <span class="op">==</span> <span class="dv">47</span>) <span class="op">&amp;</span> (parkrun_krakow_20_05_23[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">'M'</span>)][<span class="st">'Time_mins'</span>].median()</span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>median_time_my_sex_age_group </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="329">
-<pre><code>26.43</code></pre>
 </div>
 </div>
 
