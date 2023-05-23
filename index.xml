@@ -771,7 +771,7 @@ dtype: int64</code></pre>
 </div>
 <p>We can see a high concentration of runners (65%) fall within the 32 to 47 midpoint age.</p>
 <div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of males and females</span></span>
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><span class="co" style="color: #5E5E5E;"># plot a count of number of club runners vs unattached</span></span>
 <span id="cb35-2">ax <span class="op" style="color: #5E5E5E;">=</span> sns.countplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>,</span>
 <span id="cb35-3">              data <span class="op" style="color: #5E5E5E;">=</span> parkrun_krakow_20_05_23)</span>
 <span id="cb35-4"></span>
@@ -809,7 +809,7 @@ dtype: int64</code></pre>
 <p><img src="https://stephen137.github.io/posts/Parkrun/Parkrun_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>The median race time for males was just under 25 minutes, and for females it was just under</p>
+<p>The median race time for males was just under 25 minutes, and for females it was just under 30 minutes.</p>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><span class="co" style="color: #5E5E5E;"># plot a barplot showing median race time by running club membership</span></span>
 <span id="cb37-2">sns.barplot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'Club_Runner?'</span>, </span>
