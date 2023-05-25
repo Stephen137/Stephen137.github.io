@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Stephen Barrie">
-<meta name="dcterms.date" content="2023-05-22">
+<meta name="dcterms.date" content="2023-05-25">
 
-<title>Into the Unknown - Machine Learning Operations(MLOps) Zoomcamp - Module 2</title>
+<title>Into the Unknown - mlops-zoomcamp | Module 2: Experiment tracking and model management</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -172,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Machine Learning Operations(MLOps) Zoomcamp - Module 2</h1>
+      <h1 class="title">mlops-zoomcamp | Module 2: Experiment tracking and model management</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">MLOps</div>
                 <div class="quarto-category">DataTalksClub</div>
@@ -193,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 22, 2023</p>
+        <p class="date">May 25, 2023</p>
       </div>
     </div>
       
@@ -216,9 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#model-management" id="toc-model-management" class="nav-link" data-scroll-target="#model-management">2.4 Model management</a></li>
   <li><a href="#model-registry" id="toc-model-registry" class="nav-link" data-scroll-target="#model-registry">2.5 Model Registry</a></li>
   <li><a href="#mlflow-in-practice" id="toc-mlflow-in-practice" class="nav-link" data-scroll-target="#mlflow-in-practice">2.6 MLflow in practice</a></li>
-  </ul></li>
-  <li><a href="#video-2.6-timestamp-4-mins" id="toc-video-2.6-timestamp-4-mins" class="nav-link" data-scroll-target="#video-2.6-timestamp-4-mins">video 2.6 timestamp 4 mins</a>
-  <ul class="collapse">
+  <li><a href="#setting-up-an-aws-account" id="toc-setting-up-an-aws-account" class="nav-link" data-scroll-target="#setting-up-an-aws-account">2.6.4 Setting up an AWS account</a></li>
   <li><a href="#mlflow-benefits-limitations-and-alternatives" id="toc-mlflow-benefits-limitations-and-alternatives" class="nav-link" data-scroll-target="#mlflow-benefits-limitations-and-alternatives">2.7 MLflow: benefits, limitations and alternatives</a></li>
   </ul></li>
   </ul>
@@ -310,7 +308,22 @@ boto3</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mlflow ui <span class="op">--</span>backend<span class="op">-</span>store<span class="op">-</span>uri sqlite:<span class="op">///</span>mlflow.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Make sure you launch the mlflow UI from the same directory as the scripts/jupyter notebook that is running the experiments (same directory that has the mlflow directory and the database that stores the experiments)</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure you launch the mlflow UI from the same directory as the scripts/jupyter notebook that is running the experiments (same directory that has the mlflow directory and the database that stores the experiments).</p>
+</div>
+</div>
+<p>I found that running:</p>
+<pre><code>mlflow server</code></pre>
+<p>worked without any problems.</p>
 <p>And we can view by copying the highlighted link <code>http://127.0.0.1:5000</code> into your browser :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -321,11 +334,11 @@ boto3</p>
 <p>Note, if you get an error message along the lines of <code>Connection in use: ('127.0.0.1', 5000)</code> this means you already have something running on port 5000, and you need to kill it.</p>
 <p>Run the following command on the terminal :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ps <span class="op">-</span>A <span class="op">|</span> grep gunicorn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ps <span class="op">-</span>A <span class="op">|</span> grep gunicorn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and then look for the number process id which is the 1st number after running the command. Then kill it using :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>kill <span class="op">&lt;</span>process_id<span class="op">&gt;</span> <span class="co"># replace with the 1st number after running ps -A | grep gunicorn</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>kill <span class="op">&lt;</span>process_id<span class="op">&gt;</span> <span class="co"># replace with the 1st number after running ps -A | grep gunicorn</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -335,31 +348,31 @@ boto3</p>
 </div>
 <p>We have no experiments at the moment. Let’s create one following the Linear Regression model we built in the previous module to predict the duration of a taxi trip.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check Python version</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python <span class="op">-</span>V</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check Python version</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python <span class="op">-</span>V</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python 3.9.16</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd <span class="co"># working with tabular data</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle <span class="co"># for machine learning models</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns <span class="co"># visualization</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># visualization</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction <span class="im">import</span> DictVectorizer <span class="co"># Machine Learning</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression <span class="co"># Machine Learning</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Lasso <span class="co"># Regularization</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge <span class="co"># Regularization</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error <span class="co"># Loss Function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd <span class="co"># working with tabular data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle <span class="co"># for machine learning models</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns <span class="co"># visualization</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># visualization</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction <span class="im">import</span> DictVectorizer <span class="co"># Machine Learning</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression <span class="co"># Machine Learning</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Lasso <span class="co"># Regularization</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge <span class="co"># Regularization</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error <span class="co"># Loss Function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlflow</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to hook up with MLFlow UI</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>mlflow.set_tracking_uri(<span class="st">"sqlite:///mlflow.db"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mlflow.set_experiment(<span class="st">"mlops_nyc_taxi"</span>) <span class="co"># choose a name for your experiment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlflow</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to hook up with MLFlow UI</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>mlflow.set_tracking_uri(<span class="st">"sqlite:///mlflow.db"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>mlflow.set_experiment(<span class="st">"mlops_nyc_taxi"</span>) <span class="co"># choose a name for your experiment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>&lt;Experiment: artifact_location='/home/stephen137/Blog/posts/MLOps_Zoomcamp_Module_2/mlruns/3', creation_time=1684439443423, experiment_id='3', last_update_time=1684439443423, lifecycle_stage='active', name='mlops_nyc_taxi', tags={}&gt;</code></pre>
 </div>
@@ -373,7 +386,7 @@ boto3</p>
 </div>
 <p>If you recall in <a href="https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1.html#training-a-ride-duration-prediction-model">Module 1</a> the code was scattered, and at times difficult to follow. Let’s replicate it here to at least get a baseline for improvement using MLflow.</p>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget https:<span class="op">//</span>d37ci6vzurychx.cloudfront.net<span class="op">/</span>trip<span class="op">-</span>data<span class="op">/</span>yellow_tripdata_2022<span class="op">-</span><span class="fl">01.</span><span class="er">parquet</span> https:<span class="op">//</span>d37ci6vzurychx.cloudfront.net<span class="op">/</span>trip<span class="op">-</span>data<span class="op">/</span>yellow_tripdata_2022<span class="op">-</span><span class="fl">02.</span><span class="er">parquet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget https:<span class="op">//</span>d37ci6vzurychx.cloudfront.net<span class="op">/</span>trip<span class="op">-</span>data<span class="op">/</span>yellow_tripdata_2022<span class="op">-</span><span class="fl">01.</span><span class="er">parquet</span> https:<span class="op">//</span>d37ci6vzurychx.cloudfront.net<span class="op">/</span>trip<span class="op">-</span>data<span class="op">/</span>yellow_tripdata_2022<span class="op">-</span><span class="fl">02.</span><span class="er">parquet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>--2023-05-18 20:52:44--  https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-01.parquet
 Resolving d37ci6vzurychx.cloudfront.net (d37ci6vzurychx.cloudfront.net)... 18.244.96.218, 18.244.96.180, 18.244.96.25, ...
@@ -402,75 +415,75 @@ Downloaded: 2 files, 80M in 1.5s (54.2 MB/s)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_dataframe(filename):</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filename.endswith(<span class="st">'.csv'</span>):</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.read_csv(filename)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        df.tpep_dropoff_datetime <span class="op">=</span> pd.to_datetime(df.tpep_dropoff_datetime)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        df.tpep_pickup_datetime <span class="op">=</span> pd.to_datetime(df.tpep_pickup_datetime)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filename.endswith(<span class="st">'.parquet'</span>):</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.read_parquet(filename)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'duration'</span>] <span class="op">=</span> df.tpep_dropoff_datetime <span class="op">-</span> df.tpep_pickup_datetime</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    df.duration <span class="op">=</span> df.duration.<span class="bu">apply</span>(<span class="kw">lambda</span> td: td.total_seconds() <span class="op">/</span> <span class="dv">60</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[(df.duration <span class="op">&gt;=</span> <span class="dv">1</span>) <span class="op">&amp;</span> (df.duration <span class="op">&lt;=</span> <span class="dv">60</span>)]</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    categorical <span class="op">=</span> [<span class="st">'PULocationID'</span>, <span class="st">'DOLocationID'</span>]</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    df[categorical] <span class="op">=</span> df[categorical].astype(<span class="bu">str</span>)</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_dataframe(filename):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filename.endswith(<span class="st">'.csv'</span>):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.read_csv(filename)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        df.tpep_dropoff_datetime <span class="op">=</span> pd.to_datetime(df.tpep_dropoff_datetime)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        df.tpep_pickup_datetime <span class="op">=</span> pd.to_datetime(df.tpep_pickup_datetime)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> filename.endswith(<span class="st">'.parquet'</span>):</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.read_parquet(filename)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'duration'</span>] <span class="op">=</span> df.tpep_dropoff_datetime <span class="op">-</span> df.tpep_pickup_datetime</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    df.duration <span class="op">=</span> df.duration.<span class="bu">apply</span>(<span class="kw">lambda</span> td: td.total_seconds() <span class="op">/</span> <span class="dv">60</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[(df.duration <span class="op">&gt;=</span> <span class="dv">1</span>) <span class="op">&amp;</span> (df.duration <span class="op">&lt;=</span> <span class="dv">60</span>)]</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    categorical <span class="op">=</span> [<span class="st">'PULocationID'</span>, <span class="st">'DOLocationID'</span>]</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    df[categorical] <span class="op">=</span> df[categorical].astype(<span class="bu">str</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_train <span class="op">=</span> read_dataframe(<span class="st">'yellow_tripdata_2022-01.parquet'</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df_val <span class="op">=</span> read_dataframe(<span class="st">'yellow_tripdata_2022-02.parquet'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_train <span class="op">=</span> read_dataframe(<span class="st">'yellow_tripdata_2022-01.parquet'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_val <span class="op">=</span> read_dataframe(<span class="st">'yellow_tripdata_2022-02.parquet'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df_train), <span class="bu">len</span>(df_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df_train), <span class="bu">len</span>(df_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>(2421440, 2918187)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_train[<span class="st">'PU_DO'</span>] <span class="op">=</span> df_train[<span class="st">'PULocationID'</span>] <span class="op">+</span> <span class="st">'_'</span> <span class="op">+</span> df_train[<span class="st">'DOLocationID'</span>]</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_val[<span class="st">'PU_DO'</span>] <span class="op">=</span> df_val[<span class="st">'PULocationID'</span>] <span class="op">+</span> <span class="st">'_'</span> <span class="op">+</span> df_val[<span class="st">'DOLocationID'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df_train[<span class="st">'PU_DO'</span>] <span class="op">=</span> df_train[<span class="st">'PULocationID'</span>] <span class="op">+</span> <span class="st">'_'</span> <span class="op">+</span> df_train[<span class="st">'DOLocationID'</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df_val[<span class="st">'PU_DO'</span>] <span class="op">=</span> df_val[<span class="st">'PULocationID'</span>] <span class="op">+</span> <span class="st">'_'</span> <span class="op">+</span> df_val[<span class="st">'DOLocationID'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>categorical <span class="op">=</span> [<span class="st">'PU_DO'</span>] <span class="co">#'PULocationID', 'DOLocationID']</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>numerical <span class="op">=</span> [<span class="st">'trip_distance'</span>]</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>dv <span class="op">=</span> DictVectorizer()</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>train_dicts <span class="op">=</span> df_train[categorical <span class="op">+</span> numerical].to_dict(orient<span class="op">=</span><span class="st">'records'</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> dv.fit_transform(train_dicts)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>val_dicts <span class="op">=</span> df_val[categorical <span class="op">+</span> numerical].to_dict(orient<span class="op">=</span><span class="st">'records'</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>X_val <span class="op">=</span> dv.transform(val_dicts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>categorical <span class="op">=</span> [<span class="st">'PU_DO'</span>] <span class="co">#'PULocationID', 'DOLocationID']</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>numerical <span class="op">=</span> [<span class="st">'trip_distance'</span>]</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>dv <span class="op">=</span> DictVectorizer()</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>train_dicts <span class="op">=</span> df_train[categorical <span class="op">+</span> numerical].to_dict(orient<span class="op">=</span><span class="st">'records'</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> dv.fit_transform(train_dicts)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>val_dicts <span class="op">=</span> df_val[categorical <span class="op">+</span> numerical].to_dict(orient<span class="op">=</span><span class="st">'records'</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>X_val <span class="op">=</span> dv.transform(val_dicts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="st">'duration'</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> df_train[target].values</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>y_val <span class="op">=</span> df_val[target].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="st">'duration'</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> df_train[target].values</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>y_val <span class="op">=</span> df_val[target].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lr.predict(X_val)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>mean_squared_error(y_val, y_pred, squared<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>lr.fit(X_train, y_train)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lr.predict(X_val)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>mean_squared_error(y_val, y_pred, squared<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>5.530468126047705</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'./models/lin_reg.bin'</span>, <span class="st">'wb'</span>) <span class="im">as</span> f_out: <span class="co"># wb means write binary mlops-zoomcamp/week_1/models</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Pickle both the dictionary vectorizer and the linear regression model</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        pickle.dump((dv, lr), f_out)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Model successfully pickled."</span>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Error occurred while pickling the model:"</span>, <span class="bu">str</span>(e))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'./models/lin_reg.bin'</span>, <span class="st">'wb'</span>) <span class="im">as</span> f_out: <span class="co"># wb means write binary mlops-zoomcamp/week_1/models</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Pickle both the dictionary vectorizer and the linear regression model</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        pickle.dump((dv, lr), f_out)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Model successfully pickled."</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Error occurred while pickling the model:"</span>, <span class="bu">str</span>(e))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model successfully pickled.</code></pre>
 </div>
@@ -478,23 +491,23 @@ Downloaded: 2 files, 80M in 1.5s (54.2 MB/s)</code></pre>
 <p>Let’s harness MLFlow to incorporate some structure into our flow, making it easier to follow, easier to iterate over different models and parameters, and easier to track changes.</p>
 <p>A code snippet is included below to demonstrate how we can achieve this :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> mlflow.start_run():</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    mlflow.set_tag(<span class="st">"developer"</span>, <span class="st">"cristian"</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    mlflow.log_param(<span class="st">"train-data-path"</span>, <span class="st">"./data/green_tripdata_2021-01.csv"</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    mlflow.log_param(<span class="st">"valid-data-path"</span>, <span class="st">"./data/green_tripdata_2021-02.csv"</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    alpha <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    mlflow.log_param(<span class="st">"alpha"</span>, alpha)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    lr <span class="op">=</span> Lasso(alpha)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    lr.fit(X_train, y_train)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> lr.predict(X_val)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    rmse <span class="op">=</span> mean_squared_error(y_val, y_pred, squared<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    mlflow.log_metric(<span class="st">"rmse"</span>, rmse)</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    mlflow.log_artifact(local_path<span class="op">=</span><span class="st">"models/lin_reg.bin"</span>, artifact_path<span class="op">=</span><span class="st">"models_pickle"</span>) <span class="co"># where model saved</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> mlflow.start_run():</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    mlflow.set_tag(<span class="st">"developer"</span>, <span class="st">"stephen"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    mlflow.log_param(<span class="st">"train-data-path"</span>, <span class="st">"./data/green_tripdata_2021-01.csv"</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    mlflow.log_param(<span class="st">"valid-data-path"</span>, <span class="st">"./data/green_tripdata_2021-02.csv"</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    alpha <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    mlflow.log_param(<span class="st">"alpha"</span>, alpha)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    lr <span class="op">=</span> Lasso(alpha)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    lr.fit(X_train, y_train)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> lr.predict(X_val)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    rmse <span class="op">=</span> mean_squared_error(y_val, y_pred, squared<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    mlflow.log_metric(<span class="st">"rmse"</span>, rmse)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    mlflow.log_artifact(local_path<span class="op">=</span><span class="st">"models/lin_reg.bin"</span>, artifact_path<span class="op">=</span><span class="st">"models_pickle"</span>) <span class="co"># where model saved</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>mlflow.log_artifact()</code> logs a local file or directory as an artifact, optionally taking an <code>artifact_path</code> to place it in within the run’s artifact URI. Run artifacts can be organized into directories, so you can place the artifact in a directory this way.</p>
 <p>If we now revisit the Mlflow UI we can see that the run status is <code>FINISHED</code> and has completed successfully. We have a note of our <code>Tag</code>, <code>Parmaeters</code>, <code>Metrics</code> and <code>Artifacts</code> as specified above in <code>with mlflow.start_run():</code>.</p>
@@ -516,11 +529,11 @@ Downloaded: 2 files, 80M in 1.5s (54.2 MB/s)</code></pre>
 <p>The algorithm works by iteratively building decision trees to minimize a specified loss function. Each subsequent tree focuses on correcting the errors made by the previous trees, resulting in a highly accurate ensemble model. Additionally, XGBoost allows for custom optimization objectives and evaluation metrics, providing flexibility to address various problem domains.</p>
 <p>Due to its exceptional performance and versatility, XGBoost has gained popularity in various fields, including finance, healthcare, marketing, and more. It has been widely adopted in data science competitions and is a favored choice among practitioners when tackling complex machine learning problems.</p>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import required modules</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hyperopt <span class="im">import</span> fmin, tpe, hp, STATUS_OK, Trials <span class="co"># some methods to optimize hyperparameters</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hyperopt.pyll <span class="im">import</span> scope</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import required modules</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hyperopt <span class="im">import</span> fmin, tpe, hp, STATUS_OK, Trials <span class="co"># some methods to optimize hyperparameters</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hyperopt.pyll <span class="im">import</span> scope</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>FMin</code></p>
 <p>https://github.com/hyperopt/hyperopt/wiki/FMin</p>
@@ -545,52 +558,52 @@ By passing in a trials object directly, we can inspect all of the return values 
 <p>This trials object can be saved, passed on to the built-in plotting routines, or analyzed with your own custom code.</p>
 <p>Let’s now define our training and validation datasets and configure our MLflow run :</p>
 <div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> xgb.DMatrix(X_train, label<span class="op">=</span>y_train)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>valid <span class="op">=</span> xgb.DMatrix(X_val, label<span class="op">=</span>y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> xgb.DMatrix(X_train, label<span class="op">=</span>y_train)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>valid <span class="op">=</span> xgb.DMatrix(X_val, label<span class="op">=</span>y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Objective function - set the parameters for this specific run</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> objective(params): </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> mlflow.start_run():</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>        mlflow.set_tag(<span class="st">"model"</span>, <span class="st">"xgboost"</span>)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>        mlflow.log_params(params) </span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        booster <span class="op">=</span> xgb.train(</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>            params<span class="op">=</span>params,</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>            dtrain<span class="op">=</span>train, <span class="co"># model trained on training set</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>            num_boost_round<span class="op">=</span><span class="dv">3</span>, <span class="co"># restricted due to time constraints - a value of 1000 iterations is common</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>            evals<span class="op">=</span>[(valid, <span class="st">'validation'</span>)], <span class="co"># model evaluated on validation set</span></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>            early_stopping_rounds<span class="op">=</span><span class="dv">3</span> <span class="co"># if no improvements after 3 iterations, stop running # restricted, time constraints</span></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> booster.predict(valid)</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>        rmse <span class="op">=</span> mean_squared_error(y_val, y_pred, squared<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>        mlflow.log_metric(<span class="st">"rmse"</span>, rmse)</span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'loss'</span>: rmse, <span class="st">'status'</span>: STATUS_OK}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Objective function - set the parameters for this specific run</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> objective(params): </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> mlflow.start_run():</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        mlflow.set_tag(<span class="st">"model"</span>, <span class="st">"xgboost"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        mlflow.log_params(params) </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        booster <span class="op">=</span> xgb.train(</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>            params<span class="op">=</span>params,</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>            dtrain<span class="op">=</span>train, <span class="co"># model trained on training set</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>            num_boost_round<span class="op">=</span><span class="dv">3</span>, <span class="co"># restricted due to time constraints - a value of 1000 iterations is common</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>            evals<span class="op">=</span>[(valid, <span class="st">'validation'</span>)], <span class="co"># model evaluated on validation set</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>            early_stopping_rounds<span class="op">=</span><span class="dv">3</span> <span class="co"># if no improvements after 3 iterations, stop running # restricted, time constraints</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> booster.predict(valid)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>        rmse <span class="op">=</span> mean_squared_error(y_val, y_pred, squared<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>        mlflow.log_metric(<span class="st">"rmse"</span>, rmse)</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'loss'</span>: rmse, <span class="st">'status'</span>: STATUS_OK}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="setting-the-hyperparamter-optimization-search-range" class="level4">
 <h4 class="anchored" data-anchor-id="setting-the-hyperparamter-optimization-search-range">2.3.2 Setting the Hyperparamter optimization search range</h4>
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the range of the hyperparameter optimization search</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>search_space <span class="op">=</span> {</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: scope.<span class="bu">int</span>(hp.quniform(<span class="st">'max_depth'</span>, <span class="dv">4</span>, <span class="dv">100</span>, <span class="dv">1</span>)), <span class="co"># tree depth 4 to 100. Returns float, so convert to integer</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'learning_rate'</span>: hp.loguniform(<span class="st">'learning_rate'</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">0</span>), <span class="co"># range exp(-3), exp(0) which is (0.049787, 1.0)</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_alpha'</span>: hp.loguniform(<span class="st">'reg_alpha'</span>, <span class="op">-</span><span class="dv">5</span>, <span class="op">-</span><span class="dv">1</span>), <span class="co"># range exp(-5), exp(-1) which is (0.006738, 0.367879)</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_lambda'</span>: hp.loguniform(<span class="st">'reg_lambda'</span>, <span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>), <span class="co"># range exp(-6), exp(-1) which is (0.002479, 0.367879)</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_child_weight'</span>: hp.loguniform(<span class="st">'min_child_weight'</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>), <span class="co"># range exp(-1), exp(3) which is (0.367879, 20.085537)</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'objective'</span>: <span class="st">'reg:linear'</span>,</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'seed'</span>: <span class="dv">42</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>best_result <span class="op">=</span> fmin( <span class="co"># imported above</span></span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    fn<span class="op">=</span>objective,</span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    space<span class="op">=</span>search_space, <span class="co"># as defined above</span></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    algo<span class="op">=</span>tpe.suggest, <span class="co"># tpe is the algorithm used for optimization</span></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    max_evals<span class="op">=</span><span class="dv">3</span>, <span class="co">#restricted, time constraints</span></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    trials<span class="op">=</span>Trials()</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the range of the hyperparameter optimization search</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>search_space <span class="op">=</span> {</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: scope.<span class="bu">int</span>(hp.quniform(<span class="st">'max_depth'</span>, <span class="dv">4</span>, <span class="dv">100</span>, <span class="dv">1</span>)), <span class="co"># tree depth 4 to 100. Returns float, so convert to integer</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'learning_rate'</span>: hp.loguniform(<span class="st">'learning_rate'</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">0</span>), <span class="co"># range exp(-3), exp(0) which is (0.049787, 1.0)</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_alpha'</span>: hp.loguniform(<span class="st">'reg_alpha'</span>, <span class="op">-</span><span class="dv">5</span>, <span class="op">-</span><span class="dv">1</span>), <span class="co"># range exp(-5), exp(-1) which is (0.006738, 0.367879)</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_lambda'</span>: hp.loguniform(<span class="st">'reg_lambda'</span>, <span class="op">-</span><span class="dv">6</span>, <span class="op">-</span><span class="dv">1</span>), <span class="co"># range exp(-6), exp(-1) which is (0.002479, 0.367879)</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_child_weight'</span>: hp.loguniform(<span class="st">'min_child_weight'</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>), <span class="co"># range exp(-1), exp(3) which is (0.367879, 20.085537)</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'objective'</span>: <span class="st">'reg:linear'</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'seed'</span>: <span class="dv">42</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>best_result <span class="op">=</span> fmin( <span class="co"># imported above</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    fn<span class="op">=</span>objective,</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    space<span class="op">=</span>search_space, <span class="co"># as defined above</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    algo<span class="op">=</span>tpe.suggest, <span class="co"># tpe is the algorithm used for optimization</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    max_evals<span class="op">=</span><span class="dv">3</span>, <span class="co">#restricted, time constraints</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    trials<span class="op">=</span>Trials()</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[22:45:26] WARNING: ../src/objective/regression_obj.cu:213: reg:linear is now deprecated in favor of reg:squarederror.
 [0] validation-rmse:15.30102                                                                           
@@ -683,41 +696,38 @@ By passing in a trials object directly, we can inspect all of the return values 
 <h4 class="anchored" data-anchor-id="training-the-model-selected-as-the-best">2.3.5 Training the model selected as the best</h4>
 <p>So, let’s say after careful consideration of metrics, time, and complexity we decide to go with the <code>brawn-donkey-463</code> model. We can grab its pararmeters and copy them into a <code>params</code> dictionary:</p>
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'learning_rate'</span>: <span class="fl">0.4434065752589766</span>,</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: <span class="dv">81</span>,</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_child_weight'</span>: <span class="fl">10.423237853746643</span>,</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'objective'</span>: <span class="st">'reg:linear'</span>,</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_alpha'</span>: <span class="fl">0.2630756846813668</span>,</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_lambda'</span>: <span class="fl">0.1220536223877784</span>,</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'seed'</span>: <span class="dv">42</span>   </span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'learning_rate'</span>: <span class="fl">0.4434065752589766</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: <span class="dv">81</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_child_weight'</span>: <span class="fl">10.423237853746643</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'objective'</span>: <span class="st">'reg:linear'</span>,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_alpha'</span>: <span class="fl">0.2630756846813668</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_lambda'</span>: <span class="fl">0.1220536223877784</span>,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'seed'</span>: <span class="dv">42</span>   </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can then make use of <a href="https://mlflow.org/docs/latest/tracking.html#automatic-logging">Automatic Logging</a>.</p>
 </section>
 <section id="automatic-logging" class="level4">
 <h4 class="anchored" data-anchor-id="automatic-logging">2.3.6 Automatic Logging</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>Automatic logging allows you to log metrics, parameters, <span class="kw">and</span> models without the need <span class="cf">for</span> explicit log statements.</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>There are two ways to use autologging:</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span> Call `mlflow.autolog()` before your training code. This will enable autologging <span class="cf">for</span> each supported library you have installed <span class="im">as</span> soon <span class="im">as</span> you <span class="im">import</span> it.</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fl">2.</span> Use library<span class="op">-</span>specific autolog calls <span class="cf">for</span> each library you use <span class="kw">in</span> your code. </span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>The following libraries support autologging:</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Scikit<span class="op">-</span>learn</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Keras</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Gluon</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> XGBoost</span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> LightGBM</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Statsmodels</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Spark</span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Fastai</span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Pytorch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Automatic logging allows you to log metrics, parameters, and models without the need for explicit log statements.</p>
+<p>There are two ways to use autologging:</p>
+<ol type="1">
+<li><p>Call <code>mlflow.autolog()</code> before your training code. This will enable autologging for each supported library you have installed as soon as you import it.</p></li>
+<li><p>Use library-specific autolog calls for each library you use in your code.</p></li>
+</ol>
+<p>The following libraries support autologging:</p>
+<ul>
+<li>Scikit-learn</li>
+<li>Keras</li>
+<li>Gluon</li>
+<li>XGBoost</li>
+<li>LightGBM</li>
+<li>Statsmodels</li>
+<li>Spark</li>
+<li>Fastai</li>
+<li>Pytorch</li>
+</ul>
 <p>We can then run the model training, in our case using the <a href="https://mlflow.org/docs/latest/tracking.html#xgboost">XGBoost library</a> prompt :</p>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mlflow.xgboost.autolog()</span>
@@ -1270,26 +1280,180 @@ Wall time: 809 ms</code></pre>
 <section id="a-single-data-scientist-participating-in-an-ml-competition" class="level4">
 <h4 class="anchored" data-anchor-id="a-single-data-scientist-participating-in-an-ml-competition">2.6.1 A single data scientist participating in an ML competition</h4>
 <p>In this use case, having a remote tracking server would be overkill. Sharing information with others is not a requirement and using a model registry would be useless, because there is no likelihood of model deployment to production.</p>
+<p>MLflow setup:</p>
+<ul>
+<li>Tracking server: no</li>
+<li>Backend store: local filesystem</li>
+<li>Artifacts store: local filesystem</li>
+</ul>
+<p>The experiments can be explored locally by launching the MLflow UI.</p>
 </section>
 <section id="a-cross-functional-team-with-one-data-scientist-working-on-an-ml-model" class="level4">
 <h4 class="anchored" data-anchor-id="a-cross-functional-team-with-one-data-scientist-working-on-an-ml-model">2.6.2 A cross-functional team with one data scientist working on an ML model</h4>
 <p>Information will require to be shared with the cross-functional team, but there is not necessarily a necessity to run a tracking server remotely - locally may well be enough. Using the model registry might be a good idea to manage the life cycle of the models, but it is not clear whether we need to run it remotely or on the local host.</p>
+<p>MLflow setup:</p>
+<ul>
+<li>Tracking server: yes, local server</li>
+<li>Backend store: sqlite database</li>
+<li>Artifacts store: local filesystem</li>
+</ul>
+<p>The experiments can be explored locally by accessing the local tracking server.</p>
+<p>To run this example you need to launch the mlflow server locally by running the following command in your terminal:</p>
+<pre><code>mlflow server --backend-store-uri sqlite:///backend.db</code></pre>
 </section>
 <section id="multiple-data-scientists-working-on-multiple-ml-models" class="level4">
 <h4 class="anchored" data-anchor-id="multiple-data-scientists-working-on-multiple-ml-models">2.6.3 Multiple data scientists working on multiple ML models</h4>
 <p>Sharing information is <strong>very</strong> important in this scenario. There is collaboration between scientists to build models and so they need a remote tracking server, and they should make use of model registry.</p>
+<p>MLflow setup:</p>
+<ul>
+<li>Tracking server: yes, remote server (EC2).</li>
+<li>Backend store: postgresql database.</li>
+<li>Artifacts store: s3 bucket.</li>
+</ul>
+<p>The experiments can be explored by accessing the remote server.</p>
+<p>The exampe uses AWS to host a remote server. In order to run the example you’ll need an AWS account. Follow the steps described below to create a new AWS account and launch the tracking server.</p>
 </section>
+</section>
+<section id="setting-up-an-aws-account" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-an-aws-account">2.6.4 Setting up an AWS account</h3>
+<p><code>Basic AWS setup</code><br>
+This tutorial explains how to configure a remote tracking server on AWS. We will use an RDS database as the backend store and an s3 bucket as the artifact store.</p>
+<ol type="1">
+<li><p>First, you need to <a href="https://aws.amazon.com/free">create an AWS account</a>. If you open a new account, AWS allows you to use some of their products for free but take into account that you may be charged for using the AWS services. More information <a href="https://youtu.be/rkKvzCskpLE">here</a> and <a href="https://aws.amazon.com/premiumsupport/knowledge-center/free-tier-charges/">here</a>.</p></li>
+<li><p>Launch a new EC2 instance.</p></li>
+</ol>
+<p>For this, you can select one of the instance types that are free tier eligible. For example, we will select an Amazon Linux OS (<code>Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type</code>) and a <code>t2.micro</code> instance type, which are free tier eligible.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/ec2_os.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ec2_os.png</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/ec2_instance_type.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ec2_instance_type.png</figcaption><p></p>
+</figure>
+</div>
+<p>You’ll also need to create a new key pair so later you can connect to the new instance using SSH. Click on “Create new key pair” and complete the details like in the image below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/key_pair.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">key_pair.png</figcaption><p></p>
+</figure>
+</div>
+<p>Select the new key pair and then click on “Launch Instance” :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/select_key_pair.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">select_key_pair.png</figcaption><p></p>
+</figure>
+</div>
+<p>Finally, you have to edit the security group so the EC2 instance accepts SSH (port 22) and HTTP connections (port 5000):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/security_group.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">security_group.png</figcaption><p></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Create an s3 bucket to be used as the artifact store.</li>
+</ol>
+<p>Go to s3 and click on “Create bucket”. Fill in the bucket name as in the image below and let all the other configurations with their default values.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/s3_bucket.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">s3_bucket.png</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+s3 bucket names
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>s3 bucket names must be unique across all AWS account in all the AWS Regions within a partition, that means that once a bucket is created, the name of that bucket cannot be used by another AWS account within the same region. If you get an error saying that the bucket name was already taken you can fix it easily by just changing the name to something like mlflow-artifacts-remote-2 or another name.</p>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Create a new PostgreSQL database to be used as the backend store</li>
+</ol>
+<p>Go to the RDS Console and click on “Create database”. Make sure to select “PostgreSQL” engine type and the “Free tier” template.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/postgresql.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">postgresql.png</figcaption><p></p>
+</figure>
+</div>
+<p>Select a name for your DB instance, set the master username as “mlflow” and tick the option “Auto generate a password” so Amazon RDS generate a password automatically.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/db_settings.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">db_settings.png</figcaption><p></p>
+</figure>
+</div>
+<p>Finally, on the section “Additional configuration” specify a database name so RDS automatically creates an initial database for you :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/db_configuration.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">db_configuration.png</figcaption><p></p>
+</figure>
+</div>
+<p>You can use the default values for all the other configurations.</p>
+<p>Take note of the following information:</p>
+<ul>
+<li>master username</li>
+<li>password</li>
+<li>initial database name</li>
+<li>endpoint</li>
+</ul>
+<p>Once the DB instance is created, go to the RDS console, select the new db and under “Connectivity &amp; security” select the VPC security group. Modify the security group by adding a new inbound rule that allows postgreSQL connections on the port 5432 from the security group of the EC2 instance. This way, the server will be able to connect to the postgres database :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MLOps_Zoomcamp_Module_2_files/figure-html/postgresql_inbound_rule.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">postgresql_inbound_rule.png</figcaption><p></p>
+</figure>
+</div>
+<ol start="5" type="1">
+<li>Connect to the EC2 instance and launch the tracking server.</li>
+</ol>
+<p>Go to the EC2 Console and find the instance launched on the step 2. Click on “Connect” and then follow the steps described in the tab “SSH”.</p>
+<p>Run the following commands to install the dependencies, configure the environment and launch the server:</p>
+<ul>
+<li>sudo yum update</li>
+<li>pip3 install mlflow boto3 psycopg2-binary</li>
+<li>aws configure # you’ll need to input your AWS credentials here</li>
+<li>mlflow server -h 0.0.0.0 -p 5000 –backend-store-uri postgresql://DB_USER:DB_PASSWORD@DB_ENDPOINT:5432/DB_NAME –default-artifact-root s3://S3_BUCKET_NAME</li>
+</ul>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Before launching server
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before launching the server, check that the instance can access the s3 bucket created in the step number 3. To do that, just run this command from the EC2 instance: <code>aws s3 ls</code>. You should see the bucket listed in the result.</p>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Access the remote tracking server from your local machine.</li>
+</ol>
+<p>Open a new tab on your web browser and go to this address: <code>http://&lt;EC2_PUBLIC_DNS&gt;:5000</code> (you can find the instance’s public DNS by checking the details of your instance in the EC2 Console).</p>
 <section id="configuring-ml-flow" class="level4">
-<h4 class="anchored" data-anchor-id="configuring-ml-flow">2.6.4 Configuring ML Flow</h4>
+<h4 class="anchored" data-anchor-id="configuring-ml-flow">2.6.5 Configuring ML Flow</h4>
 <p>Configuration will be different depending on the context. The three main aspects to consider are :</p>
 <p><code>Backend store</code> - local filesystem - SQLAlchemy compatible DB (e.g.&nbsp;SQLite)</p>
 <p><code>Artifacts store</code> - local filesystem - remote (e.g.&nbsp;s3 bucket)</p>
 <p><code>Tracking server</code> - no tracking server - localhost - remote</p>
 </section>
 </section>
-</section>
-<section id="video-2.6-timestamp-4-mins" class="level1">
-<h1>video 2.6 timestamp 4 mins</h1>
 <section id="mlflow-benefits-limitations-and-alternatives" class="level3">
 <h3 class="anchored" data-anchor-id="mlflow-benefits-limitations-and-alternatives">2.7 MLflow: benefits, limitations and alternatives</h3>
 <section id="remote-tracking-server" class="level4">
