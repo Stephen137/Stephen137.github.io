@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-05-29">
+
+<title>Into the Unknown - Power BI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Power BI</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">TIL</div>
+                <div class="quarto-category">Power BI</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 29, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">0. Motivation</a></li>
+  <li><a href="#what-is-power-bi" id="toc-what-is-power-bi" class="nav-link" data-scroll-target="#what-is-power-bi">1. What is Power BI ?</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">1.1 Data Sources</a></li>
+  <li><a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation">1.2 Data Transformation</a></li>
+  <li><a href="#data-modeling" id="toc-data-modeling" class="nav-link" data-scroll-target="#data-modeling">1.3 Data Modeling</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">1.4 Data Visualization</a></li>
+  <li><a href="#reports-and-dashboards" id="toc-reports-and-dashboards" class="nav-link" data-scroll-target="#reports-and-dashboards">1.5 Reports and Dashboards</a></li>
+  <li><a href="#sharing-collaboration" id="toc-sharing-collaboration" class="nav-link" data-scroll-target="#sharing-collaboration">1.6 Sharing &amp; collaboration</a></li>
+  <li><a href="#data-refresh" id="toc-data-refresh" class="nav-link" data-scroll-target="#data-refresh">1.7 Data Refresh</a></li>
+  <li><a href="#natural-language-qa" id="toc-natural-language-qa" class="nav-link" data-scroll-target="#natural-language-qa">1.8 Natural Language Q&amp;A</a></li>
+  <li><a href="#integration-with-other-tools" id="toc-integration-with-other-tools" class="nav-link" data-scroll-target="#integration-with-other-tools">1.9 Integration with Other Tools</a></li>
+  <li><a href="#comparison-between-power-bi-and-looker" id="toc-comparison-between-power-bi-and-looker" class="nav-link" data-scroll-target="#comparison-between-power-bi-and-looker">2.0 Comparison between Power BI and Looker</a></li>
+  <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway">Key Takeaway</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="motivation" class="level3">
+<h3 class="anchored" data-anchor-id="motivation">0. Motivation</h3>
+<p>Outside of Excel spreadsheets, my first introduction to interactive visualization tools was Tableau. Since then I have also become familiar with Looker Studio, which I used for my recent data engineering capstone project.</p>
+<p>Based on the job specs that I have seen lately, Power BI seems to be widely used. I decided I’d best familiarise myself with it and try to recreate the dashboard I created in Looker Studio.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/535249fe-b160-429f-8d69-1aae8f012c61.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Looker.PNG</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="what-is-power-bi" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-power-bi">1. What is Power BI ?</h3>
+<p><a href="https://powerbi.microsoft.com/en-gb/">Power BI</a> is a powerful business intelligence tool developed by Microsoft. It allows users to analyze data and share insights in the form of interactive visualizations, reports, and dashboards. Here’s a brief overview of Power BI’s key components and features:</p>
+<p><code>Data Sources</code><br>
+Power BI can connect to a wide range of data sources, including databases, spreadsheets, online services, and cloud-based platforms. It supports both structured and unstructured data.</p>
+<p><code>Data Transformation</code><br>
+With <a href="https://powerquery.microsoft.com/en-us/">Power Query</a>, a data preparation tool integrated into Power BI, you can cleanse, transform, and shape data from multiple sources to create a unified view. This includes tasks like filtering, merging, and splitting data.</p>
+<p><code>Data Modeling</code><br>
+Power BI’s data modeling capabilities enable you to define relationships between different tables and create calculated columns and measures using <a href="https://learn.microsoft.com/en-us/dax/">DAX (Data Analysis Expressions)</a> formula language. This helps in organizing and enriching the data for analysis.</p>
+<p><code>Data Visualization</code><br>
+Power BI offers a wide range of visualization options, including charts, graphs, maps, tables, and custom visuals. You can drag and drop data fields onto the canvas to create interactive visualizations that provide insights into your data.</p>
+<p><code>Reports and Dashboards</code><br>
+Power BI allows you to combine multiple visualizations into interactive reports and create personalized dashboards. Reports provide a detailed view of data, while dashboards offer a high-level overview with the ability to drill down into specific areas of interest.</p>
+<p><code>Sharing and Collaboration</code><br>
+You can share your Power BI reports and dashboards with others within your organization or externally. Power BI supports various sharing options, such as publishing to the web, embedding in websites or SharePoint, and secure sharing through Power BI service.</p>
+<p><code>Data Refresh</code><br>
+Power BI enables you to schedule data refreshes to ensure that your reports and dashboards stay up to date with the latest information. It supports automatic refresh from a variety of data sources, including on-premises databases and cloud-based services.</p>
+<p><code>Natural Language Q&amp;A</code><br>
+Power BI offers a <a href="https://learn.microsoft.com/en-us/power-bi/natural-language/q-and-a-intro">natural language query</a> feature that allows users to ask questions in plain English and receive relevant visualizations as answers. This simplifies data exploration and analysis for non-technical users.</p>
+<p><code>Integration with Other Tools</code><br>
+Power BI integrates seamlessly with other Microsoft tools such as Excel, SharePoint, Teams, and Azure. It also provides APIs and connectors to connect with third-party applications and services.</p>
+<p>Power BI comes in different editions, including Power BI Desktop (a free Windows application for report authoring), Power BI Pro (a subscription-based service for collaboration and sharing), and Power BI Premium (a dedicated capacity-based offering for enterprise-scale deployments).</p>
+<p>Overall, Power BI empowers users to turn raw data into actionable insights, enabling better decision-making and data-driven strategies within organizations.</p>
+</section>
+<section id="data-sources" class="level3">
+<h3 class="anchored" data-anchor-id="data-sources">1.1 Data Sources</h3>
+<p>The Data Sources feature in Power BI refers to the wide range of data connections and integration capabilities that Power BI offers to retrieve and import data from various sources.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/9fe859fa-6f5a-4dda-8245-9496e7531ce5.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">get_data.PNG</figcaption><p></p>
+</figure>
+</div>
+<p><code>Data Connectivity:</code><br>
+Power BI supports a diverse set of data connectivity options, allowing you to connect to various data sources. This includes popular databases like SQL Server, Oracle, MySQL, and PostgreSQL, as well as cloud-based platforms such as Azure SQL Database, Azure Data Lake Storage, Google BigQuery, Snowflake and Amazon Redshift. It also supports files in formats like Excel, CSV, XML, JSON and parquet.</p>
+<p>I was able to import my BiqQuery dataset very easily :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/ffbf589c-dd87-410c-ad9c-cffb8aed048f.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">get_data_bigquery.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/b2d2023e-7ee4-46e1-9fc7-02e9d64fde1f.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">import_bigquery.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/041d8991-e70f-46a8-9103-6ba90ca891bf.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">load_bigquery.PNG</figcaption><p></p>
+</figure>
+</div>
+<p><code>On-Premises Data:</code><br>
+Power BI enables you to connect to on-premises data sources securely. You can establish connections to databases and servers within your organization’s network using technologies like DirectQuery, which allows real-time querying of on-premises data, or Power BI Gateway, a tool that facilitates secure data transfer between on-premises and cloud environments.</p>
+<p><code>Online Services:</code><br>
+Power BI provides connectors to numerous online services, allowing you to directly import data from sources such as SharePoint Online, Dynamics 365, Salesforce, Google Analytics, Azure services (like Azure Blob Storage and Azure Data Factory), and more. These connectors facilitate seamless integration with cloud-based platforms and services.</p>
+<p><code>Web Data Connector:</code><br>
+Power BI includes a Web Data Connector feature that allows you to import data from web-based sources and APIs that expose data in tabular formats. With this feature, you can specify the URL of a web page or an API endpoint, define the data extraction logic, and retrieve the data directly into Power BI for analysis and visualization.</p>
+<p><code>Streaming Data:</code><br>
+Power BI supports real-time data ingestion through streaming data sources. You can connect to streaming platforms like Azure Event Hubs, Apache Kafka, and PubNub to continuously ingest and visualize data as it arrives. This is particularly useful for monitoring live data and generating real-time insights.</p>
+<p><code>Custom Connectors:</code><br>
+Power BI allows the creation of custom connectors to connect to proprietary or unique data sources. You can develop custom connectors using Power BI’s software development kit (SDK), which enables integration with specialized data systems or APIs that are not natively supported by Power BI.</p>
+<p><code>Data Refresh:</code><br>
+Power BI offers options for data refresh to ensure that your reports and dashboards reflect the latest data. You can configure scheduled refreshes for your data sources, defining the frequency and credentials required for accessing and updating the data. Power BI also supports direct query connections, where data is queried in real-time without requiring data import or refresh.</p>
+<p>By providing a broad range of data connections and integration capabilities, Power BI empowers users to connect to various data sources, both on-premises and in the cloud, enabling comprehensive data analysis and visualization. It offers flexibility in retrieving data from different platforms, systems, and formats, ensuring that users can leverage their data regardless of its source.</p>
+</section>
+<section id="data-transformation" class="level3">
+<h3 class="anchored" data-anchor-id="data-transformation">1.2 Data Transformation</h3>
+<p>I used <a href="https://www.getdbt.com/">dbt</a> in my capstone Data Engineering project to transform my data. Power BI also offers a Data Transformation feature, that allow users to transform, cleanse, and shape their data before it is loaded into the Power BI model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/1bf615cb-8ed2-4251-9060-a73dd3047c14.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">transform.PNG</figcaption><p></p>
+</figure>
+</div>
+<p><code>Data Extraction:</code><br>
+Power Query enables users to connect to various data sources and extract data into Power BI for analysis. It supports structured and unstructured data from sources such as databases, files (Excel, CSV, XML, JSON), web pages, and online services. You can import data from single or multiple sources, combining them into a unified view.</p>
+<p><code>Data Cleansing:</code><br>
+Power Query provides a range of data cleansing functions to improve the quality and consistency of your data. You can remove duplicates, filter out irrelevant or erroneous data, handle missing values, correct data types, and perform other data cleansing operations to ensure accurate analysis.</p>
+<p><code>Data Transformation:</code><br>
+Power Query allows you to transform your data by applying various operations. You can perform tasks like splitting columns, merging data from different sources, adding calculated columns based on specific rules or formulas, aggregating data using grouping operations, and pivoting and unpivoting data to restructure it for analysis.</p>
+<p><code>Data Shaping:</code><br>
+Power Query provides a user-friendly interface for shaping your data. You can easily rearrange columns, rename fields, sort and filter data, change data types, and transpose rows and columns. Power Query offers a wide range of transformation options, making it easy to shape your data to match your analysis needs.</p>
+<p><code>Formula Language (M and Power Query Formula Language):</code><br>
+Power Query uses a formula language called M to define data transformations. The M language provides a rich set of functions and operators that allow you to perform complex data transformations. It also supports custom functions and expressions, giving you flexibility in creating advanced data transformations.</p>
+<p><code>Applied Steps:</code><br>
+Power Query records each step of the data transformation process as an “applied step.” These steps are recorded in the Power Query Editor and can be viewed, modified, or deleted. Applied steps provide a transparent and reproducible record of the data transformation operations applied to your data.</p>
+<p><code>Query Dependencies and Refresh:</code><br>
+Power Query manages the dependencies between queries and allows you to define relationships between them. If data in one query changes, Power Query automatically updates the dependent queries. You can also schedule data refreshes to keep your data up to date.</p>
+<p><code>Query Folding:</code><br>
+Power Query aims to optimize performance by utilizing query folding. Query folding is a process where Power Query pushes data transformations to the data source, allowing for efficient data processing. This can significantly improve performance when working with large datasets.</p>
+<p>By offering powerful data extraction, cleansing, transformation, and shaping capabilities, Power Query within Power BI enables users to prepare their data for analysis in a flexible and intuitive manner. It provides a robust set of tools and functions to handle a wide range of data transformation scenarios, empowering users to efficiently transform and shape their data to meet their analytical needs.</p>
+</section>
+<section id="data-modeling" class="level3">
+<h3 class="anchored" data-anchor-id="data-modeling">1.3 Data Modeling</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/273675fe-d71e-4653-b540-e7bba1b12a06.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">modeling.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>The Data Modeling feature in Power BI refers to the capabilities that allow users to define relationships between data tables, create calculated columns and measures, and organize data for analysis.</p>
+<p><code>Relationships:</code><br>
+Power BI allows you to establish relationships between tables in your data model. Relationships define how tables are connected based on common fields or keys. You can create one-to-one, one-to-many, or many-to-many relationships. By defining relationships, you enable cross-table analysis and the ability to combine data from multiple tables.</p>
+<p><code>Cardinality and Cross Filtering:</code><br>
+Relationships in Power BI have cardinality settings that define how records in one table relate to records in another table. Cardinality options include one-to-one, one-to-many, and many-to-many. Additionally, you can set up cross-filtering behavior to control how filters on one table affect related tables.</p>
+<p><code>Hierarchies:</code><br>
+Power BI allows you to define hierarchies within your data model. Hierarchies are structured relationships between columns that represent different levels of detail. For example, you can define a hierarchy for dates with levels like year, quarter, month, and day. Hierarchies enable drill-down and slice-and-dice analysis.</p>
+<p><code>Calculated Columns:</code><br>
+Power BI allows you to create calculated columns in your data model. Calculated columns are derived from existing columns in a table using formula expressions written in the DAX (Data Analysis Expressions) language. Calculated columns can perform calculations, apply conditional logic, or concatenate strings, among other operations.</p>
+<p><code>Measures:</code><br>
+Measures are calculations that perform aggregations on the data, such as sum, average, count, or other statistical operations. Power BI supports the creation of measures using the DAX language. Measures are typically used in conjunction with visualizations to perform calculations at different levels of granularity and provide meaningful insights.</p>
+<p><code>Data Categories:</code><br>
+Power BI allows you to assign data categories to columns in your data model. Data categories provide additional metadata about the columns and enable Power BI to automatically apply appropriate visualizations and formatting based on the column’s semantic role, such as date, time, currency, or geographic data.</p>
+<p><code>Data View and Relationships View:</code><br>
+Power BI provides two primary views for managing your data model. The Data View allows you to see and manipulate the data tables, columns, and relationships. The Relationships View provides a visual representation of the tables and their relationships, making it easy to create, edit, or delete relationships.</p>
+<p><code>Query Dependencies:</code><br>
+Power BI manages the dependencies between queries and tables. When you define relationships between tables, Power BI takes into account the queries that generate those tables. If a query changes, Power BI automatically updates the dependent tables and their relationships.</p>
+<p>By leveraging the Data Modeling feature in Power BI, users can organize their data into a coherent structure, define relationships between tables, and create calculated columns and measures to facilitate advanced analysis. This enables users to explore and gain insights from their data by performing complex calculations, aggregations, and comparisons across multiple tables and columns.</p>
+</section>
+<section id="data-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="data-visualization">1.4 Data Visualization</h3>
+<p>The Data Visualization feature in Power BI refers to the capabilities that allow users to create interactive and visually appealing representations of their data. Power BI provides a wide range of visualization options to help users explore, analyze, and communicate insights effectively.</p>
+<p>I was able to replicate my Looker Studio dashboard without too much difficulty :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/328d0188-6ba9-4b6b-86b1-cb3e1f4bc32c.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">power_bi_QA.PNG</figcaption><p></p>
+</figure>
+</div>
+<p><code>Chart Types:</code><br>
+Power BI offers a variety of chart types, including bar charts, column charts, line charts, area charts, pie charts, scatter plots, tree maps, heat maps, and many more. These chart types cater to different data scenarios and enable users to visualize their data in meaningful ways.</p>
+<p><code>Custom Visuals:</code><br>
+In addition to the built-in chart types, Power BI supports custom visuals created by the community or third-party developers. These custom visuals expand the range of available visualizations and allow users to find or create specific visualizations tailored to their unique data and analysis requirements.</p>
+<p><code>Interactive Visualizations:</code> Power BI visualizations are interactive, allowing users to interact with the data and explore insights. Users can filter data by selecting data points on a chart, drill down into hierarchies or categories, highlight data points for comparison, and apply slicers to dynamically filter visualizations.</p>
+<p><code>Data Labels and Tooltips:</code><br>
+Power BI enables users to display data labels on visualizations to provide additional information, such as values or percentages, directly on the chart. Tooltips can be added to provide more details about specific data points when users hover over them, enhancing the understanding of the data.</p>
+<p><code>Conditional Formatting:</code><br>
+Power BI allows users to apply conditional formatting to visualizations based on data values. Users can define formatting rules that dynamically change colors, font sizes, or other visual attributes based on specified criteria, helping to emphasize important data patterns or outliers.</p>
+<p><code>Map Visualizations:</code><br>
+Power BI includes mapping capabilities that allow users to create geospatial visualizations. Users can plot data points on maps, create thematic maps with color gradients or bubbles to represent data values, and perform geographic analysis using features like drill-down maps and heat maps.</p>
+<p><code>Hierarchy and Drill-Down:</code><br>
+Power BI enables users to represent hierarchical data structures visually. Users can create visualizations with drill-down capabilities, allowing them to navigate through hierarchical levels to explore data in a more granular manner and uncover deeper insights.</p>
+<p><code>Report Layout and Composition:</code><br>
+Power BI provides a flexible canvas for organizing visualizations into reports and dashboards. Users can arrange visuals, add text boxes, images, and shapes, and design visually appealing layouts to present insights effectively. Power BI also supports the creation of report pages to present different views or aspects of the data.</p>
+<p><code>Export and Sharing:</code><br>
+Power BI allows users to export visualizations and reports in various formats, such as PDF, PowerPoint, or Excel, making it easy to share insights with others. Visualizations can also be published and shared with others within the organization or embedded in websites or SharePoint for broader access.</p>
+<p>By leveraging the Data Visualization feature in Power BI, users can create engaging, interactive, and informative visual representations of their data. These visualizations help users understand trends, identify patterns, and communicate insights effectively to make informed decisions and drive data-driven strategies.</p>
+</section>
+<section id="reports-and-dashboards" class="level3">
+<h3 class="anchored" data-anchor-id="reports-and-dashboards">1.5 Reports and Dashboards</h3>
+<p>The Reports and Dashboards feature in Power BI allows users to create interactive and visually appealing presentations of their data insights.</p>
+<p><code>Reports:</code><br>
+Reports in Power BI are multi-page documents that contain visualizations, tables, and other elements to present data insights. Users can create reports by arranging visualizations, adding text boxes, images, and shapes, and customizing the layout to suit their needs. Reports provide a comprehensive view of data analysis and allow users to drill down into details, apply filters, and interact with the data.</p>
+<p><code>Visualizations:</code><br>
+Power BI offers a wide range of visualizations to present data in meaningful ways. Users can choose from various chart types, maps, tables, matrices, cards, and more to represent data patterns, trends, and comparisons. Visualizations are interactive, allowing users to explore the data by filtering, highlighting, or drilling down into specific elements.</p>
+<p><code>Interactivity:</code><br>
+Power BI reports are highly interactive. Users can apply filters, slicers, or cross-highlighting to dynamically update visualizations based on selected data points. Interactivity allows users to explore different dimensions of the data, gain deeper insights, and answer ad-hoc questions.</p>
+<p><code>Bookmarking:</code><br>
+Power BI provides bookmarking functionality, allowing users to capture specific views of a report and save them for later reference. Users can create bookmarks that remember the state of filters, slicers, and visualizations, making it easier to revisit and share specific analysis scenarios.</p>
+<p><code>Data Exploration:</code><br>
+Power BI reports enable users to explore data in a self-service manner. Users can drill down into hierarchies, apply filters, sort and group data, and interact with visualizations to uncover insights and discover new patterns. This data exploration capability empowers users to derive actionable insights without relying on predefined analysis paths.</p>
+<p><code>Dashboards:</code><br>
+Dashboards in Power BI are single-page collections of visualizations, reports, and other elements that provide a consolidated view of important metrics and KPIs. Users can pin visualizations from multiple reports onto a dashboard to create a focused and customized view of key insights. Dashboards are interactive and can be shared with others for real-time monitoring and collaboration.</p>
+<p><code>Real-Time Updates:</code><br>
+Power BI supports real-time data updates for reports and dashboards. Users can connect to streaming data sources or configure scheduled data refreshes to ensure that the visuals and insights reflect the most up-to-date information. Real-time updates are particularly useful for monitoring live data and making data-driven decisions in real-time.</p>
+<p><code>Sharing and Collaboration:</code><br>
+Power BI allows users to share reports and dashboards with others within the organization. Users can set permissions to control access and collaborate with colleagues by allowing them to view, interact with, and annotate the shared content. Sharing and collaboration features facilitate teamwork and enable stakeholders to stay informed and aligned.</p>
+<p>By leveraging the Reports and Dashboards feature in Power BI, users can create comprehensive reports with interactive visualizations, explore data in a self-service manner, and consolidate key insights into dashboards for real-time monitoring and collaboration. This empowers users to communicate data insights effectively, drive data-driven decisions, and facilitate a culture of data-driven decision-making within the organization.</p>
+</section>
+<section id="sharing-collaboration" class="level3">
+<h3 class="anchored" data-anchor-id="sharing-collaboration">1.6 Sharing &amp; collaboration</h3>
+<p>The Sharing &amp; Collaboration feature in Power BI enables users to share their reports, dashboards, and data insights with others within their organization or external stakeholders.</p>
+<p><code>Sharing:</code><br>
+Power BI allows users to share their reports and dashboards with specific individuals or groups within their organization. Users can specify the level of access for each recipient, such as view-only, edit, or sharing permissions. Sharing can be done through email invitations, direct links, or by embedding reports and dashboards in other applications or websites.</p>
+<p><code>Collaboration:</code><br>
+Power BI supports collaboration among team members working on the same reports or dashboards. Users with appropriate permissions can collaborate in real-time, making edits, adding comments, and discussing insights within the context of the shared content. Collaboration features facilitate teamwork, knowledge sharing, and collective decision-making.</p>
+<p><code>Annotations and Comments:</code><br>
+Power BI allows users to add annotations and comments to reports and dashboards. Annotations can be used to highlight specific insights, add explanatory text, or provide additional context to the shared content. Users can also engage in comment threads to discuss specific data points, visualizations, or analysis findings.</p>
+<p><code>Version History and Rollback:</code><br>
+Power BI maintains a version history of reports and dashboards, allowing users to track changes over time. This feature enables users to review previous versions, compare changes, and roll back to a previous state if needed. Version history provides an audit trail and ensures data integrity in collaborative environments.</p>
+<p><code>Scheduled Subscriptions:</code><br>
+Power BI enables users to set up scheduled subscriptions for reports and dashboards. Subscriptions automatically deliver the latest versions of the content to recipients via email or other channels. Scheduled subscriptions ensure that stakeholders stay informed and receive timely updates without manually accessing the Power BI service.</p>
+<p><code>Row-Level Security:</code><br>
+Power BI offers row-level security capabilities, allowing users to restrict access to specific rows of data based on user roles or organizational hierarchy. This feature ensures that users only see the data that they are authorized to view, maintaining data confidentiality and compliance with data governance policies.</p>
+<p><code>Usage Metrics and Auditing:</code><br>
+Power BI provides usage metrics and auditing capabilities to monitor user activity, track views, interactions, and sharing activities. Administrators can access usage statistics to understand how reports and dashboards are being utilized, identify popular content, and optimize the sharing and collaboration experience.</p>
+<p><code>External Sharing:</code><br>
+Power BI also enables users to share reports and dashboards with external stakeholders outside their organization. Users can securely share content with clients, partners, or suppliers by granting them guest access. External sharing features provide a way to collaborate and communicate data insights with external parties while maintaining control over data access and permissions.</p>
+<p>By leveraging the Sharing &amp; Collaboration feature in Power BI, users can effectively share their data insights, collaborate with colleagues, and engage stakeholders to foster data-driven decision-making across the organization. The feature promotes teamwork, knowledge sharing, and allows for seamless collaboration within and beyond organizational boundaries.</p>
+</section>
+<section id="data-refresh" class="level3">
+<h3 class="anchored" data-anchor-id="data-refresh">1.7 Data Refresh</h3>
+<p>The Data Refresh feature in Power BI enables users to keep their reports, dashboards, and data models up to date with the latest data from the underlying data sources.</p>
+<p><code>Data Source Connectivity:</code><br>
+Power BI supports a wide range of data sources, including databases, cloud services, spreadsheets, web APIs, and more. The Data Refresh feature allows users to establish connections to these data sources and retrieve the data into Power BI for analysis and visualization.</p>
+<p><code>Scheduled Refresh:</code><br>
+Power BI allows users to schedule automated data refreshes based on predefined intervals. Users can set up refresh schedules daily, weekly, or at custom intervals to ensure that the data in their reports and dashboards is regularly updated. Scheduled refreshes can be configured to occur during off-peak hours to minimize disruption.</p>
+<p><code>Direct Query:</code><br>
+In addition to scheduled refresh, Power BI offers a Direct Query mode for certain data sources. With Direct Query, Power BI retrieves data directly from the source in real-time, eliminating the need for data import and refresh. This is particularly useful when working with large or rapidly changing datasets.</p>
+<p><code>Gateway:</code><br>
+The Power BI Gateway is a component that enables secure data transfer between Power BI and on-premises data sources. The gateway allows users to refresh data from on-premises databases or data sources located behind the organization’s firewall. It ensures data security and provides a secure connection between Power BI and the on-premises data sources.</p>
+<p><code>Data Source Credentials:</code><br>
+Power BI allows users to store and manage data source credentials securely. Users can specify authentication methods, such as Windows authentication, username/password, or OAuth, to access the data sources. These credentials can be encrypted and managed centrally to ensure data security and compliance.</p>
+<p><code>Data Refresh Notifications:</code><br>
+Power BI provides notifications and alerts related to data refreshes. Users can receive email notifications to stay informed about the status and success of data refresh operations. Notifications help users identify and address any issues that may arise during the refresh process.</p>
+<p><code>Incremental Refresh:</code><br>
+Power BI offers an Incremental Refresh feature that allows users to refresh only a subset of data that has changed since the last refresh. This can significantly improve the refresh performance, especially when dealing with large datasets where only a portion of the data changes regularly.</p>
+<p><code>On-Demand Refresh:</code><br>
+Power BI provides the flexibility to manually trigger data refreshes on-demand. Users can refresh their reports and dashboards whenever they need the most up-to-date data. On-demand refresh allows for immediate updates and is useful in scenarios where real-time data is critical.</p>
+<p>By leveraging the Data Refresh feature in Power BI, users can ensure that their reports, dashboards, and data models are always up to date with the latest information from the underlying data sources. The feature supports scheduled refreshes, direct query, incremental refresh, and on-demand refresh to accommodate different data scenarios and ensure accurate and timely data analysis and visualization.</p>
+</section>
+<section id="natural-language-qa" class="level3">
+<h3 class="anchored" data-anchor-id="natural-language-qa">1.8 Natural Language Q&amp;A</h3>
+<p>The Natural Language Q&amp;A feature in Power BI allows users to query and explore their data using natural language queries. Instead of writing complex SQL queries or using predefined filters and slicers, users can simply type or speak their questions in plain language and Power BI will generate visualizations and insights based on the queried data.</p>
+<p>Initial suggestions are provided :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/814ed2e8-8465-4f41-9ab2-e3bca0926c1d.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">QnA_1.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>however as with Chat GT, a fair amount of prompt engineering will be required before the full benefits of this feature can be harnessed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/907288c2-f72f-4f5e-83a6-c5953e0fb945.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">QnA_getting_started.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/ad1e623d-83bf-4c60-9b33-d5880f700227.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">field_synonyms_2.PNG</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Power_BI_files/figure-html/e01e78aa-dd9c-42a7-9af3-3995398e6a27.PNG" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">QnA_field_synonyms.PNG</figcaption><p></p>
+</figure>
+</div>
+<p>Over time the dictionary will become more refined and tailored to the particular dataset.</p>
+<p><code>Conversational Querying:</code><br>
+Power BI’s Natural Language Q&amp;A feature enables users to have a conversation with their data. Users can type or speak questions using natural language, just like they would ask a question to a person. For example, users can ask questions like “Show me sales by region” or “What are the top-selling products last month?”</p>
+<p><code>Auto-Visualization:</code><br>
+Power BI automatically generates visualizations and reports based on the queried data and the intent of the question. The system analyzes the question, identifies relevant data sources, and selects the appropriate visualizations to represent the insights. Users can quickly get visual answers to their questions without the need to manually create charts or reports.</p>
+<p><code>Smart Data Exploration:</code><br>
+The Natural Language Q&amp;A feature allows users to explore their data interactively. Users can refine their questions, add follow-up questions, apply filters, and drill down into specific details to get deeper insights. Power BI understands the context of the conversation and dynamically updates the visualizations based on the user’s interactions.</p>
+<p><code>Semantic Understanding:</code><br>
+Power BI utilizes advanced natural language processing (NLP) techniques to understand the meaning and intent behind the user’s queries. It can interpret variations in question phrasing, handle synonyms, and identify relationships between different data elements. The system uses semantic understanding to generate accurate results and relevant visualizations.</p>
+<p><code>Data Validation and Corrections:</code><br>
+Power BI provides instant feedback during the query process. If the system detects any data inconsistencies or errors, it offers suggestions or prompts the user for clarifications. This helps users refine their queries and ensure the accuracy of the generated insights.</p>
+<p><code>Natural Language Generation:</code><br>
+In addition to understanding natural language queries, Power BI can also generate textual descriptions and narratives based on the queried data. It can provide summaries, explanations, or contextual information about the insights, making it easier for users to understand and communicate the findings to others.</p>
+<p><code>Integration with Other Features:</code><br>
+The Natural Language Q&amp;A feature seamlessly integrates with other Power BI features. Users can combine natural language queries with data exploration, data modeling, and data visualization capabilities. They can create reports and dashboards based on the generated insights, share them with others, and collaborate on data-driven decision-making.</p>
+<p>The Natural Language Q&amp;A feature in Power BI simplifies the process of querying and exploring data by allowing users to ask questions in natural language. It eliminates the need for technical expertise or writing complex queries, making data analysis and exploration more accessible to a wider audience. With this feature, users can quickly gain insights, make data-driven decisions, and uncover valuable information hidden within their data.</p>
+</section>
+<section id="integration-with-other-tools" class="level3">
+<h3 class="anchored" data-anchor-id="integration-with-other-tools">1.9 Integration with Other Tools</h3>
+<p>Power BI offers integration with various other tools and platforms to enhance its functionality and provide users with a seamless end-to-end data analytics and visualization experience.</p>
+<p><code>Microsoft Office Integration:</code><br>
+Power BI integrates closely with Microsoft Office applications such as Excel, PowerPoint, and SharePoint. Users can embed Power BI reports and dashboards directly into Excel workbooks or PowerPoint presentations, enabling them to leverage the rich visualizations and interactive capabilities of Power BI within familiar Office applications. Power BI content can also be published and shared through SharePoint for easy access and collaboration.</p>
+<p><code>Azure Integration:</code><br>
+Power BI is tightly integrated with Microsoft Azure, Microsoft’s cloud computing platform. Users can leverage Azure services such as Azure Data Factory, Azure SQL Database, Azure Machine Learning, and more as data sources for Power BI. This integration enables users to leverage advanced analytics capabilities and cloud-based data storage and processing in conjunction with Power BI’s visualization and reporting features.</p>
+<p><code>SQL Server Integration:</code><br>
+Power BI seamlessly integrates with Microsoft SQL Server, allowing users to connect directly to SQL Server databases and analyze data in real-time. Users can create reports and visualizations based on SQL Server data, leverage SQL Server Analysis Services (SSAS) for advanced modeling and analytics, and use SQL Server Reporting Services (SSRS) to publish and share reports.</p>
+<p><code>Third-Party Integration:</code><br>
+Power BI supports integration with various third-party tools, services, and data sources. It provides connectors and APIs to connect to popular applications and platforms such as Salesforce, Google Analytics, Azure Data Lake, SharePoint Online, and many more. These integrations enable users to pull data from multiple sources, combine them, and visualize insights within Power BI.</p>
+<p><code>Custom Visualizations:</code><br>
+Power BI allows users to extend its visualization capabilities by importing custom visualizations developed by the community or by creating their own visualizations using Power BI’s developer tools and APIs. This integration enables users to incorporate specialized or industry-specific visualizations into their reports and dashboards, enhancing the visualization options and addressing specific business requirements.</p>
+<p><code>Power Platform Integration:</code><br>
+Power BI is part of the Microsoft Power Platform, which also includes Power Apps and Power Automate (formerly Microsoft Flow). Users can leverage the integration between these tools to create end-to-end data-driven solutions. For example, they can use Power Apps to build custom data entry forms that interact with Power BI data, or use Power Automate to automate workflows and trigger actions based on Power BI data.</p>
+<p><code>Application Programming Interface (API):</code><br>
+Power BI provides a comprehensive REST API that allows developers to programmatically interact with Power BI functionality. Developers can use the API to embed Power BI reports and dashboards into custom applications, automate report generation and distribution, manage Power BI resources, and perform data operations such as data refreshes or dataset creation.</p>
+<p>By integrating with other tools and platforms, Power BI extends its capabilities and provides users with a connected and comprehensive data analytics ecosystem. These integrations allow users to leverage existing investments in Microsoft technologies, connect to a wide range of data sources, extend visualization options, and build end-to-end data-driven solutions that seamlessly integrate with other business applications and processes.</p>
+</section>
+<section id="comparison-between-power-bi-and-looker" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-between-power-bi-and-looker">2.0 Comparison between Power BI and Looker</h3>
+<p><code>User Interface and Ease of Use:</code> - Power BI provides a user-friendly interface with intuitive drag-and-drop features, making it easy for users of all skill levels to create visualizations and reports.</p>
+<ul>
+<li>Looker, on the other hand, has a more advanced interface that may require technical expertise and training to fully utilize its capabilities.</li>
+</ul>
+<p><code>Data Connectivity:</code> - Power BI offers a wide range of data connectors, allowing users to connect to various data sources, including databases, cloud services, and web APIs.</p>
+<ul>
+<li>Looker also provides multiple data connectors, but it primarily focuses on SQL-based databases and data warehouses.</li>
+</ul>
+<p><code>Data Transformation and Modeling:</code> - Power BI has robust data transformation capabilities, allowing users to clean, transform, and shape data within the tool itself. It also offers a flexible data modeling feature with relationships between tables.</p>
+<ul>
+<li>Looker relies on its underlying data model and typically requires data transformations and modeling to be performed in the connected data source.</li>
+</ul>
+<p><code>Natural Language Processing (NLP):</code> - Power BI includes a Natural Language Q&amp;A feature that allows users to query data using plain language.</p>
+<ul>
+<li>Looker does not have a built-in NLP feature but provides a LookML-based query language that allows users to write customized queries.</li>
+</ul>
+<p><code>Customization and Extensions:</code> - Power BI offers a wide range of visualization options, and users can extend its capabilities by importing custom visualizations or creating their own with Power BI developer tools.</p>
+<ul>
+<li>Looker, on the other hand, provides a strong customization framework, allowing users to create custom visualizations and embed Looker components within other applications.</li>
+</ul>
+<p><code>Sharing and Collaboration:</code> - Power BI has robust sharing and collaboration features, allowing users to share reports, dashboards, and collaborate in real-time with colleagues.</p>
+<ul>
+<li>Looker also provides sharing and collaboration capabilities, but it primarily focuses on sharing through Looker’s web-based interface rather than embedding within external applications.</li>
+</ul>
+<p><code>Deployment Options:</code> - Power BI offers both cloud-based (Power BI Service) and on-premises (Power BI Report Server) deployment options.</p>
+<ul>
+<li>Looker is primarily a cloud-based platform, although it also supports on-premises deployment through the Looker on-premises offering.</li>
+</ul>
+<p><code>Pricing and Licensing:</code> - Power BI offers various pricing plans, including free and paid options, with different feature sets and data capacity limits.</p>
+<ul>
+<li>Looker’s pricing structure is typically based on a subscription model and can vary depending on factors such as user count, data size, and deployment options.</li>
+</ul>
+</section>
+<section id="key-takeaway" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaway">Key Takeaway</h3>
+<p>Looker is recognized for its advanced data modeling and exploration capabilities, customization options, and SQL-centric approach.</p>
+<p>Power BI, on the other hand, is known for its user-friendly interface, extensive data connectivity options, strong data transformation capabilities, and tight integration with the Microsoft ecosystem. The Natural Language QnA feature is a particularly interesting development.</p>
+<p>The choice between the two tools depends on specific business requirements, technical expertise, and preferences in terms of functionality, usability, and integration needs.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
