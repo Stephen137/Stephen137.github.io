@@ -1691,7 +1691,8 @@ variable "storage_class" {
 variable "BQ_DATASET" {
   description = "BigQuery Dataset that raw data (from GCS) will be written to"
   type = string
-  default = "trips_data_all"</code></pre>
+  default = "trips_data_all"
+}</code></pre>
 <p>Once we have configured the above Terraform files, there are only a few execution commands which makes it very convenient to work with.</p>
 <p><code>terraform init</code>: - Initializes &amp; configures the backend, installs plugins/providers, &amp; checks out an existing configuration from a version control</p>
 <p><code>terraform plan</code>: - Matches/previews local changes against a remote state, and proposes an Execution Plan.</p>

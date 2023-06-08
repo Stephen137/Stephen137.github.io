@@ -2,7 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/MLOps_Zoomcamp_Module_3/ML_Ops_Zoomcamp_Module_3.html",
+      "/posts/Weights&Biases/W&B.html",
       "/posts/Power_BI/Power_BI.html",
+      "/posts/Snowflake/Snowflake.html",
       "/posts/MLOps_Zoomcamp_Module_2/MLOps_Zoomcamp_Module_2.html",
       "/posts/Parkrun/Parkrun.html",
       "/posts/MLOps_Zoomcamp_Module_1/MLOps_Zoomcamp_Week_1.html",
