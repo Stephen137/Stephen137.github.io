@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,10 +91,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -140,31 +113,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -201,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">May 12, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -258,8 +235,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Fortunately, there are fantastic tools and a wealth of resources to support you. In this blog, we’ll focus on several principles underlying biomedical image analysis. We’ll learn how to explore multidimensional arrays, emphasize important features using masks and filters, extract specific measurements from objects, and compare multiple images or patients. While this only scratches the surface of the field, it will give us a firm foundation for advanced concepts like classification and segmentation. Throughout, we’ll rely on packages in Python’s core scientific computing ecosystem: ImageIO, NumPy, SciPy, and matplotlib. Let’s dive in.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/4e98677a-92a0-47ff-bbe8-5925e377ef2e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">overview.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/10713a20-7352-4426-8b4c-ced8007d0ee0-1-4e98677a-92a0-47ff-bbe8-5925e377ef2e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">overview.PNG</figcaption>
 </figure>
 </div>
 <section id="exploration" class="level2">
@@ -273,8 +250,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To access specific values from our image, we can slice out a single value or a range of index values along each dimension.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/a8720703-7dba-441b-8321-c95b233e7361.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">loading_images.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/5b4ed307-9cbe-444a-a5f7-68f500d8672f-1-a8720703-7dba-441b-8321-c95b233e7361.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">loading_images.PNG</figcaption>
 </figure>
 </div>
 <p>In this section, we’ll work with sections of a <a href="https://en.wikipedia.org/wiki/CT_scan">computed tomography (CT) scan</a> from <a href="http://www.cancerimagingarchive.net/about-the-cancer-imaging-archive-tcia/">The Cancer Imaging Archive</a>. CT uses a rotating X-ray tube to create a 3D image of the target area. The actual content of the image depends on the instrument used: photographs measure visible light, x-ray and CT measure radiation absorbance, and MRI scanners measure magnetic fields.</p>
@@ -336,8 +313,8 @@ Shape of image array: (512, 512)</code></pre>
 <p>Images are always acquired in a specific context. This information is often referred to as metadata. ImageIO loads available metadata into a dictionary, accessible through the meta attribute. This is especially important for DICOM files, which contain a lot of patient and acquisition information. Since meta is a Python dictionary, you can access specific information by indexing it with one of the available keys. This file, for example, includes a modality field. You can also call the keys method to list all of the available metadata.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/3e80685e-b400-47e4-95ad-8c447e0cdf6d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">metadata.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/016b4c3f-e23c-4a99-b559-2d8d0f02feac-1-3e80685e-b400-47e4-95ad-8c447e0cdf6d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">metadata.PNG</figcaption>
 </figure>
 </div>
 <p>ImageIO reads in data as Image objects. These are standard NumPy arrays with a dictionary of metadata.</p>
@@ -367,8 +344,8 @@ Shape of image array: (512, 512)</code></pre>
 <p>Visualization is fundamental to image analysis, and we’ll rely heavily on matplotlib and its <code>imshow()</code> function throughout this course. To draw a simple plot of a 2D image, first, import the PyPlot module from matplotlib. Next, call <code>pyplot.imshow()</code> and pass in the 2D image. If the image does not have color, add <code>cmap="gray"</code> to plot it in grayscale. Next, to reduce clutter, it’s common to turn off the axis ticks, labels, and frame with pyplot. axis <code>off</code>. Finally, call <code>show()</code> to render the image. And, voila: the inside of a human being.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/36277219-755d-4b2d-820d-0a82978e2984.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">plotting_images.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/ce8cc5c7-9ad9-4736-a767-16a482e8300f-1-36277219-755d-4b2d-820d-0a82978e2984.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">plotting_images.PNG</figcaption>
 </figure>
 </div>
 <p>Perhaps the most critical principle of image analysis is: look at our images!</p>
@@ -413,8 +390,8 @@ Shape of image array: (512, 512)</code></pre>
 <p>Images come in all shapes and sizes. This makes them versatile, but also complex. A standard grayscale image is the simplest type: it’s an array that can be indexed by rows and columns.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/0d898fa3-2790-43db-9fd2-f2914da77929.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">array_slicing.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/db790c40-c455-45c3-aa2b-e3866de95ece-1-0d898fa3-2790-43db-9fd2-f2914da77929.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">array_slicing.PNG</figcaption>
 </figure>
 </div>
 <p>3D images cover a volume of space rather than just a single plane. This volumetric data is useful because it can better capture the complexities of the human body, but it can be difficult to visualize because it can’t be summarized in a single plot.</p>
@@ -425,8 +402,8 @@ Shape of image array: (512, 512)</code></pre>
 <p>Just as a 2D image is a stack of 1-dimensional vectors, 3D, 4D and even higher-dimensional images can be thought of as stacks of simpler ones. Let’s illustrate this by creating a 3D volume from a few 2D images. First, we’ll load ImageIO and NumPy. Then, we’ll read in three slices of a chest CT scan. Each of these slices is an array with 512-row elements by 512 column elements. Now, we can feed a list of these three images into NumPy’s stack() function to create a 3D volume. If we look at our new “vol” array, we see that it contains a third dimension with three elements along it, but the row and column dimensions are the same as before</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2b3092bb-1e92-4238-9ad3-7736376554bc.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">array_stacks.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/99b3d6fd-f056-4772-b875-8928fddccc86-1-2b3092bb-1e92-4238-9ad3-7736376554bc.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">array_stacks.PNG</figcaption>
 </figure>
 </div>
 <p>We will use NumPy’s <code>stack()</code> function to combine several 2D arrays into a 3D volume. By convention, volumetric data should be stacked along the first dimension (axis=0): vol [plane, row, col].</p>
@@ -508,8 +485,8 @@ Consider this loaf of bread - it’s a 3D volume that looks absolutely delicious
 <p>It’s inefficient to plot each of these slices one by one. A better way is to display many at once. To do this, we’ll leverage PyPlot’s <code>subplots()</code> function, which creates a grid of axis objects based on the number of rows and columns you specify. When you call <code>pyplot.subplots()</code>, it returns a figure object and an array of axis handles. In this case, the axes array has a shape of one by three. To draw images on each subplot, we will call the <code>imshow()</code> function directly from the axis object, rather than calling it through PyPlot. Here, we’re plotting the first slice of vol with a gray colormap. After the first slice is drawn, repeat the process for the other slices. Finally, we can clean up and render the figure. Just like before, we want to turn off the ticks and labels by calling the axis() method. However, since we will do the same thing to each subplot, a for loop is more efficient than writing down each command. If you had many images to draw, you could insert the drawing step into a for loop as well. Finally, we render the image using <code>pyplot.show()</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/f8d78f85-64b8-41fb-aa00-53a3c39ffc3c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">subplots.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/585793b8-48df-423f-8710-0d004fcae56f-1-f8d78f85-64b8-41fb-aa00-53a3c39ffc3c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">subplots.PNG</figcaption>
 </figure>
 </div>
 <div class="cell" data-execution_count="17">
@@ -570,16 +547,16 @@ Shape of image array: (5, 512, 512)</code></pre>
 <p>Any two dimensions of an array can form an image, and slicing along different axes can provide a useful perspective. However, unequal sampling rates can create distorted images.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/31c1c639-a8b8-410f-ab2a-db5777fae55b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">distorted.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/9ca87b8c-27b2-457f-a8bb-5f873560d2b7-1-31c1c639-a8b8-410f-ab2a-db5777fae55b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">distorted.PNG</figcaption>
 </figure>
 </div>
 <p>Many datasets do not have equal sampling rates across all dimensions. In these cases, you will want to stretch the pixels along one side to account for the differences. The amount of stretching needed is determined by the aspect ratio. Here we’ve decided to plot a slice with data from the first and second dimensions. To determine the aspect ratio, we first get the sampling rates along each dimension from the metadata dictionary. Then, we divide the sampling rate of the first dimension by the sampling rate of the second. When we call imshow(), we pass this ratio to the aspect argument.</p>
 <p>This results in a properly proportioned image. Failing to adjust the aspect would have resulted in a distorted image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e3714c9c-a6ec-4030-858b-bf154cb8ce70.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">aspect_ratio.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/05f3322b-ecab-41e6-8261-e4fd06795aa2-1-e3714c9c-a6ec-4030-858b-bf154cb8ce70.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">aspect_ratio.PNG</figcaption>
 </figure>
 </div>
 <p>To illustrate this, let’s plot images that slice along the second and third dimensions of <code>vol</code>, and explicitly set the aspect ratio to generate undistorted images.</p>
@@ -673,8 +650,8 @@ Max value: 224</code></pre>
 <p>Histograms summarize the distribution of intensity values in an image. They bin each pixel by its value and then count each bin. SciPy, and especially its Ndimage module, contain some essential tools for image analysis. We’ll dig deeper into SciPy throughout this blog. To generate a histogram for the foot x-ray, we first import <a href="https://docs.scipy.org/doc/scipy/reference/ndimage.html">SciPy’s Ndimage module</a> as ndi. Then, we call <code>ndimage.histogram()</code> and pass in our array. The <code>histogram()</code> function requires us to specify values for the minimum, maximum, and the number of bins. Since our image is an 8-bit unsigned integer, our range is from 0 to 255, with 256 possible values. This returns a 256 element vector with the count of pixels at each intensity value. Plotting the data as a line plot reveals a highly skewed distribution, with many low values and a wider range of high values.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e0d8c3b6-22ce-496a-98db-f592e236886d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">histograms.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/b0835649-370a-459d-ba54-220a90288383-1-e0d8c3b6-22ce-496a-98db-f592e236886d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">histograms.PNG</figcaption>
 </figure>
 </div>
 <p><code>Equalization</code><br>
@@ -682,14 +659,14 @@ Skewed distributions are common in medical images: background intensities are us
 <p>Equalizing the histogram is actually pretty straightforward. First, we generate the histogram. Then, we calculate the cumulative distribution function by taking the rolling sum of the histogram and dividing it by the total number of pixels. Then, we apply the function to our image and rescale by 255. Plotting the original and equalized image shows that we have increased the pixel intensities for several areas. This has made our foot stand out more clearly, but it has also given extra weight to some background areas. For biomedical applications, global equalization, such as this, should be done with caution, but the principle of redistributing intensity values is a useful one to keep in mind.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e3c474cd-c518-4f44-92c6-77d4048b4f5b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">equalization.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2f17816e-f7a9-4c70-b719-92caddd75aa1-2-e3c474cd-c518-4f44-92c6-77d4048b4f5b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">equalization.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/9ccaf76a-18ac-422a-b54d-6c68f49e88ac.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">equalization_result.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2f17816e-f7a9-4c70-b719-92caddd75aa1-1-9ccaf76a-18ac-422a-b54d-6c68f49e88ac.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">equalization_result.PNG</figcaption>
 </figure>
 </div>
 <p>The area under a histogram is called the cumulative distribution function. It measures the frequency with which a given range of pixel intensities occurs.</p>
@@ -854,8 +831,8 @@ Skewed distributions are common in medical images: background intensities are us
 <p>So far, we have only considered the images as a whole. However, we can combine intensity and spatial information by employing convolutional filters.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/abdd4451-bef9-4a2a-a9e0-6b9bcf0bebec.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">filters.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/aecafd93-1556-4af9-961e-e923834bed23-1-abdd4451-bef9-4a2a-a9e0-6b9bcf0bebec.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">filters.PNG</figcaption>
 </figure>
 </div>
 <p><code>Filters</code><br>
@@ -870,46 +847,46 @@ Two common examples of filtering are <code>sharpening</code> and <code>smoothing
 <p><code>Convolution with a sharpening filter</code></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/45aa09e5-4a05-4ec1-a6e1-c14ed3d13530.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">sharpening.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/873d2554-43b0-41f9-9948-b189d1eabc27-1-45aa09e5-4a05-4ec1-a6e1-c14ed3d13530.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sharpening.PNG</figcaption>
 </figure>
 </div>
 <p>Here we have a five by five input array, where all the values are one except for the center value of 2. To get a sharpened value for the center pixel, we would first define a set of filter weights, also called a kernel. Then, we would select a window of input data of the same size as our kernel. In this case, the filter will highly weight the center pixel and down-weight the adjacent pixels.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/8b0e911f-433a-4ce3-9ba5-43558d46040e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">sharpening_result.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/873d2554-43b0-41f9-9948-b189d1eabc27-3-8b0e911f-433a-4ce3-9ba5-43558d46040e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sharpening_result.PNG</figcaption>
 </figure>
 </div>
 <p>To perform convolution, we multiply these two matrices element-wise, and then we sum them up. In the top-left corner, we have an input value of 1 times a weight of 0, an input value of 1 times a weight of negative 1, and so on. We then sum all these products to get a new, sharpened value for the center pixel of our input image. In this case, it’s been increased from two to six.</p>
 <p>Let’s see how this works on a full-size image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7fcafb61-9970-459f-ae3c-d15d10e75175.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">CNN.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/873d2554-43b0-41f9-9948-b189d1eabc27-2-7fcafb61-9970-459f-ae3c-d15d10e75175.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">CNN.PNG</figcaption>
 </figure>
 </div>
 <p>On the left is a random 2D array; on the right, we have an empty output image that we will create. In between is the sharpening <code>kernel</code>.</p>
 <p>Starting from the top-left corner of the input image, we select the values surrounding the origin pixel. We then multiply each element in this selection by the kernel weights and add them together to get the filtered value. We take one step over to the next element, multiply the input window by the kernel, and repeat the process for each pixel in the image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/ab433b22-fd4b-4bad-bb52-33fcda4f1da6.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">kernel.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/873d2554-43b0-41f9-9948-b189d1eabc27-4-ab433b22-fd4b-4bad-bb52-33fcda4f1da6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">kernel.PNG</figcaption>
 </figure>
 </div>
 <p>This results, in this case, in a sharpened image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/ebd1a9d0-5599-4460-bd8d-4956f731a47d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">sharpened.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/873d2554-43b0-41f9-9948-b189d1eabc27-5-ebd1a9d0-5599-4460-bd8d-4956f731a47d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sharpened.PNG</figcaption>
 </figure>
 </div>
 <p><code>Image convolution</code><br>
 We can apply custom filters using the <code>convolve() function</code>. First, we import packages and load the foot x-ray. Next, we create the kernel. In this case, let’s average the center pixel with its neighbors to smooth out variability between pixels. After filtering, the major patterns will remain, but subtle variation between pixels will be dampened. Next, we call <code>ndimage.convolve()</code> and pass in the image and weights. This produces a smoothed output image of the same size as our input.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/a3866bdc-18a6-4cd1-b464-d67c93e5bd55.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image_convolution.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2a6980f8-899d-43e1-bbd3-33b4586c6d17-1-a3866bdc-18a6-4cd1-b464-d67c93e5bd55.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image_convolution.PNG</figcaption>
 </figure>
 </div>
 <p>To illustrate filter convolutions, let’s smooth the hand radiograph. First, specify the weights to be used. (These are called “footprints” and “kernels” as well.) Then, convolve the filter with im and plot the result.</p>
@@ -946,8 +923,8 @@ We can apply custom filters using the <code>convolve() function</code>. First, w
 <p>Filtering can also employ <code>functions</code> other than convolutional kernels, such as the <code>mean</code>, <code>median</code>, and <code>maximum</code>. SciPy has several of these functions built-in. Filter kernels do not have to be 3 x 3; they can be as large as you want. Here, we apply a 10 x 10 median filter to the foot image. You can see it does quite a nice job of smoothing out the variations in intensity.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/853290c9-5274-4fa9-a0cc-d989a2d50b82.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">filtering_functions.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/07de78ea-df5e-4876-bbaf-4f3935582c84-1-853290c9-5274-4fa9-a0cc-d989a2d50b82.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">filtering_functions.PNG</figcaption>
 </figure>
 </div>
 <p>The median filter will return the median value of the 3x3 neighborhood. Note that the values on the edges will vary based on the mode setting of your filter.</p>
@@ -958,8 +935,8 @@ We can apply custom filters using the <code>convolve() function</code>. First, w
 The Gaussian filter is useful for smoothing data across larger areas. It blurs activation based on a Gaussian, or normal, distribution around the filtered pixel. Basically, the filter weights dissipate in a circular pattern as you get further from the center. The width of the distribution is controlled by the <code>sigma</code> parameter. Applying a Gaussian filter can be a great way to reduce noise, but with very large sigma values, you’ll lose a lot of detail in your image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/1eeca773-4bb5-4583-87ce-097759fb64b6.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gaussian.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e29e0f25-2127-4d63-93fb-977657f464df-1-1eeca773-4bb5-4583-87ce-097759fb64b6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gaussian.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s illustrate the effects of applying Gaussian filters to the foot x-ray before creating a bone mask.</p>
@@ -987,8 +964,8 @@ The Gaussian filter is useful for smoothing data across larger areas. It blurs a
 <p>Filters aren’t just useful for blurring and smoothing. They can also be used as detectors for features of interest, such as edges.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/76294b86-071b-4a85-b6a7-049e1f248152.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">edge_detector_kernel.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/bacc5904-e375-4379-84e1-9f209ed84260-1-76294b86-071b-4a85-b6a7-049e1f248152.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">edge_detector_kernel.PNG</figcaption>
 </figure>
 </div>
 <p>If we want to construct a filter kernel that will emphasize edges, what should it look like?</p>
@@ -999,8 +976,8 @@ The Gaussian filter is useful for smoothing data across larger areas. It blurs a
 <p>Essentially, this filter calculates the difference between the top and bottom rows, returning values far from 0 when there is a sudden change in intensity. Then, we convolve the image with the filter using SciPy.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/c0b9b670-202a-4c65-90ed-d6172fa2e4b0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">edge_detector_convolution.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/5c28e30d-f392-4c1c-ae6d-5e69c78e1102-1-c0b9b670-202a-4c65-90ed-d6172fa2e4b0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">edge_detector_convolution.PNG</figcaption>
 </figure>
 </div>
 <p>Plotting the image, it’s clear that our detector has done a fine job of highlighting some edges. But note two things:</p>
@@ -1042,22 +1019,22 @@ The Gaussian filter is useful for smoothing data across larger areas. It blurs a
 <p>There are many possible configurations for edge detectors. A very common one is the Sobel operator, which provides an extra weight to the center pixels of the kernel. The filter can be rotated to make it sensitive to either horizontal or vertical edges.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/df33d284-8c5a-497c-9d45-85bd89f6c501.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">sobel_filters.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/cdfc1330-5d9d-4789-be03-c3b9289d26cf-3-df33d284-8c5a-497c-9d45-85bd89f6c501.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sobel_filters.PNG</figcaption>
 </figure>
 </div>
 <p>Implementing the Sobel filter is just like implementing other filters: call <code>ndimage.sobel()</code>, then pass in the image and the orientation of the filter.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/cece486c-22cf-4103-8ba8-e81ccbefd029.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">sobel_filters_ndi.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/cdfc1330-5d9d-4789-be03-c3b9289d26cf-2-cece486c-22cf-4103-8ba8-e81ccbefd029.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sobel_filters_ndi.PNG</figcaption>
 </figure>
 </div>
 <p>To remedy the fact that we have multiple edge maps with positive and negative values, we can create a <code>composite edge map</code>. Recall the Pythagorean Theorem - when you have two perpendicular vectors, you can calculate their distance by taking the root of their squares.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/58ffd6ea-3876-42d7-8b92-728d3b635127.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">sobel_filter_magnitude.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/cdfc1330-5d9d-4789-be03-c3b9289d26cf-1-58ffd6ea-3876-42d7-8b92-728d3b635127.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sobel_filter_magnitude.PNG</figcaption>
 </figure>
 </div>
 <p>This is useful in our situation: if we apply the Sobel filter along the first and second axes, we can then use these as input to the Pythagorean Theorem to get a composite, positively weighted edge image. This nicely highlights intensity changes in our image, and we can use these features for masking or object detection in later analysis steps.</p>
@@ -1093,8 +1070,8 @@ The Gaussian filter is useful for smoothing data across larger areas. It blurs a
 <p>Segmentation is the process of splitting an image into separate objects. Since whole careers can be spent developing segmentation techniques, we will focus mostly on how to analyze the resulting objects.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/763fd8d1-0027-46a7-8eb9-15ead5f39e9b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">segmentation.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/d7c899e8-3fd6-43bd-a4d1-871886f50531-1-763fd8d1-0027-46a7-8eb9-15ead5f39e9b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">segmentation.PNG</figcaption>
 </figure>
 </div>
 <section id="segment-the-heart" class="level4">
@@ -1104,23 +1081,23 @@ We will analyze cardiac magnetic resonance imaging data from the <a href="https:
 <p>In this image, the left ventricle is the circular cavity in the center. Abnormal ejection fractions can indicate urgent health issues.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/88721af8-5087-4e77-8ff1-a558d6c44b4b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">ejection_fraction.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/da8e13ff-2f94-4d27-bf5b-81198386ec40-1-88721af8-5087-4e77-8ff1-a558d6c44b4b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ejection_fraction.PNG</figcaption>
 </figure>
 </div>
 <p>Our first step towards calculating the ejection fraction is to segment the left ventricle from the rest of the image. For these MRI data, fluid-filled areas have high-intensity values. So, one approach is to take the original image, filter it to reduce noise and smooth edges, then mask it to select pixels with relatively high values.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/88e222aa-c023-46e3-a41d-a656adca7ea4.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">filter_and_mask.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/83c3dd7c-677f-4643-a17b-57b79329e921-2-88e222aa-c023-46e3-a41d-a656adca7ea4.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">filter_and_mask.PNG</figcaption>
 </figure>
 </div>
 <p>This does a good job of segmenting the left ventricle, but now we need to remove the pixels that are part of other objects.</p>
 <p>We can do this using <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.label.html">SciPy’s <code>label()</code> function</a>. First, we’ll create the above mask by reading in the file, applying a small Gaussian filter, then masking pixels with intensities lower than 150. Next, we “label” the mask. The labeling algorithm treats 0 values as background pixels, and then it looks for all of the objects that are separated by background. It then returns an array where each object has been indexed, as well as the number of objects detected. It seems we have 14 distinct objects in this image. Plotting the labels with the rainbow colormap shows that the circular left ventricle region in the center has been assigned a unique label value.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/1495402c-1eec-4faf-8dc5-804252c5b978.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">scipy_label.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/83c3dd7c-677f-4643-a17b-57b79329e921-1-1495402c-1eec-4faf-8dc5-804252c5b978.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">scipy_label.PNG</figcaption>
 </figure>
 </div>
 <p><code>Image data</code></p>
@@ -1210,8 +1187,8 @@ We will analyze cardiac magnetic resonance imaging data from the <a href="https:
 <p>We can now select individual objects by referencing their index value. To select pixels in the first object, you would use “where labels is 1, return the value from im, else return 0”. Alternatively, you can select a number of labels meeting a condition. Calling “where labels is less than 3, return im, else 0” will select pixels from the first and second objects.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2d603989-29ee-4425-a07f-52b1a15a9712.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">label_selection.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/371fe065-0c47-4bd3-8740-becfd6d3f84c-1-2d603989-29ee-4425-a07f-52b1a15a9712.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">label_selection.PNG</figcaption>
 </figure>
 </div>
 <p>Labels are like object “handles” - they give you a way to pick up whole sets of pixels at a time. To select a particular object:</p>
@@ -1258,15 +1235,15 @@ We will analyze cardiac magnetic resonance imaging data from the <a href="https:
 <p>A <code>bounding box</code>is the range of indices along each axis which completely enclose an object. You can use the bounding box to extract objects from the larger image. The <code>find_objects()</code> function can create these bounding boxes for you.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e89fa8e3-62fc-489d-ba4b-8d340d9347ad.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">bounding_box.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/bed85f9f-3556-4256-ac96-6c7d06c76b58-1-e89fa8e3-62fc-489d-ba4b-8d340d9347ad.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">bounding_box.PNG</figcaption>
 </figure>
 </div>
 <p>When you run <code>find_objects()</code> on a labeled array, it will return a list of bounding boxes. Each item in the returned list is a tuple of index ranges - one slice for each dimension. Indexing the original image using one of these boxes will yield an image cropped to that object. You could then analyze each of these arrays individually.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/3b08f3dc-ae6d-406e-ada1-a5ad2255af65.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">ndi_find_objects.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/cecf7b64-f467-4e82-81c4-6ea86cfe1537-1-3b08f3dc-ae6d-406e-ada1-a5ad2255af65.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ndi_find_objects.PNG</figcaption>
 </figure>
 </div>
 <p>Extracting objects from the original image eliminates unrelated pixels and provides new images that can be analyzed independently.</p>
@@ -1313,8 +1290,8 @@ Indices for first box: (slice(107, 149, None), slice(116, 162, None))</code></pr
 <p>For this section, we’ll step up to measuring a full three-dimensional volume.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2b3e82d1-c391-492b-b406-ef80378ed346.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cardiac_labels.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/47afa256-505b-4818-92f0-0dd3a234e4a1-1-2b3e82d1-c391-492b-b406-ef80378ed346.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cardiac_labels.PNG</figcaption>
 </figure>
 </div>
 <p>We have segmented this volume into two parts:</p>
@@ -1327,13 +1304,13 @@ Indices for first box: (slice(107, 149, None), slice(116, 162, None))</code></pr
 <p>SciPy has optimized many of the most common descriptive <strong>functions</strong> for image data, including the mean, median, and standard deviation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7592c7d6-531e-498d-9a88-09bc21f37555.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">functions.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7c100872-7665-42f9-8efb-3b5d807f07c4-1-7592c7d6-531e-498d-9a88-09bc21f37555.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">functions.PNG</figcaption>
 </figure>
 </div>
 <p>These functions summarize the array across all dimensions of an image, whether it be 2D, 3D, 4D, or more. They are especially useful when you have a labeled image because you can apply the function to every object independently with a single call. For custom calculations, you can also use the <code>labeled_comprehension()</code> function to summarize your data.</p>
 <p>Which arguments you specify when you call measurement functions determines the pixels used for the calculation.</p>
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/91a1fdae-0a3d-4d19-9bd5-423a670a5cd0.png" class="img-fluid" alt="download.png"><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/dd644a62-90dd-4d95-b525-5fb19583b7a2.PNG" class="img-fluid" alt="call_measure_functions.PNG"></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7c100872-7665-42f9-8efb-3b5d807f07c4-2-91a1fdae-0a3d-4d19-9bd5-423a670a5cd0.png" class="img-fluid" alt="download.png"><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7c100872-7665-42f9-8efb-3b5d807f07c4-3-dd644a62-90dd-4d95-b525-5fb19583b7a2.PNG" class="img-fluid" alt="call_measure_functions.PNG"></p>
 <p>Here, we have loaded the MRI volume and its corresponding labels. To get the mean intensity of the entire image, simply call <code>ndimage.mean()</code> with the original volume. If you provide a mask or a labeled array, you will restrict the analysis to all non-zero pixels. However, if you provide a set of labels and an index value, you can get the mean intensity for a single label. On the other hand, if you pass a list of values to the index argument, the function will return a list of mean values - one for each object specified.</p>
 <p><code>Measure variance</code></p>
 <p>SciPy measurement functions allow you to tailor measurements to specific sets of pixels:</p>
@@ -1368,15 +1345,15 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 <p>This technique can be applied to some other SciPy tools, including the histogram function. In the previous chapter, we simply passed in our image array and then specified the minimum value, maximum value, and the number of bins to use. However, if you also include a label array and indices, <code>ndimage.histogram()</code> will return distributions for each of the selected labels.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/615663dc-112f-4ce8-8be0-2a374cdf5ab1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">object_histogram.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/a098777b-5f8a-4a6f-804e-4a8820b00827-2-615663dc-112f-4ce8-8be0-2a374cdf5ab1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">object_histogram.PNG</figcaption>
 </figure>
 </div>
 <p>Plotting these object-level histograms is a great way to evaluate your segmentation. If you see very wide distributions or multiple peaks and valleys in your histogram, your labeled object may include many different tissue types. On the other hand, if the histogram resembles a normal distribution, your segmentation may be doing a good job. This is because the physical properties that influence intensity values should be relatively uniform throughout a tissue. For example, we expect that the voxels in our left ventricle label are filled with blood. Although we expect some variation in their intensity, we also expect them to be centered on some mean value.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2a2d6a37-a74c-4747-b8a7-ef48c6b25d01.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">separate_histograms.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/a098777b-5f8a-4a6f-804e-4a8820b00827-1-2a2d6a37-a74c-4747-b8a7-ef48c6b25d01.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">separate_histograms.PNG</figcaption>
 </figure>
 </div>
 <p>In this case, we can see that the majority of left ventricle intensity values are higher than the other labeled pixels. Although there are some low values, which are likely not part of the ventricle, the segmentation seems to do a good job overall.</p>
@@ -1406,8 +1383,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/6a2797ba-eed2-445c-94fa-9bbae0be02fe.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">intensity_value.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/768c0ff8-6883-4ee8-9a9f-4b29166f3ccc-1-6a2797ba-eed2-445c-94fa-9bbae0be02fe.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">intensity_value.PNG</figcaption>
 </figure>
 </div>
 <p>Notice how the left ventricle segmentation is more normally distributed than the other sets of pixels.</p>
@@ -1431,8 +1408,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/f68b718f-ca92-4bc7-b533-4bfec4dd519e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">volume.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/f4d6cf7d-1c01-4532-8929-1173d74ab178-1-f68b718f-ca92-4bc7-b533-4bfec4dd519e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">volume.PNG</figcaption>
 </figure>
 </div>
 <p><code>Illustration</code></p>
@@ -1460,7 +1437,7 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 <section id="calculate-distance" class="level4">
 <h4 class="anchored" data-anchor-id="calculate-distance">3.3.2 Calculate distance</h4>
 <p>Another useful morphological measure is the <strong>distance</strong> of each voxel to the nearest background value. This information can help you identify the most embedded points within objects or mask out edge areas. To perform a distance transformation on a mask or label array, use the <code>dist_transform_edt()</code> function. This will return a new array, where each non-zero voxel has been replaced with the distance to the nearest background voxel. The maximum value, in this case, reflects how far from the edge the most embedded point is. If you have access to the sampling rates for each dimension, you can include these to generate values that reflect physical distance. You can see here that the max distance is reduced because the sampling rate is less than one millimeter per pixel.</p>
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/9d3fb8d4-78fd-424c-87d7-7c848e1c505f.PNG" class="img-fluid" alt="distance.PNG"><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/9e8a80ad-01ed-4da4-ab04-eda3c74f730f.png" class="img-fluid" alt="download.png"></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/8f6c1d19-f3e8-40db-8d55-ba55417d863a-1-9d3fb8d4-78fd-424c-87d7-7c848e1c505f.PNG" class="img-fluid" alt="distance.PNG"><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/8f6c1d19-f3e8-40db-8d55-ba55417d863a-2-9e8a80ad-01ed-4da4-ab04-eda3c74f730f.png" class="img-fluid" alt="download.png"></p>
 <p><code>Illustration</code></p>
 <p>A distance transformation calculates the distance from each pixel to a given point, usually the nearest background pixel. This allows us to determine which points in the object are more interior and which are closer to edges.</p>
 <p>For this exercise, we will use the Euclidian distance transform on the left ventricle object in labels.</p>
@@ -1486,8 +1463,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/de42da55-752b-4c8d-8eea-7cdb34ae2217.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">distance_left_ventricle.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/16341d8b-94ef-4810-a624-63c7ce17832f-1-de42da55-752b-4c8d-8eea-7cdb34ae2217.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">distance_left_ventricle.PNG</figcaption>
 </figure>
 </div>
 <p>We can make inferences about the shapes of objects by looking at the distribution of distances. For example, a circle will have a uniform distribution of distances along both dimensions.</p>
@@ -1497,8 +1474,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 <p>A complementary measure is the <strong>center of mass</strong>, which you can calculate directly. Mass, in this case, refers to intensity values, with larger values pulling the center towards them. Just like with the intensity measures, the <code>center_of_mass()</code> function accepts “labels” and “index” arguments. The function returns a tuple of coordinates for each object specified. For our cardiac data, the center of mass for the left ventricle corresponds to the center of the volume in all three dimensions.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/af6e7136-858f-4fd1-b95e-7ef2452a6e66.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">center_of_mass.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/b14de83a-f025-42d7-bd4a-84e4cbed6e1d-1-af6e7136-858f-4fd1-b95e-7ef2452a6e66.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">center_of_mass.PNG</figcaption>
 </figure>
 </div>
 <p><code>Illustration</code></p>
@@ -1520,8 +1497,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/fd235a0b-c16d-4ed9-8ab5-64c371a3c20e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">center_of_mass_plot.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/5f3367ec-61d4-4ee9-afb1-81534ba7426a-1-fd235a0b-c16d-4ed9-8ab5-64c371a3c20e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">center_of_mass_plot.PNG</figcaption>
 </figure>
 </div>
 <p>Some shapes, such as those with holes, may have a center of mass that is outside of them.</p>
@@ -1538,8 +1515,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 <p>Taking the difference between these two volumes and dividing by the maximum yields the fraction of blood that is pumped out and into the rest of the circulatory system.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/feabef6d-7e77-4768-a7c0-c788b44682f1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">ejection_fraction_calc.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/321726fc-9a5a-4f53-83c0-3f1234f4d717-1-feabef6d-7e77-4768-a7c0-c788b44682f1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ejection_fraction_calc.PNG</figcaption>
 </figure>
 </div>
 <section id="summarize-the-time-series" class="level4">
@@ -1553,8 +1530,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 <p>Let’s assume that we have access to both the volumetric time series and the segmented left ventricle. The data are 4-dimensional, with time as the first dimension.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/9c39e1c0-9557-403f-8790-b8c90b0c848d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">time.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/ec83d3a3-2d2b-46c5-8477-ee14cfb806d2-2-9c39e1c0-9557-403f-8790-b8c90b0c848d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">time.PNG</figcaption>
 </figure>
 </div>
 <ol type="1">
@@ -1565,15 +1542,15 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/8667bcae-fa59-44f6-bc79-7f3c5836cf07.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">volume_vs_time.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/ec83d3a3-2d2b-46c5-8477-ee14cfb806d2-1-8667bcae-fa59-44f6-bc79-7f3c5836cf07.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">volume_vs_time.PNG</figcaption>
 </figure>
 </div>
 <p>The plot of the data lines up with our expectations: in the first few time points, there is a squeezing action on the ventricle, followed by relaxation, where it fills up again.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/af054207-1e14-456f-80a0-ba19bef9bdb3.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">volume_time_plot.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/ec83d3a3-2d2b-46c5-8477-ee14cfb806d2-3-af054207-1e14-456f-80a0-ba19bef9bdb3.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">volume_time_plot.PNG</figcaption>
 </figure>
 </div>
 <p><code>Illustration</code></p>
@@ -1604,8 +1581,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e35eb0f9-9d79-42e1-acf7-c6fef3e16f02.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">timepoint_volume.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/38b7aa37-9a46-4ae3-b5c9-4e5e82def80b-1-e35eb0f9-9d79-42e1-acf7-c6fef3e16f02.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">timepoint_volume.PNG</figcaption>
 </figure>
 </div>
 <p>We can see the pumping action of the left ventricle clearly from the time series plot - a sudden decrease followed by a refilling of the chamber.</p>
@@ -1616,8 +1593,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 <p>Then, we find the difference and divide by the maximum volume.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/aba842c6-db4c-4643-ae39-388ac9d3b4d0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">eject_fract_calc.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e0d703cb-13cd-4aef-8d72-f821e2637756-1-aba842c6-db4c-4643-ae39-388ac9d3b4d0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">eject_fract_calc.PNG</figcaption>
 </figure>
 </div>
 <p><code>Illustration</code></p>
@@ -1642,8 +1619,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/11b959cf-8669-45cf-8dcf-6a67ed22f35f.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">max_min.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/d113d48a-b40e-48bc-a955-0f4f839ac1d8-1-11b959cf-8669-45cf-8dcf-6a67ed22f35f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">max_min.PNG</figcaption>
 </figure>
 </div>
 <p>Calculate the ejection volume and fraction using the min() and max() methods of ts. Print these values.</p>
@@ -1658,8 +1635,8 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 <p>After calculating the ejection fraction, review the chart below. Should this patient be concerned?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/c934f377-aae5-4370-8ba5-6082bf6640da.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">ejection_fraction_chart.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/f10954fa-9e6c-4078-b013-fc40d65a1638-1-c934f377-aae5-4370-8ba5-6082bf6640da.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ejection_fraction_chart.PNG</figcaption>
 </figure>
 </div>
 <p>The patient should be extremely concerned! An ejection fraction of below 0.35 is considered to be <strong><em>severely abnormal</em></strong> and the patient’s score is 0.32.</p>
@@ -1678,16 +1655,16 @@ For this exercise, we will calculate the intensity <strong>variance</strong> of 
 <p>With a large imaging dataset, there is going to be variability and not just the kind that’s interesting. There will be differences in intensity scales, sampling ratios, object orientation, and object placement within the image window.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e791c105-d9ec-4524-8105-27c1c64eaae7.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">variability.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2369bc00-d1e2-4f0c-8716-e57fd8b99d00-2-e791c105-d9ec-4524-8105-27c1c64eaae7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">variability.PNG</figcaption>
 </figure>
 </div>
 <p><code>Registration</code><br>
 One way to address this is to register images to a pre-defined position and coordinate system. For example, you might make all images line up with a template image or atlas. The process of aligning two images together is called “registration.” Registration requires making multiple transformations to an image, such as shifting, rotating, and scaling it.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/5a1b84d9-4e2c-47cb-b326-8963609b0c2e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">registration.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2369bc00-d1e2-4f0c-8716-e57fd8b99d00-1-5a1b84d9-4e2c-47cb-b326-8963609b0c2e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">registration.PNG</figcaption>
 </figure>
 </div>
 <section id="translations" class="level4">
@@ -1696,8 +1673,8 @@ One way to address this is to register images to a pre-defined position and coor
 <p>Here we have an off-center brain that we want to move to the center of the image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/40352870-a316-4d9d-8860-e6f1233d8bcd.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">off_centre_brain.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e40439af-96b4-4b5a-a8a5-73e148af1f5f-2-40352870-a316-4d9d-8860-e6f1233d8bcd.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">off_centre_brain.PNG</figcaption>
 </figure>
 </div>
 <p>First, we’ll load the head slice using ImageIO. It has a shape of 256 by 256, so the center is at 128, 128.</p>
@@ -1706,8 +1683,8 @@ One way to address this is to register images to a pre-defined position and coor
 <p>Finally, we call SciPy’s <code>shift()</code> function, passing in the image and the number of pixels we need to move along the first and second axes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/1d88c308-b11a-4dee-bb5d-195f6e7f0490.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">translation.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e40439af-96b4-4b5a-a8a5-73e148af1f5f-1-1d88c308-b11a-4dee-bb5d-195f6e7f0490.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">translation.PNG</figcaption>
 </figure>
 </div>
 <p><code>Illustration</code></p>
@@ -1776,8 +1753,8 @@ One way to address this is to register images to a pre-defined position and coor
 <p>Rotations can be performed in a similar manner using the <code>rotate()</code> function.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/fa634a0b-4f6f-4d24-83f7-68b36d79df0d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">rotation.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/1e55b59d-3601-4f8c-a715-fadcada00463-2-fa634a0b-4f6f-4d24-83f7-68b36d79df0d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">rotation.PNG</figcaption>
 </figure>
 </div>
 <p>The angle of rotation is specified in degrees :</p>
@@ -1789,8 +1766,8 @@ One way to address this is to register images to a pre-defined position and coor
 <p>One caveat with the <code>rotate()</code> function is that the default behavior preserves all the original data. This means that your rotated image may actually end up larger than your original. To keep your original image shape, pass <code>"reshape equals False"</code> to your function call.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7b9bc7cb-6195-481a-b06b-3e56fdf840de.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">rotation_preserve.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/1e55b59d-3601-4f8c-a715-fadcada00463-1-7b9bc7cb-6195-481a-b06b-3e56fdf840de.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">rotation_preserve.PNG</figcaption>
 </figure>
 </div>
 <p><code>Illustration</code></p>
@@ -1823,8 +1800,8 @@ One way to address this is to register images to a pre-defined position and coor
 <p>Affine transformations modify an image while preserving all of the points, straight lines, and planes. Shown here are four examples of affine transformations.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/d764072c-c6eb-4c92-80b8-8c12d8c8bfec.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">affine.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/30891353-5d60-4118-bb1c-f1ccdf37c561-2-d764072c-c6eb-4c92-80b8-8c12d8c8bfec.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">affine.PNG</figcaption>
 </figure>
 </div>
 <ul>
@@ -1836,8 +1813,8 @@ One way to address this is to register images to a pre-defined position and coor
 For complex registrations, it can be useful to compute a transformation matrix between the original and target space. Essentially, the elements of a transformation matrix encode instructions for the operations we have discussed: translation, rotation, scaling, and shearing. We cannot cover methods for calculating these matrices, but let’s see how they can be used to simplify the registration process.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/a3e9eb30-5a55-419f-b8ce-1d72ce17e8b2.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">transformation_matrix.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/30891353-5d60-4118-bb1c-f1ccdf37c561-1-a3e9eb30-5a55-419f-b8ce-1d72ce17e8b2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">transformation_matrix.PNG</figcaption>
 </figure>
 </div>
 <p><code>Applying a transformation matrix</code><br>
@@ -1845,8 +1822,8 @@ First, we create the transformation matrix. Let’s first use the <code>identity
 <p>Next, let’s manipulate the matrix values that encode shifting and rescaling. When we apply this new matrix and plot the result, you can see that the image has been centered and made larger.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/f662f0d7-f0b2-4bc7-9a22-d87d5c0231a6.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">transform_matrix_apply.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/30891353-5d60-4118-bb1c-f1ccdf37c561-3-f662f0d7-f0b2-4bc7-9a22-d87d5c0231a6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">transform_matrix_apply.PNG</figcaption>
 </figure>
 </div>
 <p><code>Illustration</code></p>
@@ -1975,15 +1952,15 @@ First, we create the transformation matrix. Let’s first use the <code>identity
 <p>Resampling is the process of slicing your data onto a different array. It’s distinct from cropping in that the field of view does not change. Instead, the amount of space sampled by each pixel is increased or decreased, which in turn changes the shape of the array.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e25ce1fd-3bf7-4828-9e73-19f6477cd320.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">resampling.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/eac3b556-f92f-4cc0-8a84-17c50874fbe5-2-e25ce1fd-3bf7-4828-9e73-19f6477cd320.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">resampling.PNG</figcaption>
 </figure>
 </div>
 <p>One useful application is <code>downsampling</code> in which information is merged across multiple pixels to reduce the image size.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/d0533b91-5288-4bf4-8098-c45a5acb04ac.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">downsampling.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/eac3b556-f92f-4cc0-8a84-17c50874fbe5-1-d0533b91-5288-4bf4-8098-c45a5acb04ac.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">downsampling.PNG</figcaption>
 </figure>
 </div>
 <p>Here we have loaded a brain volume from the OASIS dataset. Originally, it has 256 elements along each dimension. We’ll halve this grid size using SciPy’s <code>zoom()</code> function. <code>zoom()</code> adjusts the number of elements along each axis by a given factor. We pass in the volume and specify a zoom of 0.5. This reduces the number of elements on each axis by half so that it is 128 by 128 by 128. Plotting the image reveals that it now has less detail than before, but it also takes up half the amount of memory.</p>
@@ -1991,8 +1968,8 @@ First, we create the transformation matrix. Let’s first use the <code>identity
 <p>To upsample an image, we call the <code>zoom()</code> function and specify a larger zoom factor. Passing in “2” will double the width of each axis.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/e3c3a8dc-5a23-4b3c-845e-63626efe4882.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">upsampling.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/eac3b556-f92f-4cc0-8a84-17c50874fbe5-3-e3c3a8dc-5a23-4b3c-845e-63626efe4882.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">upsampling.PNG</figcaption>
 </figure>
 </div>
 <p><code>Illustration</code></p>
@@ -2043,16 +2020,16 @@ First, we create the transformation matrix. Let’s first use the <code>identity
 <p>For example, here we have a simple 10 point dataset :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/2584d85e-1333-4988-8ed8-c8f09ec98c5c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">ten_point.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/b536f022-d87a-4a33-94f0-ff0ea61438c7-1-2584d85e-1333-4988-8ed8-c8f09ec98c5c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ten_point.PNG</figcaption>
 </figure>
 </div>
 <p>If we want to upsample it to include 100 points, we have to estimate what the values should be between each of these original points.</p>
 <p>One approach is to use the nearest original value, <code>nearest-neighbour</code>, for each new point. This a zero-order interpolation, because we aren’t modeling any relationship between the original values.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/8561964e-5a2b-4cdd-9cca-b1a50f996cfd.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">interpol_1.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/b536f022-d87a-4a33-94f0-ff0ea61438c7-3-8561964e-5a2b-4cdd-9cca-b1a50f996cfd.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">interpol_1.PNG</figcaption>
 </figure>
 </div>
 <p>For higher-order estimation, SciPy uses <code>B-spline</code> interpolation, which uses a set of functions to model the space between points. The order controls how complex these functions can be:</p>
@@ -2063,15 +2040,15 @@ First, we create the transformation matrix. Let’s first use the <code>identity
 <p>In the example, we can see that cubic interpolation (order of 3) creates a smooth curve between points :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/6777ae79-8e98-4110-ac78-4c527c7f2725.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cubic_interpol.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/b536f022-d87a-4a33-94f0-ff0ea61438c7-2-6777ae79-8e98-4110-ac78-4c527c7f2725.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cubic_interpol.PNG</figcaption>
 </figure>
 </div>
 <p>Here we’ve created a ten by ten toy image of ascending values. If we resample it onto a 100 by 100 grid, changing the order will affect the “smoothness” of the resulting image. With an order of 0, we return essentially the original image on a new grid. At higher orders, though, we can see a smoother gradient of change along each axis.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/d927116b-441e-4334-906d-ae0bc8ed2e67.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">interpol_2.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/b536f022-d87a-4a33-94f0-ff0ea61438c7-4-d927116b-441e-4334-906d-ae0bc8ed2e67.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">interpol_2.PNG</figcaption>
 </figure>
 </div>
 <p>The principal trade-off with lower and higher-order interpolation is in the computational time: fifth-order interpolation for a 3D volume can take a very long time to calculate!</p>
@@ -2120,8 +2097,8 @@ Upsampled shape: (512, 512)</code></pre>
 <p>Here are two slices of the same person’s brain, taken on separate occasions.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/79a2817d-9a06-4df2-808f-b638ca7712c3.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">brain_compare.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/1cab3f66-380a-4f18-91a9-72da495e5b1d-1-79a2817d-9a06-4df2-808f-b638ca7712c3.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">brain_compare.PNG</figcaption>
 </figure>
 </div>
 <p>You can see that they are similar objects but not aligned with each other. To quantify exactly how imperfect this alignment is, we need to apply a function that will compare the two images.</p>
@@ -2133,16 +2110,16 @@ Upsampled shape: (512, 512)</code></pre>
 <p>First, we read in the images. Then, we find the error at each pixel by subtracting im2 from im1. Next, we take the <strong>absolute</strong> value of the error, because we care about whether the images differ from each other in any way, not whether one is larger than the other. Finally, we take the mean of the entire error image to get a single summary measure of similarity.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/17f564fe-c5b5-4788-8143-6151030ff915.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">mean_abs_error.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7d904b8a-1063-4ddc-8409-18a25bcc7f75-2-17f564fe-c5b5-4788-8143-6151030ff915.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">mean_abs_error.PNG</figcaption>
 </figure>
 </div>
 <p>The goal is <strong>not</strong> to achieve a mean absolute error of zero. In fact, that would mean the images were identical, which is not the case. Instead, you want to minimize the cost function by altering one or both images.</p>
 <p>Let’s shift and rotate the first image, then re-compute the cost. We calculate the mean absolute error in the same way as before, using our new image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/13da3af7-5207-47a0-99e0-2676e79d1e4c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">mean_abs_error_2.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7d904b8a-1063-4ddc-8409-18a25bcc7f75-1-13da3af7-5207-47a0-99e0-2676e79d1e4c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">mean_abs_error_2.PNG</figcaption>
 </figure>
 </div>
 <p>The new cost <code>13.0376</code> is lower than the previous one <code>29.8570</code>, suggesting that the two are better aligned than before.</p>
@@ -2217,8 +2194,8 @@ Upsampled shape: (512, 512)</code></pre>
 <p>One issue with the mean absolute error approach is that tissues with high-intensity values will contribute more towards the error than other types. One remedy is to compare the <strong>image masks</strong>. The <code>intersection of the union</code> is a measure particularly well-suited to this. It is calculated by dividing the number of shared pixels between two masks by the total number of masked pixels :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/8f5f678b-f183-47aa-be6f-922d8c847d44.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">IOU.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/90030f0d-0fc0-439a-ad1d-88ba6eec8955-2-8f5f678b-f183-47aa-be6f-922d8c847d44.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">IOU.PNG</figcaption>
 </figure>
 </div>
 <ul>
@@ -2229,8 +2206,8 @@ Upsampled shape: (512, 512)</code></pre>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/7f85cc2b-1d43-44db-9d85-27506ef6d509.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">IOU_score.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/90030f0d-0fc0-439a-ad1d-88ba6eec8955-1-7f85cc2b-1d43-44db-9d85-27506ef6d509.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">IOU_score.PNG</figcaption>
 </figure>
 </div>
 <p>The result is a number between 0 and 1, with <code>0</code> representing no shared mask pixels, and <code>1</code> representing perfect agreement.</p>
@@ -2292,8 +2269,8 @@ Shift (-10, 10), rotate +15 deg</p>
 <p>Shown here is a common multi-subject workflow, in which each subject has a raw image that we process, measure, and store in a common group dataset.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/6fb9528f-6361-403b-9bfd-3a5a798d45ed.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">workflow.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/4ada1c56-f6ea-435f-8247-c7251b31f94a-1-6fb9528f-6361-403b-9bfd-3a5a798d45ed.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">workflow.PNG</figcaption>
 </figure>
 </div>
 <p>In this model, each image is treated independently, but you are extracting the same metrics from each subject.</p>
@@ -2301,8 +2278,8 @@ Shift (-10, 10), rotate +15 deg</p>
 <p>For this lesson, let’s assume that we have measured the brain volumes for all 400 images in the OASIS dataset and stored them in a pandas DataFrame. Displaying a few random rows shows that we have information such as age, sex, brain volume, and skull volume available.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/605547c4-c6e8-4c14-9b8e-942212f17291.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">oasis_df.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/683a38fd-2b23-43f3-9517-e6fce88faad0-1-605547c4-c6e8-4c14-9b8e-942212f17291.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">oasis_df.PNG</figcaption>
 </figure>
 </div>
 <p><code>Hypothesis testing</code></p>
@@ -2310,15 +2287,15 @@ Shift (-10, 10), rotate +15 deg</p>
 <p>For this question, we can use a two-sample t-test. We will test the null hypothesis that the mean brain volumes of men and women are the same. The likelihood of the null hypothesis being true is assessed by calculating the t-statistic. If the magnitude of t is very far from 0, then we can reject the null hypothesis that the groups are the same. Fortunately, this function is already implemented in SciPy and is simple to evaluate.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/b6e8f856-b69a-4f1c-9196-7efccd517c54.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">hypothesis_testing.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/5f8dfdd9-8bb6-4a9c-8727-39d64c536f9d-1-b6e8f856-b69a-4f1c-9196-7efccd517c54.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">hypothesis_testing.PNG</figcaption>
 </figure>
 </div>
 <p>To run the t-test, we need the brain volumes for all of the males and females in our sample.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/8ac9e0dc-6f9c-48fd-abcf-aa431bc04256.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">t_stat_p_value.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/585ef09b-9c7e-47e2-a7c3-56ceefbe59c7-1-8ac9e0dc-6f9c-48fd-abcf-aa431bc04256.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">t_stat_p_value.PNG</figcaption>
 </figure>
 </div>
 <p>Select the male values with <code>df.loc</code>, then specifying the rows where “sex is male” and the column with “brain volume” values. For females, we change the selected sex to “female.”</p>
@@ -2327,8 +2304,8 @@ Shift (-10, 10), rotate +15 deg</p>
 <p>Not so fast. We need to consider the context in which this measurement is acquired. Brains fill up skulls, and skulls are proportional to body size. If we compare brain and skull volumes, we find that they have quite a large correlation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/d09d98f4-1522-41b5-8c39-c1c61dd77143.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">correlation.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/83d718b0-6408-4984-a0b9-f15b92f8e815-1-d09d98f4-1522-41b5-8c39-c1c61dd77143.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">correlation.PNG</figcaption>
 </figure>
 </div>
 <p>Accounting for this shared variation is important if we want to state that there’s something different about the brains of men and women and not just their body size.</p>
@@ -2336,15 +2313,15 @@ Shift (-10, 10), rotate +15 deg</p>
 <p>To account for this potential confound, we can normalize brain volume with respect to skull size by calculating the brain to skull ratio. We can then repeat our t-test using the normalized values for males and females. Reviewing the results leads to disappointment: our amazing finding was likely related simply to the fact that large people have larger brains, and there are more large men than large women.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/f24999d0-0dfc-456a-8bbe-bc3698780d61.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">normalization.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/c96bc801-9c81-4f4c-a686-a11afd2eb143-1-f24999d0-0dfc-456a-8bbe-bc3698780d61.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">normalization.PNG</figcaption>
 </figure>
 </div>
 <p><code>Potential confounds in imaging</code></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/cf56a58b-f96f-4c96-968e-956de43da67e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">confounds.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/d7cb50cc-68c4-4873-badf-3978b4705e56-1-cf56a58b-f96f-4c96-968e-956de43da67e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">confounds.PNG</figcaption>
 </figure>
 </div>
 <p>Confounds are omnipresent in data science but can be especially pervasive in image analyses. If you are pooling data across multiple hospitals or sites, you must consider how image acquisition, digital storage, clinical protocols, and subject populations might be biased towards a particular result. In short, you may employ extremely sophisticated image analysis techniques, but if your analytical thinking is faulty, then your conclusions will be too!</p>
@@ -2415,8 +2392,8 @@ skull_vol  -0.141576    0.014222   0.654829   1.000000</code></pre>
 <p>Let’s test the hypothesis that Alzheimer’s Disease is characterized by reduced brain volume.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/4a997869-0861-41aa-91ba-a7158df72be2.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">alzheimers.PNG</figcaption><p></p>
+<p><img src="Biomedical_Image_Analysis_in_Python_files/figure-html/486a7763-28e4-45f3-a27c-fe35bd3f949e-1-4a997869-0861-41aa-91ba-a7158df72be2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">alzheimers.PNG</figcaption>
 </figure>
 </div>
 <p>We can perform a two-sample t-test between the brain volumes of elderly adults with and without Alzheimer’s Disease. In this case, the two population samples are independent from each other because they are all separate subjects.</p>
@@ -2524,9 +2501,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2538,7 +2529,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -2574,24 +2582,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -142,31 +114,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -198,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">January 4, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -281,8 +257,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For the purposes of this blog we will be working with the <em>car_crashes</em> dataset.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Seaborn_files/figure-html/d936a020-cd5d-432b-a538-703a42e2ac61.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">car_crash.jpg</figcaption><p></p>
+<p><img src="Seaborn_files/figure-html/7dcf0e46-ec79-4268-b3df-36a9367662e2-1-d936a020-cd5d-432b-a538-703a42e2ac61.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">car_crash.jpg</figcaption>
 </figure>
 </div>
 <div class="cell" data-execution_count="157">
@@ -290,81 +266,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>crash_df <span class="op">=</span> sns.load_dataset(<span class="st">'car_crashes'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>crash_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="157">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>total</th>
-      <th>speeding</th>
-      <th>alcohol</th>
-      <th>not_distracted</th>
-      <th>no_previous</th>
-      <th>ins_premium</th>
-      <th>ins_losses</th>
-      <th>abbrev</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>18.8</td>
-      <td>7.332</td>
-      <td>5.640</td>
-      <td>18.048</td>
-      <td>15.040</td>
-      <td>784.55</td>
-      <td>145.08</td>
-      <td>AL</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>18.1</td>
-      <td>7.421</td>
-      <td>4.525</td>
-      <td>16.290</td>
-      <td>17.014</td>
-      <td>1053.48</td>
-      <td>133.93</td>
-      <td>AK</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>18.6</td>
-      <td>6.510</td>
-      <td>5.208</td>
-      <td>15.624</td>
-      <td>17.856</td>
-      <td>899.47</td>
-      <td>110.35</td>
-      <td>AZ</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>22.4</td>
-      <td>4.032</td>
-      <td>5.824</td>
-      <td>21.056</td>
-      <td>21.280</td>
-      <td>827.34</td>
-      <td>142.39</td>
-      <td>AR</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>12.0</td>
-      <td>4.200</td>
-      <td>3.360</td>
-      <td>10.920</td>
-      <td>10.680</td>
-      <td>878.41</td>
-      <td>165.63</td>
-      <td>CA</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">total</th>
+<th data-quarto-table-cell-role="th">speeding</th>
+<th data-quarto-table-cell-role="th">alcohol</th>
+<th data-quarto-table-cell-role="th">not_distracted</th>
+<th data-quarto-table-cell-role="th">no_previous</th>
+<th data-quarto-table-cell-role="th">ins_premium</th>
+<th data-quarto-table-cell-role="th">ins_losses</th>
+<th data-quarto-table-cell-role="th">abbrev</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>18.8</td>
+<td>7.332</td>
+<td>5.640</td>
+<td>18.048</td>
+<td>15.040</td>
+<td>784.55</td>
+<td>145.08</td>
+<td>AL</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>18.1</td>
+<td>7.421</td>
+<td>4.525</td>
+<td>16.290</td>
+<td>17.014</td>
+<td>1053.48</td>
+<td>133.93</td>
+<td>AK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>18.6</td>
+<td>6.510</td>
+<td>5.208</td>
+<td>15.624</td>
+<td>17.856</td>
+<td>899.47</td>
+<td>110.35</td>
+<td>AZ</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>22.4</td>
+<td>4.032</td>
+<td>5.824</td>
+<td>21.056</td>
+<td>21.280</td>
+<td>827.34</td>
+<td>142.39</td>
+<td>AR</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>12.0</td>
+<td>4.200</td>
+<td>3.360</td>
+<td>10.920</td>
+<td>10.680</td>
+<td>878.41</td>
+<td>165.63</td>
+<td>CA</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -408,12 +385,12 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <p><img src="Seaborn_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Kernel Density Estimation (KDE)
 </div>
 </div>
@@ -458,40 +435,31 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'alcohol'</span>, </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> crash_df, </span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>              kind <span class="op">=</span> <span class="st">'reg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>&lt;seaborn.axisgrid.JointGrid at 0x7f31f0add2a0&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-8-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>As we can see there looks to be a clear positive correlation between speeding and drink-driving.</p>
 <p>We can also create a 2D KDE by passing in the argument <em>kind=‘kde’</em></p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># joint plot of speeding vs alcohol</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.jointplot(x <span class="op">=</span> <span class="st">'speeding'</span>, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'alcohol'</span>, </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> crash_df, </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>              kind <span class="op">=</span> <span class="st">'kde'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>&lt;seaborn.axisgrid.JointGrid at 0x7f31ec15ac80&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># joint plot of speeding vs alcohol</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sns.jointplot(x <span class="op">=</span> <span class="st">'speeding'</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'alcohol'</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> crash_df, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>              kind <span class="op">=</span> <span class="st">'kde'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>…and we can create a hexagon distribution with <em>kind=‘hex’</em></p>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># joint plot of speeding vs alcohol</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sns.jointplot(x <span class="op">=</span> <span class="st">'speeding'</span>, </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'alcohol'</span>, </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> crash_df, </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>              kind <span class="op">=</span> <span class="st">'hex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>&lt;seaborn.axisgrid.JointGrid at 0x7f31ecd43c10&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># joint plot of speeding vs alcohol</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.jointplot(x <span class="op">=</span> <span class="st">'speeding'</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'alcohol'</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> crash_df, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>              kind <span class="op">=</span> <span class="st">'hex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -499,22 +467,19 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <h3 class="anchored" data-anchor-id="pair-plots">Pair plots</h3>
 <p>Pair Plots plot relationships across the entire DataFrame’s numerical values:</p>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # pair plot for car_crashes DataFrame</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(crash_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x7f31cecd4be0&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # pair plot for car_crashes DataFrame</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(crash_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Note that in addition to the relationship scatterplots we also have a histogram for each variable on the leading diagonal.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Using <strong>hue</strong> as a categorical variable
 </div>
 </div>
@@ -524,17 +489,14 @@ Using <strong>hue</strong> as a categorical variable
 </div>
 <p>Let’s illustrate this using one of the other inbuilt seaborn datasets <strong><em>tips</em></strong> which includes some categorical variables:</p>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With hue you can pass in a categorical column and the charts will be colorized</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use color maps (palette) from Matplotlib to define what colors to use</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>tips_df <span class="op">=</span> sns.load_dataset(<span class="st">'tips'</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>sns.pairplot(tips_df, </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>             hue <span class="op">=</span> <span class="st">'sex'</span>, </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>             palette <span class="op">=</span> <span class="st">'Blues'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x7f31cdf078b0&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With hue you can pass in a categorical column and the charts will be colorized</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use color maps (palette) from Matplotlib to define what colors to use</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>tips_df <span class="op">=</span> sns.load_dataset(<span class="st">'tips'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>sns.pairplot(tips_df, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>             hue <span class="op">=</span> <span class="st">'sex'</span>, </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>             palette <span class="op">=</span> <span class="st">'Blues'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -542,8 +504,8 @@ Using <strong>hue</strong> as a categorical variable
 <h3 class="anchored" data-anchor-id="rug-plot">Rug Plot</h3>
 <p>A <a href="https://en.wikipedia.org/wiki/Rug_plot">Rug Plot</a> plots a single column of datapoints in an array as sticks on an axis. You’ll see a more dense number of lines where the amount is most common. This is like how a histogram is taller where values are more common.</p>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a rugplot of tips</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.rugplot(tips_df[<span class="st">'tip'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a rugplot of tips</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sns.rugplot(tips_df[<span class="st">'tip'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>&lt;AxesSubplot: xlabel='tip'&gt;</code></pre>
 </div>
@@ -558,24 +520,24 @@ Using <strong>hue</strong> as a categorical variable
 <h2 class="anchored" data-anchor-id="styling">Styling</h2>
 <p>We can control the overall look of our plots using <strong><em>set_style</em></strong></p>
 <div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set overall style</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'ticks'</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set size of our plot</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># labels</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>, font_scale <span class="op">=</span> <span class="fl">1.5</span>)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># jointplot of speeding v alcohol from car_crashes DF, include regression line</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>sns.jointplot(x <span class="op">=</span> <span class="st">'speeding'</span>, </span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'alcohol'</span>, </span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> crash_df, </span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>              kind <span class="op">=</span> <span class="st">'reg'</span>) </span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># we can turn the axis spines on or off</span></span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>sns.despine(left <span class="op">=</span> <span class="va">False</span>, </span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>            bottom <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set overall style</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'ticks'</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set size of our plot</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># labels</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>, font_scale <span class="op">=</span> <span class="fl">1.5</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># jointplot of speeding v alcohol from car_crashes DF, include regression line</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>sns.jointplot(x <span class="op">=</span> <span class="st">'speeding'</span>, </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'alcohol'</span>, </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> crash_df, </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>              kind <span class="op">=</span> <span class="st">'reg'</span>) </span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># we can turn the axis spines on or off</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>sns.despine(left <span class="op">=</span> <span class="va">False</span>, </span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>            bottom <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 800x400 with 0 Axes&gt;</code></pre>
 </div>
@@ -590,10 +552,10 @@ Using <strong>hue</strong> as a categorical variable
 <h3 class="anchored" data-anchor-id="bar-plots">Bar Plots</h3>
 <p>Bar plot or <strong><a href="https://en.wikipedia.org/wiki/Bar_chart">bar chart</a></strong> can be used to aggregate categorical data based on a function. <strong>Mean</strong> is the default but we can change the reported summary statistic. For more information see the <a href="https://seaborn.pydata.org/generated/seaborn.barplot.html">seaborn documentation</a>.</p>
 <div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing mean total bill by sex</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'sex'</span>, </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'total_bill'</span>, </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> tips_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing mean total bill by sex</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'sex'</span>, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'total_bill'</span>, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> tips_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>&lt;AxesSubplot: xlabel='sex', ylabel='total_bill'&gt;</code></pre>
 </div>
@@ -603,11 +565,11 @@ Using <strong>hue</strong> as a categorical variable
 </div>
 <p>We can estimate total bill amount based on sex. With estimator we can define functions to use other than the mean like those provided by NumPy : median, std, var, cov or make your own functions</p>
 <div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing median total bill by sex</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'sex'</span>,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> tips_df, </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>            estimator <span class="op">=</span> np.median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a barplot showing median total bill by sex</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'sex'</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> tips_df, </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            estimator <span class="op">=</span> np.median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>&lt;AxesSubplot: xlabel='sex', ylabel='total_bill'&gt;</code></pre>
 </div>
@@ -620,9 +582,9 @@ Using <strong>hue</strong> as a categorical variable
 <h3 class="anchored" data-anchor-id="count-plot">Count Plot</h3>
 <p>A <strong>count plot</strong> is like a bar plot, but the estimator is counting the number of occurences. For more information see the <a href="https://seaborn.pydata.org/generated/seaborn.countplot.html">seaborn documentation</a>.</p>
 <div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a count of number of males and females</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(x <span class="op">=</span> <span class="st">'sex'</span>,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a count of number of males and females</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(x <span class="op">=</span> <span class="st">'sex'</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>&lt;AxesSubplot: xlabel='sex', ylabel='count'&gt;</code></pre>
 </div>
@@ -630,12 +592,12 @@ Using <strong>hue</strong> as a categorical variable
 <p><img src="Seaborn_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <strong>shift and tab</strong>
 </div>
 </div>
@@ -643,8 +605,8 @@ Using <strong>hue</strong> as a categorical variable
 <p>Hit <strong>shift and tab</strong> after the function to pull up docstring and the list of possible arguments</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Seaborn_files/figure-html/05142566-3f99-4342-bdca-9962404df254.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">shift_tab.JPG</figcaption><p></p>
+<p><img src="Seaborn_files/figure-html/a5871e9f-4138-4bb6-ad70-ea317d83db85-1-05142566-3f99-4342-bdca-9962404df254.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">shift_tab.JPG</figcaption>
 </figure>
 </div>
 </div>
@@ -654,17 +616,17 @@ Using <strong>hue</strong> as a categorical variable
 <h3 class="anchored" data-anchor-id="box-plot">Box Plot</h3>
 <p>A <strong><a href="https://en.wikipedia.org/wiki/Box_plot">box plot</a></strong> allows you to compare different variables. The box shows the quartiles of the data. The bar in the middle is the median and the box extends 1 standard deviation from the median. The whiskers extend to all the other data aside from the points that are considered to be outliers. For more information see the <a href="https://seaborn.pydata.org/generated/seaborn.boxplot.html">seaborn documentation</a>.</p>
 <div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create box plots of total bill per day</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use hue to allow comparison between male and female</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'total_bill'</span>, </span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> tips_df, </span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">'sex'</span>)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># loc=0 moves legend to the best position</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create box plots of total bill per day</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use hue to allow comparison between male and female</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">'total_bill'</span>, </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> tips_df, </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">'sex'</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes the labelling can get a bit cluttered. We can control this</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># loc=0 moves legend to the best position</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>&lt;matplotlib.legend.Legend at 0x7f31c52d92d0&gt;</code></pre>
 </div>
@@ -678,11 +640,11 @@ Using <strong>hue</strong> as a categorical variable
 <h3 class="anchored" data-anchor-id="violin-plot">Violin Plot</h3>
 <p>A <strong><a href="https://en.wikipedia.org/wiki/Violin_plot">violin plot</a></strong> is a combination of the boxplot and KDE. Whereas a box plot corresponds to data points, the violin plot uses the KDE estimation of the data points. For more information see the <a href="https://seaborn.pydata.org/generated/seaborn.violinplot.html">seaborn documentation</a>.</p>
 <div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a violin plot showing distribution of total bill by day and sex</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(x <span class="op">=</span> <span class="st">'day'</span>, </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>               y <span class="op">=</span> <span class="st">'total_bill'</span>, </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>               data <span class="op">=</span> tips_df, </span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>               hue <span class="op">=</span> <span class="st">'sex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a violin plot showing distribution of total bill by day and sex</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(x <span class="op">=</span> <span class="st">'day'</span>, </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>               y <span class="op">=</span> <span class="st">'total_bill'</span>, </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>               data <span class="op">=</span> tips_df, </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>               hue <span class="op">=</span> <span class="st">'sex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>&lt;AxesSubplot: xlabel='day', ylabel='total_bill'&gt;</code></pre>
 </div>
@@ -691,12 +653,12 @@ Using <strong>hue</strong> as a categorical variable
 </div>
 </div>
 <div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split allows you to compare how the categories compare to each other</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>               y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>               data <span class="op">=</span> tips_df,</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>               hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>               split <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split allows you to compare how the categories compare to each other</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>               y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>               data <span class="op">=</span> tips_df,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>               hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>               split <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>&lt;AxesSubplot: xlabel='day', ylabel='total_bill'&gt;</code></pre>
 </div>
@@ -709,16 +671,16 @@ Using <strong>hue</strong> as a categorical variable
 <h3 class="anchored" data-anchor-id="strip-plot">Strip Plot</h3>
 <p>The <a href="https://en.wikipedia.org/wiki/Dot_plot_(statistics)">strip plot</a> or dotplot draws a scatter plot representing all data points where one variable is categorical. It is often used to show all observations with a box plot that represents the average distribution. For more information see the <a href="https://seaborn.pydata.org/generated/seaborn.stripplot.html">seaborn documentation</a>.</p>
 <div class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">5</span>))</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Jitter spreads data points out so that they aren't stacked on top of each other</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hue breaks data into men and women</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df,</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>              jitter <span class="op">=</span> <span class="va">True</span>, </span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>              hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>              dodge <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Jitter spreads data points out so that they aren't stacked on top of each other</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hue breaks data into men and women</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df,</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>              jitter <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>              hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>              dodge <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>&lt;AxesSubplot: xlabel='day', ylabel='total_bill'&gt;</code></pre>
 </div>
@@ -728,16 +690,16 @@ Using <strong>hue</strong> as a categorical variable
 </div>
 <p>This looks great, but the data points for male and female are difficult to distinguish. We can set the argument <em>dode=True</em> to separate them amd show them side by side:</p>
 <div class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">5</span>))</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Jitter spreads data points out so that they aren't stacked on top of each other</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hue breaks data into men and women</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df,</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>              jitter <span class="op">=</span> <span class="va">True</span>, </span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>              hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>              dodge <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Jitter spreads data points out so that they aren't stacked on top of each other</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hue breaks data into men and women</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>              jitter <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>              hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>              dodge <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>&lt;AxesSubplot: xlabel='day', ylabel='total_bill'&gt;</code></pre>
 </div>
@@ -750,10 +712,10 @@ Using <strong>hue</strong> as a categorical variable
 <h3 class="anchored" data-anchor-id="swarm-plot">Swarm plot</h3>
 <p>A <strong>swarm plot</strong> is like a strip plot, but points are adjusted so they don’t overlap. It looks like a combination of the violin and strip plots. For more information see the <a href="https://seaborn.pydata.org/generated/seaborn.swarmplot.html">seaborn documentation</a>.</p>
 <div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a raw swarmplot of total bill bu day</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>sns.swarmplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a raw swarmplot of total bill bu day</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>sns.swarmplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>&lt;AxesSubplot: xlabel='day', ylabel='total_bill'&gt;</code></pre>
 </div>
@@ -763,15 +725,15 @@ Using <strong>hue</strong> as a categorical variable
 </div>
 <p>We can then stack a violin plot with a swarm:</p>
 <div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stack a violin plot on top of our swarmplot</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>               y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>               data <span class="op">=</span> tips_df)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>sns.swarmplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df,</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>              color <span class="op">=</span> <span class="st">'white'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stack a violin plot on top of our swarmplot</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sns.violinplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>               y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>               data <span class="op">=</span> tips_df)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>sns.swarmplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>              color <span class="op">=</span> <span class="st">'white'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>&lt;AxesSubplot: xlabel='day', ylabel='total_bill'&gt;</code></pre>
 </div>
@@ -783,12 +745,12 @@ Using <strong>hue</strong> as a categorical variable
 </section>
 <section id="palettes" class="level2">
 <h2 class="anchored" data-anchor-id="palettes">Palettes</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Color maps
 </div>
 </div>
@@ -797,21 +759,21 @@ Color maps
 </div>
 </div>
 <div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>))</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># let's go for a presentation style using 'talk'</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'ticks'</span>)</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>)</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co"># customize our colours using palette argument</span></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df,</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>              hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>              palette <span class="op">=</span> <span class="st">'plasma'</span>)</span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co"># control location of legend </span></span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># let's go for a presentation style using 'talk'</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'ticks'</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># customize our colours using palette argument</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x <span class="op">=</span> <span class="st">'day'</span>,</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>              y <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>              data <span class="op">=</span> tips_df,</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>              hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>              palette <span class="op">=</span> <span class="st">'plasma'</span>)</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co"># control location of legend </span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>&lt;matplotlib.legend.Legend at 0x7f31c50bcc40&gt;</code></pre>
 </div>
@@ -819,12 +781,12 @@ Color maps
 <p><img src="Seaborn_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Setting the legend location
 </div>
 </div>
@@ -841,12 +803,12 @@ See the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.leg
 <h2 class="anchored" data-anchor-id="matrix-plots">Matrix plots</h2>
 <section id="heatmaps" class="level3">
 <h3 class="anchored" data-anchor-id="heatmaps">Heatmaps</h3>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -856,190 +818,192 @@ Important
 </div>
 <p>For example let’s look at an extract from our car_crashes dataset :</p>
 <div class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grab first 5 rows </span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>crash_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grab first 5 rows </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>crash_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>total</th>
-      <th>speeding</th>
-      <th>alcohol</th>
-      <th>not_distracted</th>
-      <th>no_previous</th>
-      <th>ins_premium</th>
-      <th>ins_losses</th>
-      <th>abbrev</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>18.8</td>
-      <td>7.332</td>
-      <td>5.640</td>
-      <td>18.048</td>
-      <td>15.040</td>
-      <td>784.55</td>
-      <td>145.08</td>
-      <td>AL</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>18.1</td>
-      <td>7.421</td>
-      <td>4.525</td>
-      <td>16.290</td>
-      <td>17.014</td>
-      <td>1053.48</td>
-      <td>133.93</td>
-      <td>AK</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>18.6</td>
-      <td>6.510</td>
-      <td>5.208</td>
-      <td>15.624</td>
-      <td>17.856</td>
-      <td>899.47</td>
-      <td>110.35</td>
-      <td>AZ</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>22.4</td>
-      <td>4.032</td>
-      <td>5.824</td>
-      <td>21.056</td>
-      <td>21.280</td>
-      <td>827.34</td>
-      <td>142.39</td>
-      <td>AR</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>12.0</td>
-      <td>4.200</td>
-      <td>3.360</td>
-      <td>10.920</td>
-      <td>10.680</td>
-      <td>878.41</td>
-      <td>165.63</td>
-      <td>CA</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">total</th>
+<th data-quarto-table-cell-role="th">speeding</th>
+<th data-quarto-table-cell-role="th">alcohol</th>
+<th data-quarto-table-cell-role="th">not_distracted</th>
+<th data-quarto-table-cell-role="th">no_previous</th>
+<th data-quarto-table-cell-role="th">ins_premium</th>
+<th data-quarto-table-cell-role="th">ins_losses</th>
+<th data-quarto-table-cell-role="th">abbrev</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>18.8</td>
+<td>7.332</td>
+<td>5.640</td>
+<td>18.048</td>
+<td>15.040</td>
+<td>784.55</td>
+<td>145.08</td>
+<td>AL</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>18.1</td>
+<td>7.421</td>
+<td>4.525</td>
+<td>16.290</td>
+<td>17.014</td>
+<td>1053.48</td>
+<td>133.93</td>
+<td>AK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>18.6</td>
+<td>6.510</td>
+<td>5.208</td>
+<td>15.624</td>
+<td>17.856</td>
+<td>899.47</td>
+<td>110.35</td>
+<td>AZ</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>22.4</td>
+<td>4.032</td>
+<td>5.824</td>
+<td>21.056</td>
+<td>21.280</td>
+<td>827.34</td>
+<td>142.39</td>
+<td>AR</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>12.0</td>
+<td>4.200</td>
+<td>3.360</td>
+<td>10.920</td>
+<td>10.680</td>
+<td>878.41</td>
+<td>165.63</td>
+<td>CA</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>In its current format (with the variables across the columns but not the rows) we won’t be able to produce a heat map for our car_crashes DataFrame. We can transform our DataFrame into the correct format using a correlation function:</p>
 <div class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>,</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                font_scale <span class="op">=</span> <span class="fl">1.4</span>)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># transform our dataset into a correlation matrix</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>crash_mx <span class="op">=</span> crash_df.corr()</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>crash_mx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>                font_scale <span class="op">=</span> <span class="fl">1.4</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co"># transform our dataset into a correlation matrix</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>crash_mx <span class="op">=</span> crash_df.corr()</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>crash_mx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/tmp/ipykernel_206/2429762792.py:5: FutureWarning: The default value of numeric_only in DataFrame.corr is deprecated. In a future version, it will default to False. Select only valid columns or specify the value of numeric_only to silence this warning.
   crash_mx = crash_df.corr()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="77">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>total</th>
-      <th>speeding</th>
-      <th>alcohol</th>
-      <th>not_distracted</th>
-      <th>no_previous</th>
-      <th>ins_premium</th>
-      <th>ins_losses</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>total</th>
-      <td>1.000000</td>
-      <td>0.611548</td>
-      <td>0.852613</td>
-      <td>0.827560</td>
-      <td>0.956179</td>
-      <td>-0.199702</td>
-      <td>-0.036011</td>
-    </tr>
-    <tr>
-      <th>speeding</th>
-      <td>0.611548</td>
-      <td>1.000000</td>
-      <td>0.669719</td>
-      <td>0.588010</td>
-      <td>0.571976</td>
-      <td>-0.077675</td>
-      <td>-0.065928</td>
-    </tr>
-    <tr>
-      <th>alcohol</th>
-      <td>0.852613</td>
-      <td>0.669719</td>
-      <td>1.000000</td>
-      <td>0.732816</td>
-      <td>0.783520</td>
-      <td>-0.170612</td>
-      <td>-0.112547</td>
-    </tr>
-    <tr>
-      <th>not_distracted</th>
-      <td>0.827560</td>
-      <td>0.588010</td>
-      <td>0.732816</td>
-      <td>1.000000</td>
-      <td>0.747307</td>
-      <td>-0.174856</td>
-      <td>-0.075970</td>
-    </tr>
-    <tr>
-      <th>no_previous</th>
-      <td>0.956179</td>
-      <td>0.571976</td>
-      <td>0.783520</td>
-      <td>0.747307</td>
-      <td>1.000000</td>
-      <td>-0.156895</td>
-      <td>-0.006359</td>
-    </tr>
-    <tr>
-      <th>ins_premium</th>
-      <td>-0.199702</td>
-      <td>-0.077675</td>
-      <td>-0.170612</td>
-      <td>-0.174856</td>
-      <td>-0.156895</td>
-      <td>1.000000</td>
-      <td>0.623116</td>
-    </tr>
-    <tr>
-      <th>ins_losses</th>
-      <td>-0.036011</td>
-      <td>-0.065928</td>
-      <td>-0.112547</td>
-      <td>-0.075970</td>
-      <td>-0.006359</td>
-      <td>0.623116</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">total</th>
+<th data-quarto-table-cell-role="th">speeding</th>
+<th data-quarto-table-cell-role="th">alcohol</th>
+<th data-quarto-table-cell-role="th">not_distracted</th>
+<th data-quarto-table-cell-role="th">no_previous</th>
+<th data-quarto-table-cell-role="th">ins_premium</th>
+<th data-quarto-table-cell-role="th">ins_losses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">total</td>
+<td>1.000000</td>
+<td>0.611548</td>
+<td>0.852613</td>
+<td>0.827560</td>
+<td>0.956179</td>
+<td>-0.199702</td>
+<td>-0.036011</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">speeding</td>
+<td>0.611548</td>
+<td>1.000000</td>
+<td>0.669719</td>
+<td>0.588010</td>
+<td>0.571976</td>
+<td>-0.077675</td>
+<td>-0.065928</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">alcohol</td>
+<td>0.852613</td>
+<td>0.669719</td>
+<td>1.000000</td>
+<td>0.732816</td>
+<td>0.783520</td>
+<td>-0.170612</td>
+<td>-0.112547</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">not_distracted</td>
+<td>0.827560</td>
+<td>0.588010</td>
+<td>0.732816</td>
+<td>1.000000</td>
+<td>0.747307</td>
+<td>-0.174856</td>
+<td>-0.075970</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">no_previous</td>
+<td>0.956179</td>
+<td>0.571976</td>
+<td>0.783520</td>
+<td>0.747307</td>
+<td>1.000000</td>
+<td>-0.156895</td>
+<td>-0.006359</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ins_premium</td>
+<td>-0.199702</td>
+<td>-0.077675</td>
+<td>-0.170612</td>
+<td>-0.174856</td>
+<td>-0.156895</td>
+<td>1.000000</td>
+<td>0.623116</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ins_losses</td>
+<td>-0.036011</td>
+<td>-0.065928</td>
+<td>-0.112547</td>
+<td>-0.075970</td>
+<td>-0.006359</td>
+<td>0.623116</td>
+<td>1.000000</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 <div class="cell-output cell-output-display">
@@ -1048,10 +1012,10 @@ Important
 </div>
 <p>Now that we have our data in the correct format we can go ahead and plot out heatmap:</p>
 <div class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a heatmap, annotate and customize from colormaps</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(crash_mx, </span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>            annot <span class="op">=</span> <span class="va">True</span>, </span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>            cmap <span class="op">=</span> <span class="st">'Blues'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a heatmap, annotate and customize from colormaps</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(crash_mx, </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>            annot <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>            cmap <span class="op">=</span> <span class="st">'Blues'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>&lt;AxesSubplot: &gt;</code></pre>
 </div>
@@ -1061,330 +1025,332 @@ Important
 </div>
 <p>Another way to prep our data for plotting is to create a pivot table. Let’s use another of seaborn’s built in datasets to illustrate:</p>
 <div class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> sns.load_dataset(<span class="st">"flights"</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> sns.load_dataset(<span class="st">"flights"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="79">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>passengers</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1949</td>
-      <td>Jan</td>
-      <td>112</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1949</td>
-      <td>Feb</td>
-      <td>118</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1949</td>
-      <td>Mar</td>
-      <td>132</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1949</td>
-      <td>Apr</td>
-      <td>129</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1949</td>
-      <td>May</td>
-      <td>121</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>139</th>
-      <td>1960</td>
-      <td>Aug</td>
-      <td>606</td>
-    </tr>
-    <tr>
-      <th>140</th>
-      <td>1960</td>
-      <td>Sep</td>
-      <td>508</td>
-    </tr>
-    <tr>
-      <th>141</th>
-      <td>1960</td>
-      <td>Oct</td>
-      <td>461</td>
-    </tr>
-    <tr>
-      <th>142</th>
-      <td>1960</td>
-      <td>Nov</td>
-      <td>390</td>
-    </tr>
-    <tr>
-      <th>143</th>
-      <td>1960</td>
-      <td>Dec</td>
-      <td>432</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">month</th>
+<th data-quarto-table-cell-role="th">passengers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1949</td>
+<td>Jan</td>
+<td>112</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1949</td>
+<td>Feb</td>
+<td>118</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1949</td>
+<td>Mar</td>
+<td>132</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1949</td>
+<td>Apr</td>
+<td>129</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1949</td>
+<td>May</td>
+<td>121</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">139</td>
+<td>1960</td>
+<td>Aug</td>
+<td>606</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">140</td>
+<td>1960</td>
+<td>Sep</td>
+<td>508</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">141</td>
+<td>1960</td>
+<td>Oct</td>
+<td>461</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">142</td>
+<td>1960</td>
+<td>Nov</td>
+<td>390</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">143</td>
+<td>1960</td>
+<td>Dec</td>
+<td>432</td>
+</tr>
+</tbody>
 </table>
+
 <p>144 rows × 3 columns</p>
 </div>
 </div>
 </div>
 <p>We can create a matrix with an index of month, columns representing years and the number of passengers for each:</p>
 <div class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> flights.pivot_table(index <span class="op">=</span> <span class="st">'month'</span>,</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>                              columns <span class="op">=</span> <span class="st">'year'</span>,</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                              values <span class="op">=</span> <span class="st">'passengers'</span>)</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> flights.pivot_table(index <span class="op">=</span> <span class="st">'month'</span>,</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>                              columns <span class="op">=</span> <span class="st">'year'</span>,</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>                              values <span class="op">=</span> <span class="st">'passengers'</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="80">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>year</th>
-      <th>1949</th>
-      <th>1950</th>
-      <th>1951</th>
-      <th>1952</th>
-      <th>1953</th>
-      <th>1954</th>
-      <th>1955</th>
-      <th>1956</th>
-      <th>1957</th>
-      <th>1958</th>
-      <th>1959</th>
-      <th>1960</th>
-    </tr>
-    <tr>
-      <th>month</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Jan</th>
-      <td>112</td>
-      <td>115</td>
-      <td>145</td>
-      <td>171</td>
-      <td>196</td>
-      <td>204</td>
-      <td>242</td>
-      <td>284</td>
-      <td>315</td>
-      <td>340</td>
-      <td>360</td>
-      <td>417</td>
-    </tr>
-    <tr>
-      <th>Feb</th>
-      <td>118</td>
-      <td>126</td>
-      <td>150</td>
-      <td>180</td>
-      <td>196</td>
-      <td>188</td>
-      <td>233</td>
-      <td>277</td>
-      <td>301</td>
-      <td>318</td>
-      <td>342</td>
-      <td>391</td>
-    </tr>
-    <tr>
-      <th>Mar</th>
-      <td>132</td>
-      <td>141</td>
-      <td>178</td>
-      <td>193</td>
-      <td>236</td>
-      <td>235</td>
-      <td>267</td>
-      <td>317</td>
-      <td>356</td>
-      <td>362</td>
-      <td>406</td>
-      <td>419</td>
-    </tr>
-    <tr>
-      <th>Apr</th>
-      <td>129</td>
-      <td>135</td>
-      <td>163</td>
-      <td>181</td>
-      <td>235</td>
-      <td>227</td>
-      <td>269</td>
-      <td>313</td>
-      <td>348</td>
-      <td>348</td>
-      <td>396</td>
-      <td>461</td>
-    </tr>
-    <tr>
-      <th>May</th>
-      <td>121</td>
-      <td>125</td>
-      <td>172</td>
-      <td>183</td>
-      <td>229</td>
-      <td>234</td>
-      <td>270</td>
-      <td>318</td>
-      <td>355</td>
-      <td>363</td>
-      <td>420</td>
-      <td>472</td>
-    </tr>
-    <tr>
-      <th>Jun</th>
-      <td>135</td>
-      <td>149</td>
-      <td>178</td>
-      <td>218</td>
-      <td>243</td>
-      <td>264</td>
-      <td>315</td>
-      <td>374</td>
-      <td>422</td>
-      <td>435</td>
-      <td>472</td>
-      <td>535</td>
-    </tr>
-    <tr>
-      <th>Jul</th>
-      <td>148</td>
-      <td>170</td>
-      <td>199</td>
-      <td>230</td>
-      <td>264</td>
-      <td>302</td>
-      <td>364</td>
-      <td>413</td>
-      <td>465</td>
-      <td>491</td>
-      <td>548</td>
-      <td>622</td>
-    </tr>
-    <tr>
-      <th>Aug</th>
-      <td>148</td>
-      <td>170</td>
-      <td>199</td>
-      <td>242</td>
-      <td>272</td>
-      <td>293</td>
-      <td>347</td>
-      <td>405</td>
-      <td>467</td>
-      <td>505</td>
-      <td>559</td>
-      <td>606</td>
-    </tr>
-    <tr>
-      <th>Sep</th>
-      <td>136</td>
-      <td>158</td>
-      <td>184</td>
-      <td>209</td>
-      <td>237</td>
-      <td>259</td>
-      <td>312</td>
-      <td>355</td>
-      <td>404</td>
-      <td>404</td>
-      <td>463</td>
-      <td>508</td>
-    </tr>
-    <tr>
-      <th>Oct</th>
-      <td>119</td>
-      <td>133</td>
-      <td>162</td>
-      <td>191</td>
-      <td>211</td>
-      <td>229</td>
-      <td>274</td>
-      <td>306</td>
-      <td>347</td>
-      <td>359</td>
-      <td>407</td>
-      <td>461</td>
-    </tr>
-    <tr>
-      <th>Nov</th>
-      <td>104</td>
-      <td>114</td>
-      <td>146</td>
-      <td>172</td>
-      <td>180</td>
-      <td>203</td>
-      <td>237</td>
-      <td>271</td>
-      <td>305</td>
-      <td>310</td>
-      <td>362</td>
-      <td>390</td>
-    </tr>
-    <tr>
-      <th>Dec</th>
-      <td>118</td>
-      <td>140</td>
-      <td>166</td>
-      <td>194</td>
-      <td>201</td>
-      <td>229</td>
-      <td>278</td>
-      <td>306</td>
-      <td>336</td>
-      <td>337</td>
-      <td>405</td>
-      <td>432</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">1949</th>
+<th data-quarto-table-cell-role="th">1950</th>
+<th data-quarto-table-cell-role="th">1951</th>
+<th data-quarto-table-cell-role="th">1952</th>
+<th data-quarto-table-cell-role="th">1953</th>
+<th data-quarto-table-cell-role="th">1954</th>
+<th data-quarto-table-cell-role="th">1955</th>
+<th data-quarto-table-cell-role="th">1956</th>
+<th data-quarto-table-cell-role="th">1957</th>
+<th data-quarto-table-cell-role="th">1958</th>
+<th data-quarto-table-cell-role="th">1959</th>
+<th data-quarto-table-cell-role="th">1960</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">month</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Jan</td>
+<td>112</td>
+<td>115</td>
+<td>145</td>
+<td>171</td>
+<td>196</td>
+<td>204</td>
+<td>242</td>
+<td>284</td>
+<td>315</td>
+<td>340</td>
+<td>360</td>
+<td>417</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Feb</td>
+<td>118</td>
+<td>126</td>
+<td>150</td>
+<td>180</td>
+<td>196</td>
+<td>188</td>
+<td>233</td>
+<td>277</td>
+<td>301</td>
+<td>318</td>
+<td>342</td>
+<td>391</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Mar</td>
+<td>132</td>
+<td>141</td>
+<td>178</td>
+<td>193</td>
+<td>236</td>
+<td>235</td>
+<td>267</td>
+<td>317</td>
+<td>356</td>
+<td>362</td>
+<td>406</td>
+<td>419</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Apr</td>
+<td>129</td>
+<td>135</td>
+<td>163</td>
+<td>181</td>
+<td>235</td>
+<td>227</td>
+<td>269</td>
+<td>313</td>
+<td>348</td>
+<td>348</td>
+<td>396</td>
+<td>461</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">May</td>
+<td>121</td>
+<td>125</td>
+<td>172</td>
+<td>183</td>
+<td>229</td>
+<td>234</td>
+<td>270</td>
+<td>318</td>
+<td>355</td>
+<td>363</td>
+<td>420</td>
+<td>472</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Jun</td>
+<td>135</td>
+<td>149</td>
+<td>178</td>
+<td>218</td>
+<td>243</td>
+<td>264</td>
+<td>315</td>
+<td>374</td>
+<td>422</td>
+<td>435</td>
+<td>472</td>
+<td>535</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Jul</td>
+<td>148</td>
+<td>170</td>
+<td>199</td>
+<td>230</td>
+<td>264</td>
+<td>302</td>
+<td>364</td>
+<td>413</td>
+<td>465</td>
+<td>491</td>
+<td>548</td>
+<td>622</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Aug</td>
+<td>148</td>
+<td>170</td>
+<td>199</td>
+<td>242</td>
+<td>272</td>
+<td>293</td>
+<td>347</td>
+<td>405</td>
+<td>467</td>
+<td>505</td>
+<td>559</td>
+<td>606</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Sep</td>
+<td>136</td>
+<td>158</td>
+<td>184</td>
+<td>209</td>
+<td>237</td>
+<td>259</td>
+<td>312</td>
+<td>355</td>
+<td>404</td>
+<td>404</td>
+<td>463</td>
+<td>508</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Oct</td>
+<td>119</td>
+<td>133</td>
+<td>162</td>
+<td>191</td>
+<td>211</td>
+<td>229</td>
+<td>274</td>
+<td>306</td>
+<td>347</td>
+<td>359</td>
+<td>407</td>
+<td>461</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Nov</td>
+<td>104</td>
+<td>114</td>
+<td>146</td>
+<td>172</td>
+<td>180</td>
+<td>203</td>
+<td>237</td>
+<td>271</td>
+<td>305</td>
+<td>310</td>
+<td>362</td>
+<td>390</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Dec</td>
+<td>118</td>
+<td>140</td>
+<td>166</td>
+<td>194</td>
+<td>201</td>
+<td>229</td>
+<td>278</td>
+<td>306</td>
+<td>336</td>
+<td>337</td>
+<td>405</td>
+<td>432</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>Now that we have our data in the correct format we can go ahead and plot out heatmap:</p>
 <div class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can separate data with lines</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(flights,</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>            cmap <span class="op">=</span> <span class="st">'Blues'</span>,</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>            linecolor <span class="op">=</span> <span class="st">'white'</span>,</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>            linewidth <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can separate data with lines</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(flights,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>            cmap <span class="op">=</span> <span class="st">'Blues'</span>,</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>            linecolor <span class="op">=</span> <span class="st">'white'</span>,</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>            linewidth <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>&lt;AxesSubplot: xlabel='year', ylabel='month'&gt;</code></pre>
 </div>
@@ -1399,142 +1365,137 @@ Important
 <p>A <strong>Cluster map</strong> is a hierarchically clustered heatmap. The distance between points is calculated, the closest are joined, and this continues for the next closest (It compares columns / rows of the heatmap). For more information see the <a href="https://seaborn.pydata.org/generated/seaborn.clustermap.html">seaborn documentation</a>.</p>
 <p>Let’s illustrate using another of seaborn’s built-in datasets:</p>
 <div class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="99">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>sepal_length</th>
-      <th>sepal_width</th>
-      <th>petal_length</th>
-      <th>petal_width</th>
-      <th>species</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5.1</td>
-      <td>3.5</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.9</td>
-      <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-      <td>setosa</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-      <td>setosa</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5.0</td>
-      <td>3.6</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>145</th>
-      <td>6.7</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.3</td>
-      <td>virginica</td>
-    </tr>
-    <tr>
-      <th>146</th>
-      <td>6.3</td>
-      <td>2.5</td>
-      <td>5.0</td>
-      <td>1.9</td>
-      <td>virginica</td>
-    </tr>
-    <tr>
-      <th>147</th>
-      <td>6.5</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.0</td>
-      <td>virginica</td>
-    </tr>
-    <tr>
-      <th>148</th>
-      <td>6.2</td>
-      <td>3.4</td>
-      <td>5.4</td>
-      <td>2.3</td>
-      <td>virginica</td>
-    </tr>
-    <tr>
-      <th>149</th>
-      <td>5.9</td>
-      <td>3.0</td>
-      <td>5.1</td>
-      <td>1.8</td>
-      <td>virginica</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sepal_length</th>
+<th data-quarto-table-cell-role="th">sepal_width</th>
+<th data-quarto-table-cell-role="th">petal_length</th>
+<th data-quarto-table-cell-role="th">petal_width</th>
+<th data-quarto-table-cell-role="th">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>5.1</td>
+<td>3.5</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>4.9</td>
+<td>3.0</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>4.7</td>
+<td>3.2</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4.6</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5.0</td>
+<td>3.6</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">145</td>
+<td>6.7</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.3</td>
+<td>virginica</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">146</td>
+<td>6.3</td>
+<td>2.5</td>
+<td>5.0</td>
+<td>1.9</td>
+<td>virginica</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">147</td>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.0</td>
+<td>virginica</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">148</td>
+<td>6.2</td>
+<td>3.4</td>
+<td>5.4</td>
+<td>2.3</td>
+<td>virginica</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">149</td>
+<td>5.9</td>
+<td>3.0</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>virginica</td>
+</tr>
+</tbody>
 </table>
+
 <p>150 rows × 5 columns</p>
 </div>
 </div>
 </div>
 <p>It would be useful to carve up our numerical data based on the different species in order to identify any trends.</p>
 <div class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the column species using .pop</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>species <span class="op">=</span> iris.pop(<span class="st">'species'</span>)</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>sns.clustermap(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="100">
-<pre><code>&lt;seaborn.matrix.ClusterGrid at 0x7f31bc001ba0&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the column species using .pop</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>species <span class="op">=</span> iris.pop(<span class="st">'species'</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>sns.clustermap(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-33-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Let’s try this out on our flight data we looked at earlier:</p>
 <div class="cell" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standard_scale normalizes the data to focus on the clustering</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>sns.clustermap(flights,</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>               cmap <span class="op">=</span> <span class="st">"Blues"</span>,</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>               standard_scale <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="84">
-<pre><code>&lt;seaborn.matrix.ClusterGrid at 0x7f31c2681c00&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standard_scale normalizes the data to focus on the clustering</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>sns.clustermap(flights,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>               cmap <span class="op">=</span> <span class="st">"Blues"</span>,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>               standard_scale <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>With our flights data we can see that years have been reoriented to place like data closer together. You can see clusters of data for July &amp; August for the years 59 &amp; 60.</p>
@@ -1543,69 +1504,60 @@ Important
 <h3 class="anchored" data-anchor-id="pair-grids">Pair Grids</h3>
 <p>Pair Grids allow us to create a grid of different plots with complete control over what is displayed. For more information see the <a href="https://seaborn.pydata.org/generated/seaborn.PairGrid.html">seaborn documentation</a>.</p>
 <div class="cell" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in iris dataset</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the empty grid system using the provided data</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Colorize based on species</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>iris_g <span class="op">=</span> sns.PairGrid(iris,</span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>                      hue <span class="op">=</span> <span class="st">'species'</span>)</span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Put a histogram on the diagonal </span></span>
-<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>iris_g.map_diag(plt.hist)</span>
-<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="co"># And a scatter plot every place else </span></span>
-<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>iris_g.map_offdiag(plt.scatter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="113">
-<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x7f31bbc31de0&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in iris dataset</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the empty grid system using the provided data</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Colorize based on species</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>iris_g <span class="op">=</span> sns.PairGrid(iris,</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>                      hue <span class="op">=</span> <span class="st">'species'</span>)</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Put a histogram on the diagonal </span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>iris_g.map_diag(plt.hist)</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="co"># And a scatter plot every place else </span></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>iris_g.map_offdiag(plt.scatter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-35-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can further tailor by having different plots in the upper, lower and diagonal:</p>
 <div class="cell" data-execution_count="117">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in iris dataset</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the empty grid system using the provided data</span></span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Colorize based on species</span></span>
-<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>iris_g <span class="op">=</span> sns.PairGrid(iris,</span>
-<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>                      hue <span class="op">=</span> <span class="st">'species'</span>)</span>
-<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Put a histogram on the diagonal </span></span>
-<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>iris_g.map_diag(plt.hist)</span>
-<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Have different plots in upper, lower and diagonal</span></span>
-<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>iris_g.map_upper(plt.scatter)</span>
-<span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a>iris_g.map_lower(sns.kdeplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="117">
-<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x7f31b6d41960&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in iris dataset</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the empty grid system using the provided data</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Colorize based on species</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>iris_g <span class="op">=</span> sns.PairGrid(iris,</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>                      hue <span class="op">=</span> <span class="st">'species'</span>)</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Put a histogram on the diagonal </span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>iris_g.map_diag(plt.hist)</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Have different plots in upper, lower and diagonal</span></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>iris_g.map_upper(plt.scatter)</span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>iris_g.map_lower(sns.kdeplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-36-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can also define the x and y variables for our custom grids:</p>
 <div class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in iris dataset</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># You can define define variables for x &amp; y for a custom grid</span></span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>iris_g <span class="op">=</span> sns.PairGrid(iris,</span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>                      hue <span class="op">=</span> <span class="st">"species"</span>,</span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>                      x_vars <span class="op">=</span> [<span class="st">"sepal_length"</span>, <span class="st">"sepal_width"</span>],</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>                      y_vars <span class="op">=</span> [<span class="st">"petal_length"</span>, <span class="st">"petal_width"</span>])</span>
-<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>iris_g.<span class="bu">map</span>(plt.scatter)</span>
-<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend last</span></span>
-<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a>iris_g.add_legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
-<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x7f31b8eecdc0&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in iris dataset</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># You can define define variables for x &amp; y for a custom grid</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>iris_g <span class="op">=</span> sns.PairGrid(iris,</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>                      hue <span class="op">=</span> <span class="st">"species"</span>,</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>                      x_vars <span class="op">=</span> [<span class="st">"sepal_length"</span>, <span class="st">"sepal_width"</span>],</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>                      y_vars <span class="op">=</span> [<span class="st">"petal_length"</span>, <span class="st">"petal_width"</span>])</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>iris_g.<span class="bu">map</span>(plt.scatter)</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend last</span></span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>iris_g.add_legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-37-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1614,15 +1566,15 @@ Important
 <p>A <strong>facet grid</strong> allows us to print multiple plots in a grid where we can define columns &amp; rows. For further information see the <a href="https://seaborn.pydata.org/generated/seaborn.FacetGrid.html">seaborn documentation</a>.</p>
 <p>Let’s return to our <em>tips</em> dataset to illustrate what can be done usin facet grids.</p>
 <div class="cell" data-execution_count="128">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get histogram for smokers and non with total bill for lunch &amp; dinner</span></span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df,</span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>                        col <span class="op">=</span> <span class="st">'time'</span>,</span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>                        row <span class="op">=</span> <span class="st">'smoker'</span>)</span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You can pass in attributes for the histogram</span></span>
-<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.hist,</span>
-<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'total_bill'</span>,</span>
-<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>            bins <span class="op">=</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get histogram for smokers and non with total bill for lunch &amp; dinner</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df,</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>                        col <span class="op">=</span> <span class="st">'time'</span>,</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>                        row <span class="op">=</span> <span class="st">'smoker'</span>)</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You can pass in attributes for the histogram</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.hist,</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'total_bill'</span>,</span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>            bins <span class="op">=</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]
@@ -1633,23 +1585,20 @@ Important
 /home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="128">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f31bad559f0&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-38-output-3.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="122">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get histogram for smokers and non with total bill for lunch &amp; dinner</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df,</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>                        col <span class="op">=</span> <span class="st">'time'</span>,</span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>                        row <span class="op">=</span> <span class="st">'smoker'</span>)</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot with data on total bill &amp; tip (You need 2 parameters)</span></span>
-<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.scatter,</span>
-<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'total_bill'</span>,</span>
-<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'tip'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get histogram for smokers and non with total bill for lunch &amp; dinner</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df,</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>                        col <span class="op">=</span> <span class="st">'time'</span>,</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>                        row <span class="op">=</span> <span class="st">'smoker'</span>)</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot with data on total bill &amp; tip (You need 2 parameters)</span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.scatter,</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'total_bill'</span>,</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'tip'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]
@@ -1660,28 +1609,25 @@ Important
 /home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="122">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f31b61160b0&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-39-output-3.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-39-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="130">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign variables to different colors and increase size of grid</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Aspect is 1.3 x the size of height</span></span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="co"># You can change the order of the columns</span></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the palette used</span></span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df,</span>
-<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>                        col <span class="op">=</span> <span class="st">'time'</span>,</span>
-<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>                        hue <span class="op">=</span> <span class="st">'smoker'</span>,</span>
-<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>                        height <span class="op">=</span> <span class="dv">4</span>,</span>
-<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a>                        aspect <span class="op">=</span> <span class="fl">1.3</span>)</span>
-<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a>                 </span>
-<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.scatter,</span>
-<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"total_bill"</span>,</span>
-<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"tip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign variables to different colors and increase size of grid</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Aspect is 1.3 x the size of height</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># You can change the order of the columns</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the palette used</span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df,</span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>                        col <span class="op">=</span> <span class="st">'time'</span>,</span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>                        hue <span class="op">=</span> <span class="st">'smoker'</span>,</span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>                        height <span class="op">=</span> <span class="dv">4</span>,</span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>                        aspect <span class="op">=</span> <span class="fl">1.3</span>)</span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>                 </span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.scatter,</span>
+<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"total_bill"</span>,</span>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"tip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]
@@ -1692,34 +1638,31 @@ Important
 /home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="130">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f31b80d1180&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-40-output-3.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-40-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can change the column order:</p>
 <div class="cell" data-execution_count="131">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign variables to different colors and increase size of grid</span></span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Aspect is 1.3 x the size of height</span></span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the palette used</span></span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df,</span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>                        col <span class="op">=</span> <span class="st">'time'</span>,</span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>                        hue <span class="op">=</span> <span class="st">'smoker'</span>,</span>
-<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>                        height <span class="op">=</span> <span class="dv">4</span>,</span>
-<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>                        aspect <span class="op">=</span> <span class="fl">1.3</span>,</span>
-<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We can change the order of the columns and paletter</span></span>
-<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>                        col_order <span class="op">=</span> [<span class="st">'Dinner'</span>, <span class="st">'Lunch'</span>], </span>
-<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>                        palette <span class="op">=</span> <span class="st">'Set1'</span>)</span>
-<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a>              </span>
-<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a><span class="co"># We can change the edge colour of our dots to white      </span></span>
-<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.scatter,</span>
-<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"total_bill"</span>,</span>
-<span id="cb79-18"><a href="#cb79-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"tip"</span>,</span>
-<span id="cb79-19"><a href="#cb79-19" aria-hidden="true" tabindex="-1"></a>            edgecolor <span class="op">=</span> <span class="st">'w'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign variables to different colors and increase size of grid</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Aspect is 1.3 x the size of height</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the palette used</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df,</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>                        col <span class="op">=</span> <span class="st">'time'</span>,</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>                        hue <span class="op">=</span> <span class="st">'smoker'</span>,</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>                        height <span class="op">=</span> <span class="dv">4</span>,</span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>                        aspect <span class="op">=</span> <span class="fl">1.3</span>,</span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We can change the order of the columns and paletter</span></span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>                        col_order <span class="op">=</span> [<span class="st">'Dinner'</span>, <span class="st">'Lunch'</span>], </span>
+<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>                        palette <span class="op">=</span> <span class="st">'Set1'</span>)</span>
+<span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a>              </span>
+<span id="cb66-15"><a href="#cb66-15" aria-hidden="true" tabindex="-1"></a><span class="co"># We can change the edge colour of our dots to white      </span></span>
+<span id="cb66-16"><a href="#cb66-16" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.scatter,</span>
+<span id="cb66-17"><a href="#cb66-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"total_bill"</span>,</span>
+<span id="cb66-18"><a href="#cb66-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"tip"</span>,</span>
+<span id="cb66-19"><a href="#cb66-19" aria-hidden="true" tabindex="-1"></a>            edgecolor <span class="op">=</span> <span class="st">'w'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]
@@ -1730,34 +1673,31 @@ Important
 /home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="131">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f31b82530a0&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-41-output-3.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-41-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="133">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dictionary to define the size, linewidth and edge color of our markers</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>kws <span class="op">=</span> <span class="bu">dict</span>(s<span class="op">=</span><span class="dv">50</span>, </span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>           linewidth<span class="op">=</span><span class="fl">.5</span>, </span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>           edgecolor<span class="op">=</span><span class="st">'w'</span>)</span>
-<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a><span class="co"># let's go to town on the customizations! note we can reference the dictionary we just created</span></span>
-<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df, </span>
-<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>                        col<span class="op">=</span><span class="st">'sex'</span>, </span>
-<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>                        hue<span class="op">=</span><span class="st">'smoker'</span>, </span>
-<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>                        height<span class="op">=</span><span class="dv">4</span>, </span>
-<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a>                        aspect<span class="op">=</span><span class="fl">1.3</span>, </span>
-<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a>                        hue_order<span class="op">=</span>[<span class="st">'Yes'</span>, <span class="st">'No'</span>], </span>
-<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a>                        hue_kws<span class="op">=</span><span class="bu">dict</span>(marker<span class="op">=</span>[<span class="st">'^'</span>, <span class="st">'v'</span>])</span>
-<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a>                       )</span>
-<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.scatter,</span>
-<span id="cb82-17"><a href="#cb82-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">'total_bill'</span>,</span>
-<span id="cb82-18"><a href="#cb82-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">'tip'</span>,</span>
-<span id="cb82-19"><a href="#cb82-19" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>kws</span>
-<span id="cb82-20"><a href="#cb82-20" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dictionary to define the size, linewidth and edge color of our markers</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>kws <span class="op">=</span> <span class="bu">dict</span>(s<span class="op">=</span><span class="dv">50</span>, </span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>           linewidth<span class="op">=</span><span class="fl">.5</span>, </span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>           edgecolor<span class="op">=</span><span class="st">'w'</span>)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="co"># let's go to town on the customizations! note we can reference the dictionary we just created</span></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>tips_fg <span class="op">=</span> sns.FacetGrid(tips_df, </span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>                        col<span class="op">=</span><span class="st">'sex'</span>, </span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>                        hue<span class="op">=</span><span class="st">'smoker'</span>, </span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>                        height<span class="op">=</span><span class="dv">4</span>, </span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>                        aspect<span class="op">=</span><span class="fl">1.3</span>, </span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>                        hue_order<span class="op">=</span>[<span class="st">'Yes'</span>, <span class="st">'No'</span>], </span>
+<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a>                        hue_kws<span class="op">=</span><span class="bu">dict</span>(marker<span class="op">=</span>[<span class="st">'^'</span>, <span class="st">'v'</span>])</span>
+<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a>tips_fg.<span class="bu">map</span>(plt.scatter,</span>
+<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">'total_bill'</span>,</span>
+<span id="cb68-18"><a href="#cb68-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">'tip'</span>,</span>
+<span id="cb68-19"><a href="#cb68-19" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>kws</span>
+<span id="cb68-20"><a href="#cb68-20" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]
@@ -1768,156 +1708,154 @@ Important
 /home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="133">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f31bb0fbb20&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-42-output-3.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Here hue has been used to denote smoker vs non-smoker - blue upward pointing markers represent smokers, and the orange downward facing markers represent non-smokers.</p>
 <p>Let’s look at a seaborn dataset that we haven’t seeen yet. This dataframe provides scores for different students based on the level of attention they could provide during testing:</p>
 <div class="cell" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in attention dataset and take a look at first 13 rows</span></span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>att_df <span class="op">=</span> sns.load_dataset(<span class="st">'attention'</span>)</span>
-<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>att_df.head(<span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in attention dataset and take a look at first 13 rows</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>att_df <span class="op">=</span> sns.load_dataset(<span class="st">'attention'</span>)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>att_df.head(<span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="147">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>subject</th>
-      <th>attention</th>
-      <th>solutions</th>
-      <th>score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>1</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>2</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>3</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>4</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>5</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>5</td>
-      <td>6</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>6</td>
-      <td>7</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>7</td>
-      <td>8</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>8</td>
-      <td>9</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>9</td>
-      <td>10</td>
-      <td>divided</td>
-      <td>1</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>10</td>
-      <td>11</td>
-      <td>focused</td>
-      <td>1</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>11</td>
-      <td>12</td>
-      <td>focused</td>
-      <td>1</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>12</td>
-      <td>13</td>
-      <td>focused</td>
-      <td>1</td>
-      <td>6.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">subject</th>
+<th data-quarto-table-cell-role="th">attention</th>
+<th data-quarto-table-cell-role="th">solutions</th>
+<th data-quarto-table-cell-role="th">score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>1</td>
+<td>divided</td>
+<td>1</td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>2</td>
+<td>divided</td>
+<td>1</td>
+<td>3.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>3</td>
+<td>divided</td>
+<td>1</td>
+<td>3.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>4</td>
+<td>divided</td>
+<td>1</td>
+<td>5.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>5</td>
+<td>divided</td>
+<td>1</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>5</td>
+<td>6</td>
+<td>divided</td>
+<td>1</td>
+<td>5.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>6</td>
+<td>7</td>
+<td>divided</td>
+<td>1</td>
+<td>5.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>7</td>
+<td>8</td>
+<td>divided</td>
+<td>1</td>
+<td>5.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>8</td>
+<td>9</td>
+<td>divided</td>
+<td>1</td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>9</td>
+<td>10</td>
+<td>divided</td>
+<td>1</td>
+<td>6.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>10</td>
+<td>11</td>
+<td>focused</td>
+<td>1</td>
+<td>6.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>11</td>
+<td>12</td>
+<td>focused</td>
+<td>1</td>
+<td>8.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>12</td>
+<td>13</td>
+<td>focused</td>
+<td>1</td>
+<td>6.0</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <div class="cell" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put each student (subject) in their own plot with 5 per line and plot their scores</span></span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>att_fg <span class="op">=</span> sns.FacetGrid(att_df, </span>
-<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>                       col <span class="op">=</span> <span class="st">'subject'</span>,</span>
-<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>                       col_wrap <span class="op">=</span> <span class="dv">5</span>,</span>
-<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>                       height <span class="op">=</span> <span class="fl">1.5</span></span>
-<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>                      )</span>
-<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>att_fg.<span class="bu">map</span>(plt.plot,</span>
-<span id="cb86-9"><a href="#cb86-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">'solutions'</span>,</span>
-<span id="cb86-10"><a href="#cb86-10" aria-hidden="true" tabindex="-1"></a>           <span class="st">'score'</span>,</span>
-<span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a>           marker <span class="op">=</span><span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put each student (subject) in their own plot with 5 per line and plot their scores</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>att_fg <span class="op">=</span> sns.FacetGrid(att_df, </span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>                       col <span class="op">=</span> <span class="st">'subject'</span>,</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>                       col_wrap <span class="op">=</span> <span class="dv">5</span>,</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>                       height <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>                      )</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>att_fg.<span class="bu">map</span>(plt.plot,</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">'solutions'</span>,</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>           <span class="st">'score'</span>,</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>           marker <span class="op">=</span><span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]
@@ -1960,11 +1898,8 @@ Important
 /home/stephen137/mambaforge/lib/python3.10/site-packages/seaborn/axisgrid.py:745: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   plot_args = [v for k, v in plot_data.iteritems()]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="149">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f31b5546ce0&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-44-output-3.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-44-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1973,125 +1908,120 @@ Important
 <h2 class="anchored" data-anchor-id="regression-plots">Regression Plots</h2>
 <p>Let’s revisit the <em>tips</em> dataset used earlier. Let’s recall what our dataset looks like:</p>
 <div class="cell" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grab first 5 rows</span></span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>tips_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grab first 5 rows</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>tips_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="150">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>total_bill</th>
-      <th>tip</th>
-      <th>sex</th>
-      <th>smoker</th>
-      <th>day</th>
-      <th>time</th>
-      <th>size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>16.99</td>
-      <td>1.01</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10.34</td>
-      <td>1.66</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>21.01</td>
-      <td>3.50</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23.68</td>
-      <td>3.31</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24.59</td>
-      <td>3.61</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>4</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">total_bill</th>
+<th data-quarto-table-cell-role="th">tip</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">smoker</th>
+<th data-quarto-table-cell-role="th">day</th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>16.99</td>
+<td>1.01</td>
+<td>Female</td>
+<td>No</td>
+<td>Sun</td>
+<td>Dinner</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>10.34</td>
+<td>1.66</td>
+<td>Male</td>
+<td>No</td>
+<td>Sun</td>
+<td>Dinner</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>21.01</td>
+<td>3.50</td>
+<td>Male</td>
+<td>No</td>
+<td>Sun</td>
+<td>Dinner</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>23.68</td>
+<td>3.31</td>
+<td>Male</td>
+<td>No</td>
+<td>Sun</td>
+<td>Dinner</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>24.59</td>
+<td>3.61</td>
+<td>Female</td>
+<td>No</td>
+<td>Sun</td>
+<td>Dinner</td>
+<td>4</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>Say we wanted to explore the relationship between tip size and total bill size comparing men and women:</p>
 <div class="cell" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
-<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>,</span>
-<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>                font_scale <span class="op">=</span> <span class="fl">1.4</span>)</span>
-<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-6"><a href="#cb90-6" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
-<span id="cb90-7"><a href="#cb90-7" aria-hidden="true" tabindex="-1"></a>           y <span class="op">=</span> <span class="st">'tip'</span>,</span>
-<span id="cb90-8"><a href="#cb90-8" aria-hidden="true" tabindex="-1"></a>           hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
-<span id="cb90-9"><a href="#cb90-9" aria-hidden="true" tabindex="-1"></a>           data <span class="op">=</span> tips_df,</span>
-<span id="cb90-10"><a href="#cb90-10" aria-hidden="true" tabindex="-1"></a>           markers <span class="op">=</span> [ <span class="st">'o'</span>, <span class="st">'^'</span>],</span>
-<span id="cb90-11"><a href="#cb90-11" aria-hidden="true" tabindex="-1"></a>           scatter_kws <span class="op">=</span> { <span class="st">'s'</span> : <span class="dv">100</span>, <span class="st">'linewidth'</span>: <span class="fl">0.5</span>, <span class="st">'edgecolor'</span>: <span class="st">'w'</span>})                            </span>
-<span id="cb90-12"><a href="#cb90-12" aria-hidden="true" tabindex="-1"></a>                                                                                 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="152">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f31b4cd5720&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>,</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>                font_scale <span class="op">=</span> <span class="fl">1.4</span>)</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x <span class="op">=</span> <span class="st">'total_bill'</span>,</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>           y <span class="op">=</span> <span class="st">'tip'</span>,</span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>           hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>           data <span class="op">=</span> tips_df,</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>           markers <span class="op">=</span> [ <span class="st">'o'</span>, <span class="st">'^'</span>],</span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>           scatter_kws <span class="op">=</span> { <span class="st">'s'</span> : <span class="dv">100</span>, <span class="st">'linewidth'</span>: <span class="fl">0.5</span>, <span class="st">'edgecolor'</span>: <span class="st">'w'</span>})                            </span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>                                                                                 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 800x600 with 0 Axes&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-46-output-3.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-46-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>It might be useful to see the equivalent broken down by day:</p>
 <div class="cell" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.lmplot(x='total_bill', y='tip', col='sex', row='time', data=tips_df)</span></span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>tips_df.head()</span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Makes the fonts more readable</span></span>
-<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'poster'</span>,</span>
-<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>                font_scale<span class="op">=</span><span class="fl">1.4</span>)</span>
-<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-8"><a href="#cb93-8" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'total_bill'</span>, </span>
-<span id="cb93-9"><a href="#cb93-9" aria-hidden="true" tabindex="-1"></a>           y<span class="op">=</span><span class="st">'tip'</span>, data<span class="op">=</span>tips_df,</span>
-<span id="cb93-10"><a href="#cb93-10" aria-hidden="true" tabindex="-1"></a>           col<span class="op">=</span><span class="st">'day'</span>,</span>
-<span id="cb93-11"><a href="#cb93-11" aria-hidden="true" tabindex="-1"></a>           hue<span class="op">=</span><span class="st">'sex'</span>,</span>
-<span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a>          height<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb93-13"><a href="#cb93-13" aria-hidden="true" tabindex="-1"></a>           aspect<span class="op">=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="153">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f31b4d48fd0&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sns.lmplot(x='total_bill', y='tip', col='sex', row='time', data=tips_df)</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>tips_df.head()</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Makes the fonts more readable</span></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'poster'</span>,</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>                font_scale<span class="op">=</span><span class="fl">1.4</span>)</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'total_bill'</span>, </span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>           y<span class="op">=</span><span class="st">'tip'</span>, data<span class="op">=</span>tips_df,</span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a>           col<span class="op">=</span><span class="st">'day'</span>,</span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a>           hue<span class="op">=</span><span class="st">'sex'</span>,</span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>          height<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>           aspect<span class="op">=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Seaborn_files/figure-html/cell-47-output-2.png" class="img-fluid"></p>
+<p><img src="Seaborn_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -2099,8 +2029,8 @@ Important
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
 <p>Thanks once again to <strong><a href="https://twitter.com/svpino">Santiago</a></strong> for signposting this video posted by <strong><a href="https://github.com/derekbanas">Derek Banas</a></strong>. This blog was written after interactively working through it.</p>
 <div class="cell" data-execution_count="156">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>HTML</span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>iframe width<span class="op">=</span><span class="st">"560"</span> height<span class="op">=</span><span class="st">"315"</span> src<span class="op">=</span><span class="st">"https://www.youtube.com/embed/6GUZXDef2U0"</span> title<span class="op">=</span><span class="st">"YouTube video player"</span> frameborder<span class="op">=</span><span class="st">"0"</span> allow<span class="op">=</span><span class="st">"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"</span> allowfullscreen<span class="op">&gt;&lt;/</span>iframe<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>HTML</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>iframe width<span class="op">=</span><span class="st">"560"</span> height<span class="op">=</span><span class="st">"315"</span> src<span class="op">=</span><span class="st">"https://www.youtube.com/embed/6GUZXDef2U0"</span> title<span class="op">=</span><span class="st">"YouTube video player"</span> frameborder<span class="op">=</span><span class="st">"0"</span> allow<span class="op">=</span><span class="st">"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"</span> allowfullscreen<span class="op">&gt;&lt;/</span>iframe<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6GUZXDef2U0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
 </div>
@@ -2138,9 +2068,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2152,7 +2096,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -2188,24 +2149,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

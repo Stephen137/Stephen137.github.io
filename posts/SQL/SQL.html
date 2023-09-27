@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - What is a database ?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">What is a database ?</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-sql" id="toc-what-is-sql" class="nav-link active" data-scroll-target="#what-is-sql">What is SQL ?</a></li>
+  <li><a href="#sql-playground" id="toc-sql-playground" class="nav-link" data-scroll-target="#sql-playground">SQL Playground</a></li>
+  <li><a href="#sql-syntax" id="toc-sql-syntax" class="nav-link" data-scroll-target="#sql-syntax">SQL syntax</a></li>
+  <li><a href="#imperative-vs-declarative" id="toc-imperative-vs-declarative" class="nav-link" data-scroll-target="#imperative-vs-declarative">Imperative vs Declarative</a></li>
+  <li><a href="#database-models" id="toc-database-models" class="nav-link" data-scroll-target="#database-models">Database Models</a></li>
+  <li><a href="#hierarchical-model" id="toc-hierarchical-model" class="nav-link" data-scroll-target="#hierarchical-model">Hierarchical model</a></li>
+  <li><a href="#network-model" id="toc-network-model" class="nav-link" data-scroll-target="#network-model">Network model</a></li>
+  <li><a href="#relational-model" id="toc-relational-model" class="nav-link" data-scroll-target="#relational-model">Relational Model</a></li>
+  <li><a href="#database-management-system-rdbms" id="toc-database-management-system-rdbms" class="nav-link" data-scroll-target="#database-management-system-rdbms">Database Management System (RDBMS)</a></li>
+  <li><a href="#relational-model-1" id="toc-relational-model-1" class="nav-link" data-scroll-target="#relational-model-1">Relational Model</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
+  <li><a href="#columns" id="toc-columns" class="nav-link" data-scroll-target="#columns">Columns</a></li>
+  <li><a href="#rows" id="toc-rows" class="nav-link" data-scroll-target="#rows">Rows</a></li>
+  <li><a href="#primary-keys" id="toc-primary-keys" class="nav-link" data-scroll-target="#primary-keys">Primary Keys</a></li>
+  <li><a href="#foreign-keys" id="toc-foreign-keys" class="nav-link" data-scroll-target="#foreign-keys">Foreign Keys</a></li>
+  <li><a href="#online-transactional-processing-oltp" id="toc-online-transactional-processing-oltp" class="nav-link" data-scroll-target="#online-transactional-processing-oltp">Online Transactional Processing (OLTP)</a></li>
+  <li><a href="#online-analytical-processing-olap" id="toc-online-analytical-processing-olap" class="nav-link" data-scroll-target="#online-analytical-processing-olap">Online Analytical Processing (OLAP)</a></li>
+  <li><a href="#postgresql-an-opensource-database-and-valentina-db-a-ui-used-to-manage-postgres---other-option-is-e.g.-pgadmin" id="toc-postgresql-an-opensource-database-and-valentina-db-a-ui-used-to-manage-postgres---other-option-is-e.g.-pgadmin" class="nav-link" data-scroll-target="#postgresql-an-opensource-database-and-valentina-db-a-ui-used-to-manage-postgres---other-option-is-e.g.-pgadmin">PostgreSQL (an opensource database) and Valentina DB (a UI used to manage Postgres - other option is e.g.&nbsp;pgAdmin)</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#connection-error" id="toc-connection-error" class="nav-link" data-scroll-target="#connection-error">Connection error</a></li>
+  <li><a href="#solving-the-connection-error" id="toc-solving-the-connection-error" class="nav-link" data-scroll-target="#solving-the-connection-error">Solving the connection error</a></li>
+  <li><a href="#installing-valentina-db" id="toc-installing-valentina-db" class="nav-link" data-scroll-target="#installing-valentina-db">Installing Valentina DB</a></li>
+  <li><a href="#importing-the-databases" id="toc-importing-the-databases" class="nav-link" data-scroll-target="#importing-the-databases">Importing the Databases</a></li>
+  <li><a href="#starting-with-query" id="toc-starting-with-query" class="nav-link" data-scroll-target="#starting-with-query">Starting with Query</a></li>
+  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns">Renaming Columns</a></li>
+  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation">Concatenation</a></li>
+  <li><a href="#what-is-a-function-in-sql" id="toc-what-is-a-function-in-sql" class="nav-link" data-scroll-target="#what-is-a-function-in-sql">What is a <code>function</code> in SQL ?</a></li>
+  <li><a href="#aggregate-functions" id="toc-aggregate-functions" class="nav-link" data-scroll-target="#aggregate-functions">Aggregate functions</a></li>
+  <li><a href="#adding-comments" id="toc-adding-comments" class="nav-link" data-scroll-target="#adding-comments">Adding Comments</a></li>
+  <li><a href="#common-select-mistakes" id="toc-common-select-mistakes" class="nav-link" data-scroll-target="#common-select-mistakes">Common SELECT mistakes</a></li>
+  <li><a href="#filtering-data-using-and-and-or" id="toc-filtering-data-using-and-and-or" class="nav-link" data-scroll-target="#filtering-data-using-and-and-or">Filtering Data using <code>AND</code> and <code>OR</code></a></li>
+  <li><a href="#the-not-keyword" id="toc-the-not-keyword" class="nav-link" data-scroll-target="#the-not-keyword">The <code>NOT</code> keyword</a></li>
+  <li><a href="#comparison-operators" id="toc-comparison-operators" class="nav-link" data-scroll-target="#comparison-operators">Comparison Operators</a></li>
+  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a></li>
+  <li><a href="#operator-precedence" id="toc-operator-precedence" class="nav-link" data-scroll-target="#operator-precedence">Operator Precedence</a></li>
+  <li><a href="#priority-and-direction" id="toc-priority-and-direction" class="nav-link" data-scroll-target="#priority-and-direction">72. Priority and Direction</a></li>
+  <li><a href="#checking-for-null-values" id="toc-checking-for-null-values" class="nav-link" data-scroll-target="#checking-for-null-values">Checking for <code>NULL</code> values</a></li>
+  <li><a href="#is-keyword" id="toc-is-keyword" class="nav-link" data-scroll-target="#is-keyword"><code>IS</code> Keyword</a></li>
+  <li><a href="#null-coalescing" id="toc-null-coalescing" class="nav-link" data-scroll-target="#null-coalescing">NULL Coalescing</a></li>
+  <li><a href="#valued-logic" id="toc-valued-logic" class="nav-link" data-scroll-target="#valued-logic">3-Valued Logic</a></li>
+  <li><a href="#between-and" id="toc-between-and" class="nav-link" data-scroll-target="#between-and">Between + AND</a></li>
+  <li><a href="#the-in-keyword" id="toc-the-in-keyword" class="nav-link" data-scroll-target="#the-in-keyword">The <code>IN</code> Keyword</a></li>
+  <li><a href="#ilike-partial-lookups" id="toc-ilike-partial-lookups" class="nav-link" data-scroll-target="#ilike-partial-lookups"><code>ILIKE</code> (partial lookups)</a></li>
+  <li><a href="#casting" id="toc-casting" class="nav-link" data-scroll-target="#casting">Casting</a></li>
+  <li><a href="#dates-and-timezones" id="toc-dates-and-timezones" class="nav-link" data-scroll-target="#dates-and-timezones">Dates and Timezones</a></li>
+  <li><a href="#how-do-we-format-date-and-time" id="toc-how-do-we-format-date-and-time" class="nav-link" data-scroll-target="#how-do-we-format-date-and-time">How do we format Date and Time?</a></li>
+  <li><a href="#timestamps" id="toc-timestamps" class="nav-link" data-scroll-target="#timestamps">Timestamps</a></li>
+  <li><a href="#date-functions" id="toc-date-functions" class="nav-link" data-scroll-target="#date-functions">Date Functions</a></li>
+  <li><a href="#date-difference-and-casting" id="toc-date-difference-and-casting" class="nav-link" data-scroll-target="#date-difference-and-casting">Date Difference and Casting</a></li>
+  <li><a href="#age-calculation" id="toc-age-calculation" class="nav-link" data-scroll-target="#age-calculation">Age Calculation</a></li>
+  <li><a href="#extracting-information" id="toc-extracting-information" class="nav-link" data-scroll-target="#extracting-information">Extracting information</a></li>
+  <li><a href="#intervals" id="toc-intervals" class="nav-link" data-scroll-target="#intervals">Intervals</a></li>
+  <li><a href="#distinct" id="toc-distinct" class="nav-link" data-scroll-target="#distinct">Distinct</a></li>
+  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data">Sorting Data</a></li>
+  <li><a href="#order-by" id="toc-order-by" class="nav-link" data-scroll-target="#order-by"><code>ORDER BY</code></a></li>
+  <li><a href="#multi-table-select" id="toc-multi-table-select" class="nav-link" data-scroll-target="#multi-table-select">Multi Table Select</a></li>
+  <li><a href="#inner-join" id="toc-inner-join" class="nav-link" data-scroll-target="#inner-join">Inner Join</a></li>
+  <li><a href="#joining-more-than-2-tables" id="toc-joining-more-than-2-tables" class="nav-link" data-scroll-target="#joining-more-than-2-tables">Joining more than 2 tables</a></li>
+  <li><a href="#self-join" id="toc-self-join" class="nav-link" data-scroll-target="#self-join">Self Join</a></li>
+  <li><a href="#outer-join" id="toc-outer-join" class="nav-link" data-scroll-target="#outer-join">Outer Join</a></li>
+  <li><a href="#less-common-joins" id="toc-less-common-joins" class="nav-link" data-scroll-target="#less-common-joins">Less Common Joins</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/2aceee4e-b056-4d84-93f8-4c42e2d86c14-1-144019df-b22f-4dc5-ac10-b4d9deea5d01.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">database.jpg</figcaption>
+</figure>
+</div>
+<p>A database is a hardware and software system that allows a user to store, organise and use data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/4eb23a9a-a9f7-4393-ba92-1787f384a445-1-885e07b0-2ba9-4ee3-a565-a483b2633355.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">SQL_course_overview.PNG</figcaption>
+</figure>
+</div>
+<section id="what-is-sql" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-sql">What is SQL ?</h3>
+</section>
+<section id="sql-playground" class="level3">
+<h3 class="anchored" data-anchor-id="sql-playground">SQL Playground</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/c2645c2f-8b19-49fd-afc3-e73faba68c33-1-7611e318-d664-4a64-9e78-ffeb194f3bba.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sql_playground.png</figcaption>
+</figure>
+</div>
+<p>https://www.db-fiddle.com/</p>
+</section>
+<section id="sql-syntax" class="level3">
+<h3 class="anchored" data-anchor-id="sql-syntax">SQL syntax</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/02128ac3-30bc-4fc2-89bc-c20cdfed8a58-1-8cf316ca-2498-4af0-b4c4-ec44f44fced0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sql_mindmap.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="imperative-vs-declarative" class="level3">
+<h3 class="anchored" data-anchor-id="imperative-vs-declarative">Imperative vs Declarative</h3>
+<p>SQL is a declarative language, we just say “give me this”. Imperative programming defines <em>how</em> it will happen. Java is an example of an imperative language. Python has elements of both.</p>
+</section>
+<section id="database-models" class="level3">
+<h3 class="anchored" data-anchor-id="database-models">Database Models</h3>
+<ul>
+<li>Hierarchical</li>
+<li>Networking</li>
+<li>Entity-Relationship</li>
+<li>Relational</li>
+<li>Object Oriented</li>
+<li>Flat</li>
+<li>Semi-structured</li>
+</ul>
+</section>
+<section id="hierarchical-model" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-model">Hierarchical model</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/9116bd8a-1694-4a4a-a053-1ef53bb063e3-1-3ca6f89a-beb2-4149-8c59-b27eb0d5178f.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Heirarchical_model.jpg</figcaption>
+</figure>
+</div>
+<p>Hierarchical models are rarely seen today due to their inefficiencies. Each <code>parent</code> can have <em>multiple</em> <code>children</code> but each <code>child</code> can have only <em>one</em> <code>parent</code>.</p>
+</section>
+<section id="network-model" class="level3">
+<h3 class="anchored" data-anchor-id="network-model">Network model</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/c97e8953-e9a4-4bab-8bef-a14a123ddcb6-1-a13c2b24-5a60-4628-8cf4-900c6e589a01.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Network_model.PNG</figcaption>
+</figure>
+</div>
+<p>The <code>Network Model</code> expanded on the hierarchical model by allowing <code>many-to-many</code> relationships. The <code>children</code> could have <em>multiple</em> <code>parents</code>.</p>
+</section>
+<section id="relational-model" class="level3">
+<h3 class="anchored" data-anchor-id="relational-model">Relational Model</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/e5881ff8-a44a-4e80-b858-dcced4b1ef2a-1-b977ecbf-67e4-4f81-9dcb-e1779a4f1897.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Relational_model.jpg</figcaption>
+</figure>
+</div>
+<p>The limitations of the <code>parent-child</code> structure present in the hierarchical and network models, were overcome with a <code>relational model</code>. We don’t have a <code>parent-child</code> relationship any more - we have a flat structure, with all of our information now held in separate tables. But how do we link them together?</p>
+<p>One way is to create a third table - as per the above screenshot.</p>
+<p>A better way however is to introduce <code>keys</code>.</p>
+</section>
+<section id="database-management-system-rdbms" class="level3">
+<h3 class="anchored" data-anchor-id="database-management-system-rdbms">Database Management System (RDBMS)</h3>
+<p>Dr.&nbsp;Edgar Frank Codd (August 19, 1923 – April 18, 2003) was a computer scientist while working for IBM he invented the relational model for database management ( theoretical basis for relational databases). Codd proposed <a href="https://www.w3resource.com/sql/sql-basic/codd-12-rule-relation.php">thirteen rules</a> (numbered zero to twelve) and said that if a Database Management System meets these rules, it can be called as a Relational Database Management System. These rules are called as Codd’s12 rules. Hardly any commercial product follows all.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/c2aeda13-4362-467e-9c96-46a11751dbf8-1-82668d06-0d91-476d-a7fe-024b80706ed4.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">DBMS.jpg</figcaption>
+</figure>
+</div>
+</section>
+<section id="relational-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="relational-model-1">Relational Model</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/3d3fb67a-ee5e-4b58-8659-1c772d6de434-1-abd6436a-f041-4eed-8ae3-623d1cad46c1.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Relational_model_terminology.jpg</figcaption>
+</figure>
+</div>
+</section>
+<section id="tables" class="level3">
+<h3 class="anchored" data-anchor-id="tables">Tables</h3>
+<p>Each <code>table</code> has a unique name. Each table has <code>columns</code> which we can name and these represent a specific type of data. Each table also has <code>rows</code> which is singular piece of data.</p>
+</section>
+<section id="columns" class="level3">
+<h3 class="anchored" data-anchor-id="columns">Columns</h3>
+<p>The collection of all the columns (sometimes referred to as <code>attribute</code>) is known as the <code>degree of the relation</code> and each column has its own <code>domain/constraint</code> in terms of the type and format of data that can be stored in that columnn.</p>
+</section>
+<section id="rows" class="level3">
+<h3 class="anchored" data-anchor-id="rows">Rows</h3>
+<p>Rows (sometimes referred to as <code>tuples</code>) follow the column <code>constraints</code>. The collection of rows is sometimes referred to as the <code>cardinality</code> of the table.</p>
+</section>
+<section id="primary-keys" class="level3">
+<h3 class="anchored" data-anchor-id="primary-keys">Primary Keys</h3>
+<p>A <code>primary key</code> is a unique identifier (think of it like an ID card) - and as such can be used to <code>link</code> all information held elsewhere to that unique id.</p>
+</section>
+<section id="foreign-keys" class="level3">
+<h3 class="anchored" data-anchor-id="foreign-keys">Foreign Keys</h3>
+<p>A <code>foreign key</code> references the <em>primary key</em> of another table, thereby facilitating a relationship and link between two tables.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/854c6e10-f234-4532-a0de-07ee0dde835a-1-f2e77cb6-a31c-43a9-a69d-7aade38f9996.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Foreign_key.jpg</figcaption>
+</figure>
+</div>
+</section>
+<section id="online-transactional-processing-oltp" class="level3">
+<h3 class="anchored" data-anchor-id="online-transactional-processing-oltp">Online Transactional Processing (OLTP)</h3>
+<p>The databases that a business uses to store all its transactions and records are called online transaction processing (OLTP) databases. These databases usually have records that are entered one at a time. Often they contain a great deal of information that is valuable to the organization. The databases that are used for OLTP, however, were not designed for analysis. Therefore, retrieving answers from these databases is costly in terms of time and effort.</p>
+</section>
+<section id="online-analytical-processing-olap" class="level3">
+<h3 class="anchored" data-anchor-id="online-analytical-processing-olap">Online Analytical Processing (OLAP)</h3>
+<p>Online analytical processing (OLAP) is a technology that organizes large business databases, commonly within <code>Data Warehouses</code>and supports complex analysis. It can be used to perform complex analytical queries without negatively affecting transactional systems.</p>
+<p>OLAP systems were designed to help extract this business intelligence information from the data in a highly performant way. This is because OLAP databases are optimized for heavy read, low write workloads.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/693a7aee-3dc8-4d9c-bcf3-904657229d7a-1-8a5234da-1dc8-4d29-b8cf-66b1cf93361e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">OLTP_vs_OLAP.PNG</figcaption>
+</figure>
+</div>
+<p>Examples of each are included below :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/a4e2470a-dfcd-4c4b-a006-5b9a0b362773-1-9293cf4f-3f38-493d-b056-43354df5eeb8.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">OLTP_or_OLAP.jpg</figcaption>
+</figure>
+</div>
+</section>
+<section id="postgresql-an-opensource-database-and-valentina-db-a-ui-used-to-manage-postgres---other-option-is-e.g.-pgadmin" class="level3">
+<h3 class="anchored" data-anchor-id="postgresql-an-opensource-database-and-valentina-db-a-ui-used-to-manage-postgres---other-option-is-e.g.-pgadmin">PostgreSQL (an opensource database) and Valentina DB (a UI used to manage Postgres - other option is e.g.&nbsp;pgAdmin)</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/7d52a516-4ba5-413b-b8cf-bcf1c3e4fcb6-1-5cc556f9-1efe-4d03-95c8-f2955d481cb4.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">postgreSQL.jpg</figcaption>
+</figure>
+</div>
+</section>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<p>Note that in order to install <code>version 12</code> you need to be running on a <code>64 bit</code> system. You can check which system you are running on as per the folllowing:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/302d5d3a-c681-47fe-b14c-8b7090ca796c-1-d251a593-4ee5-4a70-80fc-1abd5102b5a5.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">system_type.PNG</figcaption>
+</figure>
+</div>
+<p>Let’s go ahead and install version 12 of postgreSQL directly onto our machine. Valentina DB will allow us to manage and run our database queries in a visual way. The installation and configuration will differ depending on your operating system. I have a Windows machine but have a Linux set up installed <code>Ubuntu</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/31a7bf2e-1692-412f-9021-c5b8ec4e9139-1-05a04f91-17e1-4f6b-9cfa-b77e47afbed9.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">operating_sysytem.PNG</figcaption>
+</figure>
+</div>
+<p>Ubuntu includes PostgreSQL by default however to install PostgreSQL on Ubuntu, run the following from the command line:</p>
+<pre><code>sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" &gt; /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install postgresql
+
+apt-get install postgresql-12</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/31a7bf2e-1692-412f-9021-c5b8ec4e9139-2-309bd189-3358-44b2-9cac-64df5bbb5647.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">postgres_install.PNG</figcaption>
+</figure>
+</div>
+<p>If you are unfamiliar with the Linux command-line I recommmend this <a href="https://jgefroh.medium.com/a-beginners-guide-to-linux-command-line-56a8004e2471">beginner’s guide</a>.</p>
+</section>
+<section id="connection-error" class="level3">
+<h3 class="anchored" data-anchor-id="connection-error">Connection error</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/5581a8d5-38f3-4a3e-800b-d0585817ce4c-1-ca8b7bc8-ab67-4555-933c-110f54d99a3c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">postgresql_connection.PNG</figcaption>
+</figure>
+</div>
+<p>In general, when you see either of the following two messages:</p>
+<ul>
+<li>System has not been booted with systemd as init system (PID 1). Can’t operate.</li>
+<li>Failed to connect to bus: Host is down</li>
+</ul>
+<p>then it’s typically the same root cause. Try worrking through the suggested solutions included at the link below:</p>
+<p>https://askubuntu.com/questions/1379425/system-has-not-been-booted-with-systemd-as-init-system-pid-1-cant-operate</p>
+</section>
+<section id="solving-the-connection-error" class="level3">
+<h3 class="anchored" data-anchor-id="solving-the-connection-error">Solving the connection error</h3>
+<p>In my case the following worked for me.</p>
+<p>In Ubuntu on WSL, many of the common system services still have the “old” <code>init.d</code> scripts available to be used in place of systemctl with Systemd units. You can see these by using <code>ls /etc/init.d/</code> and start <code>postgres</code> with <code>sudo service postgresql start</code>, and it will run the <code>/etc/init.d/postgresql</code> script with the start argument.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/b6c935ee-a3f0-4a7c-9189-2296f0a4baea-1-9a9101f3-8a71-40bf-958c-3b01da9e2fef.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sql_connection_solved.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="installing-valentina-db" class="level3">
+<h3 class="anchored" data-anchor-id="installing-valentina-db">Installing Valentina DB</h3>
+<p>https://www.valentina-db.com/en/all-downloads/vstudio/current</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/43588ff9-6e21-49cd-a6d5-1b147e745372-1-c18fa9f9-a5ad-408e-b50a-9b3f29cf57f6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">valentina_link_address.PNG</figcaption>
+</figure>
+</div>
+<p>It’s good practice to create a <code>bin</code> directory for executable files. Then install from the command line using :</p>
+<pre><code>wget https://www.valentina-db.com/en/all-downloads/vstudio/current/vstudio_x64_lin_deb?format=raw</code></pre>
+<p>Note that we can rename the file to something a bit tidier by adding the following to the above :</p>
+<pre><code>    - O valentina
+    </code></pre>
+<p>We also need to change the permissions so that our computer knows this is an executable file (file should be green in colour)</p>
+<pre><code>chmod +x valentina </code></pre>
+<p>And then finally, install using :</p>
+<pre><code>sudo apt install valentina</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/56be40e6-97e7-4044-aa9b-009567e21260-1-af72b8d6-42a0-404a-bb66-9c19550535b4.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">valentina_install.PNG</figcaption>
+</figure>
+</div>
+<p>https://fileinfo.com/extension/deb</p>
+<p>https://linuxhint.com/ubuntu_dpkg_installation/</p>
+<p>https://www.howtogeek.com/362203/what-is-a-tar.gz-file-and-how-do-i-open-it/</p>
+<p>Ultimately I could not resolve the installation issues with Valentina on Ubuntu, so I installed the Windows version which was straightforward.</p>
+<p>First make sure you are connected to postgreSQL :</p>
+<pre><code>sudo -u postgres psql postgres </code></pre>
+<p>and then from the terminal:</p>
+<pre><code>\password postgres</code></pre>
+<p>and set it to <code>root</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/7252f186-e7ec-4676-81ab-c5da2c16529a-1-61959770-c4ff-4be9-9b8f-3269aadf9b05.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">postgresql_password_reset.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/5bdda003-6ca0-4ea8-9061-b87c60ef0924-1-8d1f275a-c9dc-42fa-b566-a3fe034ac15c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">valentina_dashboard.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="importing-the-databases" class="level3">
+<h3 class="anchored" data-anchor-id="importing-the-databases">Importing the Databases</h3>
+<p>Download and unzip the database files from the <code>Resources</code> dropdown :</p>
+<p>Create four separate databases within Valentina Studio as highlighted below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/9be2eba9-52a0-4811-a79a-071116465f23-2-37793bc8-eb43-4e17-a347-bfb20b7ab6a7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">create_databases.PNG</figcaption>
+</figure>
+</div>
+<p>Then, for each newly created database:</p>
+<pre><code>`File / Load Dump` and select the respective .sql file </code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/9be2eba9-52a0-4811-a79a-071116465f23-4-68d4f982-e108-4e64-bf16-f6c143de35d1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">employees.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/9be2eba9-52a0-4811-a79a-071116465f23-5-74794437-1b2d-4318-9999-a2b0a8bbc68e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">france.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/9be2eba9-52a0-4811-a79a-071116465f23-3-4ddee234-fae4-4e86-a2f5-a08e8c746f67.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">store.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/9be2eba9-52a0-4811-a79a-071116465f23-1-35067115-723f-460b-8bb7-266a7569f2c5.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">world.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="starting-with-query" class="level3">
+<h3 class="anchored" data-anchor-id="starting-with-query">Starting with Query</h3>
+<section id="data-control-language-dcl" class="level4">
+<h4 class="anchored" data-anchor-id="data-control-language-dcl">Data Control Language (DCL)</h4>
+<ul>
+<li>GRANT</li>
+<li>REVOKE</li>
+</ul>
+</section>
+<section id="data-definition-language-ddl" class="level4">
+<h4 class="anchored" data-anchor-id="data-definition-language-ddl">Data Definition Language (DDL)</h4>
+<ul>
+<li>CREATE</li>
+<li>ALTER</li>
+<li>DROP</li>
+<li>RENAME</li>
+<li>TRUNCATE</li>
+<li>COMMENT</li>
+</ul>
+</section>
+<section id="data-query-language-dql" class="level4">
+<h4 class="anchored" data-anchor-id="data-query-language-dql">Data Query Language (DQL)</h4>
+<ul>
+<li>FROM</li>
+<li>WHERE</li>
+<li>GROUP BY</li>
+<li>SELECT <em>used to retrieve data</em></li>
+<li>ORDER BY</li>
+<li>LIMIT</li>
+</ul>
+</section>
+<section id="data-modification-language-dml" class="level4">
+<h4 class="anchored" data-anchor-id="data-modification-language-dml">Data Modification Language (DML)</h4>
+<ul>
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+<li>MERGE</li>
+<li>CALL</li>
+<li>EXPLAIN PLAN</li>
+<li>LOCK TABLE</li>
+</ul>
+<p>Let’s now have a go at getting some information out of our databases:</p>
+<pre><code>1. Give me a list of all employees in the company</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/569f9aa9-5927-486a-823e-a0347dea8e3e-3-d2fdb5e1-c9cf-41af-b633-ecb57b130047.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">all_employees.PNG</figcaption>
+</figure>
+</div>
+<pre><code>2. How many departments are there in the company?</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/569f9aa9-5927-486a-823e-a0347dea8e3e-1-52b85184-6896-447b-a5b2-9d2a0b0bb664.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">departments.PNG</figcaption>
+</figure>
+</div>
+<pre><code>3. How many times has employee `10001` had a raise?</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/569f9aa9-5927-486a-823e-a0347dea8e3e-4-f91aee49-e693-4bfd-8dfb-daac54510577.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">raises.PNG</figcaption>
+</figure>
+</div>
+<pre><code>4. What title does employee `10006` have?</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/569f9aa9-5927-486a-823e-a0347dea8e3e-2-5d52d969-c3ce-44dc-bbe4-43e57576cc80.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">employee_title.PNG</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="renaming-columns" class="level3">
+<h3 class="anchored" data-anchor-id="renaming-columns">Renaming Columns</h3>
+<p>We can rename a column by running the following query :</p>
+<pre><code>    SELECT &lt;OLD_COLUMN_NAME&gt; AS `&lt;NEW_COLUMN_NAME&gt;`
+    </code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/f434cc53-e134-4da2-a2c7-50d52243e434-1-ca983b6e-fcf3-447f-ad8e-24db0e5a14ad.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">rename_columns.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="concatenation" class="level3">
+<h3 class="anchored" data-anchor-id="concatenation">Concatenation</h3>
+<p>We can concatenate (join) two columns together, separated by a space <code>' '</code> using :</p>
+<pre><code>SELECT CONCAT (&lt;COLUMN_1&gt;, ' ', &lt;COLUMN_2&gt;) AS &lt;"NEW_COLUMN_NAME"&gt;</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/c8df4cfb-a4c8-4269-9ed7-2affb91d8be9-1-b6ac794b-0d5f-4fba-a578-c78eae64baf7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">concatenate.PNG</figcaption>
+</figure>
+</div>
+<p>Text can be concatenated using :</p>
+<pre><code>CONCAT('TEXT', 'TEXT')</code></pre>
+<p>Note the use of <code>single quotes</code> to add the space string, but <code>double quotes</code> to name the new concatenated column.</p>
+<p>Applying the above knowledge, let’s now :</p>
+<ol type="1">
+<li>Concatenate the first and last name of the employee column into one column</li>
+<li>Rename the concatenated column</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/5e8aa4d5-14b1-4109-84ca-91905112d32f-1-2a4bbbb7-9957-4c9f-b6bd-87912ea5542e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">concatenate_2.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="what-is-a-function-in-sql" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-function-in-sql">What is a <code>function</code> in SQL ?</h3>
+<p>A function is a set of steps that creates a single value. A function takes specific <code>input</code> parameters and generates an <code>output</code>. Different functions do different things.</p>
+<p>In the previous example our <code>CONCAT</code> function took two column names, and a string separator as input parameters, and generated a concatenated string as output.</p>
+<p>There are two types of functions:</p>
+<ul>
+<li>Aggregate – operate on many records to produce one <code>summary</code> value</li>
+<li>Scalar – operate on each record independently, for example <code>CONCAT</code></li>
+</ul>
+</section>
+<section id="aggregate-functions" class="level3">
+<h3 class="anchored" data-anchor-id="aggregate-functions">Aggregate functions</h3>
+<ul>
+<li>AVG ( ) – calculates the average of a set of values</li>
+<li>COUNT ( ) – counts rows in a specified table or view</li>
+<li>MIN ( ) – gets the minimum value in a set of values</li>
+<li>MAX ( ) – gets the maximum value in a set of values</li>
+<li>SUM ( ) – calculates the sum of values</li>
+</ul>
+<p>To illustrate how these functions work let’s use some examples :</p>
+<ol type="1">
+<li>Get the highest salary available</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/536693c3-933a-49b8-b1d3-7174b2ca396e-2-7e081bcd-4f1d-4b8a-b424-62c445290b49.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">max_salary.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>Get the total amount of salaries paid</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/536693c3-933a-49b8-b1d3-7174b2ca396e-1-7ca06dd2-65e1-4524-ac82-9cbf9fab98fe.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">total_salaries.PNG</figcaption>
+</figure>
+</div>
+<p>See <a href="https://github.com/mobinni/Complete-SQL-Database-Bootcamp-Zero-to-Mastery/blob/master/SQL%20Deep%20Dive/Aggregate%20Functions/exercises.sql">this link</a> for some more exercises to have a go at.</p>
+</section>
+<section id="adding-comments" class="level3">
+<h3 class="anchored" data-anchor-id="adding-comments">Adding Comments</h3>
+<p>As with Python, adding comments to ur SQL queries can improve readability. For simple queries the SQL language should hopefully be self-explanatory, however for complex queries, adding comments is vital not only for other users, but also for ourselves when we revisit our query at some point in the future.</p>
+<p>Comments can be made like this :</p>
+<p>– Comment all the things<br>
+– I like having single line comments</p>
+<p>/*<br>
+<em>Multi line comments are also<br>
+</em>pretty sweet<br>
+*/</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/edfdbc56-2040-4f13-971a-49407e365694-1-f9947f96-6ec5-4972-81da-222b983bb7a9.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">multiline_comment.PNG</figcaption>
+</figure>
+</div>
+<p>Comments can be positioned at the top of the query or at the side. Here is a <a href="https://www.red-gate.com/simple-talk/databases/oracle-databases/how-to-make-comments-the-most-important-code-you-write/">useful guide</a> to best practice.</p>
+</section>
+<section id="common-select-mistakes" class="level3">
+<h3 class="anchored" data-anchor-id="common-select-mistakes">Common SELECT mistakes</h3>
+<ul>
+<li>spelling mistakes</li>
+<li>using a <code>;</code> instead of a <code>,</code></li>
+<li>using <code>"</code> instead of <code>'</code> – single quotes are for TEXT, double quotes are for TABLES or COLUMN NAMES</li>
+<li>invalid column name – autofill can help here</li>
+</ul>
+</section>
+<section id="filtering-data-using-and-and-or" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-data-using-and-and-or">Filtering Data using <code>AND</code> and <code>OR</code></h3>
+<p>The <code>AND</code> filter <strong>expands</strong> our search by chaining together multiple criteria to filter. Only information that meets ALL the search criteria will be returned. Using the <code>OR</code> filter flags the start of a new filter. It can be helpful to use brackets to separate the different clauses :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/d5bb6169-fe16-4805-a812-4e5b43005955-1-c49dffc2-be60-4836-93dc-21aae60dd68e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">and_or.PNG</figcaption>
+</figure>
+</div>
+<p>Let’s try to apply our knowledge of the <code>AND</code> <code>OR</code> filters to answer the following question :</p>
+<pre><code>How many female customers do we have from the state of Oregon(OR) and New York(NY) ?</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/06f3d719-ada2-4fe5-a866-bc388f2edc85-1-bddb4df5-9886-4e36-884c-c2a7f85c3a38.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">and_or_exercise.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="the-not-keyword" class="level3">
+<h3 class="anchored" data-anchor-id="the-not-keyword">The <code>NOT</code> keyword</h3>
+<p>The <code>NOT</code> filter <strong>trims</strong> our search to remove things we don’t need, by grabbing <code>everything but...</code>. This example is simplified however does illustrate:</p>
+<blockquote class="blockquote">
+<p>SELECT firstName, gender<br>
+FROM users<br>
+WHERE <code>NOT</code> gender = ‘M’;</p>
+</blockquote>
+<p>This returns the firstName and gender for every user who is <code>NOT</code> male</p>
+<p>Let’s use this information to answer the following question:</p>
+<pre><code>How many customers aren't 55 ?</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/e1c0dd70-dda8-4766-a0cc-264112f53e6e-1-f5b5ad18-7ebb-46dd-8372-41c748fc5e26.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">not_55.PNG</figcaption>
+</figure>
+</div>
+<p>Here are some <a href="https://www.w3schools.com/sql/exercise.asp?filename=exercise_where1">more exercises</a> to reaffirm our knowledge.</p>
+</section>
+<section id="comparison-operators" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-operators">Comparison Operators</h3>
+<p>So far we have seen how to return data <code>=</code> to or <code>not =</code> to certain criteria. But what if we want to filter by a <strong><em>range</em></strong>. We can do this using something called <code>Comparison Operators</code>.</p>
+<ul>
+<li><code>&gt;</code> – greater than</li>
+<li><code>&lt;</code> – less than</li>
+<li><code>&lt;=</code> – less than or equal to</li>
+<li><code>&gt;=</code> – greater than or equal to</li>
+<li><code>=</code> – equal to</li>
+<li><code>!=</code> – is not equal to</li>
+</ul>
+<p>Let’s try answering some questions to illustrate how these <code>comparison operators</code> work.</p>
+<ol type="1">
+<li>How many female customers do we have from the state of Oregon (OR)?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/7204f8bc-9c10-448b-94be-3a878a1e43e4-1-5812a861-34ac-4af2-86ae-12b1cf749c55.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">oregon_female_cust.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>Who over the age of 44 has an income of 100 000 or more? (excluding 44)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/7204f8bc-9c10-448b-94be-3a878a1e43e4-2-7d47f413-2306-4f1f-afa2-7ac5d0515f9d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">over_age_44_over_income_100k.PNG</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Who between the ages of 30 and 50 has an income less than 50 000? (include 30 and 50 in the results)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/7204f8bc-9c10-448b-94be-3a878a1e43e4-4-c4f2a939-333f-4afb-a68d-8a284f76c9ac.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">age_30_to_50_inc_less_50k.PNG</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>What is the average income between the ages of 20 and 50? (Excluding 20 and 50)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/7204f8bc-9c10-448b-94be-3a878a1e43e4-3-9625f0af-49c1-48be-9e68-5bc592c03307.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">avg_income_20_to_50.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="logical-operators" class="level3">
+<h3 class="anchored" data-anchor-id="logical-operators">Logical Operators</h3>
+<ul>
+<li>AND – if ALL Boolean expressions are TRUE then it will return results</li>
+<li>OR – if ANY of the Boolean expressions are TRUE then it will return results</li>
+<li>NOT – if ANY Boolean expression is NOT TRUE it will return results</li>
+</ul>
+<p>Generally when you look at a SQL query the order looks something like this :</p>
+<pre><code>SELECT
+FROM
+WHERE</code></pre>
+<p>however, under the hood, the order of operations that the database follows is actually more like this :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/3847d0a8-4da7-451b-9887-a742491e5878-1-abcc1051-d03b-476a-9923-79e6df229ef5.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sql_query_order.jpg</figcaption>
+</figure>
+</div>
+<p>So when constructing your query first think about where the data you want lives, and then the filter conditions you want to apply, before finally selecting that data.</p>
+</section>
+<section id="operator-precedence" class="level3">
+<h3 class="anchored" data-anchor-id="operator-precedence">Operator Precedence</h3>
+<p>A statement having multiple <code>operators</code> is evaluated (executed) based on the <code>priority</code> of operators.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/33b74000-41b5-4203-a14f-1ae03ac43dc9-1-76f5b273-d780-4cd7-8f0e-fee96343df22.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">operator_precedence.PNG</figcaption>
+</figure>
+</div>
+<p>If the operators have equal precedence, then the operators are evaluated directionally,</p>
+<ul>
+<li>from left to right; or</li>
+<li>right to left.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/0319913d-7e22-4e13-8087-4cf5b9e670ea-1-e7bdd6a5-72d5-42a6-83fd-b11adb51e128.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">left_to_right_to_left.PNG</figcaption>
+</figure>
+</div>
+<p>Care has to be taken to ensure that we understand this operator precedence when constructing queries. The query below will NOT return all females from from either Oregon or New York. Rather it will return females from Oregon, and males and females from New York.</p>
+<p>The <code>AND</code> filter is considered first and chains the <code>gender</code> and <code>state</code>, and the <code>OR</code> filter is considered last.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/d58c1e71-ad59-44f4-b22b-c6afc20f26b4-1-0f2d15f4-50ee-4966-8701-f24f1275445c.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">and_or_precedence.jpg</figcaption>
+</figure>
+</div>
+<p>We can either reconfigure our <code>AND</code> <code>OR</code> filters paying heed to their operational precedence :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/0e225a92-6bd1-464d-9a97-eac1e2b16328-2-acb09ea3-6270-4a3c-9f22-33672495edfc.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">and_or_reconfig.jpg</figcaption>
+</figure>
+</div>
+<p>Or we can make use of parentheses to frame our query:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/0e225a92-6bd1-464d-9a97-eac1e2b16328-1-5e63cc20-0911-4529-8b50-8d8599bb8f79.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">parentheses.jpg</figcaption>
+</figure>
+</div>
+<p>Here is another example which demonstrates the priority of the logical operator <code>NOT</code> over <code>AND</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/d0b4318b-e80b-40a3-85e1-a7d1cebff74b-1-eaf2e9f8-e5aa-4d2b-9331-0e061a4235b9.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">not_precedence.jpg</figcaption>
+</figure>
+</div>
+<p>This would filter out the state of New York, and therefore return all females over 20 years old with a salary over 1k not from New York.</p>
+<p>And here is one more example which demonstrates the priority of <code>( )</code> over <code>NOT</code> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/d6b89f18-45e7-4a7d-af3b-660e27e45bf9-1-a2a9ec25-7cbe-42e8-a0cc-a2e426a2d68c.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">parenth_and_not.jpg</figcaption>
+</figure>
+</div>
+<p>This would first consider only people aged 21 to 29, and exclude anyone from New York or Oregon, and return anyone from this subset with salary &gt; 1k.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/defb880f-9380-4765-af5e-c2a101c6b636-1-a5cbbf88-d5e2-4e33-946c-bc9c762f87f1.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">no_parenth.jpg</figcaption>
+</figure>
+</div>
+<p>The above query effectively has two separate filters :</p>
+<ol type="1">
+<li>Not from NY, Not from OR, younger than 30, salary &gt; £1k</li>
+<li>Older than 20</li>
+</ol>
+<p>The two filters will be merged and, as filter 2 overlaps filter 1, we will not get the desired output. Filter 2 will populate our query result with everyone older than 20, disregarding the younger than 30 filter included in filter 1.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/3d207d1b-1c7c-4650-8be0-4bd723338068-1-a953b051-e8a0-4521-b38e-f327f66bff4f.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">or_or.jpg</figcaption>
+</figure>
+</div>
+<p>The above query is effectively three separate filters, and so won’t provide any helpful information.</p>
+</section>
+<section id="priority-and-direction" class="level3">
+<h3 class="anchored" data-anchor-id="priority-and-direction">72. Priority and Direction</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/5457575d-41d8-42d5-9d89-6f08afbf4ebb-1-863c7122-f35b-4196-81f2-88a47ba17913.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">priority_and_direction.jpg</figcaption>
+</figure>
+</div>
+<p>Following the order of priorities, brackets first, then the AND (careful - this is outside the brackets) and the <code>OR</code> which is considered last (but is still priority over the <code>AND</code> as it’s inside brackets), we effectively have two filters in play here:</p>
+<ol type="1">
+<li>salary &gt; 10k from NY state - AND female</li>
+<li>age 21 to 29 and salary &lt;= 20k - AND female</li>
+</ol>
+<p>As we can see if we don’t fully grasp the rules of the SQL game then there is a real risk that we will construct our query incorrectly and end up returning information that does NOT answer the question that we had in mind.</p>
+<p>Here are a couple more questions to test our comprehension of <code>Operator Precedence</code> :</p>
+<ol type="1">
+<li>Select people either under 30, or over 50, with an income above 50000, that are from either Japan, or Australia</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/8beddc1b-2612-4cd8-af01-04318332a39c-2-e1d7b88d-06d5-4194-b385-68c531556e62.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">japan_australia.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>What was our total sales in June of 2004 for orders over 100 dollars?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/8beddc1b-2612-4cd8-af01-04318332a39c-1-30f92b96-55a7-45cd-860b-5233f66965df.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">orders_june_2004.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="checking-for-null-values" class="level3">
+<h3 class="anchored" data-anchor-id="checking-for-null-values">Checking for <code>NULL</code> values</h3>
+<p>When a record does not have a value it is considered empty.<code>NULL</code> is the term used to represent a missing/empty value. A <code>NULL</code> value is different from a zero value or a field that contains spaces. Conceptually, the SQL <code>NULL</code> value could be anything!</p>
+<p>No matter what you do with NULL (subtract, divide, equal) it will always be NULL.</p>
+<p>Be very deliberate and mindful of what you term NULLABLE when creating database entries. Make sure your rationale is clearly documented, as you might lose track of the NULLs and even though you might not be impacted, someone else in the data lifecycle might well be! Expect things to break. <strong>Always</strong> check for <code>NULLS</code>.</p>
+</section>
+<section id="is-keyword" class="level3">
+<h3 class="anchored" data-anchor-id="is-keyword"><code>IS</code> Keyword</h3>
+<p>The <code>IS</code> operator allows us to filter on values that are NULL, NOT NULL, True or False.</p>
+<ol type="1">
+<li><p>Filter out NULLS</p>
+<pre><code> SELECT &lt;field&gt; 
+ FROM &lt;table&gt;
+ WHERE &lt;field&gt; IS [NOT] NULL;</code></pre></li>
+<li><p>Filter out empty</p>
+<pre><code> SELECT &lt;field&gt; 
+ FROM &lt;table&gt;
+ WHERE &lt;field&gt; = '' IS NOT FALSE;     -- WHERE &lt;field&gt; = '' IS TRUE</code></pre></li>
+<li><p>Filter out a value</p>
+<pre><code> SELECT * 
+ FROM users 
+ WHERE age = 20 IS FALSE;   -- WHERE age != 20
+                            -- WHERE NOT age = 20</code></pre></li>
+</ol>
+</section>
+<section id="null-coalescing" class="level3">
+<h3 class="anchored" data-anchor-id="null-coalescing">NULL Coalescing</h3>
+<p>How can we clean up our data and replace our NULL values?</p>
+<pre><code>SELECT coalesce(&lt;column&gt;, 'Empty') AS column_alias</code></pre>
+<p>So, for the selected column, any NULL values will be replaced by ‘Empty’. Note that we have to rename this column using an <code>alias</code> otherwise it will take on the function name (coalesce).</p>
+<p>In a similar way we can coalesce for columns which contain mumerical data :</p>
+<pre><code>SELECT SUM(coalesce(age, 30)) 
+FROM "Student";</code></pre>
+<p>In this scenario, any NULL values for column “Age” will be replaced by a default value say of 30 (which might represent the mean, or median, or mode value).</p>
+</section>
+<section id="valued-logic" class="level3">
+<h3 class="anchored" data-anchor-id="valued-logic">3-Valued Logic</h3>
+<p>Besides <em>True</em> and <em>False</em>, the result of logical expressions in SQL can also be <code>Unknown</code>.</p>
+<p>Example 1:</p>
+<pre><code>(NULL = 1) OR (1 = 1)</code></pre>
+<p><code>NULL</code> OR <code>TRUE</code> = TRUE</p>
+<p>Example 2:</p>
+<p>(NULL = 1) AND (0 = 1)</p>
+<p><code>NULL</code> AND <code>FALSE</code> = NULL</p>
+<p>Example 3:</p>
+<pre><code>SELECT &lt;column&gt;
+FROM &lt;table&gt;
+WHERE &lt;column&gt; = NULL</code></pre>
+<p>If there are NULL values in the column, NULL cannot equal NULL. And if there aren’t NULL values then this will equate them to NULL. Either way, our query will be rejected.</p>
+<p>Example 4:</p>
+<pre><code>SELECT &lt;column&gt;
+FROM &lt;table&gt;
+WHERE &lt;column&gt; IS NULL</code></pre>
+<p>If there are NULL values in the column, then we will get them, by virtue of this magic <code>IS</code> operator.</p>
+<p>Let’s try out some exercises to check our understanding of <code>3-value logic</code> :</p>
+<ol type="1">
+<li><p>Adjust the following query to display the null values as “No Address”</p>
+<p>SELECT address2<br>
+FROM customers</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/8c07d3cc-4610-4f9f-8def-e3c7b8a464e5-2-8d9fb76c-8d28-4c97-92c4-f5230d8eff0a.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">no_address.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li><p>Fix the following query to apply proper 3VL</p>
+<p>SELECT *<br>
+FROM customers<br>
+WHERE COALESCE (address2, null) IS NOT null;</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/8c07d3cc-4610-4f9f-8def-e3c7b8a464e5-3-e36212de-ebd0-4d2c-bd49-be679cfcc350.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">address_not_null.PNG</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li><p>Fix the following query to apply proper 3VL</p>
+<p>SELECT coalesce (lastName, ‘Empty’), *<br>
+FROM customers<br>
+where (age = null);</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/8c07d3cc-4610-4f9f-8def-e3c7b8a464e5-1-36ba793f-b2c6-4730-a20c-cff73aaf4920.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">age_is_null.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="between-and" class="level3">
+<h3 class="anchored" data-anchor-id="between-and">Between + AND</h3>
+<p>Rather than use <code>column&gt; &gt;=</code> in conjunction with <code>column &lt;=</code> to specify a range, there is a handy shorthand available named <code>BETWEEN</code>. This form is more readable and maintainable. Let’s apply this using some exercises:</p>
+<ol type="1">
+<li>Who between the ages of 30 and 50 has an income less than 50 000? – (include 30 and 50 in the results)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/053032fc-0931-4269-a257-ee21cda3e3ed-2-d55e515d-db16-4a33-a458-08312c49198f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">between_30_and_50.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>What is the average income between the ages of 20 and 50? (Including 20 and 50)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/053032fc-0931-4269-a257-ee21cda3e3ed-1-8cd0eca7-2eae-46d2-9e8c-f81721168036.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">avg_between_20_and_50.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="the-in-keyword" class="level3">
+<h3 class="anchored" data-anchor-id="the-in-keyword">The <code>IN</code> Keyword</h3>
+<p>What if I want to find multiple values but not write endless statements? We can use the <code>IN</code> keyword to check if a value matches any value in a list of values. This simplifies our filtering.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/d82893c3-85bd-4886-a3a0-239cecc44511-1-75471111-947e-4661-94e7-67622afad2c9.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">IN_keyword.PNG</figcaption>
+</figure>
+</div>
+<p>Let’s try a couple of exercises to consolidate our understanding :</p>
+<ol type="1">
+<li>How many orders were made by customer 7888, 1082, 12808, 9623</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/412bf1d2-e83a-4dae-8fc4-62e01fb0de1c-1-c94a740b-cca6-407b-8d7e-379ce971a1d2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ordersIN.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>how many cities are in the district of Zuid-Holland, Noord-Brabant and Utrecht</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/412bf1d2-e83a-4dae-8fc4-62e01fb0de1c-2-fe74af40-8b51-4f7a-ac43-adc2cbf931e2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">citiesIN.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="ilike-partial-lookups" class="level3">
+<h3 class="anchored" data-anchor-id="ilike-partial-lookups"><code>ILIKE</code> (partial lookups)</h3>
+<p>What if you don’t know <code>exactly</code> what you are searching for? We can use <code>ILIKE</code> in conjunction with special wildcard characters (placeholders):</p>
+<p><code>%</code> any number of characters<br>
+<code>_</code> one character</p>
+<pre><code>SELECT first_name FROM employees
+WHERE fist_name ILIKE 'M%' ;</code></pre>
+<p>In the above example the query will return any employees with a first name starting with <code>M</code>, but we can create different search patterns by changing the position of these placeholders as illustrated below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/35abc38f-c6eb-4154-a3cc-d053e3c056a9-1-b7b4be9b-6b53-47da-8146-17121c581078.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">wildcards.jpg</figcaption>
+</figure>
+</div>
+<p>There is also a <code>LIKE</code> search however note that this is <code>case sensitive</code> so why risk using it?</p>
+<p>Note that we can only use the postgres <code>ILIKE</code> on text, so we must <code>CAST</code> (change data type) any column that we want to search to text.</p>
+</section>
+<section id="casting" class="level3">
+<h3 class="anchored" data-anchor-id="casting">Casting</h3>
+<p>There are two different ways to change the data types in SQL :</p>
+<ol type="1">
+<li><p>CAST (salary AS text)</p></li>
+<li><p>salary ::text</p></li>
+</ol>
+<p>Let’s look at some examples to test our understanding:</p>
+<ol type="1">
+<li>Find the age of all employees who’s name starts with M – use <code>EXTRACT (YEAR FROM AGE(birth_date))</code> – we will learn about this in later parts of the course</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/11f016f0-546d-4764-9a7f-41a7eadd9f26-3-a392372e-07e6-413f-a191-2e13fdf4948c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">name_start_M.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>How many people’s name start with A and end with R?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/11f016f0-546d-4764-9a7f-41a7eadd9f26-1-294e38ee-979c-4859-b536-64f27b2c93d2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">startA_endR.PNG</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>How many people’s zipcode have a 2 in it?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/11f016f0-546d-4764-9a7f-41a7eadd9f26-4-a55ff64d-6495-4e76-b863-330501fc58a1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">zipcode2.PNG</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>How many people’s zipcode start with 2 with the 3rd character being a 1</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/11f016f0-546d-4764-9a7f-41a7eadd9f26-5-f5c9623e-7a5f-4ac6-b5a6-598ca7d7028a.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">zipcode2_1.PNG</figcaption>
+</figure>
+</div>
+<ol start="5" type="1">
+<li>Which states have phone numbers starting with 302?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/11f016f0-546d-4764-9a7f-41a7eadd9f26-2-5d3058b1-52c9-4b75-93e4-ee62324ec2d9.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">state_phone302.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="dates-and-timezones" class="level3">
+<h3 class="anchored" data-anchor-id="dates-and-timezones">Dates and Timezones</h3>
+<p>Working with dates in databases, and software in general, is a difficult area because of the different time zones that exist. The concept of time zones was introduced by Sir Sanford Fleming at a conference in Grenwich, United Kingdom in 1884 (hence the now familiar reference point of <em>Greenwich Mean Time (GMT)</em> for all other world timezones).</p>
+<p>Universal Time Coordinate (UTC) is a time <strong><em>standard</em></strong>, a reference system which overcomes the difficulties caused by time <strong><em>zones</em></strong>. To use an analogy, we wouldn’t store the salary for one employee as a number, but as text for another employee. It’s the same with time - we need to use a universally consistent measure which transcends geographical boundaries.</p>
+<p>Although postgresql adjusts the display dates to align to the local timezone of wherever the database was installed, PostgreSQL assumes that any date introduced to the system is in UTC format, and stores dates that way.</p>
+<p>To see what timezone postgreSQL is running in :</p>
+<pre><code>SHOW TIMEZONE;</code></pre>
+<p>To change the timezone for the current session :</p>
+<pre><code>SET TIME ZONE 'UTC';</code></pre>
+<p>If we want to view dates in UTC at the <code>USER</code> level we can use:</p>
+<pre><code>ALTER USER postgres SET timezone = 'UTC'   </code></pre>
+</section>
+<section id="how-do-we-format-date-and-time" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-we-format-date-and-time">How do we format Date and Time?</h3>
+<p>The <a href="https://www.postgresql.org/docs/current/datatype-datetime.html">PostgreSQL documentation</a> includes a detailed description of how dates are handled. <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a> is the date <code>formatting</code> standard, a way of representing a date and time, and is important so that other applications understand how to consume what we give them.</p>
+<pre><code>YYYY-MM-DDTHH:MM:SS &lt;+02:00&gt; -- optional timezone info
+
+2023-03-01T11:09:37 -- 1st March 2023 11:09am and 37secs</code></pre>
+</section>
+<section id="timestamps" class="level3">
+<h3 class="anchored" data-anchor-id="timestamps">Timestamps</h3>
+<p>A <code>timestamp</code> is a date with time and timezone info, for example:</p>
+<pre><code>SELECT now()
+
+2023-03-01 10:18:28.205185+00</code></pre>
+<p>To illustrate how postgreSQL handles dates, and how this can be specified by the user at the point of inception, see below :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/6ac04ee9-5470-4d9f-be44-fb68ff52ca96-1-adb58f2b-0c73-4ec2-abea-5de25523ac61.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">UTC.PNG</figcaption>
+</figure>
+</div>
+<p>So, when to use timestamps and when to use dates? Often we don’t need the granular information provided by timestamps and dates work just fine, but it depends on what you are storing. For example in the case of cataloguing when a drug was administered to a patient, or the date that a contract was signed timestamp information is of critical importance.</p>
+<p>Thankfully, postgreSQL gives us <code>operators</code> to help simplify dates.</p>
+</section>
+<section id="date-functions" class="level3">
+<h3 class="anchored" data-anchor-id="date-functions">Date Functions</h3>
+<p>There are two ways to obtain the current date in postgreSQL :</p>
+<pre><code>SELECT NOW()::date; -- casts the time to date format
+
+SELECT CURRENT_DATE -- this gives us a subset of the ISO-8601 format</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/4420ba4d-b24e-4767-83e0-63430172ef34-1-d2fab23f-fe6d-49dd-b4a9-e254832d17f2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">current_date.PNG</figcaption>
+</figure>
+</div>
+<p>We can format the current date by using <code>TO_CHAR</code> passing in CURRENT_DATE and specifying desired format using <code>format modifiers</code>:</p>
+<pre><code>SELECT TO_CHAR(CURRENT_DATE, 'dd/mm/yyyy');</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/04e4c0f0-49a8-4528-8d26-812195e00228-1-9edd3da7-db46-4b6b-b944-082af632af7a.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dd_mm_yyyy.PNG</figcaption>
+</figure>
+</div>
+<p>The <a href="https://www.postgresql.org/docs/current/functions-formatting.html">documentation</a> includes the various template patterns available when using format modifiers e.g.&nbsp;to convert to day of the year :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/04e4c0f0-49a8-4528-8d26-812195e00228-2-ad2e9465-7d48-4391-887f-682d08162923.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">day_of_year.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="date-difference-and-casting" class="level3">
+<h3 class="anchored" data-anchor-id="date-difference-and-casting">Date Difference and Casting</h3>
+<p>What if we wanted to calculate the difference between two dates? This is a very common requirement particularly in the business use case where the charge is based on time, and we have a pick up and drop off e.g.&nbsp;a bike hire company.</p>
+<p>We can use <code>operators</code> such as <code>-</code> or <code>+</code> in the usual way, just as we do with numerical values:</p>
+<pre><code>SELECT NOW() - '1800/01/01'</code></pre>
+<p>Subtracting dates returns the difference in <code>DAYS</code>.</p>
+<p>We can convert a string to date as follows:</p>
+<pre><code>SELECT DATE `1800/01/01`</code></pre>
+<p>This converts a date to a date format for postgreSQL, that is ISO-8601.</p>
+</section>
+<section id="age-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="age-calculation">Age Calculation</h3>
+<p>When we calculate AGE we need to ensure we cast to date:</p>
+<pre><code>SELECT AGE(DATE '1800/01/01')</code></pre>
+<p>If we want to calculate the difference between two specific points in time, we simply pass in the two dates as arguments to our AGE function:</p>
+<pre><code>SELECT AGE(DATE '2022/08/22', '2023/03/01')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/61d8fdcd-5f5e-4ad3-b1db-3b72b396fd38-1-2d62f527-d5ae-4949-bc62-0b37177d9501.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">date_diff.PNG</figcaption>
+</figure>
+</div>
+<p>This will return an interval which can then be converted into any format we want using <code>TO_CHAR</code> as we saw previously.</p>
+</section>
+<section id="extracting-information" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-information">Extracting information</h3>
+<p>If we want to slice a date and extract the day, or month, or year, we can use <code>EXTRACT</code> :</p>
+<pre><code>SELECT EXTRACT (&lt;DAY&gt; &lt;MONTH&gt; &lt;YEAR&gt; FROM DATE '1976/09/13') AS &lt;DAY&gt; &lt;MONTH&gt; &lt;YEAR&gt;
+    </code></pre>
+<p>If we want to round sown to a year, or month, we can use <code>DATE_TRUNC</code> and pass it a rounding parameter:</p>
+<pre><code>SELECT DATE_TRUNC (&lt;'year'&gt; &lt;'month'&gt;, DATE '1976/09/13');</code></pre>
+<p>Note we can also round down to a day if we have a timestamp.</p>
+</section>
+<section id="intervals" class="level3">
+<h3 class="anchored" data-anchor-id="intervals">Intervals</h3>
+<p><code>INTERVAL</code> allows us to write queries in a way that mirrors human language. It can store and <em>manipulate</em> a period of time in years, months, days, hours, minutes, seconds etc. For example say we want to look at all purchase orders made more than 30 days ago :</p>
+<pre><code>SELECT
+FROM orders
+WHERE purchaseDate &lt;= NOW() - interval '30 days`   </code></pre>
+<p>Let’s try out some exercises on Dates and Timestamps :</p>
+<ol type="1">
+<li>Get me all the employees above 60, use the appropriate date functions</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/addd8766-113c-4f31-b8b0-77bae0ba9e86-4-d728af98-5620-4b0a-b9b9-319f2de548e0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">employees_above_60.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>How many employees where hired in February?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/addd8766-113c-4f31-b8b0-77bae0ba9e86-1-26890723-0989-47bc-8145-119a948733e1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">hired_feb.PNG</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>How many employees were born in November?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/addd8766-113c-4f31-b8b0-77bae0ba9e86-3-cae00752-4295-4dfa-9ff2-fd9c5eaef4bd.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">born_nov.PNG</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Who is the oldest employee? (Use the analytical function MAX)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/addd8766-113c-4f31-b8b0-77bae0ba9e86-2-5067b7e6-15a6-4718-9e34-9377f190c848.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">oldest.PNG</figcaption>
+</figure>
+</div>
+<p>The suggested solution does not tell us <em>who</em> the oldest employee is. My solution does.</p>
+<ol start="5" type="1">
+<li>How many orders were made in January 2004?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/addd8766-113c-4f31-b8b0-77bae0ba9e86-5-df87b94a-18b4-4ab2-bdba-7ade6d7a176f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">orders_Jan_2004.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="distinct" class="level3">
+<h3 class="anchored" data-anchor-id="distinct">Distinct</h3>
+<p>The <code>DISTINCT</code> keyword allows us to remove duplicates, by only returning distinct or unique values, for example:</p>
+<pre><code>SELECT 
+DISTINCT salary
+FROM salaries</code></pre>
+<p>Let’s try to answer some questions using this new keyword <code>DISTINCT</code> :</p>
+<ol type="1">
+<li>What unique titles do we have</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/a2f925e2-78fd-4e9d-a397-6f1a5dd18530-2-48d112a5-5901-4931-905c-c4d3e998dce4.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">distinct_titles.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>How many unique birth dates are there?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/a2f925e2-78fd-4e9d-a397-6f1a5dd18530-3-ae5fbe7c-95ea-450f-a27b-9b65a24bd4f7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">distinct_birthdays.PNG</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Can I get a list of distinct life expectancy ages ?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/a2f925e2-78fd-4e9d-a397-6f1a5dd18530-1-190b391f-3e30-40a9-b45d-f20c6d58dabc.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">distinct_life_exp.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="sorting-data" class="level3">
+<h3 class="anchored" data-anchor-id="sorting-data">Sorting Data</h3>
+<p>Now that we have covered <code>filtering</code> let’s now move forward and look at how we can <code>order</code> our filtered data. There are a couple of keywords:</p>
+<ul>
+<li>ORDER BY</li>
+<li>GROUP BY</li>
+</ul>
+<p>Let’s take a look first at ORDER BY</p>
+</section>
+<section id="order-by" class="level3">
+<h3 class="anchored" data-anchor-id="order-by"><code>ORDER BY</code></h3>
+<p>This allows us to sort data either ascending or descending by column.</p>
+<pre><code>SELECT * FROM customers
+ORDER BY name DESC</code></pre>
+<p>This would order customer names from Z -&gt; A.</p>
+<p>It’s also possible to ORDER BY expressions e.g.&nbsp;<code>LENGTH</code> :</p>
+<pre><code>SELECT * FROM customers
+ORDER BY LENGTH (name) DESC</code></pre>
+<p>Let’s look at some exercises on this :</p>
+<ol type="1">
+<li>Sort employees by first name ascending and last name descending</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/fbaa9995-e4d6-4878-bc27-69e017554015-3-bf0c4ffd-8540-4516-9bf2-462797d2b08c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">last_descend.PNG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>Sort employees by age</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/fbaa9995-e4d6-4878-bc27-69e017554015-2-9b6376fa-563f-497b-b4c2-e23d37e5d692.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">age_sorted.PNG</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Sort employees who’s name starts with a “k” by hire_date</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/fbaa9995-e4d6-4878-bc27-69e017554015-1-185b3702-51dd-4594-b6a4-9c53c8b2d05b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">hire_date_K.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="multi-table-select" class="level3">
+<h3 class="anchored" data-anchor-id="multi-table-select">Multi Table Select</h3>
+<p>Multi Table <code>SELECTs</code> allow us to create a visualization that uncovers relationships across multiple tables. A join combines columns from one table with those of another, by taking a column from one table that can map to the column of another table. The most common approach is to link the <code>primary key</code> of one table to a <code>foreign key</code> of another table.</p>
+<p>Outlined below is a very basic way of achieving the equivalent of a join :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/b65362cd-87de-409a-b799-d9c4547e6a6b-1-099cb037-02e0-4b0d-a203-fc0b29ff9cdc.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pseudo_join.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="inner-join" class="level3">
+<h3 class="anchored" data-anchor-id="inner-join">Inner Join</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/026f877b-a1f8-48a6-8e20-335a187e0803-1-d9b2d808-c61d-4db8-bf40-ca549d03b3b0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">inner_join_equiv.PNG</figcaption>
+</figure>
+</div>
+<p>There is another way to achieve the same outcome as the above query. Joining tables is a very common thing to do, and so as we might expect SQL has built-in functions which do some of the joining legwork for us, under the hood.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/4b9e21c3-917a-4d93-a83d-81a2ecced767-1-ae033bb5-bdfe-411c-a0ef-f33b4a3a8e8a.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">inner_join.jpg</figcaption>
+</figure>
+</div>
+<p>When you join two tables together using INNER JOIN you will end up with a table which includes only the records that are common in both (i.e matched values). For example in the above graphic if Table A has 1000 records for <code>emp_no</code> and Table B has 500 records for <code>emp_no</code> then on applying an INNER JOIN the resultant table will have only the 500 matching records for <code>emp_no</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/c547bbc4-8e83-454d-ae45-b461277500b5-1-fee24161-da16-46f8-8059-c2e5d3dfabce.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">inner_join_2.PNG</figcaption>
+</figure>
+</div>
+<p>The above query has the same principle as the previous querry which included a WHERE clause, but this time we replace the WHERE condition by utilising <code>INNER JOIN</code>. You have to decide which table is going to be on the left side (where we are selecting from) and which table is going to be on the right side (what we are going to join on).</p>
+<p>Note that the results of an INNER JOIN always come back UNsorted so you need to USE ORDER BY</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/cfc1c857-2bf4-4194-a5da-25de9df4d414-1-0c7ed80a-4c69-4ac5-96e3-a9b9ac332f74.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">inner_join_order_by.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="joining-more-than-2-tables" class="level3">
+<h3 class="anchored" data-anchor-id="joining-more-than-2-tables">Joining more than 2 tables</h3>
+<p>What if we only want to know the salary raises that were linked to a promotion (which happens 2 days after a raise)?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/eb9d24e4-96a8-41bb-980f-d175adc8b054-1-7250e35b-d4e3-4940-81b5-7afecb8c3ea1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">promotion.PNG</figcaption>
+</figure>
+</div>
+<p>We know that employees are linked to salaries via <code>emp_no</code>, but how can we link title changes? Well, title changes are effectively linked to salaries through the <code>from_date</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/7a9b9b75-e667-41e6-838e-f8eea58c5165-1-288c46a0-2c94-4367-a548-ee90613b499f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">inner_join_three_tables.PNG</figcaption>
+</figure>
+</div>
+<p>What if we want to know the original salary and also the salary at promotion ?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/d3191d19-a80e-42f2-b4dc-c6b50560072e-1-8990cc63-6955-4f48-95a4-d9c561543d36.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">inner_join_and_or.PNG</figcaption>
+</figure>
+</div>
+<p>So here we are narrowing down the matched data from the INNER JOINS using the <code>ON</code> clause.</p>
+</section>
+<section id="self-join" class="level3">
+<h3 class="anchored" data-anchor-id="self-join">Self Join</h3>
+<p>This type of join is uncommon, however it usually can be done when a table has a foreign key referencing its primary key. It is really no different from an INNER join, except in this case we are joining the table to itself.</p>
+</section>
+<section id="outer-join" class="level3">
+<h3 class="anchored" data-anchor-id="outer-join">Outer Join</h3>
+<p>Unlike INNER JOINS which only consider the intersection of tables, OUTER JOINS also consider information that lies <strong><em>outside</em></strong> the intersection. This is useful in scenarios where we also need the rows that don’t match.</p>
+<p><code>Left Joins</code><br>
+Add the data that don’t have a match from Table A</p>
+<pre><code>SELECT *
+FROM &lt;table A&gt; AS a
+LEFT [OUTER] JOIN &lt;table B&gt; AS b
+ON a.id = b.id   </code></pre>
+<p>Let’s say we wanted to know the answer to the following question :</p>
+<pre><code>How many employees are NOT managers ?</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>SELECT </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    COUNT(e.emp_no)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>FROM </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    employees AS e</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>LEFT JOIN</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    dept_manager <span class="im">as</span> d ON e.emp_no <span class="op">=</span> d.emp_no</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>WHERE d.emp_no IS NULL<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s say we wanted to know the answer to the following question :</p>
+<pre><code>Give me every salary raise and also which ones were a promotion </code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SQL_files/figure-html/da92743b-968f-44bd-8547-c0f9778f4f9e-1-8aa11864-fb65-4f22-acde-92f5c7bfd805.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">left_join.PNG</figcaption>
+</figure>
+</div>
+<p>Any value that does not match is made to be NULL</p>
+<p><code>Right Joins</code><br>
+Add the data</p>
+</section>
+<section id="less-common-joins" class="level3">
+<h3 class="anchored" data-anchor-id="less-common-joins">Less Common Joins</h3>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

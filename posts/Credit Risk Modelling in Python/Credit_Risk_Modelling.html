@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -142,31 +114,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -200,6 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">January 23, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -293,195 +269,196 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>cr_loan <span class="op">=</span> pd.read_csv(<span class="st">'Data/cr_loan2.csv'</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>cr_loan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_age</th>
-      <th>person_income</th>
-      <th>person_home_ownership</th>
-      <th>person_emp_length</th>
-      <th>loan_intent</th>
-      <th>loan_grade</th>
-      <th>loan_amnt</th>
-      <th>loan_int_rate</th>
-      <th>loan_status</th>
-      <th>loan_percent_income</th>
-      <th>cb_person_default_on_file</th>
-      <th>cb_person_cred_hist_length</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>22</td>
-      <td>59000</td>
-      <td>RENT</td>
-      <td>123.0</td>
-      <td>PERSONAL</td>
-      <td>D</td>
-      <td>35000</td>
-      <td>16.02</td>
-      <td>1</td>
-      <td>0.59</td>
-      <td>Y</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>21</td>
-      <td>9600</td>
-      <td>OWN</td>
-      <td>5.0</td>
-      <td>EDUCATION</td>
-      <td>B</td>
-      <td>1000</td>
-      <td>11.14</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>25</td>
-      <td>9600</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>5500</td>
-      <td>12.87</td>
-      <td>1</td>
-      <td>0.57</td>
-      <td>N</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23</td>
-      <td>65500</td>
-      <td>RENT</td>
-      <td>4.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>15.23</td>
-      <td>1</td>
-      <td>0.53</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24</td>
-      <td>54400</td>
-      <td>RENT</td>
-      <td>8.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>14.27</td>
-      <td>1</td>
-      <td>0.55</td>
-      <td>Y</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>32576</th>
-      <td>57</td>
-      <td>53000</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>PERSONAL</td>
-      <td>C</td>
-      <td>5800</td>
-      <td>13.16</td>
-      <td>0</td>
-      <td>0.11</td>
-      <td>N</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>32577</th>
-      <td>54</td>
-      <td>120000</td>
-      <td>MORTGAGE</td>
-      <td>4.0</td>
-      <td>PERSONAL</td>
-      <td>A</td>
-      <td>17625</td>
-      <td>7.49</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>N</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>32578</th>
-      <td>65</td>
-      <td>76000</td>
-      <td>RENT</td>
-      <td>3.0</td>
-      <td>HOMEIMPROVEMENT</td>
-      <td>B</td>
-      <td>35000</td>
-      <td>10.99</td>
-      <td>1</td>
-      <td>0.46</td>
-      <td>N</td>
-      <td>28</td>
-    </tr>
-    <tr>
-      <th>32579</th>
-      <td>56</td>
-      <td>150000</td>
-      <td>MORTGAGE</td>
-      <td>5.0</td>
-      <td>PERSONAL</td>
-      <td>B</td>
-      <td>15000</td>
-      <td>11.48</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>26</td>
-    </tr>
-    <tr>
-      <th>32580</th>
-      <td>66</td>
-      <td>42000</td>
-      <td>RENT</td>
-      <td>2.0</td>
-      <td>MEDICAL</td>
-      <td>B</td>
-      <td>6475</td>
-      <td>9.99</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>N</td>
-      <td>30</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>22</td>
+<td>59000</td>
+<td>RENT</td>
+<td>123.0</td>
+<td>PERSONAL</td>
+<td>D</td>
+<td>35000</td>
+<td>16.02</td>
+<td>1</td>
+<td>0.59</td>
+<td>Y</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>21</td>
+<td>9600</td>
+<td>OWN</td>
+<td>5.0</td>
+<td>EDUCATION</td>
+<td>B</td>
+<td>1000</td>
+<td>11.14</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>25</td>
+<td>9600</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>5500</td>
+<td>12.87</td>
+<td>1</td>
+<td>0.57</td>
+<td>N</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>23</td>
+<td>65500</td>
+<td>RENT</td>
+<td>4.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>15.23</td>
+<td>1</td>
+<td>0.53</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>24</td>
+<td>54400</td>
+<td>RENT</td>
+<td>8.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>14.27</td>
+<td>1</td>
+<td>0.55</td>
+<td>Y</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32576</td>
+<td>57</td>
+<td>53000</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>PERSONAL</td>
+<td>C</td>
+<td>5800</td>
+<td>13.16</td>
+<td>0</td>
+<td>0.11</td>
+<td>N</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32577</td>
+<td>54</td>
+<td>120000</td>
+<td>MORTGAGE</td>
+<td>4.0</td>
+<td>PERSONAL</td>
+<td>A</td>
+<td>17625</td>
+<td>7.49</td>
+<td>0</td>
+<td>0.15</td>
+<td>N</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32578</td>
+<td>65</td>
+<td>76000</td>
+<td>RENT</td>
+<td>3.0</td>
+<td>HOMEIMPROVEMENT</td>
+<td>B</td>
+<td>35000</td>
+<td>10.99</td>
+<td>1</td>
+<td>0.46</td>
+<td>N</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32579</td>
+<td>56</td>
+<td>150000</td>
+<td>MORTGAGE</td>
+<td>5.0</td>
+<td>PERSONAL</td>
+<td>B</td>
+<td>15000</td>
+<td>11.48</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>26</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32580</td>
+<td>66</td>
+<td>42000</td>
+<td>RENT</td>
+<td>2.0</td>
+<td>MEDICAL</td>
+<td>B</td>
+<td>6475</td>
+<td>9.99</td>
+<td>0</td>
+<td>0.15</td>
+<td>N</td>
+<td>30</td>
+</tr>
+</tbody>
 </table>
+
 <p>32581 rows × 12 columns</p>
 </div>
 </div>
@@ -512,105 +489,106 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the first five rows of the data</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cr_loan.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_age</th>
-      <th>person_income</th>
-      <th>person_home_ownership</th>
-      <th>person_emp_length</th>
-      <th>loan_intent</th>
-      <th>loan_grade</th>
-      <th>loan_amnt</th>
-      <th>loan_int_rate</th>
-      <th>loan_status</th>
-      <th>loan_percent_income</th>
-      <th>cb_person_default_on_file</th>
-      <th>cb_person_cred_hist_length</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>22</td>
-      <td>59000</td>
-      <td>RENT</td>
-      <td>123.0</td>
-      <td>PERSONAL</td>
-      <td>D</td>
-      <td>35000</td>
-      <td>16.02</td>
-      <td>1</td>
-      <td>0.59</td>
-      <td>Y</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>21</td>
-      <td>9600</td>
-      <td>OWN</td>
-      <td>5.0</td>
-      <td>EDUCATION</td>
-      <td>B</td>
-      <td>1000</td>
-      <td>11.14</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>25</td>
-      <td>9600</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>5500</td>
-      <td>12.87</td>
-      <td>1</td>
-      <td>0.57</td>
-      <td>N</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23</td>
-      <td>65500</td>
-      <td>RENT</td>
-      <td>4.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>15.23</td>
-      <td>1</td>
-      <td>0.53</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24</td>
-      <td>54400</td>
-      <td>RENT</td>
-      <td>8.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>14.27</td>
-      <td>1</td>
-      <td>0.55</td>
-      <td>Y</td>
-      <td>4</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>22</td>
+<td>59000</td>
+<td>RENT</td>
+<td>123.0</td>
+<td>PERSONAL</td>
+<td>D</td>
+<td>35000</td>
+<td>16.02</td>
+<td>1</td>
+<td>0.59</td>
+<td>Y</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>21</td>
+<td>9600</td>
+<td>OWN</td>
+<td>5.0</td>
+<td>EDUCATION</td>
+<td>B</td>
+<td>1000</td>
+<td>11.14</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>25</td>
+<td>9600</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>5500</td>
+<td>12.87</td>
+<td>1</td>
+<td>0.57</td>
+<td>N</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>23</td>
+<td>65500</td>
+<td>RENT</td>
+<td>4.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>15.23</td>
+<td>1</td>
+<td>0.53</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>24</td>
+<td>54400</td>
+<td>RENT</td>
+<td>8.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>14.27</td>
+<td>1</td>
+<td>0.55</td>
+<td>Y</td>
+<td>4</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -618,114 +596,115 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get an overview of the numeric columns</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cr_loan.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_age</th>
-      <th>person_income</th>
-      <th>person_emp_length</th>
-      <th>loan_amnt</th>
-      <th>loan_int_rate</th>
-      <th>loan_status</th>
-      <th>loan_percent_income</th>
-      <th>cb_person_cred_hist_length</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>32581.000000</td>
-      <td>3.258100e+04</td>
-      <td>31686.000000</td>
-      <td>32581.000000</td>
-      <td>29465.000000</td>
-      <td>32581.000000</td>
-      <td>32581.000000</td>
-      <td>32581.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>27.734600</td>
-      <td>6.607485e+04</td>
-      <td>4.789686</td>
-      <td>9589.371106</td>
-      <td>11.011695</td>
-      <td>0.218164</td>
-      <td>0.170203</td>
-      <td>5.804211</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>6.348078</td>
-      <td>6.198312e+04</td>
-      <td>4.142630</td>
-      <td>6322.086646</td>
-      <td>3.240459</td>
-      <td>0.413006</td>
-      <td>0.106782</td>
-      <td>4.055001</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>20.000000</td>
-      <td>4.000000e+03</td>
-      <td>0.000000</td>
-      <td>500.000000</td>
-      <td>5.420000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>2.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>23.000000</td>
-      <td>3.850000e+04</td>
-      <td>2.000000</td>
-      <td>5000.000000</td>
-      <td>7.900000</td>
-      <td>0.000000</td>
-      <td>0.090000</td>
-      <td>3.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>26.000000</td>
-      <td>5.500000e+04</td>
-      <td>4.000000</td>
-      <td>8000.000000</td>
-      <td>10.990000</td>
-      <td>0.000000</td>
-      <td>0.150000</td>
-      <td>4.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>30.000000</td>
-      <td>7.920000e+04</td>
-      <td>7.000000</td>
-      <td>12200.000000</td>
-      <td>13.470000</td>
-      <td>0.000000</td>
-      <td>0.230000</td>
-      <td>8.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>144.000000</td>
-      <td>6.000000e+06</td>
-      <td>123.000000</td>
-      <td>35000.000000</td>
-      <td>23.220000</td>
-      <td>1.000000</td>
-      <td>0.830000</td>
-      <td>30.000000</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>32581.000000</td>
+<td>3.258100e+04</td>
+<td>31686.000000</td>
+<td>32581.000000</td>
+<td>29465.000000</td>
+<td>32581.000000</td>
+<td>32581.000000</td>
+<td>32581.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>27.734600</td>
+<td>6.607485e+04</td>
+<td>4.789686</td>
+<td>9589.371106</td>
+<td>11.011695</td>
+<td>0.218164</td>
+<td>0.170203</td>
+<td>5.804211</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>6.348078</td>
+<td>6.198312e+04</td>
+<td>4.142630</td>
+<td>6322.086646</td>
+<td>3.240459</td>
+<td>0.413006</td>
+<td>0.106782</td>
+<td>4.055001</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>20.000000</td>
+<td>4.000000e+03</td>
+<td>0.000000</td>
+<td>500.000000</td>
+<td>5.420000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>2.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>23.000000</td>
+<td>3.850000e+04</td>
+<td>2.000000</td>
+<td>5000.000000</td>
+<td>7.900000</td>
+<td>0.000000</td>
+<td>0.090000</td>
+<td>3.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>26.000000</td>
+<td>5.500000e+04</td>
+<td>4.000000</td>
+<td>8000.000000</td>
+<td>10.990000</td>
+<td>0.000000</td>
+<td>0.150000</td>
+<td>4.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>30.000000</td>
+<td>7.920000e+04</td>
+<td>7.000000</td>
+<td>12200.000000</td>
+<td>13.470000</td>
+<td>0.000000</td>
+<td>0.230000</td>
+<td>8.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>144.000000</td>
+<td>6.000000e+06</td>
+<td>123.000000</td>
+<td>35000.000000</td>
+<td>23.220000</td>
+<td>1.000000</td>
+<td>0.830000</td>
+<td>30.000000</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -733,50 +712,51 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get an overview of the numeric columns</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cr_loan.describe(include<span class="op">=</span><span class="st">'object'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_home_ownership</th>
-      <th>loan_intent</th>
-      <th>loan_grade</th>
-      <th>cb_person_default_on_file</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>32581</td>
-      <td>32581</td>
-      <td>32581</td>
-      <td>32581</td>
-    </tr>
-    <tr>
-      <th>unique</th>
-      <td>4</td>
-      <td>6</td>
-      <td>7</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>top</th>
-      <td>RENT</td>
-      <td>EDUCATION</td>
-      <td>A</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>freq</th>
-      <td>16446</td>
-      <td>6453</td>
-      <td>10777</td>
-      <td>26836</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>32581</td>
+<td>32581</td>
+<td>32581</td>
+<td>32581</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">unique</td>
+<td>4</td>
+<td>6</td>
+<td>7</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">top</td>
+<td>RENT</td>
+<td>EDUCATION</td>
+<td>A</td>
+<td>N</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">freq</td>
+<td>16446</td>
+<td>6453</td>
+<td>10777</td>
+<td>26836</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -817,69 +797,70 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a cross table of the loan intent and loan status</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(cr_loan[<span class="st">'loan_intent'</span>], cr_loan[<span class="st">'loan_status'</span>], margins <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>loan_status</th>
-      <th>0</th>
-      <th>1</th>
-      <th>All</th>
-    </tr>
-    <tr>
-      <th>loan_intent</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>DEBTCONSOLIDATION</th>
-      <td>3722</td>
-      <td>1490</td>
-      <td>5212</td>
-    </tr>
-    <tr>
-      <th>EDUCATION</th>
-      <td>5342</td>
-      <td>1111</td>
-      <td>6453</td>
-    </tr>
-    <tr>
-      <th>HOMEIMPROVEMENT</th>
-      <td>2664</td>
-      <td>941</td>
-      <td>3605</td>
-    </tr>
-    <tr>
-      <th>MEDICAL</th>
-      <td>4450</td>
-      <td>1621</td>
-      <td>6071</td>
-    </tr>
-    <tr>
-      <th>PERSONAL</th>
-      <td>4423</td>
-      <td>1098</td>
-      <td>5521</td>
-    </tr>
-    <tr>
-      <th>VENTURE</th>
-      <td>4872</td>
-      <td>847</td>
-      <td>5719</td>
-    </tr>
-    <tr>
-      <th>All</th>
-      <td>25473</td>
-      <td>7108</td>
-      <td>32581</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">All</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">DEBTCONSOLIDATION</td>
+<td>3722</td>
+<td>1490</td>
+<td>5212</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">EDUCATION</td>
+<td>5342</td>
+<td>1111</td>
+<td>6453</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">HOMEIMPROVEMENT</td>
+<td>2664</td>
+<td>941</td>
+<td>3605</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">MEDICAL</td>
+<td>4450</td>
+<td>1621</td>
+<td>6071</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">PERSONAL</td>
+<td>4423</td>
+<td>1098</td>
+<td>5521</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">VENTURE</td>
+<td>4872</td>
+<td>847</td>
+<td>5719</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">All</td>
+<td>25473</td>
+<td>7108</td>
+<td>32581</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -889,122 +870,123 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a cross table of home ownership, loan status, and grade</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(cr_loan[<span class="st">'person_home_ownership'</span>],[cr_loan[<span class="st">'loan_status'</span>],cr_loan[<span class="st">'loan_grade'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>loan_status</th>
-      <th colspan="7" halign="left">0</th>
-      <th colspan="7" halign="left">1</th>
-    </tr>
-    <tr>
-      <th>loan_grade</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-      <th>E</th>
-      <th>F</th>
-      <th>G</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-      <th>E</th>
-      <th>F</th>
-      <th>G</th>
-    </tr>
-    <tr>
-      <th>person_home_ownership</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>MORTGAGE</th>
-      <td>5219</td>
-      <td>3729</td>
-      <td>1934</td>
-      <td>658</td>
-      <td>178</td>
-      <td>36</td>
-      <td>0</td>
-      <td>239</td>
-      <td>324</td>
-      <td>321</td>
-      <td>553</td>
-      <td>161</td>
-      <td>61</td>
-      <td>31</td>
-    </tr>
-    <tr>
-      <th>OTHER</th>
-      <td>23</td>
-      <td>29</td>
-      <td>11</td>
-      <td>9</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>5</td>
-      <td>6</td>
-      <td>11</td>
-      <td>6</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>OWN</th>
-      <td>860</td>
-      <td>770</td>
-      <td>464</td>
-      <td>264</td>
-      <td>26</td>
-      <td>7</td>
-      <td>0</td>
-      <td>66</td>
-      <td>34</td>
-      <td>31</td>
-      <td>18</td>
-      <td>31</td>
-      <td>8</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>RENT</th>
-      <td>3602</td>
-      <td>4222</td>
-      <td>2710</td>
-      <td>554</td>
-      <td>137</td>
-      <td>28</td>
-      <td>1</td>
-      <td>765</td>
-      <td>1338</td>
-      <td>981</td>
-      <td>1559</td>
-      <td>423</td>
-      <td>99</td>
-      <td>27</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th colspan="7" data-quarto-table-cell-role="th" data-halign="left">0</th>
+<th colspan="7" data-quarto-table-cell-role="th" data-halign="left">1</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">C</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">E</th>
+<th data-quarto-table-cell-role="th">F</th>
+<th data-quarto-table-cell-role="th">G</th>
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">C</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">E</th>
+<th data-quarto-table-cell-role="th">F</th>
+<th data-quarto-table-cell-role="th">G</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">MORTGAGE</td>
+<td>5219</td>
+<td>3729</td>
+<td>1934</td>
+<td>658</td>
+<td>178</td>
+<td>36</td>
+<td>0</td>
+<td>239</td>
+<td>324</td>
+<td>321</td>
+<td>553</td>
+<td>161</td>
+<td>61</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">OTHER</td>
+<td>23</td>
+<td>29</td>
+<td>11</td>
+<td>9</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>5</td>
+<td>6</td>
+<td>11</td>
+<td>6</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OWN</td>
+<td>860</td>
+<td>770</td>
+<td>464</td>
+<td>264</td>
+<td>26</td>
+<td>7</td>
+<td>0</td>
+<td>66</td>
+<td>34</td>
+<td>31</td>
+<td>18</td>
+<td>31</td>
+<td>8</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">RENT</td>
+<td>3602</td>
+<td>4222</td>
+<td>2710</td>
+<td>554</td>
+<td>137</td>
+<td>28</td>
+<td>1</td>
+<td>765</td>
+<td>1338</td>
+<td>981</td>
+<td>1559</td>
+<td>423</td>
+<td>99</td>
+<td>27</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1015,45 +997,46 @@ dtype: object</code></pre>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(cr_loan[<span class="st">'person_home_ownership'</span>], cr_loan[<span class="st">'loan_status'</span>],</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>              values<span class="op">=</span>cr_loan[<span class="st">'loan_percent_income'</span>], aggfunc<span class="op">=</span><span class="st">'mean'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>loan_status</th>
-      <th>0</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>person_home_ownership</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>MORTGAGE</th>
-      <td>0.146504</td>
-      <td>0.184882</td>
-    </tr>
-    <tr>
-      <th>OTHER</th>
-      <td>0.143784</td>
-      <td>0.300000</td>
-    </tr>
-    <tr>
-      <th>OWN</th>
-      <td>0.180013</td>
-      <td>0.297358</td>
-    </tr>
-    <tr>
-      <th>RENT</th>
-      <td>0.144611</td>
-      <td>0.264859</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">1</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">MORTGAGE</td>
+<td>0.146504</td>
+<td>0.184882</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">OTHER</td>
+<td>0.143784</td>
+<td>0.300000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">OWN</td>
+<td>0.180013</td>
+<td>0.297358</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">RENT</td>
+<td>0.144611</td>
+<td>0.264859</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1081,43 +1064,44 @@ dtype: object</code></pre>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(cr_loan[<span class="st">'loan_status'</span>],cr_loan[<span class="st">'person_home_ownership'</span>],</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        values<span class="op">=</span>cr_loan[<span class="st">'person_emp_length'</span>], aggfunc<span class="op">=</span><span class="st">'max'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>person_home_ownership</th>
-      <th>MORTGAGE</th>
-      <th>OTHER</th>
-      <th>OWN</th>
-      <th>RENT</th>
-    </tr>
-    <tr>
-      <th>loan_status</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>123.0</td>
-      <td>24.0</td>
-      <td>31.0</td>
-      <td>41.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>34.0</td>
-      <td>11.0</td>
-      <td>17.0</td>
-      <td>123.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">MORTGAGE</th>
+<th data-quarto-table-cell-role="th">OTHER</th>
+<th data-quarto-table-cell-role="th">OWN</th>
+<th data-quarto-table-cell-role="th">RENT</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>123.0</td>
+<td>24.0</td>
+<td>31.0</td>
+<td>41.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>34.0</td>
+<td>11.0</td>
+<td>17.0</td>
+<td>123.0</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1132,195 +1116,196 @@ dtype: object</code></pre>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cr_loan <span class="op">=</span> cr_loan.drop(indices)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>cr_loan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_age</th>
-      <th>person_income</th>
-      <th>person_home_ownership</th>
-      <th>person_emp_length</th>
-      <th>loan_intent</th>
-      <th>loan_grade</th>
-      <th>loan_amnt</th>
-      <th>loan_int_rate</th>
-      <th>loan_status</th>
-      <th>loan_percent_income</th>
-      <th>cb_person_default_on_file</th>
-      <th>cb_person_cred_hist_length</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>21</td>
-      <td>9600</td>
-      <td>OWN</td>
-      <td>5.0</td>
-      <td>EDUCATION</td>
-      <td>B</td>
-      <td>1000</td>
-      <td>11.14</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>25</td>
-      <td>9600</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>5500</td>
-      <td>12.87</td>
-      <td>1</td>
-      <td>0.57</td>
-      <td>N</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23</td>
-      <td>65500</td>
-      <td>RENT</td>
-      <td>4.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>15.23</td>
-      <td>1</td>
-      <td>0.53</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24</td>
-      <td>54400</td>
-      <td>RENT</td>
-      <td>8.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>14.27</td>
-      <td>1</td>
-      <td>0.55</td>
-      <td>Y</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>21</td>
-      <td>9900</td>
-      <td>OWN</td>
-      <td>2.0</td>
-      <td>VENTURE</td>
-      <td>A</td>
-      <td>2500</td>
-      <td>7.14</td>
-      <td>1</td>
-      <td>0.25</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>32576</th>
-      <td>57</td>
-      <td>53000</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>PERSONAL</td>
-      <td>C</td>
-      <td>5800</td>
-      <td>13.16</td>
-      <td>0</td>
-      <td>0.11</td>
-      <td>N</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>32577</th>
-      <td>54</td>
-      <td>120000</td>
-      <td>MORTGAGE</td>
-      <td>4.0</td>
-      <td>PERSONAL</td>
-      <td>A</td>
-      <td>17625</td>
-      <td>7.49</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>N</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>32578</th>
-      <td>65</td>
-      <td>76000</td>
-      <td>RENT</td>
-      <td>3.0</td>
-      <td>HOMEIMPROVEMENT</td>
-      <td>B</td>
-      <td>35000</td>
-      <td>10.99</td>
-      <td>1</td>
-      <td>0.46</td>
-      <td>N</td>
-      <td>28</td>
-    </tr>
-    <tr>
-      <th>32579</th>
-      <td>56</td>
-      <td>150000</td>
-      <td>MORTGAGE</td>
-      <td>5.0</td>
-      <td>PERSONAL</td>
-      <td>B</td>
-      <td>15000</td>
-      <td>11.48</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>26</td>
-    </tr>
-    <tr>
-      <th>32580</th>
-      <td>66</td>
-      <td>42000</td>
-      <td>RENT</td>
-      <td>2.0</td>
-      <td>MEDICAL</td>
-      <td>B</td>
-      <td>6475</td>
-      <td>9.99</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>N</td>
-      <td>30</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>21</td>
+<td>9600</td>
+<td>OWN</td>
+<td>5.0</td>
+<td>EDUCATION</td>
+<td>B</td>
+<td>1000</td>
+<td>11.14</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>25</td>
+<td>9600</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>5500</td>
+<td>12.87</td>
+<td>1</td>
+<td>0.57</td>
+<td>N</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>23</td>
+<td>65500</td>
+<td>RENT</td>
+<td>4.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>15.23</td>
+<td>1</td>
+<td>0.53</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>24</td>
+<td>54400</td>
+<td>RENT</td>
+<td>8.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>14.27</td>
+<td>1</td>
+<td>0.55</td>
+<td>Y</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>21</td>
+<td>9900</td>
+<td>OWN</td>
+<td>2.0</td>
+<td>VENTURE</td>
+<td>A</td>
+<td>2500</td>
+<td>7.14</td>
+<td>1</td>
+<td>0.25</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32576</td>
+<td>57</td>
+<td>53000</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>PERSONAL</td>
+<td>C</td>
+<td>5800</td>
+<td>13.16</td>
+<td>0</td>
+<td>0.11</td>
+<td>N</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32577</td>
+<td>54</td>
+<td>120000</td>
+<td>MORTGAGE</td>
+<td>4.0</td>
+<td>PERSONAL</td>
+<td>A</td>
+<td>17625</td>
+<td>7.49</td>
+<td>0</td>
+<td>0.15</td>
+<td>N</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32578</td>
+<td>65</td>
+<td>76000</td>
+<td>RENT</td>
+<td>3.0</td>
+<td>HOMEIMPROVEMENT</td>
+<td>B</td>
+<td>35000</td>
+<td>10.99</td>
+<td>1</td>
+<td>0.46</td>
+<td>N</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32579</td>
+<td>56</td>
+<td>150000</td>
+<td>MORTGAGE</td>
+<td>5.0</td>
+<td>PERSONAL</td>
+<td>B</td>
+<td>15000</td>
+<td>11.48</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>26</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32580</td>
+<td>66</td>
+<td>42000</td>
+<td>RENT</td>
+<td>2.0</td>
+<td>MEDICAL</td>
+<td>B</td>
+<td>6475</td>
+<td>9.99</td>
+<td>0</td>
+<td>0.15</td>
+<td>N</td>
+<td>30</td>
+</tr>
+</tbody>
 </table>
+
 <p>32579 rows × 12 columns</p>
 </div>
 </div>
@@ -1331,64 +1316,65 @@ dtype: object</code></pre>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(cr_loan[<span class="st">'loan_status'</span>],cr_loan[<span class="st">'person_home_ownership'</span>],</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            values<span class="op">=</span>cr_loan[<span class="st">'person_emp_length'</span>], aggfunc<span class="op">=</span>[<span class="st">'min'</span>,<span class="st">'max'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th colspan="4" halign="left">min</th>
-      <th colspan="4" halign="left">max</th>
-    </tr>
-    <tr>
-      <th>person_home_ownership</th>
-      <th>MORTGAGE</th>
-      <th>OTHER</th>
-      <th>OWN</th>
-      <th>RENT</th>
-      <th>MORTGAGE</th>
-      <th>OTHER</th>
-      <th>OWN</th>
-      <th>RENT</th>
-    </tr>
-    <tr>
-      <th>loan_status</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>38.0</td>
-      <td>24.0</td>
-      <td>31.0</td>
-      <td>41.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>34.0</td>
-      <td>11.0</td>
-      <td>17.0</td>
-      <td>27.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="4" data-quarto-table-cell-role="th" data-halign="left">min</th>
+<th colspan="4" data-quarto-table-cell-role="th" data-halign="left">max</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">MORTGAGE</th>
+<th data-quarto-table-cell-role="th">OTHER</th>
+<th data-quarto-table-cell-role="th">OWN</th>
+<th data-quarto-table-cell-role="th">RENT</th>
+<th data-quarto-table-cell-role="th">MORTGAGE</th>
+<th data-quarto-table-cell-role="th">OTHER</th>
+<th data-quarto-table-cell-role="th">OWN</th>
+<th data-quarto-table-cell-role="th">RENT</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>38.0</td>
+<td>24.0</td>
+<td>31.0</td>
+<td>41.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>34.0</td>
+<td>11.0</td>
+<td>17.0</td>
+<td>27.0</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1415,195 +1401,196 @@ dtype: object</code></pre>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cr_loan <span class="op">=</span> cr_loan.drop(cr_loan[cr_loan[<span class="st">'person_age'</span>] <span class="op">&gt;</span> <span class="dv">100</span>].index)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cr_loan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_age</th>
-      <th>person_income</th>
-      <th>person_home_ownership</th>
-      <th>person_emp_length</th>
-      <th>loan_intent</th>
-      <th>loan_grade</th>
-      <th>loan_amnt</th>
-      <th>loan_int_rate</th>
-      <th>loan_status</th>
-      <th>loan_percent_income</th>
-      <th>cb_person_default_on_file</th>
-      <th>cb_person_cred_hist_length</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>21</td>
-      <td>9600</td>
-      <td>OWN</td>
-      <td>5.0</td>
-      <td>EDUCATION</td>
-      <td>B</td>
-      <td>1000</td>
-      <td>11.14</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>25</td>
-      <td>9600</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>5500</td>
-      <td>12.87</td>
-      <td>1</td>
-      <td>0.57</td>
-      <td>N</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23</td>
-      <td>65500</td>
-      <td>RENT</td>
-      <td>4.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>15.23</td>
-      <td>1</td>
-      <td>0.53</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24</td>
-      <td>54400</td>
-      <td>RENT</td>
-      <td>8.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>14.27</td>
-      <td>1</td>
-      <td>0.55</td>
-      <td>Y</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>21</td>
-      <td>9900</td>
-      <td>OWN</td>
-      <td>2.0</td>
-      <td>VENTURE</td>
-      <td>A</td>
-      <td>2500</td>
-      <td>7.14</td>
-      <td>1</td>
-      <td>0.25</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>32576</th>
-      <td>57</td>
-      <td>53000</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>PERSONAL</td>
-      <td>C</td>
-      <td>5800</td>
-      <td>13.16</td>
-      <td>0</td>
-      <td>0.11</td>
-      <td>N</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>32577</th>
-      <td>54</td>
-      <td>120000</td>
-      <td>MORTGAGE</td>
-      <td>4.0</td>
-      <td>PERSONAL</td>
-      <td>A</td>
-      <td>17625</td>
-      <td>7.49</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>N</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>32578</th>
-      <td>65</td>
-      <td>76000</td>
-      <td>RENT</td>
-      <td>3.0</td>
-      <td>HOMEIMPROVEMENT</td>
-      <td>B</td>
-      <td>35000</td>
-      <td>10.99</td>
-      <td>1</td>
-      <td>0.46</td>
-      <td>N</td>
-      <td>28</td>
-    </tr>
-    <tr>
-      <th>32579</th>
-      <td>56</td>
-      <td>150000</td>
-      <td>MORTGAGE</td>
-      <td>5.0</td>
-      <td>PERSONAL</td>
-      <td>B</td>
-      <td>15000</td>
-      <td>11.48</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>26</td>
-    </tr>
-    <tr>
-      <th>32580</th>
-      <td>66</td>
-      <td>42000</td>
-      <td>RENT</td>
-      <td>2.0</td>
-      <td>MEDICAL</td>
-      <td>B</td>
-      <td>6475</td>
-      <td>9.99</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>N</td>
-      <td>30</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>21</td>
+<td>9600</td>
+<td>OWN</td>
+<td>5.0</td>
+<td>EDUCATION</td>
+<td>B</td>
+<td>1000</td>
+<td>11.14</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>25</td>
+<td>9600</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>5500</td>
+<td>12.87</td>
+<td>1</td>
+<td>0.57</td>
+<td>N</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>23</td>
+<td>65500</td>
+<td>RENT</td>
+<td>4.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>15.23</td>
+<td>1</td>
+<td>0.53</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>24</td>
+<td>54400</td>
+<td>RENT</td>
+<td>8.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>14.27</td>
+<td>1</td>
+<td>0.55</td>
+<td>Y</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>21</td>
+<td>9900</td>
+<td>OWN</td>
+<td>2.0</td>
+<td>VENTURE</td>
+<td>A</td>
+<td>2500</td>
+<td>7.14</td>
+<td>1</td>
+<td>0.25</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32576</td>
+<td>57</td>
+<td>53000</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>PERSONAL</td>
+<td>C</td>
+<td>5800</td>
+<td>13.16</td>
+<td>0</td>
+<td>0.11</td>
+<td>N</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32577</td>
+<td>54</td>
+<td>120000</td>
+<td>MORTGAGE</td>
+<td>4.0</td>
+<td>PERSONAL</td>
+<td>A</td>
+<td>17625</td>
+<td>7.49</td>
+<td>0</td>
+<td>0.15</td>
+<td>N</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32578</td>
+<td>65</td>
+<td>76000</td>
+<td>RENT</td>
+<td>3.0</td>
+<td>HOMEIMPROVEMENT</td>
+<td>B</td>
+<td>35000</td>
+<td>10.99</td>
+<td>1</td>
+<td>0.46</td>
+<td>N</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32579</td>
+<td>56</td>
+<td>150000</td>
+<td>MORTGAGE</td>
+<td>5.0</td>
+<td>PERSONAL</td>
+<td>B</td>
+<td>15000</td>
+<td>11.48</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>26</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32580</td>
+<td>66</td>
+<td>42000</td>
+<td>RENT</td>
+<td>2.0</td>
+<td>MEDICAL</td>
+<td>B</td>
+<td>6475</td>
+<td>9.99</td>
+<td>0</td>
+<td>0.15</td>
+<td>N</td>
+<td>30</td>
+</tr>
+</tbody>
 </table>
+
 <p>32574 rows × 12 columns</p>
 </div>
 </div>
@@ -1630,14 +1617,14 @@ dtype: object</code></pre>
 <h3 class="anchored" data-anchor-id="replacing-missing-credit-data">1.5 Replacing missing credit data</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/ae76b6c7-d527-40d5-b186-e45591e905bd.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">missing_data.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/b11c46d9-e2f0-4d26-aa31-59ddd614225a-1-ae76b6c7-d527-40d5-b186-e45591e905bd.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">missing_data.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/e6ef49f1-7d30-4031-972f-2c272ce91644.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">missing_data_perf.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/01b49d15-f8d0-45eb-9762-e0cd0537fb6a-1-e6ef49f1-7d30-4031-972f-2c272ce91644.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">missing_data_perf.JPG</figcaption>
 </figure>
 </div>
 <p>Now, we should check for missing data. If we find missing data within <code>loan_status</code>, we would not be able to use the data for predicting probability of default because we wouldn’t know if the loan was a default or not. Missing data within <code>person_emp_length</code> would not be as damaging, but would still cause training errors.</p>
@@ -1653,105 +1640,106 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the top five rows with nulls for employment length</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cr_loan[cr_loan[<span class="st">'person_emp_length'</span>].isnull()].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_age</th>
-      <th>person_income</th>
-      <th>person_home_ownership</th>
-      <th>person_emp_length</th>
-      <th>loan_intent</th>
-      <th>loan_grade</th>
-      <th>loan_amnt</th>
-      <th>loan_int_rate</th>
-      <th>loan_status</th>
-      <th>loan_percent_income</th>
-      <th>cb_person_default_on_file</th>
-      <th>cb_person_cred_hist_length</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>105</th>
-      <td>22</td>
-      <td>12600</td>
-      <td>MORTGAGE</td>
-      <td>NaN</td>
-      <td>PERSONAL</td>
-      <td>A</td>
-      <td>2000</td>
-      <td>5.42</td>
-      <td>1</td>
-      <td>0.16</td>
-      <td>N</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>222</th>
-      <td>24</td>
-      <td>185000</td>
-      <td>MORTGAGE</td>
-      <td>NaN</td>
-      <td>EDUCATION</td>
-      <td>B</td>
-      <td>35000</td>
-      <td>12.42</td>
-      <td>0</td>
-      <td>0.19</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>379</th>
-      <td>24</td>
-      <td>16800</td>
-      <td>MORTGAGE</td>
-      <td>NaN</td>
-      <td>DEBTCONSOLIDATION</td>
-      <td>A</td>
-      <td>3900</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>0.23</td>
-      <td>N</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>407</th>
-      <td>25</td>
-      <td>52000</td>
-      <td>RENT</td>
-      <td>NaN</td>
-      <td>PERSONAL</td>
-      <td>B</td>
-      <td>24000</td>
-      <td>10.74</td>
-      <td>1</td>
-      <td>0.46</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>408</th>
-      <td>22</td>
-      <td>17352</td>
-      <td>MORTGAGE</td>
-      <td>NaN</td>
-      <td>EDUCATION</td>
-      <td>C</td>
-      <td>2250</td>
-      <td>15.27</td>
-      <td>0</td>
-      <td>0.13</td>
-      <td>Y</td>
-      <td>3</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">105</td>
+<td>22</td>
+<td>12600</td>
+<td>MORTGAGE</td>
+<td>NaN</td>
+<td>PERSONAL</td>
+<td>A</td>
+<td>2000</td>
+<td>5.42</td>
+<td>1</td>
+<td>0.16</td>
+<td>N</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">222</td>
+<td>24</td>
+<td>185000</td>
+<td>MORTGAGE</td>
+<td>NaN</td>
+<td>EDUCATION</td>
+<td>B</td>
+<td>35000</td>
+<td>12.42</td>
+<td>0</td>
+<td>0.19</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">379</td>
+<td>24</td>
+<td>16800</td>
+<td>MORTGAGE</td>
+<td>NaN</td>
+<td>DEBTCONSOLIDATION</td>
+<td>A</td>
+<td>3900</td>
+<td>NaN</td>
+<td>1</td>
+<td>0.23</td>
+<td>N</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">407</td>
+<td>25</td>
+<td>52000</td>
+<td>RENT</td>
+<td>NaN</td>
+<td>PERSONAL</td>
+<td>B</td>
+<td>24000</td>
+<td>10.74</td>
+<td>1</td>
+<td>0.46</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">408</td>
+<td>22</td>
+<td>17352</td>
+<td>MORTGAGE</td>
+<td>NaN</td>
+<td>EDUCATION</td>
+<td>C</td>
+<td>2250</td>
+<td>15.27</td>
+<td>0</td>
+<td>0.13</td>
+<td>Y</td>
+<td>3</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1790,195 +1778,196 @@ dtype: object</code></pre>
 <div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cr_loan_clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_age</th>
-      <th>person_income</th>
-      <th>person_home_ownership</th>
-      <th>person_emp_length</th>
-      <th>loan_intent</th>
-      <th>loan_grade</th>
-      <th>loan_amnt</th>
-      <th>loan_int_rate</th>
-      <th>loan_status</th>
-      <th>loan_percent_income</th>
-      <th>cb_person_default_on_file</th>
-      <th>cb_person_cred_hist_length</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>21</td>
-      <td>9600</td>
-      <td>OWN</td>
-      <td>5.0</td>
-      <td>EDUCATION</td>
-      <td>B</td>
-      <td>1000</td>
-      <td>11.14</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>25</td>
-      <td>9600</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>5500</td>
-      <td>12.87</td>
-      <td>1</td>
-      <td>0.57</td>
-      <td>N</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23</td>
-      <td>65500</td>
-      <td>RENT</td>
-      <td>4.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>15.23</td>
-      <td>1</td>
-      <td>0.53</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24</td>
-      <td>54400</td>
-      <td>RENT</td>
-      <td>8.0</td>
-      <td>MEDICAL</td>
-      <td>C</td>
-      <td>35000</td>
-      <td>14.27</td>
-      <td>1</td>
-      <td>0.55</td>
-      <td>Y</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>21</td>
-      <td>9900</td>
-      <td>OWN</td>
-      <td>2.0</td>
-      <td>VENTURE</td>
-      <td>A</td>
-      <td>2500</td>
-      <td>7.14</td>
-      <td>1</td>
-      <td>0.25</td>
-      <td>N</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>32576</th>
-      <td>57</td>
-      <td>53000</td>
-      <td>MORTGAGE</td>
-      <td>1.0</td>
-      <td>PERSONAL</td>
-      <td>C</td>
-      <td>5800</td>
-      <td>13.16</td>
-      <td>0</td>
-      <td>0.11</td>
-      <td>N</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>32577</th>
-      <td>54</td>
-      <td>120000</td>
-      <td>MORTGAGE</td>
-      <td>4.0</td>
-      <td>PERSONAL</td>
-      <td>A</td>
-      <td>17625</td>
-      <td>7.49</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>N</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>32578</th>
-      <td>65</td>
-      <td>76000</td>
-      <td>RENT</td>
-      <td>3.0</td>
-      <td>HOMEIMPROVEMENT</td>
-      <td>B</td>
-      <td>35000</td>
-      <td>10.99</td>
-      <td>1</td>
-      <td>0.46</td>
-      <td>N</td>
-      <td>28</td>
-    </tr>
-    <tr>
-      <th>32579</th>
-      <td>56</td>
-      <td>150000</td>
-      <td>MORTGAGE</td>
-      <td>5.0</td>
-      <td>PERSONAL</td>
-      <td>B</td>
-      <td>15000</td>
-      <td>11.48</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>N</td>
-      <td>26</td>
-    </tr>
-    <tr>
-      <th>32580</th>
-      <td>66</td>
-      <td>42000</td>
-      <td>RENT</td>
-      <td>2.0</td>
-      <td>MEDICAL</td>
-      <td>B</td>
-      <td>6475</td>
-      <td>9.99</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>N</td>
-      <td>30</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>21</td>
+<td>9600</td>
+<td>OWN</td>
+<td>5.0</td>
+<td>EDUCATION</td>
+<td>B</td>
+<td>1000</td>
+<td>11.14</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>25</td>
+<td>9600</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>5500</td>
+<td>12.87</td>
+<td>1</td>
+<td>0.57</td>
+<td>N</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>23</td>
+<td>65500</td>
+<td>RENT</td>
+<td>4.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>15.23</td>
+<td>1</td>
+<td>0.53</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>24</td>
+<td>54400</td>
+<td>RENT</td>
+<td>8.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>35000</td>
+<td>14.27</td>
+<td>1</td>
+<td>0.55</td>
+<td>Y</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>21</td>
+<td>9900</td>
+<td>OWN</td>
+<td>2.0</td>
+<td>VENTURE</td>
+<td>A</td>
+<td>2500</td>
+<td>7.14</td>
+<td>1</td>
+<td>0.25</td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32576</td>
+<td>57</td>
+<td>53000</td>
+<td>MORTGAGE</td>
+<td>1.0</td>
+<td>PERSONAL</td>
+<td>C</td>
+<td>5800</td>
+<td>13.16</td>
+<td>0</td>
+<td>0.11</td>
+<td>N</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32577</td>
+<td>54</td>
+<td>120000</td>
+<td>MORTGAGE</td>
+<td>4.0</td>
+<td>PERSONAL</td>
+<td>A</td>
+<td>17625</td>
+<td>7.49</td>
+<td>0</td>
+<td>0.15</td>
+<td>N</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32578</td>
+<td>65</td>
+<td>76000</td>
+<td>RENT</td>
+<td>3.0</td>
+<td>HOMEIMPROVEMENT</td>
+<td>B</td>
+<td>35000</td>
+<td>10.99</td>
+<td>1</td>
+<td>0.46</td>
+<td>N</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32579</td>
+<td>56</td>
+<td>150000</td>
+<td>MORTGAGE</td>
+<td>5.0</td>
+<td>PERSONAL</td>
+<td>B</td>
+<td>15000</td>
+<td>11.48</td>
+<td>0</td>
+<td>0.10</td>
+<td>N</td>
+<td>26</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32580</td>
+<td>66</td>
+<td>42000</td>
+<td>RENT</td>
+<td>2.0</td>
+<td>MEDICAL</td>
+<td>B</td>
+<td>6475</td>
+<td>9.99</td>
+<td>0</td>
+<td>0.15</td>
+<td>N</td>
+<td>30</td>
+</tr>
+</tbody>
 </table>
+
 <p>29459 rows × 12 columns</p>
 </div>
 </div>
@@ -1992,28 +1981,28 @@ dtype: object</code></pre>
 <p>With the loan data fully prepared, we will discuss the <code>logistic regression</code> model which is a standard in risk modeling. We will understand the components of this model as well as how to score its performance. Once we’ve created predictions, we can explore the financial impact of utilizing this model.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/7742599d-26b8-42d0-9b64-567d871f418d.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">deafult_prob.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/adf6389d-8bdc-4ccb-809c-45be66ef8d3c-1-7742599d-26b8-42d0-9b64-567d871f418d.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">deafult_prob.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/bf2d962c-3834-47ca-b393-2ea4221aca1e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">probabilities.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/93200d42-3162-45f0-a0cf-480645cc3b33-1-bf2d962c-3834-47ca-b393-2ea4221aca1e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">probabilities.JPG</figcaption>
 </figure>
 </div>
 <section id="logistic-regression-basics" class="level3">
 <h3 class="anchored" data-anchor-id="logistic-regression-basics">2.1 Logistic regression basics</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/d772c79a-8bd8-4f8f-9fb1-e48f7790f152.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">logistic_regression.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/e6ab250f-96a1-44ca-b2ad-bec53e208e2f-1-d772c79a-8bd8-4f8f-9fb1-e48f7790f152.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">logistic_regression.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/139db9b9-ef43-4785-8f0e-ce9af9225562.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">scikit_learn.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/79055ca8-24e9-4334-ae94-a19e270814e6-1-139db9b9-ef43-4785-8f0e-ce9af9225562.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">scikit_learn.JPG</figcaption>
 </figure>
 </div>
 <p>YWe have now cleaned up the data and created the new data set <code>cr_loan_clean</code>.</p>
@@ -2081,7 +2070,7 @@ dtype: object</code></pre>
 </section>
 <section id="creating-training-and-test-sets" class="level3">
 <h3 class="anchored" data-anchor-id="creating-training-and-test-sets">2.3 Creating training and test sets</h3>
-<p><img src="Credit_Risk_Modelling_files/figure-html/99c966fd-5072-4e08-94be-a37eec31bd5f.JPG" class="img-fluid" alt="train_test_split.JPG"><img src="Credit_Risk_Modelling_files/figure-html/9e878d03-fc72-4bb4-bd30-4a61f6fc73d9.jpg" class="img-fluid" alt="download.jpg"></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/a2b1da53-955f-43fc-8fdf-ce8c3dbdcb9e-1-99c966fd-5072-4e08-94be-a37eec31bd5f.JPG" class="img-fluid" alt="train_test_split.JPG"><img src="Credit_Risk_Modelling_files/figure-html/a2b1da53-955f-43fc-8fdf-ce8c3dbdcb9e-2-9e878d03-fc72-4bb4-bd30-4a61f6fc73d9.jpg" class="img-fluid" alt="download.jpg"></p>
 <p>We’ve just trained LogisticRegression() models on different columns. we know that the data should be separated into training and test sets. <code>test_train_split()</code> is used to create both at the same time. The training set is used to make predictions, while the test set is used for evaluation. Without evaluating the model, we have no way to tell how well it will perform on new loan data.</p>
 <p>In addition to the <code>intercept_</code>, which is an attribute of the model, <code>LogisticRegression()</code> models also have the <code>.coef_ attribute</code>. This shows how important each training column is for predicting the probability of default.</p>
 <p>Let’s create a data set <code>X</code> using interest rate, employment length, and income. Create the <code>y</code> set as always using our target variable (label) loan status :</p>
@@ -2110,8 +2099,8 @@ dtype: object</code></pre>
 <p>We can plug these 4 values into our Logistic Regression formula to arrive at the overall prediciton for loan default :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/876fe21e-9d15-4ff4-8448-f75d784b3bd9.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">co_efficients.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/d01e4141-c577-441d-9943-5a1a4d483ce1-1-876fe21e-9d15-4ff4-8448-f75d784b3bd9.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">co_efficients.JPG</figcaption>
 </figure>
 </div>
 </section>
@@ -2168,15 +2157,15 @@ dtype: object</code></pre>
 <p>Python does not know how to deal with non-numeric columns, and so we have to use <code>one-hot encoding</code> to convert categorical data to a number - either 0 or 1.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/aab85b30-d0f3-478c-a2c7-59824b8de7ec.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">one_hot_encoding.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/b70e5cc1-2539-4f63-bf9b-847ca8f9f11a-1-aab85b30-d0f3-478c-a2c7-59824b8de7ec.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">one_hot_encoding.JPG</figcaption>
 </figure>
 </div>
 <p>We can use <code>get_dummies()</code> from the <code>pandas</code> library to do this.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/2a21da28-1f73-4d0a-b9d4-c4a6a9b9b3a8.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">get_dummies.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/f1e8da16-c070-425f-a504-4bcb53aab5d0-1-2a21da28-1f73-4d0a-b9d4-c4a6a9b9b3a8.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">get_dummies.JPG</figcaption>
 </figure>
 </div>
 <p>It’s time to prepare the non-numeric columns so they can be added to our <code>LogisticRegression()</code> model. Once the new columns have been created using <strong>one-hot encoding</strong>, we can concatenate them with the numeric columns to create a new data frame which will be used throughout the rest of the course for predicting probability of default.</p>
@@ -2214,8 +2203,8 @@ dtype: object</code></pre>
 <h3 class="anchored" data-anchor-id="predicting-probability-of-default">2.6 Predicting probability of default</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/4281aeed-4f49-41d1-b99b-6d9af7f8a94e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">predict.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/3e9cb50f-b10c-4874-8aef-3fa8037c3d7c-1-4281aeed-4f49-41d1-b99b-6d9af7f8a94e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">predict.JPG</figcaption>
 </figure>
 </div>
 <p>All of the data processing is complete and it’s time to begin creating predictions for probability of default. We want to train a <code>LogisticRegression()</code> model on the data, and examine how it predicts the probability of default.</p>
@@ -2223,303 +2212,304 @@ dtype: object</code></pre>
 <div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>cr_loan_prep</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>person_age</th>
-      <th>person_income</th>
-      <th>person_emp_length</th>
-      <th>loan_amnt</th>
-      <th>loan_int_rate</th>
-      <th>loan_status</th>
-      <th>loan_percent_income</th>
-      <th>cb_person_cred_hist_length</th>
-      <th>person_home_ownership_MORTGAGE</th>
-      <th>person_home_ownership_OTHER</th>
-      <th>...</th>
-      <th>loan_intent_VENTURE</th>
-      <th>loan_grade_A</th>
-      <th>loan_grade_B</th>
-      <th>loan_grade_C</th>
-      <th>loan_grade_D</th>
-      <th>loan_grade_E</th>
-      <th>loan_grade_F</th>
-      <th>loan_grade_G</th>
-      <th>cb_person_default_on_file_N</th>
-      <th>cb_person_default_on_file_Y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>21</td>
-      <td>9600</td>
-      <td>5.0</td>
-      <td>1000</td>
-      <td>11.14</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>25</td>
-      <td>9600</td>
-      <td>1.0</td>
-      <td>5500</td>
-      <td>12.87</td>
-      <td>1</td>
-      <td>0.57</td>
-      <td>3</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23</td>
-      <td>65500</td>
-      <td>4.0</td>
-      <td>35000</td>
-      <td>15.23</td>
-      <td>1</td>
-      <td>0.53</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24</td>
-      <td>54400</td>
-      <td>8.0</td>
-      <td>35000</td>
-      <td>14.27</td>
-      <td>1</td>
-      <td>0.55</td>
-      <td>4</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>21</td>
-      <td>9900</td>
-      <td>2.0</td>
-      <td>2500</td>
-      <td>7.14</td>
-      <td>1</td>
-      <td>0.25</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>32576</th>
-      <td>57</td>
-      <td>53000</td>
-      <td>1.0</td>
-      <td>5800</td>
-      <td>13.16</td>
-      <td>0</td>
-      <td>0.11</td>
-      <td>30</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>32577</th>
-      <td>54</td>
-      <td>120000</td>
-      <td>4.0</td>
-      <td>17625</td>
-      <td>7.49</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>19</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>32578</th>
-      <td>65</td>
-      <td>76000</td>
-      <td>3.0</td>
-      <td>35000</td>
-      <td>10.99</td>
-      <td>1</td>
-      <td>0.46</td>
-      <td>28</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>32579</th>
-      <td>56</td>
-      <td>150000</td>
-      <td>5.0</td>
-      <td>15000</td>
-      <td>11.48</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>26</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>32580</th>
-      <td>66</td>
-      <td>42000</td>
-      <td>2.0</td>
-      <td>6475</td>
-      <td>9.99</td>
-      <td>0</td>
-      <td>0.15</td>
-      <td>30</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+<th data-quarto-table-cell-role="th">person_home_ownership_MORTGAGE</th>
+<th data-quarto-table-cell-role="th">person_home_ownership_OTHER</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">loan_intent_VENTURE</th>
+<th data-quarto-table-cell-role="th">loan_grade_A</th>
+<th data-quarto-table-cell-role="th">loan_grade_B</th>
+<th data-quarto-table-cell-role="th">loan_grade_C</th>
+<th data-quarto-table-cell-role="th">loan_grade_D</th>
+<th data-quarto-table-cell-role="th">loan_grade_E</th>
+<th data-quarto-table-cell-role="th">loan_grade_F</th>
+<th data-quarto-table-cell-role="th">loan_grade_G</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file_N</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file_Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>21</td>
+<td>9600</td>
+<td>5.0</td>
+<td>1000</td>
+<td>11.14</td>
+<td>0</td>
+<td>0.10</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>25</td>
+<td>9600</td>
+<td>1.0</td>
+<td>5500</td>
+<td>12.87</td>
+<td>1</td>
+<td>0.57</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>23</td>
+<td>65500</td>
+<td>4.0</td>
+<td>35000</td>
+<td>15.23</td>
+<td>1</td>
+<td>0.53</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>24</td>
+<td>54400</td>
+<td>8.0</td>
+<td>35000</td>
+<td>14.27</td>
+<td>1</td>
+<td>0.55</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>21</td>
+<td>9900</td>
+<td>2.0</td>
+<td>2500</td>
+<td>7.14</td>
+<td>1</td>
+<td>0.25</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32576</td>
+<td>57</td>
+<td>53000</td>
+<td>1.0</td>
+<td>5800</td>
+<td>13.16</td>
+<td>0</td>
+<td>0.11</td>
+<td>30</td>
+<td>1</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32577</td>
+<td>54</td>
+<td>120000</td>
+<td>4.0</td>
+<td>17625</td>
+<td>7.49</td>
+<td>0</td>
+<td>0.15</td>
+<td>19</td>
+<td>1</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32578</td>
+<td>65</td>
+<td>76000</td>
+<td>3.0</td>
+<td>35000</td>
+<td>10.99</td>
+<td>1</td>
+<td>0.46</td>
+<td>28</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32579</td>
+<td>56</td>
+<td>150000</td>
+<td>5.0</td>
+<td>15000</td>
+<td>11.48</td>
+<td>0</td>
+<td>0.10</td>
+<td>26</td>
+<td>1</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32580</td>
+<td>66</td>
+<td>42000</td>
+<td>2.0</td>
+<td>6475</td>
+<td>9.99</td>
+<td>0</td>
+<td>0.15</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
 </table>
+
 <p>29459 rows × 27 columns</p>
 </div>
 </div>
@@ -2563,8 +2553,8 @@ dtype: object</code></pre>
 <h3 class="anchored" data-anchor-id="default-classification-reporting">2.7 Default classification reporting</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/c392bb32-bcd6-4355-90c5-d6dc7409f1c1.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">accuracy.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/85738902-e892-42ef-b16e-df504eb905e0-1-c392bb32-bcd6-4355-90c5-d6dc7409f1c1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">accuracy.JPG</figcaption>
 </figure>
 </div>
 <p>It’s time to take a closer look at the evaluation of our model. Here is where setting the threshold for probability of default will help us analyze the model’s performance through classification reporting.</p>
@@ -2572,39 +2562,40 @@ dtype: object</code></pre>
 <div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>preds_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>prob_default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.445779</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.223447</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.288558</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.169358</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.114182</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">prob_default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.445779</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.223447</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.288558</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.169358</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.114182</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2683,14 +2674,14 @@ weighted avg       0.79      0.80      0.75     11784
 <h3 class="anchored" data-anchor-id="visually-scoring-credit-models">2.9 Visually scoring credit models</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/64d45c75-a3b7-442b-bd2b-ac64d5cb3005.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">ROC.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/370676e3-0a9a-4a9c-ad47-d46efe17265e-1-64d45c75-a3b7-442b-bd2b-ac64d5cb3005.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ROC.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/fce5d618-1f18-44ce-90b2-4b7044a70d91.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">ROC_chart.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/f34dbdb2-dc10-4ac9-839f-38626fba6908-1-fce5d618-1f18-44ce-90b2-4b7044a70d91.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ROC_chart.JPG</figcaption>
 </figure>
 </div>
 <p>Now, we want to visualize the performance of the model. In ROC charts, the X and Y axes are two metrics we’ve already looked at: the <strong>false positive rate (fall-out)</strong>, and the <strong>true positive rate (sensitivity)</strong>.</p>
@@ -2735,14 +2726,14 @@ plt.plot(fallout, sensitivity)</code></pre>
 <h3 class="anchored" data-anchor-id="thresholds-and-confusion-matrices">2.10 Thresholds and confusion matrices</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/82faa313-393e-4358-9983-1d4b05ae4862.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">thresholds.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/3bccdd18-0450-4f37-ab8d-3e81ba178e03-1-82faa313-393e-4358-9983-1d4b05ae4862.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">thresholds.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/6b2d7310-e334-4fdd-8110-2ffddd205175.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">confusion_matrix.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/72bc9349-5583-4f1a-bc31-210fe9b4bc11-1-6b2d7310-e334-4fdd-8110-2ffddd205175.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">confusion_matrix.JPG</figcaption>
 </figure>
 </div>
 <p>The <code>recall</code> score for loan defaults is the number of correctly predicted defaults divided by the total number of defaults. Note that if we were to predict ALL of our loans to default, then our recall score would be 100%!<br>
@@ -2810,8 +2801,8 @@ The <code>precision</code> score for non-loan defaults is the number of correctl
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/5c22b3ef-3384-4908-93a9-e23f30bb22ed.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">recall_precision_accuracy.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/b0df6711-3143-4b9d-9ac2-9c3471913221-1-5c22b3ef-3384-4908-93a9-e23f30bb22ed.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">recall_precision_accuracy.JPG</figcaption>
 </figure>
 </div>
 </section>
@@ -2841,8 +2832,8 @@ The <code>precision</code> score for non-loan defaults is the number of correctl
 <h3 class="anchored" data-anchor-id="threshold-selection">2.12 Threshold selection</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/2d809438-0708-4ea6-98a4-f7093dab4f76.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">thresholds_apply.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/4fa60543-a4e5-44d3-a6a2-1e2f72b2ee47-1-2d809438-0708-4ea6-98a4-f7093dab4f76.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">thresholds_apply.JPG</figcaption>
 </figure>
 </div>
 <p>We know there is a trade off between metrics like <code>default recall</code>, <code>non-default recall</code>, and model <code>accuracy</code>. One easy way to approximate a good starting threshold value is to look at a plot of all three using <code>matplotlib</code>. With this graph, you can see how each of these metrics look as you change the threshold values and find the point at which the performance of all three is good enough to use for the credit data.</p>
@@ -2922,8 +2913,8 @@ Requirement already satisfied: scipy in /home/stephen137/mambaforge/lib/python3.
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/f80b2180-cae2-4052-aadc-e6423e48d87d.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">portfolio_head.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/a360a710-676e-4de6-af1c-8d41bb8fb870-1-f80b2180-cae2-4052-aadc-e6423e48d87d.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">portfolio_head.JPG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -2961,8 +2952,8 @@ Requirement already satisfied: scipy in /home/stephen137/mambaforge/lib/python3.
 <h3 class="anchored" data-anchor-id="column-importance-and-default-prediction">3.4 Column importance and default prediction</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/db771536-78b4-4e31-8c7f-f6d578673f3f.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">column_importance.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/92012a4c-ec5d-4e66-8e35-584e1b490289-1-db771536-78b4-4e31-8c7f-f6d578673f3f.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">column_importance.JPG</figcaption>
 </figure>
 </div>
 <p>When using multiple training sets with many different groups of columns, it’s important to keep an eye on which columns matter and which do not. It can be expensive or time-consuming to maintain a set of columns even though they might not have any impact on <code>loan_status</code>.</p>
@@ -2993,8 +2984,8 @@ Requirement already satisfied: scipy in /home/stephen137/mambaforge/lib/python3.
 <h3 class="anchored" data-anchor-id="visualizing-column-importance">3.5 Visualizing column importance</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/876f2de5-61d6-4701-9408-90067bb33de3.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">column_importance_plot.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/30d3f812-fb0f-458a-ba70-8a0ce376cb07-1-876f2de5-61d6-4701-9408-90067bb33de3.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">column_importance_plot.JPG</figcaption>
 </figure>
 </div>
 <p>When the model is trained on different sets of columns it changes the performance, but does the importance for the same column change depending on which group it’s in?</p>
@@ -3034,8 +3025,8 @@ X3 = cr_loan_prep[['person_income','loan_int_rate','loan_percent_income']]</code
 <h3 class="anchored" data-anchor-id="column-selection-and-model-performance">3.6 Column selection and model performance</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/874cfea6-b780-45df-a77c-4edcf0399606.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">train_columns.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/315636ef-4a12-4c0c-bf15-0259d7514cbb-1-874cfea6-b780-45df-a77c-4edcf0399606.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">train_columns.JPG</figcaption>
 </figure>
 </div>
 <p>Creating the training set from different combinations of columns affects the model and the importance values of the columns. Does a different selection of columns also affect the F-1 scores, the combination of the <code>precision</code> and <code>recall</code>, of the model? You can answer this question by training two different models on two different sets of columns, and checking the performance.</p>
@@ -3059,26 +3050,26 @@ X3 = cr_loan_prep[['person_income','loan_int_rate','loan_percent_income']]</code
 <p>We cannot create more loan data to help us to develop our model but we can use <code>cross-validation</code> to simulate how our model will perform on new laon data before it comes in.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/5f721045-b2a9-4b48-be0b-132cb3e4b12a.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cross_validation.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/fb1440f9-6297-4e16-a2fa-92d2b83ee6a4-1-5f721045-b2a9-4b48-be0b-132cb3e4b12a.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cross_validation.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/457a85e6-cacb-4e22-92a7-ed6d18ec8f96.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">k_fold.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/b80b415b-ab5b-4d72-8982-f66266d792e0-1-457a85e6-cacb-4e22-92a7-ed6d18ec8f96.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">k_fold.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/31461a29-791f-44e7-b880-e905a444ff9c.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">xgb_cross_valid_setup.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/01059ed2-a825-4ae4-bdcf-896c57ef919b-1-31461a29-791f-44e7-b880-e905a444ff9c.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">xgb_cross_valid_setup.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/d79dd6e8-81d1-4581-9c82-65f3eaa19bd1.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">xgb_cross_valid_setup_2.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/2308ad6c-bc8e-4171-9d7b-e4c11fea618d-1-d79dd6e8-81d1-4581-9c82-65f3eaa19bd1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">xgb_cross_valid_setup_2.JPG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -3133,8 +3124,8 @@ X3 = cr_loan_prep[['person_income','loan_int_rate','loan_percent_income']]</code
 <h3 class="anchored" data-anchor-id="cross-validation-scoring">3.9 Cross-validation scoring</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/e5010ef6-4fbe-444f-956b-6e3fe64072da.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cross_val_score.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/be8751af-b2af-42f8-aae6-268c07c6a577-1-e5010ef6-4fbe-444f-956b-6e3fe64072da.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cross_val_score.JPG</figcaption>
 </figure>
 </div>
 <p>Now, we should use cross-validation scoring with <code>cross_val_score()</code> to check the overall performance.</p>
@@ -3174,8 +3165,8 @@ X3 = cr_loan_prep[['person_income','loan_int_rate','loan_percent_income']]</code
 <p>We just used <code>cross validation</code> to check the robustness of our model but let’s look at how the data impacts the robustness of our model. In our training dataset there are far more <code>non-defaults</code> than defaults. This is referred to as <code>class imbalance</code> and is a problem.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/7e60e6f9-093f-494b-9609-04f9c5240926.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">imbalance_causes.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/d9aa91ee-7993-429e-841e-944441f3914a-1-7e60e6f9-093f-494b-9609-04f9c5240926.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">imbalance_causes.JPG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -3186,20 +3177,20 @@ X3 = cr_loan_prep[['person_income','loan_int_rate','loan_percent_income']]</code
 <p>One strategy we can adopt to restore the balance of our training data is <code>undersampling</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/467d7494-6dcf-4f12-9172-42264379b8f6.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">undersampling.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/f1460023-96a4-4c6f-bc98-b4c74cc9e682-1-467d7494-6dcf-4f12-9172-42264379b8f6.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">undersampling.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/f44b158b-ed4d-4f6b-ab94-148d1ef3de93.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">undersample_train_test_split_1.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/8bdf2dec-633b-470e-b7cb-1eb2e6655265-1-f44b158b-ed4d-4f6b-ab94-148d1ef3de93.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">undersample_train_test_split_1.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/2cc99b89-b60b-4428-82c8-682cf7960509.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">undersample_train_test_split_2.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/69aee64f-a037-4f94-ac51-6e8eae67ee63-1-2cc99b89-b60b-4428-82c8-682cf7960509.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">undersample_train_test_split_2.JPG</figcaption>
 </figure>
 </div>
 <p>It’s time to undersample the training set with a few lines of code from pandas. Once the undersampling is complete, we can check the value counts for <code>loan_status</code> to verify the results.</p>
@@ -3372,14 +3363,14 @@ weighted avg       0.93      0.93      0.93     11784</code></pre>
 <h3 class="anchored" data-anchor-id="calibration-curves">4.3 Calibration curves</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/a84da456-3cf6-481f-83fc-c078323ad14f.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">calibration.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/7c05c823-d0f3-4854-97b8-599291a4a689-1-a84da456-3cf6-481f-83fc-c078323ad14f.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">calibration.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/67ede203-7a31-4063-9059-eb0e9569dba8.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">calibration_calc.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/f71bab82-3e2f-432d-be99-22f7389a05d1-1-67ede203-7a31-4063-9059-eb0e9569dba8.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">calibration_calc.JPG</figcaption>
 </figure>
 </div>
 <p>We now know that the gradient boosted tree <code>clf_gbt</code> has the best overall performance. You need to check the calibration of the two models to see how stable the default prediction performance is across probabilities. We can use a chart of each model’s calibration to check this by calling the <code>calibration_curve()</code> function.</p>
@@ -3401,8 +3392,8 @@ weighted avg       0.93      0.93      0.93     11784</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/00451667-5c10-46e5-af24-a07a67f89559.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">calibration_plot.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/f692c809-4f82-4067-b107-2cb6f7cfe81c-1-00451667-5c10-46e5-af24-a07a67f89559.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">calibration_plot.JPG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -3445,8 +3436,8 @@ weighted avg       0.93      0.93      0.93     11784</code></pre>
 <p>Setting an acceptance rate and calculating the threshold for that rate can be used to set the percentage of new loans we want to accept.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/6ddc1852-ff33-4b52-8d3e-4e87d5c49e85.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">acceptance_rate.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/995c1723-060d-41fd-8dd2-58e25cf07c0a-1-6ddc1852-ff33-4b52-8d3e-4e87d5c49e85.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">acceptance_rate.JPG</figcaption>
 </figure>
 </div>
 <p>In the above example, the distribution of our loans is represented in terms of their probability of default. 85% of our loans are to the left of the dashed line, with and 15% are to the right of the dashed line. If our policy is to ensure that 15% of loans are rejected, then the dashed line represents the <code>acceptance threshold</code>. We can see by reading off the graph that we should therefore reject any new loan applications with predicted probability of default of around 78% or above.</p>
@@ -3463,8 +3454,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/bdb631d0-35b6-40ec-bbce-1847f469be3e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">default_stats.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/5b67c121-f45e-414e-a7a3-894f160624a1-1-bdb631d0-35b6-40ec-bbce-1847f469be3e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">default_stats.JPG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -3481,8 +3472,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/2ddd5dbd-1bc4-4a39-ae94-c4b8c739f6e2.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">loan_status_counts.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/481540d0-66f0-4306-9e8f-2f3d65543644-1-2ddd5dbd-1bc4-4a39-ae94-c4b8c739f6e2.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">loan_status_counts.JPG</figcaption>
 </figure>
 </div>
 <p>In the results of <code>.describe()</code> we can see how it’s not until 75% that we start to see double-digit numbers. That’s because the majority of our test set is non-default loans. Next let’s look at how the acceptance rate and threshold split up the data.</p>
@@ -3508,8 +3499,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 <h3 class="anchored" data-anchor-id="bad-rates">4.6 Bad rates</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/a149d043-6d19-4093-a8cf-3a4c2fcf0433.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">bad_rate.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/7538c448-2795-499b-8e46-a8146c511a1f-1-a149d043-6d19-4093-a8cf-3a4c2fcf0433.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">bad_rate.JPG</figcaption>
 </figure>
 </div>
 <p>With acceptance rate in mind, we can now analyze the <code>bad rate</code> within the accepted loans. This way we will be able to see the percentage of defaults that have been accepted. Think about the impact of the <code>acceptance rate</code> and <code>bad rate</code>. We set an acceptance rate to have fewer defaults in the portfolio because defaults are more costly. Will the bad rate be less than the percentage of defaults in the test data?</p>
@@ -3544,8 +3535,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/fdfdf456-c75b-44ef-a961-6e5ee55ccfe4.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">loan_amount_stats.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/913448b9-9b93-424a-adc5-9f2c535ea618-1-fdfdf456-c75b-44ef-a961-6e5ee55ccfe4.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">loan_amount_stats.JPG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -3561,8 +3552,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/28b89639-e7ba-4487-8c0f-7ab9e8208439.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pred_loan_status.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/217adb7c-5b6e-4a8e-97ba-c18357e73544-1-28b89639-e7ba-4487-8c0f-7ab9e8208439.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pred_loan_status.JPG</figcaption>
 </figure>
 </div>
 <p>With this, we can see that our bad rate of about 8% represents an estimated loan value of about 7.9 million dollars. This may seem like a lot at first, but compare it to the total value of non-default loans! With this, we are ready to start talking about our acceptance strategy going forward.</p>
@@ -3573,14 +3564,14 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 <p>Automatically calculating all of these values only requires a for loop, but requires many lines of python code.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/eb96b0a7-aa66-437f-b8f9-32437a99c74a.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">strategy_table_setup.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/8797183f-bfd3-46dc-acdc-ea0106d6b71e-1-eb96b0a7-aa66-437f-b8f9-32437a99c74a.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">strategy_table_setup.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/f70c6468-7f3f-4758-ba49-38458985472f.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">strategy_table_calcs.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/1e9198d2-0e13-4e6c-acbc-36aae4bca107-1-f70c6468-7f3f-4758-ba49-38458985472f.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">strategy_table_calcs.JPG</figcaption>
 </figure>
 </div>
 <div class="cell" data-execution_count="56">
@@ -3624,141 +3615,142 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 <span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the entire table</span></span>
 <span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a>strat_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Acceptance Rate</th>
-      <th>Threshold</th>
-      <th>Bad Rate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.00</td>
-      <td>1.000</td>
-      <td>0.219</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.95</td>
-      <td>0.992</td>
-      <td>0.179</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.90</td>
-      <td>0.976</td>
-      <td>0.132</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.85</td>
-      <td>0.804</td>
-      <td>0.083</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.80</td>
-      <td>0.254</td>
-      <td>0.061</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.75</td>
-      <td>0.178</td>
-      <td>0.052</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.70</td>
-      <td>0.138</td>
-      <td>0.043</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.65</td>
-      <td>0.111</td>
-      <td>0.036</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.60</td>
-      <td>0.093</td>
-      <td>0.030</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0.55</td>
-      <td>0.078</td>
-      <td>0.027</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>0.50</td>
-      <td>0.066</td>
-      <td>0.023</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>0.45</td>
-      <td>0.055</td>
-      <td>0.020</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>0.40</td>
-      <td>0.045</td>
-      <td>0.017</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>0.35</td>
-      <td>0.037</td>
-      <td>0.014</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>0.30</td>
-      <td>0.030</td>
-      <td>0.010</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>0.25</td>
-      <td>0.022</td>
-      <td>0.008</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>0.20</td>
-      <td>0.015</td>
-      <td>0.005</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>0.15</td>
-      <td>0.008</td>
-      <td>0.001</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>0.10</td>
-      <td>0.004</td>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>0.05</td>
-      <td>0.002</td>
-      <td>0.000</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Acceptance Rate</th>
+<th data-quarto-table-cell-role="th">Threshold</th>
+<th data-quarto-table-cell-role="th">Bad Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.00</td>
+<td>1.000</td>
+<td>0.219</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.95</td>
+<td>0.992</td>
+<td>0.179</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.90</td>
+<td>0.976</td>
+<td>0.132</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.85</td>
+<td>0.804</td>
+<td>0.083</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.80</td>
+<td>0.254</td>
+<td>0.061</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0.75</td>
+<td>0.178</td>
+<td>0.052</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>0.70</td>
+<td>0.138</td>
+<td>0.043</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>0.65</td>
+<td>0.111</td>
+<td>0.036</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>0.60</td>
+<td>0.093</td>
+<td>0.030</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>0.55</td>
+<td>0.078</td>
+<td>0.027</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>0.50</td>
+<td>0.066</td>
+<td>0.023</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>0.45</td>
+<td>0.055</td>
+<td>0.020</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>0.40</td>
+<td>0.045</td>
+<td>0.017</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>0.35</td>
+<td>0.037</td>
+<td>0.014</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>0.30</td>
+<td>0.030</td>
+<td>0.010</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>0.25</td>
+<td>0.022</td>
+<td>0.008</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>0.20</td>
+<td>0.015</td>
+<td>0.005</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>0.15</td>
+<td>0.008</td>
+<td>0.001</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>0.10</td>
+<td>0.004</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>0.05</td>
+<td>0.002</td>
+<td>0.000</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -3798,8 +3790,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 <p>The strat_df data frame is loaded and has been enhanced already with the following columns:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/799515b6-2467-421f-a536-a0f13e026eb8.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">strategy_table_prepop.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/f581a8df-a93e-4eb5-9814-84ba74445499-1-799515b6-2467-421f-a536-a0f13e026eb8.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">strategy_table_prepop.JPG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -3817,8 +3809,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/db10abe3-2d9d-4bfc-9c70-78aeb85a1a45.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">max_est_value.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/6fdf94fa-8732-44b9-9a8f-42dd8a11a6ee-1-db10abe3-2d9d-4bfc-9c70-78aeb85a1a45.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">max_est_value.JPG</figcaption>
 </figure>
 </div>
 <p>Interesting! With our credit data and our estimated averag loan value, we clearly see that the acceptance rate 0.85 has the highest potential estimated value. Normally, the allowable bad rate is set, but we can use analyses like this to explore other options.</p>
@@ -3827,8 +3819,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 <h3 class="anchored" data-anchor-id="total-expected-loss">4.11 Total expected loss</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/67a6780f-028b-45ed-9aea-526cd0ce3993.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">total_expected_loss.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/407faf76-1244-4267-b029-89918711569d-1-67a6780f-028b-45ed-9aea-526cd0ce3993.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">total_expected_loss.JPG</figcaption>
 </figure>
 </div>
 <p>It’s time to estimate the total expected loss given all our decisions. The data frame <code>test_pred_df</code> has the probability of default for each loan and that loan’s value. Use these two values to calculate the expected loss for each loan. Then, we can sum those values and get the total expected loss.</p>
@@ -3839,8 +3831,8 @@ threshold = np.quantile(prob_default, 0.85)</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Credit_Risk_Modelling_files/figure-html/a74628a3-6509-40aa-8a26-7a6197e090c4.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">test_pred_df.JPG</figcaption><p></p>
+<p><img src="Credit_Risk_Modelling_files/figure-html/22091c7e-50d8-4e57-9fbe-46443fe37dbd-1-a74628a3-6509-40aa-8a26-7a6197e090c4.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">test_pred_df.JPG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -3929,9 +3921,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -3943,7 +3949,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -3979,24 +4002,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -142,31 +114,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -198,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">January 3, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -259,8 +235,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>See <a href="https://numpy.org/doc/stable/user/whatisnumpy.html">the documentation</a> for further information.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/fb75bee0-c105-4879-b113-820b4388e815.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">arrays.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/3205e622-e89d-4711-98e8-97718929d3b4-1-fb75bee0-c105-4879-b113-820b4388e815.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">arrays.JPG</figcaption>
 </figure>
 </div>
 </section>
@@ -271,8 +247,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>NumPy has a significant speed advantage over <a href="https://docs.python.org/3/tutorial/introduction.html#lists">Lists</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/8b5c36f6-6e6d-4e8b-b09a-e65abffba35b.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">speed.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/c96fe109-ebef-44ce-ba80-ad02ae33b69d-1-8b5c36f6-6e6d-4e8b-b09a-e65abffba35b.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">speed.JPG</figcaption>
 </figure>
 </div>
 <p>Let’s find out why…</p>
@@ -312,15 +288,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="how-do-lists-differ-from-numpy">How do Lists differ from NumPy?</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/324b742c-c7ef-41da-ba97-5fa1612afb35.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">differences.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/84923491-5f69-4263-aa44-da3d0e3714b4-1-324b742c-c7ef-41da-ba97-5fa1612afb35.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">differences.JPG</figcaption>
 </figure>
 </div>
 <p>NumPy allows itemwise computation:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/19cabc9b-d908-4a9f-858d-2ec66579923e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">multiply.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/81b2279f-f90a-4d0e-a4d5-56b84c039d08-1-19cabc9b-d908-4a9f-858d-2ec66579923e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">multiply.JPG</figcaption>
 </figure>
 </div>
 </section>
@@ -329,16 +305,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="applications-of-numpy">Applications of NumPy</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/3f6fa33c-b8b1-4762-8df4-79aeed4e6e92.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">applications.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/3f73726f-c1a3-4800-adc1-5727af6af508-1-3f6fa33c-b8b1-4762-8df4-79aeed4e6e92.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">applications.JPG</figcaption>
 </figure>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 SciPy
 </div>
 </div>
@@ -464,12 +440,12 @@ SciPy
 </section>
 <section id="indexing---accessing-specific-elements-rows-columns-etc" class="level2">
 <h2 class="anchored" data-anchor-id="indexing---accessing-specific-elements-rows-columns-etc">Indexing - accessing specific elements, rows, columns etc</h2>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Indexing
 </div>
 </div>
@@ -759,8 +735,8 @@ Indexing
 <p>How might we go about initializing the matrix below?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/0d9f9bb2-415c-468a-9c13-567a35eb5b59.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">matrix.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/e9617935-636e-4ffa-aea8-d2bdef60fae3-1-0d9f9bb2-415c-468a-9c13-567a35eb5b59.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">matrix.JPG</figcaption>
 </figure>
 </div>
 <div class="cell" data-execution_count="43">
@@ -960,12 +936,12 @@ Indexing
        [2, 2]])</code></pre>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Matrix Multiplication
 </div>
 </div>
@@ -1287,8 +1263,8 @@ Matrix Multiplication
 <p>How would we index the blue highlighted section of the matrix below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/709b5942-abff-427c-9ac4-4fb0e0790ddf.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">indexing_blue.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/2ea8487c-6838-4c37-a516-c1699bbcb70d-1-709b5942-abff-427c-9ac4-4fb0e0790ddf.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">indexing_blue.JPG</figcaption>
 </figure>
 </div>
 <p>First we index the row range, and then the column range:</p>
@@ -1298,8 +1274,8 @@ Matrix Multiplication
 <p>How would we index the green highlighted section of the matrix below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/d3ac8c45-c464-4d21-a0b7-ece845dc4559.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">indexing_green.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/a287fc2c-b488-457f-8c17-04a86e389a83-1-d3ac8c45-c464-4d21-a0b7-ece845dc4559.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">indexing_green.JPG</figcaption>
 </figure>
 </div>
 <p>We can do this by using two different lists within our indexing. The first list contains the row indices and the second list contains the column indices:</p>
@@ -1309,8 +1285,8 @@ Matrix Multiplication
 <p>How would we index the red highlighted section of the matrix below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/1948a527-e510-41ac-862f-450b9268c553.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">indexing_red.JPG</figcaption><p></p>
+<p><img src="Complete_Python_NumPy_Tutorial_files/figure-html/25e4129f-edcf-424b-9cdd-72678005d8d3-1-1948a527-e510-41ac-862f-450b9268c553.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">indexing_red.JPG</figcaption>
 </figure>
 </div>
 <p>Again, we can do this by using two different lists. The first list contains the required rows, and the second list contains the required column range:</p>
@@ -1360,9 +1336,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1374,7 +1364,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1410,24 +1417,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -142,31 +114,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -199,6 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">December 5, 2022</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -272,15 +248,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The information is spread across 7 tables:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Krakow_Football_files/figure-html/77570cab-8f81-4205-b8af-d0fa65cb15dd.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">database_tables.PNG</figcaption><p></p>
+<p><img src="Krakow_Football_files/figure-html/29324eb3-4d46-4a00-ac8a-2516624c2409-1-77570cab-8f81-4205-b8af-d0fa65cb15dd.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">database_tables.PNG</figcaption>
 </figure>
 </div>
 <p>A very helpful diagram of the database schema is included below, as provided by <a href="https://github.com/fmahlmeister">Felipe Mahlmeister</a>. This shows the links between the tables which will help us construct the appropriate JOIN queries to get the information we need.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Krakow_Football_files/figure-html/c1627504-4c14-44b0-b5ee-06d36c82dc6a.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">metadata.png</figcaption><p></p>
+<p><img src="Krakow_Football_files/figure-html/063411f0-2865-4e08-bf1a-cfd3f68108d5-1-c1627504-4c14-44b0-b5ee-06d36c82dc6a.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">metadata.png</figcaption>
 </figure>
 </div>
 </section>
@@ -418,159 +394,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that result of SQL query is stored in the dataframe</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>matches.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>id</th>
-      <th>country_id</th>
-      <th>league_id</th>
-      <th>season</th>
-      <th>stage</th>
-      <th>date</th>
-      <th>match_api_id</th>
-      <th>home_team_api_id</th>
-      <th>away_team_api_id</th>
-      <th>home_team_goal</th>
-      <th>...</th>
-      <th>SJA</th>
-      <th>VCH</th>
-      <th>VCD</th>
-      <th>VCA</th>
-      <th>GBH</th>
-      <th>GBD</th>
-      <th>GBA</th>
-      <th>BSH</th>
-      <th>BSD</th>
-      <th>BSA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2008/2009</td>
-      <td>1</td>
-      <td>2008-08-17 00:00:00</td>
-      <td>492473</td>
-      <td>9987</td>
-      <td>9993</td>
-      <td>1</td>
-      <td>...</td>
-      <td>4.00</td>
-      <td>1.65</td>
-      <td>3.40</td>
-      <td>4.50</td>
-      <td>1.78</td>
-      <td>3.25</td>
-      <td>4.00</td>
-      <td>1.73</td>
-      <td>3.40</td>
-      <td>4.20</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2008/2009</td>
-      <td>1</td>
-      <td>2008-08-16 00:00:00</td>
-      <td>492474</td>
-      <td>10000</td>
-      <td>9994</td>
-      <td>0</td>
-      <td>...</td>
-      <td>3.80</td>
-      <td>2.00</td>
-      <td>3.25</td>
-      <td>3.25</td>
-      <td>1.85</td>
-      <td>3.25</td>
-      <td>3.75</td>
-      <td>1.91</td>
-      <td>3.25</td>
-      <td>3.60</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2008/2009</td>
-      <td>1</td>
-      <td>2008-08-16 00:00:00</td>
-      <td>492475</td>
-      <td>9984</td>
-      <td>8635</td>
-      <td>0</td>
-      <td>...</td>
-      <td>2.50</td>
-      <td>2.35</td>
-      <td>3.25</td>
-      <td>2.65</td>
-      <td>2.50</td>
-      <td>3.20</td>
-      <td>2.50</td>
-      <td>2.30</td>
-      <td>3.20</td>
-      <td>2.75</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2008/2009</td>
-      <td>1</td>
-      <td>2008-08-17 00:00:00</td>
-      <td>492476</td>
-      <td>9991</td>
-      <td>9998</td>
-      <td>5</td>
-      <td>...</td>
-      <td>7.50</td>
-      <td>1.45</td>
-      <td>3.75</td>
-      <td>6.50</td>
-      <td>1.50</td>
-      <td>3.75</td>
-      <td>5.50</td>
-      <td>1.44</td>
-      <td>3.75</td>
-      <td>6.50</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2008/2009</td>
-      <td>1</td>
-      <td>2008-08-16 00:00:00</td>
-      <td>492477</td>
-      <td>7947</td>
-      <td>9985</td>
-      <td>1</td>
-      <td>...</td>
-      <td>1.73</td>
-      <td>4.50</td>
-      <td>3.40</td>
-      <td>1.65</td>
-      <td>4.50</td>
-      <td>3.50</td>
-      <td>1.65</td>
-      <td>4.75</td>
-      <td>3.30</td>
-      <td>1.67</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">country_id</th>
+<th data-quarto-table-cell-role="th">league_id</th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">stage</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">match_api_id</th>
+<th data-quarto-table-cell-role="th">home_team_api_id</th>
+<th data-quarto-table-cell-role="th">away_team_api_id</th>
+<th data-quarto-table-cell-role="th">home_team_goal</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">SJA</th>
+<th data-quarto-table-cell-role="th">VCH</th>
+<th data-quarto-table-cell-role="th">VCD</th>
+<th data-quarto-table-cell-role="th">VCA</th>
+<th data-quarto-table-cell-role="th">GBH</th>
+<th data-quarto-table-cell-role="th">GBD</th>
+<th data-quarto-table-cell-role="th">GBA</th>
+<th data-quarto-table-cell-role="th">BSH</th>
+<th data-quarto-table-cell-role="th">BSD</th>
+<th data-quarto-table-cell-role="th">BSA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2008/2009</td>
+<td>1</td>
+<td>2008-08-17 00:00:00</td>
+<td>492473</td>
+<td>9987</td>
+<td>9993</td>
+<td>1</td>
+<td>...</td>
+<td>4.00</td>
+<td>1.65</td>
+<td>3.40</td>
+<td>4.50</td>
+<td>1.78</td>
+<td>3.25</td>
+<td>4.00</td>
+<td>1.73</td>
+<td>3.40</td>
+<td>4.20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2008/2009</td>
+<td>1</td>
+<td>2008-08-16 00:00:00</td>
+<td>492474</td>
+<td>10000</td>
+<td>9994</td>
+<td>0</td>
+<td>...</td>
+<td>3.80</td>
+<td>2.00</td>
+<td>3.25</td>
+<td>3.25</td>
+<td>1.85</td>
+<td>3.25</td>
+<td>3.75</td>
+<td>1.91</td>
+<td>3.25</td>
+<td>3.60</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>2008/2009</td>
+<td>1</td>
+<td>2008-08-16 00:00:00</td>
+<td>492475</td>
+<td>9984</td>
+<td>8635</td>
+<td>0</td>
+<td>...</td>
+<td>2.50</td>
+<td>2.35</td>
+<td>3.25</td>
+<td>2.65</td>
+<td>2.50</td>
+<td>3.20</td>
+<td>2.50</td>
+<td>2.30</td>
+<td>3.20</td>
+<td>2.75</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>2008/2009</td>
+<td>1</td>
+<td>2008-08-17 00:00:00</td>
+<td>492476</td>
+<td>9991</td>
+<td>9998</td>
+<td>5</td>
+<td>...</td>
+<td>7.50</td>
+<td>1.45</td>
+<td>3.75</td>
+<td>6.50</td>
+<td>1.50</td>
+<td>3.75</td>
+<td>5.50</td>
+<td>1.44</td>
+<td>3.75</td>
+<td>6.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>2008/2009</td>
+<td>1</td>
+<td>2008-08-16 00:00:00</td>
+<td>492477</td>
+<td>7947</td>
+<td>9985</td>
+<td>1</td>
+<td>...</td>
+<td>1.73</td>
+<td>4.50</td>
+<td>3.40</td>
+<td>1.65</td>
+<td>4.50</td>
+<td>3.50</td>
+<td>1.65</td>
+<td>4.75</td>
+<td>3.30</td>
+<td>1.67</td>
+</tr>
+</tbody>
 </table>
+
 <p>5 rows × 115 columns</p>
 </div>
 </div>
@@ -634,159 +611,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that result of SQL query is stored in the dataframe</span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>player_attributes.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>id</th>
-      <th>player_fifa_api_id</th>
-      <th>player_api_id</th>
-      <th>date</th>
-      <th>overall_rating</th>
-      <th>potential</th>
-      <th>preferred_foot</th>
-      <th>attacking_work_rate</th>
-      <th>defensive_work_rate</th>
-      <th>crossing</th>
-      <th>...</th>
-      <th>vision</th>
-      <th>penalties</th>
-      <th>marking</th>
-      <th>standing_tackle</th>
-      <th>sliding_tackle</th>
-      <th>gk_diving</th>
-      <th>gk_handling</th>
-      <th>gk_kicking</th>
-      <th>gk_positioning</th>
-      <th>gk_reflexes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>218353</td>
-      <td>505942</td>
-      <td>2016-02-18 00:00:00</td>
-      <td>67.0</td>
-      <td>71.0</td>
-      <td>right</td>
-      <td>medium</td>
-      <td>medium</td>
-      <td>49.0</td>
-      <td>...</td>
-      <td>54.0</td>
-      <td>48.0</td>
-      <td>65.0</td>
-      <td>69.0</td>
-      <td>69.0</td>
-      <td>6.0</td>
-      <td>11.0</td>
-      <td>10.0</td>
-      <td>8.0</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>218353</td>
-      <td>505942</td>
-      <td>2015-11-19 00:00:00</td>
-      <td>67.0</td>
-      <td>71.0</td>
-      <td>right</td>
-      <td>medium</td>
-      <td>medium</td>
-      <td>49.0</td>
-      <td>...</td>
-      <td>54.0</td>
-      <td>48.0</td>
-      <td>65.0</td>
-      <td>69.0</td>
-      <td>69.0</td>
-      <td>6.0</td>
-      <td>11.0</td>
-      <td>10.0</td>
-      <td>8.0</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>218353</td>
-      <td>505942</td>
-      <td>2015-09-21 00:00:00</td>
-      <td>62.0</td>
-      <td>66.0</td>
-      <td>right</td>
-      <td>medium</td>
-      <td>medium</td>
-      <td>49.0</td>
-      <td>...</td>
-      <td>54.0</td>
-      <td>48.0</td>
-      <td>65.0</td>
-      <td>66.0</td>
-      <td>69.0</td>
-      <td>6.0</td>
-      <td>11.0</td>
-      <td>10.0</td>
-      <td>8.0</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>218353</td>
-      <td>505942</td>
-      <td>2015-03-20 00:00:00</td>
-      <td>61.0</td>
-      <td>65.0</td>
-      <td>right</td>
-      <td>medium</td>
-      <td>medium</td>
-      <td>48.0</td>
-      <td>...</td>
-      <td>53.0</td>
-      <td>47.0</td>
-      <td>62.0</td>
-      <td>63.0</td>
-      <td>66.0</td>
-      <td>5.0</td>
-      <td>10.0</td>
-      <td>9.0</td>
-      <td>7.0</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>218353</td>
-      <td>505942</td>
-      <td>2007-02-22 00:00:00</td>
-      <td>61.0</td>
-      <td>65.0</td>
-      <td>right</td>
-      <td>medium</td>
-      <td>medium</td>
-      <td>48.0</td>
-      <td>...</td>
-      <td>53.0</td>
-      <td>47.0</td>
-      <td>62.0</td>
-      <td>63.0</td>
-      <td>66.0</td>
-      <td>5.0</td>
-      <td>10.0</td>
-      <td>9.0</td>
-      <td>7.0</td>
-      <td>7.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">player_fifa_api_id</th>
+<th data-quarto-table-cell-role="th">player_api_id</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">overall_rating</th>
+<th data-quarto-table-cell-role="th">potential</th>
+<th data-quarto-table-cell-role="th">preferred_foot</th>
+<th data-quarto-table-cell-role="th">attacking_work_rate</th>
+<th data-quarto-table-cell-role="th">defensive_work_rate</th>
+<th data-quarto-table-cell-role="th">crossing</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">vision</th>
+<th data-quarto-table-cell-role="th">penalties</th>
+<th data-quarto-table-cell-role="th">marking</th>
+<th data-quarto-table-cell-role="th">standing_tackle</th>
+<th data-quarto-table-cell-role="th">sliding_tackle</th>
+<th data-quarto-table-cell-role="th">gk_diving</th>
+<th data-quarto-table-cell-role="th">gk_handling</th>
+<th data-quarto-table-cell-role="th">gk_kicking</th>
+<th data-quarto-table-cell-role="th">gk_positioning</th>
+<th data-quarto-table-cell-role="th">gk_reflexes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>218353</td>
+<td>505942</td>
+<td>2016-02-18 00:00:00</td>
+<td>67.0</td>
+<td>71.0</td>
+<td>right</td>
+<td>medium</td>
+<td>medium</td>
+<td>49.0</td>
+<td>...</td>
+<td>54.0</td>
+<td>48.0</td>
+<td>65.0</td>
+<td>69.0</td>
+<td>69.0</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>10.0</td>
+<td>8.0</td>
+<td>8.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>218353</td>
+<td>505942</td>
+<td>2015-11-19 00:00:00</td>
+<td>67.0</td>
+<td>71.0</td>
+<td>right</td>
+<td>medium</td>
+<td>medium</td>
+<td>49.0</td>
+<td>...</td>
+<td>54.0</td>
+<td>48.0</td>
+<td>65.0</td>
+<td>69.0</td>
+<td>69.0</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>10.0</td>
+<td>8.0</td>
+<td>8.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>218353</td>
+<td>505942</td>
+<td>2015-09-21 00:00:00</td>
+<td>62.0</td>
+<td>66.0</td>
+<td>right</td>
+<td>medium</td>
+<td>medium</td>
+<td>49.0</td>
+<td>...</td>
+<td>54.0</td>
+<td>48.0</td>
+<td>65.0</td>
+<td>66.0</td>
+<td>69.0</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>10.0</td>
+<td>8.0</td>
+<td>8.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>218353</td>
+<td>505942</td>
+<td>2015-03-20 00:00:00</td>
+<td>61.0</td>
+<td>65.0</td>
+<td>right</td>
+<td>medium</td>
+<td>medium</td>
+<td>48.0</td>
+<td>...</td>
+<td>53.0</td>
+<td>47.0</td>
+<td>62.0</td>
+<td>63.0</td>
+<td>66.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>9.0</td>
+<td>7.0</td>
+<td>7.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>218353</td>
+<td>505942</td>
+<td>2007-02-22 00:00:00</td>
+<td>61.0</td>
+<td>65.0</td>
+<td>right</td>
+<td>medium</td>
+<td>medium</td>
+<td>48.0</td>
+<td>...</td>
+<td>53.0</td>
+<td>47.0</td>
+<td>62.0</td>
+<td>63.0</td>
+<td>66.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>9.0</td>
+<td>7.0</td>
+<td>7.0</td>
+</tr>
+</tbody>
 </table>
+
 <p>5 rows × 42 columns</p>
 </div>
 </div>
@@ -830,81 +808,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that result of SQL query is stored in the dataframe</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>team_league.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>team_id</th>
-      <th>team_name</th>
-      <th>league</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1601</td>
-      <td>Ruch Chorzów</td>
-      <td>Poland Ekstraklasa</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1773</td>
-      <td>Oud-Heverlee Leuven</td>
-      <td>Belgium Jupiler League</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1957</td>
-      <td>Jagiellonia Białystok</td>
-      <td>Poland Ekstraklasa</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2033</td>
-      <td>S.C. Olhanense</td>
-      <td>Portugal Liga ZON Sagres</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2182</td>
-      <td>Lech Poznań</td>
-      <td>Poland Ekstraklasa</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2183</td>
-      <td>P. Warszawa</td>
-      <td>Poland Ekstraklasa</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2186</td>
-      <td>Cracovia</td>
-      <td>Poland Ekstraklasa</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>4049</td>
-      <td>Tubize</td>
-      <td>Belgium Jupiler League</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>4064</td>
-      <td>Feirense</td>
-      <td>Portugal Liga ZON Sagres</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>4087</td>
-      <td>Évian Thonon Gaillard FC</td>
-      <td>France Ligue 1</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">team_id</th>
+<th data-quarto-table-cell-role="th">team_name</th>
+<th data-quarto-table-cell-role="th">league</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1601</td>
+<td>Ruch Chorzów</td>
+<td>Poland Ekstraklasa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1773</td>
+<td>Oud-Heverlee Leuven</td>
+<td>Belgium Jupiler League</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1957</td>
+<td>Jagiellonia Białystok</td>
+<td>Poland Ekstraklasa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2033</td>
+<td>S.C. Olhanense</td>
+<td>Portugal Liga ZON Sagres</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2182</td>
+<td>Lech Poznań</td>
+<td>Poland Ekstraklasa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2183</td>
+<td>P. Warszawa</td>
+<td>Poland Ekstraklasa</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2186</td>
+<td>Cracovia</td>
+<td>Poland Ekstraklasa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>4049</td>
+<td>Tubize</td>
+<td>Belgium Jupiler League</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>4064</td>
+<td>Feirense</td>
+<td>Portugal Liga ZON Sagres</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>4087</td>
+<td>Évian Thonon Gaillard FC</td>
+<td>France Ligue 1</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -958,159 +937,160 @@ Name: team_name, dtype: int64</code></pre>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that result of SQL query is stored in the dataframe</span></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>team_attributes.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>id</th>
-      <th>team_fifa_api_id</th>
-      <th>team_api_id</th>
-      <th>date</th>
-      <th>buildUpPlaySpeed</th>
-      <th>buildUpPlaySpeedClass</th>
-      <th>buildUpPlayDribbling</th>
-      <th>buildUpPlayDribblingClass</th>
-      <th>buildUpPlayPassing</th>
-      <th>buildUpPlayPassingClass</th>
-      <th>...</th>
-      <th>chanceCreationShooting</th>
-      <th>chanceCreationShootingClass</th>
-      <th>chanceCreationPositioningClass</th>
-      <th>defencePressure</th>
-      <th>defencePressureClass</th>
-      <th>defenceAggression</th>
-      <th>defenceAggressionClass</th>
-      <th>defenceTeamWidth</th>
-      <th>defenceTeamWidthClass</th>
-      <th>defenceDefenderLineClass</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>434</td>
-      <td>9930</td>
-      <td>2010-02-22 00:00:00</td>
-      <td>60</td>
-      <td>Balanced</td>
-      <td>NaN</td>
-      <td>Little</td>
-      <td>50</td>
-      <td>Mixed</td>
-      <td>...</td>
-      <td>55</td>
-      <td>Normal</td>
-      <td>Organised</td>
-      <td>50</td>
-      <td>Medium</td>
-      <td>55</td>
-      <td>Press</td>
-      <td>45</td>
-      <td>Normal</td>
-      <td>Cover</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>434</td>
-      <td>9930</td>
-      <td>2014-09-19 00:00:00</td>
-      <td>52</td>
-      <td>Balanced</td>
-      <td>48.0</td>
-      <td>Normal</td>
-      <td>56</td>
-      <td>Mixed</td>
-      <td>...</td>
-      <td>64</td>
-      <td>Normal</td>
-      <td>Organised</td>
-      <td>47</td>
-      <td>Medium</td>
-      <td>44</td>
-      <td>Press</td>
-      <td>54</td>
-      <td>Normal</td>
-      <td>Cover</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>434</td>
-      <td>9930</td>
-      <td>2015-09-10 00:00:00</td>
-      <td>47</td>
-      <td>Balanced</td>
-      <td>41.0</td>
-      <td>Normal</td>
-      <td>54</td>
-      <td>Mixed</td>
-      <td>...</td>
-      <td>64</td>
-      <td>Normal</td>
-      <td>Organised</td>
-      <td>47</td>
-      <td>Medium</td>
-      <td>44</td>
-      <td>Press</td>
-      <td>54</td>
-      <td>Normal</td>
-      <td>Cover</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>77</td>
-      <td>8485</td>
-      <td>2010-02-22 00:00:00</td>
-      <td>70</td>
-      <td>Fast</td>
-      <td>NaN</td>
-      <td>Little</td>
-      <td>70</td>
-      <td>Long</td>
-      <td>...</td>
-      <td>70</td>
-      <td>Lots</td>
-      <td>Organised</td>
-      <td>60</td>
-      <td>Medium</td>
-      <td>70</td>
-      <td>Double</td>
-      <td>70</td>
-      <td>Wide</td>
-      <td>Cover</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>77</td>
-      <td>8485</td>
-      <td>2011-02-22 00:00:00</td>
-      <td>47</td>
-      <td>Balanced</td>
-      <td>NaN</td>
-      <td>Little</td>
-      <td>52</td>
-      <td>Mixed</td>
-      <td>...</td>
-      <td>52</td>
-      <td>Normal</td>
-      <td>Organised</td>
-      <td>47</td>
-      <td>Medium</td>
-      <td>47</td>
-      <td>Press</td>
-      <td>52</td>
-      <td>Normal</td>
-      <td>Cover</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">team_fifa_api_id</th>
+<th data-quarto-table-cell-role="th">team_api_id</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">buildUpPlaySpeed</th>
+<th data-quarto-table-cell-role="th">buildUpPlaySpeedClass</th>
+<th data-quarto-table-cell-role="th">buildUpPlayDribbling</th>
+<th data-quarto-table-cell-role="th">buildUpPlayDribblingClass</th>
+<th data-quarto-table-cell-role="th">buildUpPlayPassing</th>
+<th data-quarto-table-cell-role="th">buildUpPlayPassingClass</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">chanceCreationShooting</th>
+<th data-quarto-table-cell-role="th">chanceCreationShootingClass</th>
+<th data-quarto-table-cell-role="th">chanceCreationPositioningClass</th>
+<th data-quarto-table-cell-role="th">defencePressure</th>
+<th data-quarto-table-cell-role="th">defencePressureClass</th>
+<th data-quarto-table-cell-role="th">defenceAggression</th>
+<th data-quarto-table-cell-role="th">defenceAggressionClass</th>
+<th data-quarto-table-cell-role="th">defenceTeamWidth</th>
+<th data-quarto-table-cell-role="th">defenceTeamWidthClass</th>
+<th data-quarto-table-cell-role="th">defenceDefenderLineClass</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>434</td>
+<td>9930</td>
+<td>2010-02-22 00:00:00</td>
+<td>60</td>
+<td>Balanced</td>
+<td>NaN</td>
+<td>Little</td>
+<td>50</td>
+<td>Mixed</td>
+<td>...</td>
+<td>55</td>
+<td>Normal</td>
+<td>Organised</td>
+<td>50</td>
+<td>Medium</td>
+<td>55</td>
+<td>Press</td>
+<td>45</td>
+<td>Normal</td>
+<td>Cover</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>434</td>
+<td>9930</td>
+<td>2014-09-19 00:00:00</td>
+<td>52</td>
+<td>Balanced</td>
+<td>48.0</td>
+<td>Normal</td>
+<td>56</td>
+<td>Mixed</td>
+<td>...</td>
+<td>64</td>
+<td>Normal</td>
+<td>Organised</td>
+<td>47</td>
+<td>Medium</td>
+<td>44</td>
+<td>Press</td>
+<td>54</td>
+<td>Normal</td>
+<td>Cover</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>434</td>
+<td>9930</td>
+<td>2015-09-10 00:00:00</td>
+<td>47</td>
+<td>Balanced</td>
+<td>41.0</td>
+<td>Normal</td>
+<td>54</td>
+<td>Mixed</td>
+<td>...</td>
+<td>64</td>
+<td>Normal</td>
+<td>Organised</td>
+<td>47</td>
+<td>Medium</td>
+<td>44</td>
+<td>Press</td>
+<td>54</td>
+<td>Normal</td>
+<td>Cover</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>77</td>
+<td>8485</td>
+<td>2010-02-22 00:00:00</td>
+<td>70</td>
+<td>Fast</td>
+<td>NaN</td>
+<td>Little</td>
+<td>70</td>
+<td>Long</td>
+<td>...</td>
+<td>70</td>
+<td>Lots</td>
+<td>Organised</td>
+<td>60</td>
+<td>Medium</td>
+<td>70</td>
+<td>Double</td>
+<td>70</td>
+<td>Wide</td>
+<td>Cover</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>77</td>
+<td>8485</td>
+<td>2011-02-22 00:00:00</td>
+<td>47</td>
+<td>Balanced</td>
+<td>NaN</td>
+<td>Little</td>
+<td>52</td>
+<td>Mixed</td>
+<td>...</td>
+<td>52</td>
+<td>Normal</td>
+<td>Organised</td>
+<td>47</td>
+<td>Medium</td>
+<td>47</td>
+<td>Press</td>
+<td>52</td>
+<td>Normal</td>
+<td>Cover</td>
+</tr>
+</tbody>
 </table>
+
 <p>5 rows × 25 columns</p>
 </div>
 </div>
@@ -1120,8 +1100,8 @@ Name: team_name, dtype: int64</code></pre>
 <h2 class="anchored" data-anchor-id="which-polish-teams-are-included-in-the-database">Which Polish teams are included in the database?</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Krakow_Football_files/figure-html/004f51d7-978b-4b35-9a3f-c7da366903e6.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">poland.jpg</figcaption><p></p>
+<p><img src="Krakow_Football_files/figure-html/d8c5e604-a0d9-41da-99e1-bd5697f1869b-1-004f51d7-978b-4b35-9a3f-c7da366903e6.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">poland.jpg</figcaption>
 </figure>
 </div>
 <div class="cell" data-execution_count="330">
@@ -1134,165 +1114,166 @@ Name: team_name, dtype: int64</code></pre>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                                   ,con)</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>poland_league</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="330">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>team_long_name</th>
-      <th>abbr</th>
-      <th>team_id</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Ruch Chorzów</td>
-      <td>CHO</td>
-      <td>1601</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Jagiellonia Białystok</td>
-      <td>BIA</td>
-      <td>1957</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Lech Poznań</td>
-      <td>POZ</td>
-      <td>2182</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>P. Warszawa</td>
-      <td>PWA</td>
-      <td>2183</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Cracovia</td>
-      <td>CKR</td>
-      <td>2186</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Górnik Łęczna</td>
-      <td>LEC</td>
-      <td>8019</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Polonia Bytom</td>
-      <td>GOR</td>
-      <td>8020</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Zagłębie Lubin</td>
-      <td>ZAG</td>
-      <td>8021</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Pogoń Szczecin</td>
-      <td>POG</td>
-      <td>8023</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Widzew Łódź</td>
-      <td>WID</td>
-      <td>8024</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Śląsk Wrocław</td>
-      <td>SLA</td>
-      <td>8025</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Zawisza Bydgoszcz</td>
-      <td>ZAW</td>
-      <td>8027</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Piast Gliwice</td>
-      <td>PIG</td>
-      <td>8028</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Lechia Gdańsk</td>
-      <td>LGD</td>
-      <td>8030</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Polonia Bytom</td>
-      <td>POB</td>
-      <td>8031</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Podbeskidzie Bielsko-Biała</td>
-      <td>POD</td>
-      <td>8033</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Odra Wodzisław</td>
-      <td>ODR</td>
-      <td>8242</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Widzew Łódź</td>
-      <td>LOD</td>
-      <td>8244</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Korona Kielce</td>
-      <td>KKI</td>
-      <td>8245</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Arka Gdynia</td>
-      <td>ARK</td>
-      <td>8322</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>GKS Bełchatów</td>
-      <td>BEL</td>
-      <td>8569</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>Legia Warszawa</td>
-      <td>LEG</td>
-      <td>8673</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>Wisła Kraków</td>
-      <td>WIS</td>
-      <td>10265</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>Termalica Bruk-Bet Nieciecza</td>
-      <td>TBN</td>
-      <td>177361</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">team_long_name</th>
+<th data-quarto-table-cell-role="th">abbr</th>
+<th data-quarto-table-cell-role="th">team_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Ruch Chorzów</td>
+<td>CHO</td>
+<td>1601</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Jagiellonia Białystok</td>
+<td>BIA</td>
+<td>1957</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Lech Poznań</td>
+<td>POZ</td>
+<td>2182</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>P. Warszawa</td>
+<td>PWA</td>
+<td>2183</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Cracovia</td>
+<td>CKR</td>
+<td>2186</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Górnik Łęczna</td>
+<td>LEC</td>
+<td>8019</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Polonia Bytom</td>
+<td>GOR</td>
+<td>8020</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Zagłębie Lubin</td>
+<td>ZAG</td>
+<td>8021</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Pogoń Szczecin</td>
+<td>POG</td>
+<td>8023</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Widzew Łódź</td>
+<td>WID</td>
+<td>8024</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>Śląsk Wrocław</td>
+<td>SLA</td>
+<td>8025</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Zawisza Bydgoszcz</td>
+<td>ZAW</td>
+<td>8027</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Piast Gliwice</td>
+<td>PIG</td>
+<td>8028</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Lechia Gdańsk</td>
+<td>LGD</td>
+<td>8030</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>Polonia Bytom</td>
+<td>POB</td>
+<td>8031</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Podbeskidzie Bielsko-Biała</td>
+<td>POD</td>
+<td>8033</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Odra Wodzisław</td>
+<td>ODR</td>
+<td>8242</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Widzew Łódź</td>
+<td>LOD</td>
+<td>8244</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Korona Kielce</td>
+<td>KKI</td>
+<td>8245</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Arka Gdynia</td>
+<td>ARK</td>
+<td>8322</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>GKS Bełchatów</td>
+<td>BEL</td>
+<td>8569</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>Legia Warszawa</td>
+<td>LEG</td>
+<td>8673</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>Wisła Kraków</td>
+<td>WIS</td>
+<td>10265</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>Termalica Bruk-Bet Nieciecza</td>
+<td>TBN</td>
+<td>177361</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1344,165 +1325,166 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>derbies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>date</th>
-      <th>season</th>
-      <th>home_team_api_id</th>
-      <th>away_team_api_id</th>
-      <th>home_team_goal</th>
-      <th>away_team_goal</th>
-      <th>outcome</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2009-03-22 00:00:00</td>
-      <td>2008/2009</td>
-      <td>10265</td>
-      <td>2186</td>
-      <td>4</td>
-      <td>1</td>
-      <td>Wisła Kraków win!</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2008-08-31 00:00:00</td>
-      <td>2008/2009</td>
-      <td>2186</td>
-      <td>10265</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Draw</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2009-11-22 00:00:00</td>
-      <td>2009/2010</td>
-      <td>10265</td>
-      <td>2186</td>
-      <td>0</td>
-      <td>1</td>
-      <td>Cracovia win!</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2010-05-11 00:00:00</td>
-      <td>2009/2010</td>
-      <td>2186</td>
-      <td>10265</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Draw</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2010-11-05 00:00:00</td>
-      <td>2010/2011</td>
-      <td>2186</td>
-      <td>10265</td>
-      <td>0</td>
-      <td>1</td>
-      <td>Wisła Kraków win!</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2011-05-15 00:00:00</td>
-      <td>2010/2011</td>
-      <td>10265</td>
-      <td>2186</td>
-      <td>1</td>
-      <td>0</td>
-      <td>Wisła Kraków win!</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2011-11-06 00:00:00</td>
-      <td>2011/2012</td>
-      <td>2186</td>
-      <td>10265</td>
-      <td>1</td>
-      <td>0</td>
-      <td>Cracovia win!</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2012-04-30 00:00:00</td>
-      <td>2011/2012</td>
-      <td>10265</td>
-      <td>2186</td>
-      <td>1</td>
-      <td>0</td>
-      <td>Wisła Kraków win!</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2014-02-23 00:00:00</td>
-      <td>2013/2014</td>
-      <td>10265</td>
-      <td>2186</td>
-      <td>3</td>
-      <td>1</td>
-      <td>Wisła Kraków win!</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2013-09-21 00:00:00</td>
-      <td>2013/2014</td>
-      <td>2186</td>
-      <td>10265</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Draw</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>2014-09-28 00:00:00</td>
-      <td>2014/2015</td>
-      <td>2186</td>
-      <td>10265</td>
-      <td>1</td>
-      <td>0</td>
-      <td>Cracovia win!</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>2015-03-21 00:00:00</td>
-      <td>2014/2015</td>
-      <td>10265</td>
-      <td>2186</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Wisła Kraków win!</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>2015-11-29 00:00:00</td>
-      <td>2015/2016</td>
-      <td>10265</td>
-      <td>2186</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Cracovia win!</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>2015-07-24 00:00:00</td>
-      <td>2015/2016</td>
-      <td>2186</td>
-      <td>10265</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Draw</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">home_team_api_id</th>
+<th data-quarto-table-cell-role="th">away_team_api_id</th>
+<th data-quarto-table-cell-role="th">home_team_goal</th>
+<th data-quarto-table-cell-role="th">away_team_goal</th>
+<th data-quarto-table-cell-role="th">outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2009-03-22 00:00:00</td>
+<td>2008/2009</td>
+<td>10265</td>
+<td>2186</td>
+<td>4</td>
+<td>1</td>
+<td>Wisła Kraków win!</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2008-08-31 00:00:00</td>
+<td>2008/2009</td>
+<td>2186</td>
+<td>10265</td>
+<td>1</td>
+<td>1</td>
+<td>Draw</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2009-11-22 00:00:00</td>
+<td>2009/2010</td>
+<td>10265</td>
+<td>2186</td>
+<td>0</td>
+<td>1</td>
+<td>Cracovia win!</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2010-05-11 00:00:00</td>
+<td>2009/2010</td>
+<td>2186</td>
+<td>10265</td>
+<td>1</td>
+<td>1</td>
+<td>Draw</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2010-11-05 00:00:00</td>
+<td>2010/2011</td>
+<td>2186</td>
+<td>10265</td>
+<td>0</td>
+<td>1</td>
+<td>Wisła Kraków win!</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2011-05-15 00:00:00</td>
+<td>2010/2011</td>
+<td>10265</td>
+<td>2186</td>
+<td>1</td>
+<td>0</td>
+<td>Wisła Kraków win!</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2011-11-06 00:00:00</td>
+<td>2011/2012</td>
+<td>2186</td>
+<td>10265</td>
+<td>1</td>
+<td>0</td>
+<td>Cracovia win!</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2012-04-30 00:00:00</td>
+<td>2011/2012</td>
+<td>10265</td>
+<td>2186</td>
+<td>1</td>
+<td>0</td>
+<td>Wisła Kraków win!</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2014-02-23 00:00:00</td>
+<td>2013/2014</td>
+<td>10265</td>
+<td>2186</td>
+<td>3</td>
+<td>1</td>
+<td>Wisła Kraków win!</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>2013-09-21 00:00:00</td>
+<td>2013/2014</td>
+<td>2186</td>
+<td>10265</td>
+<td>1</td>
+<td>1</td>
+<td>Draw</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>2014-09-28 00:00:00</td>
+<td>2014/2015</td>
+<td>2186</td>
+<td>10265</td>
+<td>1</td>
+<td>0</td>
+<td>Cracovia win!</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>2015-03-21 00:00:00</td>
+<td>2014/2015</td>
+<td>10265</td>
+<td>2186</td>
+<td>2</td>
+<td>1</td>
+<td>Wisła Kraków win!</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>2015-11-29 00:00:00</td>
+<td>2015/2016</td>
+<td>10265</td>
+<td>2186</td>
+<td>1</td>
+<td>2</td>
+<td>Cracovia win!</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>2015-07-24 00:00:00</td>
+<td>2015/2016</td>
+<td>2186</td>
+<td>10265</td>
+<td>1</td>
+<td>1</td>
+<td>Draw</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1546,87 +1528,88 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>wisla_krakow_goals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>home_goals_scored</th>
-      <th>away_goals_scored</th>
-      <th>home_goals_conceded</th>
-      <th>away_goals_conceded</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>31</td>
-      <td>22</td>
-      <td>-9</td>
-      <td>-12</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>18</td>
-      <td>30</td>
-      <td>-9</td>
-      <td>-11</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>27</td>
-      <td>17</td>
-      <td>-11</td>
-      <td>-18</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>14</td>
-      <td>15</td>
-      <td>-11</td>
-      <td>-15</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>15</td>
-      <td>13</td>
-      <td>-14</td>
-      <td>-21</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>23</td>
-      <td>15</td>
-      <td>-6</td>
-      <td>-24</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>20</td>
-      <td>27</td>
-      <td>-18</td>
-      <td>-21</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>20</td>
-      <td>25</td>
-      <td>-17</td>
-      <td>-18</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">home_goals_scored</th>
+<th data-quarto-table-cell-role="th">away_goals_scored</th>
+<th data-quarto-table-cell-role="th">home_goals_conceded</th>
+<th data-quarto-table-cell-role="th">away_goals_conceded</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>31</td>
+<td>22</td>
+<td>-9</td>
+<td>-12</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>18</td>
+<td>30</td>
+<td>-9</td>
+<td>-11</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>27</td>
+<td>17</td>
+<td>-11</td>
+<td>-18</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>14</td>
+<td>15</td>
+<td>-11</td>
+<td>-15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>15</td>
+<td>13</td>
+<td>-14</td>
+<td>-21</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>23</td>
+<td>15</td>
+<td>-6</td>
+<td>-24</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>20</td>
+<td>27</td>
+<td>-18</td>
+<td>-21</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>20</td>
+<td>25</td>
+<td>-17</td>
+<td>-18</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1651,60 +1634,61 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>wisla_krakow_goal_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>goal_diff</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>28</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>-7</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>10</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">goal_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>-7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>10</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1740,87 +1724,88 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>wisla_krakow_wins_losses</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>home_wins</th>
-      <th>away_wins</th>
-      <th>home_defeats</th>
-      <th>away_defeats</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>13</td>
-      <td>6</td>
-      <td>-1</td>
-      <td>-3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>8</td>
-      <td>11</td>
-      <td>-4</td>
-      <td>-2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>11</td>
-      <td>6</td>
-      <td>-2</td>
-      <td>-6</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>7</td>
-      <td>5</td>
-      <td>-6</td>
-      <td>-5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>6</td>
-      <td>4</td>
-      <td>-6</td>
-      <td>-6</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>10</td>
-      <td>2</td>
-      <td>-3</td>
-      <td>-6</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>6</td>
-      <td>5</td>
-      <td>-4</td>
-      <td>-5</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>3</td>
-      <td>5</td>
-      <td>-4</td>
-      <td>-5</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">home_wins</th>
+<th data-quarto-table-cell-role="th">away_wins</th>
+<th data-quarto-table-cell-role="th">home_defeats</th>
+<th data-quarto-table-cell-role="th">away_defeats</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>13</td>
+<td>6</td>
+<td>-1</td>
+<td>-3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>8</td>
+<td>11</td>
+<td>-4</td>
+<td>-2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>11</td>
+<td>6</td>
+<td>-2</td>
+<td>-6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>7</td>
+<td>5</td>
+<td>-6</td>
+<td>-5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>6</td>
+<td>4</td>
+<td>-6</td>
+<td>-6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>10</td>
+<td>2</td>
+<td>-3</td>
+<td>-6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>6</td>
+<td>5</td>
+<td>-4</td>
+<td>-5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>3</td>
+<td>5</td>
+<td>-4</td>
+<td>-5</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1851,69 +1836,70 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>wisla_krakow_win_pct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>pct_home_wins</th>
-      <th>pct_away_wins</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>92.86</td>
-      <td>66.67</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>66.67</td>
-      <td>84.62</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>84.62</td>
-      <td>50.00</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>53.85</td>
-      <td>50.00</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>50.00</td>
-      <td>40.00</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>76.92</td>
-      <td>25.00</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>60.00</td>
-      <td>50.00</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>42.86</td>
-      <td>50.00</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">pct_home_wins</th>
+<th data-quarto-table-cell-role="th">pct_away_wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>92.86</td>
+<td>66.67</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>66.67</td>
+<td>84.62</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>84.62</td>
+<td>50.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>53.85</td>
+<td>50.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>50.00</td>
+<td>40.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>76.92</td>
+<td>25.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>60.00</td>
+<td>50.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>42.86</td>
+<td>50.00</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1950,60 +1936,61 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>wisla_krakow_points</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>64</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>62</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>56</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>38</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>45</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>37</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>62</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>56</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>43</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>38</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>45</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>43</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>37</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2029,69 +2016,70 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>wisla_krakow_position <span class="op">=</span> wisla_krakow_points[[<span class="st">"season"</span>,<span class="st">"points"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Position</th>
-      <th>season</th>
-      <th>points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>2008/2009</td>
-      <td>64</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>2009/2010</td>
-      <td>62</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>2010/2011</td>
-      <td>56</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>7</td>
-      <td>2011/2012</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>7</td>
-      <td>2012/2013</td>
-      <td>38</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>5</td>
-      <td>2013/2014</td>
-      <td>45</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>5</td>
-      <td>2014/2015</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>11</td>
-      <td>2015/2016</td>
-      <td>37</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>2008/2009</td>
+<td>64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>2009/2010</td>
+<td>62</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>2010/2011</td>
+<td>56</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>7</td>
+<td>2011/2012</td>
+<td>43</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>7</td>
+<td>2012/2013</td>
+<td>38</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>5</td>
+<td>2013/2014</td>
+<td>45</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>5</td>
+<td>2014/2015</td>
+<td>43</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>11</td>
+<td>2015/2016</td>
+<td>37</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2134,57 +2122,58 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>wisla_recent_goals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>goals_scored</th>
-      <th>goals_conceded</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016/2017</td>
-      <td>45</td>
-      <td>46</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017/2018</td>
-      <td>41</td>
-      <td>36</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018/2019</td>
-      <td>55</td>
-      <td>48</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019/2020</td>
-      <td>37</td>
-      <td>47</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020/2021</td>
-      <td>39</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2021/2022</td>
-      <td>37</td>
-      <td>54</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">goals_scored</th>
+<th data-quarto-table-cell-role="th">goals_conceded</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016/2017</td>
+<td>45</td>
+<td>46</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2017/2018</td>
+<td>41</td>
+<td>36</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2018/2019</td>
+<td>55</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019/2020</td>
+<td>37</td>
+<td>47</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020/2021</td>
+<td>39</td>
+<td>42</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2021/2022</td>
+<td>37</td>
+<td>54</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2208,64 +2197,65 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>wisla_recent_wins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>games_won</th>
-      <th>games_drawn</th>
-      <th>games_lost</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016/2017</td>
-      <td>13</td>
-      <td>5</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017/2018</td>
-      <td>12</td>
-      <td>8</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018/2019</td>
-      <td>12</td>
-      <td>6</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019/2020</td>
-      <td>10</td>
-      <td>5</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020/2021</td>
-      <td>8</td>
-      <td>9</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2021/2022</td>
-      <td>7</td>
-      <td>10</td>
-      <td>17</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">games_won</th>
+<th data-quarto-table-cell-role="th">games_drawn</th>
+<th data-quarto-table-cell-role="th">games_lost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016/2017</td>
+<td>13</td>
+<td>5</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2017/2018</td>
+<td>12</td>
+<td>8</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2018/2019</td>
+<td>12</td>
+<td>6</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019/2020</td>
+<td>10</td>
+<td>5</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020/2021</td>
+<td>8</td>
+<td>9</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2021/2022</td>
+<td>7</td>
+<td>10</td>
+<td>17</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2289,50 +2279,51 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>wisla_recent_points</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016/2017</td>
-      <td>44</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017/2018</td>
-      <td>44</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018/2019</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019/2020</td>
-      <td>35</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020/2021</td>
-      <td>33</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2021/2022</td>
-      <td>31</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016/2017</td>
+<td>44</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2017/2018</td>
+<td>44</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2018/2019</td>
+<td>42</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019/2020</td>
+<td>35</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020/2021</td>
+<td>33</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2021/2022</td>
+<td>31</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2354,50 +2345,51 @@ Name: team_name, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>wisla_position <span class="op">=</span> wisla_recent[[<span class="st">"season"</span>,<span class="st">"position"</span>]]</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>wisla_position </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>position</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016/2017</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017/2018</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018/2019</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019/2020</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020/2021</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2021/2022</td>
-      <td>17</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">position</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016/2017</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2017/2018</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2018/2019</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019/2020</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020/2021</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2021/2022</td>
+<td>17</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2409,8 +2401,8 @@ Name: team_name, dtype: int64</code></pre>
 <p>The second tier I Liga table for 2022/2023 at the time of writing is shown below. The season is on hold as the FIFA World Cup - Qatar 2022 progresses. Wisła Kraków are languishing mid table. A long way away from the dizzy heights of the Ekstraklasa championship winning side of 2010/2011.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Krakow_Football_files/figure-html/e5a7e284-1a62-4ccc-b3c2-00b7469d4ee1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Liga_1_2022_2-23.PNG</figcaption><p></p>
+<p><img src="Krakow_Football_files/figure-html/4d9c9c07-47ca-49bb-8e43-f1ccffb810fb-1-e5a7e284-1a62-4ccc-b3c2-00b7469d4ee1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Liga_1_2022_2-23.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -2445,87 +2437,88 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>cracovia_goals </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>home_goals_scored</th>
-      <th>away_goals_scored</th>
-      <th>home_goals_conceded</th>
-      <th>away_goals_conceded</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>12.0</td>
-      <td>12.0</td>
-      <td>-8.0</td>
-      <td>-32.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>18.0</td>
-      <td>7.0</td>
-      <td>-23.0</td>
-      <td>-16.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>30.0</td>
-      <td>7.0</td>
-      <td>-21.0</td>
-      <td>-26.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>10.0</td>
-      <td>10.0</td>
-      <td>-20.0</td>
-      <td>-21.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>19.0</td>
-      <td>18.0</td>
-      <td>-22.0</td>
-      <td>-21.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>21.0</td>
-      <td>14.0</td>
-      <td>-17.0</td>
-      <td>-24.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>34.0</td>
-      <td>23.0</td>
-      <td>-19.0</td>
-      <td>-23.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">home_goals_scored</th>
+<th data-quarto-table-cell-role="th">away_goals_scored</th>
+<th data-quarto-table-cell-role="th">home_goals_conceded</th>
+<th data-quarto-table-cell-role="th">away_goals_conceded</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>12.0</td>
+<td>12.0</td>
+<td>-8.0</td>
+<td>-32.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>18.0</td>
+<td>7.0</td>
+<td>-23.0</td>
+<td>-16.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>30.0</td>
+<td>7.0</td>
+<td>-21.0</td>
+<td>-26.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>10.0</td>
+<td>10.0</td>
+<td>-20.0</td>
+<td>-21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>19.0</td>
+<td>18.0</td>
+<td>-22.0</td>
+<td>-21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>21.0</td>
+<td>14.0</td>
+<td>-17.0</td>
+<td>-24.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>34.0</td>
+<td>23.0</td>
+<td>-19.0</td>
+<td>-23.0</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2550,60 +2543,61 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>cracovia_goal_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>goal_diff</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>-16.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>-14.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>-10.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>-21.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>-6.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>-6.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>15.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">goal_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>-16.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>-14.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>-10.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>-21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>-6.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>-6.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>15.0</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2639,87 +2633,88 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>cracovia_wins_losses</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>home_wins</th>
-      <th>away_wins</th>
-      <th>home_defeats</th>
-      <th>away_defeats</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>6</td>
-      <td>1</td>
-      <td>-3</td>
-      <td>-11</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>5</td>
-      <td>4</td>
-      <td>-7</td>
-      <td>-7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>7</td>
-      <td>1</td>
-      <td>-6</td>
-      <td>-11</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>3</td>
-      <td>1</td>
-      <td>-8</td>
-      <td>-8</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>6</td>
-      <td>5</td>
-      <td>-7</td>
-      <td>-6</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>8</td>
-      <td>2</td>
-      <td>-4</td>
-      <td>-9</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>7</td>
-      <td>5</td>
-      <td>-4</td>
-      <td>-5</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">home_wins</th>
+<th data-quarto-table-cell-role="th">away_wins</th>
+<th data-quarto-table-cell-role="th">home_defeats</th>
+<th data-quarto-table-cell-role="th">away_defeats</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>6</td>
+<td>1</td>
+<td>-3</td>
+<td>-11</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>5</td>
+<td>4</td>
+<td>-7</td>
+<td>-7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>7</td>
+<td>1</td>
+<td>-6</td>
+<td>-11</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>3</td>
+<td>1</td>
+<td>-8</td>
+<td>-8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>6</td>
+<td>5</td>
+<td>-7</td>
+<td>-6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>8</td>
+<td>2</td>
+<td>-4</td>
+<td>-9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>7</td>
+<td>5</td>
+<td>-4</td>
+<td>-5</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2750,69 +2745,70 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>cracovia_win_pct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>pct_home_wins</th>
-      <th>pct_away_wins</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>66.67</td>
-      <td>8.33</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>41.67</td>
-      <td>36.36</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>53.85</td>
-      <td>8.33</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>27.27</td>
-      <td>11.11</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>46.15</td>
-      <td>45.45</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>66.67</td>
-      <td>18.18</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>63.64</td>
-      <td>50.00</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">pct_home_wins</th>
+<th data-quarto-table-cell-role="th">pct_away_wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>66.67</td>
+<td>8.33</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>41.67</td>
+<td>36.36</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>53.85</td>
+<td>8.33</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>27.27</td>
+<td>11.11</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>46.15</td>
+<td>45.45</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>66.67</td>
+<td>18.18</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>63.64</td>
+<td>50.00</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2851,60 +2847,61 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>cracovia_points</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2008/2009</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2009/2010</td>
-      <td>34</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2010/2011</td>
-      <td>29</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2011/2012</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2012/2013</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2013/2014</td>
-      <td>39</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2014/2015</td>
-      <td>37</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2015/2016</td>
-      <td>45</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2008/2009</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2009/2010</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010/2011</td>
+<td>29</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011/2012</td>
+<td>22</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2012/2013</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2013/2014</td>
+<td>39</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2014/2015</td>
+<td>37</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2015/2016</td>
+<td>45</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2930,69 +2927,70 @@ Name: team_name, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>cracovia_position <span class="op">=</span> cracovia_points</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>cracovia_position </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Position</th>
-      <th>season</th>
-      <th>points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>14</td>
-      <td>2008/2009</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>12</td>
-      <td>2009/2010</td>
-      <td>34</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>14</td>
-      <td>2010/2011</td>
-      <td>29</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>16</td>
-      <td>2011/2012</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0</td>
-      <td>2012/2013</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>9</td>
-      <td>2013/2014</td>
-      <td>39</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>12</td>
-      <td>2014/2015</td>
-      <td>37</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>5</td>
-      <td>2015/2016</td>
-      <td>45</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>14</td>
+<td>2008/2009</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>12</td>
+<td>2009/2010</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>14</td>
+<td>2010/2011</td>
+<td>29</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>16</td>
+<td>2011/2012</td>
+<td>22</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0</td>
+<td>2012/2013</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>9</td>
+<td>2013/2014</td>
+<td>39</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>12</td>
+<td>2014/2015</td>
+<td>37</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>5</td>
+<td>2015/2016</td>
+<td>45</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -3035,57 +3033,58 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>cracovia_recent_goals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>goals_scored</th>
-      <th>goals_conceded</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016/2017</td>
-      <td>38</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017/2018</td>
-      <td>40</td>
-      <td>40</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018/2019</td>
-      <td>39</td>
-      <td>34</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019/2020</td>
-      <td>39</td>
-      <td>29</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020/2021</td>
-      <td>28</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2021/2022</td>
-      <td>40</td>
-      <td>42</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">goals_scored</th>
+<th data-quarto-table-cell-role="th">goals_conceded</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016/2017</td>
+<td>38</td>
+<td>43</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2017/2018</td>
+<td>40</td>
+<td>40</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2018/2019</td>
+<td>39</td>
+<td>34</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019/2020</td>
+<td>39</td>
+<td>29</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020/2021</td>
+<td>28</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2021/2022</td>
+<td>40</td>
+<td>42</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -3109,64 +3108,65 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>cracovia_recent_wins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>games_won</th>
-      <th>games_drawn</th>
-      <th>games_lost</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016/2017</td>
-      <td>6</td>
-      <td>13</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017/2018</td>
-      <td>10</td>
-      <td>9</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018/2019</td>
-      <td>14</td>
-      <td>6</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019/2020</td>
-      <td>14</td>
-      <td>4</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020/2021</td>
-      <td>8</td>
-      <td>13</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2021/2022</td>
-      <td>12</td>
-      <td>10</td>
-      <td>12</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">games_won</th>
+<th data-quarto-table-cell-role="th">games_drawn</th>
+<th data-quarto-table-cell-role="th">games_lost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016/2017</td>
+<td>6</td>
+<td>13</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2017/2018</td>
+<td>10</td>
+<td>9</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2018/2019</td>
+<td>14</td>
+<td>6</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019/2020</td>
+<td>14</td>
+<td>4</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020/2021</td>
+<td>8</td>
+<td>13</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2021/2022</td>
+<td>12</td>
+<td>10</td>
+<td>12</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -3191,59 +3191,60 @@ Name: team_name, dtype: int64</code></pre>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>cracovia_recent_points</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016/2017</td>
-      <td>31</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017/2018</td>
-      <td>39</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018/2019</td>
-      <td>48</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019/2020</td>
-      <td>46</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020/2021</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2021/2022</td>
-      <td>46</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016/2017</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2017/2018</td>
+<td>39</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2018/2019</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019/2020</td>
+<td>46</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020/2021</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2021/2022</td>
+<td>46</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -3271,50 +3272,51 @@ Note
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>cracovia_position <span class="op">=</span> cracovia_recent[[<span class="st">"season"</span>,<span class="st">"position"</span>]]</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>cracovia_position </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season</th>
-      <th>position</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016/2017</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017/2018</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018/2019</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019/2020</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020/2021</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2021/2022</td>
-      <td>9</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">position</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016/2017</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2017/2018</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2018/2019</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2019/2020</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2020/2021</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2021/2022</td>
+<td>9</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -3324,7 +3326,7 @@ Note
 <section id="section-1" class="level3">
 <h3 class="anchored" data-anchor-id="section-1">2022/2023</h3>
 <p>The Ekstraklasa league table for 2022/2023 at the time of writing is shown below. The season is on hold as the FIFA World Cup - Qatar 2022 progresses. KS Cracovia are sitting in 8th place, just four points behind Widzew and Pogon Szczecin in 3rd and 4th place respectively. Raków Częstochowa have a 9 point lead at the top of the table over nearest challengers Legia Warsaw.</p>
-<p><img src="Krakow_Football_files/figure-html/f84441a8-29d8-4bde-be0f-792c8463c58b.PNG" class="img-fluid" alt="ekstraklasa.PNG">!</p>
+<p><img src="Krakow_Football_files/figure-html/d652baad-4364-4545-b8d9-f09a7808dcff-1-f84441a8-29d8-4bde-be0f-792c8463c58b.PNG" class="img-fluid" alt="ekstraklasa.PNG">!</p>
 </section>
 </section>
 <section id="key-takeaways" class="level2">
@@ -3362,9 +3364,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -3376,7 +3392,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -3412,24 +3445,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

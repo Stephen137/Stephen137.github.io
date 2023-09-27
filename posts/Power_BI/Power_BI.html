@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,7 +19,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -57,7 +57,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -76,31 +77,34 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -133,6 +137,7 @@ ul.task-list li input[type="checkbox"] {
         <p class="date">May 29, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -173,8 +178,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Based on the job specs that I have seen lately, Power BI seems to be widely used. I decided I’d best familiarise myself with it and try to recreate the dashboard I created in Looker Studio.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/535249fe-b160-429f-8d69-1aae8f012c61.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Looker.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/707946cc-6c74-4be9-9786-cbe0bd7ffaa6-1-535249fe-b160-429f-8d69-1aae8f012c61.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Looker.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -207,8 +212,8 @@ Power BI integrates seamlessly with other Microsoft tools such as Excel, SharePo
 <p>The Data Sources feature in Power BI refers to the wide range of data connections and integration capabilities that Power BI offers to retrieve and import data from various sources.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/9fe859fa-6f5a-4dda-8245-9496e7531ce5.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">get_data.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/6d2a8b85-fdc0-45ad-816a-ee5f7b3d6355-1-9fe859fa-6f5a-4dda-8245-9496e7531ce5.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">get_data.PNG</figcaption>
 </figure>
 </div>
 <p><code>Data Connectivity:</code><br>
@@ -216,20 +221,20 @@ Power BI supports a diverse set of data connectivity options, allowing you to co
 <p>I was able to import my BiqQuery dataset very easily :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/ffbf589c-dd87-410c-ad9c-cffb8aed048f.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">get_data_bigquery.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/8113574e-0827-492b-a4cf-0285100b3143-3-ffbf589c-dd87-410c-ad9c-cffb8aed048f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">get_data_bigquery.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/b2d2023e-7ee4-46e1-9fc7-02e9d64fde1f.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">import_bigquery.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/8113574e-0827-492b-a4cf-0285100b3143-2-b2d2023e-7ee4-46e1-9fc7-02e9d64fde1f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">import_bigquery.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/041d8991-e70f-46a8-9103-6ba90ca891bf.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">load_bigquery.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/8113574e-0827-492b-a4cf-0285100b3143-1-041d8991-e70f-46a8-9103-6ba90ca891bf.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">load_bigquery.PNG</figcaption>
 </figure>
 </div>
 <p><code>On-Premises Data:</code><br>
@@ -251,8 +256,8 @@ Power BI offers options for data refresh to ensure that your reports and dashboa
 <p>I used <a href="https://www.getdbt.com/">dbt</a> in my capstone Data Engineering project to transform my data. Power BI also offers a Data Transformation feature, that allow users to transform, cleanse, and shape their data before it is loaded into the Power BI model.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/1bf615cb-8ed2-4251-9060-a73dd3047c14.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">transform.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/84b649f2-c5bd-4f79-9dd1-566ff7e61deb-1-1bf615cb-8ed2-4251-9060-a73dd3047c14.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">transform.PNG</figcaption>
 </figure>
 </div>
 <p><code>Data Extraction:</code><br>
@@ -277,8 +282,8 @@ Power Query aims to optimize performance by utilizing query folding. Query foldi
 <h3 class="anchored" data-anchor-id="data-modeling">1.3 Data Modeling</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/273675fe-d71e-4653-b540-e7bba1b12a06.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">modeling.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/f73bba36-5056-467c-93c2-847f6985d300-1-273675fe-d71e-4653-b540-e7bba1b12a06.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">modeling.PNG</figcaption>
 </figure>
 </div>
 <p>The Data Modeling feature in Power BI refers to the capabilities that allow users to define relationships between data tables, create calculated columns and measures, and organize data for analysis.</p>
@@ -306,8 +311,8 @@ Power BI manages the dependencies between queries and tables. When you define re
 <p>I was able to replicate my Looker Studio dashboard without too much difficulty :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/328d0188-6ba9-4b6b-86b1-cb3e1f4bc32c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">power_bi_QA.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/c4e4bfca-e9d2-4116-93af-76309d37c9e0-1-328d0188-6ba9-4b6b-86b1-cb3e1f4bc32c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">power_bi_QA.PNG</figcaption>
 </figure>
 </div>
 <p><code>Chart Types:</code><br>
@@ -398,27 +403,27 @@ Power BI provides the flexibility to manually trigger data refreshes on-demand. 
 <p>Initial suggestions are provided :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/814ed2e8-8465-4f41-9ab2-e3bca0926c1d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">QnA_1.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/a7809600-177d-4d84-8e42-4d7f1667dfcf-1-814ed2e8-8465-4f41-9ab2-e3bca0926c1d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">QnA_1.PNG</figcaption>
 </figure>
 </div>
 <p>however as with Chat GT, a fair amount of prompt engineering will be required before the full benefits of this feature can be harnessed.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/907288c2-f72f-4f5e-83a6-c5953e0fb945.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">QnA_getting_started.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/a7809600-177d-4d84-8e42-4d7f1667dfcf-2-907288c2-f72f-4f5e-83a6-c5953e0fb945.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">QnA_getting_started.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/ad1e623d-83bf-4c60-9b33-d5880f700227.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">field_synonyms_2.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/a7809600-177d-4d84-8e42-4d7f1667dfcf-3-ad1e623d-83bf-4c60-9b33-d5880f700227.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">field_synonyms_2.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Power_BI_files/figure-html/e01e78aa-dd9c-42a7-9af3-3995398e6a27.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">QnA_field_synonyms.PNG</figcaption><p></p>
+<p><img src="Power_BI_files/figure-html/a7809600-177d-4d84-8e42-4d7f1667dfcf-4-e01e78aa-dd9c-42a7-9af3-3995398e6a27.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">QnA_field_synonyms.PNG</figcaption>
 </figure>
 </div>
 <p>Over time the dictionary will become more refined and tailored to the particular dataset.</p>
@@ -529,9 +534,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -543,7 +562,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -579,24 +615,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

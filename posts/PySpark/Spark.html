@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -139,31 +111,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -197,6 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">December 7, 2022</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -296,12 +272,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In practice, the cluster will be hosted on a remote machine that’s connected to all other nodes. There will be one computer, called the master that manages splitting up the data and the computations. The master is connected to the rest of the computers in the cluster, which are called workers. The master sends the workers data and calculations to run, and they send their results back to the master.</p>
 <p>When you’re just getting started with Spark it’s simpler to just run a cluster locally. Creating the connection is as simple as creating an instance of the <em>SparkContext</em> class. The class constructor takes a few optional arguments that allow you to specify the attributes of the cluster you’re connecting to.</p>
 <p>An object holding all these attributes can be created with the <em>SparkConf()</em> constructor. Take a look at the <a href="https://spark.apache.org/docs/2.1.0/api/python/pyspark.html">documentation</a> for all the details!</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 How do you connect to a Spark cluster from PySpark?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -342,12 +318,12 @@ How do you connect to a Spark cluster from PySpark?
 <p>The Spark DataFrame was designed to behave a lot like a SQL table (a table with variables in the columns and observations in the rows). Not only are they easier to understand, DataFrames are also more optimized for complicated operations than RDDs.</p>
 <p>When you start modifying and combining columns and rows of data, there are many ways to arrive at the same result, but some often take much longer than others. When using RDDs, it’s up to the data scientist to figure out the right way to optimize the query, but the DataFrame implementation has much of this optimization built in!</p>
 <p>To start working with Spark DataFrames, you first have to create a <strong><em>SparkSession</em></strong> object from your <strong><em>SparkContext</em></strong>. You can think of the <strong><em>SparkContext</em></strong> as your connection to the cluster and the <strong><em>SparkSession</em></strong> as your interface with that connection.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 What is the advantage of Spark DataFrames over RDDs?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -362,12 +338,12 @@ What is the advantage of Spark DataFrames over RDDs?
 <section id="creating-a-sparksession" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-sparksession">Creating a SparkSession</h3>
 <p>We’ve already created a SparkSession called <em>spark</em>, but what if you’re not sure there already is one?</p>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Creating multiple SparkSessions and SparkContexts can cause issues.
 </div>
 </div>
@@ -387,8 +363,8 @@ Creating multiple SparkSessions and SparkContexts can cause issues.
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/1b4b682a-30ae-4eb6-86c8-45c919d1efe0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">my_spark.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/4834e950-939d-4508-97b6-6e3cc91a7581-1-1b4b682a-30ae-4eb6-86c8-45c919d1efe0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">my_spark.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -419,8 +395,8 @@ Creating multiple SparkSessions and SparkContexts can cause issues.
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/3b3ded11-37db-481e-b08b-e31e05bb4147.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Query-ious.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/59f04e92-09e8-4e23-8139-28c25ed6733a-1-3b3ded11-37db-481e-b08b-e31e05bb4147.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Query-ious.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -444,8 +420,8 @@ Creating multiple SparkSessions and SparkContexts can cause issues.
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/007dbc37-b97a-4588-9949-f9b31e2807b9.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pandafy.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/b4a2cbaf-8fe3-41e4-807b-77449cc65052-1-007dbc37-b97a-4588-9949-f9b31e2807b9.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pandafy.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -476,8 +452,8 @@ Creating multiple SparkSessions and SparkContexts can cause issues.
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/5cf9d155-6777-4513-9ff2-bb4e199b7268.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">put_some_spark.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/3106d4db-26c4-4012-9c9a-303b17aec2bc-1-5cf9d155-6777-4513-9ff2-bb4e199b7268.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">put_some_spark.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -497,8 +473,8 @@ Creating multiple SparkSessions and SparkContexts can cause issues.
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/b33d29a3-8bc6-4021-9301-22df7dd83a24.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dropping middle man.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/0d683f63-55e8-4153-a7b0-3ef270d1bd82-1-b33d29a3-8bc6-4021-9301-22df7dd83a24.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dropping middle man.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -510,12 +486,12 @@ Creating multiple SparkSessions and SparkContexts can cause issues.
 <h3 class="anchored" data-anchor-id="creating-columns">Creating columns</h3>
 <p>In this section, we’ll learn how to use the methods defined by Spark’s DataFrame class to perform common data operations.</p>
 <p>Let’s look at performing column-wise operations. In Spark we can do this using the <strong><em>.withColumn()</em></strong> method, which takes two arguments. First, a string with the name of our new column, and second the new column itself. The new column must be an object of class Column. Creating one of these is as easy as extracting a column from our DataFrame using <strong><em>df.colName</em></strong>.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Updating a Spark DataFrame is somewhat different than working in pandas because the Spark DataFrame is immutable. This means that it can’t be changed, and so columns can’t be updated in place. Thus, all these methods return a new DataFrame.
 </div>
 </div>
@@ -523,12 +499,12 @@ Updating a Spark DataFrame is somewhat different than working in pandas because 
 
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 To overwrite the original DataFrame we must reassign the returned DataFrame using the method like so:
 </div>
 </div>
@@ -549,8 +525,8 @@ To overwrite the original DataFrame we must reassign the returned DataFrame usin
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/e1d69dc5-bfc3-4be5-b16e-41a364637c61.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">flights.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/a6457205-efa9-4875-9d16-c3491b8b31e7-1-e1d69dc5-bfc3-4be5-b16e-41a364637c61.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">flights.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -603,8 +579,8 @@ flights.filter(flights.air_time &gt; 120).show()</code></pre>
 <p>Both methods return the same output:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/708bb7b8-0bfa-4b1d-91bc-5fe2a1f0ca66.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Filtering using Spark.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/be962179-0dfa-4c7d-a2d1-0a24427780d0-1-708bb7b8-0bfa-4b1d-91bc-5fe2a1f0ca66.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Filtering using Spark.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -612,12 +588,12 @@ flights.filter(flights.air_time &gt; 120).show()</code></pre>
 <h3 class="anchored" data-anchor-id="selecting-using-spark">Selecting using Spark</h3>
 <p>The Spark variant of SQL’s SELECT is the <strong><em>.select()</em></strong> method. This method takes multiple arguments - one for each column we want to select. These arguments can either be the column name as a string (one for each column) or a column object (using the df.colName syntax). When we pass a column object, we can perform operations like addition or subtraction on the column to change the data contained in it, much like inside <strong><em>.withColumn()</em></strong>.</p>
 <p>The difference between <strong><em>.select()</em></strong> and <strong><em>.withColumn()</em></strong> methods is that <strong><em>.select()</em></strong> returns only the columns you specify, while <strong><em>.withColumn()</em></strong> returns ALL the columns of the DataFrame in addition to the one we defined.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 It’s often a good idea to drop columns you don’t need at the beginning of an operation so that you’re not dragging around extra data as you’re wrangling
 </div>
 </div>
@@ -643,8 +619,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/145de189-30a3-4291-976a-c90ea35f0433.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">selecting using spark.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/423ec00c-18a0-4465-908e-ada9c224c114-1-145de189-30a3-4291-976a-c90ea35f0433.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">selecting using spark.PNG</figcaption>
 </figure>
 </div>
 <p>Similar to SQL, we can also use the <strong><em>.select()</em></strong> method to perform column-wise operations. When we’re selecting a column using the df.colName notation, we can perform any column operation and the <strong><em>.select()</em></strong> method will return the transformed column. For example,</p>
@@ -667,8 +643,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 <p>Both methods return the same output:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/17a11b4b-a22a-4a45-9630-db01d4c79bb8.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">selecting using spark 2.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/48f5da17-b9f4-4a50-b4b9-56e6db3d44fb-1-17a11b4b-a22a-4a45-9630-db01d4c79bb8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">selecting using spark 2.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -683,8 +659,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/3d19a764-5571-488d-a166-2b196f5e967c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">min_distance.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/a05e237e-8feb-4bda-ac93-a3822a28c6de-1-3d19a764-5571-488d-a166-2b196f5e967c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">min_distance.PNG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -693,8 +669,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/befdc9f8-442b-493f-8e93-239f9429ff0d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">max_air_time.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/88be7e56-ede5-4e37-853f-5e42b5ad9b62-1-befdc9f8-442b-493f-8e93-239f9429ff0d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">max_air_time.PNG</figcaption>
 </figure>
 </div>
 <p>To get us familiar with more of the built in aggregation methods, here’s a few more exercises involving the flights table!</p>
@@ -707,8 +683,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/d8ca03b9-03ee-44c9-90c8-a362dbfc3d3d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">aggregate_spark_2.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/26753268-ca24-4493-be3f-e53ce6f95c98-1-d8ca03b9-03ee-44c9-90c8-a362dbfc3d3d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">aggregate_spark_2.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -725,8 +701,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/03fabbd2-f8cf-4054-a0cc-0504334a3031.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">tail_number.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/b3dfd0dd-bcdb-4786-b386-1c08a4917a30-1-03fabbd2-f8cf-4054-a0cc-0504334a3031.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tail_number.PNG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -738,8 +714,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/f6dd1bd3-d5b4-4da2-9686-42eb18764c13.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">by_origin.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/6cfe9207-715e-4a43-9082-5141faa95b7f-1-f6dd1bd3-d5b4-4da2-9686-42eb18764c13.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">by_origin.PNG</figcaption>
 </figure>
 </div>
 <p>In addition to the GroupedData methods we’ve already seen, there is also the <strong><em>.agg()</em></strong> method. This method lets us pass an aggregate column expression that uses any of the aggregate functions from the <strong><em>pyspark.sql.functions</em></strong> submodule.</p>
@@ -756,8 +732,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/4338c74c-f77c-455f-afa9-78e1e9e0e3cc.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">ave_dep_delay.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/8ed8e988-b3aa-4643-983e-bda839877be7-1-4338c74c-f77c-455f-afa9-78e1e9e0e3cc.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ave_dep_delay.PNG</figcaption>
 </figure>
 </div>
 <div class="cell">
@@ -766,8 +742,8 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/65b210a9-45a3-41d0-aaec-4cfe0bb5fb51.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">std_dev_dep_delay.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/8bbd7126-cabd-4367-b8f0-f31b321f6db9-1-65b210a9-45a3-41d0-aaec-4cfe0bb5fb51.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">std_dev_dep_delay.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -789,16 +765,16 @@ It’s often a good idea to drop columns you don’t need at the beginning of an
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/21f261e1-2d22-4246-ac0d-3c5952e77544.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">airports.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/59b2ad6e-549f-405d-9b67-e65638a2234c-1-21f261e1-2d22-4246-ac0d-3c5952e77544.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">airports.PNG</figcaption>
 </figure>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -822,8 +798,8 @@ Note
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/7d58cdad-7e29-4f51-914f-dc9ffd0ca6f6.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">flights_with_airports.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/90c6a703-ece1-4d0b-b772-b0bb19f63bb3-1-7d58cdad-7e29-4f51-914f-dc9ffd0ca6f6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">flights_with_airports.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -847,12 +823,12 @@ Note
 </section>
 <section id="data-types" class="level3">
 <h3 class="anchored" data-anchor-id="data-types">Data types</h3>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 What kind of data does Spark need for modeling?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -864,12 +840,12 @@ What kind of data does Spark need for modeling?
 </div>
 </div>
 <p>Before we start modeling, it’s important to know that Spark only handles numeric data. That means all of the columns in our DataFrame must be either integers or decimals (called <strong><em>‘doubles’</em></strong> in Spark). When we imported our data, we let Spark guess what kind of information each column held. Unfortunately, Spark doesn’t always guess right and you can see that some of the columns in our DataFrame are strings containing numbers as opposed to actual numeric values.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 To find out the datatype of each of the columns of a dataset use .dtypes
 </div>
 </div>
@@ -882,8 +858,8 @@ To find out the datatype of each of the columns of a dataset use .dtypes
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/ae54a020-3374-4b8d-aad5-8119c29d19a0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">data_types_before.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/2b43e145-d922-4bb1-85e1-366a07f863e0-1-ae54a020-3374-4b8d-aad5-8119c29d19a0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">data_types_before.PNG</figcaption>
 </figure>
 </div>
 <p>As we can see all columns are of type <strong><em>‘string’</em></strong>.</p>
@@ -906,8 +882,8 @@ To find out the datatype of each of the columns of a dataset use .dtypes
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Spark_files/figure-html/7ba4dd2d-11cb-48e1-8000-84ea41bd1b1c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">data_types_after.PNG</figcaption><p></p>
+<p><img src="Spark_files/figure-html/878711b5-4978-40a5-bd50-c07954710a1c-1-7ba4dd2d-11cb-48e1-8000-84ea41bd1b1c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">data_types_after.PNG</figcaption>
 </figure>
 </div>
 <p>We can see that the our <em>arr_delay</em>, <em>air_time</em>, <em>month</em>, and <em>plane_year</em> columns are now of the required type - <strong><em>‘int’</em></strong>.</p>
@@ -933,12 +909,12 @@ To find out the datatype of each of the columns of a dataset use .dtypes
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values</span></span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>model_data <span class="op">=</span> model_data.<span class="bu">filter</span>(<span class="st">"arr_delay is not NULL and dep_delay is not NULL and air_time is not NULL and plane_year is not NULL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Warning
 </div>
 </div>
@@ -958,12 +934,12 @@ Warning
 <li><p>The second step is to encode this numeric column as a one-hot vector using a OneHotEncoder. This works exactly the same way as the StringIndexer by creating an Estimator and then a Transformer.</p></li>
 </ol>
 <p>The end result is a column that encodes our categorical feature as a vector that’s suitable for machine learning routines! This may seem complicated, but don’t worry! All we have to remember is that we need to create a StringIndexer and a OneHotEncoder, and the <strong><em>Pipeline</em></strong> will take care of the rest.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Why do you have to encode a categorical feature as a one-hot vector?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1017,12 +993,12 @@ Why do you have to encode a categorical feature as a one-hot vector?
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the pipeline with keyword argument "stages"</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>flights_pipe <span class="op">=</span> Pipeline(stages<span class="op">=</span>[dest_indexer, dest_encoder, carr_indexer, carr_encoder, vec_assembler])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -1037,12 +1013,12 @@ Important
 <p>After we’ve cleaned our data and knocked it into shape for modeling, one of the most important steps is to split the data into a <strong><em>test set</em></strong> and a <strong><em>train set</em></strong>. After that, we don’t touch our test data until we think we have a good model! As we’re building models and forming hypotheses, we can test them on our training data to get an idea of their performance.</p>
 <p>Once we’ve got our favorite model, we can see how well it predicts the new data in our test set. This never-before-seen data will give us a much more realistic idea of our model’s performance in the real world when we’re trying to predict or classify new data.</p>
 <p>In Spark it’s important to make sure we split the data <strong>after</strong> all the transformations. This is because operations like StringIndexer don’t always produce the same index even when given the same list of strings.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Why is it important to use a test set in model evaluation?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1069,12 +1045,12 @@ Why is it important to use a test set in model evaluation?
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into a training set (60%) and test set (40%)</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>training, test <span class="op">=</span> piped_data.randomSplit([<span class="fl">.6</span>, <span class="fl">.4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -1109,12 +1085,12 @@ Important
 <h3 class="anchored" data-anchor-id="cross-validation">Cross validation</h3>
 <p>In the next few exercises we’ll be tuning our logistic regression model using a procedure called <strong>k-fold cross validation</strong>. This is a method of estimating the model’s performance on unseen data (like our test DataFrame). It works by splitting the training data into a few different partitions. The exact number is up to you, but we’ll be using PySpark’s default value of three. Once the data is split up, one of the partitions is set aside, and the model is fit to the others. Then the error is measured against the held out partition. This is repeated for each of the partitions, so that every block of data is held out and used as a test set exactly once. Then the error on each of the partitions is averaged. This is called the <strong><em>cross validation error</em></strong> of the model, and is a good estimate of the actual error on the held out data.</p>
 <p>We’ll be using cross validation to choose the hyperparameters by creating a grid of the possible pairs of values for the two hyperparameters, <strong><em>elasticNetParam</em></strong> and <strong><em>regParam</em></strong>, and using the cross validation error to compare all the different models so we can choose the best one!</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 What does cross validation allow you to estimate?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1152,12 +1128,12 @@ What does cross validation allow you to estimate?
 <span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the learning rate hyperparameters </span></span>
 <span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> grid.addGrid(lr.regParam, np.arange(<span class="dv">0</span>, <span class="fl">.1</span>, <span class="fl">.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The lr. regParam parameters are set by using np.arange which creates a list of numbers (from, increment, to) which give us the learning rate values to try.
 </div>
 </div>
@@ -1169,12 +1145,12 @@ The lr. regParam parameters are set by using np.arange which creates a list of n
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the elasticNetParam hyperparameter</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> grid.addGrid(lr.elasticNetParam, [<span class="dv">0</span>, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Elastic net regularization uses a weighted combination of LASSO (L1) and Ridge (L2). The specified value relates to the weighting applied to L1 regularization, so a value of 0 would be pure L2, and a value of 1 would be pure Ridge. Any values in between result in a blend of the two.
 </div>
 </div>
@@ -1220,12 +1196,12 @@ best_lr = models.bestModel</code></pre>
 <section id="evaluating-binary-classifiers" class="level3">
 <h3 class="anchored" data-anchor-id="evaluating-binary-classifiers">Evaluating binary classifiers</h3>
 <p>We’ll be using a common metric for binary classification algorithms call the AUC, or area under the curve. In this case, the curve is the ROC, or receiver operating curve. For our purposes, the closer the AUC is to one (1), the better the model is!</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 If you’ve created a perfect binary classification model, what would the AUC be?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1286,9 +1262,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1300,7 +1290,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1336,24 +1343,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

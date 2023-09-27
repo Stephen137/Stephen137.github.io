@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,13 +91,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -143,31 +116,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -200,6 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">January 13, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -276,65 +253,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first 5 rows</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ratings.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>user</th>
-      <th>movie</th>
-      <th>rating</th>
-      <th>timestamp</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>196</td>
-      <td>242</td>
-      <td>3</td>
-      <td>881250949</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>186</td>
-      <td>302</td>
-      <td>3</td>
-      <td>891717742</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>22</td>
-      <td>377</td>
-      <td>1</td>
-      <td>878887116</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>244</td>
-      <td>51</td>
-      <td>2</td>
-      <td>880606923</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>166</td>
-      <td>346</td>
-      <td>1</td>
-      <td>886397596</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">user</th>
+<th data-quarto-table-cell-role="th">movie</th>
+<th data-quarto-table-cell-role="th">rating</th>
+<th data-quarto-table-cell-role="th">timestamp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>196</td>
+<td>242</td>
+<td>3</td>
+<td>881250949</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>186</td>
+<td>302</td>
+<td>3</td>
+<td>891717742</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>22</td>
+<td>377</td>
+<td>1</td>
+<td>878887116</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>244</td>
+<td>51</td>
+<td>2</td>
+<td>880606923</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>166</td>
+<td>346</td>
+<td>1</td>
+<td>886397596</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>Although this has all the information we need, it is not a particularly helpful way for humans to look at this data. Here is the same data cross-tabulated into a human-friendly table:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/9cbc69a5-40ca-4406-9bde-0db7c9887870.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/ad084338-1-9cbc69a5-40ca-4406-9bde-0db7c9887870.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>We have selected just a few of the most popular movies, and users who watch the most movies, for this crosstab example. The empty cells in this table are the things that we would like our model to learn to fill in. Those are the places where a user has not reviewed the movie yet, presumably because they have not watched it. For each user, we would like to figure out which of those movies they might be most likely to enjoy.</p>
@@ -391,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This is what it looks like in Microsoft Excel:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/0fb84ac2-fe09-4175-a46e-943bba1ea7f1.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">latent_factors.JPG</figcaption><p></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/79175e51-1-0fb84ac2-fe09-4175-a46e-943bba1ea7f1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">latent_factors.JPG</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -401,8 +379,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As we’ve discussed, we can do this by simply taking the dot product of each movie with each user. If, for instance, the first latent <code>user</code> factor represents how much the user likes action movies, and the first latent <code>movie</code> factor represents if the movie has a lot of action or not, the product of those will be particularly <code>high</code> if either <code>the user likes action movies and the movie has a lot of action in it</code> or <code>the user doesn't like action movies and the movie doesn't have any action in it</code>. On the other hand, if we have a mismatch (a user loves action movies but the movie isn’t an action film, or the user doesn’t like action movies and it is one), the product will be very low.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/7b668964-a0f6-4e7a-a92b-0cb7782686a1.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">initialized.JPG</figcaption><p></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/d2559e3b-1-7b668964-a0f6-4e7a-a92b-0cb7782686a1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">initialized.JPG</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -411,8 +389,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can use any loss function that we wish; let’s pick <code>mean squared error</code> for now, since that is one reasonable way to represent the accuracy of a prediction.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/f2041a2e-e5f0-480b-b75b-d2a6a5142c3b.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">initialized.JPG</figcaption><p></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/e096523a-1-f2041a2e-e5f0-480b-b75b-d2a6a5142c3b.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">initialized.JPG</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -421,8 +399,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>That’s all we need. With this in place, we can optimize our parameters (that is, the latent factors) using stochastic gradient descent, such as to minimize the loss. At each step, the stochastic gradient descent optimizer will calculate the match between each movie and each user using the dot product, and will compare it to the actual rating that each user gave to each movie. It will then calculate the derivative of this value and will step the weights by multiplying this by the learning rate. After doing this lots of times, the loss will get better and better, and the recommendations will also get better and better.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/b9ed0766-c860-44a6-9a09-3e4a3fc86baa.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">optimized.JPG</figcaption><p></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/fb427b11-1-b9ed0766-c860-44a6-9a09-3e4a3fc86baa.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">optimized.JPG</figcaption>
 </figure>
 </div>
 <p>The above spreadsheet screenshot shows the updated predictions after applying Stohastic Gradient Descent using Excel’s inbuilt Solver function - note that the movie rating predictions are now much more in line with the actual ratings (with values betwen 0 and 5) and our loss function RMSE has reduced from 2.8 to 0.42.</p>
@@ -437,45 +415,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                     usecols<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>), names<span class="op">=</span>(<span class="st">'movie'</span>,<span class="st">'title'</span>), header<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>movies.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>movie</th>
-      <th>title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>Toy Story (1995)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>GoldenEye (1995)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>Four Rooms (1995)</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>Get Shorty (1995)</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>Copycat (1995)</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">movie</th>
+<th data-quarto-table-cell-role="th">title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>Toy Story (1995)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>GoldenEye (1995)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Four Rooms (1995)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>Get Shorty (1995)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Copycat (1995)</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -485,63 +464,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> ratings.merge(movies)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ratings.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>user</th>
-      <th>movie</th>
-      <th>rating</th>
-      <th>timestamp</th>
-      <th>title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>196</td>
-      <td>242</td>
-      <td>3</td>
-      <td>881250949</td>
-      <td>Kolya (1996)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>63</td>
-      <td>242</td>
-      <td>3</td>
-      <td>875747190</td>
-      <td>Kolya (1996)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>226</td>
-      <td>242</td>
-      <td>5</td>
-      <td>883888671</td>
-      <td>Kolya (1996)</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>154</td>
-      <td>242</td>
-      <td>3</td>
-      <td>879138235</td>
-      <td>Kolya (1996)</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>306</td>
-      <td>242</td>
-      <td>5</td>
-      <td>876503793</td>
-      <td>Kolya (1996)</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">user</th>
+<th data-quarto-table-cell-role="th">movie</th>
+<th data-quarto-table-cell-role="th">rating</th>
+<th data-quarto-table-cell-role="th">timestamp</th>
+<th data-quarto-table-cell-role="th">title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>196</td>
+<td>242</td>
+<td>3</td>
+<td>881250949</td>
+<td>Kolya (1996)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>63</td>
+<td>242</td>
+<td>3</td>
+<td>875747190</td>
+<td>Kolya (1996)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>226</td>
+<td>242</td>
+<td>5</td>
+<td>883888671</td>
+<td>Kolya (1996)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>154</td>
+<td>242</td>
+<td>3</td>
+<td>879138235</td>
+<td>Kolya (1996)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>306</td>
+<td>242</td>
+<td>5</td>
+<td>876503793</td>
+<td>Kolya (1996)</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -552,78 +532,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> CollabDataLoaders.from_df(ratings, item_name<span class="op">=</span><span class="st">'title'</span>, bs<span class="op">=</span><span class="dv">64</span>) <span class="co"># need to pass in item_name to get title</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>dls.show_batch()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>user</th>
-      <th>title</th>
-      <th>rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>542</td>
-      <td>My Left Foot (1989)</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>422</td>
-      <td>Event Horizon (1997)</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>311</td>
-      <td>African Queen, The (1951)</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>595</td>
-      <td>Face/Off (1997)</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>617</td>
-      <td>Evil Dead II (1987)</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>158</td>
-      <td>Jurassic Park (1993)</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>836</td>
-      <td>Chasing Amy (1997)</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>474</td>
-      <td>Emma (1996)</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>466</td>
-      <td>Jackie Chan's First Strike (1996)</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>554</td>
-      <td>Scream (1996)</td>
-      <td>3</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">user</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">rating</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>542</td>
+<td>My Left Foot (1989)</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>422</td>
+<td>Event Horizon (1997)</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>311</td>
+<td>African Queen, The (1951)</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>595</td>
+<td>Face/Off (1997)</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>617</td>
+<td>Evil Dead II (1987)</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>158</td>
+<td>Jurassic Park (1993)</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>836</td>
+<td>Chasing Amy (1997)</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>474</td>
+<td>Emma (1996)</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>466</td>
+<td>Jackie Chan's First Strike (1996)</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>554</td>
+<td>Scream (1996)</td>
+<td>3</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -787,48 +766,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>1.385412</td>
-      <td>1.293633</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1.061318</td>
-      <td>1.070560</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.968811</td>
-      <td>0.976037</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.862989</td>
-      <td>0.883624</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.797610</td>
-      <td>0.869864</td>
-      <td>00:04</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1.385412</td>
+<td>1.293633</td>
+<td>00:04</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1.061318</td>
+<td>1.070560</td>
+<td>00:04</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.968811</td>
+<td>0.976037</td>
+<td>00:04</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.862989</td>
+<td>0.883624</td>
+<td>00:04</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.797610</td>
+<td>0.869864</td>
+<td>00:04</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -877,48 +855,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.991383</td>
-      <td>0.971459</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.862119</td>
-      <td>0.888047</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.677498</td>
-      <td>0.857523</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.464585</td>
-      <td>0.863056</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.384263</td>
-      <td>0.867252</td>
-      <td>00:05</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.991383</td>
+<td>0.971459</td>
+<td>00:04</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.862119</td>
+<td>0.888047</td>
+<td>00:04</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.677498</td>
+<td>0.857523</td>
+<td>00:04</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.464585</td>
+<td>0.863056</td>
+<td>00:04</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.384263</td>
+<td>0.867252</td>
+<td>00:05</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -930,8 +907,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>That’s because at this point we only have weights; we do not have <code>biases</code>. If we have a single number for each user that we can add to our scores, and ditto for each movie, that will handle this missing piece very nicely. Let’s first look at this in Excel - we simply initialize an additional randomized <code>bias factor</code> to add to our existing <code>latent factors</code> and then optimize as before. This results in an improvement - our RMSE drops from 0.42 to 0.35 - see spreadsheet screenshot below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/116f9d3a-7fa8-4c06-af73-d5f545c8db8a.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">bias.JPG</figcaption><p></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/8ef85014-1-116f9d3a-7fa8-4c06-af73-d5f545c8db8a.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">bias.JPG</figcaption>
 </figure>
 </div>
 <p>Let’s jump back to Python and adjust our model architecture there to introduce bias into our model:</p>
@@ -981,48 +958,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.951611</td>
-      <td>0.925811</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.819404</td>
-      <td>0.855196</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.616164</td>
-      <td>0.856704</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.403988</td>
-      <td>0.885035</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.294023</td>
-      <td>0.891860</td>
-      <td>00:05</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.951611</td>
+<td>0.925811</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.819404</td>
+<td>0.855196</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.616164</td>
+<td>0.856704</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.403988</td>
+<td>0.885035</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.294023</td>
+<td>0.891860</td>
+<td>00:05</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1083,48 +1059,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.976209</td>
-      <td>0.929432</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.867723</td>
-      <td>0.859258</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.751625</td>
-      <td>0.823332</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.580325</td>
-      <td>0.811122</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.485529</td>
-      <td>0.811769</td>
-      <td>00:05</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.976209</td>
+<td>0.929432</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.867723</td>
+<td>0.859258</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.751625</td>
+<td>0.823332</td>
+<td>00:04</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.580325</td>
+<td>0.811122</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.485529</td>
+<td>0.811769</td>
+<td>00:05</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1161,48 +1136,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.937280</td>
-      <td>0.919222</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.836111</td>
-      <td>0.858221</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.594563</td>
-      <td>0.858991</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.416554</td>
-      <td>0.887284</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.282974</td>
-      <td>0.894385</td>
-      <td>00:05</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.937280</td>
+<td>0.919222</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.836111</td>
+<td>0.858221</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.594563</td>
+<td>0.858991</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.416554</td>
+<td>0.887284</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.282974</td>
+<td>0.894385</td>
+<td>00:05</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1238,48 +1212,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.922303</td>
-      <td>0.922695</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.856747</td>
-      <td>0.854244</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.600128</td>
-      <td>0.864396</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.404001</td>
-      <td>0.894145</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.283558</td>
-      <td>0.902557</td>
-      <td>00:04</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.922303</td>
+<td>0.922695</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.856747</td>
+<td>0.854244</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.600128</td>
+<td>0.864396</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.404001</td>
+<td>0.894145</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.283558</td>
+<td>0.902557</td>
+<td>00:04</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1409,48 +1382,47 @@ tensor([[ 0.7645],
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.960358</td>
-      <td>0.956795</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.869042</td>
-      <td>0.874685</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.737840</td>
-      <td>0.839419</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.589841</td>
-      <td>0.823726</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.472334</td>
-      <td>0.824282</td>
-      <td>00:05</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.960358</td>
+<td>0.956795</td>
+<td>00:04</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.869042</td>
+<td>0.874685</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.737840</td>
+<td>0.839419</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.589841</td>
+<td>0.823726</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.472334</td>
+<td>0.824282</td>
+<td>00:05</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1748,48 +1720,47 @@ collab_learner<span class="ansi-blue-fg">(</span>
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.940161</td>
-      <td>0.954125</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.845409</td>
-      <td>0.871870</td>
-      <td>00:04</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.732785</td>
-      <td>0.837964</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.581802</td>
-      <td>0.822925</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.483456</td>
-      <td>0.823324</td>
-      <td>00:04</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.940161</td>
+<td>0.954125</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.845409</td>
+<td>0.871870</td>
+<td>00:04</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.732785</td>
+<td>0.837964</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.581802</td>
+<td>0.822925</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.483456</td>
+<td>0.823324</td>
+<td>00:04</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1923,48 +1894,47 @@ collab_learner<span class="ansi-blue-fg">(</span>
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.960975</td>
-      <td>0.944082</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.899966</td>
-      <td>0.908818</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.877111</td>
-      <td>0.890931</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.791085</td>
-      <td>0.869468</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.771323</td>
-      <td>0.869940</td>
-      <td>00:06</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.960975</td>
+<td>0.944082</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.899966</td>
+<td>0.908818</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.877111</td>
+<td>0.890931</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.791085</td>
+<td>0.869468</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.771323</td>
+<td>0.869940</td>
+<td>00:06</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1997,48 +1967,47 @@ collab_learner<span class="ansi-blue-fg">(</span>
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.957651</td>
-      <td>0.987930</td>
-      <td>00:07</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.894093</td>
-      <td>0.919895</td>
-      <td>00:07</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.907125</td>
-      <td>0.892506</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.863961</td>
-      <td>0.864401</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.766643</td>
-      <td>0.866521</td>
-      <td>00:06</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.957651</td>
+<td>0.987930</td>
+<td>00:07</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.894093</td>
+<td>0.919895</td>
+<td>00:07</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.907125</td>
+<td>0.892506</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.863961</td>
+<td>0.864401</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.766643</td>
+<td>0.866521</td>
+<td>00:06</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -2135,8 +2104,8 @@ TabularModel<span class="ansi-blue-fg">(</span>
 <p>It’s possible you may have heard about <code>Embeddings before</code> in the context of <code>Natural Language Processing (NLP)</code>. We can turn words into integers using an embedding matrix. Let’s use the poem [Green Eggs and Ham] to illustrate:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/05150507-7e20-435c-86ab-c1f520086cba.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">embedding_NLP.JPG</figcaption><p></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/95efcb2d-1-05150507-7e20-435c-86ab-c1f520086cba.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">embedding_NLP.JPG</figcaption>
 </figure>
 </div>
 <p>From the spreadhseet screenshot above, we can see that each word that appears in the poem is given an index which can be arbitrary (in this case alphabetical) and then given 4 randomly initialized latent factors, and a bias factor. This allows the conversion from text to integers in the form of an Embedding matrix, which allows our neural net to interpret the text.</p>
@@ -2184,9 +2153,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2198,7 +2181,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -2234,24 +2234,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -139,31 +111,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -198,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">March 28, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -242,14 +218,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Goal: Transforming the data previously loaded in to our data warehouse (in my case BigQuery) by building models using a <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/README.md">dbt project</a>, testing and deploying those models in a production environment, before finally visualizing the data in Looker.</p>
 <p>Note that I have already ingested the prerequisite datasets to Google Cloud Storage using the <a href="https://www.prefect.io/">Prefect</a> work orchestration solution, and have created the following external tables in BigQuery:</p>
 <ul>
-<li><p>Yellow trip data (109,047,518 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/37072954-6175-4aeb-b15d-44db33da91c9.PNG" class="img-fluid" alt="yellow_trip_data.PNG"></p></li>
-<li><p>fhv trip data (43,244,696) <img src="DE_Zoomcamp_Week_4_files/figure-html/adaa502c-e8d6-43c8-bd1c-21dd41149a42.PNG" class="img-fluid" alt="fhv_trip_data.PNG"></p></li>
-<li><p>Green trip data (7,778,101 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/cb73b94b-a7eb-440d-8100-4cb06bfbdfc8.PNG" class="img-fluid" alt="green_trip_data.PNG"></p></li>
+<li><p>Yellow trip data (109,047,518 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/e6133e81-6ae2-4cd6-b5d0-f92a20955587-1-37072954-6175-4aeb-b15d-44db33da91c9.PNG" class="img-fluid" alt="yellow_trip_data.PNG"></p></li>
+<li><p>fhv trip data (43,244,696) <img src="DE_Zoomcamp_Week_4_files/figure-html/e6133e81-6ae2-4cd6-b5d0-f92a20955587-2-adaa502c-e8d6-43c8-bd1c-21dd41149a42.PNG" class="img-fluid" alt="fhv_trip_data.PNG"></p></li>
+<li><p>Green trip data (7,778,101 rows) <img src="DE_Zoomcamp_Week_4_files/figure-html/e6133e81-6ae2-4cd6-b5d0-f92a20955587-3-cb73b94b-a7eb-440d-8100-4cb06bfbdfc8.PNG" class="img-fluid" alt="green_trip_data.PNG"></p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3ace9e5b-b482-44c0-ab33-eaf8cef0228a.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">week_4.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/31b81cae-d85c-47b6-b538-fb013686baa4-1-3ace9e5b-b482-44c0-ab33-eaf8cef0228a.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">week_4.JPG</figcaption>
 </figure>
 </div>
 <section id="analytics-engineering-basics" class="level3">
@@ -258,14 +234,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 class="anchored" data-anchor-id="what-is-analytics-engineering">What is Analytics Engineering ?</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b5371c91-2d1d-4e51-83a1-bbd40a852819.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">data_team_roles.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/18a7371e-99ce-4247-938c-4a267fa2091f-1-b5371c91-2d1d-4e51-83a1-bbd40a852819.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">data_team_roles.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cf600eff-4089-4708-a3bc-afda73970197.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">tooling.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/18a7371e-99ce-4247-938c-4a267fa2091f-2-cf600eff-4089-4708-a3bc-afda73970197.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tooling.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -273,26 +249,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 class="anchored" data-anchor-id="data-modeling-concepts">Data Modeling Concepts</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/c7953f75-d4c6-4648-9f31-1211d4833565.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">elt_etl.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/336f431d-51df-4ff0-a990-40cf1fdf306a-4-c7953f75-d4c6-4648-9f31-1211d4833565.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">elt_etl.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/148f708b-1d74-4038-982b-aaee4ce91d03.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">kimball.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/336f431d-51df-4ff0-a990-40cf1fdf306a-1-148f708b-1d74-4038-982b-aaee4ce91d03.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">kimball.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/823ffca9-47c7-4c1e-b9af-e1b7465d82b8.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">elements_dimensional_modelling.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/336f431d-51df-4ff0-a990-40cf1fdf306a-2-823ffca9-47c7-4c1e-b9af-e1b7465d82b8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">elements_dimensional_modelling.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/93bfcdd8-f4e9-49f1-a59b-7ab0484c1050.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">architect_dimension_modeling.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/336f431d-51df-4ff0-a990-40cf1fdf306a-3-93bfcdd8-f4e9-49f1-a59b-7ab0484c1050.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">architect_dimension_modeling.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -301,26 +277,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="what-is-dbt">4.1.2 What is dbt ?</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/77794918-2902-4f20-be56-5d554e42a149.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">what_is_dbt.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/819bf4a7-6522-4d1b-a9c1-193f98605d52-2-77794918-2902-4f20-be56-5d554e42a149.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">what_is_dbt.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d98e022d-d296-4282-8371-21c24632ecd9.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">how_does_dbt_work.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/819bf4a7-6522-4d1b-a9c1-193f98605d52-4-d98e022d-d296-4282-8371-21c24632ecd9.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">how_does_dbt_work.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/153b1441-a97d-4ce6-9870-629b34ccda6c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">how_to_use_dbt.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/819bf4a7-6522-4d1b-a9c1-193f98605d52-1-153b1441-a97d-4ce6-9870-629b34ccda6c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">how_to_use_dbt.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cc5cc6f4-de2f-4129-96d6-6653ca23469c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">how_are_we_going_to_use_dbt.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/819bf4a7-6522-4d1b-a9c1-193f98605d52-3-cc5cc6f4-de2f-4129-96d6-6653ca23469c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">how_are_we_going_to_use_dbt.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -335,14 +311,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/09e95e7a-6cd7-4f0e-b0dc-60244f638131.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_bq_1.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/76bf0c3b-0f71-49b8-b094-a7b1e17bfd83-1-09e95e7a-6cd7-4f0e-b0dc-60244f638131.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_bq_1.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/6edfbce1-c0c4-4a0f-a68a-5232ed41762f.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_bq_2.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/76bf0c3b-0f71-49b8-b094-a7b1e17bfd83-3-6edfbce1-c0c4-4a0f-a68a-5232ed41762f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_bq_2.PNG</figcaption>
 </figure>
 </div>
 <ol start="2" type="1">
@@ -351,8 +327,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><em>Note: if you decide to use specific roles instead of BQ Admin, some users reported that they needed to add also viewer role to avoid encountering denied access errors</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d89b8144-665e-49e0-9ee2-b1d5111edde8.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_bq_3.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/76bf0c3b-0f71-49b8-b094-a7b1e17bfd83-4-d89b8144-665e-49e0-9ee2-b1d5111edde8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_bq_3.PNG</figcaption>
 </figure>
 </div>
 <ol start="3" type="1">
@@ -360,8 +336,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/4e70441a-5943-4d11-ac51-a7fa5a0c0849.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_bq_4.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/76bf0c3b-0f71-49b8-b094-a7b1e17bfd83-2-4e70441a-5943-4d11-ac51-a7fa5a0c0849.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_bq_4.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -379,8 +355,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/eb6d2702-d4e5-4a41-8b3d-ec5e5194031c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">project_setup.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/090765f8-9b21-4fca-bedb-72550fb95650-4-eb6d2702-d4e5-4a41-8b3d-ec5e5194031c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">project_setup.PNG</figcaption>
 </figure>
 </div>
 <ol start="3" type="1">
@@ -389,8 +365,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b780785f-348c-4c25-88aa-813e2e0f7d00.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbase_connection.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/090765f8-9b21-4fca-bedb-72550fb95650-3-b780785f-348c-4c25-88aa-813e2e0f7d00.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbase_connection.PNG</figcaption>
 </figure>
 </div>
 <ol start="5" type="1">
@@ -398,20 +374,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/fd1ab2d5-e34a-4f7e-ba51-4ae426b587cc.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_bq_5.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/090765f8-9b21-4fca-bedb-72550fb95650-5-fd1ab2d5-e34a-4f7e-ba51-4ae426b587cc.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_bq_5.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/0887af15-4358-41b1-afaf-dd4f72c0b4e1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_bq_6.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/090765f8-9b21-4fca-bedb-72550fb95650-1-0887af15-4358-41b1-afaf-dd4f72c0b4e1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_bq_6.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b0b5ae3c-24c0-42aa-90c1-29d39e501b4d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_test.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/090765f8-9b21-4fca-bedb-72550fb95650-2-b0b5ae3c-24c0-42aa-90c1-29d39e501b4d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_test.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -423,8 +399,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/577b74fc-87c6-4c0c-b42c-99b7108fd697.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">github_repo.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3e5c00dc-e9d0-4df7-bf59-184914ec414c-1-577b74fc-87c6-4c0c-b42c-99b7108fd697.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">github_repo.PNG</figcaption>
 </figure>
 </div>
 <ol start="2" type="1">
@@ -436,8 +412,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>At the end, if you go to your projects it should look some like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b043d527-a8e1-4bd2-a86c-0eb1bdcf6605.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_project.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d8768e9a-b332-459d-93ac-e9cff021ee5e-1-b043d527-a8e1-4bd2-a86c-0eb1bdcf6605.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_project.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -448,8 +424,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Once you have created the new branch - edit the <code>dbt_project_yaml</code> to as per below and save the file:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca789475-2997-4795-8973-6b22b76dbbcf.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_yaml.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/52dd0c17-1dec-409b-a94b-6a91badddc04-1-ca789475-2997-4795-8973-6b22b76dbbcf.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_yaml.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -459,8 +435,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 class="anchored" data-anchor-id="anatomy-of-a-dbt-model-written-code-vs-compiled-sources">Anatomy of a dbt model: written code vs compiled sources</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca30e80a-cca5-4cbc-916d-17292195ee18.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_model_anatomy.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d6fc5bd9-bf67-49e3-9dff-24f9da2639ee-1-ca30e80a-cca5-4cbc-916d-17292195ee18.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_model_anatomy.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -468,35 +444,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 class="anchored" data-anchor-id="sources-seeds-and-ref">Sources, seeds and ref</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/7630b65d-b815-4974-8c7b-d558d069fbe6.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_model_FROM_clause.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/98488c1d-8c14-4850-80e5-57be0e236108-1-7630b65d-b815-4974-8c7b-d558d069fbe6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_model_FROM_clause.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b3357e81-d884-454f-8975-bb519e5f0ac1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_model_FROM_clause_ref.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/98488c1d-8c14-4850-80e5-57be0e236108-2-b3357e81-d884-454f-8975-bb519e5f0ac1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_model_FROM_clause_ref.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s now go back to our dbt IDE and create two new directories for the models we will be creating:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/7ef7d7a6-c19e-4705-89d9-bce7bf6cc204.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">models_directories.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f574bc6c-b366-4e67-becf-9fa6997d3636-2-7ef7d7a6-c19e-4705-89d9-bce7bf6cc204.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">models_directories.PNG</figcaption>
 </figure>
 </div>
 <p>The first directory <code>Staging</code> will be used for our raw data. Let’s create a <code>schema.yml</code> file to use the <code>source</code> macro to resolve the correct schema, build the correct dependencies, and generate the lineage automatically:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/190d268e-438a-496b-9b25-2686d4c67aaf.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">staging_schema_yml.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f574bc6c-b366-4e67-becf-9fa6997d3636-1-190d268e-438a-496b-9b25-2686d4c67aaf.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">staging_schema_yml.PNG</figcaption>
 </figure>
 </div>
 <p>Now let’s create a sql file :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b4b36f3a-1d6e-4031-b2a1-ba10873275f5.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">staging_green_sql.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f574bc6c-b366-4e67-becf-9fa6997d3636-3-b4b36f3a-1d6e-4031-b2a1-ba10873275f5.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">staging_green_sql.PNG</figcaption>
 </figure>
 </div>
 <p>We can run this model using one of the following commands within the dbt terminal:</p>
@@ -510,22 +486,22 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <pre><code>dbt run -m stg_green_tripdata.sql</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cdb9b0c1-bd31-4ce4-aed0-1dd114bf5b3e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">model_run_error_region.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f574bc6c-b366-4e67-becf-9fa6997d3636-4-cdb9b0c1-bd31-4ce4-aed0-1dd114bf5b3e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">model_run_error_region.PNG</figcaption>
 </figure>
 </div>
 <p>I ran into an error because of inconsistent regions. The data buckets and BigQuery tables have to be configured to the same region. I reconfigured my staging table to <code>Central Europe 2</code> to be consistent with my data bucket and the model ran successfully!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cf71db17-d1e0-4636-8926-12492e5826c8.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_green_tripdata_modelrun.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/dff4f2b3-84b1-478d-927b-35e3f2ef12f3-1-cf71db17-d1e0-4636-8926-12492e5826c8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_green_tripdata_modelrun.PNG</figcaption>
 </figure>
 </div>
 <p>If we now head to <code>BigQuery</code> we can see that our sql table has been created :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/df13f474-cf86-46c5-bc1f-25afc949f4e7.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">BQ_stg_green_tripdata.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/dff4f2b3-84b1-478d-927b-35e3f2ef12f3-2-df13f474-cf86-46c5-bc1f-25afc949f4e7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">BQ_stg_green_tripdata.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -534,22 +510,22 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p><a href="https://docs.getdbt.com/docs/build/jinja-macros#macros">Macros</a> in Jinja are pieces of code that can be reused multiple times – they are analogous to “functions” in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in <code>.sql</code> files, typically in your <code>macros</code> directory <a href="https://docs.getdbt.com/reference/project-configs/macro-paths">(docs)</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b30a4c48-fe8f-4d94-bbda-c811ca7ad478.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">macros.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ae3a381d-69a7-4667-8abf-59e1cc1d6268-1-b30a4c48-fe8f-4d94-bbda-c811ca7ad478.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">macros.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s now create a macros file for our project :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d2e685e5-b007-44e8-a6fa-41a768b4abaa.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">get_payment_type_macro.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/8621a554-e672-43c3-ae30-985814b7bbbc-2-d2e685e5-b007-44e8-a6fa-41a768b4abaa.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">get_payment_type_macro.PNG</figcaption>
 </figure>
 </div>
 <p>And let’s add that macro to our <code>stg_green_tripdata.sql</code> file :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/080cdaae-c330-4a2a-b01b-0795648f863b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">staging_green_sql_updated.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/8621a554-e672-43c3-ae30-985814b7bbbc-1-080cdaae-c330-4a2a-b01b-0795648f863b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">staging_green_sql_updated.PNG</figcaption>
 </figure>
 </div>
 <p>And run the model once again using the following command within the dbt terminal:</p>
@@ -621,8 +597,8 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>We can also see the compiled code:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b6997cf-8a54-49d2-9348-152313f9d82c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">compiled_code_stg_green.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3d388c8e-0fa9-412a-8679-b58db4a06089-1-5b6997cf-8a54-49d2-9348-152313f9d82c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">compiled_code_stg_green.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -631,37 +607,37 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>dbt packages are essentially standalone dbt projects, with models and macros that tackle a specific problem area. As a dbt user, by adding a package to our project, the package’s models and macros will become part of our own project.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e1dc92d9-bb4d-47ca-a51e-f619a5f8de16.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">packages.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b471ece8-c053-4ee6-910f-dc344abe710b-1-e1dc92d9-bb4d-47ca-a51e-f619a5f8de16.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">packages.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s create a <code>packages.yaml</code> file to include the following :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/95ef9435-4ea1-4417-8df5-516d71bdb461.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">packages_yml.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3650d742-15fc-4859-9165-4a28fab5c5e8-1-95ef9435-4ea1-4417-8df5-516d71bdb461.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">packages_yml.PNG</figcaption>
 </figure>
 </div>
 <p>To install this package and download the dependencies run the following command in the dbt terminal:</p>
 <pre><code>dbt deps   </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/bb99a88b-7fd9-4b7f-bad0-0b5d0f1d1107.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_deps.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3650d742-15fc-4859-9165-4a28fab5c5e8-2-bb99a88b-7fd9-4b7f-bad0-0b5d0f1d1107.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_deps.PNG</figcaption>
 </figure>
 </div>
 <p>A number of folders and files have now been created:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/eb7a00cd-503f-4c0b-82f5-d0fbf374d589.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_packages.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3650d742-15fc-4859-9165-4a28fab5c5e8-3-eb7a00cd-503f-4c0b-82f5-d0fbf374d589.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_packages.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s return to our model and update our <code>stg_green_tripdata.sql</code> file to make use of a macro:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/4cefee22-bfb0-4564-885d-67dd5cd67eee.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">macro_surrogate.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/bfe17155-c36a-407b-8907-a42dcbdf1c6a-2-4cefee22-bfb0-4564-885d-67dd5cd67eee.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">macro_surrogate.PNG</figcaption>
 </figure>
 </div>
 <p>Now let’s run the command from the dbt IDE :</p>
@@ -669,8 +645,8 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>And we can see the compiled code extract:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/48e4a1a0-d1e4-44a4-afa6-b840eda51387.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">surrogate_compiled.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/bfe17155-c36a-407b-8907-a42dcbdf1c6a-1-48e4a1a0-d1e4-44a4-afa6-b840eda51387.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">surrogate_compiled.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -680,23 +656,23 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>See <a href="https://docs.getdbt.com/docs/build/project-variables">Project variables</a> for further details.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d7f17b1d-b638-467f-a20b-6dbfce2271d7.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">variables.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/32852199-954f-483c-88d7-01775265ae86-1-d7f17b1d-b638-467f-a20b-6dbfce2271d7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">variables.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s now introduce the above <code>is_test_run</code> variable into our <code>stg_green_tripdata.sql</code> file which will allow us to control from the command line whether we execute a <code>test_run</code> with a limit of 100 rows, or a full run, with no limit:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/681543bb-e6d6-4f4c-a83a-44d9b368c417.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">limit_variable.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/58a48b23-16ba-4673-bfdc-81a8f669eb93-2-681543bb-e6d6-4f4c-a83a-44d9b368c417.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">limit_variable.PNG</figcaption>
 </figure>
 </div>
 <p>And run the model from the IDE first, <code>without</code> specifying our variable function, and so the run will default to <code>True</code> and the limit of 100 rows will be applied :</p>
 <pre><code>dbt run --select stg_green_tripdata</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/cd971f17-1a17-4406-bfca-4652be25d63d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">limit_100.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/58a48b23-16ba-4673-bfdc-81a8f669eb93-3-cd971f17-1a17-4406-bfca-4652be25d63d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">limit_100.PNG</figcaption>
 </figure>
 </div>
 <p>But if we run again, this time specifying our variable as <code>False</code> then the 100 row limit will not be applied :</p>
@@ -704,30 +680,30 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>We can see from our Big Query table that we now have <code>6,835,902</code> rows :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/4e083276-3a37-49e2-8131-1723532c5cc2.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">green_tripdata_BQ_no_limit.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/58a48b23-16ba-4673-bfdc-81a8f669eb93-1-4e083276-3a37-49e2-8131-1723532c5cc2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">green_tripdata_BQ_no_limit.PNG</figcaption>
 </figure>
 </div>
 <p>OK, now that we have built our <code>green_tripdata</code> model let’s replicate these steps for our <code>yellow_tripdata</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/dc319591-d297-496f-ba42-c6526a5a4924.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">staging_yellow.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1c61fcda-3e6e-4bd0-862e-ace94fd8dd35-3-dc319591-d297-496f-ba42-c6526a5a4924.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">staging_yellow.PNG</figcaption>
 </figure>
 </div>
 <p>Now use <code>dbt run</code> because we have two models:</p>
 <pre><code>dbt run --var 'is_test_run: false'</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/460fb15b-068c-4b3b-ba87-2af94566b43b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">green_and_yellow.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1c61fcda-3e6e-4bd0-862e-ace94fd8dd35-2-460fb15b-068c-4b3b-ba87-2af94566b43b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">green_and_yellow.PNG</figcaption>
 </figure>
 </div>
 <p>And if we check Big Query we can see our <code>stg_yellow_tripdata table</code> has been added with `107,991,349 rows:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3d39debf-0580-40d3-ad5f-568075be1f95.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">yellow_trip_data_BQ.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1c61fcda-3e6e-4bd0-862e-ace94fd8dd35-1-3d39debf-0580-40d3-ad5f-568075be1f95.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">yellow_trip_data_BQ.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -737,67 +713,67 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>Let’s add the <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_4_analytics_engineering/taxi_rides_ny/data/taxi_zone_lookup.csv">taxi zone look up csv file</a> by creating a new file within the <code>seeds</code> directory and simply copying and pasitng the contents of the raw csv file:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/71d363ff-349a-4325-9df2-6543c71faf0d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">taxi_zone_lookup.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca6b3043-e199-4cda-9fcf-e14cbae6cd24-3-71d363ff-349a-4325-9df2-6543c71faf0d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">taxi_zone_lookup.PNG</figcaption>
 </figure>
 </div>
 <p>and then run the following command from the dbt terminal:</p>
 <pre><code>dbt seed</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/18beb23b-e512-4d48-a6b5-ffc2ca2be321.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_seed.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca6b3043-e199-4cda-9fcf-e14cbae6cd24-1-18beb23b-e512-4d48-a6b5-ffc2ca2be321.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_seed.PNG</figcaption>
 </figure>
 </div>
 <p>And head back to BigQuery and we find our table created with 265 rows :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/a92c3593-4640-41f0-b16c-cd5709c896c6.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">taxi_zone_lookup_BQ.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca6b3043-e199-4cda-9fcf-e14cbae6cd24-4-a92c3593-4640-41f0-b16c-cd5709c896c6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">taxi_zone_lookup_BQ.PNG</figcaption>
 </figure>
 </div>
 <p>We can specify the data types of the csv fill, by modifying our <code>dbt_project.yml</code> file - otherwise default types will be applied :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e378e659-fc6d-47c5-a8b5-4be7807ec1b4.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_seed_project_yml.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca6b3043-e199-4cda-9fcf-e14cbae6cd24-5-e378e659-fc6d-47c5-a8b5-4be7807ec1b4.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_seed_project_yml.PNG</figcaption>
 </figure>
 </div>
 <p>If we slightly modify data(for example, change 1,“EWR”,“Newark Airport”,“EWR” to 1,“NEWR”,“Newark Airport”,“NEWR”) in the csv file, and then run the following command:</p>
 <pre><code>dbt seed --full-refresh</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/708e7d41-3eb1-4c4f-b28a-26332ad73e2b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">updated_seed.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/ca6b3043-e199-4cda-9fcf-e14cbae6cd24-2-708e7d41-3eb1-4c4f-b28a-26332ad73e2b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">updated_seed.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s now create a model from this seed. First, create a new file within the <code>core</code> directory called <code>dim_zones.sql</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5dac4bda-3a6a-44f6-bf5f-1960739662a3.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dim_zones.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/36cbd69e-7f93-44d1-8b6c-a2ec8068f5db-1-5dac4bda-3a6a-44f6-bf5f-1960739662a3.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dim_zones.PNG</figcaption>
 </figure>
 </div>
 <p>Ideally, we want everything in the directory to be tables to have efficient queries.</p>
 <p>Now, create the model <code>fact_trips.sql</code> within the <code>core</code> directory :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d170590e-ad1a-42b2-935e-74ba57353d62.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">fact_trips.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d6e89e34-85ca-46d1-b82f-3f6475e92a13-1-d170590e-ad1a-42b2-935e-74ba57353d62.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">fact_trips.PNG</figcaption>
 </figure>
 </div>
 <p>And we can have this nice visualization of the lineage :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e6d4946b-cde1-4508-b4d4-6c2fabad420a.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">fact_trips_lineage.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/d6e89e34-85ca-46d1-b82f-3f6475e92a13-2-e6d4946b-cde1-4508-b4d4-6c2fabad420a.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">fact_trips_lineage.PNG</figcaption>
 </figure>
 </div>
 <p>The <code>dbt run</code> command will create everything, except the seeds:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/31b38a16-0e0e-419f-b695-4ab949b21898.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">fact_trips_error.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f029cf6c-96ed-4908-80a9-a1990c7d8de0-3-31b38a16-0e0e-419f-b695-4ab949b21898.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">fact_trips_error.PNG</figcaption>
 </figure>
 </div>
 <p>I ran into an error and after quite a bit of head scratching, it arose because the order of my columns was not consistent between my <code>yellow</code> and <code>green</code> tables. The following are basic rules for combining the result sets of two queries by using UNION:</p>
@@ -808,36 +784,36 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>After synchronizing the column order it ran successfully:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/0c040389-06d2-452f-b3cf-492048866c1f.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_run.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f029cf6c-96ed-4908-80a9-a1990c7d8de0-1-0c040389-06d2-452f-b3cf-492048866c1f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_run.PNG</figcaption>
 </figure>
 </div>
 <p>And I now have my <code>fact_trips</code> table in BQ:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/24138c28-6723-4734-80c0-ca88e38dc901.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">fact_trips_BQ.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f029cf6c-96ed-4908-80a9-a1990c7d8de0-2-24138c28-6723-4734-80c0-ca88e38dc901.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">fact_trips_BQ.PNG</figcaption>
 </figure>
 </div>
 <p>However we also want to run the seeds, so we will use the command <code>dbt build --select fact_trips</code> to run only the <code>fact_trips</code> model :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/8149fd85-90bb-4456-a29c-037cc6ad90b8.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">select_fact_trips.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/57e5e71d-297d-4bc7-b61a-305c77947972-2-8149fd85-90bb-4456-a29c-037cc6ad90b8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">select_fact_trips.PNG</figcaption>
 </figure>
 </div>
 <p>The command <code>dbt build --select +fact_trips --var 'is_test_run: false'</code> will run everything that <code>fact_trips</code> needs. dbt already knows the dependencies :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e8396c50-e764-4abc-8556-65478c1706ff.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">select_plus_fact_trips.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/57e5e71d-297d-4bc7-b61a-305c77947972-3-e8396c50-e764-4abc-8556-65478c1706ff.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">select_plus_fact_trips.PNG</figcaption>
 </figure>
 </div>
 <p>And we can see in BQ that our <code>fact_trips</code> table now has <code>113,324,889</code> rows :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/6996c69c-4553-4545-9ef2-7ccc3b6557d7.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">fact_trips_BQ_updated.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/57e5e71d-297d-4bc7-b61a-305c77947972-1-6996c69c-4553-4545-9ef2-7ccc3b6557d7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">fact_trips_BQ_updated.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -847,8 +823,8 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>Tests are assertions you make about your models and other resources in your dbt project (e.g.&nbsp;sources, seeds and snapshots). When you run dbt test, dbt will tell you if each test in your project passes or fails.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3093a92a-37de-47b9-aec3-f63dd346ae64.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">tests.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/40f120a5-9ce0-4dd3-8354-880f2b673f29-1-3093a92a-37de-47b9-aec3-f63dd346ae64.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tests.PNG</figcaption>
 </figure>
 </div>
 <p>See <a href="https://docs.getdbt.com/docs/build/tests">Tests</a> for further details.</p>
@@ -856,8 +832,8 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <h4 class="anchored" data-anchor-id="documentation">Documentation</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/e1e27707-042c-4c47-bd43-9adf1eb0172e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">documentation.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/33903557-b96d-46b0-abc1-9805cea8a8cf-1-e1e27707-042c-4c47-bd43-9adf1eb0172e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">documentation.PNG</figcaption>
 </figure>
 </div>
 <p>For further detail about documentation see <a href="https://docs.getdbt.com/docs/collaborate/documentation">here</a>.</p>
@@ -868,23 +844,23 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <p>Let’s create a <code>dm_monthly_zone_revenue.sql</code> file :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/2d6946f8-d66e-490a-a278-3f93804a6651.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dm_monthly_zone_revenue.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/65062701-2530-4c99-8193-5cc8691e7756-2-2d6946f8-d66e-490a-a278-3f93804a6651.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dm_monthly_zone_revenue.PNG</figcaption>
 </figure>
 </div>
 <p>Then build the table and its dependencies using:</p>
 <pre><code>dbt build --select +dm_monthly_zone_revenue --var 'is_test_run: false'</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/2a4c0e54-4bd8-4c4c-9ca2-cd8365c52ad1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dm_monthly_zone_revenue_build.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/65062701-2530-4c99-8193-5cc8691e7756-1-2a4c0e54-4bd8-4c4c-9ca2-cd8365c52ad1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dm_monthly_zone_revenue_build.PNG</figcaption>
 </figure>
 </div>
 <p>And we can see that we now have the table in BQ :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/81ce0463-9049-4f12-90da-21a2fc21f781.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dm_monthly_zone_revenue_BQ.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/65062701-2530-4c99-8193-5cc8691e7756-3-81ce0463-9049-4f12-90da-21a2fc21f781.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dm_monthly_zone_revenue_BQ.PNG</figcaption>
 </figure>
 </div>
 <p>Then, we update the <code>schema.yml</code> file in <code>models/staging</code> to define the model. This section is used in particular to document the model and to add tests:</p>
@@ -1005,93 +981,93 @@ dbt run --select +stg_green_tripdata+  # Builds a specific model and its childre
 <span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a>      description: <span class="op">&gt;</span> </span>
 <span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a>        Trips made by New York City<span class="st">'s iconic yellow taxis. </span></span>
 <span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a><span class="er">        Yellow taxis are the only vehicles permitted to respond to a street hail from a passenger in all five</span></span>
-<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a><span class="er">        boroughs. They may also be hailed using an e-hail app like Curb or Arro.</span></span>
-<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a><span class="er">        The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by</span></span>
-<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a><span class="er">        technology service providers. </span></span>
-<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a><span class="er">      columns:</span></span>
-<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: tripid</span></span>
-<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Primary key for this table, generated with a concatenation of vendorid+pickup_datetime</span></span>
-<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a><span class="er">                - unique:</span></span>
-<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a><span class="er">                    severity: warn</span></span>
-<span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a><span class="er">                - not_null:</span></span>
-<span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a><span class="er">                    severity: warn</span></span>
-<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: VendorID </span></span>
-<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a><span class="er">                A code indicating the TPEP provider that provided the record.</span></span>
-<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a><span class="er">                1= Creative Mobile Technologies, LLC; </span></span>
-<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a><span class="er">                2= VeriFone Inc.</span></span>
-<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: pickup_datetime </span></span>
-<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The date and time when the meter was engaged.</span></span>
-<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: dropoff_datetime </span></span>
-<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The date and time when the meter was disengaged.</span></span>
-<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Passenger_count </span></span>
-<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The number of passengers in the vehicle. This is a driver-entered value.</span></span>
-<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Trip_distance </span></span>
-<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The elapsed trip distance in miles reported by the taximeter.</span></span>
-<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Pickup_locationid</span></span>
-<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a><span class="er">            description: locationid where the meter was engaged.</span></span>
-<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a><span class="er">              - relationships:</span></span>
-<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a><span class="er">                  to: ref('taxi_zone_lookup')</span></span>
-<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a><span class="er">                  field: locationid</span></span>
-<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
-<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: dropoff_locationid </span></span>
-<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a><span class="er">            description: locationid where the meter was engaged.</span></span>
-<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a><span class="er">              - relationships:</span></span>
-<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a><span class="er">                  to: ref('taxi_zone_lookup')</span></span>
-<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a><span class="er">                  field: locationid</span></span>
-<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
-<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: RateCodeID </span></span>
-<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt;</span></span>
-<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a><span class="er">                The final rate code in effect at the end of the trip.</span></span>
-<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a><span class="er">                  1= Standard rate</span></span>
-<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a><span class="er">                  2=JFK</span></span>
-<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a><span class="er">                  3=Newark</span></span>
-<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a><span class="er">                  4=Nassau or Westchester</span></span>
-<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a><span class="er">                  5=Negotiated fare</span></span>
-<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a><span class="er">                  6=Group ride</span></span>
-<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Store_and_fwd_flag </span></span>
-<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a><span class="er">              This flag indicates whether the trip record was held in vehicle</span></span>
-<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a><span class="er">              memory before sending to the vendor, aka “store and forward,”</span></span>
-<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a><span class="er">              because the vehicle did not have a connection to the server.</span></span>
-<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a><span class="er">                Y= store and forward trip</span></span>
-<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a><span class="er">                N= not a store and forward trip</span></span>
-<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Dropoff_longitude </span></span>
-<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Longitude where the meter was disengaged.</span></span>
-<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Dropoff_latitude </span></span>
-<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Latitude where the meter was disengaged.</span></span>
-<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Payment_type </span></span>
-<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt;</span></span>
-<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a><span class="er">              A numeric code signifying how the passenger paid for the trip.</span></span>
-<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a><span class="er">            tests: # severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
-<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a><span class="er">              - accepted_values:</span></span>
-<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a><span class="er">                  values: "{{ var('payment_type_values') }}"</span></span>
-<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a><span class="er">                  severity: warn</span></span>
-<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a><span class="er">                  quote: false</span></span>
-<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: payment_type_description</span></span>
-<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Description of the payment_type code</span></span>
-<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Fare_amount </span></span>
-<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a><span class="er">              The time-and-distance fare calculated by the meter.</span></span>
-<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a><span class="er">              Extra Miscellaneous extras and surcharges. Currently, this only includes</span></span>
-<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a><span class="er">              the $0.50 and $1 rush hour and overnight charges.</span></span>
-<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a><span class="er">              MTA_tax $0.50 MTA tax that is automatically triggered based on the metered</span></span>
-<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a><span class="er">              rate in use.</span></span>
-<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Improvement_surcharge </span></span>
-<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a><span class="er">              $0.30 improvement surcharge assessed trips at the flag drop. The</span></span>
-<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a><span class="er">              improvement surcharge began being levied in 2015.</span></span>
-<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Tip_amount </span></span>
-<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a><span class="er">            description: &gt; </span></span>
-<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a><span class="er">              Tip amount. This field is automatically populated for credit card</span></span>
-<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a><span class="er">              tips. Cash tips are not included.</span></span>
-<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Tolls_amount </span></span>
-<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a><span class="er">            description: Total amount of all tolls paid in trip.</span></span>
-<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a><span class="er">          - name: Total_amount </span></span>
-<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a><span class="er">            description: The total amount charged to passengers. Does not include cash tips.                </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a>        boroughs. They may also be hailed using an e<span class="op">-</span>hail app like Curb <span class="kw">or</span> Arro.</span>
+<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a>        The records were collected <span class="kw">and</span> provided to the NYC Taxi <span class="kw">and</span> Limousine Commission (TLC) by</span>
+<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a>        technology service providers. </span>
+<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a>      columns:</span>
+<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: tripid</span>
+<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a>            description: Primary key <span class="cf">for</span> this table, generated <span class="cf">with</span> a concatenation of vendorid<span class="op">+</span>pickup_datetime</span>
+<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a>                <span class="op">-</span> unique:</span>
+<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a>                    severity: warn</span>
+<span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a>                <span class="op">-</span> not_null:</span>
+<span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a>                    severity: warn</span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: VendorID </span>
+<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a>                A code indicating the TPEP provider that provided the record.</span>
+<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span><span class="op">=</span> Creative Mobile Technologies, LLC<span class="op">;</span> </span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a>                <span class="dv">2</span><span class="op">=</span> VeriFone Inc.</span>
+<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: pickup_datetime </span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a>            description: The date <span class="kw">and</span> time when the meter was engaged.</span>
+<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: dropoff_datetime </span>
+<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a>            description: The date <span class="kw">and</span> time when the meter was disengaged.</span>
+<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Passenger_count </span>
+<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a>            description: The number of passengers <span class="kw">in</span> the vehicle. This <span class="kw">is</span> a driver<span class="op">-</span>entered value.</span>
+<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Trip_distance </span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a>            description: The elapsed trip distance <span class="kw">in</span> miles reported by the taximeter.</span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Pickup_locationid</span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a>            description: locationid where the meter was engaged.</span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> relationships:</span>
+<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a>                  to: ref(<span class="st">'taxi_zone_lookup'</span>)</span>
+<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a>                  field: locationid</span>
+<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
+<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: dropoff_locationid </span>
+<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a>            description: locationid where the meter was engaged.</span>
+<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> relationships:</span>
+<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a>                  to: ref(<span class="st">'taxi_zone_lookup'</span>)</span>
+<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a>                  field: locationid</span>
+<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: RateCodeID </span>
+<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a>                The final rate code <span class="kw">in</span> effect at the end of the trip.</span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">1</span><span class="op">=</span> Standard rate</span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">2</span><span class="op">=</span>JFK</span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">3</span><span class="op">=</span>Newark</span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">4</span><span class="op">=</span>Nassau <span class="kw">or</span> Westchester</span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span><span class="op">=</span>Negotiated fare</span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">6</span><span class="op">=</span>Group ride</span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Store_and_fwd_flag </span>
+<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a>              This flag indicates whether the trip record was held <span class="kw">in</span> vehicle</span>
+<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a>              memory before sending to the vendor, aka “store <span class="kw">and</span> forward,”</span>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a>              because the vehicle did <span class="kw">not</span> have a connection to the server.</span>
+<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a>                Y<span class="op">=</span> store <span class="kw">and</span> forward trip</span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>                N<span class="op">=</span> <span class="kw">not</span> a store <span class="kw">and</span> forward trip</span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Dropoff_longitude </span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a>            description: Longitude where the meter was disengaged.</span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Dropoff_latitude </span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a>            description: Latitude where the meter was disengaged.</span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Payment_type </span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span></span>
+<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a>              A numeric code signifying how the passenger paid <span class="cf">for</span> the trip.</span>
+<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a>            tests: <span class="co"># severity = warn = warning given but program run continues | severity = never = IMMEDIATE stop</span></span>
+<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span> accepted_values:</span>
+<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a>                  values: <span class="st">"</span><span class="sc">{{</span><span class="st"> var('payment_type_values') </span><span class="sc">}}</span><span class="st">"</span></span>
+<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a>                  severity: warn</span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>                  quote: false</span>
+<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: payment_type_description</span>
+<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a>            description: Description of the payment_type code</span>
+<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Fare_amount </span>
+<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a>              The time<span class="op">-</span><span class="kw">and</span><span class="op">-</span>distance fare calculated by the meter.</span>
+<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a>              Extra Miscellaneous extras <span class="kw">and</span> surcharges. Currently, this only includes</span>
+<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a>              the $<span class="fl">0.50</span> <span class="kw">and</span> $<span class="dv">1</span> rush hour <span class="kw">and</span> overnight charges.</span>
+<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a>              MTA_tax $<span class="fl">0.50</span> MTA tax that <span class="kw">is</span> automatically triggered based on the metered</span>
+<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a>              rate <span class="kw">in</span> use.</span>
+<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Improvement_surcharge </span>
+<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a>              $<span class="fl">0.30</span> improvement surcharge assessed trips at the flag drop. The</span>
+<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a>              improvement surcharge began being levied <span class="kw">in</span> <span class="fl">2015.</span></span>
+<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Tip_amount </span>
+<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a>            description: <span class="op">&gt;</span> </span>
+<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a>              Tip amount. This field <span class="kw">is</span> automatically populated <span class="cf">for</span> credit card</span>
+<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a>              tips. Cash tips are <span class="kw">not</span> included.</span>
+<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Tolls_amount </span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a>            description: Total amount of <span class="bu">all</span> tolls paid <span class="kw">in</span> trip.</span>
+<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a>          <span class="op">-</span> name: Total_amount </span>
+<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a>            description: The total amount charged to passengers. Does <span class="kw">not</span> include cash tips.                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we modify the <code>dbt_project.yml</code> to define the <code>payment_type_values</code> variable :</p>
 <p><code>dbt.project/yml</code></p>
@@ -1154,29 +1130,29 @@ dbt build  # Run the seeds, run the tests and run the models.</code></pre>
 <p>Let’s use <code>dbt test</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b82bf8c8-daae-4092-9f4a-bfea227d237c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_test_warn.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b2c9ddd8-3371-47e8-bb91-bd7f86634baa-3-b82bf8c8-daae-4092-9f4a-bfea227d237c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_test_warn.PNG</figcaption>
 </figure>
 </div>
 <p>We see that the column <code>tripid</code> from the <code>stg_green_tripdata</code> table is not unique after all. So let’s update our sql files - to keep only the first row of duplicates, with the condition <code>where rn = 1</code> - rn means <code>row number</code></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/a93c53be-184e-4d84-8835-9a0a1ff96c93.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">green_trip_data_updated.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b2c9ddd8-3371-47e8-bb91-bd7f86634baa-2-a93c53be-184e-4d84-8835-9a0a1ff96c93.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">green_trip_data_updated.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/27059e9f-9fec-4261-a801-d1a33ffe42a1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">yellow_trip_data_updated.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/b2c9ddd8-3371-47e8-bb91-bd7f86634baa-1-27059e9f-9fec-4261-a801-d1a33ffe42a1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">yellow_trip_data_updated.PNG</figcaption>
 </figure>
 </div>
 <p>For further detail on duplicates, see <a href="https://database.guide/4-ways-to-check-for-duplicate-rows-in-sql-server/">4 Ways to Check for Duplicate Rows in SQL Server</a>.</p>
 <p>Let’s now run everything we have built so far with <code>dbt build</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1c495f07-0619-47e8-88df-f0bae8116af5.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_build_all_pass.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/14a43ce1-53d7-468d-a7d0-3318f161d039-1-1c495f07-0619-47e8-88df-f0bae8116af5.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_build_all_pass.PNG</figcaption>
 </figure>
 </div>
 <p>As we can see, this time, all tests have passed.</p>
@@ -1229,22 +1205,22 @@ dbt build  # Run the seeds, run the tests and run the models.</code></pre>
 <p>Now that we have created a complete project, and tested it, and know that everything runs error-free it is time to <code>deploy</code> our project using <a href="https://en.wikipedia.org/wiki/Version_control"><strong>version control</strong></a> and <a href="https://en.wikipedia.org/wiki/CI/CD"><strong>CI/CD</strong></a> in a production environment.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/393038d4-5ff8-4bb6-873e-b27923cd694c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">deployment.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/02bf04c1-2980-41ff-bcb7-317323ec7989-1-393038d4-5ff8-4bb6-873e-b27923cd694c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">deployment.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/107ef1c8-9d2f-46cd-aaab-a01347997fa0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_production.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/fb9c177d-72c0-42c0-88d6-4c1fb6619afd-1-107ef1c8-9d2f-46cd-aaab-a01347997fa0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_production.PNG</figcaption>
 </figure>
 </div>
 <section id="continuous-integration-ci" class="level4">
 <h4 class="anchored" data-anchor-id="continuous-integration-ci">Continuous Integration (CI)</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/c76b9ae5-b0dd-4b15-8b43-b3e2630b1910.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">continuous_integration.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/7ec5d181-687f-4f80-b665-d82150024ad5-1-c76b9ae5-b0dd-4b15-8b43-b3e2630b1910.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">continuous_integration.PNG</figcaption>
 </figure>
 </div>
 <p>For further detail on enabling CI in dbt Cloud see <a href="https://docs.getdbt.com/docs/deploy/cloud-ci-job">the documentation</a>.</p>
@@ -1255,82 +1231,82 @@ dbt build  # Run the seeds, run the tests and run the models.</code></pre>
 <p>Now head back to the dbt IDE. We already have a <em>development</em> environment :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/703f8085-b501-4be6-881c-ac599de68d14.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">development.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/32887c10-8f59-4c5f-a6fd-4b644715052b-1-703f8085-b501-4be6-881c-ac599de68d14.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">development.PNG</figcaption>
 </figure>
 </div>
 <p>But let’s now create a <em>production</em> environment :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f105bed6-a75a-4e04-9a1e-3a70808db484.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">production.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/32887c10-8f59-4c5f-a6fd-4b644715052b-2-f105bed6-a75a-4e04-9a1e-3a70808db484.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">production.PNG</figcaption>
 </figure>
 </div>
 <p>And now let’s create a <code>Job</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/3a282be8-9589-42d9-a4d6-2ef452a92240.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">create_job_1.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-4-3a282be8-9589-42d9-a4d6-2ef452a92240.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">create_job_1.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/f9f66339-ca24-4a9f-b4c7-2153dc7023f6.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">create_job_2.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-9-f9f66339-ca24-4a9f-b4c7-2153dc7023f6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">create_job_2.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/9d3fd0fd-357d-489a-9281-50f39e3d5717.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">create_job_3.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-6-9d3fd0fd-357d-489a-9281-50f39e3d5717.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">create_job_3.PNG</figcaption>
 </figure>
 </div>
 <p>Note that in order to have access to <a href="https://docs.getdbt.com/docs/deploy/webhooks">Webhooks</a> you need to have either a <code>Team</code> or <code>Enterprise</code> subscription.</p>
 <p>Let’s now run the job :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1a2828ff-8651-47e8-b4d4-5665b0b32318.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_build_run.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-2-1a2828ff-8651-47e8-b4d4-5665b0b32318.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_build_run.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/139cc43d-eb2f-4536-89e6-7ca62fdebc90.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dbt_run_overview.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-1-139cc43d-eb2f-4536-89e6-7ca62fdebc90.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dbt_run_overview.PNG</figcaption>
 </figure>
 </div>
 <p>Under <code>Artifacts</code> we can see the compiled code together with the manifest :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/4335873b-74c0-4af8-895c-cade7e0f09b7.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">artefacts.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-5-4335873b-74c0-4af8-895c-cade7e0f09b7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">artefacts.PNG</figcaption>
 </figure>
 </div>
 <p>and the documentation :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/eeec5dd1-194e-4ec8-8d73-55d22cbb757c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">docs.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-8-eeec5dd1-194e-4ec8-8d73-55d22cbb757c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">docs.PNG</figcaption>
 </figure>
 </div>
 <p>We can also see the Lineage Graph for our models :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/be47cc0b-f60e-4dec-8993-c3704f0c95b4.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">production_lineage_graph.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-7-be47cc0b-f60e-4dec-8993-c3704f0c95b4.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">production_lineage_graph.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1bd18f1a-038a-455d-974b-caffcf1cfa52.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">lineage_graph_2.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/5b53872b-9d7f-4b84-85ab-92e8f92de6a6-3-1bd18f1a-038a-455d-974b-caffcf1cfa52.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">lineage_graph_2.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s head back to the dbt cloud IDE and account settings and within Artifacts link the documentation to our <code>dbt build</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/173f2f8c-5d7e-412f-abb1-d76041da48c1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">artifact_link.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/59f7f504-0a09-47f4-83b4-db20bd525b19-1-173f2f8c-5d7e-412f-abb1-d76041da48c1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">artifact_link.PNG</figcaption>
 </figure>
 </div>
 <p>Now that we have now successfully transformed our data using dbt models and tested and deployed those models, the final step is to visualize our data.</p>
@@ -1343,15 +1319,15 @@ dbt build  # Run the seeds, run the tests and run the models.</code></pre>
 <p>Go to <a href="https://lookerstudio.google.com/overview">Looker Studio</a> and click <code>USE IT FOR FREE</code>. Make sure you are signed in to the correct Google account. The first thing we need to do is create a data source. There are 23 different <code>connectors</code> at the time of writing. We will be using <code>BigQuery</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/70bd7375-3548-4708-ad53-6b0cc561c946.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">google_connectors.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1ce47f1f-4ccf-4b16-ad60-fe885ced1bc5-3-70bd7375-3548-4708-ad53-6b0cc561c946.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">google_connectors.PNG</figcaption>
 </figure>
 </div>
 <p>We will be working with the table <code>fact_trips</code> table of our <code>taxi-rides-ny</code> project created in our dbt <code>production</code> environment :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/2ced51f2-c189-4564-a16d-9c16abd78dd0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">looker_BQ.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1ce47f1f-4ccf-4b16-ad60-fe885ced1bc5-1-2ced51f2-c189-4564-a16d-9c16abd78dd0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">looker_BQ.PNG</figcaption>
 </figure>
 </div>
 <p>After connecting we are taken to the main dashboard. Although <code>dimensions</code> and <code>facts</code> should be familiar terms to those with knowledge of <a href="https://en.wikipedia.org/wiki/Dimensional_modeling">dimensional modeling</a> the name <code>fact_trips</code> can be changed to something that is more palatable for other stakeholders.</p>
@@ -1361,15 +1337,15 @@ dbt build  # Run the seeds, run the tests and run the models.</code></pre>
 <p>After modifying the default aggregations go ahead and create a report :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/2e4c1436-436a-44e6-99b8-460d489d7ce0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">looker_create_report.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/1ce47f1f-4ccf-4b16-ad60-fe885ced1bc5-2-2e4c1436-436a-44e6-99b8-460d489d7ce0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">looker_create_report.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s choose a time series chart to begin with :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/0b369a89-bb07-4260-bca2-ee4fa589e638.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">looker_time_series.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/6d5d8d12-d7aa-47c1-97d7-2beccf2ada7c-1-0b369a89-bb07-4260-bca2-ee4fa589e638.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">looker_time_series.PNG</figcaption>
 </figure>
 </div>
 <p>We can see right away that the date range is 2001 to 2082! This is because we didn’t filter the data and we have some outliers. We can define our date range by using <code>Add a control</code> from the dropdown, and dragging the filter above our chart.</p>
@@ -1382,15 +1358,15 @@ dbt build  # Run the seeds, run the tests and run the models.</code></pre>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/c294b73c-1978-475a-89be-69bd3e6eef45.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">new_field_formula.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/6d5d8d12-d7aa-47c1-97d7-2beccf2ada7c-2-c294b73c-1978-475a-89be-69bd3e6eef45.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">new_field_formula.PNG</figcaption>
 </figure>
 </div>
 <p>The final result is an aesthetic visualization ready for sharing. There is an email delivery scheduler which is very useful for providing for example weekly KPIs for key stakeholders :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_4_files/figure-html/c7996384-1e46-4ce4-9479-c25f1fd5ecf5.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dashboard.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_4_files/figure-html/6d5d8d12-d7aa-47c1-97d7-2beccf2ada7c-3-c7996384-1e46-4ce4-9479-c25f1fd5ecf5.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dashboard.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -1448,9 +1424,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1462,7 +1452,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1498,24 +1505,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

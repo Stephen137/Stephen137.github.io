@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,13 +91,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -143,31 +116,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -201,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">December 14, 2022</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -347,12 +324,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p><img src="USA_landcover_classification" width="600" height="600"></p>
 <p>The map above shows the contiguous United States with landcover as categorical data. Each color is a different landcover category. (Source: Homer, C.G., et al., 2015, Completion of the 2011 National Land Cover Database for the conterminous United States-Representing a decade of land cover change information. Photogrammetric Engineering and Remote Sensing, v. 81, no. 5, p.&nbsp;345-354)</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Can you think of potential advantages and disadvantages of storing data in raster format?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -379,12 +356,12 @@ Can you think of potential advantages and disadvantages of storing data in raste
 <h3 class="anchored" data-anchor-id="extent">Extent</h3>
 <p>The spatial extent is the geographic area that the raster data covers. The spatial extent of an object represents the geographic edge or location that is the furthest north, south, east and west. In other words, extent represents the overall geographic coverage of the spatial object.</p>
 <p><img src="spatial_extent.png" width="600" height="600"></p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 In the image above, the dashed boxes around each set of objects seems to imply that the three objects have the same extent. Is this accurate? If not, which object(s) have a different extent?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -410,12 +387,12 @@ In the image above, the dashed boxes around each set of objects seems to imply t
 <li>Coordinate Reference System (CRS) - this concept will be introduced later</li>
 <li>values that represent missing data (NoDataValue) - this concept will be introduced later</li>
 </ul>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 More resources on the .tif format
 </div>
 </div>
@@ -440,12 +417,12 @@ More resources on the .tif format
 <li><a href="https://en.wikipedia.org/wiki/Multispectral_imaging">Multispectral</a> imagery: image rasters that have 4 or more bands</li>
 <li><a href="https://en.wikipedia.org/wiki/Hyperspectral_imaging">hyperspectral</a> imagery: image rasters with more than 10-15 bands</li>
 </ol>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -480,12 +457,12 @@ Important
 <section id="polygons" class="level3">
 <h3 class="anchored" data-anchor-id="polygons">Polygons</h3>
 <p>A polygon consists of 3 or more vertices that are connected and closed. The outlines of survey plot boundaries, lakes, oceans, and states or countries are often represented by polygons.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Data tip
 </div>
 </div>
@@ -493,12 +470,12 @@ Data tip
 <p>Sometimes, boundary layers such as states and countries, are stored as lines rather than polygons. However, these boundaries, when represented as a line, will not create a closed object with a defined area that can be filled.</p>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The plot below includes examples of two of the three types of vector objects. Use the definitions above to identify which features are represented by which vector type.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -546,12 +523,12 @@ The plot below includes examples of two of the three types of vector objects. Us
 <li>other attributes - for example, a line shapefile that contains the locations of streams, might contain the name of each stream.</li>
 </ul>
 <p>Because the structure of points, lines, and polygons are different, each individual shapefile can only contain one vector type (all points, all lines or all polygons). You will not find a mixture of point, line and polygon objects in a single shapefile.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 More resources on Shapefiles
 </div>
 </div>
@@ -559,12 +536,12 @@ More resources on Shapefiles
 <p>More about shapefiles can be found on <a href="https://en.wikipedia.org/wiki/Shapefile">Wikipedia</a>. Shapefiles are often publicly available from government services, such as <a href="https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html">this page from the US Census Bureau</a> or <a href="https://data.gov.au/data/dataset?res_format=SHP">this one from Australia’s Data.gov.au website</a>.</p>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -583,12 +560,12 @@ Important
 <p><img src="US_maps_projections.jpg" width="500" height="500"></p>
 <p>The above image shows maps of the United States in different projections. Notice the differences in shape associated with each projection. These differences are a direct result of the calculations used to flatten the data onto a 2-dimensional map. (Source: opennews.org)</p>
 <p>There are lots of great resources that describe coordinate reference systems and projections in greater detail.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Data from the same location but saved in different projections will not line up in any Geographic Information System(GIS) or other program.
 </div>
 </div>
@@ -604,12 +581,12 @@ Data from the same location but saved in different projections will not line up 
 <li><p><strong>Projection</strong>: A mathematical transformation of the angular measurements on a round earth to a flat surface (i.e.&nbsp;paper or a computer screen). The units associated with a given projection are usually linear (feet, meters, etc.). In this workshop, we will see data in two different projections.</p></li>
 <li><p><strong>Additional Parameters</strong>: Additional parameters are often necessary to create the full coordinate reference system. One common additional parameter is a definition of the center of the map. The number of required additional parameters depends on what is needed by each specific projection.</p></li>
 </ul>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Orange peel analogy
 </div>
 </div>
@@ -643,12 +620,12 @@ Orange peel analogy
 <section id="proj" class="level3">
 <h3 class="anchored" data-anchor-id="proj">PROJ</h3>
 <p><a href="https://proj.org/">PROJ</a> is an open-source library for storing, representing and transforming CRS information.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 PROJ strings continue to be used, but the format is deprecated by the PROJ C maintainers due to inaccuracies when converting to the WKT format.
 </div>
 </div>
@@ -669,12 +646,12 @@ PROJ strings continue to be used, but the format is deprecated by the PROJ C mai
 <p><img src="Utm-zones-USA.svg" width="500" height="500"> Image source: Chrismurf at English Wikipedia, via <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system#/media/File:Utm-zones-USA.svg">Wikimedia Commons (CC-BY)</a>.</p>
 <p>Here is a PROJ4 string for one of the datasets we will use in this blog:</p>
 <pre><code>+proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0</code></pre>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 What projection, zone, datum, and ellipsoid are used for this data? What are the units of the data? Using the map above, what part of the United States was this data collected from?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -698,12 +675,12 @@ What projection, zone, datum, and ellipsoid are used for this data? What are the
 <section id="metadata" class="level3">
 <h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
 <p>Spatial data is useless without metadata. Essential metadata includes the CRS information, but proper spatial metadata encompasses more than that. History and provenance of a dataset (how it was made), who is in charge of maintaining it, and appropriate (and inappropriate!) use cases should also be documented in metadata. This information should accompany a spatial dataset wherever it goes. In practice this can be difficult, as many spatial data formats don’t have a built-in place to hold this kind of information. Metadata often has to be stored in a companion file, and generated and maintained manually.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 More Resources on CRS
 </div>
 </div>
@@ -716,12 +693,12 @@ More Resources on CRS
 </ul>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -799,12 +776,12 @@ Important
 <h3 class="anchored" data-anchor-id="gis-file-types">GIS File Types</h3>
 <p>There are a variety of file types that are used in GIS analysis. Depending on the program you choose to use some file types can be used while others are not readable. Below is a brief table describing some of the most common vector and raster file types.</p>
 <p><img src="vector_raster_file_types.png" width="700" height="700"></p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -821,12 +798,12 @@ Important
 <h2 class="anchored" data-anchor-id="access-satellite-imagery-using-python">5. Access satellite imagery using Python</h2>
 <p>A number of satellites take snapshots of the Earth’s surface from space. The images recorded by these remote sensors represent a very precious data source for any activity that involves monitoring changes on Earth. Satellite imagery is typically provided in the form of geospatial raster data, with the measurements in each grid cell (“pixel”) being associated to accurate geographic coordinate information.</p>
 <p>In this section we will explore how to access open satellite data using Python. In particular, we will consider <a href="https://registry.opendata.aws/sentinel-2-l2a-cogs/">the Sentinel-2 data collection that is hosted on AWS</a>. This dataset consists of multi-band optical images acquired by the two satellites of the <a href="https://sentinel.esa.int/web/sentinel/missions/sentinel-2">Sentinel-2 mission</a> and it is continuously updated with new images.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Satellite data sources
 </div>
 </div>
@@ -853,8 +830,8 @@ Satellite data sources
 <p>Four subcatalogs are available, including both Sentinel 2 and Landsat 8 images</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/33b0c500-b2b7-45ca-9373-6daba339e163.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">catalogs.PNG</figcaption><p></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/c7f894a5-89cd-4093-96e0-053e2a366c82-1-33b0c500-b2b7-45ca-9373-6daba339e163.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">catalogs.PNG</figcaption>
 </figure>
 </div>
 <ol start="2" type="1">
@@ -974,8 +951,8 @@ Satellite data sources
 <p>An extract of the JSON file is included below. As we can see the file contains a lot of information for each of our 4 search items, which are indexed 0 to 3, such as <strong>properties</strong>, <strong>geometry</strong>, <strong>links</strong> etc:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/6e7c63c3-bea9-4965-b411-97dbf51c644f.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">json.PNG</figcaption><p></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/14b52ed8-c41e-4048-b7cd-ef9c2b508530-1-6e7c63c3-bea9-4965-b411-97dbf51c644f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">json.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -984,8 +961,8 @@ Satellite data sources
 <p>So far we have only discussed metadata - but how can one get to the actual images of a satellite scene (the “assets” in the STAC nomenclature)? These can be reached via links that are made available through the item’s attribute <strong>assets</strong>. The JSON file extract is included below, followed by how to access this info using Python.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/3d3cbabb-5ade-4cf6-9b2b-8b6b6a4a76d9.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">json_image_thumbnail.PNG</figcaption><p></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/b901ebe2-bf05-4e78-831a-6cc63ee7cb04-1-3d3cbabb-5ade-4cf6-9b2b-8b6b6a4a76d9.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">json_image_thumbnail.PNG</figcaption>
 </figure>
 </div>
 <div class="cell" data-execution_count="25">
@@ -1034,8 +1011,8 @@ SCL: Scene Classification Map (SCL)</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/3c04d3d2-4eb3-4cf3-91af-be32f6e52138.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">sentinel_image_download.jpg</figcaption><p></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/34a1b2a0-96e1-4218-a192-0106f74f4361-1-3c04d3d2-4eb3-4cf3-91af-be32f6e52138.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sentinel_image_download.jpg</figcaption>
 </figure>
 </div>
 <p>Remote raster data can be directly opened via the <a href="https://pypi.org/project/rioxarray/">rioxarray library</a>. We will learn more about this library in the next sections.</p>
@@ -1117,12 +1094,12 @@ Attributes:
 </div>
 </div>
 <p><img src="Landsat_download.jpg" width="400" height="400"></p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Public catalogs, protected data
 </div>
 </div>
@@ -1139,12 +1116,12 @@ Public catalogs, protected data
 <pre><code>import os
 os.environ["GDAL_HTTP_COOKIEFILE"] = "./cookies.txt"
 os.environ["GDAL_HTTP_COOKIEJAR"] = "./cookies.txt"</code></pre>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Key Points
 </div>
 </div>
@@ -1579,12 +1556,12 @@ Attributes:
 </ul>
 <p>We can also see the number of pixel values in the DataArray (1,830 x 1,830 = 3,348,900) and the type of those pixel values, which is unsigned integer (or uint16). The DataArray also stores different values for the coordinates of the DataArray. When using rioxarray, the term coordinates refers to spatial coordinates like x and y but also the band coordinate. Each of these sequences of values has its own data type, like float64 for the spatial coordinates and int64 for the band coordinate.</p>
 <p>This DataArray object also has a couple of attributes that are accessed like <strong>.rio.crs</strong>, <strong>.rio.nodata</strong>, and <strong>.rio.bounds()</strong>, which contain the metadata for the file we opened.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -1636,17 +1613,17 @@ Note
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa254cc0d30&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Nice plot! Notice that rioxarray helpfully allows us to plot this raster with spatial coordinates on the x and y axis (<strong>this is not the default in many cases with other functions or libraries</strong>).</p>
 <p>This plot shows the satellite measurement of the spectral band B09 for an area that covers part of the Netherlands. According to the Sentinel-2 documentaion, this is a band with the central wavelength of 945nm, which is sensitive to water vapour. It has a spatial resolution of 60m. Note that the band=1 in the image title refers to the ordering of all the bands in the DataArray, not the Sentinel-2 band number B09 that we saw in the pystac search results.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 With a quick view of the image, we notice that half of the image is blank, no data is captured. We also see that the cloudy pixels at the top have high reflectance values, while the contrast of everything else is quite low. This is expected because this band is sensitive to the water vapour.
 </div>
 </div>
@@ -1661,16 +1638,16 @@ With a quick view of the image, we notice that half of the image is blank, no da
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa255063370&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Now that the colour limit is set in a way fitting most of the values in the image, we have a much better view of the ground pixels.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The option robust=True defaults to displaying values between the 2nd and 98th percentile.
 </div>
 </div>
@@ -1684,7 +1661,7 @@ The option robust=True defaults to displaying values between the 2nd and 98th pe
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa254f4e680&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1740,12 +1717,12 @@ Datum: World Geodetic System 1984 ensemble
 <li><strong>Coordinate Operation</strong>: the operation to project the coordinates (if it is projected) onto a cartesian (x, y) plane. Transverse Mercator is accurate for areas with longitudinal widths of a few degrees, hence the distinct UTM zones.</li>
 <li><strong>Datum</strong>: Details about the datum, or the reference point for coordinates. WGS 84 and NAD 1983 are common datums. NAD 1983 is set to be replaced in 2022.</li>
 </ul>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -1760,12 +1737,12 @@ Note
 <pre><code>AreaOfUse(west=0.0, south=0.0, east=6.0, north=84.0, name='Between 0°E and 6°E, northern hemisphere between equator and 84°N, onshore and offshore. Algeria. Andorra. Belgium. Benin. Burkina Faso. Denmark - North Sea. France. Germany - North Sea. Ghana. Luxembourg. Mali. Netherlands. Niger. Nigeria. Norway. Spain. Togo. United Kingdom (UK) - North Sea.')</code></pre>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 What units are our data in? See if you can find a method to examine this information using help(crs) or dir(crs)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1837,12 +1814,12 @@ Coordinates:
 2911.0</code></pre>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 You may notice that <strong><em>raster_ams_b9.quantile</em></strong> and <strong><em>numpy.percentile</em></strong> didn’t require an argument specifying the axis or dimension along which to compute the quantile. This is because axis=None is the default for most numpy functions, and therefore dim=None is the default for most xarray methods.
 </div>
 </div>
@@ -1855,12 +1832,12 @@ You may notice that <strong><em>raster_ams_b9.quantile</em></strong> and <strong
 <h3 class="anchored" data-anchor-id="dealing-with-missing-data">Dealing with Missing Data</h3>
 <p>So far, we have visualized a band of a Sentinel-2 scene and calculated its statistics. However, we need to take missing data into account. Raster data often has a “no data value” associated with it and for raster datasets read in by rioxarray. This value is referred to as nodata. This is a value assigned to pixels where data is missing or no data were collected. There can be different cases that cause missing data, and it’s common for other values in a raster to represent different cases. The most common example is missing data at the edges of rasters.</p>
 <p>By default the shape of a raster is always rectangular. So if we have a dataset that has a shape that isn’t rectangular, some pixels at the edge of the raster will have no data values. This often happens when the data were collected by a sensor which only flew over some part of a defined region. As we have seen above, the nodata value of this dataset (raster_ams_b9.rio.nodata) is 0. When we have plotted the band data, or calculated statistics, the missing value was not distinguished from other values.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Missing data may cause some unexpected results. For example, the 25th percentile we just calculated was 0, probably reflecting the presence of a lot of missing data in the raster.
 </div>
 </div>
@@ -2310,15 +2287,15 @@ Coordinates:
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa254eac670&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Notice that there is a side effect of using NaN instead of 0 to represent missing data: the data type of the DataArray was changed from integers to float
 </div>
 </div>
@@ -2739,7 +2716,7 @@ Attributes:
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fa254c55600&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-45-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-45-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Note that the DataArray.plot.imshow() function makes assumptions about the shape of the input DataArray, that since it has three channels, the correct colormap for these channels is RGB. It does not work directly on image arrays with more than 3 channels. We can replace one of the RGB channels with another band, to make a false-colour image.</p>
@@ -2750,15 +2727,15 @@ Attributes:
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fa2545752a0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-46-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-46-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -2795,12 +2772,12 @@ Important
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>ymin, ymax <span class="op">=</span> (<span class="dv">470_000</span>, <span class="dv">510_000</span>)</span>
 <span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>bbox <span class="op">=</span> (xmin, ymin, xmax, ymax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 How should I define my bounding box?
 </div>
 </div>
@@ -2866,12 +2843,12 @@ Datum: Amersfoort
 </div>
 </div>
 <p>Our data is in the CRS <strong>RD New</strong>.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -2923,7 +2900,7 @@ Important
 <pre><code>&lt;AxesSubplot: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-56-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-56-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can customize our boundary plot by setting the figsize, edgecolor, and color. Making some polygons transparent will come in handy when we need to add multiple spatial datasets to a single plot.</p>
@@ -2933,7 +2910,7 @@ Important
 <pre><code>&lt;AxesSubplot: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-57-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-57-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Under the hood, geopandas is using matplotlib to generate this plot. In the next section we will see how we can add DataArrays and other vector datasets to this plot to start building an informative map of our area of interest.</p>
@@ -3004,15 +2981,15 @@ Datum: World Geodetic System 1984 ensemble
 <pre><code>&lt;AxesSubplot: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-63-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-63-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Axis ordering - we can tell that the latitude and longitude of the file are flipped.
 </div>
 </div>
@@ -3083,7 +3060,7 @@ Datum: European Terrestrial Reference System 1989 ensemble
 <pre><code>&lt;AxesSubplot: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-69-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-69-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -3139,7 +3116,7 @@ Name: geometry, Length: 91, dtype: geometry</code></pre>
 <pre><code>&lt;AxesSubplot: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-73-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-73-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Now the waterways look good! We can save the vector data for later usage:</p>
@@ -3147,12 +3124,12 @@ Name: geometry, Length: 91, dtype: geometry</code></pre>
 <div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot as .shp file</span></span>
 <span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>waterways_nl.to_file(<span class="st">'waterways_nl_corrected.shp'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -3205,7 +3182,7 @@ Important
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fa21341cc70&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-76-output-3.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-76-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 <p>As we can see, the overview image is much smaller compared to the original true colour image. Therefore the visualization is much faster. If we are interested in the crop fields, then we would like to know where these are located in the image. To compare its coverage with the raster data, we first check the coordinate systems of both raster and vector data.</p>
@@ -3257,12 +3234,12 @@ Datum: Amersfoort
 - Prime Meridian: Greenwich</code></pre>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 As we can see, the coordinate systems differ.
 </div>
 </div>
@@ -3292,7 +3269,7 @@ As we can see, the coordinate systems differ.
 <pre><code>&lt;AxesSubplot: title={'center': 'spatial_ref = 0'}, xlabel='x', ylabel='y'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-79-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-79-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Seeing from the location of the polygons, the crop fields (red) only takes a small part of the raster. Therefore, before actual processing, we can first crop the raster to our area of interest. The <strong>clip_box</strong> function allows us to crop a raster by the min/max of the x and y coordinates. Note that we are cropping the original image true_color_image now, and not the overview image overview_image.</p>
@@ -3312,7 +3289,7 @@ As we can see, the coordinate systems differ.
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fa213d2ab90&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-81-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-81-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>This cropped image can be saved for later use:</p>
@@ -3336,7 +3313,7 @@ As we can see, the coordinate systems differ.
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fa2132929b0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-84-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-84-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can save this image for later use:</p>
@@ -3369,7 +3346,7 @@ As we can see, the coordinate systems differ.
 <pre><code>&lt;AxesSubplot: title={'center': 'spatial_ref = 0'}, xlabel='x coordinate of projection\n[metre]', ylabel='y coordinate of projection\n[metre]'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-87-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-87-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>To select pixels around the geometries, we need to first define a region including the geometries. This region is called a <strong>“buffer”</strong> and it is defined in the units of the projection. The size of the buffer depends on the analysis in our research. A buffer is also a polygon, which can be used to crop the raster data. geopandas’ objects have a buffer method to generate buffer polygons.</p>
@@ -3387,7 +3364,7 @@ As we can see, the coordinate systems differ.
 <pre><code>&lt;AxesSubplot: title={'center': 'spatial_ref = 0'}, xlabel='x coordinate of projection\n[metre]', ylabel='y coordinate of projection\n[metre]'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-89-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-89-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>The red dots have grown larger indicating the conversion from points to buffer polygons.</p>
@@ -3487,15 +3464,15 @@ Datum: World Geodetic System 1984
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fa20b696b90&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-94-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-94-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 In one line reproject_match does a lot of helpful things:
 </div>
 </div>
@@ -3507,12 +3484,12 @@ In one line reproject_match does a lot of helpful things:
 </ul>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 If you want more control over how rasters are resampled, clipped, and/or reprojected
 </div>
 </div>
@@ -3531,15 +3508,15 @@ If you want more control over how rasters are resampled, clipped, and/or reproje
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fa20b647c10&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-95-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-95-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -3603,15 +3580,15 @@ Important
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa20b6031c0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-100-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-100-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The crop fields (rectangular shapes in the central part of the figure) appear as dark spots in the red-visible wavelength, suggesting the presence of leafy crop at the time of observation (end of March).
 </div>
 </div>
@@ -3626,15 +3603,15 @@ The crop fields (rectangular shapes in the central part of the figure) appear as
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa20ca6ff70&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-101-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-101-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The crop fields (rectangular shapes in the central part of the figure) appear as bright spots in the NIR wavelength, suggesting the presence of leafy crop at the time of observation (end of March).
 </div>
 </div>
@@ -3701,7 +3678,7 @@ The crop fields (rectangular shapes in the central part of the figure) appear as
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa20c4d8130&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-104-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-104-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="142">
@@ -3711,7 +3688,7 @@ The crop fields (rectangular shapes in the central part of the figure) appear as
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa20c4787c0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-105-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-105-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -3767,15 +3744,15 @@ Coordinates:
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa20b9cfdc0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-109-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-109-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Notice that the range of values for the output NDVI is between -1 and 1. This makes sense for the selected region?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -3798,7 +3775,7 @@ Notice that the range of values for the output NDVI is between -1 and 1. This ma
  &lt;BarContainer object of 10 artists&gt;)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-110-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-110-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -3848,7 +3825,7 @@ Notice that the range of values for the output NDVI is between -1 and 1. This ma
  &lt;BarContainer object of 50 artists&gt;)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-112-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-112-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Increasing the number of bins gives us a much clearer view of the distribution. Also, there seem to be very few NDVI values larger than ~ 0.9.</p>
@@ -3860,7 +3837,7 @@ Notice that the range of values for the output NDVI is between -1 and 1. This ma
 <pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fa20b8f6e90&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-113-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-113-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can discretize the colour bar by specifying the intervals via the level argument to plot(). Suppose we want to bin our data in the following intervals:</p>
@@ -3882,8 +3859,8 @@ Notice that the range of values for the output NDVI is between -1 and 1. This ma
 <p>First, we define NDVI classes based on a list of values, as defined in the last exercise: [-1, 0., 0.2, 0.7, 1]. When bins are ordered from low to high, as here, numpy.digitize assigns classes like so:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/dba266e0-a79b-46bd-bbb5-aa06958a072c.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">NDVI-classes.jpg</figcaption><p></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/f00d5934-85c3-4f11-bdfe-041308ef6566-1-dba266e0-a79b-46bd-bbb5-aa06958a072c.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">NDVI-classes.jpg</figcaption>
 </figure>
 </div>
 <p>Source: Image (<a href="https://carpentries-incubator.github.io/geospatial-python/LICENSE.html">license</a>)</p>
@@ -3938,7 +3915,7 @@ Notice that the range of values for the output NDVI is between -1 and 1. This ma
 <span id="cb200-28"><a href="#cb200-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the figure</span></span>
 <span id="cb200-29"><a href="#cb200-29" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"NDVI_classified.png"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-116-output-1.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-116-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can finally export the classified NDVI raster object to a GeoTiff file. The to_raster() function by default writes the output file to your working directory unless you specify a full file path.</p>
@@ -3970,7 +3947,7 @@ Notice that the range of values for the output NDVI is between -1 and 1. This ma
 <span id="cb204-2"><a href="#cb204-2" aria-hidden="true" tabindex="-1"></a>ndvi_texel.plot()</span>
 <span id="cb204-3"><a href="#cb204-3" aria-hidden="true" tabindex="-1"></a>ndvi_texel.rio.to_raster(<span class="st">"NDVI_Texel.tif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-120-output-1.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-120-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="188">
@@ -4001,19 +3978,19 @@ Notice that the range of values for the output NDVI is between -1 and 1. This ma
  &lt;BarContainer object of 50 artists&gt;)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-121-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-121-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
 <li>many more grid cells have negative NDVI values, since the area of interest includes much more water</li>
 <li>also, NDVI values close to zero are more abundant, indicating the presence of bare ground (sand) regions</li>
 </ul>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -4065,12 +4042,12 @@ Datum: Amersfoort
 - Prime Meridian: Greenwich</code></pre>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Loading a .shp file
 </div>
 </div>
@@ -4084,123 +4061,124 @@ Loading a .shp file
 <span id="cb210-2"><a href="#cb210-2" aria-hidden="true" tabindex="-1"></a>field_to_raster_crs <span class="op">=</span> field.to_crs(ndvi.rio.crs)</span>
 <span id="cb210-3"><a href="#cb210-3" aria-hidden="true" tabindex="-1"></a>field_to_raster_crs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>category</th>
-      <th>gewas</th>
-      <th>gewascode</th>
-      <th>jaar</th>
-      <th>status</th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Grasland</td>
-      <td>Grasland, blijvend</td>
-      <td>265</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((627394.386 5812746.538, 627393.681 5...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Grasland</td>
-      <td>Grasland, blijvend</td>
-      <td>265</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((627326.170 5813192.913, 627324.734 5...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Grasland</td>
-      <td>Grasland, blijvend</td>
-      <td>265</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((627093.646 5812863.661, 627090.972 5...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Grasland</td>
-      <td>Grasland, blijvend</td>
-      <td>265</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((627384.004 5813467.330, 627376.549 5...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Grasland</td>
-      <td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
-      <td>331</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((627179.293 5812870.376, 627160.747 5...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>4867</th>
-      <td>Grasland</td>
-      <td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
-      <td>331</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((640710.959 5809885.718, 640703.030 5...</td>
-    </tr>
-    <tr>
-      <th>4868</th>
-      <td>Grasland</td>
-      <td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
-      <td>331</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((640753.587 5810143.151, 640751.454 5...</td>
-    </tr>
-    <tr>
-      <th>4869</th>
-      <td>Grasland</td>
-      <td>Grasland, blijvend</td>
-      <td>265</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((640890.832 5809998.743, 640892.271 5...</td>
-    </tr>
-    <tr>
-      <th>4870</th>
-      <td>Grasland</td>
-      <td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
-      <td>331</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((640770.878 5810005.390, 640766.767 5...</td>
-    </tr>
-    <tr>
-      <th>4871</th>
-      <td>Grasland</td>
-      <td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
-      <td>331</td>
-      <td>2020</td>
-      <td>Definitief</td>
-      <td>POLYGON ((640704.702 5809791.384, 640698.357 5...</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">category</th>
+<th data-quarto-table-cell-role="th">gewas</th>
+<th data-quarto-table-cell-role="th">gewascode</th>
+<th data-quarto-table-cell-role="th">jaar</th>
+<th data-quarto-table-cell-role="th">status</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Grasland</td>
+<td>Grasland, blijvend</td>
+<td>265</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((627394.386 5812746.538, 627393.681 5...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Grasland</td>
+<td>Grasland, blijvend</td>
+<td>265</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((627326.170 5813192.913, 627324.734 5...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Grasland</td>
+<td>Grasland, blijvend</td>
+<td>265</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((627093.646 5812863.661, 627090.972 5...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Grasland</td>
+<td>Grasland, blijvend</td>
+<td>265</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((627384.004 5813467.330, 627376.549 5...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Grasland</td>
+<td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
+<td>331</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((627179.293 5812870.376, 627160.747 5...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4867</td>
+<td>Grasland</td>
+<td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
+<td>331</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((640710.959 5809885.718, 640703.030 5...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4868</td>
+<td>Grasland</td>
+<td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
+<td>331</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((640753.587 5810143.151, 640751.454 5...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4869</td>
+<td>Grasland</td>
+<td>Grasland, blijvend</td>
+<td>265</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((640890.832 5809998.743, 640892.271 5...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4870</td>
+<td>Grasland</td>
+<td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
+<td>331</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((640770.878 5810005.390, 640766.767 5...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4871</td>
+<td>Grasland</td>
+<td>Grasland, natuurlijk. Hoofdfunctie landbouw.</td>
+<td>331</td>
+<td>2020</td>
+<td>Definitief</td>
+<td>POLYGON ((640704.702 5809791.384, 640698.357 5...</td>
+</tr>
+</tbody>
 </table>
+
 <p>4872 rows × 6 columns</p>
 </div>
 </div>
@@ -4259,114 +4237,115 @@ Loading a .shp file
 <div class="sourceCode cell-code" id="cb215"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xrspatial <span class="im">import</span> zonal_stats</span>
 <span id="cb215-2"><a href="#cb215-2" aria-hidden="true" tabindex="-1"></a>zonal_stats(field_cropped_raster_xarr, ndvi_sq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>zone</th>
-      <th>mean</th>
-      <th>max</th>
-      <th>min</th>
-      <th>sum</th>
-      <th>std</th>
-      <th>var</th>
-      <th>count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0.266528</td>
-      <td>0.999579</td>
-      <td>-0.998648</td>
-      <td>38887.554688</td>
-      <td>0.409970</td>
-      <td>0.168075</td>
-      <td>145904.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>259</td>
-      <td>0.520282</td>
-      <td>0.885242</td>
-      <td>0.289196</td>
-      <td>449.003052</td>
-      <td>0.111205</td>
-      <td>0.012366</td>
-      <td>863.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>265</td>
-      <td>0.775609</td>
-      <td>0.925955</td>
-      <td>0.060755</td>
-      <td>66478.976562</td>
-      <td>0.091089</td>
-      <td>0.008297</td>
-      <td>85712.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>266</td>
-      <td>0.794128</td>
-      <td>0.918048</td>
-      <td>0.544686</td>
-      <td>1037.925781</td>
-      <td>0.074009</td>
-      <td>0.005477</td>
-      <td>1307.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>331</td>
-      <td>0.703056</td>
-      <td>0.905304</td>
-      <td>0.142226</td>
-      <td>10725.819336</td>
-      <td>0.102255</td>
-      <td>0.010456</td>
-      <td>15256.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>332</td>
-      <td>0.681699</td>
-      <td>0.849158</td>
-      <td>0.178113</td>
-      <td>321.080261</td>
-      <td>0.123633</td>
-      <td>0.015285</td>
-      <td>471.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>335</td>
-      <td>0.648063</td>
-      <td>0.865804</td>
-      <td>0.239661</td>
-      <td>313.662598</td>
-      <td>0.146582</td>
-      <td>0.021486</td>
-      <td>484.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>863</td>
-      <td>0.388575</td>
-      <td>0.510572</td>
-      <td>0.185987</td>
-      <td>1.165724</td>
-      <td>0.144245</td>
-      <td>0.020807</td>
-      <td>3.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">zone</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">max</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">sum</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">var</th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>0.266528</td>
+<td>0.999579</td>
+<td>-0.998648</td>
+<td>38887.554688</td>
+<td>0.409970</td>
+<td>0.168075</td>
+<td>145904.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>259</td>
+<td>0.520282</td>
+<td>0.885242</td>
+<td>0.289196</td>
+<td>449.003052</td>
+<td>0.111205</td>
+<td>0.012366</td>
+<td>863.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>265</td>
+<td>0.775609</td>
+<td>0.925955</td>
+<td>0.060755</td>
+<td>66478.976562</td>
+<td>0.091089</td>
+<td>0.008297</td>
+<td>85712.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>266</td>
+<td>0.794128</td>
+<td>0.918048</td>
+<td>0.544686</td>
+<td>1037.925781</td>
+<td>0.074009</td>
+<td>0.005477</td>
+<td>1307.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>331</td>
+<td>0.703056</td>
+<td>0.905304</td>
+<td>0.142226</td>
+<td>10725.819336</td>
+<td>0.102255</td>
+<td>0.010456</td>
+<td>15256.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>332</td>
+<td>0.681699</td>
+<td>0.849158</td>
+<td>0.178113</td>
+<td>321.080261</td>
+<td>0.123633</td>
+<td>0.015285</td>
+<td>471.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>335</td>
+<td>0.648063</td>
+<td>0.865804</td>
+<td>0.239661</td>
+<td>313.662598</td>
+<td>0.146582</td>
+<td>0.021486</td>
+<td>484.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>863</td>
+<td>0.388575</td>
+<td>0.510572</td>
+<td>0.185987</td>
+<td>1.165724</td>
+<td>0.144245</td>
+<td>0.020807</td>
+<td>3.0</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -4393,79 +4372,80 @@ Loading a .shp file
 <span id="cb216-9"><a href="#cb216-9" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate zonal statistics for each class_bins</span></span>
 <span id="cb216-10"><a href="#cb216-10" aria-hidden="true" tabindex="-1"></a>zonal_stats(ndvi_classified_sq, ndvi_sq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>zone</th>
-      <th>mean</th>
-      <th>max</th>
-      <th>min</th>
-      <th>sum</th>
-      <th>std</th>
-      <th>var</th>
-      <th>count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>-0.355660</td>
-      <td>-0.000257</td>
-      <td>-0.998648</td>
-      <td>-12838.253906</td>
-      <td>0.145916</td>
-      <td>0.021291</td>
-      <td>36097.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>0.110731</td>
-      <td>0.199839</td>
-      <td>0.000000</td>
-      <td>1754.752441</td>
-      <td>0.055864</td>
-      <td>0.003121</td>
-      <td>15847.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>0.507998</td>
-      <td>0.700000</td>
-      <td>0.200000</td>
-      <td>50410.167969</td>
-      <td>0.140193</td>
-      <td>0.019654</td>
-      <td>99233.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>0.798281</td>
-      <td>0.999579</td>
-      <td>0.700025</td>
-      <td>78888.523438</td>
-      <td>0.051730</td>
-      <td>0.002676</td>
-      <td>98823.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">zone</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">max</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">sum</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">var</th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>-0.355660</td>
+<td>-0.000257</td>
+<td>-0.998648</td>
+<td>-12838.253906</td>
+<td>0.145916</td>
+<td>0.021291</td>
+<td>36097.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>0.110731</td>
+<td>0.199839</td>
+<td>0.000000</td>
+<td>1754.752441</td>
+<td>0.055864</td>
+<td>0.003121</td>
+<td>15847.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>0.507998</td>
+<td>0.700000</td>
+<td>0.200000</td>
+<td>50410.167969</td>
+<td>0.140193</td>
+<td>0.019654</td>
+<td>99233.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>0.798281</td>
+<td>0.999579</td>
+<td>0.700025</td>
+<td>78888.523438</td>
+<td>0.051730</td>
+<td>0.002676</td>
+<td>98823.0</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -4542,10 +4522,10 @@ Wall time: 9.31 s</code></pre>
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7f655d6225c0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-135-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-135-output-2.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-135-output-3.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-135-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 <p>After loading the raster files into memory, we run the following steps:</p>
@@ -4572,7 +4552,7 @@ Wall time: 317 ms</code></pre>
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7f655d3e7640&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-137-output-2.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-137-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>In the following sub-section we will see how to parallelize these raster calculations, and we will compare timings to the serial calculations that we just ran.</p>
@@ -4966,95 +4946,50 @@ Attributes:
     OVR_RESAMPLING_ALG:  AVERAGE
     _FillValue:          0
     scale_factor:        1.0
-    add_offset:          0.0</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name"></div><ul class="xr-dim-list"><li><span class="xr-has-index">band</span>: 1</li><li><span class="xr-has-index">y</span>: 10980</li><li><span class="xr-has-index">x</span>: 10980</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-5f0e0573-a6b6-4164-812a-1299112a8c61" class="xr-array-in" type="checkbox" checked=""><label for="section-5f0e0573-a6b6-4164-812a-1299112a8c61" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 4000, 4000), meta=np.ndarray&gt;</span></div><div class="xr-array-data"><table>
-    <tbody><tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 229.95 MiB </td>
-                        <td> 30.52 MiB </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1, 10980, 10980) </td>
-                        <td> (1, 4000, 4000) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Graph Layers </td>
-                        <td> 9 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> uint16 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="194" height="184" style="stroke:rgb(0,0,0);stroke-width:1">
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2"></line>
-  <line x1="10" y1="43" x2="24" y2="58"></line>
-  <line x1="10" y1="87" x2="24" y2="102"></line>
-  <line x1="10" y1="120" x2="24" y2="134" style="stroke-width:2"></line>
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2"></line>
-  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2"></line>
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 24.9485979497544,14.948597949754403 24.9485979497544,134.9485979497544 10.0,120.0" style="fill:#ECB172A0;stroke-width:0"></polygon>
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2"></line>
-  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2"></line>
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2"></line>
-  <line x1="53" y1="0" x2="68" y2="14"></line>
-  <line x1="97" y1="0" x2="112" y2="14"></line>
-  <line x1="130" y1="0" x2="144" y2="14" style="stroke-width:2"></line>
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 130.0,0.0 144.9485979497544,14.948597949754403 24.9485979497544,14.948597949754403" style="fill:#ECB172A0;stroke-width:0"></polygon>
-
-  <!-- Horizontal lines -->
-  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2"></line>
-  <line x1="24" y1="58" x2="144" y2="58"></line>
-  <line x1="24" y1="102" x2="144" y2="102"></line>
-  <line x1="24" y1="134" x2="144" y2="134" style="stroke-width:2"></line>
-
-  <!-- Vertical lines -->
-  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2"></line>
-  <line x1="68" y1="14" x2="68" y2="134"></line>
-  <line x1="112" y1="14" x2="112" y2="134"></line>
-  <line x1="144" y1="14" x2="144" y2="134" style="stroke-width:2"></line>
-
-  <!-- Colored Rectangle -->
-  <polygon points="24.9485979497544,14.948597949754403 144.9485979497544,14.948597949754403 144.9485979497544,134.9485979497544 24.9485979497544,134.9485979497544" style="fill:#ECB172A0;stroke-width:0"></polygon>
-
-  <!-- Text -->
-  <text x="84.948598" y="154.948598" font-size="1.0rem" font-weight="100" text-anchor="middle">10980</text>
-  <text x="164.948598" y="74.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,164.948598,74.948598)">10980</text>
-  <text x="7.474299" y="147.474299" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,147.474299)">1</text>
-</svg>
-        </td>
-    </tr>
-</tbody></table></div></div></li><li class="xr-section-item"><input id="section-94e5f447-9dcf-4b48-a682-0aefdb391584" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-94e5f447-9dcf-4b48-a682-0aefdb391584" class="xr-section-summary">Coordinates: <span>(4)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">band</span></div><div class="xr-var-dims">(band)</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">1</div><input id="attrs-c0dc272b-0120-4b66-837d-5ba3afbc04b2" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-c0dc272b-0120-4b66-837d-5ba3afbc04b2" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-d3d738e9-2fcc-456b-82e2-aa2732dcf315" class="xr-var-data-in" type="checkbox"><label for="data-d3d738e9-2fcc-456b-82e2-aa2732dcf315" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([1])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">6e+05 6e+05 ... 7.098e+05 7.098e+05</div><input id="attrs-95a2fcb4-e0bf-4e2f-818e-586b3e96be28" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-95a2fcb4-e0bf-4e2f-818e-586b3e96be28" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-176a08d9-fb65-4f52-8b80-1bff175a3477" class="xr-var-data-in" type="checkbox"><label for="data-176a08d9-fb65-4f52-8b80-1bff175a3477" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([600005., 600015., 600025., ..., 709775., 709785., 709795.])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">5.9e+06 5.9e+06 ... 5.79e+06</div><input id="attrs-ffd3e3ff-dea6-4bef-8d3e-83349ebdd05e" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-ffd3e3ff-dea6-4bef-8d3e-83349ebdd05e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-207d7af6-cc1c-49f2-933c-8c96fed92e40" class="xr-var-data-in" type="checkbox"><label for="data-207d7af6-cc1c-49f2-933c-8c96fed92e40" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([5900035., 5900025., 5900015., ..., 5790265., 5790255., 5790245.])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>spatial_ref</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">0</div><input id="attrs-c2a9021d-0b7d-46a1-b489-fe9482eb3c56" class="xr-var-attrs-in" type="checkbox"><label for="attrs-c2a9021d-0b7d-46a1-b489-fe9482eb3c56" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-bd3fe9ab-67c8-43c5-abf1-bf7cabfa2dc4" class="xr-var-data-in" type="checkbox"><label for="data-bd3fe9ab-67c8-43c5-abf1-bf7cabfa2dc4" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>crs_wkt :</span></dt><dd>PROJCS["WGS 84 / UTM zone 31N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32631"]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 31N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>3.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS["WGS 84 / UTM zone 31N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32631"]]</dd><dt><span>GeoTransform :</span></dt><dd>600000.0 10.0 0.0 5900040.0 0.0 -10.0</dd></dl></div><div class="xr-var-data"><pre>array(0)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-d8f3bf78-8ccf-4d71-9d6f-243f5c1e04a7" class="xr-section-summary-in" type="checkbox"><label for="section-d8f3bf78-8ccf-4d71-9d6f-243f5c1e04a7" class="xr-section-summary">Indexes: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>band</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-d7799e44-ed43-4fbe-b89c-1654cbeddd31" class="xr-index-data-in" type="checkbox"><label for="index-d7799e44-ed43-4fbe-b89c-1654cbeddd31" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(Int64Index([1], dtype='int64', name='band'))</pre></div></li><li class="xr-var-item"><div class="xr-index-name"><div>x</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-e4e4ee8d-5a5e-40f5-a947-c445251a7e54" class="xr-index-data-in" type="checkbox"><label for="index-e4e4ee8d-5a5e-40f5-a947-c445251a7e54" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(Float64Index([600005.0, 600015.0, 600025.0, 600035.0, 600045.0, 600055.0,
+    add_offset:          0.0</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name"></div><ul class="xr-dim-list"><li><span class="xr-has-index">band</span>: 1</li><li><span class="xr-has-index">y</span>: 10980</li><li><span class="xr-has-index">x</span>: 10980</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-5f0e0573-a6b6-4164-812a-1299112a8c61" class="xr-array-in" type="checkbox" checked=""><label for="section-5f0e0573-a6b6-4164-812a-1299112a8c61" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 4000, 4000), meta=np.ndarray&gt;</span></div><div class="xr-array-data">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th data-quarto-table-cell-role="th">Array</th>
+<th data-quarto-table-cell-role="th">Chunk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bytes</td>
+<td>229.95 MiB</td>
+<td>30.52 MiB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Shape</td>
+<td>(1, 10980, 10980)</td>
+<td>(1, 4000, 4000)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Count</td>
+<td>2 Graph Layers</td>
+<td>9 Chunks</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Type</td>
+<td>uint16</td>
+<td>numpy.ndarray</td>
+</tr>
+</tbody>
+</table></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTk0IiBoZWlnaHQ9IjE4NCIgc3R5bGU9InN0cm9rZTpyZ2IoMCwwLDApO3N0cm9rZS13aWR0aDoxIj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIyNCIgeTI9IjE0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMTAiIHkxPSI0MyIgeDI9IjI0IiB5Mj0iNTgiPjwvbGluZT4KICA8bGluZSB4MT0iMTAiIHkxPSI4NyIgeDI9IjI0IiB5Mj0iMTAyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTIwIiB4Mj0iMjQiIHkyPSIxMzQiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIFZlcnRpY2FsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIxMCIgeTI9IjEyMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTQiIHgyPSIyNCIgeTI9IjEzNCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIxMC4wLDAuMCAyNC45NDg1OTc5NDk3NTQ0LDE0Ljk0ODU5Nzk0OTc1NDQwMyAyNC45NDg1OTc5NDk3NTQ0LDEzNC45NDg1OTc5NDk3NTQ0IDEwLjAsMTIwLjAiIHN0eWxlPSJmaWxsOiNFQ0IxNzJBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMCIgeDI9IjEzMCIgeTI9IjAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIyNCIgeTE9IjE0IiB4Mj0iMTQ0IiB5Mj0iMTQiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIFZlcnRpY2FsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIyNCIgeTI9IjE0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iNTMiIHkxPSIwIiB4Mj0iNjgiIHkyPSIxNCI+PC9saW5lPgogIDxsaW5lIHgxPSI5NyIgeTE9IjAiIHgyPSIxMTIiIHkyPSIxNCI+PC9saW5lPgogIDxsaW5lIHgxPSIxMzAiIHkxPSIwIiB4Mj0iMTQ0IiB5Mj0iMTQiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMTAuMCwwLjAgMTMwLjAsMC4wIDE0NC45NDg1OTc5NDk3NTQ0LDE0Ljk0ODU5Nzk0OTc1NDQwMyAyNC45NDg1OTc5NDk3NTQ0LDE0Ljk0ODU5Nzk0OTc1NDQwMyIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gSG9yaXpvbnRhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMjQiIHkxPSIxNCIgeDI9IjE0NCIgeTI9IjE0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMjQiIHkxPSI1OCIgeDI9IjE0NCIgeTI9IjU4Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTAyIiB4Mj0iMTQ0IiB5Mj0iMTAyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTM0IiB4Mj0iMTQ0IiB5Mj0iMTM0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMjQiIHkxPSIxNCIgeDI9IjI0IiB5Mj0iMTM0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iNjgiIHkxPSIxNCIgeDI9IjY4IiB5Mj0iMTM0Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjE0IiB4Mj0iMTEyIiB5Mj0iMTM0Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjE0NCIgeTE9IjE0IiB4Mj0iMTQ0IiB5Mj0iMTM0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBDb2xvcmVkIFJlY3RhbmdsZSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjI0Ljk0ODU5Nzk0OTc1NDQsMTQuOTQ4NTk3OTQ5NzU0NDAzIDE0NC45NDg1OTc5NDk3NTQ0LDE0Ljk0ODU5Nzk0OTc1NDQwMyAxNDQuOTQ4NTk3OTQ5NzU0NCwxMzQuOTQ4NTk3OTQ5NzU0NCAyNC45NDg1OTc5NDk3NTQ0LDEzNC45NDg1OTc5NDk3NTQ0IiBzdHlsZT0iZmlsbDojRUNCMTcyQTA7c3Ryb2tlLXdpZHRoOjAiPjwvcG9seWdvbj4KCiAgPCEtLSBUZXh0IC0tPgogIDx0ZXh0IHg9Ijg0Ljk0ODU5OCIgeT0iMTU0Ljk0ODU5OCIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwOTgwPC90ZXh0PgogIDx0ZXh0IHg9IjE2NC45NDg1OTgiIHk9Ijc0Ljk0ODU5OCIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCwxNjQuOTQ4NTk4LDc0Ljk0ODU5OCkiPjEwOTgwPC90ZXh0PgogIDx0ZXh0IHg9IjcuNDc0Mjk5IiB5PSIxNDcuNDc0Mjk5IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoNDUsNy40NzQyOTksMTQ3LjQ3NDI5OSkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+</div></div></li><li class="xr-section-item"><input id="section-94e5f447-9dcf-4b48-a682-0aefdb391584" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-94e5f447-9dcf-4b48-a682-0aefdb391584" class="xr-section-summary">Coordinates: <span>(4)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">band</span></div><div class="xr-var-dims">(band)</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">1</div><input id="attrs-c0dc272b-0120-4b66-837d-5ba3afbc04b2" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-c0dc272b-0120-4b66-837d-5ba3afbc04b2" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-d3d738e9-2fcc-456b-82e2-aa2732dcf315" class="xr-var-data-in" type="checkbox"><label for="data-d3d738e9-2fcc-456b-82e2-aa2732dcf315" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([1])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">6e+05 6e+05 ... 7.098e+05 7.098e+05</div><input id="attrs-95a2fcb4-e0bf-4e2f-818e-586b3e96be28" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-95a2fcb4-e0bf-4e2f-818e-586b3e96be28" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-176a08d9-fb65-4f52-8b80-1bff175a3477" class="xr-var-data-in" type="checkbox"><label for="data-176a08d9-fb65-4f52-8b80-1bff175a3477" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([600005., 600015., 600025., ..., 709775., 709785., 709795.])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">5.9e+06 5.9e+06 ... 5.79e+06</div><input id="attrs-ffd3e3ff-dea6-4bef-8d3e-83349ebdd05e" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-ffd3e3ff-dea6-4bef-8d3e-83349ebdd05e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-207d7af6-cc1c-49f2-933c-8c96fed92e40" class="xr-var-data-in" type="checkbox"><label for="data-207d7af6-cc1c-49f2-933c-8c96fed92e40" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([5900035., 5900025., 5900015., ..., 5790265., 5790255., 5790245.])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>spatial_ref</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">0</div><input id="attrs-c2a9021d-0b7d-46a1-b489-fe9482eb3c56" class="xr-var-attrs-in" type="checkbox"><label for="attrs-c2a9021d-0b7d-46a1-b489-fe9482eb3c56" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-bd3fe9ab-67c8-43c5-abf1-bf7cabfa2dc4" class="xr-var-data-in" type="checkbox"><label for="data-bd3fe9ab-67c8-43c5-abf1-bf7cabfa2dc4" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>crs_wkt :</span></dt><dd>PROJCS["WGS 84 / UTM zone 31N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32631"]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 31N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>3.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS["WGS 84 / UTM zone 31N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32631"]]</dd><dt><span>GeoTransform :</span></dt><dd>600000.0 10.0 0.0 5900040.0 0.0 -10.0</dd></dl></div><div class="xr-var-data"><pre>array(0)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-d8f3bf78-8ccf-4d71-9d6f-243f5c1e04a7" class="xr-section-summary-in" type="checkbox"><label for="section-d8f3bf78-8ccf-4d71-9d6f-243f5c1e04a7" class="xr-section-summary">Indexes: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>band</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-d7799e44-ed43-4fbe-b89c-1654cbeddd31" class="xr-index-data-in" type="checkbox"><label for="index-d7799e44-ed43-4fbe-b89c-1654cbeddd31" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(Int64Index([1], dtype='int64', name='band'))</pre></div></li><li class="xr-var-item"><div class="xr-index-name"><div>x</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-e4e4ee8d-5a5e-40f5-a947-c445251a7e54" class="xr-index-data-in" type="checkbox"><label for="index-e4e4ee8d-5a5e-40f5-a947-c445251a7e54" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(Float64Index([600005.0, 600015.0, 600025.0, 600035.0, 600045.0, 600055.0,
               600065.0, 600075.0, 600085.0, 600095.0,
               ...
               709705.0, 709715.0, 709725.0, 709735.0, 709745.0, 709755.0,
@@ -5476,91 +5411,50 @@ Attributes:
     OVR_RESAMPLING_ALG:  AVERAGE
     _FillValue:          0
     scale_factor:        1.0
-    add_offset:          0.0</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name"></div><ul class="xr-dim-list"><li><span class="xr-has-index">band</span>: 1</li><li><span class="xr-has-index">y</span>: 10980</li><li><span class="xr-has-index">x</span>: 10980</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-cf70764c-9b13-486d-a5a4-1bb4848807e7" class="xr-array-in" type="checkbox" checked=""><label for="section-cf70764c-9b13-486d-a5a4-1bb4848807e7" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 8192, 8192), meta=np.ndarray&gt;</span></div><div class="xr-array-data"><table>
-    <tbody><tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 229.95 MiB </td>
-                        <td> 128.00 MiB </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1, 10980, 10980) </td>
-                        <td> (1, 8192, 8192) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Graph Layers </td>
-                        <td> 4 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> uint16 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="194" height="184" style="stroke:rgb(0,0,0);stroke-width:1">
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2"></line>
-  <line x1="10" y1="89" x2="24" y2="104"></line>
-  <line x1="10" y1="120" x2="24" y2="134" style="stroke-width:2"></line>
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2"></line>
-  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2"></line>
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 24.9485979497544,14.948597949754403 24.9485979497544,134.9485979497544 10.0,120.0" style="fill:#ECB172A0;stroke-width:0"></polygon>
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2"></line>
-  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2"></line>
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2"></line>
-  <line x1="99" y1="0" x2="114" y2="14"></line>
-  <line x1="130" y1="0" x2="144" y2="14" style="stroke-width:2"></line>
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 130.0,0.0 144.9485979497544,14.948597949754403 24.9485979497544,14.948597949754403" style="fill:#ECB172A0;stroke-width:0"></polygon>
-
-  <!-- Horizontal lines -->
-  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2"></line>
-  <line x1="24" y1="104" x2="144" y2="104"></line>
-  <line x1="24" y1="134" x2="144" y2="134" style="stroke-width:2"></line>
-
-  <!-- Vertical lines -->
-  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2"></line>
-  <line x1="114" y1="14" x2="114" y2="134"></line>
-  <line x1="144" y1="14" x2="144" y2="134" style="stroke-width:2"></line>
-
-  <!-- Colored Rectangle -->
-  <polygon points="24.9485979497544,14.948597949754403 144.9485979497544,14.948597949754403 144.9485979497544,134.9485979497544 24.9485979497544,134.9485979497544" style="fill:#ECB172A0;stroke-width:0"></polygon>
-
-  <!-- Text -->
-  <text x="84.948598" y="154.948598" font-size="1.0rem" font-weight="100" text-anchor="middle">10980</text>
-  <text x="164.948598" y="74.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,164.948598,74.948598)">10980</text>
-  <text x="7.474299" y="147.474299" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,147.474299)">1</text>
-</svg>
-        </td>
-    </tr>
-</tbody></table></div></div></li><li class="xr-section-item"><input id="section-212b5437-cd3e-4589-a6f1-6063fef99e7b" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-212b5437-cd3e-4589-a6f1-6063fef99e7b" class="xr-section-summary">Coordinates: <span>(4)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">band</span></div><div class="xr-var-dims">(band)</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">1</div><input id="attrs-101483b5-3b66-4d15-a7fc-535255f61b34" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-101483b5-3b66-4d15-a7fc-535255f61b34" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-233880e3-8de0-49b9-9d4b-9793176746f3" class="xr-var-data-in" type="checkbox"><label for="data-233880e3-8de0-49b9-9d4b-9793176746f3" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([1])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">6e+05 6e+05 ... 7.098e+05 7.098e+05</div><input id="attrs-7a4ee18f-4a5b-4328-86c9-f21e70dd83ea" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-7a4ee18f-4a5b-4328-86c9-f21e70dd83ea" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-8dcf64c6-7b55-470f-8f1e-c9d56711af46" class="xr-var-data-in" type="checkbox"><label for="data-8dcf64c6-7b55-470f-8f1e-c9d56711af46" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([600005., 600015., 600025., ..., 709775., 709785., 709795.])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">5.9e+06 5.9e+06 ... 5.79e+06</div><input id="attrs-4eac12d2-e967-4902-8db3-d58eb85075aa" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-4eac12d2-e967-4902-8db3-d58eb85075aa" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-ac1d7504-ef57-4246-8686-47277f892f3b" class="xr-var-data-in" type="checkbox"><label for="data-ac1d7504-ef57-4246-8686-47277f892f3b" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([5900035., 5900025., 5900015., ..., 5790265., 5790255., 5790245.])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>spatial_ref</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">0</div><input id="attrs-88f990b6-bddb-40b1-ae8e-102331ce8bf1" class="xr-var-attrs-in" type="checkbox"><label for="attrs-88f990b6-bddb-40b1-ae8e-102331ce8bf1" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-dafb84c8-4059-499d-bf4e-4d94371f4a5f" class="xr-var-data-in" type="checkbox"><label for="data-dafb84c8-4059-499d-bf4e-4d94371f4a5f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>crs_wkt :</span></dt><dd>PROJCS["WGS 84 / UTM zone 31N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32631"]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 31N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>3.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS["WGS 84 / UTM zone 31N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32631"]]</dd><dt><span>GeoTransform :</span></dt><dd>600000.0 10.0 0.0 5900040.0 0.0 -10.0</dd></dl></div><div class="xr-var-data"><pre>array(0)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-f8e792b3-3158-4650-bf01-bc64f02269aa" class="xr-section-summary-in" type="checkbox"><label for="section-f8e792b3-3158-4650-bf01-bc64f02269aa" class="xr-section-summary">Indexes: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>band</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-0fc5a555-0633-4b7d-9db7-d46c54bad47f" class="xr-index-data-in" type="checkbox"><label for="index-0fc5a555-0633-4b7d-9db7-d46c54bad47f" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(Int64Index([1], dtype='int64', name='band'))</pre></div></li><li class="xr-var-item"><div class="xr-index-name"><div>x</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-96a6b748-8787-43f3-9ab1-16a2bce043c8" class="xr-index-data-in" type="checkbox"><label for="index-96a6b748-8787-43f3-9ab1-16a2bce043c8" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(Float64Index([600005.0, 600015.0, 600025.0, 600035.0, 600045.0, 600055.0,
+    add_offset:          0.0</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name"></div><ul class="xr-dim-list"><li><span class="xr-has-index">band</span>: 1</li><li><span class="xr-has-index">y</span>: 10980</li><li><span class="xr-has-index">x</span>: 10980</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-cf70764c-9b13-486d-a5a4-1bb4848807e7" class="xr-array-in" type="checkbox" checked=""><label for="section-cf70764c-9b13-486d-a5a4-1bb4848807e7" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 8192, 8192), meta=np.ndarray&gt;</span></div><div class="xr-array-data">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th data-quarto-table-cell-role="th">Array</th>
+<th data-quarto-table-cell-role="th">Chunk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bytes</td>
+<td>229.95 MiB</td>
+<td>128.00 MiB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Shape</td>
+<td>(1, 10980, 10980)</td>
+<td>(1, 8192, 8192)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Count</td>
+<td>2 Graph Layers</td>
+<td>4 Chunks</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Type</td>
+<td>uint16</td>
+<td>numpy.ndarray</td>
+</tr>
+</tbody>
+</table></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTk0IiBoZWlnaHQ9IjE4NCIgc3R5bGU9InN0cm9rZTpyZ2IoMCwwLDApO3N0cm9rZS13aWR0aDoxIj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIyNCIgeTI9IjE0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMTAiIHkxPSI4OSIgeDI9IjI0IiB5Mj0iMTA0Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTIwIiB4Mj0iMjQiIHkyPSIxMzQiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIFZlcnRpY2FsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIxMCIgeTI9IjEyMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTQiIHgyPSIyNCIgeTI9IjEzNCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIxMC4wLDAuMCAyNC45NDg1OTc5NDk3NTQ0LDE0Ljk0ODU5Nzk0OTc1NDQwMyAyNC45NDg1OTc5NDk3NTQ0LDEzNC45NDg1OTc5NDk3NTQ0IDEwLjAsMTIwLjAiIHN0eWxlPSJmaWxsOiNFQ0IxNzJBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMCIgeDI9IjEzMCIgeTI9IjAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIyNCIgeTE9IjE0IiB4Mj0iMTQ0IiB5Mj0iMTQiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIFZlcnRpY2FsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIyNCIgeTI9IjE0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iOTkiIHkxPSIwIiB4Mj0iMTE0IiB5Mj0iMTQiPjwvbGluZT4KICA8bGluZSB4MT0iMTMwIiB5MT0iMCIgeDI9IjE0NCIgeTI9IjE0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBDb2xvcmVkIFJlY3RhbmdsZSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjEwLjAsMC4wIDEzMC4wLDAuMCAxNDQuOTQ4NTk3OTQ5NzU0NCwxNC45NDg1OTc5NDk3NTQ0MDMgMjQuOTQ4NTk3OTQ5NzU0NCwxNC45NDg1OTc5NDk3NTQ0MDMiIHN0eWxlPSJmaWxsOiNFQ0IxNzJBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTQiIHgyPSIxNDQiIHkyPSIxNCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTA0IiB4Mj0iMTQ0IiB5Mj0iMTA0Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTM0IiB4Mj0iMTQ0IiB5Mj0iMTM0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMjQiIHkxPSIxNCIgeDI9IjI0IiB5Mj0iMTM0IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMTE0IiB5MT0iMTQiIHgyPSIxMTQiIHkyPSIxMzQiPjwvbGluZT4KICA8bGluZSB4MT0iMTQ0IiB5MT0iMTQiIHgyPSIxNDQiIHkyPSIxMzQiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMjQuOTQ4NTk3OTQ5NzU0NCwxNC45NDg1OTc5NDk3NTQ0MDMgMTQ0Ljk0ODU5Nzk0OTc1NDQsMTQuOTQ4NTk3OTQ5NzU0NDAzIDE0NC45NDg1OTc5NDk3NTQ0LDEzNC45NDg1OTc5NDk3NTQ0IDI0Ljk0ODU5Nzk0OTc1NDQsMTM0Ljk0ODU5Nzk0OTc1NDQiIHN0eWxlPSJmaWxsOiNFQ0IxNzJBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iODQuOTQ4NTk4IiB5PSIxNTQuOTQ4NTk4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTA5ODA8L3RleHQ+CiAgPHRleHQgeD0iMTY0Ljk0ODU5OCIgeT0iNzQuOTQ4NTk4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwLDE2NC45NDg1OTgsNzQuOTQ4NTk4KSI+MTA5ODA8L3RleHQ+CiAgPHRleHQgeD0iNy40NzQyOTkiIHk9IjE0Ny40NzQyOTkiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSg0NSw3LjQ3NDI5OSwxNDcuNDc0Mjk5KSI+MTwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+</div></div></li><li class="xr-section-item"><input id="section-212b5437-cd3e-4589-a6f1-6063fef99e7b" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-212b5437-cd3e-4589-a6f1-6063fef99e7b" class="xr-section-summary">Coordinates: <span>(4)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">band</span></div><div class="xr-var-dims">(band)</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">1</div><input id="attrs-101483b5-3b66-4d15-a7fc-535255f61b34" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-101483b5-3b66-4d15-a7fc-535255f61b34" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-233880e3-8de0-49b9-9d4b-9793176746f3" class="xr-var-data-in" type="checkbox"><label for="data-233880e3-8de0-49b9-9d4b-9793176746f3" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([1])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">6e+05 6e+05 ... 7.098e+05 7.098e+05</div><input id="attrs-7a4ee18f-4a5b-4328-86c9-f21e70dd83ea" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-7a4ee18f-4a5b-4328-86c9-f21e70dd83ea" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-8dcf64c6-7b55-470f-8f1e-c9d56711af46" class="xr-var-data-in" type="checkbox"><label for="data-8dcf64c6-7b55-470f-8f1e-c9d56711af46" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([600005., 600015., 600025., ..., 709775., 709785., 709795.])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">5.9e+06 5.9e+06 ... 5.79e+06</div><input id="attrs-4eac12d2-e967-4902-8db3-d58eb85075aa" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-4eac12d2-e967-4902-8db3-d58eb85075aa" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-ac1d7504-ef57-4246-8686-47277f892f3b" class="xr-var-data-in" type="checkbox"><label for="data-ac1d7504-ef57-4246-8686-47277f892f3b" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([5900035., 5900025., 5900015., ..., 5790265., 5790255., 5790245.])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>spatial_ref</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">0</div><input id="attrs-88f990b6-bddb-40b1-ae8e-102331ce8bf1" class="xr-var-attrs-in" type="checkbox"><label for="attrs-88f990b6-bddb-40b1-ae8e-102331ce8bf1" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-dafb84c8-4059-499d-bf4e-4d94371f4a5f" class="xr-var-data-in" type="checkbox"><label for="data-dafb84c8-4059-499d-bf4e-4d94371f4a5f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>crs_wkt :</span></dt><dd>PROJCS["WGS 84 / UTM zone 31N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32631"]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 31N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>3.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS["WGS 84 / UTM zone 31N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32631"]]</dd><dt><span>GeoTransform :</span></dt><dd>600000.0 10.0 0.0 5900040.0 0.0 -10.0</dd></dl></div><div class="xr-var-data"><pre>array(0)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-f8e792b3-3158-4650-bf01-bc64f02269aa" class="xr-section-summary-in" type="checkbox"><label for="section-f8e792b3-3158-4650-bf01-bc64f02269aa" class="xr-section-summary">Indexes: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>band</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-0fc5a555-0633-4b7d-9db7-d46c54bad47f" class="xr-index-data-in" type="checkbox"><label for="index-0fc5a555-0633-4b7d-9db7-d46c54bad47f" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(Int64Index([1], dtype='int64', name='band'))</pre></div></li><li class="xr-var-item"><div class="xr-index-name"><div>x</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-96a6b748-8787-43f3-9ab1-16a2bce043c8" class="xr-index-data-in" type="checkbox"><label for="index-96a6b748-8787-43f3-9ab1-16a2bce043c8" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(Float64Index([600005.0, 600015.0, 600025.0, 600035.0, 600045.0, 600055.0,
               600065.0, 600075.0, 600085.0, 600095.0,
               ...
               709705.0, 709715.0, 709725.0, 709735.0, 709745.0, 709755.0,
@@ -5624,7 +5518,7 @@ Wall time: 21.1 ms</code></pre>
 <div class="sourceCode cell-code" id="cb246"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask</span>
 <span id="cb246-2"><a href="#cb246-2" aria-hidden="true" tabindex="-1"></a>dask.visualize(visual_store)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
-<p><img src="Working%20with%20Geospatial%20Data%20in%20Python_files/figure-html/cell-149-output-1.png" class="img-fluid"></p>
+<p><img src="Working with Geospatial Data in Python_files/figure-html/cell-149-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>The task graph gives Dask the complete “overview” of the calculation, thus enabling a better management of tasks and resources when dispatching calculations to be run in parallel.</p>
@@ -5641,12 +5535,12 @@ Wall time: 176 ms</code></pre>
 </div>
 </div>
 <p>The timing that we have recorded for this step is about half the speed of the one recorded for the serial calculation, despite the overhead that Dask introduces to manage the tasks in the Dask graph. This overhead, which is typically of the order of milliseconds per task, can sometimes be larger than the parallelization gain, and this is typically the case for calculations with small chunks (note that here we have used chunks that are only 4 to 32 MB large).</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -5693,9 +5587,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -5707,7 +5615,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -5743,24 +5668,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

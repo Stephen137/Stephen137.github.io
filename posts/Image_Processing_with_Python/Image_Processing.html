@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,10 +91,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -140,31 +113,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -198,6 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">December 20, 2022</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -331,12 +308,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>What if we have hundreds, or thousands, of images to consider? Imagine having to manually count colonies on several thousand images like those above. A Python program using skimage could move through all of the images in seconds; how long would a graduate student require to do the task? Which process would be more accurate and repeatable?</p></li>
 </ol>
 <p>As we can see, the simple image processing / computer vision techniques we will learn during this blog can be very valuable tools for scientific research. As we progress, we will learn image analysis methods useful for many different scientific problems. Let’s get started, by learning some basics about how images are represented and stored digitally.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Key Points:<br>
 
 </div>
@@ -361,8 +338,8 @@ Key Points:<br>
 <p>Now, if we zoomed in close enough to see the pixels in the red box, we would see something like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/c959201d-6ffe-4a0e-9c24-6bb5fbe434d0.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">maize-seedling-enlarged.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/5f9aef35-9e97-4f16-98c6-420387bb4225-1-c959201d-6ffe-4a0e-9c24-6bb5fbe434d0.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">maize-seedling-enlarged.jpg</figcaption>
 </figure>
 </div>
 <p>Note that each square in the enlarged image area - each pixel - is all one colour, but that each pixel can have a different colour from its neighbours. Viewed from a distance, these pixels seem to blend together to form the image we see.</p>
@@ -370,12 +347,12 @@ Key Points:<br>
 <section id="working-with-pixels" class="level3">
 <h3 class="anchored" data-anchor-id="working-with-pixels">Working with Pixels</h3>
 <p>As noted, in practice, real world images will typically be made up of a vast number of pixels, and each of these pixels will be one of potentially millions of colours. While we will deal with pictures of such complexity shortly, let’s start our exploration with 15 pixels in a 5 X 3 matrix with 2 colours and work our way up to that complexity.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Matrices, arrays, images and pixels
 </div>
 </div>
@@ -392,12 +369,12 @@ Matrices, arrays, images and pixels
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> skimage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Import Statements in Python
 </div>
 </div>
@@ -423,12 +400,12 @@ Import Statements in Python
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With that taken care of, let’s load our image data from disk using the imread function from the imageio.v3 module and display it using the imshow function from the matplotlib.pyplot module. imageio is a Python library for reading and writing image data. imageio.v3 is specifying that we want to use version 3 of imageio. This version has the benefit of supporting nD (multidimensional) image data natively (think of volumes, movies).</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Why not use skimage.io.imread()
 </div>
 </div>
@@ -472,30 +449,30 @@ Why not use skimage.io.imread()
 <p>When we process images, we can access, examine, and / or change the colour of any pixel we wish. To do this, we need some convention on how to access pixels individually; a way to give each one a name, or an address of a sort. The most common manner to do this, and the one we will use in our programs, is to assign a modified Cartesian coordinate system to the image. The coordinate system we usually see in mathematics has a horizontal x-axis and a vertical y-axis, like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/7e5dd48d-dc48-4e05-87a0-61bbece9677a.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cartesian-coordinates.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/36883774-c9f3-41a6-b94b-02d1d88bf65a-1-7e5dd48d-dc48-4e05-87a0-61bbece9677a.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cartesian-coordinates.png</figcaption>
 </figure>
 </div>
 <p>The modified coordinate system used for our images will have only positive coordinates, the origin will be in the upper left corner instead of the centre, and y coordinate values will get larger as they go down instead of up, like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/f0c8103e-2890-48c9-86bf-b6b49320de10.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">modified-coordinates.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/8ff476de-76cd-4755-9359-1a6c35410532-1-f0c8103e-2890-48c9-86bf-b6b49320de10.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">modified-coordinates.png</figcaption>
 </figure>
 </div>
 <p>This is called a left-hand coordinate system. If you hold your left hand in front of your face and point your thumb at the floor, your extended index finger will correspond to the x-axis while your thumb represents the y-axis.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/a3dce119-5072-49bb-8008-c07b06a30c75.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">left-hand-coordinates.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/04e6286f-72e5-4d82-8519-fb1ec29c1f84-1-a3dce119-5072-49bb-8008-c07b06a30c75.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">left-hand-coordinates.png</figcaption>
 </figure>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The most common mistake made with coordinates is to forget that y coordinates get larger as they go down instead of up as in a normal Cartesian coordinate system.
 </div>
 </div>
@@ -664,12 +641,12 @@ The most common mistake made with coordinates is to forget that y coordinates ge
 <h3 class="anchored" data-anchor-id="bit-rgb-colour">24-bit RGB Colour</h3>
 <p>This last colour model we used, known as the RGB (Red, Green, Blue) model, is the most common. As we saw, the RGB model is an additive colour model, which means that the primary colours are mixed together to form other colours. Most frequently, the amount of the primary colour added is represented as an integer in the closed range [0, 255] as seen in the example. Therefore, there are 256 discrete amounts of each primary colour that can be added to produce another colour. The number of discrete amounts of each colour, 256, corresponds to the number of bits used to hold the colour channel value, which is eight (28=256). Since we have three channels with 8 bits for each (8+8+8=24), this is called 24-bit colour depth.</p>
 <p>Any particular colour in the RGB model can be expressed by a triplet of integers in [0, 255], representing the red, green, and blue channels, respectively. A larger number in a channel means that more of that primary colour is present.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Suppose that we represent colours as triples (r, g, b), where each of r, g, and b is an integer in [0, 255]. What colours are represented by each of these triples? 1.(255, 0, 0) &nbsp;2.(0, 255, 0) &nbsp;3.(0, 0, 255) &nbsp;4.(255, 255, 255) &nbsp;5.(0, 0, 0) &nbsp;6.(128, 128, 128)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -694,12 +671,12 @@ Suppose that we represent colours as triples (r, g, b), where each of r, g, and 
 </div>
 <p>Note that the RGB colour model may run contrary to your experience, especially if you have mixed primary colours of paint to create new colours. In the RGB model, the lack of any colour is black, while the maximum amount of each of the primary colours is white. With physical paint, we might start with a white base, and then add differing amounts of other paints to produce a darker shade.</p>
 <p>We can look at some further examples of 24-bit RGB colours, in a visual way. The image below shows some colour names, their 24-bit RGB triplet values, and the colour itself:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 We cannot really provide a complete table. To see why, answer this question: How many possible colours can be represented with the 24-bit RGB model?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -719,8 +696,8 @@ We cannot really provide a complete table. To see why, answer this question: How
 <p>Although the images we will manipulate in our programs are conceptualised as rectangular arrays of RGB triplets, they are not necessarily created, stored, or transmitted in that format. There are several image formats we might encounter, and we should know the basics of at least of few of them. Some formats we might encounter, and their file extensions, are shown in this table:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/6d142f05-4903-4a20-a3f3-70809ed8ba7e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image_formats.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/cf6fcfe2-e24c-414a-93e0-6393d6df50ae-1-6d142f05-4903-4a20-a3f3-70809ed8ba7e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image_formats.JPG</figcaption>
 </figure>
 </div>
 </section>
@@ -738,16 +715,16 @@ We cannot really provide a complete table. To see why, answer this question: How
 <p>Internally, computers have a minimum number of bits that they work with at a given time: eight. A group of eight bits is called a byte. The amount of memory (RAM) and drive space our computers have is quantified by terms like Megabytes (MB), Gigabytes (GB), and Terabytes (TB). The following table provides more formal definitions for these terms:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/38cf3051-95bf-4142-b0e9-0fba19a7f540.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">bits.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/6771a503-2ae4-499a-8e3d-9c96cf5db483-1-38cf3051-95bf-4142-b0e9-0fba19a7f540.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">bits.JPG</figcaption>
 </figure>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Imagine that we have a fairly large, but very boring image: a 5,000 × 5,000 pixel image composed of nothing but white pixels. If we used an uncompressed image format such as BMP, with the 24-bit RGB colour model, how much storage would be required for the file?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -771,12 +748,12 @@ Imagine that we have a fairly large, but very boring image: a 5,000 × 5,000 pix
 <h3 class="anchored" data-anchor-id="lossy-compression">Lossy compression</h3>
 <p>Lossy compression takes the original image and discards some of the detail in it, resulting in a smaller file format. The goal is to only throw away detail that someone viewing the image would not notice. Many lossy compression schemes have adjustable levels of compression, so that the image creator can choose the amount of detail that is lost. The more detail that is sacrificed, the smaller the image files will be - but of course, the detail and richness of the image will be lower as well.</p>
 <p>This is probably fine for images that are shown on Web pages or printed off on 4 × 6 photo paper, but may or may not be fine for scientific work. You will have to decide whether the loss of image quality and detail are important to your work, versus the space savings afforded by a lossy compression format.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 It is important to understand that once an image is saved in a lossy compression format, the lost detail is just that - lost.
 </div>
 </div>
@@ -803,8 +780,8 @@ It is important to understand that once an image is saved in a lossy compression
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/d73d6acd-ab2c-43c0-97be-0a5e3a5fa228.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">download.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/96c9ba11-bbcb-4fe9-b02d-efa900f37ca7-1-d73d6acd-ab2c-43c0-97be-0a5e3a5fa228.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">download.jpg</figcaption>
 </figure>
 </div>
 <p>The BMP file, ws.bmp, is 75,000,054 bytes, which matches our prediction very nicely. The JPEG file, ws.jpg, is 392,503 bytes, two orders of magnitude smaller than the bitmap version.</p>
@@ -821,37 +798,37 @@ It is important to understand that once an image is saved in a lossy compression
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/143d18e0-6127-4392-bc6c-8093ac86ca67.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">zipped.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/d66a62f4-78d1-4d3c-86de-54342e1dc4b0-1-143d18e0-6127-4392-bc6c-8093ac86ca67.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">zipped.JPG</figcaption>
 </figure>
 </div>
 <p>The tree.jpg has not reduced in size as this was already in a compressed format. However the regularity of the bitmap image (remember, it is a 5,000 x 5,000 pixel image containing only white pixels) allows the lossless compression scheme to compress the ws.bmp file quite effectivelym reducing the size from 7,500,054 bytes (71.52Mb) to 72,998 bytes (71.29kb).</p>
 <p>Here is an example showing how JPEG compression might impact image quality. Consider this image of several maize seedlings (scaled down here from 11,339 × 11,336 pixels in order to fit the display):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/843057c7-37c0-4c0d-83a8-243c46aa260b.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">quality-original.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/ff107bad-b9f3-4ed8-a11e-8451c977cf6f-1-843057c7-37c0-4c0d-83a8-243c46aa260b.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">quality-original.jpg</figcaption>
 </figure>
 </div>
 <p>Now, let us zoom in and look at a small section of the label in the original, first in the uncompressed format:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/c5321667-a2bd-4c6a-84c6-5b7e52c03ff2.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">quality-tif.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/14161aeb-bf99-4c9b-aa0c-c67f9169ac8b-1-c5321667-a2bd-4c6a-84c6-5b7e52c03ff2.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">quality-tif.jpg</figcaption>
 </figure>
 </div>
 <p>Here is the same area of the image, but in JPEG format. We used a fairly aggressive compression parameter to make the JPEG, in order to illustrate the problems you might encounter with the format.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/40c67fd8-8215-4a8d-a3d4-181155b396b0.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">quality-jpg.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/768dd453-0c18-4856-8fa1-4c3e085e8f3f-1-40c67fd8-8215-4a8d-a3d4-181155b396b0.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">quality-jpg.jpg</figcaption>
 </figure>
 </div>
 <p>The JPEG image is of clearly inferior quality. It has less colour variation and noticeable pixelation. Quality differences become even more marked when one examines the colour histograms for each image. A histogram shows how often each colour value appears in an image. The histograms for the uncompressed (left) and compressed (right) images are shown below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/5bfc3ea9-ce82-4d7d-99cc-b8f38779a9e9.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">quality-histogram.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/0f7de0b2-93b5-4161-b28e-5b5426d4dd83-1-5bfc3ea9-ce82-4d7d-99cc-b8f38779a9e9.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">quality-histogram.jpg</figcaption>
 </figure>
 </div>
 <p>We learn how to make histograms such as these later on in the workshop. The differences in the colour histograms are even more apparent than in the images themselves; clearly the colours in the JPEG image are different from the uncompressed version.</p>
@@ -868,12 +845,12 @@ It is important to understand that once an image is saved in a lossy compression
 <section id="metadata" class="level3">
 <h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
 <p>JPEG and TIFF images support the inclusion of metadata in images. Metadata is textual information that is contained within an image file. Metadata holds information about the image itself, such as when the image was captured, where it was captured, what type of camera was used and with what settings, etc. We normally don’t see this metadata when we view an image, but we can view it independently if we wish to (see Accessing Metadata, below). The important thing to be aware of at this stage is that you cannot rely on the metadata of an image being fully preserved when you use software to process that image.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The image reader/writer library that we use throughout this blog, imageio.v3, includes metadata when saving new images but may fail to keep certain metadata fields.
 </div>
 </div>
@@ -917,16 +894,16 @@ The image reader/writer library that we use throughout this blog, imageio.v3, in
 <p>The following table summarises the characteristics of the BMP, JPEG, and TIFF image formats:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/18b688af-fce8-4570-b3b9-5069bd5a2b4e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">formats.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/7c4271d2-95a1-403e-8122-c3887be03bda-1-18b688af-fce8-4570-b3b9-5069bd5a2b4e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">formats.JPG</figcaption>
 </figure>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Key Points:
 </div>
 </div>
@@ -980,12 +957,12 @@ Key Points:
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>iio.imwrite(uri<span class="op">=</span><span class="st">"Images/chair.tif"</span>, image<span class="op">=</span>image)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The final statement in the program, iio.imwrite(uri=“data/chair.tif”, image=image), writes the image to a file named chair.tif in our Images/ directory. The imwrite() function automatically determines the type of the file, based on the file extension we provide. In this case, the .tif extension causes the image to be saved as a TIFF.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The iio.imwrite() function automatically uses the file type we specify in the file name parameter’s extension.
 </div>
 </div>
@@ -993,12 +970,12 @@ The iio.imwrite() function automatically uses the file type we specify in the fi
 <p>Note that this is not always the case. For example, if we are editing a document in Microsoft Word, and we save the document as paper.pdf instead of paper.docx, the file is not saved as a PDF document.</p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -1097,12 +1074,12 @@ Tip
 <pre><code>ValueError: assignment destination is read-only</code></pre>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Check if the array is writeable with <em>image.flags</em><br>
 
 </div>
@@ -1152,12 +1129,12 @@ If after doing this you receive ValueError: cannot set WRITEABLE flag to True of
 <section id="converting-colour-images-to-grayscale" class="level3">
 <h3 class="anchored" data-anchor-id="converting-colour-images-to-grayscale">Converting colour images to grayscale</h3>
 <p>It is often easier to work with grayscale images, which have a single channel, instead of colour images, which have three channels. Skimage offers the function <strong><em>skimage.color.rgb2gray()</em></strong> to achieve this. This function adds up the three colour channels in a way that matches human colour perception, see the <a href="https://scikit-image.org/docs/dev/api/skimage.color.html#skimage.color.rgb2gray">skimage documentation</a> for details. It returns a grayscale image with floating point values in the range from 0 to 1. We can use the function <em>skimage.util.img_as_ubyte()</em> in order to convert it back to the original data type and the data range back 0 to 255. Note that it is often better to use image values represented by floating point values, because <strong>using floating point numbers is numerically more stable</strong>.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 skimage contains many modules and functions that include the US English spelling, color.
 </div>
 </div>
@@ -1251,15 +1228,15 @@ skimage contains many modules and functions that include the US English spelling
 <p>Consider this image of a whiteboard, and suppose that we want to create a sub-image with just the portion that says “odd + even = odd,” along with the red box that is drawn around the words.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/5f191cbd-3949-4350-9e37-8491dfa40847.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">board.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/3a2de3c9-8579-4c78-a103-cb2e28c441ce-1-5f191cbd-3949-4350-9e37-8491dfa40847.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">board.jpg</figcaption>
 </figure>
 </div>
 <p>Using the same display technique we have used throughout this blog, we can determine the coordinates of the corners of the area we wish to extract by hovering the mouse near the points of interest and noting the coordinates. If we do that, we might settle on a rectangular area with an upper-left coordinate of (135, 60) and a lower-right coordinate of (480, 150), as shown in this version of the whiteboard picture:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/7e67780a-79a6-41d0-a668-737604a32efb.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">board-coordinates.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/f4850b9c-3a9b-45ee-b974-34e07da31dc3-1-7e67780a-79a6-41d0-a668-737604a32efb.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">board-coordinates.jpg</figcaption>
 </figure>
 </div>
 <p>Note that the coordinates in the preceding image are specified in (cx, ry) order. Now if our entire whiteboard image is stored as an skimage image named image, we can create a new image of the selected region with a statement like this:</p>
@@ -1406,12 +1383,12 @@ skimage contains many modules and functions that include the US English spelling
 <p><img src="Image_Processing_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Check the documentation!
 </div>
 </div>
@@ -1419,12 +1396,12 @@ Check the documentation!
 <p>When using an skimage function for the first time - or the fifth time - it is wise to check how the function is used, via the <a href="https://scikit-image.org/docs/dev/user_guide">skimage documentation</a> or other usage examples on programming-related sites such as <a href="https://stackoverflow.com/">Stack Overflow</a>. Basic information about skimage functions can be found interactively in Python, via commands like help(skimage) or help(skimage.draw.rectangle). Take notes in your lab notebook. And, it is always wise to run some test code to verify that the functions your program uses are behaving in the manner you intend.</p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Variable naming conventions
 </div>
 </div>
@@ -1543,12 +1520,12 @@ Variable naming conventions
 <section id="image-modification" class="level3">
 <h3 class="anchored" data-anchor-id="image-modification">Image modification</h3>
 <p>All that remains is the task of modifying the image using our mask in such a way that the areas with True pixels in the mask are not shown in the image any more.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now, consider the mask image we created above. The values of the mask that corresponds to the portion of the image we are interested in are all False, while the values of the mask that corresponds to the portion of the image we want to remove are all True. How do we change the original image using the mask?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1741,12 +1718,12 @@ Now, consider the mask image we created above. The values of the mask that corre
 <p><img src="Image_Processing_files/figure-html/cell-55-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Key Points:
 </div>
 </div>
@@ -1820,12 +1797,12 @@ Key Points:
 <p><img src="Image_Processing_files/figure-html/cell-58-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note that we cannot used named parameters for the plt.xlim() or plt.plot() functions.
 </div>
 </div>
@@ -1833,12 +1810,12 @@ Note that we cannot used named parameters for the plt.xlim() or plt.plot() funct
 <p>This is because these functions are defined to take an arbitrary number of unnamed arguments. The designers wrote the functions this way because they are very versatile, and creating named parameters for all of the possible ways to use them would be complicated.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Matplotlib provides a dedicated function to compute and display histograms: <strong>plt.hist()</strong>.
 </div>
 </div>
@@ -1962,12 +1939,12 @@ Matplotlib provides a dedicated function to compute and display histograms: <str
 <p>function call, and then add a histogram line of the correct colour to the plot with the:</p>
 <pre><code>plt.plot(bin_edges[0:-1], histogram, color=color)</code></pre>
 <p>function call.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Iterators, tuples, and enumerate()
 </div>
 </div>
@@ -1997,12 +1974,12 @@ Iterators, tuples, and enumerate()
 <p>Suppose we are interested in the colour histogram of one of the sensors in the well plate image, specifically, the seventh well from the left in the topmost row, which shows Erythrosin B reacting with water.Hover over the image with your mouse to find the centre of that well and the radius (in pixels) of the well. Then create a circular mask to select only the desired well. Then, use that mask to apply the colour histogram operation to that well.</p>
 <p>Your masked image should look like this:</p>
 <p><img src="Images/wellplate-02-masked.jpg" width="400" height="400"></p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Key Points:
 </div>
 </div>
@@ -2040,15 +2017,15 @@ Key Points:
 <p>Consider this image of a cat, in particular the area of the image outlined by the white square.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/90daf2ae-b8e2-4ebc-bba9-fd142d8421e2.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cat.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/069f154d-17de-4ab1-9abe-8445b2706ba7-1-90daf2ae-b8e2-4ebc-bba9-fd142d8421e2.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cat.jpg</figcaption>
 </figure>
 </div>
 <p>Now, zoom in on the area of the cat’s eye, as shown in the left-hand image below. When we apply a filter, we consider each pixel in the image, one at a time. In this example, the pixel we are currently working on is highlighted in red, as shown in the right-hand image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/020c950f-b7ea-44d7-8a3c-d26e18dd68b1.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cat-eye-pixels.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/c66ea0d7-18f3-447c-9964-525f3e557dff-1-020c950f-b7ea-44d7-8a3c-d26e18dd68b1.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cat-eye-pixels.jpg</figcaption>
 </figure>
 </div>
 <p>When we apply a filter, we consider rectangular groups of pixels surrounding each pixel in the image, in turn. The <em>kernel</em> is another group of pixels (a separate matrix / small image), of the same dimensions as the rectangular group of pixels in the image, that moves along with the pixel being worked on by the filter. The width and height of the kernel must be an odd number, so that the pixel being worked on is always in its centre. In the example shown above, the kernel is square, with a dimension of seven pixels.</p>
@@ -2059,15 +2036,15 @@ Key Points:
 <p>The shape of the function is described by a <strong>mean</strong> value <em>μ</em>, and a <strong>variance</strong> value <em>σ²</em>. The mean determines the central point of the bell curve on the x axis, and the variance describes the spread of the curve. In fact, when using Gaussian functions in Gaussian blurring, we use a 2D Gaussian function to account for X and Y dimensions, but the same rules apply. The mean μ is always 0, and represents the middle of the 2D kernel. Increasing values of σ² in either dimension increases the amount of blurring in that dimension.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/4adc2188-fae0-4d39-97c2-2c0c242b13ec.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Gaussian_2D.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/361b4075-d8d4-4df4-ac50-cacea2a3f670-1-4adc2188-fae0-4d39-97c2-2c0c242b13ec.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Gaussian_2D.png</figcaption>
 </figure>
 </div>
 <p>The averaging is done on a <strong>channel-by-channel</strong> basis, and the average channel values become the new value for the pixel in the filtered image. Larger kernels have more values factored into the average, and this implies that a larger kernel will blur the image more than a smaller kernel. To get an idea of how this works, consider this plot of the two-dimensional Gaussian function:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/2a56c4bb-901f-430a-957b-05615109013c.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gaussian-kernel.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/a2a47316-bb54-4b4a-b75d-3a30db7ddfbf-1-2a56c4bb-901f-430a-957b-05615109013c.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gaussian-kernel.png</figcaption>
 </figure>
 </div>
 <p>Imagine that plot laid over the kernel for the Gaussian blur filter. The height of the plot corresponds to the weight given to the underlying pixel in the kernel. I.e., the pixels close to the centre become more important to the filtered pixel colour than the pixels close to the outer limits of the kernel. The shape of the Gaussian function is controlled via its standard deviation, or sigma:</p>
@@ -2078,15 +2055,15 @@ Key Points:
 <p>The mathematics involved in the Gaussian blur filter are not quite that simple, but this explanation gives you the basic idea. To illustrate the blur process, consider the blue channel colour values from the seven-by-seven region of the cat image above:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/63743bf3-cd76-411a-a744-cac637d4a660.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cat-corner-blue.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/43a23411-783f-41f8-b282-478288c5bf39-1-63743bf3-cd76-411a-a744-cac637d4a660.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cat-corner-blue.png</figcaption>
 </figure>
 </div>
 <p>The filter is going to determine the new blue channel value for the centre pixel – the one that currently has the value 86. The filter calculates a weighted average of all the blue channel values in the kernel giving higher weight to the pixels near the centre of the kernel.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/e409e806-8f4b-4bf7-ad36-cac2cf96946c.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">combination.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/6e404fba-2d52-48e0-848e-93cc34b3bff7-1-e409e806-8f4b-4bf7-ad36-cac2cf96946c.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">combination.png</figcaption>
 </figure>
 </div>
 <p>This weighted average, the sum of the multiplications, becomes the new value for the centre pixel (3, 3). The same process would be used to determine the green and red channel values, and then the kernel would be moved over to apply the filter to the next pixel in the image.</p>
@@ -2096,29 +2073,29 @@ Key Points:
 <p>Something different needs to happen for pixels near the outer limits of the image, since the kernel for the filter may be partially off the image. For example, what happens when the filter is applied to the upper-left pixel of the image? Here are the blue channel pixel values for the upper-left pixel of the cat image, again assuming a seven-by-seven kernel:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/3be43e17-88db-4def-af8c-62229f0377eb.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">edges.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/794bcfff-7194-4a68-80bb-ffd82790f39d-1-3be43e17-88db-4def-af8c-62229f0377eb.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">edges.JPG</figcaption>
 </figure>
 </div>
 <p>The upper-left pixel is the one with value 4. Since the pixel is at the upper-left corner, there are no pixels underneath much of the kernel; here, this is represented by x’s. So, what does the filter do in that situation? The default mode is to fill in the nearest pixel value from the image. For each of the missing x’s the image value closest to the x is used. If we fill in a few of the missing pixels, you will see how this works:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/2d28eaed-5ba1-47e8-b1be-75c47ea71328.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">edges_2.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/c05b72cb-b39f-4c8f-a750-a3e209233ca5-1-2d28eaed-5ba1-47e8-b1be-75c47ea71328.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">edges_2.JPG</figcaption>
 </figure>
 </div>
 <p>Another strategy to fill those missing values is to <strong><em>reflect</em></strong> the pixels that are in the image to fill in for the pixels that are missing from the kernel.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/78041d9a-a75b-442f-b6e9-866cf1beed58.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">reflect.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/15656129-c95e-401d-b6df-8b93bb70e204-1-78041d9a-a75b-442f-b6e9-866cf1beed58.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">reflect.JPG</figcaption>
 </figure>
 </div>
 <p>A similar process would be used to fill in all of the other missing pixels from the kernel. Other <strong><em>border modes</em></strong> are available; you can learn more about them in the <a href="https://scikit-image.org/docs/dev/user_guide">skimage documentation</a>. This animation shows how the blur kernel moves along in the original image in order to calculate the colour channel values for the blurred image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/ae8404cc-4024-478f-a356-d6d6a43b9e89.gif" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">blur-demo.gif</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/b4c59e4f-735c-444b-b676-9734bf4e337c-1-ae8404cc-4024-478f-a356-d6d6a43b9e89.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">blur-demo.gif</figcaption>
 </figure>
 </div>
 <p>skimage has built-in functions to perform blurring for us, so we do not have to perform all of these mathematical operations ourselves. Let’s work through an example of blurring an image with the skimage Gaussian blur function.</p>
@@ -2163,12 +2140,12 @@ Key Points:
 </div>
 </div>
 <p>The size and shape of the kernel used to blur an image can have a significant effect on the result of the blurring and any downstream analysis carried out on the blurred image. Let’s now experiment with the sigma values of the kernel, as this is a good way to develop our understanding of how the choice of kernel can influence the result of blurring.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Generally speaking, what effect does the sigma value have on the blurred image?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -2216,12 +2193,12 @@ Generally speaking, what effect does the sigma value have on the blurred image?
 <p><img src="Image_Processing_files/figure-html/cell-70-output-3.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Kernel shape - what is the effect of applying an asymmetric kernel to blurring an image?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -2276,12 +2253,12 @@ Kernel shape - what is the effect of applying an asymmetric kernel to blurring a
 <section id="other-methods-of-blurring" class="level3">
 <h3 class="anchored" data-anchor-id="other-methods-of-blurring">Other methods of blurring</h3>
 <p>The Gaussian blur is a way to apply a low-pass filter in skimage. It is often used to remove Gaussian (i. e., random) noise from the image. For other kinds of noise, e.g.&nbsp;“salt and pepper” or “static” noise, a median filter is typically used. See the <a href="https://scikit-image.org/docs/dev/api/skimage.filters.html#module-skimage.filters">skimage.filters documentation</a> for a list of available filters.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Key Points:
 </div>
 </div>
@@ -2455,12 +2432,12 @@ Key Points:
 </div>
 </div>
 <p>We can see a large spike around 0.3, and a smaller spike around 0.7. The spike near 0.3 represents the darker background, so it seems like a value close to t=0.5 would be a good choice.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note that unlike the image with a white background we used above, here the peak for the background colour is at a lower gray level than the shapes. Therefore, change the comparison operator less &lt; to greater &gt; to create the appropriate mask. Then apply the mask to the image and view the thresholded image. If everything works as it should, our output should show only the coloured shapes on a black background.
 </div>
 </div>
@@ -2585,8 +2562,8 @@ Note that unlike the image with a white background we used above, here the peak 
 <p>Let us now turn to an application where we can apply thresholding and other techniques we have learned to this point. Consider these four maize root system images, which we can find in the files <em>data/trial-016.jpg</em>, <em>data/trial-020.jpg</em>, <em>data/trial-216.jpg</em>, and <em>data/trial-293.jpg</em>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/33ad2d8f-4377-4945-85b8-d072ba9e812b.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">four-maize-roots.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/632f8ebb-49f8-4b1d-9e6a-446e365690b0-1-33ad2d8f-4377-4945-85b8-d072ba9e812b.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">four-maize-roots.jpg</figcaption>
 </figure>
 </div>
 <p>Suppose we are interested in the amount of plant material in each image, and in particular how that amount changes from image to image. Perhaps the images represent the growth of the plant over time, or perhaps the images show four different maize varieties at the same phase of their growth. The question we would like to answer is, “how much root mass is in each image?”</p>
@@ -2651,17 +2628,17 @@ Images/trial-020.jpg,0.06381349734042553</code></pre>
 <p>Let us take a closer look at the binary masks produced by the measure_root_mass function:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/24d355e4-2c1d-478f-849f-b7b0e0fbecd6.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">four-maize-roots-binary.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/8326da92-5b86-4bc5-929b-a0a8d473d811-1-24d355e4-2c1d-478f-849f-b7b0e0fbecd6.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">four-maize-roots-binary.jpg</figcaption>
 </figure>
 </div>
 <p>You may have noticed in the section on automatic thresholding that the thresholded image does include regions of the image aside of the plant root: the numbered labels and the white circles in each image are preserved during the thresholding, because their grayscale values are above the threshold. Therefore, our calculated root mass ratios include the white pixels of the label and white circle that are not part of the plant root. Those extra pixels affect how accurate the root mass calculation is!</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 How might we remove the labels and circles before calculating the ratio, so that our results are more accurate? Think about some options given what we have learned so far.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -2723,8 +2700,8 @@ Images/trial-020.jpg,0.05924468085106383</code></pre>
 <p>Here are the binary images produced by the additional thresholding. Note that we have not completely removed the offending white pixels. Outlines still remain. However, we have reduced the number of extraneous pixels, which should make the output more accurate.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/9ab4f8fe-7011-4806-9c7a-d5768f2fbf8d.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">four-maize-roots-binary-improved.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/db11ca96-0734-4f99-bc8a-0bc1dbc70915-1-9ab4f8fe-7011-4806-9c7a-d5768f2fbf8d.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">four-maize-roots-binary-improved.jpg</figcaption>
 </figure>
 </div>
 </section>
@@ -2733,8 +2710,8 @@ Images/trial-020.jpg,0.05924468085106383</code></pre>
 <p>In the images directory Images/, you will find an image named colonies-01.tif:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/9febf3ed-8dee-4fbc-bce5-22dc5e8b9e7c.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">colonies-01.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/45647652-b822-452e-a28c-82ca220484bb-1-9febf3ed-8dee-4fbc-bce5-22dc5e8b9e7c.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">colonies-01.jpg</figcaption>
 </figure>
 </div>
 <p>This is one of the images we will be working with in the morphometric challenge at the end of this blog. Let’s first plot and inspect the grayscale histogram of the image to determine a good threshold value for the image:</p>
@@ -2771,12 +2748,12 @@ Images/trial-020.jpg,0.05924468085106383</code></pre>
 <p><img src="Image_Processing_files/figure-html/cell-93-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Key Points:
 </div>
 </div>
@@ -2795,15 +2772,15 @@ Key Points:
 <p>In the <em>Thresholding</em> section we covered dividing an image into foreground and background pixels. In the shapes example image, we considered the coloured shapes as foreground objects on a white background:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/d92647d5-374d-46d8-ba93-a5568f4f1b38.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">shapes-01.jpg</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/5dc0257e-481e-4467-9cff-c539f026e902-1-d92647d5-374d-46d8-ba93-a5568f4f1b38.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">shapes-01.jpg</figcaption>
 </figure>
 </div>
 <p>In thresholding we went from the original image to this version:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/75d1743d-5bbc-4d9e-9ecc-80d63eef406e.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">shapes-01-mask.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/558c041d-600d-4a4f-bb7c-011a5f30ca05-1-75d1743d-5bbc-4d9e-9ecc-80d63eef406e.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">shapes-01-mask.png</figcaption>
 </figure>
 </div>
 <p>Here, we created a mask that only highlights the parts of the image that we find interesting, the objects. All objects have pixel value of True while the background pixels are False.</p>
@@ -2824,8 +2801,8 @@ Key Points:
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/75bd5dcb-784f-452c-9aed-c86696a80230.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">one_jump.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/5d83e34c-9782-44dd-83b7-213dfc0fd165-1-75bd5dcb-784f-452c-9aed-c86696a80230.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">one_jump.JPG</figcaption>
 </figure>
 </div>
 <p>The pixels on the diagonal (from o) are not reachable with a single jump, which is denoted by the -. The pixels reachable with a single jump form the <strong>1-jump</strong> neighborhood.</p>
@@ -2834,8 +2811,8 @@ Key Points:
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/c54127bf-655e-4ffd-9f9d-32ca72060c80.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">two_jump.JPG</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/d4eeee12-f88b-4855-be87-ec235f27c0ab-1-c54127bf-655e-4ffd-9f9d-32ca72060c80.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">two_jump.JPG</figcaption>
 </figure>
 </div>
 <p>All pixels reachable with one, or two jumps form the <strong>2-jump</strong> neighborhood. The grid below illustrates the pixels reachable from the centre pixel o with a single jump, highlighted with a 1, and the pixels reachable with 2 jumps with a 2.</p>
@@ -2852,12 +2829,12 @@ Key Points:
 </section>
 <section id="object-counting" class="level3">
 <h3 class="anchored" data-anchor-id="object-counting">Object counting</h3>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Consider the mask below. How many objects with 1 orthogonal jump?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -2874,12 +2851,12 @@ Consider the mask below. How many objects with 1 orthogonal jump?
 0 X 0 X X X 0 0
 0 X 0 X X 0 0 0
 0 0 0 0 0 0 0 0</code></pre>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Consider the mask above. How many objects with 2 orthogonal jump?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -2946,12 +2923,12 @@ Consider the mask above. How many objects with 2 orthogonal jump?
 <p><img src="Image_Processing_files/figure-html/cell-97-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Color mappings
 </div>
 </div>
@@ -2971,12 +2948,12 @@ min: 0
 max: 11</code></pre>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 int64
 </div>
 </div>
@@ -3019,8 +2996,8 @@ int64
 <p>You might wonder why the connected component analysis with sigma=2.0, and threshold=0.9 finds 11 objects, whereas we would expect only 7 objects. Where are the four additional objects? With a bit of detective work, we can spot some small objects in the image, for example, near the left border:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Image_Processing_files/figure-html/26696ac3-ad51-4411-845d-e7efdeb7fbb4.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">shapes-01-cca-detail.png</figcaption><p></p>
+<p><img src="Image_Processing_files/figure-html/f29de280-53f6-405c-9fe8-ad03782145c1-1-26696ac3-ad51-4411-845d-e7efdeb7fbb4.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">shapes-01-cca-detail.png</figcaption>
 </figure>
 </div>
 <p>For us it is clear that these small spots are artifacts and not objects we are interested in. But how can we tell the computer? One way to calibrate the algorithm is to adjust the parameters for blurring (sigma) and thresholding (t), but you may have noticed during the above exercise that it is quite hard to find a combination that produces the right output number. In some cases, background noise gets picked up as an object. And with other parameters, some of the foreground objects get broken up or disappear completely. Therefore, we need other criteria to describe desired properties of the objects that are found.</p>
@@ -3088,12 +3065,12 @@ int64
 <pre><code>Found 7 objects!</code></pre>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 NumPy vs for loops and if statements
 </div>
 </div>
@@ -3112,12 +3089,12 @@ NumPy vs for loops and if statements
 </div>
 </div>
 <p>For all three alternatives, the output is the same and gives the expected count of 7 objects.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Using functions from Numpy and other Python packages
 </div>
 </div>
@@ -3205,12 +3182,12 @@ Using functions from Numpy and other Python packages
 </div>
 </div>
 <p>You may have noticed that in the solution, we have used the labeled_image to index the array object_areas. This is an example of <a href="https://numpy.org/doc/stable/user/basics.indexing.html#advanced-indexing">advanced indexing in NumPy</a>. The result is an array of the same shape as the labeled_image whose pixel values are selected from object_areas according to the object label. Hence the objects will be colored by area when the result is displayed. Note that advanced indexing with an integer array works slightly different than the indexing with a Boolean array that we have used for masking. While Boolean array indexing returns only the entries corresponding to the True values of the index, integer array indexing returns an array with the same shape as the index.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Key Points:
 </div>
 </div>
@@ -3256,9 +3233,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -3270,7 +3261,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -3306,24 +3314,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

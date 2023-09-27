@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -142,31 +114,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -202,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">March 10, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -246,15 +222,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>An overview of the course architecture is included below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/e0d0cb1f-c49f-4b75-945d-377d45e5d0bb.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Architecture.png</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/43ee2107-0885-4818-8edc-cd83390620a9-1-e0d0cb1f-c49f-4b75-945d-377d45e5d0bb.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Architecture.png</figcaption>
 </figure>
 </div>
 <p>The first thing to do is to navigate to the <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp">course github page</a> and clone the course repo to your local machine :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/29b602a8-7b8b-4fb0-a07b-95d3cbfa9048.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">clone_repository.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f7109550-8ea8-4512-bf95-ed84d8219e97-1-29b602a8-7b8b-4fb0-a07b-95d3cbfa9048.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">clone_repository.PNG</figcaption>
 </figure>
 </div>
 <p>by running the following command in your terminal. I have a Windows machine but have a Linux environment installed, and use the <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview">Ubuntu on Windows</a> terminal.</p>
@@ -262,8 +238,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>I have a nifty terminal splitter called <a href="https://github.com/tmux/tmux/wiki">tmux</a> which allows me to have multiple terminals running - which comes in very handy sometimes!!! There’s a handy cheatsheet <a href="https://tmuxcheatsheet.com/">here</a> but basically <code>CTRL+B</code> is the way in to the magic :)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/3ff91892-70a4-4737-a25c-e836b1244a8b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">tmux.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f7109550-8ea8-4512-bf95-ed84d8219e97-2-3ff91892-70a4-4737-a25c-e836b1244a8b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tmux.PNG</figcaption>
 </figure>
 </div>
 <p>Other things we can do from the command line:</p>
@@ -275,32 +251,32 @@ rm -rf / (remove all files from directory)</code></pre>
 <h3 class="anchored" data-anchor-id="introduction-to-google-cloud-platform-gcp">1.1.1 Introduction to Google Cloud Platform (GCP)</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2d95e736-04da-4c8f-b8fc-01e23f92f9d5.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">What_is_GCP.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a13dfc71-e07f-40f2-be21-09a3274ca87f-1-2d95e736-04da-4c8f-b8fc-01e23f92f9d5.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">What_is_GCP.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8fdc4f46-ecda-4760-a690-2f9b403183c8.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">GCP.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2257b13a-3e5c-45b9-b673-c1354d0348d0-1-8fdc4f46-ecda-4760-a690-2f9b403183c8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GCP.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a9c4e5d1-c861-4727-8a94-3aabc75a6891.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">GCP_dashboard.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/22210a7a-60dc-4363-aa19-9bbb783b0091-1-a9c4e5d1-c861-4727-8a94-3aabc75a6891.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GCP_dashboard.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f9be03e6-c420-42ec-abb5-80a21f70bd5a.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">GCP_cloud_storage.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/41d1d1fe-eec1-4bc6-a944-cb68c92e28e4-1-f9be03e6-c420-42ec-abb5-80a21f70bd5a.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GCP_cloud_storage.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/81ad66d8-518e-4e1c-96b4-13edf15f5ea0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">GCP_search_bar.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/0edbc5ef-da89-4d44-b781-3320e63050ff-1-81ad66d8-518e-4e1c-96b4-13edf15f5ea0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GCP_search_bar.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -321,8 +297,8 @@ rm -rf / (remove all files from directory)</code></pre>
 <pre><code>code .</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/94927d12-fd68-4768-aa55-4e85724cf139.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dockerfile.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/7cae79ee-058c-454f-90c1-ddc19a41d127-1-94927d12-fd68-4768-aa55-4e85724cf139.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dockerfile.JPG</figcaption>
 </figure>
 </div>
 <p>Let’s first build an <code>image</code> - we’ll name it <code>test:pandas</code> by running the following command from within the terminal:</p>
@@ -337,14 +313,14 @@ pd.__version__    </code></pre>
 <p>We can automate things further by creating a <code>data pipeline.py</code> file and configuring our Dockerfile to include this :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a4c52dd4-e94b-45bc-a40a-2580987453a2.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pipeline.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/33ea9b42-1553-4735-8654-0c06886cea55-1-a4c52dd4-e94b-45bc-a40a-2580987453a2.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pipeline.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/dd06aca1-1f23-4fb2-8d1b-6f8eef677e17.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">dockerfile_2.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/33ea9b42-1553-4735-8654-0c06886cea55-2-dd06aca1-1f23-4fb2-8d1b-6f8eef677e17.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">dockerfile_2.JPG</figcaption>
 </figure>
 </div>
 <p>Let’s run the following commands in the terminal :</p>
@@ -363,8 +339,8 @@ root@f009333fb3e5:/app# pwd (`pwd` takes us to the CURRENT directory)
 <p>Let’s fine tune the configuration of our <code>pipleline</code> a bit more prior to scheduling a run:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f117e157-83eb-46d6-af9f-b9c7313af3f0.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pipeline_2.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/fa782d9c-1d53-4727-a0dd-976c69671703-1-f117e157-83eb-46d6-af9f-b9c7313af3f0.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pipeline_2.JPG</figcaption>
 </figure>
 </div>
 <p>We first rebuild using our usual command:</p>
@@ -422,267 +398,268 @@ wget https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv</code></pre>
   df = pd.read_csv('Data/yellow_tripdata_2021-01.csv')</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>VendorID</th>
-      <th>tpep_pickup_datetime</th>
-      <th>tpep_dropoff_datetime</th>
-      <th>passenger_count</th>
-      <th>trip_distance</th>
-      <th>RatecodeID</th>
-      <th>store_and_fwd_flag</th>
-      <th>PULocationID</th>
-      <th>DOLocationID</th>
-      <th>payment_type</th>
-      <th>fare_amount</th>
-      <th>extra</th>
-      <th>mta_tax</th>
-      <th>tip_amount</th>
-      <th>tolls_amount</th>
-      <th>improvement_surcharge</th>
-      <th>total_amount</th>
-      <th>congestion_surcharge</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.0</td>
-      <td>2021-01-01 00:30:10</td>
-      <td>2021-01-01 00:36:12</td>
-      <td>1.0</td>
-      <td>2.10</td>
-      <td>1.0</td>
-      <td>N</td>
-      <td>142</td>
-      <td>43</td>
-      <td>2.0</td>
-      <td>8.00</td>
-      <td>3.00</td>
-      <td>0.5</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>11.80</td>
-      <td>2.5</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1.0</td>
-      <td>2021-01-01 00:51:20</td>
-      <td>2021-01-01 00:52:19</td>
-      <td>1.0</td>
-      <td>0.20</td>
-      <td>1.0</td>
-      <td>N</td>
-      <td>238</td>
-      <td>151</td>
-      <td>2.0</td>
-      <td>3.00</td>
-      <td>0.50</td>
-      <td>0.5</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>4.30</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1.0</td>
-      <td>2021-01-01 00:43:30</td>
-      <td>2021-01-01 01:11:06</td>
-      <td>1.0</td>
-      <td>14.70</td>
-      <td>1.0</td>
-      <td>N</td>
-      <td>132</td>
-      <td>165</td>
-      <td>1.0</td>
-      <td>42.00</td>
-      <td>0.50</td>
-      <td>0.5</td>
-      <td>8.65</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>51.95</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1.0</td>
-      <td>2021-01-01 00:15:48</td>
-      <td>2021-01-01 00:31:01</td>
-      <td>0.0</td>
-      <td>10.60</td>
-      <td>1.0</td>
-      <td>N</td>
-      <td>138</td>
-      <td>132</td>
-      <td>1.0</td>
-      <td>29.00</td>
-      <td>0.50</td>
-      <td>0.5</td>
-      <td>6.05</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>36.35</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2.0</td>
-      <td>2021-01-01 00:31:49</td>
-      <td>2021-01-01 00:48:21</td>
-      <td>1.0</td>
-      <td>4.94</td>
-      <td>1.0</td>
-      <td>N</td>
-      <td>68</td>
-      <td>33</td>
-      <td>1.0</td>
-      <td>16.50</td>
-      <td>0.50</td>
-      <td>0.5</td>
-      <td>4.06</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>24.36</td>
-      <td>2.5</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1369760</th>
-      <td>NaN</td>
-      <td>2021-01-25 08:32:04</td>
-      <td>2021-01-25 08:49:32</td>
-      <td>NaN</td>
-      <td>8.80</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>135</td>
-      <td>82</td>
-      <td>NaN</td>
-      <td>21.84</td>
-      <td>2.75</td>
-      <td>0.5</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>25.39</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1369761</th>
-      <td>NaN</td>
-      <td>2021-01-25 08:34:00</td>
-      <td>2021-01-25 09:04:00</td>
-      <td>NaN</td>
-      <td>5.86</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>42</td>
-      <td>161</td>
-      <td>NaN</td>
-      <td>26.67</td>
-      <td>2.75</td>
-      <td>0.5</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>30.22</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1369762</th>
-      <td>NaN</td>
-      <td>2021-01-25 08:37:00</td>
-      <td>2021-01-25 08:53:00</td>
-      <td>NaN</td>
-      <td>4.45</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>14</td>
-      <td>106</td>
-      <td>NaN</td>
-      <td>25.29</td>
-      <td>2.75</td>
-      <td>0.5</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>28.84</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1369763</th>
-      <td>NaN</td>
-      <td>2021-01-25 08:28:00</td>
-      <td>2021-01-25 08:50:00</td>
-      <td>NaN</td>
-      <td>10.04</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>175</td>
-      <td>216</td>
-      <td>NaN</td>
-      <td>28.24</td>
-      <td>2.75</td>
-      <td>0.5</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>31.79</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1369764</th>
-      <td>NaN</td>
-      <td>2021-01-25 08:38:00</td>
-      <td>2021-01-25 08:50:00</td>
-      <td>NaN</td>
-      <td>4.93</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>248</td>
-      <td>168</td>
-      <td>NaN</td>
-      <td>20.76</td>
-      <td>2.75</td>
-      <td>0.5</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.3</td>
-      <td>24.31</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">VendorID</th>
+<th data-quarto-table-cell-role="th">tpep_pickup_datetime</th>
+<th data-quarto-table-cell-role="th">tpep_dropoff_datetime</th>
+<th data-quarto-table-cell-role="th">passenger_count</th>
+<th data-quarto-table-cell-role="th">trip_distance</th>
+<th data-quarto-table-cell-role="th">RatecodeID</th>
+<th data-quarto-table-cell-role="th">store_and_fwd_flag</th>
+<th data-quarto-table-cell-role="th">PULocationID</th>
+<th data-quarto-table-cell-role="th">DOLocationID</th>
+<th data-quarto-table-cell-role="th">payment_type</th>
+<th data-quarto-table-cell-role="th">fare_amount</th>
+<th data-quarto-table-cell-role="th">extra</th>
+<th data-quarto-table-cell-role="th">mta_tax</th>
+<th data-quarto-table-cell-role="th">tip_amount</th>
+<th data-quarto-table-cell-role="th">tolls_amount</th>
+<th data-quarto-table-cell-role="th">improvement_surcharge</th>
+<th data-quarto-table-cell-role="th">total_amount</th>
+<th data-quarto-table-cell-role="th">congestion_surcharge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.0</td>
+<td>2021-01-01 00:30:10</td>
+<td>2021-01-01 00:36:12</td>
+<td>1.0</td>
+<td>2.10</td>
+<td>1.0</td>
+<td>N</td>
+<td>142</td>
+<td>43</td>
+<td>2.0</td>
+<td>8.00</td>
+<td>3.00</td>
+<td>0.5</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>11.80</td>
+<td>2.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.0</td>
+<td>2021-01-01 00:51:20</td>
+<td>2021-01-01 00:52:19</td>
+<td>1.0</td>
+<td>0.20</td>
+<td>1.0</td>
+<td>N</td>
+<td>238</td>
+<td>151</td>
+<td>2.0</td>
+<td>3.00</td>
+<td>0.50</td>
+<td>0.5</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>4.30</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1.0</td>
+<td>2021-01-01 00:43:30</td>
+<td>2021-01-01 01:11:06</td>
+<td>1.0</td>
+<td>14.70</td>
+<td>1.0</td>
+<td>N</td>
+<td>132</td>
+<td>165</td>
+<td>1.0</td>
+<td>42.00</td>
+<td>0.50</td>
+<td>0.5</td>
+<td>8.65</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>51.95</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1.0</td>
+<td>2021-01-01 00:15:48</td>
+<td>2021-01-01 00:31:01</td>
+<td>0.0</td>
+<td>10.60</td>
+<td>1.0</td>
+<td>N</td>
+<td>138</td>
+<td>132</td>
+<td>1.0</td>
+<td>29.00</td>
+<td>0.50</td>
+<td>0.5</td>
+<td>6.05</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>36.35</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2.0</td>
+<td>2021-01-01 00:31:49</td>
+<td>2021-01-01 00:48:21</td>
+<td>1.0</td>
+<td>4.94</td>
+<td>1.0</td>
+<td>N</td>
+<td>68</td>
+<td>33</td>
+<td>1.0</td>
+<td>16.50</td>
+<td>0.50</td>
+<td>0.5</td>
+<td>4.06</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>24.36</td>
+<td>2.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1369760</td>
+<td>NaN</td>
+<td>2021-01-25 08:32:04</td>
+<td>2021-01-25 08:49:32</td>
+<td>NaN</td>
+<td>8.80</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>135</td>
+<td>82</td>
+<td>NaN</td>
+<td>21.84</td>
+<td>2.75</td>
+<td>0.5</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>25.39</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1369761</td>
+<td>NaN</td>
+<td>2021-01-25 08:34:00</td>
+<td>2021-01-25 09:04:00</td>
+<td>NaN</td>
+<td>5.86</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>42</td>
+<td>161</td>
+<td>NaN</td>
+<td>26.67</td>
+<td>2.75</td>
+<td>0.5</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>30.22</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1369762</td>
+<td>NaN</td>
+<td>2021-01-25 08:37:00</td>
+<td>2021-01-25 08:53:00</td>
+<td>NaN</td>
+<td>4.45</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>14</td>
+<td>106</td>
+<td>NaN</td>
+<td>25.29</td>
+<td>2.75</td>
+<td>0.5</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>28.84</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1369763</td>
+<td>NaN</td>
+<td>2021-01-25 08:28:00</td>
+<td>2021-01-25 08:50:00</td>
+<td>NaN</td>
+<td>10.04</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>175</td>
+<td>216</td>
+<td>NaN</td>
+<td>28.24</td>
+<td>2.75</td>
+<td>0.5</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>31.79</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1369764</td>
+<td>NaN</td>
+<td>2021-01-25 08:38:00</td>
+<td>2021-01-25 08:50:00</td>
+<td>NaN</td>
+<td>4.93</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>248</td>
+<td>168</td>
+<td>NaN</td>
+<td>20.76</td>
+<td>2.75</td>
+<td>0.5</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>24.31</td>
+<td>0.0</td>
+</tr>
+</tbody>
 </table>
+
 <p>1369765 rows × 18 columns</p>
 </div>
 </div>
@@ -905,15 +882,15 @@ Note that because I am using Ununtu I need to map full path of existing director
 <p>and check that our data has been successfully loaded to postgreSQL</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/c15f2283-899e-4400-af2b-acf37d1bd0c1.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">postgres_dataload.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/426939d9-da07-4f3b-9d45-c94187ad46f1-1-c15f2283-899e-4400-af2b-acf37d1bd0c1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">postgres_dataload.JPG</figcaption>
 </figure>
 </div>
 <p>We can then run queries from there:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a74a9b2d-aa39-4711-ae54-9300bdaf8d98.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">postgres_query.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/fe8544ce-c63d-4798-82a0-d17092f887c3-1-a74a9b2d-aa39-4711-ae54-9300bdaf8d98.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">postgres_query.JPG</figcaption>
 </figure>
 </div>
 <p>however we would be better to make use of a GUI tool which provides an improved visualization.</p>
@@ -922,8 +899,8 @@ Note that because I am using Ununtu I need to map full path of existing director
 <p>First we create a network to ensure that pgAdmin can talk to postgreSQL.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/3dde63cf-9f35-4f90-9044-08bdd958b5b8.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">docker_network.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/99ebc923-7607-4c47-9cf1-01a420f658d8-1-3dde63cf-9f35-4f90-9044-08bdd958b5b8.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">docker_network.JPG</figcaption>
 </figure>
 </div>
 <p><code>Where's that confounded bridge</code></p>
@@ -933,8 +910,8 @@ Note that because I am using Ununtu I need to map full path of existing director
 <pre><code>docker network ls</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8a52ce50-c0d8-48a9-92a0-6aab297d744e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">docker_network_ls.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/e0bd07d8-4cd0-4b81-9874-d6fd1d9e013c-1-8a52ce50-c0d8-48a9-92a0-6aab297d744e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">docker_network_ls.PNG</figcaption>
 </figure>
 </div>
 <p>Docker inspect is a great way to retrieve low-level information on Docker objects. We can pick out any field from the returned JSON in a fairly straightforward manner.</p>
@@ -943,8 +920,8 @@ Note that because I am using Ununtu I need to map full path of existing director
        </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/9f9462e6-3d2c-46a7-b6ae-89209be7cac6.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">container_IP.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/42a243fb-99b8-460b-97ec-006754f65b9c-1-9f9462e6-3d2c-46a7-b6ae-89209be7cac6.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">container_IP.JPG</figcaption>
 </figure>
 </div>
 <p>We can then just pull pgAdmin by running the folllowing from the command line :</p>
@@ -958,29 +935,29 @@ Note that because I am using Ununtu I need to map full path of existing director
 <p>which takes us to the pgAdmin loginpage</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/3698bf62-33be-4e9f-8d67-930cbc782298.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pgadmin.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/ea12f0c6-8c5a-48b9-b96b-2813c7fa52f6-1-3698bf62-33be-4e9f-8d67-930cbc782298.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pgadmin.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/c02d6569-c347-4bdc-bea1-ca11f42251e7.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pgadmin_2.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/56ce38c4-d630-40b4-80da-1349942e9d5c-2-c02d6569-c347-4bdc-bea1-ca11f42251e7.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pgadmin_2.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/94d4589c-5404-452b-9397-0988164c1951.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pgadmin_connection_2.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/56ce38c4-d630-40b4-80da-1349942e9d5c-1-94d4589c-5404-452b-9397-0988164c1951.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pgadmin_connection_2.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f3f00b8a-be38-411c-af40-7afe5132d050.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pg_admin_connected.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/56ce38c4-d630-40b4-80da-1349942e9d5c-3-f3f00b8a-be38-411c-af40-7afe5132d050.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pg_admin_connected.JPG</figcaption>
 </figure>
 </div>
-<p>As we can see that has successfully loaded the data to postgres : <img src="DE_Zoomcamp_Week_1_files/figure-html/2ee6137e-926b-42e8-abd4-b39d6fa99de8.JPG" class="img-fluid" alt="pg_admin_data_ingest.JPG"></p>
+<p>As we can see that has successfully loaded the data to postgres : <img src="DE_Zoomcamp_Week_1_files/figure-html/36f7153c-d0c2-4c34-9c38-0659f35098fe-1-2ee6137e-926b-42e8-abd4-b39d6fa99de8.JPG" class="img-fluid" alt="pg_admin_data_ingest.JPG"></p>
 </section>
 <section id="docker-compose" class="level3">
 <h3 class="anchored" data-anchor-id="docker-compose">Docker-compose</h3>
@@ -1014,16 +991,16 @@ Note that because I am using Ununtu I need to map full path of existing director
 <pre><code>docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}"</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/7c106558-044e-45ec-a6e8-72324ab5352d.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">containers.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/eeb00e15-3873-4024-8cb1-a36a2a45b9fe-1-7c106558-044e-45ec-a6e8-72324ab5352d.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">containers.JPG</figcaption>
 </figure>
 </div>
 <p>Next let’s check our Docker network using:</p>
 <pre><code>docker network ls</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/aee00ff6-99d2-43c2-9d0b-82dcbd559e94.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">new_network.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/207fd43e-0557-46b4-be49-3bb7e65f815a-1-aee00ff6-99d2-43c2-9d0b-82dcbd559e94.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">new_network.JPG</figcaption>
 </figure>
 </div>
 <p>There’s a new network called <code>2_docker_sql_default</code>. By default docker compose sets up a single network for your app. And your app’s network is given a name based on the “project name”, originated from the name of the directory it lives in. So since our directory is named <code>2_docker_sql</code>, this explains the new network.</p>
@@ -1032,8 +1009,8 @@ Note that because I am using Ununtu I need to map full path of existing director
 <pre><code>docker network inspect -f '{{range .IPAM.Config}}{{.Subnet}}{{end}}' b7be6c0c20e1</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/e443c142-9d43-49a1-9b50-0d0c503fb492.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">network_inspect.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a16a0bf3-c26c-4406-b378-bd3af8fd6189-1-e443c142-9d43-49a1-9b50-0d0c503fb492.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">network_inspect.JPG</figcaption>
 </figure>
 </div>
 <p>We don’t need to look up each Container’s IP individually:</p>
@@ -1041,8 +1018,8 @@ Note that because I am using Ununtu I need to map full path of existing director
 <p>Note that we used <code>jq</code> help to parse the Containers map object which you may need to install.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/d1fc1240-f5b2-4406-a339-0d8412bfc646.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">networked_containers_IP.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/86db8e28-ed1d-42bc-95ac-d7a2def75819-1-d1fc1240-f5b2-4406-a339-0d8412bfc646.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">networked_containers_IP.JPG</figcaption>
 </figure>
 </div>
 <p>So we can see the IP addresses of our containers :</p>
@@ -1217,22 +1194,22 @@ docker run -it \
 <p>Let’s try <code>docker-compose</code> from the command line :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/81983855-aa08-40da-b26c-e2f19a94ce0a.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">docker_compose.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/e04edf24-146a-44df-b6c8-3f9a951e862b-1-81983855-aa08-40da-b26c-e2f19a94ce0a.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">docker_compose.JPG</figcaption>
 </figure>
 </div>
 <p>Docker Compose comes as part of Windows Docker Desktop, but if like me, you are running things in Linux from the Ubuntu command line, then you need to activate the WSL integration:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a9cb290a-594d-47c3-b3b4-c17721acd275.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">docker_compose_ubuntu.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/c2503beb-4132-488b-a8ac-b913366f0a02-1-a9cb290a-594d-47c3-b3b4-c17721acd275.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">docker_compose_ubuntu.JPG</figcaption>
 </figure>
 </div>
 <p>Running <code>docker-compose</code> now works:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/9b6cf6ea-9441-4954-ac53-35f11e749e2e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">docker_compose_wsl_integration.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/81fb7f49-9c11-40b4-995a-3c49efc6f92d-1-9b6cf6ea-9441-4954-ac53-35f11e749e2e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">docker_compose_wsl_integration.JPG</figcaption>
 </figure>
 </div>
 <p>We can now create our <code>yaml</code> file named <code>docker-compose.yaml</code> :</p>
@@ -1258,21 +1235,21 @@ docker run -it \
 <pre><code>docker-compose up</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f8839838-8838-4a0c-8327-d9bda26ec2a2.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">docker_compose_up.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/802a3b22-9d7a-49dd-a4c4-483be00ed2fa-1-f8839838-8838-4a0c-8327-d9bda26ec2a2.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">docker_compose_up.JPG</figcaption>
 </figure>
 </div>
 <p>Then we go to localhost 8080 and use the pgAdmin login details configured in the yaml file. Unfortunately the yaml file is not configured to ensure persistent state for pgAdmin, so we have to register a server again.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/4db885ca-f843-40ca-9e3d-ccc77421df23.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">docker_localhost.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/5ab386f8-7311-418e-b5d5-54eb9a61ec96-2-4db885ca-f843-40ca-9e3d-ccc77421df23.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">docker_localhost.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2880bbff-8777-400e-bf9a-4d4dfda240b9.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pgdatabase.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/5ab386f8-7311-418e-b5d5-54eb9a61ec96-1-2880bbff-8777-400e-bf9a-4d4dfda240b9.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pgdatabase.JPG</figcaption>
 </figure>
 </div>
 <p>We can close the terminal using <code>CTRL + C</code> but then we should also run <code>docker-compose down</code>.</p>
@@ -1287,99 +1264,100 @@ docker run -it \
 <div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>df_zones.head(<span class="dv">140</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>LocationID</th>
-      <th>Borough</th>
-      <th>Zone</th>
-      <th>service_zone</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>EWR</td>
-      <td>Newark Airport</td>
-      <td>EWR</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>Queens</td>
-      <td>Jamaica Bay</td>
-      <td>Boro Zone</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>Bronx</td>
-      <td>Allerton/Pelham Gardens</td>
-      <td>Boro Zone</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>Manhattan</td>
-      <td>Alphabet City</td>
-      <td>Yellow Zone</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>Staten Island</td>
-      <td>Arden Heights</td>
-      <td>Boro Zone</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>135</th>
-      <td>136</td>
-      <td>Bronx</td>
-      <td>Kingsbridge Heights</td>
-      <td>Boro Zone</td>
-    </tr>
-    <tr>
-      <th>136</th>
-      <td>137</td>
-      <td>Manhattan</td>
-      <td>Kips Bay</td>
-      <td>Yellow Zone</td>
-    </tr>
-    <tr>
-      <th>137</th>
-      <td>138</td>
-      <td>Queens</td>
-      <td>LaGuardia Airport</td>
-      <td>Airports</td>
-    </tr>
-    <tr>
-      <th>138</th>
-      <td>139</td>
-      <td>Queens</td>
-      <td>Laurelton</td>
-      <td>Boro Zone</td>
-    </tr>
-    <tr>
-      <th>139</th>
-      <td>140</td>
-      <td>Manhattan</td>
-      <td>Lenox Hill East</td>
-      <td>Yellow Zone</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">LocationID</th>
+<th data-quarto-table-cell-role="th">Borough</th>
+<th data-quarto-table-cell-role="th">Zone</th>
+<th data-quarto-table-cell-role="th">service_zone</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>EWR</td>
+<td>Newark Airport</td>
+<td>EWR</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>Queens</td>
+<td>Jamaica Bay</td>
+<td>Boro Zone</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Bronx</td>
+<td>Allerton/Pelham Gardens</td>
+<td>Boro Zone</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>Manhattan</td>
+<td>Alphabet City</td>
+<td>Yellow Zone</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Staten Island</td>
+<td>Arden Heights</td>
+<td>Boro Zone</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">135</td>
+<td>136</td>
+<td>Bronx</td>
+<td>Kingsbridge Heights</td>
+<td>Boro Zone</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">136</td>
+<td>137</td>
+<td>Manhattan</td>
+<td>Kips Bay</td>
+<td>Yellow Zone</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">137</td>
+<td>138</td>
+<td>Queens</td>
+<td>LaGuardia Airport</td>
+<td>Airports</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">138</td>
+<td>139</td>
+<td>Queens</td>
+<td>Laurelton</td>
+<td>Boro Zone</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">139</td>
+<td>140</td>
+<td>Manhattan</td>
+<td>Lenox Hill East</td>
+<td>Yellow Zone</td>
+</tr>
+</tbody>
 </table>
+
 <p>140 rows × 4 columns</p>
 </div>
 </div>
@@ -1399,8 +1377,8 @@ docker run -it \
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/cf29acd3-607b-4d0a-9250-5770e97ede66.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">taxi_zones.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/84e952f6-205a-4509-ba4a-594ae34b68f9-1-cf29acd3-607b-4d0a-9250-5770e97ede66.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">taxi_zones.JPG</figcaption>
 </figure>
 </div>
 <p>Let’s now carry out some SQL queries on our tables:</p>
@@ -1413,51 +1391,51 @@ docker run -it \
 <p>It will be useful to join these tables. There are different ways to do this. First let’s look at query which returns specified columns which combine certain information common to both tables - in this case <code>LocationID</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/22f7276f-0912-4b45-8b2b-24caebcf3b33.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">SQL_join_1.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/7a1d4007-ba65-4384-9abe-3b5929484dcd-1-22f7276f-0912-4b45-8b2b-24caebcf3b33.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">SQL_join_1.JPG</figcaption>
 </figure>
 </div>
 <p>Another way to construct the query is to explicitly use the <code>JOIN</code> command:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/ca20d1e5-dc17-4a82-841e-82a1bf39aa3d.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">SQL_join_2.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/5ec1e41f-a9e3-4641-84cb-516b6ec77a1b-1-ca20d1e5-dc17-4a82-841e-82a1bf39aa3d.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">SQL_join_2.JPG</figcaption>
 </figure>
 </div>
 <p>Both queries are equivalent.</p>
 <p>Say, we wanted to check for pick up or drop off locations which are in one table but not the other:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a29ec724-7b8c-4c01-8e82-154712b405d4.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pick_up.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/1cec41a4-49d1-4097-8ef2-3bd07012585f-2-a29ec724-7b8c-4c01-8e82-154712b405d4.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pick_up.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/4f9029b2-c76f-4756-b78b-64c44ffc73ec.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">drop_off.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/1cec41a4-49d1-4097-8ef2-3bd07012585f-1-4f9029b2-c76f-4756-b78b-64c44ffc73ec.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">drop_off.JPG</figcaption>
 </figure>
 </div>
 <p>Both queries return no records so that means that all the records have pick up and drop off locations and all the IDs in the zones table are present in the taxis table. In some cases there might not be fully matching records. In this case we can use other join methods :</p>
 <p>For illustration purposes let’s remove a <code>LocationID</code> record from our <code>zones</code> table:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2a9be0d1-0575-4085-93ea-e06f94de8181.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">delete.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/558d26a4-6f90-4276-a984-533dc706e1d7-1-2a9be0d1-0575-4085-93ea-e06f94de8181.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">delete.JPG</figcaption>
 </figure>
 </div>
 <p>And now when we query records that don’t match :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/704fb677-99e5-4439-ab94-0a99813f1ab7.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pulocation_unmatched.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/356cf009-3422-40f1-8f21-769f762babe3-1-704fb677-99e5-4439-ab94-0a99813f1ab7.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pulocation_unmatched.JPG</figcaption>
 </figure>
 </div>
 <p>We can use <code>LEFT JOIN</code> which will still return a record even where <code>LocationID</code> is not available :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/6c687151-f6e9-4448-90f5-aa0f15ee8a78.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">left_join.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/9c26e488-deee-49da-b9c1-cec797871fc7-1-6c687151-f6e9-4448-90f5-aa0f15ee8a78.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">left_join.JPG</figcaption>
 </figure>
 </div>
 <p>There are also <code>RIGHT JOIN</code> and <code>OUTER JOIN</code> statements but these will be covered further in <em>Week 4</em> .</p>
@@ -1466,14 +1444,14 @@ docker run -it \
 <h4 class="anchored" data-anchor-id="working-with-dates">Working with dates</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/4e0c2be2-5dbe-4fdf-a901-a807f131c607.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">day.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/d57e77ab-6068-4b26-bcc5-856fb4979395-1-4e0c2be2-5dbe-4fdf-a901-a807f131c607.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">day.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/7e892f2d-583f-4e91-80b0-dda1ec74d7cf.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">date.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/d57e77ab-6068-4b26-bcc5-856fb4979395-2-7e892f2d-583f-4e91-80b0-dda1ec74d7cf.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">date.JPG</figcaption>
 </figure>
 </div>
 </section>
@@ -1482,35 +1460,35 @@ docker run -it \
 <p>Say we wanted to find how many records there were for each day. We can build on our date parsing above and use a <code>GROUP BY</code> and <code>ORDER BY</code> query :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/2cf1bce5-0b8b-4a04-9dac-5c17ba50d9f6.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">group_order.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/07e9f144-4a96-43ae-b83f-bd5d68b20241-1-2cf1bce5-0b8b-4a04-9dac-5c17ba50d9f6.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">group_order.JPG</figcaption>
 </figure>
 </div>
 <p>If we wanted to see the day with the largest number of records we coud order by count:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/46bb5285-0315-4e57-842c-fcb4a240c4b1.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">order_count.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/fc58e892-762b-4e91-8c2b-7a64e31539f5-1-46bb5285-0315-4e57-842c-fcb4a240c4b1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">order_count.JPG</figcaption>
 </figure>
 </div>
 <p>We can use a variety of aggregation methods. Note that we can use numbers to reference the ordering of <code>GROUP BY</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/d4addb62-1316-4dca-920d-9afc9b9091f6.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">group_by_number_ref.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a9028948-3185-4b05-889b-d0e598baeeb7-1-d4addb62-1316-4dca-920d-9afc9b9091f6.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">group_by_number_ref.JPG</figcaption>
 </figure>
 </div>
 <p>We can also include multiple conditions in our <code>ORDER BY</code> clause :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/08cfb2a3-f855-475b-b1c2-40ed505a59b3.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">order_by_multiple.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/db439449-620c-4d38-8643-0805513c263b-1-08cfb2a3-f855-475b-b1c2-40ed505a59b3.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">order_by_multiple.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/92f28eee-37a5-4a8d-824e-0da7e6899a28.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">GCP_navigate.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/47bc4006-5af0-4c71-9f8c-845d88fe9da5-1-92f28eee-37a5-4a8d-824e-0da7e6899a28.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GCP_navigate.JPG</figcaption>
 </figure>
 </div>
 </section>
@@ -1526,20 +1504,20 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://
 sudo apt update &amp;&amp; sudo apt install terraform</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/bf3a068b-5fd2-4a9e-9813-e5e26364d40e.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gcp_service_accounts.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/92c19ab5-ab87-4857-b812-57f4b6716d5f-1-bf3a068b-5fd2-4a9e-9813-e5e26364d40e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gcp_service_accounts.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f02202e0-2d8d-4b97-94ac-56b7406fe11c.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gcp_manage_keys.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/b5f3a5a6-47f5-43e4-93c1-bac7992fbdfb-1-f02202e0-2d8d-4b97-94ac-56b7406fe11c.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gcp_manage_keys.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/0399e4d0-b8e8-45bf-adac-7dd07d8e8563.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gcp_add_key.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/d66a4b0b-c03b-4a86-adbc-cf1e8bdeebd1-1-0399e4d0-b8e8-45bf-adac-7dd07d8e8563.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gcp_add_key.JPG</figcaption>
 </figure>
 </div>
 <p>This will download a key in <code>json</code> format</p>
@@ -1567,8 +1545,8 @@ sudo apt update &amp;&amp; sudo apt install terraform</code></pre>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/a4cf6088-dcaa-46f0-a008-4c560808ae08.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gcloud_init.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/055d15eb-404c-42fd-ab54-7a1e90d39ace-1-a4cf6088-dcaa-46f0-a008-4c560808ae08.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gcloud_init.JPG</figcaption>
 </figure>
 </div>
 <ol start="6" type="1">
@@ -1578,8 +1556,8 @@ sudo apt update &amp;&amp; sudo apt install terraform</code></pre>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8b2d4359-f2b3-4610-af82-4350a4207064.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">compute_engine_api.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/7fd61ff1-6d55-4586-b8a8-1cb8ebca62ad-1-8b2d4359-f2b3-4610-af82-4350a4207064.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">compute_engine_api.JPG</figcaption>
 </figure>
 </div>
 <ol start="9" type="1">
@@ -1601,8 +1579,8 @@ sudo apt update &amp;&amp; sudo apt install terraform</code></pre>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/259ea342-2eb8-4348-a7f5-6cfede25831b.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gcp_additional_permissions.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/56928fd8-f548-431d-9f84-c34a75f3b1a2-1-259ea342-2eb8-4348-a7f5-6cfede25831b.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gcp_additional_permissions.JPG</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -1702,16 +1680,16 @@ variable "BQ_DATASET" {
 <pre><code>terraform init</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8bdadddb-1b0c-478b-a208-3cca846821d1.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">terraform_init.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/19223ba7-2e31-42b5-a3eb-3f270121040a-1-8bdadddb-1b0c-478b-a208-3cca846821d1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">terraform_init.JPG</figcaption>
 </figure>
 </div>
 <p>Next, propose an execution plan using</p>
 <pre><code>terraform plan</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/75619ae1-56b6-43ea-8e0e-afca74eccfbe.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">terraform_plan.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/9ddc6441-f60e-4f1d-b5a4-ca433d5f9ac3-1-75619ae1-56b6-43ea-8e0e-afca74eccfbe.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">terraform_plan.JPG</figcaption>
 </figure>
 </div>
 <p>We need to enter our GCP Project ID at the command prompt to progress.</p>
@@ -1719,35 +1697,35 @@ variable "BQ_DATASET" {
 <pre><code>terraform apply</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8c4cef93-f00e-4d87-8e9e-f2973035a20b.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">terraform apply.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/d46bb55d-449e-441b-ac1d-62e7802aebf4-1-8c4cef93-f00e-4d87-8e9e-f2973035a20b.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">terraform apply.JPG</figcaption>
 </figure>
 </div>
 <p>Once again, we need to enter our GCP Project ID at the command prompt to progress:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/42c9c978-9780-4a14-a2c9-d6f62c201858.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">terraform apply_2.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/b4d49ba6-66a4-469e-a118-dccf3939d83e-1-42c9c978-9780-4a14-a2c9-d6f62c201858.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">terraform apply_2.JPG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f2cf590d-b5d3-40c2-8379-0962dc57370c.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">terraform_apply_complete.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/8713ccc9-74f7-41ca-8ddf-68dfbec2a2eb-1-f2cf590d-b5d3-40c2-8379-0962dc57370c.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">terraform_apply_complete.JPG</figcaption>
 </figure>
 </div>
 <p>We’re all set! Let’s return to our GCP account and confirm that we do now have a <code>data lake</code> bucket :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/f5618fa1-446d-4852-bdb5-177acdbb8a8a.JPG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gcp_bucket.JPG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/b36d2dfc-0e8f-457c-ab5b-02f950618e1f-2-f5618fa1-446d-4852-bdb5-177acdbb8a8a.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gcp_bucket.JPG</figcaption>
 </figure>
 </div>
 <p>And also check that we have our Big Query :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="DE_Zoomcamp_Week_1_files/figure-html/0a57b3a5-a412-4c75-9c3c-1c9b0fe6449d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">big_query.PNG</figcaption><p></p>
+<p><img src="DE_Zoomcamp_Week_1_files/figure-html/b36d2dfc-0e8f-457c-ab5b-02f950618e1f-1-0a57b3a5-a412-4c75-9c3c-1c9b0fe6449d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">big_query.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -1787,9 +1765,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1801,7 +1793,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1837,24 +1846,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

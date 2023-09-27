@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-09-27">
+
+<title>Into the Unknown - Google Sheets API Connector</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Google Sheets API Connector</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">API</div>
+                <div class="quarto-category">GoogleSheets</div>
+                <div class="quarto-category">JSON</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 27, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#free-real-time-flight-status-global-aviation-data-api" id="toc-free-real-time-flight-status-global-aviation-data-api" class="nav-link active" data-scroll-target="#free-real-time-flight-status-global-aviation-data-api">Free, Real-time Flight Status &amp; Global Aviation Data API</a>
+  <ul class="collapse">
+  <li><a href="#fasten-your-seatbelts" id="toc-fasten-your-seatbelts" class="nav-link" data-scroll-target="#fasten-your-seatbelts">Fasten your seatbelts</a></li>
+  <li><a href="#general-structure-of-requests" id="toc-general-structure-of-requests" class="nav-link" data-scroll-target="#general-structure-of-requests">General Structure of Requests</a></li>
+  <li><a href="#getting-our-data---using-python" id="toc-getting-our-data---using-python" class="nav-link" data-scroll-target="#getting-our-data---using-python">Getting our data - using Python</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#visualizing-json-output-using-json-crack" id="toc-visualizing-json-output-using-json-crack" class="nav-link" data-scroll-target="#visualizing-json-output-using-json-crack">Visualizing JSON output using JSON CRACK</a></li>
+  <li><a href="#mixed-analytics-api-connector" id="toc-mixed-analytics-api-connector" class="nav-link" data-scroll-target="#mixed-analytics-api-connector">Mixed Analytics API Connector</a></li>
+  <li><a href="#airports" id="toc-airports" class="nav-link" data-scroll-target="#airports">Airports</a></li>
+  <li><a href="#further-requests-and-limits" id="toc-further-requests-and-limits" class="nav-link" data-scroll-target="#further-requests-and-limits">Further Requests and Limits</a></li>
+  <li><a href="#further-control" id="toc-further-control" class="nav-link" data-scroll-target="#further-control">Further Control</a></li>
+  <li><a href="#other-requests" id="toc-other-requests" class="nav-link" data-scroll-target="#other-requests">Other Requests</a></li>
+  <li><a href="#destination---looker-studio-and-beyond" id="toc-destination---looker-studio-and-beyond" class="nav-link" data-scroll-target="#destination---looker-studio-and-beyond">Destination - Looker Studio and beyond!</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="free-real-time-flight-status-global-aviation-data-api" class="level2">
+<h2 class="anchored" data-anchor-id="free-real-time-flight-status-global-aviation-data-api">Free, Real-time Flight Status &amp; Global Aviation Data API</h2>
+<p>In this tutorial I will show you how to access real-time (historical data behind a paywall) flight status, airports, airlines and aircraft data using the <a href="https://aviationstack.com/">aviationstack</a> API. I will also introduce you to <a href="https://jsoncrack.com/">JSON CRACK</a> to visualize JSON files (useful for API responses which can often be quite complex). Finally I will show you how to populate your API request responses DIRECTLY into Google Sheets (avoiding JSON structure headaches) using the <a href="https://mixedanalytics.com/">Mixed Analytics API Connector</a> for further analysis and onward visualization.</p>
+<p>Sit back and enjoy the flight :)</p>
+<section id="fasten-your-seatbelts" class="level3">
+<h3 class="anchored" data-anchor-id="fasten-your-seatbelts">Fasten your seatbelts</h3>
+<p>The first step is to sign up for free with <a href="https://aviationstack.com/">aviationstack.com</a> to get your API Key. This will be needed to make API requests.</p>
+</section>
+<section id="general-structure-of-requests" class="level3">
+<h3 class="anchored" data-anchor-id="general-structure-of-requests">General Structure of Requests</h3>
+<p>The general template of a request is :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>https:<span class="op">//</span>api.aviationstack.com<span class="op">/</span>v1<span class="op">/&lt;</span>Endpoint<span class="op">&gt;</span>?access_key<span class="op">=&lt;</span>your_access_key<span class="op">&gt;</span>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So if we wish to retrieve <code>Airports</code> information the structure of the request is :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>https:<span class="op">//</span>api.aviationstack.com<span class="op">/</span>v1<span class="op">/</span>airports?access_key<span class="op">=&lt;</span>your_access_key<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A number of API <code>Endpoints</code> are provided :</p>
+<ul>
+<li>Real-Time Flights - <code>flights</code> (Available on: All plans)</li>
+<li>Historical Flights - <code>flights</code> (Available on: Basic Plan and higher)</li>
+<li>Airline Routes - <code>routes</code> (Available on: Basic Plan and higher)</li>
+<li>Airports <code>airports</code>(Available on: All plans)</li>
+<li>Airlines <code>airlines</code> (Available on: All plans)</li>
+<li>Airplanes <code>airplanes</code> (Available on: All plans)</li>
+<li>Aircraft Types <code>aircraft_types</code> (Available on: All plans)</li>
+<li>Aviation Taxes <code>taxes</code> (Available on: All plans)</li>
+<li>Cities <code>cities</code> (Available on: All plans)</li>
+<li>Countries <code>countries</code> (Available on: All plans)</li>
+</ul>
+<p>Full coverage of the structure of API requests is included in the <a href="https://aviationstack.com/documentation">API Documentation</a>.</p>
+</section>
+<section id="getting-our-data---using-python" class="level3">
+<h3 class="anchored" data-anchor-id="getting-our-data---using-python">Getting our data - using Python</h3>
+<p>A number of code examples in different programming languages (PHP, Python, Node.js., jQuery, Go and Ruby) were prepared for you to get up and running with the aviationstack API as quickly as possible. See the Python example code below :</p>
+</section>
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python">Python</h3>
+<p><code>live_flights.py</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'access_key'</span>: <span class="st">'b518d30f394e0493f9b5888c6a62a17f'</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>api_result <span class="op">=</span> requests.get(<span class="st">'https://api.aviationstack.com/v1/flights'</span>, params)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>api_response <span class="op">=</span> api_result.json()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> flight <span class="kw">in</span> api_response[<span class="st">'results'</span>]:</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (flight[<span class="st">'live'</span>][<span class="st">'is_ground'</span>] <span class="kw">is</span> <span class="va">False</span>):</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">u'</span><span class="sc">%s</span><span class="st"> flight </span><span class="sc">%s</span><span class="st"> from </span><span class="sc">%s</span><span class="st"> (</span><span class="sc">%s</span><span class="st">) to </span><span class="sc">%s</span><span class="st"> (</span><span class="sc">%s</span><span class="st">) is in the air.'</span> <span class="op">%</span> (</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            flight[<span class="st">'airline'</span>][<span class="st">'name'</span>],</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            flight[<span class="st">'flight'</span>][<span class="st">'iata'</span>],</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            flight[<span class="st">'departure'</span>][<span class="st">'airport'</span>],</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>            flight[<span class="st">'departure'</span>][<span class="st">'iata'</span>],</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            flight[<span class="st">'arrival'</span>][<span class="st">'airport'</span>],</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            flight[<span class="st">'arrival'</span>][<span class="st">'iata'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualizing-json-output-using-json-crack" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-json-output-using-json-crack">Visualizing JSON output using JSON CRACK</h3>
+<p>It can sometimes be difficult to unpick the structure of the output of API requests, which tend to be in JSON format and can be quite complex. To illustrate take a look at the raw JSON extract below, derived from an aviationstack Airport API GET request:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"pagination"</span>: {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"offset"</span>: <span class="dv">0</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"limit"</span>: <span class="dv">100</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"count"</span>: <span class="dv">100</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total"</span>: <span class="dv">6707</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data"</span>: [</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span>: <span class="st">"1"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"gmt"</span>: <span class="st">"-10"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"airport_id"</span>: <span class="st">"1"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"iata_code"</span>: <span class="st">"AAA"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"city_iata_code"</span>: <span class="st">"AAA"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"icao_code"</span>: <span class="st">"NTGA"</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">"country_iso2"</span>: <span class="st">"PF"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">"geoname_id"</span>: <span class="st">"6947726"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>      <span class="st">"latitude"</span>: <span class="st">"-17.05"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">"longitude"</span>: <span class="st">"-145.41667"</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>      <span class="st">"airport_name"</span>: <span class="st">"Anaa"</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"country_name"</span>: <span class="st">"French Polynesia"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      <span class="st">"phone_number"</span>: null,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>      <span class="st">"timezone"</span>: <span class="st">"Pacific/Tahiti"</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    }]}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Enter <a href="https://jsoncrack.com/">JSON CRACK</a> which allows you to simply copy and paste the JSON text into the code editor and visualize as a graph. How good is that!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="aviation_stack_API_files/figure-html/b4829059-3537-4c39-92e5-f6d715c347c5-1-15a96209-02d1-4dc0-88a0-2b046c208b0f.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">JSON_crack.JPG</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Troubleshooting - sometimes the results from an API are not in strict JSON format i.e.&nbsp;<code>properties</code> are not enclosed in double quotation marks and so when you copy and paste the text into the editor it will show as <code>Invalid</code></p>
+</blockquote>
+<p>There are three subscription tiers:</p>
+<ul>
+<li>Free<br>
+</li>
+<li>Premium<br>
+</li>
+<li>Enterprise</li>
+</ul>
+<p>See the <a href="https://jsoncrack.com/pricing">subscription options</a> for more details.</p>
+</section>
+<section id="mixed-analytics-api-connector" class="level3">
+<h3 class="anchored" data-anchor-id="mixed-analytics-api-connector">Mixed Analytics API Connector</h3>
+<p>It can be a bit tedious having to parse JSON files. Luckily we can avoid this step and save time by retrieving the information directly from within Google Sheets using the <a href="https://mixedanalytics.com/">Mixed Analytics API Connector</a>.</p>
+<p>When you install the plugin you automatically enter a 14-day free trial period, during which you can access all paid features. At the end of this period, you will automatically be switched to the free plan, unless you choose to upgrade to a paid plan. See the <a href="https://mixedanalytics.com/api-connector-pricing/">subscription options</a> for more details.</p>
+<p>Let’s now go ahead and get our data!</p>
+</section>
+<section id="airports" class="level3">
+<h3 class="anchored" data-anchor-id="airports">Airports</h3>
+<ol type="1">
+<li><p>Install the <a href="https://mixedanalytics.com/api-connector/">Mixed Analytics API Connector</a> for free</p></li>
+<li><p>Open Google Sheets and navigate to Extensions / API Connector / Open</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="aviation_stack_API_files/figure-html/41bb5949-6d56-4384-8825-887d6d8e1bc2-1-cce3655d-c0ff-4f77-a963-a690b954f669.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">open_API_connector.JPG</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Copy and paste the following into the <code>Request URL</code> field :</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>http:<span class="op">//</span>api.aviationstack.com<span class="op">/</span>v1<span class="op">/</span>airports?access_key<span class="op">=</span>b518d30f394e0493f9b5888c6a62a17f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="aviation_stack_API_files/figure-html/a49c507b-3439-4bfe-b939-73116de390dd-1-b2e3b7eb-95a2-4a14-8127-1955c465f239.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">api_request.JPG</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Note that <code>https</code> requests are not available on the free plan. Ypu need to change this to <code>http</code>.</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Hit <code>Run</code>, wait a few seconds, and smile :)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="aviation_stack_API_files/figure-html/80edead5-db9d-40c0-9197-e0d37e15a957-1-b0c2d034-e503-4437-b1c6-d5d90ea715f1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">airports.JPG</figcaption>
+</figure>
+</div>
+<p>There is a lot of useful information there, in particular latitude and longitude values which we can then use to <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.points_from_xy.html">convert to a GeoDataframe</a> for plotting using GeoPandas.</p>
+</section>
+<section id="further-requests-and-limits" class="level3">
+<h3 class="anchored" data-anchor-id="further-requests-and-limits">Further Requests and Limits</h3>
+<p>Note the value <code>100</code> in cell C2 above which refers to the number of results returned. You can specify a limit of results in your API response. Maximum allowed value is <code>100</code> below Professional Plan and <code>1000</code> on and above Professional Plan. Default value is <code>100</code>.</p>
+<p>The value in cell D2 suggests that there are 6707 results available. We already have the first 100 records but how do we get records 101-200? We can grab the next <code>batch</code> of 100 by specifying an <code>offset=100</code> parameter - that is, the number of records to skip, in our case 100.</p>
+<ol type="1">
+<li>Copy and paste the following into the <code>Request URL</code> field :</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>http:<span class="op">//</span>api.aviationstack.com<span class="op">/</span>v1<span class="op">/</span>airports?offset<span class="op">=</span><span class="dv">100</span><span class="op">&amp;</span>access_key<span class="op">=</span>b518d30f394e0493f9b5888c6a62a17f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Hit <code>Run</code></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="aviation_stack_API_files/figure-html/5c0936ef-8853-4b75-81b3-c0c499fe76a3-1-e3e8cb1c-d3b4-470a-b85c-fb6f225e4577.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">airports2.JPG</figcaption>
+</figure>
+</div>
+<p>Excellent. We now have the next batch of 100. We can repeat this process until we have sufficient data.</p>
+</section>
+<section id="further-control" class="level3">
+<h3 class="anchored" data-anchor-id="further-control">Further Control</h3>
+<p>There is the option to configure the limits of data obtained in one batch, although this should be exercised with the caution. The aviationstack default limit of 100 is there for a reason - to protect your free requests limit, which is only 1000 requests on the free plan and can be quickly consumed!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="aviation_stack_API_files/figure-html/90796d93-5384-4752-bfcc-86f174237938-1-80881d65-93ce-4e1f-97b8-d97b6b5ad4e5.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pagination.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="other-requests" class="level3">
+<h3 class="anchored" data-anchor-id="other-requests">Other Requests</h3>
+<p>For any other requests e.g.&nbsp;Airlines, Airplanes etc, simply follow exactly the same format as <code>Airports</code> example above.</p>
+</section>
+<section id="destination---looker-studio-and-beyond" class="level3">
+<h3 class="anchored" data-anchor-id="destination---looker-studio-and-beyond">Destination - Looker Studio and beyond!</h3>
+<p>Thank you for flying with Aviationstack Airlines. We wish you well with your onward Mixed Analytics connection and beyond :)</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -139,31 +111,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Into the Unknown</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">Stephen Barrie</a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Stephen137"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/sjbarrie"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -196,6 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <p class="date">June 8, 2023</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -228,16 +204,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Orchestrating an ML workflow can be quite challenging. There are a lot of potential breakpoints in the flow, as indicated by the red crosses in the example typical flow below :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/5c4a30a6-4a39-4bd2-a17a-5533062dd67e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">typical_mlflow.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/7985c817-ae3f-4b06-b7ad-c4a5be6efb81-2-5c4a30a6-4a39-4bd2-a17a-5533062dd67e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">typical_mlflow.PNG</figcaption>
 </figure>
 </div>
 <p>Thankfully there are tools avaialable to help with this. <a href="https://www.prefect.io/">Prefect</a> provides a modern, robust, and user-friendly approach to workflow orchestration, simplifying the management of complex data pipelines and enabling efficient and reliable execution. monitoring and visualization of your workflows.</p>
 <p>A screenshot of the Prefect UI illustrating how a typical flow might be orchestrated is included below :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/2d954052-efcf-49dc-9214-2453d17ea473.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">prefect_ui.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/7985c817-ae3f-4b06-b7ad-c4a5be6efb81-1-2d954052-efcf-49dc-9214-2453d17ea473.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prefect_ui.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -245,16 +221,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="introduction-to-prefect">3.2 Introduction to Prefect</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/c372cec2-c169-43e5-bddc-af4cc2126188.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">goals_3.2.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/cec5f8e8-85d2-4966-8e95-6a8af1e133a9-1-c372cec2-c169-43e5-bddc-af4cc2126188.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">goals_3.2.PNG</figcaption>
 </figure>
 </div>
 <section id="why-use-prefect" class="level4">
 <h4 class="anchored" data-anchor-id="why-use-prefect">3.2.1 Why use Prefect?</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/6f845297-335f-49cb-867c-c22357338b3b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">why_prefect.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/24f13b5a-1120-4a68-b62f-ce0ef243ea04-1-6f845297-335f-49cb-867c-c22357338b3b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">why_prefect.PNG</figcaption>
 </figure>
 </div>
 <p><code>Ease of Use:</code><br>
@@ -273,20 +249,20 @@ Prefect integrates seamlessly with various technologies and services, such as da
 Prefect promotes collaboration and visibility among teams. It offers features like version control, sharing, and collaborative editing of workflows. You can easily share and reuse workflows across projects, enabling better collaboration and knowledge sharing within your organization.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/598ca6c1-9e24-4144-a8c0-a5eeb2f364a6.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">prefect_server.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/48700e8c-7f1e-4f4b-8653-84f1c6f446b3-1-598ca6c1-9e24-4144-a8c0-a5eeb2f364a6.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prefect_server.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/65cf645f-3220-4309-a291-897449294d68.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">task_flow.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/bae279ae-826a-4ff0-8d76-6ef536bda595-1-65cf645f-3220-4309-a291-897449294d68.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">task_flow.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/953ecfb5-7726-457f-bdff-270d188d7b83.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">sub_flow.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/e340c1ac-f033-4ebf-ac57-c3109c692f49-1-953ecfb5-7726-457f-bdff-270d188d7b83.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sub_flow.PNG</figcaption>
 </figure>
 </div>
 <p>In the above example we have a <code>parent</code> flow named <code>Hellow Flow</code> which calls on the the subflow <code>Subflow</code>.</p>
@@ -297,8 +273,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>git clone git@github.com:discdiver/prefect-mlops-zoomcamp.git</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/9319c51a-64a2-418a-a902-dd33761fe66b.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">clone_prefect_repo.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/46f2651c-2535-4887-a49e-c0961b0a98da-1-9319c51a-64a2-418a-a902-dd33761fe66b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">clone_prefect_repo.PNG</figcaption>
 </figure>
 </div>
 <p>Note I am using the SSH method for cloning. You can also use the HTTPS or CLI methods if you prefer.</p>
@@ -309,8 +285,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>conda create -n prefect-ops python==3.9.12</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/7db82245-7780-41d7-8650-435ff1cac56e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">create_env.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/1b6fd5b4-aaab-47d7-8008-96c0fd3a1694-1-7db82245-7780-41d7-8650-435ff1cac56e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">create_env.PNG</figcaption>
 </figure>
 </div>
 <p>and activate the environment using :</p>
@@ -335,8 +311,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/ef281f8d-ebc9-496a-b2fa-a8d0167ae11d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">requirements.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/7643ad2f-d456-4027-9568-701f295d9fd1-1-ef281f8d-ebc9-496a-b2fa-a8d0167ae11d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">requirements.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -346,8 +322,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>prefect server start</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/c185b40e-a532-4b87-853e-7892b943fe94.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">server.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/d8f27570-3b50-489c-9578-e7871e9b0f77-1-c185b40e-a532-4b87-853e-7892b943fe94.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">server.PNG</figcaption>
 </figure>
 </div>
 <p>Let’s grab the API URL and make sure that we apply this to our Prefect configuration so that we are pointing to the correct API URL.</p>
@@ -355,8 +331,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/02dabd73-c4c3-4a47-848b-593172019526.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">set_api_url.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/8f395253-5ee0-4edc-9f33-51086b736a0f-1-02dabd73-c4c3-4a47-848b-593172019526.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">set_api_url.PNG</figcaption>
 </figure>
 </div>
 <p>OK, let’s now navigate to the <code>3.2</code> folder where the scripts we will be using for illustration purposes live :</p>
@@ -388,15 +364,15 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>python cat_facts.py</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/14c1442f-281a-440b-a65e-2badaaa7f0e8.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cat_facts.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/4773c57b-ff21-4dcf-b381-d6b720e50d68-1-14c1442f-281a-440b-a65e-2badaaa7f0e8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cat_facts.PNG</figcaption>
 </figure>
 </div>
 <p>and follow the run live from the Prefect UPI :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/f076b5c0-04f2-4119-9782-da24b661fb9a.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cat_facts_flow.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/4773c57b-ff21-4dcf-b381-d6b720e50d68-2-f076b5c0-04f2-4119-9782-da24b661fb9a.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cat_facts_flow.PNG</figcaption>
 </figure>
 </div>
 <p>As we can see, the flow failed a couple of times, but the <code>retries</code> argument included within the decorator kicked in. And we have our cat fact logged :</p>
@@ -434,8 +410,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <p>This script utilises <code>Subflows</code>. The parent flow <code>animal_facts</code> calls <code>fetch_cat_fact</code> and then <code>fetch_dog_fact</code>. Note that beacuse <code>log_prints=True</code> the output of the flows is printed and logged.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/2f37b0ba-c549-4652-bd1e-9728ed7a421d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">cat_dog.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/a751fc3b-81cc-417c-be50-39bdab8b45ea-1-2f37b0ba-c549-4652-bd1e-9728ed7a421d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cat_dog.PNG</figcaption>
 </figure>
 </div>
 <p>🐱: In the original Italian version of Cinderella, the benevolent fairy godmother figure was a cat.<br>
@@ -594,8 +570,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>python orchestrate_pre_prefect.py</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/80ff8819-923d-4324-9b2c-3bf6487fe58f.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">orchestrate_pre_prefect.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/8f6682ab-6cf8-44ba-9d62-cb7291ff689d-1-80ff8819-923d-4324-9b2c-3bf6487fe58f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">orchestrate_pre_prefect.PNG</figcaption>
 </figure>
 </div>
 <p>Further refinement can be added using Prefect. Let’s take a look at this in action.</p>
@@ -745,15 +721,15 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>python orchestrate.py</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/122fbdb9-b25e-4ec8-acdd-9c3e82887f9f.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">orchestrated.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/57d3e1bd-bdc2-48ad-b531-f282b566b908-1-122fbdb9-b25e-4ec8-acdd-9c3e82887f9f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">orchestrated.PNG</figcaption>
 </figure>
 </div>
 <p>And we can visualize the run using the Prefect UI :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/955b674e-975a-411c-9718-1ffcdef50471.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">orchestrated_prefect_UI.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/57d3e1bd-bdc2-48ad-b531-f282b566b908-2-955b674e-975a-411c-9718-1ffcdef50471.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">orchestrated_prefect_UI.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -763,8 +739,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <p>In the last section we saw how we could take a Notebook, turn it into a script, and add some Prefect task and flow decorators to make it more resilient and observable. Let’s now take the next step in productionizing our workflows and make a deployment that will live on a server, and allow us to do scheduling.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/56af455e-270d-49c1-8be8-2fc1ef8dc013.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">prefect_project.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/80eb171a-1938-491d-8c02-1102567d13a9-1-56af455e-270d-49c1-8be8-2fc1ef8dc013.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prefect_project.PNG</figcaption>
 </figure>
 </div>
 <section id="create-a-new-repo-on-github" class="level4">
@@ -772,16 +748,16 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <p>To use the deployment feature you need to work with a GitHub repo. First, create a new repository :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/b7b46039-02c6-4c00-84c5-237fda1dfb81.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">new_repo.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/4a04a26e-9a3d-4737-abfa-c123491c2e26-2-b7b46039-02c6-4c00-84c5-237fda1dfb81.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">new_repo.PNG</figcaption>
 </figure>
 </div>
 <p>Then clone that repository to your local machine :</p>
 <pre><code>git clone git@github.com:Stephen137/mlops-prefect.git</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/2cb83529-28de-49dd-af0d-675fa2a27985.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">git_clone.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/4a04a26e-9a3d-4737-abfa-c123491c2e26-1-2cb83529-28de-49dd-af0d-675fa2a27985.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">git_clone.PNG</figcaption>
 </figure>
 </div>
 <p>Note that I am using the password protected SSH key method to do this. The alternative is to use HTTPS :</p>
@@ -798,14 +774,14 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>prefect server start</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/24e68d4d-5486-4f26-abf8-2152e6724948.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">workpool.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/fc75ddad-f569-4a2a-8dc5-d3b893e95c8f-1-24e68d4d-5486-4f26-abf8-2152e6724948.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">workpool.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/eae4d6f2-55a3-4833-88aa-0ec4d4c74e8c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pool.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/9b60c594-8b1c-4210-8a7d-7bd3a781ffc7-1-eae4d6f2-55a3-4833-88aa-0ec4d4c74e8c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pool.PNG</figcaption>
 </figure>
 </div>
 <p>If you need help with Prefect config you can refer to <a href="https://docs.prefect.io/2.10.12/">the documentation</a> or use the command :</p>
@@ -817,8 +793,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <p>This will send the deployment up to the server :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/e1336e1a-71d2-4e24-ab74-137f9c48d007.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">deployment.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/a9fb9c74-8827-44e0-91a7-30fccd1f1745-1-e1336e1a-71d2-4e24-ab74-137f9c48d007.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">deployment.PNG</figcaption>
 </figure>
 </div>
 <p>As we can see our deployment has been successfully created, and we are now prompted to start a worker from the <code>mlops-zoompool</code>. We can do this using the following template :</p>
@@ -827,15 +803,15 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>prefect worker start -p mlops-zoompool -t process</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/f2788532-7beb-4700-bc9b-889def812590.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">worker.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/6b0309d5-ab59-4d6b-92ba-b9b8c86e0438-1-f2788532-7beb-4700-bc9b-889def812590.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">worker.PNG</figcaption>
 </figure>
 </div>
 <p>Finally, the last step is to start a run of the deployment. We can do this from the UI :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/9d37f904-434a-41a1-9507-6dd24372ab2d.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">quick_run.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/84e91b95-df4c-4203-9c7e-96d98ba57020-2-9d37f904-434a-41a1-9507-6dd24372ab2d.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">quick_run.PNG</figcaption>
 </figure>
 </div>
 <p>Or from the command line using the template :</p>
@@ -844,8 +820,8 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>prefect deployment run main_flow/nyc_taxi_yellow_2022 </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/65c0e2e0-8c4c-401c-a868-40487e396c57.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">deployed.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/84e91b95-df4c-4203-9c7e-96d98ba57020-1-65c0e2e0-8c4c-401c-a868-40487e396c57.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">deployed.PNG</figcaption>
 </figure>
 </div>
 <p>The deployment has been successful. This allows us to collaborate and have something that we can schedule.</p>
@@ -861,15 +837,15 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <p>You need to create a Credentials Block, which you give a name and populate with the JSON file downloaded as part of the GCP config :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/ca591acd-9f90-4584-b86e-8b87d9a2ec9c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">gcp_credentials.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/ffdbb05c-10c2-44dd-a4bb-596a3885a652-2-ca591acd-9f90-4584-b86e-8b87d9a2ec9c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gcp_credentials.PNG</figcaption>
 </figure>
 </div>
 <p>Then create a Bucket block, which references the data lake in GCP :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/37f3db67-3558-4f42-a936-c40a3081c7d2.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">bucket_block.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/ffdbb05c-10c2-44dd-a4bb-596a3885a652-1-37f3db67-3558-4f42-a936-c40a3081c7d2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">bucket_block.PNG</figcaption>
 </figure>
 </div>
 <p>I then modified the orchestration script to replace S3 block code snipppets with GCP snippets :</p>
@@ -1039,15 +1015,15 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>python orchestrate_gcp.py</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/7573356e-c063-4567-9911-23d31d6d05f0.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">prefect_gcp.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/6dc168f9-4bf9-4c05-a189-85ad3e42732e-1-7573356e-c063-4567-9911-23d31d6d05f0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prefect_gcp.PNG</figcaption>
 </figure>
 </div>
 <p>The run completed successfully and we can see the artifact that we tagged in our script which logs the best RMSE in the UI :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/2829e4b2-56bf-480d-80a8-acc95c23f8c4.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">artifacts.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/f12a79d0-602a-4e2b-affb-a8f7bbd6c32e-1-2829e4b2-56bf-480d-80a8-acc95c23f8c4.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">artifacts.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -1072,14 +1048,14 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>prefect worker start -p mlops-zoompool</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/18a7113c-e302-4fc6-8ea9-b16e7c8c7b42.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">deploy_all.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/d621440b-b1b0-4e60-a3e3-e3240327553a-1-18a7113c-e302-4fc6-8ea9-b16e7c8c7b42.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">deploy_all.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/ec5893fd-a1ce-4387-9c36-c41ab0a74b6e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">deployment_gcp.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/fc858651-9d5b-477b-9717-e3765e90d883-1-ec5893fd-a1ce-4387-9c36-c41ab0a74b6e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">deployment_gcp.PNG</figcaption>
 </figure>
 </div>
 </section>
@@ -1088,27 +1064,27 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <p>We can customize our run from the UI :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/e5357aeb-e70a-405d-826e-6995431c1207.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">custom_run_UI.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/d716505a-b565-45ef-9fb5-80976d6c01e6-2-e5357aeb-e70a-405d-826e-6995431c1207.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">custom_run_UI.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/1e1c9461-6a13-46c7-a05d-0a40ecad1265.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">custom_run.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/d716505a-b565-45ef-9fb5-80976d6c01e6-1-1e1c9461-6a13-46c7-a05d-0a40ecad1265.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">custom_run.PNG</figcaption>
 </figure>
 </div>
 <p>We can also schedule runs from the UI :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/9e705a9a-f7d5-4d2f-b2ac-a15c33dd6220.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">add_schedule.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/1cc530b9-e7ef-488e-8865-029c39d01fe4-1-9e705a9a-f7d5-4d2f-b2ac-a15c33dd6220.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">add_schedule.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/a51a675d-22e5-4921-8d42-c68eb8c70f1c.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">scheduler.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/1cc530b9-e7ef-488e-8865-029c39d01fe4-2-a51a675d-22e5-4921-8d42-c68eb8c70f1c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">scheduler.PNG</figcaption>
 </figure>
 </div>
 <p>It is also possible to schedule runs from the command line, for example :</p>
@@ -1124,27 +1100,27 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <p>You need to authenticate, either by log in with a web browser (which didn’t work for me) or by an API key which you can create from the Ui :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/9f3232c0-693e-4097-bf1c-bb5441c73afc.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">prefect_cloud_login.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/18d6fc8e-ae29-4160-a486-d4b2c63f680a-1-9f3232c0-693e-4097-bf1c-bb5441c73afc.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prefect_cloud_login.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/e0dd22c1-e210-4de9-9f58-ba70c56d1294.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">prefect_cloud_api.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/18d6fc8e-ae29-4160-a486-d4b2c63f680a-2-e0dd22c1-e210-4de9-9f58-ba70c56d1294.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prefect_cloud_api.PNG</figcaption>
 </figure>
 </div>
 <p>The next step is to register and configure any necessary <code>Blocks</code> as described in the previous section, and then we can start a worker as before :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/539a53ed-4053-4ee7-89ad-39fa065471c9.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">prefect_cloud_worker.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/6f21e1f6-15ab-4bd6-827b-881ad5c1fafb-1-539a53ed-4053-4ee7-89ad-39fa065471c9.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prefect_cloud_worker.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/bc1c06a9-b356-420b-af6b-3e7b4efc9323.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">prefect_cloud_workpool.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/6f21e1f6-15ab-4bd6-827b-881ad5c1fafb-2-bc1c06a9-b356-420b-af6b-3e7b4efc9323.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prefect_cloud_workpool.PNG</figcaption>
 </figure>
 </div>
 <section id="automations" class="level4">
@@ -1152,38 +1128,38 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <p>A useful feature within Prefect is <code>Automations</code> which allows us to configure a variety of customizable notifications. For example, here we will see how to set up an email notification, from the cloud UI. First we need to add the required blocks :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/8725fc02-60b4-493c-823e-a8d410dceb14.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">email_block.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/6f95549c-f0b5-4422-8a55-6895c7e7faf9-2-8725fc02-60b4-493c-823e-a8d410dceb14.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">email_block.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/385b211e-3bd3-42d6-8291-aea7b62f836e.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">email_block_2.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/6f95549c-f0b5-4422-8a55-6895c7e7faf9-1-385b211e-3bd3-42d6-8291-aea7b62f836e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">email_block_2.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/fddab651-cecd-4c68-bc23-276d7cbe5b10.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">email_creds_block.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/6f95549c-f0b5-4422-8a55-6895c7e7faf9-3-fddab651-cecd-4c68-bc23-276d7cbe5b10.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">email_creds_block.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/50b7c02c-3b7f-4655-b045-808efcb97362.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">automations_trigger.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/b39dd7c8-0025-4011-a17d-a50de7b318aa-3-50b7c02c-3b7f-4655-b045-808efcb97362.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">automations_trigger.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/3cc114c7-2dfe-4cb0-9865-a60679ed3ce1.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">automations_actions.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/b39dd7c8-0025-4011-a17d-a50de7b318aa-1-3cc114c7-2dfe-4cb0-9865-a60679ed3ce1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">automations_actions.PNG</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/3ed5edbf-ab9f-4efa-a40c-5374b92c7bd8.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">automations_details.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/b39dd7c8-0025-4011-a17d-a50de7b318aa-2-3ed5edbf-ab9f-4efa-a40c-5374b92c7bd8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">automations_details.PNG</figcaption>
 </figure>
 </div>
 <p>I then deployed the following script :<br>
@@ -1348,22 +1324,22 @@ Prefect promotes collaboration and visibility among teams. It offers features li
 <pre><code>prefect deploy orchestrate_f_m_23.py:main_flow_f_m_23 -n nyc_taxi_green_f_m_23 -p mlops-zoompool</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/904d2c4d-d365-4bb0-aace-1de3061bbfb7.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">discreet_roadrunner.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/384d59a3-d900-421c-81f2-53a128058517-1-904d2c4d-d365-4bb0-aace-1de3061bbfb7.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">discreet_roadrunner.PNG</figcaption>
 </figure>
 </div>
 <p>When the run was succesfully completed I received the following email notification :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/b3baf72d-4068-41f0-9b86-5fc2d9fb8fbe.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">email_notification.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/a49b160a-278b-47a9-ba7c-6dd67db7a006-1-b3baf72d-4068-41f0-9b86-5fc2d9fb8fbe.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">email_notification.PNG</figcaption>
 </figure>
 </div>
 <p>We can see a timeline summary of events in the <code>Event Feed</code> :</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/caba3094-11c5-44d5-a4fe-cf7f3c070d36.PNG" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">event_feed.PNG</figcaption><p></p>
+<p><img src="ML_Ops_Zoomcamp_Module_3_files/figure-html/65c43352-2bea-4ea0-8ebb-3dd6fddb67be-1-caba3094-11c5-44d5-a4fe-cf7f3c070d36.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">event_feed.PNG</figcaption>
 </figure>
 </div>
 
@@ -1399,9 +1375,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1413,7 +1403,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1449,24 +1456,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
