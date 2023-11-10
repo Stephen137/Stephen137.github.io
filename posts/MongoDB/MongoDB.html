@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-11-10">
+
+<title>Into the Unknown - MongoDB - The Basics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">MongoDB - The Basics</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">MongoDB</div>
+                <div class="quarto-category">Database</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 10, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mongodb" id="toc-mongodb" class="nav-link active" data-scroll-target="#mongodb">MongoDB</a>
+  <ul class="collapse">
+  <li><a href="#mongodb-architecture" id="toc-mongodb-architecture" class="nav-link" data-scroll-target="#mongodb-architecture">MongoDB architecture</a></li>
+  <li><a href="#installing-mongodb-and-the-compass-gui" id="toc-installing-mongodb-and-the-compass-gui" class="nav-link" data-scroll-target="#installing-mongodb-and-the-compass-gui">Installing MongoDB (and the Compass GUI)</a></li>
+  <li><a href="#installing-the-mongodb-shell-mongosh" id="toc-installing-the-mongodb-shell-mongosh" class="nav-link" data-scroll-target="#installing-the-mongodb-shell-mongosh">Installing the MongoDB shell (mongosh)</a></li>
+  <li><a href="#using-the-shell-within-visual-studio-code" id="toc-using-the-shell-within-visual-studio-code" class="nav-link" data-scroll-target="#using-the-shell-within-visual-studio-code">Using the shell within Visual Studio Code</a></li>
+  <li><a href="#creating-and-dropping-databases-in-the-shell" id="toc-creating-and-dropping-databases-in-the-shell" class="nav-link" data-scroll-target="#creating-and-dropping-databases-in-the-shell">Creating and dropping databases in the shell</a></li>
+  <li><a href="#inserting-records" id="toc-inserting-records" class="nav-link" data-scroll-target="#inserting-records">Inserting records</a></li>
+  <li><a href="#sort---equivalent-to-order-by-clause-in-sql" id="toc-sort---equivalent-to-order-by-clause-in-sql" class="nav-link" data-scroll-target="#sort---equivalent-to-order-by-clause-in-sql"><code>.sort()</code> - equivalent to ORDER BY clause in SQL</a></li>
+  <li><a href="#limit---equivalent-to-limit-clause-in-sql" id="toc-limit---equivalent-to-limit-clause-in-sql" class="nav-link" data-scroll-target="#limit---equivalent-to-limit-clause-in-sql"><code>.limit()</code> - equivalent to LIMIT clause in SQL)</a></li>
+  <li><a href="#find-query-projection---equivalent-to-the-where-clause-in-sql" id="toc-find-query-projection---equivalent-to-the-where-clause-in-sql" class="nav-link" data-scroll-target="#find-query-projection---equivalent-to-the-where-clause-in-sql"><code>.find( {query}, {projection})</code> - equivalent to the WHERE clause in SQL</a></li>
+  <li><a href="#updateonefilter-update" id="toc-updateonefilter-update" class="nav-link" data-scroll-target="#updateonefilter-update"><code>.updateOne({filter}, {update})</code></a></li>
+  <li><a href="#removing-fields" id="toc-removing-fields" class="nav-link" data-scroll-target="#removing-fields">Removing fields</a></li>
+  <li><a href="#exporting" id="toc-exporting" class="nav-link" data-scroll-target="#exporting">Exporting</a></li>
+  <li><a href="#deleting-documents" id="toc-deleting-documents" class="nav-link" data-scroll-target="#deleting-documents">Deleting documents</a></li>
+  <li><a href="#deleteone" id="toc-deleteone" class="nav-link" data-scroll-target="#deleteone"><code>.deleteOne()</code></a></li>
+  <li><a href="#importing" id="toc-importing" class="nav-link" data-scroll-target="#importing">Importing</a></li>
+  <li><a href="#comparison-operators" id="toc-comparison-operators" class="nav-link" data-scroll-target="#comparison-operators">Comparison Operators</a></li>
+  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a></li>
+  <li><a href="#and-and" id="toc-and-and" class="nav-link" data-scroll-target="#and-and">And <code>$and: ["{ }", "{ }"]</code></a></li>
+  <li><a href="#or-or" id="toc-or-or" class="nav-link" data-scroll-target="#or-or">Or <code>$or: ["{ }", "{ }"]</code></a></li>
+  <li><a href="#indexes" id="toc-indexes" class="nav-link" data-scroll-target="#indexes">Indexes</a></li>
+  <li><a href="#collections" id="toc-collections" class="nav-link" data-scroll-target="#collections">Collections</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="mongodb" class="level2">
+<h2 class="anchored" data-anchor-id="mongodb">MongoDB</h2>
+<p>If like me you are conversant in Python and prefer the JSON format to the tabular data (rows and columns) approach used by SQL (which feels to me like a legacy of Excel) then <a href="https://www.mongodb.com/docs/manual/">MongoDB</a> might be just what you have been looking for.</p>
+<p>Unlike relational database management systems MongoDB uses a NO (Not Only) SQL format to store and retrieve data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/c650098c-a3af-40e5-bb55-58e23f7c927e-1-697a2030-10b1-49f9-89e8-768739adc843.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">NoSQL.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/c650098c-a3af-40e5-bb55-58e23f7c927e-2-8954b4af-8fd4-4e5e-a64f-638f7898aea1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">collections.PNG</figcaption>
+</figure>
+</div>
+<section id="mongodb-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="mongodb-architecture">MongoDB architecture</h3>
+<p>Data is grouped together in <code>documents</code> which comprise <code>key:&lt;value&gt;</code> pairs (like a Python dictionary) :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/7a5a5f8d-043a-4f72-949f-56ffeec814b3-1-269884b7-f34e-4398-a06c-e5cd22103879.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>A <code>collection</code>is a group of one or more documents :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/7a5a5f8d-043a-4f72-949f-56ffeec814b3-2-32ab0d30-7393-40ed-a2d9-5794ea6dc3a3.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">collection.PNG</figcaption>
+</figure>
+</div>
+<p>A <code>database</code> is a group of one or more collections :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/7a5a5f8d-043a-4f72-949f-56ffeec814b3-3-d98dab14-41be-4724-9b6a-b9a1a628a52f.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">database.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="installing-mongodb-and-the-compass-gui" class="level3">
+<h3 class="anchored" data-anchor-id="installing-mongodb-and-the-compass-gui">Installing MongoDB (and the Compass GUI)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>https:<span class="op">//</span>www.mongodb.com<span class="op">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/92a3f9e2-07d6-4da2-8ba8-31fdecdcc595-1-0d2a54d0-1ab2-45df-b740-b4269af5b6e4.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">resources_server.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/92a3f9e2-07d6-4da2-8ba8-31fdecdcc595-4-c1d8a086-b753-43aa-b2fa-9a51ce423552.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">install_windows.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/92a3f9e2-07d6-4da2-8ba8-31fdecdcc595-3-ae60ccf4-54e8-46ae-bec0-57c5c98e292c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">download.PNG</figcaption>
+</figure>
+</div>
+<p>MongoDB comes with <code>Compass</code> which is a graphical user interface (GUI) which provides a visual alternative to the shell.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/92a3f9e2-07d6-4da2-8ba8-31fdecdcc595-2-7261138b-c412-458e-b346-ff70438cb678.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">compass.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="installing-the-mongodb-shell-mongosh" class="level3">
+<h3 class="anchored" data-anchor-id="installing-the-mongodb-shell-mongosh">Installing the MongoDB shell (mongosh)</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/85e41d4a-46e5-4c63-bc67-e767122b9e3e-2-1d026856-8dd6-4944-a2da-adc8bcab3fa2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">shell_install.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/85e41d4a-46e5-4c63-bc67-e767122b9e3e-1-0482b84c-096c-4db1-9e01-6fb0bb5adf7a.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">download_shell.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/85e41d4a-46e5-4c63-bc67-e767122b9e3e-5-8dc4b94a-fd12-459b-af00-c3be7e5a34aa.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">mongo_shell_download.PNG</figcaption>
+</figure>
+</div>
+<p>Once downloaded extract the files from the zip file and copy the file path as indicated in the graphic below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/85e41d4a-46e5-4c63-bc67-e767122b9e3e-6-9c7a65dc-1d46-4f71-80f4-7d59eee196d2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">copy_file_path.PNG</figcaption>
+</figure>
+</div>
+<p>We will need to copy this file path to our environment variables for :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/85e41d4a-46e5-4c63-bc67-e767122b9e3e-7-bb210573-6ec4-45de-99db-422b905ced51.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">system_env_variables.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/85e41d4a-46e5-4c63-bc67-e767122b9e3e-3-22108aaf-167f-4e13-9b3c-b86b0e207210.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">vscode_path.PNG</figcaption>
+</figure>
+</div>
+<p>Then, go back to the folder and open the executable. To establish a connection type <code>mongosh</code> into the console:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/85e41d4a-46e5-4c63-bc67-e767122b9e3e-4-3e645d6c-00f2-4391-9c7a-ac88875d3eed.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">connection.PNG</figcaption>
+</figure>
+</div>
+<p>You can clear the screen using the <code>cls</code> command. Refer to <a href="https://www.mongodb.com/docs/v3.4/reference/mongo-shell/">the documentation</a> for a complete guide to the available commands.</p>
+</section>
+<section id="using-the-shell-within-visual-studio-code" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-shell-within-visual-studio-code">Using the shell within Visual Studio Code</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/0187334d-3037-4f04-8f16-1a8f4c930faf-1-df4c44bb-c428-492b-b812-0fae733cdce2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">vscode_ext.PNG</figcaption>
+</figure>
+</div>
+<p>Once installed click on the MongoDB extension icon (leaf) and initially you may have to copy the connection url into the search bar. In my case:</p>
+<pre><code> mongodb://127.0.0.1:27017/mongodb?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.0.2</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/af920cba-0e40-4fe6-8753-33b8e7f343ef-2-f9c2df47-42e9-4393-9c03-bbffdceb79d4.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">launch_shell.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/af920cba-0e40-4fe6-8753-33b8e7f343ef-1-f2e24f22-8fae-4801-8751-c625a4bcf48b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">vscode.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="creating-and-dropping-databases-in-the-shell" class="level3">
+<h3 class="anchored" data-anchor-id="creating-and-dropping-databases-in-the-shell">Creating and dropping databases in the shell</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/ebc807e6-0e5c-4cf6-bf0c-9d38da5113b6-1-5e82c622-d858-4763-b56d-f993962641ca.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">create_drop_dbases.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="inserting-records" class="level3">
+<h3 class="anchored" data-anchor-id="inserting-records">Inserting records</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/538bda7c-b1d7-4aa0-a1df-59c32823b7b4-2-7fd20644-62c6-4924-a9a1-4a20e252f69c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">insert.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/538bda7c-b1d7-4aa0-a1df-59c32823b7b4-1-4851f5aa-9fed-4e8d-9a9a-da5fa53fe43b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">compass_insert.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="sort---equivalent-to-order-by-clause-in-sql" class="level3">
+<h3 class="anchored" data-anchor-id="sort---equivalent-to-order-by-clause-in-sql"><code>.sort()</code> - equivalent to ORDER BY clause in SQL</h3>
+<section id="ascending-order" class="level4">
+<h4 class="anchored" data-anchor-id="ascending-order">Ascending order</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/7949e506-6c76-46ad-8922-b2097e96f249-1-e0604b17-adb4-416d-80b0-589a59bf0f2c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sort_asc.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="descending-order" class="level4">
+<h4 class="anchored" data-anchor-id="descending-order">Descending order</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/83dc66da-1528-4059-b698-2ae84e50265d-1-6fe1a9a5-bdd4-4c38-9bca-a8e8e4703e98.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sort_desc.PNG</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="limit---equivalent-to-limit-clause-in-sql" class="level3">
+<h3 class="anchored" data-anchor-id="limit---equivalent-to-limit-clause-in-sql"><code>.limit()</code> - equivalent to LIMIT clause in SQL)</h3>
+<p>We can use this to quantify how many documents we wish to be returned. For example if we wish to find the student with the highest gpa score, we first sort by gpa in descending order (-1) and specify a limit value of 1 :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/1eba5cce-e2fd-412c-a9d6-aef2e150bd58-1-6038d138-b500-43f0-8a27-a28b104971ab.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">limit.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="find-query-projection---equivalent-to-the-where-clause-in-sql" class="level3">
+<h3 class="anchored" data-anchor-id="find-query-projection---equivalent-to-the-where-clause-in-sql"><code>.find( {query}, {projection})</code> - equivalent to the WHERE clause in SQL</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/f5089cd8-5265-4c1d-b132-62357c762f0c-2-2b851608-cbbe-44c8-b775-410fb68b03cd.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">find.PNG</figcaption>
+</figure>
+</div>
+<p>In the above example we only specified the <code>{query}</code> parameter, however we can also include a <code>{projection}</code> parameter to specify which fields to return. For example, say we want the names of all of our students. The first parameter {} will give us all records, whilst the second parameter specifies that we only want the name fields :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/f5089cd8-5265-4c1d-b132-62357c762f0c-1-0ac4ba11-d908-422d-809a-556a97c8ab98.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">query_projection.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="updateonefilter-update" class="level3">
+<h3 class="anchored" data-anchor-id="updateonefilter-update"><code>.updateOne({filter}, {update})</code></h3>
+<p>The <code>$set</code> operator replaces the value of a field. Say for example we wish to update Jerry’s record to include an address :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/58929c19-fded-471a-adbf-ef3e10c5c018-1-6f6b0633-3cc5-4a35-89b6-8396e9fa154b.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">update.PNG</figcaption>
+</figure>
+</div>
+<section id="updating-by-unique-objectid" class="level4">
+<h4 class="anchored" data-anchor-id="updating-by-unique-objectid">Updating by unique <code>ObjectId</code></h4>
+<p>What if we have more than one student named Jerry? Well, we don’t want to update the records for all students named Jerry, we can use the unique identifier <code>ObjectId</code> :</p>
+<p><img src="MongoDB_files/figure-html/8b1f5f51-fb2d-49d8-bf7c-188fc24c0bab-2-9bcc9f86-8447-421e-b2a4-c018e9a12d4f.PNG" class="img-fluid" alt="object_id.PNG"><img src="MongoDB_files/figure-html/8b1f5f51-fb2d-49d8-bf7c-188fc24c0bab-1-0b91d41d-5d98-41a2-b064-6395e1c40e61.png" class="img-fluid" alt="download.png"></p>
+</section>
+</section>
+<section id="removing-fields" class="level3">
+<h3 class="anchored" data-anchor-id="removing-fields">Removing fields</h3>
+<p>To remove a field we can use the <code>$unset</code> operator and set the new value as an empty string <code>""</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/c2a0c321-a1ff-4d13-9d19-e38a9f6e129e-1-957fdb9f-e172-4cbe-8523-5b5a68799ca2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">remove_field.PNG</figcaption>
+</figure>
+</div>
+<p>The fullTime field has been successfully removed.</p>
+<section id="updatemanyfilter-update" class="level4">
+<h4 class="anchored" data-anchor-id="updatemanyfilter-update"><code>updateMany({filter}, {update})</code></h4>
+<p>Say we wanted to set every student’s fullTime status to False, or True if the field doesn’t exist yet):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/37ed33e0-1377-40e9-ac92-40fe56d04c47-1-51a4d76f-f3d8-41a5-8ae2-811c207fdf45.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">update_many.PNG</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="exporting" class="level3">
+<h3 class="anchored" data-anchor-id="exporting">Exporting</h3>
+<p>Before we go ahead and show how to delete a collection let’s first back it up by exporting :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/b67f4e51-11c3-48ea-8fdf-b49c7457d6c9-1-4bc5da3f-2eff-4bf9-8d5d-9a2b0ee39a1e.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">export.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="deleting-documents" class="level3">
+<h3 class="anchored" data-anchor-id="deleting-documents">Deleting documents</h3>
+</section>
+<section id="deleteone" class="level3">
+<h3 class="anchored" data-anchor-id="deleteone"><code>.deleteOne()</code></h3>
+<p>Say we wanted to remove Kramer (I can’t imagine why!) from the database :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/cc532644-b422-4369-91a4-16d99681a282-1-18336f47-1187-4f45-a4e5-895704bb042c.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">kramer_removed.PNG</figcaption>
+</figure>
+</div>
+<p><code>.deleteMany()</code></p>
+<p>Let’s delete any one with fullTime status of false :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/14c75945-2d30-4501-8528-a8e5b03a9b8f-1-2ed47a26-c730-4577-9e78-cd42bb162593.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">jerry_removed.PNG</figcaption>
+</figure>
+</div>
+<p>Just like that Jerry is gone!</p>
+<p>As another example let’s delete any documents which don’t have a <code>registerDate</code> field (in our case this means everyone) :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/2d9b6ebc-8842-480a-a1d2-042a1574ff75-1-4b6c092d-8b8a-45ea-9f7b-8aa5c9919a82.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">all_removed.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="importing" class="level3">
+<h3 class="anchored" data-anchor-id="importing">Importing</h3>
+<p>Let’s restore our data from the backup :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/043b23b9-563e-4a36-81a8-cfce79663af0-1-401f398f-d647-4caf-af82-162edfadcd12.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">import.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="comparison-operators" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-operators">Comparison Operators</h3>
+<section id="not-equal-to-ne" class="level4">
+<h4 class="anchored" data-anchor-id="not-equal-to-ne">Not equal to <code>$ne</code></h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/507b6840-d60e-4b3d-9858-baaf9688637f-1-4a9405f5-3d0e-47c0-ae1d-0c3a529bfe19.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">not_equal.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="less-than-lt" class="level4">
+<h4 class="anchored" data-anchor-id="less-than-lt">less than <code>$lt</code></h4>
+</section>
+<section id="less-than-or-equal-to-lte" class="level4">
+<h4 class="anchored" data-anchor-id="less-than-or-equal-to-lte">less than or equal to <code>$lte</code></h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/a2f732be-bda0-4877-8b11-a02a39ee027b-1-ab0f5e59-9ec0-4317-9d6f-daa9a1c61e12.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">less_than_or_equalto.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="greater-than-gt" class="level4">
+<h4 class="anchored" data-anchor-id="greater-than-gt">greater than <code>$gt</code></h4>
+</section>
+<section id="greater-than-or-equal-to-gte" class="level4">
+<h4 class="anchored" data-anchor-id="greater-than-or-equal-to-gte">greater than or equal to <code>$gte</code></h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/2600fb81-0453-4b17-a180-c51b6150554a-1-e9b1c336-fd90-4456-ab4c-a55185e00a69.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">greater_than_equalto.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="between" class="level4">
+<h4 class="anchored" data-anchor-id="between">between</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/85a66a98-afd3-4ac4-9327-ec2264429f35-1-3d27ac3f-e4da-46b2-9ebc-1ba42bab58a3.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">between.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="is-in-in" class="level4">
+<h4 class="anchored" data-anchor-id="is-in-in">is in <code>$in [" ", " " ]</code></h4>
+</section>
+<section id="is-not-in-nin" class="level4">
+<h4 class="anchored" data-anchor-id="is-not-in-nin">is not in <code>$nin [" ", " " ]</code></h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/c33b72d9-db32-4bc4-a132-502f0caaebc8-1-be25fd11-eef4-4548-8ed8-b76d9608cadc.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">in_notin.PNG</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="logical-operators" class="level3">
+<h3 class="anchored" data-anchor-id="logical-operators">Logical Operators</h3>
+</section>
+<section id="and-and" class="level3">
+<h3 class="anchored" data-anchor-id="and-and">And <code>$and: ["{ }", "{ }"]</code></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/0cddd36d-0789-470a-b92f-845f7ecb9d41-1-1c9bd2f4-c6fe-45af-891f-5e901fec4635.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">logical_op_and.PNG</figcaption>
+</figure>
+</div>
+</section>
+<section id="or-or" class="level3">
+<h3 class="anchored" data-anchor-id="or-or">Or <code>$or: ["{ }", "{ }"]</code></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/824b340a-5087-4e61-b60d-bc627c6013bf-1-f52cb18b-6310-4a8b-8665-d01e49c36b42.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">logical_op_or.PNG</figcaption>
+</figure>
+</div>
+<section id="not-not" class="level4">
+<h4 class="anchored" data-anchor-id="not-not">not <code>$not</code></h4>
+<p>For example, say we wanted to find all students under 30, we could construct the query using <code>$lt:30</code> but this would not return null values. If we want to include null values we should instead use the <code>$not</code> operator :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/3c70faac-52e3-4234-9d9f-56b5f80ec36c-1-c71e727a-13b4-4ec6-ac29-53773c048831.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">not.PNG</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="indexes" class="level3">
+<h3 class="anchored" data-anchor-id="indexes">Indexes</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/df5d37c2-44e7-44a6-b14a-94790e86792e-1-4219db82-8f25-42f1-8407-9de84dbfc967.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">indexes.PNG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/df5d37c2-44e7-44a6-b14a-94790e86792e-2-e797a043-29e7-4da3-8718-0b1cac6f1184.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">b_tree.PNG</figcaption>
+</figure>
+</div>
+<p>A linear search is going to take a really long time if there are hundreds of thousands or millions of documents to search through.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/4aaf2d4f-8c09-424a-897c-b9be5efc52db-1-b92de8e4-a91f-44ef-9398-2c06a76f1068.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">no_index_execution_stats.PNG</figcaption>
+</figure>
+</div>
+<p>We can speed the look up process by applying an index.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/3a7dfc1c-09bf-4ae0-af43-2ab11e044db6-1-a3aeb85a-1ce5-45ce-823d-a18f37f321d0.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">index_execution_stats.PNG</figcaption>
+</figure>
+</div>
+<section id="getting-and-dropping-indexes" class="level4">
+<h4 class="anchored" data-anchor-id="getting-and-dropping-indexes">Getting and dropping indexes</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/ec286755-511f-494f-92ee-3dc50e549e46-1-ef4e529b-69d2-4f8d-9568-af1f7b9beda2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">get_drop_indexes.PNG</figcaption>
+</figure>
+</div>
+<p>For a more detailed discussion on the subject of MongoDB indexes see this <a href="https://blog.allegro.tech/2021/10/comparing-mongodb-composite-indexes.html">Allegro Tech Blog post</a>.</p>
+</section>
+</section>
+<section id="collections" class="level3">
+<h3 class="anchored" data-anchor-id="collections">Collections</h3>
+<section id="createcollectioncollection_name-cappedtrue-sizebytes-maxdocuments-autoindexidfalse" class="level4">
+<h4 class="anchored" data-anchor-id="createcollectioncollection_name-cappedtrue-sizebytes-maxdocuments-autoindexidfalse"><code>.createCollection("&lt;collection_name&gt;", {capped:true, size:#bytes, max:#documents}, {autoIndexId:false})</code></h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MongoDB_files/figure-html/9142632c-2d0e-4957-94fb-9f15b4f1e722-1-7ada0393-634b-4ce8-9270-33a1553384b8.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">create_show_collections.PNG</figcaption>
+</figure>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
