@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Introduction to the Poisson Distribution</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to the Poisson Distribution</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#calculating-probabilities-of-exact-values-using-the-probability-mass-function---poisson.pmf" id="toc-calculating-probabilities-of-exact-values-using-the-probability-mass-function---poisson.pmf" class="nav-link active" data-scroll-target="#calculating-probabilities-of-exact-values-using-the-probability-mass-function---poisson.pmf">Calculating Probabilities of Exact Values Using the Probability Mass Function - <code>poisson.pmf()</code></a></li>
+  <li><a href="#calculating-probabilities-of-a-range-using-the-cumulative-density-function---poisson.cdf" id="toc-calculating-probabilities-of-a-range-using-the-cumulative-density-function---poisson.cdf" class="nav-link" data-scroll-target="#calculating-probabilities-of-a-range-using-the-cumulative-density-function---poisson.cdf">Calculating Probabilities of a Range using the Cumulative Density Function - <code>poisson.cdf()</code></a></li>
+  <li><a href="#expectation-of-the-poisson-distribution" id="toc-expectation-of-the-poisson-distribution" class="nav-link" data-scroll-target="#expectation-of-the-poisson-distribution">Expectation of the Poisson Distribution</a></li>
+  <li><a href="#spread-of-the-poisson-distribution" id="toc-spread-of-the-poisson-distribution" class="nav-link" data-scroll-target="#spread-of-the-poisson-distribution">Spread of the Poisson Distribution</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are numerous probability distributions used to represent almost any random event. In the previous lesson, we learned about the binomial distribution to represent events like any number of coin flips as well as the normal distribution to represent events such as the height of a randomly selected woman.</p>
+<p>The Poisson distribution is another common distribution, and it is used to describe the number of times a certain event occurs within a fixed time or space interval. For example, the Poisson distribution can be used to describe the number of cars that pass through a specific intersection between 4pm and 5pm on a given day. It can also be used to describe the number of calls received in an office between 1pm to 3pm on a certain day.</p>
+<p>The Poisson distribution is defined by the rate parameter, symbolized by the Greek letter lambda, λ.</p>
+<p>Lambda represents the expected value — or the average value — of the distribution. For example, if our expected number of customers between 1pm and 2pm is 7, then we would set the parameter for the Poisson distribution to be 7. The PMF for the Poisson(7) distribution is as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Poisson_Distribution_files/figure-html/98b528ad-e957-4d25-9d3a-28c44b7087bc-1-1617d054-9745-427a-9b7d-afc6b04186db.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<section id="calculating-probabilities-of-exact-values-using-the-probability-mass-function---poisson.pmf" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-probabilities-of-exact-values-using-the-probability-mass-function---poisson.pmf">Calculating Probabilities of Exact Values Using the Probability Mass Function - <code>poisson.pmf()</code></h3>
+<p>The Poisson distribution is a discrete probability distribution, so it can be described by a probability mass function and cumulative distribution function.</p>
+<p>We can use the <code>poisson.pmf()</code> method in the <code>scipy.stats</code> library to evaluate the probability of observing a specific number given the parameter (expected value) of a distribution. For example, suppose that we expect it to rain 10 times in the next 30 days. The number of times it rains in the next 30 days is “Poisson distributed” with lambda = 10. We can calculate the probability of <code>exactly 6</code> times of rain as follows:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 10, probability of observing 6</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>stats.poisson.pmf(<span class="dv">6</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>0.06305545800345125</code></pre>
+</div>
+</div>
+<p>Like previous probability mass functions of discrete random variables, individual probabilities can be summed together to find the probability of observing a value in a range.</p>
+<p>We can calculate the probability of <code>12-14 times</code> of rain as follows:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 10, probability of observing 12-14</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>stats.poisson.pmf(<span class="dv">12</span>, <span class="dv">10</span>) <span class="op">+</span> stats.poisson.pmf(<span class="dv">13</span>, <span class="dv">10</span>) <span class="op">+</span> stats.poisson.pmf(<span class="dv">14</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>0.21976538076223123</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. We are working in a call center, and we expect the average number of calls in our call center between 9am and 10am to be 15 calls. What is the probability that we would see <code>exactly 15 calls</code> in that time frame?</p>
+</blockquote>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 15, probability of observing 15</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>prob_15 <span class="op">=</span> stats.poisson.pmf(<span class="dv">15</span>, <span class="dv">15</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_15)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.1024358666645339</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. What is the probability we would get between 7 and 9 calls?</p>
+</blockquote>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 15, probability of observing 7-9</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>prob_7_to_9 <span class="op">=</span> stats.poisson.pmf(<span class="dv">7</span>, <span class="dv">15</span>) <span class="op">+</span> stats.poisson.pmf(<span class="dv">8</span>, <span class="dv">15</span>) <span class="op">+</span> stats.poisson.pmf(<span class="dv">9</span>, <span class="dv">15</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_7_to_9)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.062221761061894816</code></pre>
+</div>
+</div>
+</section>
+<section id="calculating-probabilities-of-a-range-using-the-cumulative-density-function---poisson.cdf" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-probabilities-of-a-range-using-the-cumulative-density-function---poisson.cdf">Calculating Probabilities of a Range using the Cumulative Density Function - <code>poisson.cdf()</code></h3>
+<p>We can use the <code>poisson.cdf()</code> method in the scipy.stats library to evaluate the probability of observing a specific number or less given the expected value of a distribution. For example, if we wanted to calculate the probability of observing <code>6 or fewer</code> rain events in the next 30 days when we expected 10, we could do the following:</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 10, probability of observing 6 or less</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>stats.poisson.cdf(<span class="dv">6</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>0.130141420882483</code></pre>
+</div>
+</div>
+<p>This means that there is roughly a 13% chance that there will be 6 or fewer rainfalls in the month in question.</p>
+<p>We can also use this method to evaluate the probability of observing a specific number or more given the expected value of the distribution. For example, if we wanted to calculate the probability of observing <code>12 or more</code> rain events in the next 30 days when we expected 10, we could do the following:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 10, probability of observing 12 or more</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">-</span> stats.poisson.cdf(<span class="dv">11</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>0.30322385369689386</code></pre>
+</div>
+</div>
+<p>This means that there is roughly a 30% chance that there will be 12 or more rain events in the month in question.</p>
+<p>Note that we used 11 in the statement above even though 12 was the value given in the prompt. We wanted to calculate the probability of observing 12 or more rains, which includes 12. stats.poisson.cdf(11, 10) evaluates the probability of observing 11 or fewer rains, so 1 - stats.poisson.cdf(11, 10) would equal the probability of observing 12 or more rains.</p>
+<p>Summing individual probabilities over a wide range can be cumbersome. It is often easier to calculate the probability of a range using the cumulative density function instead of the probability mass function. We can do this by taking the difference between the CDF of the larger endpoint and the CDF of one less than the smaller endpoint of the range.</p>
+<p>For example, while still expecting 10 rainfalls in the next 30 days, we could use the following code to calculate the probability of observing <code>between 12 and 18</code> rainfall events:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 10, probability of observing between 12 and 18</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>stats.poisson.cdf(<span class="dv">18</span>, <span class="dv">10</span>) <span class="op">-</span> stats.poisson.cdf(<span class="dv">11</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>0.29603734909303947</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<ol start="17" type="A">
+<li>Working at a call center where the average number of calls between 9am and 10am is 15 calls, what is the probability of observing <code>more than 20</code> calls?</li>
+</ol>
+</blockquote>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 15, probability of observing 20 or more</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>prob_more_than_20 <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> stats.poisson.cdf(<span class="dv">20</span>, <span class="dv">15</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_more_than_20)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.08297091003146029</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. What is the probability of observing between 17 to 21 calls when the expected number of calls is 15?</p>
+</blockquote>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 15, probability of observing between 17 and 21</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>prob_17_to_21 <span class="op">=</span> stats.poisson.cdf(<span class="dv">21</span>, <span class="dv">15</span>) <span class="op">-</span> stats.poisson.cdf(<span class="dv">16</span>, <span class="dv">15</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_17_to_21)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.2827703929341844</code></pre>
+</div>
+</div>
+</section>
+<section id="expectation-of-the-poisson-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="expectation-of-the-poisson-distribution">Expectation of the Poisson Distribution</h3>
+<p>Earlier, we mentioned that the parameter lambda (λ) is the expected value (or average value) of the Poisson distribution. But what does this mean?</p>
+<p>Let’s put this into context.</p>
+<p>let’s say we are salespeople, and after many weeks of work, we calculate our <code>average to be 10 sales per week</code>. If we take this value to be our expected value of a Poisson Distribution, the probability mass function will look as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Poisson_Distribution_files/figure-html/ded5a4d3-f337-49f1-8fcf-21883d5e39c8-1-d7098a07-ce2c-447e-a5bc-a9cc74c955d7.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>The tallest bar represents the value with the highest probability of occurring. In this case, the tallest bar is at 10. This does not, however, mean that we will make 10 sales. It means that on average, across all weeks, we expect our average to equal about 10 sales per week.</p>
+<p>Let’s look at this another way. Let’s take a sample of 1000 random values from the Poisson distribution with the expected value of 10. We can use the <code>poisson.rvs()</code> method in the scipy.stats library to generate random values:</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate random variable</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># stats.poisson.rvs(lambda, size = num_values)</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>rvs <span class="op">=</span> stats.poisson.rvs(<span class="dv">10</span>, size <span class="op">=</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> histogram_function(rand_vars):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  plt.hist(rand_vars, bins <span class="op">=</span> np.arange(<span class="bu">len</span>(<span class="bu">set</span>(rand_vars)))<span class="op">-</span><span class="fl">0.5</span>, edgecolor <span class="op">=</span> <span class="st">"black"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  plt.xticks(<span class="bu">list</span>(<span class="bu">range</span>(rand_vars.<span class="bu">max</span>())))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>histogram_function(rvs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Poisson_Distribution_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see observations of as low as 2 but as high as 20. The tallest bars are at 9 and 10. If we took the average of the 1000 random samples, we would get:</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rvs.mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10.085</code></pre>
+</div>
+</div>
+<p>This value is very close to 10, confirming that over the 1000 observations, the expected value (or average) is 10.</p>
+<p>When we talk about the expected value, we mean the average over many observations. This relates to the Law of Large Numbers: the more samples we have, the more likely samples will resemble the true population, and the mean of the samples will approach the expected value. So even though the salesperson may make 3 sales one week, they may make 16 the next, and 11 the week after. In the long run, after many weeks, the expected value (or average) would still be 10.</p>
+</section>
+<section id="spread-of-the-poisson-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="spread-of-the-poisson-distribution">Spread of the Poisson Distribution</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Poisson_Distribution_files/figure-html/890fee11-22d6-4436-94a3-659bb0946f5a-2-fa498bf9-38fd-4ef5-a2cd-07c1a75d053e.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Poisson_Distribution_files/figure-html/890fee11-22d6-4436-94a3-659bb0946f5a-1-708b2b4c-9cb9-40cd-9bee-5d4876caa2d1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Probability distributions also have calculable variances. Variances are a way of measuring the spread or dispersion of values and probabilities in the distribution. For the Poisson distribution, the variance is simply the value of lambda (λ), meaning that the expected value and variance are equivalent in Poisson distributions.</p>
+<p>We know that the Poisson distribution has a discrete random variable and must be greater than 0 (think, a salesperson cannot have less than 0 sales, a shop cannot have fewer than 0 customers), so as the expected value increases, the number of possible values the distribution can take on would also increase.</p>
+<p>The first plot below shows a Poisson distribution with lambda equal to three, and the second plot shows a Poisson distribution with lambda equal to fifteen. Notice that in the second plot, the spread of the distribution increases. Also, take note that the height of the bars in the second bar decrease since there are more possible values in the distribution.</p>
+<p>As we can see, as the parameter lambda increases, the variance — or spread — of possible values increases as well.</p>
+<p>We can calculate the variance of a sample using the <code>numpy.var()</code> method:</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rand_vars <span class="op">=</span> stats.poisson.rvs(<span class="dv">4</span>, size <span class="op">=</span> <span class="dv">1000</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.var(rand_vars))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.001995999999999</code></pre>
+</div>
+</div>
+<p>Because this is calculated from a sample, it is possible that the variance might not equal EXACTLY lambda. However, we do expect it to be relatively close when the sample size is large, like in this example.</p>
+<p>Another way to view the increase in possible values is to take the range of a sample (the minimum and maximum values in a set). The following code will take draw 1000 random variables from the Poisson distribution with lambda = 4 and then print the minimum and maximum values observed using the <code>.min()</code> and <code>.max()</code> Python functions:</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">min</span>(rand_vars), <span class="bu">max</span>(rand_vars))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 12</code></pre>
+</div>
+</div>
+<p>If we increase the value of lambda to 10, let’s see how the minimum and maximum values change:</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>rand_vars <span class="op">=</span> stats.poisson.rvs(<span class="dv">10</span>, size <span class="op">=</span> <span class="dv">1000</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">min</span>(rand_vars), <span class="bu">max</span>(rand_vars))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3 21</code></pre>
+</div>
+</div>
+<p>These values are spread wider, indicating a larger variance.</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5000 draws, lambda = 7</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>rand_vars_7 <span class="op">=</span> stats.poisson.rvs(<span class="dv">7</span>, size <span class="op">=</span> <span class="dv">5000</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.var(rand_vars_7))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>7.019399960000001</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">min</span>(rand_vars_7), <span class="bu">max</span>(rand_vars_7))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 18</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5000 draws, lambda = 17</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>rand_vars_17 <span class="op">=</span> stats.poisson.rvs(<span class="dv">17</span>, size <span class="op">=</span> <span class="dv">5000</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.var(rand_vars_17))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>16.68181596</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">min</span>(rand_vars_17), <span class="bu">max</span>(rand_vars_17))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4 33</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

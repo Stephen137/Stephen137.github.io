@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Introduction to Hypothesis Testing (Simulating a One-Sample T-Test)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to Hypothesis Testing (Simulating a One-Sample T-Test)</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-hypothesis-testing" id="toc-what-is-hypothesis-testing" class="nav-link active" data-scroll-target="#what-is-hypothesis-testing">What is hypothesis testing?</a></li>
+  <li><a href="#step-1-ask-a-question" id="toc-step-1-ask-a-question" class="nav-link" data-scroll-target="#step-1-ask-a-question">Step 1: Ask a Question</a></li>
+  <li><a href="#step-2-define-the-null-and-alternative-hypotheses" id="toc-step-2-define-the-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#step-2-define-the-null-and-alternative-hypotheses">Step 2: Define the Null and Alternative Hypotheses</a></li>
+  <li><a href="#one-sample-t-tests-in-scipy" id="toc-one-sample-t-tests-in-scipy" class="nav-link" data-scroll-target="#one-sample-t-tests-in-scipy">One-Sample T-Tests in SciPy</a></li>
+  <li><a href="#implementing-a-one-sample-t-test" id="toc-implementing-a-one-sample-t-test" class="nav-link" data-scroll-target="#implementing-a-one-sample-t-test">Implementing a One-Sample T-Test</a></li>
+  <li><a href="#assumptions-of-a-one-sample-t-test" id="toc-assumptions-of-a-one-sample-t-test" class="nav-link" data-scroll-target="#assumptions-of-a-one-sample-t-test">Assumptions of a One Sample T-Test</a></li>
+  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">Review</a></li>
+  <li><a href="#testing-for-association" id="toc-testing-for-association" class="nav-link" data-scroll-target="#testing-for-association">Testing for Association</a></li>
+  <li><a href="#two-sample-t-test---quantitative-variable-time-vs-binary-categorical-variable-colour-scheme" id="toc-two-sample-t-test---quantitative-variable-time-vs-binary-categorical-variable-colour-scheme" class="nav-link" data-scroll-target="#two-sample-t-test---quantitative-variable-time-vs-binary-categorical-variable-colour-scheme">Two-Sample T-Test - quantitative variable (time) vs binary categorical variable (colour scheme)</a></li>
+  <li><a href="#multiple-tests" id="toc-multiple-tests" class="nav-link" data-scroll-target="#multiple-tests">Multiple Tests</a></li>
+  <li><a href="#sample-t-tests" id="toc-sample-t-tests" class="nav-link" data-scroll-target="#sample-t-tests">2-Sample T-tests</a></li>
+  <li><a href="#determine-significance" id="toc-determine-significance" class="nav-link" data-scroll-target="#determine-significance">determine significance</a>
+  <ul class="collapse">
+  <li><a href="#anova-analysis-of-variance-tests" id="toc-anova-analysis-of-variance-tests" class="nav-link" data-scroll-target="#anova-analysis-of-variance-tests">ANOVA (Analysis of Variance) Tests</a></li>
+  <li><a href="#tukeys-range-test" id="toc-tukeys-range-test" class="nav-link" data-scroll-target="#tukeys-range-test">Tukey’s Range Test</a></li>
+  <li><a href="#assumptions-of-t-tests-anova-and-tukey" id="toc-assumptions-of-t-tests-anova-and-tukey" class="nav-link" data-scroll-target="#assumptions-of-t-tests-anova-and-tukey">Assumptions of T-Tests, ANOVA, and Tukey</a></li>
+  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example">Worked example</a></li>
+  <li><a href="#chi-square-test" id="toc-chi-square-test" class="nav-link" data-scroll-target="#chi-square-test">Chi-Square Test</a></li>
+  <li><a href="#application-to-our-stores-example" id="toc-application-to-our-stores-example" class="nav-link" data-scroll-target="#application-to-our-stores-example">Application to our Stores Example</a></li>
+  <li><a href="#assumptions-of-a-chi-square-test" id="toc-assumptions-of-a-chi-square-test" class="nav-link" data-scroll-target="#assumptions-of-a-chi-square-test">Assumptions of a Chi-Square Test</a></li>
+  <li><a href="#examples-of-whether-chi-square-test-appropriate" id="toc-examples-of-whether-chi-square-test-appropriate" class="nav-link" data-scroll-target="#examples-of-whether-chi-square-test-appropriate">Examples of whether Chi-Square test appropriate</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="what-is-hypothesis-testing" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-hypothesis-testing">What is hypothesis testing?</h3>
+<p><em>Hypothesis Testing</em> is a framework for asking questions about a dataset and answering them with probabilistic statements. There are many different kinds of hypothesis tests that can be used to address different kinds of questions and data. In this article, we’ll walk through a simulation of a <code>one sample t- test</code> in order to build intuition about how many different kinds of hypothesis tests work!</p>
+</section>
+<section id="step-1-ask-a-question" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-ask-a-question">Step 1: Ask a Question</h3>
+<p>The International Baccalaureate Degree Programme (IBDP) is a world-wide educational program. Each year, students in participating schools can take a standardized assessment to earn their degree. Total scores on this assessment range from 1-45. Based on data provided here, the average total score for all students who took this exam in May 2020 was around 29.92. The distribution of scores looks something like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Hypotheses_Testing_files/figure-html/407e450e-211a-48dd-b1f4-d2bab43512d1-1-54cea92c-29f0-4396-bf8a-5444c2f41059.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Imagine a hypothetical online school, Statistics Academy, that offers a 5-week test-preparation program. Suppose that 100 students who took the IBDP assessment in May 2020 were randomly chosen to participate in the first group of this program and that these 100 students earned an average score of 31.16 points on the exam — about 1.24 points higher than the international average! Are these students really outperforming their peers? Or could this difference be attributed to random chance?</p>
+</section>
+<section id="step-2-define-the-null-and-alternative-hypotheses" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-define-the-null-and-alternative-hypotheses">Step 2: Define the Null and Alternative Hypotheses</h3>
+<p>Before attempting to answer this question, it is useful to reframe it in a way that is testable. Right now, our question (“Are the Statistics Academy students really outperforming their peers?”) is not clearly defined. Objectively, this group of 100 students performed better than the general population — but answering “yes, they outperformed their peers!” doesn’t feel particularly satisfying.</p>
+<p>The reason it’s not satisfying is this: if we randomly choose ANY group of 100 students from the population of all test takers and calculate the average score for that sample, there’s a 50% chance it will be higher than the population average. Observing a higher average for a single sample is not surprising.</p>
+<p>Of course, large differences from the population average are less probable — if all the Statistics Academy students earned 45 points on the exam (the highest possible score), we’d probably be convinced that these students had a real advantage. The trick is to <code>quantify when differences are “large enough” to convince us that these students are systematically different from the general population</code>. We can do this by reframing our question to focus on population(s), rather than our specific sample(s).</p>
+<p>A hypothesis test begins with <code>two competing hypotheses about the population</code> that a particular sample comes from — in this case, the 100 Statistics Academy students:</p>
+<ul>
+<li>Hypothesis 1 (technically called the Null Hypothesis): The 100 Statistics Academy students are a random sample from the general population of test takers, who had an average score of 29.92. If this hypothesis is true, the Statistics Academy students earned a slightly higher average score by random chance. Visually, this set-up looks something like this:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Hypotheses_Testing_files/figure-html/b1f6f084-27c3-4bbe-8d0b-d284cce52211-1-b7123ea0-aea1-47fa-9b38-cbf3c5fa0f20.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">hypotheses1.JPG</figcaption>
+</figure>
+</div>
+<ul>
+<li>Hypothesis 2 (technically called the Alternative Hypothesis): The 100 Statistics Academy students came from a population with an average score that is different from 29.92. In this hypothesis, <code>we need to imagine two different populations that don’t actually exist:</code> one where all students took the Statistics Academy test-prep program and one where none of the students took the program. If the alternative hypothesis is true, our sample of 100 Statistics Academy students came from a different population than the other test-takers. This can be visualized as follows:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Hypotheses_Testing_files/figure-html/b1f6f084-27c3-4bbe-8d0b-d284cce52211-2-fcfb0a57-fc88-4f89-939c-ca7b1f13b5c3.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">hypotheses2.JPG</figcaption>
+</figure>
+</div>
+<p>There’s one more clarification we need to make in order to fully specify the alternative hypothesis. Notice that, so far, we have not said anything about the average score for “population 1” in the diagram above, other than that it is NOT 29.92. We actually have three choices for what the alternative hypothesis says about this population average:</p>
+<ul>
+<li>it is <code>GREATER THAN</code> 29.92</li>
+<li>it is <code>NOT EQUAL TO</code> (i.e., GREATER THAN OR LESS THAN) 29.92</li>
+<li>it is <code>LESS THAN</code> 29.92</li>
+</ul>
+<p>Later on, we’ll discuss how the choice between “greater than”, “not equal to” and “less than” impacts the test.</p>
+<p>Suppose that a random sample of 300 runners in the Boston Marathon were chosen to run in a new model of shoes: the Flying Flier. The average finishing time for these 300 runners was 230 minutes, while the average finishing time for all runners was 233 minutes. Was the average finishing time for this sample significantly different from the average finishing time for all runners?</p>
+<p><code>Null Hypothesis:</code> The average finishing time for Boston Marathon runners wearing the Flying Flyer is equal to 233 minutes.</p>
+<p><code>Alternative Hypothesis:</code> The average finishing time for Boston Marathon runners wearing the Flying Flyer is not equal to 233 minutes.</p>
+</section>
+<section id="one-sample-t-tests-in-scipy" class="level3">
+<h3 class="anchored" data-anchor-id="one-sample-t-tests-in-scipy">One-Sample T-Tests in SciPy</h3>
+<p>In this lesson, we’ll walk through the implementation of a one-sample t-test in Python. One-sample t-tests are used for comparing a sample average to a hypothetical population average. For example, a one-sample t-test might be used to address questions such as:</p>
+<ul>
+<li>Is the average amount of time that visitors spend on a website different from 5 minutes?</li>
+<li>Is the average amount of money that customers spend on a purchase more than 10 USD?</li>
+</ul>
+<p>As an example, let’s imagine the fictional business BuyPie, which sends ingredients for pies to your household so that you can make them from scratch. Suppose that a product manager wants online BuyPie orders to cost around 1000 Rupees on average. In the past day, 50 people made an online purchase and the average payment per order was less than 1000 Rupees. Are people really spending less than 1000 Rupees on average? Or is this the result of chance and a small sample size?</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_1samp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> pd.read_csv(<span class="st">'data/prices.csv'</span>, header<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       0
+0    978
+1   1080
+2    999
+3    855
+4   1105
+5    961
+6    899
+7   1061
+8    880
+9   1455
+10   505
+11   936
+12  1024
+13   982
+14   840
+15   930
+16   829
+17   504
+18   955
+19  1380
+20  1361
+21  1130
+22   946
+23   973
+24  1076
+25  1131
+26   810
+27   734
+28  1275
+29   867
+30   962
+31   865
+32   709
+33  1216
+34   735
+35   768
+36   757
+37  1060
+38   715
+39   839
+40   999
+41  1259
+42  1194
+43  1082
+44  1129
+45  1255
+46   931
+47  1236
+48   921
+49   907</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>prices.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>50.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>980.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>204.304894</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>504.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>857.500000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>961.500000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>1099.250000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>1455.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>prices_mean <span class="op">=</span> np.mean(prices)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    980.0
+dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3462: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)</code></pre>
+</div>
+</div>
+<p>The average purchase price for these 50 purchases is 980, which is only 2% less than 1000.</p>
+</section>
+<section id="implementing-a-one-sample-t-test" class="level3">
+<h3 class="anchored" data-anchor-id="implementing-a-one-sample-t-test">Implementing a One-Sample T-Test</h3>
+<p>In the last exercise, we inspected a sample of 50 purchase prices at BuyPie and saw that the average was 980 Rupees. Suppose that we want to run a one-sample t-test with the following null and alternative hypotheses:</p>
+<ul>
+<li><code>Null:</code> The average cost of a BuyPie order is 1000 Rupees</li>
+<li><code>Alternative:</code> The average cost of a BuyPie order is not 1000 Rupees.</li>
+</ul>
+<p>SciPy has a function called <code>ttest_1samp()</code>, which performs a one-sample t-test for you.<code>ttest_1samp()</code> requires two inputs, a sample distribution (eg. the list of the 50 observed purchase prices) and a mean to test against (eg. 1000):</p>
+<pre><code>tstat, pval = ttest_1samp(sample_distribution, expected_mean)</code></pre>
+<p>The function uses your sample distribution to determine the sample size and estimate the amount of variation in the population — which are used to estimate the null distribution. It returns two outputs: the t-statistic (which we won’t cover in this course), and the p-value.</p>
+<blockquote class="blockquote">
+<p>Q. Use <code>ttest_1samp()</code> to run the hypothesis test described above (null: the average price is 1000 Rupees; alternative: the average price is not 1000 Rupees).</p>
+</blockquote>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ttest_1samp to calculate pval</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tstat, pval <span class="op">=</span> ttest_1samp(prices, <span class="dv">1000</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print pval</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.49207448]</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Does the p-value you got make sense, knowing the mean of prices and having inspected the data?</p>
+</blockquote>
+<p>P-values are probabilities, so they should be between 0 and 1. This p-value is the probability of observing an average purchase price <code>less than 980 (mean) OR more than 1,020 (1000 + diff_from_mean)</code> among a sample of 50 purchases. I</p>
+<p>Given that the mean purchase price in this sample was 980, which is not very far from 1000, we probably expect this p-value to be relatively large. The only reason it COULD be small (eg., &lt;.05) is if purchase prices had very little variation (eg., they were all within a few Rupees of 980). We can see from the data print out that this is not the case. Therefore, a p-value around 0.49 makes sense!</p>
+</section>
+<section id="assumptions-of-a-one-sample-t-test" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-of-a-one-sample-t-test">Assumptions of a One Sample T-Test</h3>
+<p>When running any hypothesis test, it is important to know and verify the assumptions of the test. The assumptions of a one-sample t-test are as follows:</p>
+<ol type="1">
+<li>The sample was randomly selected from the population</li>
+</ol>
+<ul>
+<li>For example, if you only collect data for site visitors who agree to share their personal information, this subset of visitors was not randomly selected and may differ from the larger population</li>
+</ul>
+<ol start="2" type="1">
+<li>The individual observations were independent</li>
+</ol>
+<ul>
+<li>For example, if one visitor to BuyPie loves the apple pie they bought so much that they convinced their friend to buy one too, those observations were not independent.</li>
+</ul>
+<ol start="3" type="1">
+<li>The data is normally distributed without outliers OR the sample size is large (enough)</li>
+</ol>
+<ul>
+<li>There are no set rules on what a “large enough” sample size is, but a common threshold is around 40. For sample sizes smaller than 40, and really all samples in general, it’s a good idea to make sure to plot a histogram of your data and check for outliers, multi-modal distributions (with multiple humps), or skewed distributions. If you see any of those things for a small sample, a t-test is probably not appropriate.</li>
+</ul>
+<p>In general, if you run an experiment that violates (or possibly violates) one of these assumptions, you can still run the test and report the results — but you should also report assumptions that were not met and acknowledge that the test results could be flawed.</p>
+<blockquote class="blockquote">
+<p>Q. Using <code>plt.hist()</code>, plot a histogram of prices and check whether the values are (approximately) normally distributed. Do you see anything to make you concerned that the assumptions of the test were not met (skew, bi-modality, outliers)?</p>
+</blockquote>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.hist(prices)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Hypotheses_Testing_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>There does not seem to be any clear skewness, bi-modality, or outliers. The histogram is approximately normal.</p>
+</section>
+<section id="review" class="level3">
+<h3 class="anchored" data-anchor-id="review">Review</h3>
+<p>You now know how to implement a one-sample t-test in Python and verify the assumptions of the test. To recap, here are some of the things you learned:</p>
+<ul>
+<li>One-sample t-tests are used for comparing a sample mean to an expected population mean</li>
+<li>A one-sample t-test can be implemented in Python using the SciPy <code>ttest_1samp()</code> function</li>
+</ul>
+<p>Assumptions of a one-sample t-test include: - The sample was randomly drawn from the population of interest - The observations in the sample are independent - The sample size is large “enough” or the sample data is normally distributed</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>daily_prices <span class="op">=</span> np.genfromtxt(<span class="st">"data/daily_prices.txt"</span>, delimiter<span class="op">=</span><span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>daily_prices[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>array([1353.,  760.,  900.,  759.,  854.,  925.,  839.,  917., 1236.,
+        940., 1253.,  859.,  873.,  814.,  909.,  718.,  835., 1027.,
+       1075.,  801.,  714.,  733., 1137., 1057., 1118., 1025.,  858.,
+       1010.,  600.,  967., 1286., 1072., 1007.,  585.,  853., 1286.,
+       1531.,  685.,  764., 1113.,  905.,  711.,  758.,  643.,  748.,
+        965., 1102., 1239., 1354., 1265., 1046.,  995., 1230.,  822.,
+       1185., 1183., 1285.,  969.,  964.,  958., 1159., 1123.,  739.,
+       1076., 1712., 1241., 1337.,  852., 1075., 1274., 1023.,  862.,
+        964.,  926., 1150., 1124., 1004.,  894.,  939., 1161., 1028.,
+        793.,  677., 1107., 1356., 1284.,  775.,  955., 1145.,  856.,
+        930.,  748., 1257., 1019., 1180., 1581., 1246.,  998., 1078.,
+       1104.])</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q1. Calculate and print out a p-value for day 1 where the null hypothesis is that the average purchase price was 1000 Rupees and the alternative hypothesis is that the average purchase price was not 1000 Rupees. Print out the p-value.</p>
+</blockquote>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use ttest_1samp to calculate pval</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>tstat, pval <span class="op">=</span> ttest_1samp(daily_prices[<span class="dv">0</span>], <span class="dv">1000</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print pval</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6071186852381734</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q2. Run the same hypothesis tests for days 1-10 (the fastest way to do this is with a for-loop!) and print out the resulting p-values. What’s the smallest p-value you observe for those 10 days?</p>
+</blockquote>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">10</span>):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># use ttest_1samp to calculate pval</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    tstat, pval <span class="op">=</span> ttest_1samp(daily_prices[i], <span class="dv">1000</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"day"</span>, i<span class="op">+</span><span class="dv">1</span>, <span class="st">"p-value:"</span>, pval) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>day 1 p-value: 0.6071186852381734
+day 2 p-value: 0.4093623236367092
+day 3 p-value: 0.6823152912621232
+day 4 p-value: 0.9396281562313855
+day 5 p-value: 0.8434532443692766
+day 6 p-value: 0.01876544307661009
+day 7 p-value: 0.6240646986588566
+day 8 p-value: 0.8594296361029083
+day 9 p-value: 0.774383958509746
+day 10 p-value: 0.6813407662727201</code></pre>
+</div>
+</div>
+<p>The smallest p-value observed was 0.01876544307661009 on day 6 (Python index 5).</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>np.mean(daily_prices[<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>1047.57</code></pre>
+</div>
+</div>
+<p>The largest p-value observed was 0.9396281562313855 on day 4 (Python index 3).</p>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.mean(daily_prices[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>998.41</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">10</span>):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># use ttest_1samp to calculate pval</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    mean_daily_price <span class="op">=</span> np.mean(daily_prices[i])</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"day"</span>, i<span class="op">+</span><span class="dv">1</span>, <span class="st">"mean daily price:"</span>, mean_daily_price)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>day 1 mean daily price: 1011.27
+day 2 mean daily price: 1018.2
+day 3 mean daily price: 1008.51
+day 4 mean daily price: 998.41
+day 5 mean daily price: 996.06
+day 6 mean daily price: 1047.57
+day 7 mean daily price: 1011.09
+day 8 mean daily price: 995.82
+day 9 mean daily price: 994.49
+day 10 mean daily price: 990.57</code></pre>
+</div>
+</div>
+<p>The p values makes sense. The smallest p-value relates to the day with <code>mean_daily_price</code> furthest away from 1,000 and the largest p-value relates to the day eith <code>mean_daily_price</code> closest to 1,000.</p>
+<blockquote class="blockquote">
+<p>Q3. Try changing the null hypothesis so that the expected population mean that you’re testing against is different from 1000. Try any numbers that you want. How do your p-values change.</p>
+</blockquote>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">10</span>):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># use ttest_1samp to calculate pval</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    tstat, pval <span class="op">=</span> ttest_1samp(daily_prices[i], <span class="dv">1037</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"day"</span>, i<span class="op">+</span><span class="dv">1</span>, <span class="st">"p-value:"</span>, pval)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>day 1 p-value: 0.24174678354033086
+day 2 p-value: 0.39414952989720775
+day 3 p-value: 0.17244157253100195
+day 4 p-value: 0.06834315177301555
+day 5 p-value: 0.042280382172154365
+day 6 p-value: 0.5966483670441223
+day 7 p-value: 0.2534765903169139
+day 8 p-value: 0.08334086123628086
+day 9 p-value: 0.02887293043007103
+day 10 p-value: 0.045267837432505</code></pre>
+</div>
+</div>
+<p>The p-values again make sense. We changed the target value to 1,037 and so the p-value is highest for day 6 which has a <code>mean_daily_price</code> of 1,047.57, close to our target value. The lowest p-value is for day 9 which has <code>mean_daily_price</code> of 994.49 which is far away from from 1,037.</p>
+<blockquote class="blockquote">
+<p>Q1. Suppose we are running a hypothesis test to understand whether the click rate for a “subscribe” button is significantly different from 5%. Fill in the blanks to specify the null and alternative hypotheses for this test.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A1. Null hypothesis: The click rate is equal to 5% Alternative hypothesis: The click rate is not equal to 5%</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q2. Suppose we are running a hypothesis test with the following null and alternative hypotheses: Null hypothesis: 10% of subscribers will read an article Alternative hypothesis: More than 10% of subscribers will read an article. Out of a sample of 100 subscribers who saw an article, 15 people read it. Based on this sample, suppose we run a binomial hypothesis test and calculate a p-value of 0.04. Fill in the blanks to indicate the correct interpretation of this p-value.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A2. If each subscriber has a 10% chance of reading the article, then there is a 4% chance that, among a random sample of 100 subscribers, 15 or more will read the article.</p>
+</blockquote>
+</section>
+<section id="testing-for-association" class="level3">
+<h3 class="anchored" data-anchor-id="testing-for-association">Testing for Association</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Hypotheses_Testing_files/figure-html/ca674ee9-4376-48fc-8614-f4f1d3859d5d-1-15928a0f-153d-4abb-8a8a-1cfc63241c2f.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">association.JPG</figcaption>
+</figure>
+</div>
+<p>In this lesson, we’ll use hypothesis tests to make inference about population-level associations between two variables.</p>
+<p>We will cover four different hypothesis tests:</p>
+<ul>
+<li>Two Sample T-Tests (for an association between a quantitative variable and a binary categorical variable)</li>
+<li>ANOVA and Tukey Tests (for an association between a quantitative variable and a non-binary categorical variable)</li>
+<li>Chi-Square Tests (for an association between two categorical variables)</li>
+</ul>
+<p>The magnitude of differences between population means and the variation in the data play a role in determining statistical significance.</p>
+</section>
+<section id="two-sample-t-test---quantitative-variable-time-vs-binary-categorical-variable-colour-scheme" class="level3">
+<h3 class="anchored" data-anchor-id="two-sample-t-test---quantitative-variable-time-vs-binary-categorical-variable-colour-scheme">Two-Sample T-Test - quantitative variable (time) vs binary categorical variable (colour scheme)</h3>
+<p>Suppose that a company is considering a new color-scheme for their website. They think that visitors will spend more time on the site if it is brightly colored. To test this theory, the company shows the old and new versions of the website to 50 site visitors, each — and finds that, on average, visitors spent 2 minutes longer on the new version compared to the old. Will this be true of future visitors as well? Or could this have happened by random chance among the 100 people in this sample?</p>
+<p>One way of testing this is with a <code>2-sample t-test</code>.</p>
+<p>The <code>null hypothesis</code> for this test is that average length of a visit does not differ based on the color of the website. In other words, if we could observe all site visitors in two alternate universes (one where they see each version of the site), the average visiting times in these universes would be equal.</p>
+<p>We can use SciPy’s <code>ttest_ind()</code> function to perform a 2-sample t-test. It takes the values for each group as inputs and returns the <code>t-statistic</code> (not covered in this course) and a <code>p-value</code>:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'data/version_time.csv'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#separate out times for  two versions</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>old <span class="op">=</span> data.time_minutes[data.version<span class="op">==</span><span class="st">'old'</span>]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>new <span class="op">=</span> data.time_minutes[data.version<span class="op">==</span><span class="st">'new'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>old.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>1    12.90
+2    13.76
+3    15.68
+4    16.28
+5    16.88
+Name: time_minutes, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>new.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>0     11.92
+6     16.93
+7     17.20
+13    19.52
+14    19.65
+Name: time_minutes, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot overlapping histograms</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.hist(old, alpha<span class="op">=</span><span class="fl">.8</span>, label<span class="op">=</span><span class="st">'old'</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>plt.hist(new, alpha<span class="op">=</span><span class="fl">.8</span>, label<span class="op">=</span><span class="st">'new'</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of time spent on website'</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time: minutes'</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of site visits'</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Hypotheses_Testing_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>From an initial eyeball test, there does appear to be a significant association between the version of the website a visitor saw and how long they spent on the site. The time spent seems to be longer for the new site.</p>
+<p>However let’s add some statistical weight to our analysis by performing a 2-sample t-test :</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#run the t-test</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tstat, pval <span class="op">=</span> ttest_ind(old, new)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0020408264429904</code></pre>
+</div>
+</div>
+<p>Based on a significance threshold of 0.05 there is a significant difference between the average amount of time visitors are spending on the old and new versions of the website.</p>
+</section>
+<section id="multiple-tests" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-tests">Multiple Tests</h3>
+<p>In some circumstances, we might instead care about an association between a quantitative variable and a non-binary categorical variable (non-binary means more than two categories).</p>
+<p>For example, suppose that we own a chain of stores that sell ants, called VeryAnts. There are three different locations: A, B, and C. We want to know whether customers are spending a significantly different amount per order at any of the locations.</p>
+<p>There are three different comparisons we could make: A vs.&nbsp;B, B vs.&nbsp;C, and A vs.&nbsp;C. One way to answer our question is to simply run three separate 2-sample t-tests.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store the data</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>veryants <span class="op">=</span> pd.read_csv(<span class="st">'data/veryants.csv'</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> veryants.Sale[veryants.Store <span class="op">==</span> <span class="st">'A'</span>]</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> veryants.Sale[veryants.Store <span class="op">==</span> <span class="st">'B'</span>]</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> veryants.Sale[veryants.Store <span class="op">==</span> <span class="st">'C'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s carry out an eyeball check of the sales across the three stores :</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0      73.57
+1      38.37
+2      49.36
+3      61.96
+4      38.74
+       ...  
+145    47.86
+146    72.52
+147    68.99
+148    58.24
+149    63.85
+Name: Sale, Length: 150, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>150    95.51
+151    54.36
+152    40.89
+153    96.22
+154    64.82
+       ...  
+295    58.98
+296    42.63
+297    54.83
+298    76.67
+299    82.04
+Name: Sale, Length: 150, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>300    62.80
+301    54.63
+302    49.87
+303    71.38
+304    85.13
+       ...  
+445    65.98
+446    50.51
+447    46.77
+448    70.39
+449    42.06
+Name: Sale, Length: 150, dtype: float64</code></pre>
+</div>
+</div>
+<p>On first glance it looks like average values are highest in Store B, then C, with lowest in A.</p>
+<p>Let’s try to improve our understanding of the distribution of data by visualization - side by side boxplots :</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>veryants, x<span class="op">=</span><span class="st">'Store'</span>, y<span class="op">=</span><span class="st">'Sale'</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Hypotheses_Testing_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The above boxplots supports my initial eye-ball check. Of interest are the outliers indicated by the diamond icons - these will impact the mean sales values.</p>
+</section>
+<section id="sample-t-tests" class="level3">
+<h3 class="anchored" data-anchor-id="sample-t-tests">2-Sample T-tests</h3>
+<p>Let’s add some statistical weight to our arguments by carrying out t-tests for each pair of location data, that is :</p>
+<pre><code>Store A vs Store B
+Store A vs Store C
+Store B vs Store C</code></pre>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run t-tests</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>tstat, a_b_pval <span class="op">=</span> ttest_ind(a, b)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_b_pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.769886558708305e-05</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run t-tests</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>tstat, a_c_pval <span class="op">=</span> ttest_ind(a, c)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_c_pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.02102938693149484</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run t-tests</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>tstat, b_c_pval <span class="op">=</span> ttest_ind(b, c)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b_c_pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.05986788486166067</code></pre>
+</div>
+</div>
+</section>
+<section id="determine-significance" class="level1">
+<h1>determine significance</h1>
+<p>a_b_significant = True a_c_significant = True b_c_significant = False</p>
+<p>The problem with running multiple tests is that it inflates our probability of a type I error; the more tests we run, the worse the problem becomes! One way of combatting this is to reduce the significance threshold for each test to say 0.01, however another approach is to use ANOVA (Analysis of Variance).</p>
+<section id="anova-analysis-of-variance-tests" class="level3">
+<h3 class="anchored" data-anchor-id="anova-analysis-of-variance-tests">ANOVA (Analysis of Variance) Tests</h3>
+<p>ANOVA tests the null hypothesis that all groups have the same population mean (eg., the true average price of a sale is the same at every location of VeryAnts).</p>
+<p>In Python, we can use the SciPy function <code>f_oneway()</code> to perform an ANOVA. <code>f_oneway(</code>) has two outputs: the F-statistic (not covered in this course) and the p-value.</p>
+<p>If the p-value is below our significance threshold, we can conclude that at least one pair of our groups earned significantly different scores on average.</p>
+<p>Let’s return to our stores example :</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run ANOVA</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> f_oneway</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>fstat, pval <span class="op">=</span> f_oneway(a, b, c)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.00015355234908845413</code></pre>
+</div>
+</div>
+<p>At a 0.05, or for that matter a 0.01 significance level, the p-value indicates that at least one pair of stores have significantly different sales. At this stage, however, we won’t know which pair of stores! However we can leverage Tukey’s Range Test to unveil this.</p>
+</section>
+<section id="tukeys-range-test" class="level3">
+<h3 class="anchored" data-anchor-id="tukeys-range-test">Tukey’s Range Test</h3>
+<p>In Python, we can perform Tukey’s range test using the statsmodels function <code>pairwise_tukeyhsd()</code>.</p>
+<p>Tukey’s range test is similar to running three separate 2-sample t-tests, except that it runs all of these tests simultaneously in order to <code>preserve</code> the type I error rate (rather than increase it as happens with every iteration of individual tests).</p>
+<p>The function output is a table, with one row per pair-wise comparison. For every comparison where reject is True, we “reject the null hypothesis” and conclude there is a significant difference between those two groups.</p>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.multicomp <span class="im">import</span> pairwise_tukeyhsd</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>tukey_results <span class="op">=</span> pairwise_tukeyhsd(veryants.Sale, veryants.Store, <span class="fl">0.05</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tukey_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Multiple Comparison of Means - Tukey HSD, FWER=0.05 
+====================================================
+group1 group2 meandiff p-adj   lower   upper  reject
+----------------------------------------------------
+     A      B   7.2763 0.0001  3.2264 11.3263   True
+     A      C    4.011 0.0529 -0.0389  8.0609  False
+     B      C  -3.2653  0.141 -7.3153  0.7846  False
+----------------------------------------------------</code></pre>
+</div>
+</div>
+<p>On the basis of the Tukey’s Range Test, there is a statistically significant difference between store A and Store B sales. Note that this result is not the same as when we ran three t-tests (these also suggested a significant difference between stores A and C).</p>
+</section>
+<section id="assumptions-of-t-tests-anova-and-tukey" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-of-t-tests-anova-and-tukey">Assumptions of T-Tests, ANOVA, and Tukey</h3>
+<p>Before we use a two sample t-test, ANOVA, or Tukey’s range test, we need to be sure that the following things are true:</p>
+<section id="the-observations-should-be-independently-randomly-sampled-from-the-population" class="level4">
+<h4 class="anchored" data-anchor-id="the-observations-should-be-independently-randomly-sampled-from-the-population">1. The observations should be independently randomly sampled from the population</h4>
+<p>Suppose the population we are interested in is all visitors to a website. Random sampling will help ensure that our sample is representative of the population we care about. For example, if we only sample site visitors on Halloween, those visitors may behave differently from the general population. In practice, this can be a challenging assumption to meet, but it’s important to be aware of.</p>
+</section>
+<section id="the-standard-deviations-of-the-groups-should-be-equal" class="level4">
+<h4 class="anchored" data-anchor-id="the-standard-deviations-of-the-groups-should-be-equal">2. The standard deviations of the groups should be equal</h4>
+<p>For example, if we’re comparing time spent on a website for two versions of a homepage, we first want to make sure that the standard deviation of time spent on version 1 is roughly equal to the standard deviation of time spent on version 2. To check this assumption, it is normally sufficient to divide one standard deviation by the other and see if the ratio is “close” to 1. Generally, a ratio between 0.9 and 1.1 should suffice.</p>
+<p>That said, there is also a way to run a 2-sample t-test without assuming equal standard deviations — for example, by setting the equal_var parameter in the scipy.stats.ttest_ind() function equal to False. Running the test in this way has some disadvantages (it essentially makes it harder to reject the null hypothesis even when there is a true difference between groups), so it’s important to check for equal standard deviations before running the test.</p>
+</section>
+<section id="the-data-should-be-normally-distributedish" class="level4">
+<h4 class="anchored" data-anchor-id="the-data-should-be-normally-distributedish">3. The data should be normally distributed…ish</h4>
+<p>Data analysts in the real world often still perform these tests on data that are not normally distributed. This is usually not a problem if sample size is large, but it depends on how non-normal the data is. In general, the bigger the sample size, the safer you are!</p>
+</section>
+<section id="the-groups-created-by-the-categorical-variable-must-be-independent" class="level4">
+<h4 class="anchored" data-anchor-id="the-groups-created-by-the-categorical-variable-must-be-independent">4. The groups created by the categorical variable must be independent</h4>
+<p>Here are some examples where the groups are <strong>not</strong> independent:</p>
+<ul>
+<li>the number of goals scored per soccer player before, during, and after undergoing a rigorous training regimen (not independent because the same players are measured in each category)</li>
+<li>years of schooling completed by a group of adults compared to their parents (not independent because kids and their parents can influence one another)</li>
+</ul>
+</section>
+</section>
+<section id="worked-example" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example">Worked example</h3>
+<p>Suppose that we want to run a two-sample t-test to compare the sample means for two groups. Before running the test, we want to check whether the ratio of standard deviations for these groups is equal.</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>dist_1 <span class="op">=</span> np.genfromtxt(<span class="st">"data/1.csv"</span>)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>dist_2 <span class="op">=</span> np.genfromtxt(<span class="st">"data/2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>ratio <span class="op">=</span> dist_1.std() <span class="op">/</span> dist_2.std()</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ratio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6240550627217001</code></pre>
+</div>
+</div>
+<p>The closer the ratio is to 1, the closer are the standard deviations. A value of 0.624 suggests that <code>dist_2</code> is quite a bit larger than <code>dist_1</code>.</p>
+<p>Let’s inspect the spread visually using a histogram :</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot histograms of each distribution</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>plt.hist(dist_1, alpha <span class="op">=</span> <span class="fl">.8</span>, label <span class="op">=</span> <span class="st">'dist 1'</span>, density<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>plt.hist(dist_2, alpha <span class="op">=</span> <span class="fl">.8</span>, label <span class="op">=</span> <span class="st">'dist 2'</span>, density<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of two groups'</span>)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Hypotheses_Testing_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="chi-square-test" class="level3">
+<h3 class="anchored" data-anchor-id="chi-square-test">Chi-Square Test</h3>
+<p>If we want to understand whether the outcomes of two categorical variables are associated, we can use a Chi-Square test. It is useful in situations like:</p>
+<ul>
+<li><p>An A/B test where half of users were shown a green submit button and the other half were shown a purple submit button. Was one group more likely to click the submit button?</p></li>
+<li><p>People under and over age 40 were given a survey asking “Which of the following three products is your favorite?” Did these age groups have significantly different preferences?</p></li>
+</ul>
+<p>In SciPy, we can use the function <code>chi2_contingency()</code> to perform a Chi-Square test. The input to chi2_contingency is a contingency table, which can be created using the pandas <code>crosstab()</code> function.</p>
+<p>For example, suppose we want to know whether gender is associated with the probability of a website visitor making a purchase. The null hypothesis is that there’s no association between the variables (eg. males, females, and non-binary people are all equally likely to make a purchase on the website, so gender and purchase-status are not associated). If the p-value is below our chosen threshold (often 0.05), we reject the null hypothesis and can conclude there is a statistically significant association between the two variables (eg. men, women, and non-binary people appear to have different probabilities of making a purchase, so gender is associated with purchase-status).</p>
+</section>
+<section id="application-to-our-stores-example" class="level3">
+<h3 class="anchored" data-anchor-id="application-to-our-stores-example">Application to our Stores Example</h3>
+<p>The management at the VeryAnts ant store wants to know if their two most popular species of ants, the Leaf Cutter and the Harvester, vary in popularity between 1st, 2nd, and 3rd graders.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2_contingency</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in and print data</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>ants <span class="op">=</span> pd.read_csv(<span class="st">"data/ants_grade.csv"</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ants.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Grade          Ant
+0   1st    harvester
+1   2nd    harvester
+2   2nd  leaf cutter
+3   1st    harvester
+4   3rd  leaf cutter</code></pre>
+</div>
+</div>
+<p>The input to <code>chi2_contingency</code> is a contingency table, which can be created using the pandas <code>crosstab()</code> function :</p>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create contingency table</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.crosstab(ants.Grade, ants.Ant)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Ant    harvester  leaf cutter
+Grade                        
+1st           28            8
+2nd           31            5
+3rd           23           13</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run Chi-Square test and print p-value</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2_contingency</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>chi2, pval, dof, expected <span class="op">=</span> chi2_contingency(table)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.08356116834982279</code></pre>
+</div>
+</div>
+<p>Using a significance threshold of 0.05, there is <strong>no</strong> significant association between <code>Grade</code> and <code>Ant</code> type.</p>
+</section>
+<section id="assumptions-of-a-chi-square-test" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-of-a-chi-square-test">Assumptions of a Chi-Square Test</h3>
+<p>Before we use a Chi-Square test, we need to be sure that the following things are true:</p>
+<section id="the-observations-should-be-independently-randomly-sampled-from-the-population-1" class="level4">
+<h4 class="anchored" data-anchor-id="the-observations-should-be-independently-randomly-sampled-from-the-population-1">1. The observations should be independently randomly sampled from the population</h4>
+<p>This is also true of 2-sample t-tests, ANOVA, and Tukey. The purpose of this assumption is to ensure that the sample is representative of the population of interest.</p>
+</section>
+<section id="the-categories-of-both-variables-must-be-mutually-exclusive" class="level4">
+<h4 class="anchored" data-anchor-id="the-categories-of-both-variables-must-be-mutually-exclusive">2. The categories of both variables must be mutually exclusive</h4>
+<p>In other words, individual observations should only fall into one category per variable. This means that categorical variables like “college major”, where students can have multiple different college majors, would not be appropriate for a Chi-Square test.</p>
+</section>
+<section id="the-groups-should-be-independent" class="level4">
+<h4 class="anchored" data-anchor-id="the-groups-should-be-independent">3. The groups should be independent</h4>
+<p>Similar to 2-sample t-tests, ANOVA, and Tukey, a Chi-Square test also shouldn’t be used if either of the categorical variables splits observations into groups that can influence one another. For example, a Chi-Square test would not be appropriate if one of the variables represents three different time points.</p>
+</section>
+</section>
+<section id="examples-of-whether-chi-square-test-appropriate" class="level3">
+<h3 class="anchored" data-anchor-id="examples-of-whether-chi-square-test-appropriate">Examples of whether Chi-Square test appropriate</h3>
+<section id="appropriate" class="level4">
+<h4 class="anchored" data-anchor-id="appropriate">Appropriate</h4>
+<p>Researchers are running a study to test a new vaccine for Covid-19 in adults. A sample of 1000 adults (you can assume that they are randomly sampled adults, or at least representative of the population) are randomly split into two groups: half get a vaccine, while the other half get a placebo. Everyone is monitored for six months to see if they develop symptoms of Covid-19. The first few rows of the resulting dataset looks like this:</p>
+<pre><code>Group   Outcome
+vaccine not sick
+vaccine not sick
+placebo sick
+placebo not sick</code></pre>
+<p>The researchers want to use this data to determine whether their vaccine will be effective at preventing illness in the general population of adults (eg., is whether or not someone got a vaccine associated with whether or not they got sick?)</p>
+<blockquote class="blockquote">
+<p>This research question addresses an association between two categorical variables.</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>The sample is representative of the population,</li>
+<li>the categories are mutually exclusive (each person gets a placebo or vaccine but not both; each person gets sick or doesn’t get sick), and</li>
+<li>the groups are independent.</li>
+</ol>
+</blockquote>
+</section>
+<section id="not-appropriate" class="level4">
+<h4 class="anchored" data-anchor-id="not-appropriate">Not appropriate</h4>
+<p>Researchers are interested in studying the effect of a 10 minute yoga regimen on self-reported mood in adults. In order to test this, a representative sample of 1000 adults are asked to complete a survey where they rate their current happiness level as “very low”, “low”, “neutral”, “high”, or “very high”. Each person then completes a 10 minute yoga regimen, then responds to the same survey once again. The first few rows of data from this study look like this:</p>
+<pre><code>Person ID   Time    Happiness
+1   before yoga low
+1   after yoga  neutral
+2   before yoga neutral
+2   after yoga  high</code></pre>
+<p>The researchers want to know if 10 minutes of yoga can help improve self-reported mood for adults in the general population (eg., is whether or not someone has just completed 10 minutes of yoga associated with their self-reported happiness level?).</p>
+<blockquote class="blockquote">
+<p>Note that one of the categorical variables has to do with time (before or after yoga). This variable splits observations into groups that are not independent: someone’s happiness level before yoga can clearly influence their happiness level after yoga.</p>
+</blockquote>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

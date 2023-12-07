@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Data Viz</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Viz</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#from-data-type-to-chart-type" id="toc-from-data-type-to-chart-type" class="nav-link active" data-scroll-target="#from-data-type-to-chart-type">From Data Type to Chart Type</a></li>
+  <li><a href="#univariate-charts" id="toc-univariate-charts" class="nav-link" data-scroll-target="#univariate-charts">Univariate Charts</a></li>
+  <li><a href="#bi--and-multivariate-charts" id="toc-bi--and-multivariate-charts" class="nav-link" data-scroll-target="#bi--and-multivariate-charts">Bi- and Multivariate Charts</a></li>
+  <li><a href="#aesthetic-properties-i-the-menu" id="toc-aesthetic-properties-i-the-menu" class="nav-link" data-scroll-target="#aesthetic-properties-i-the-menu">Aesthetic Properties I: the Menu</a></li>
+  <li><a href="#aesthetic-properties-ii-information-redundancy" id="toc-aesthetic-properties-ii-information-redundancy" class="nav-link" data-scroll-target="#aesthetic-properties-ii-information-redundancy">Aesthetic Properties II: Information Redundancy</a></li>
+  <li><a href="#consider-the-audience" id="toc-consider-the-audience" class="nav-link" data-scroll-target="#consider-the-audience">Consider the Audience</a></li>
+  <li><a href="#context-is-key" id="toc-context-is-key" class="nav-link" data-scroll-target="#context-is-key">Context is Key</a></li>
+  <li><a href="#accessibility-basics" id="toc-accessibility-basics" class="nav-link" data-scroll-target="#accessibility-basics">Accessibility Basics</a></li>
+  <li><a href="#further-accessibility-universal-design" id="toc-further-accessibility-universal-design" class="nav-link" data-scroll-target="#further-accessibility-universal-design">Further Accessibility: Universal Design</a></li>
+  <li><a href="#owning-the-role-of-author" id="toc-owning-the-role-of-author" class="nav-link" data-scroll-target="#owning-the-role-of-author">Owning the Role of Author</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#misleading-confusing-graphs" id="toc-misleading-confusing-graphs" class="nav-link" data-scroll-target="#misleading-confusing-graphs">Misleading &amp; Confusing Graphs</a></li>
+  <li><a href="#axes" id="toc-axes" class="nav-link" data-scroll-target="#axes">Axes</a></li>
+  <li><a href="#scaling" id="toc-scaling" class="nav-link" data-scroll-target="#scaling">Scaling</a></li>
+  <li><a href="#color-scales" id="toc-color-scales" class="nav-link" data-scroll-target="#color-scales">Color Scales</a></li>
+  <li><a href="#color-associations" id="toc-color-associations" class="nav-link" data-scroll-target="#color-associations">Color Associations</a></li>
+  <li><a href="#labels-and-titles" id="toc-labels-and-titles" class="nav-link" data-scroll-target="#labels-and-titles">Labels and Titles</a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>n this module, we’ll cover two major ideas:</p>
+<ol type="1">
+<li><p>We visualize data to accomplish a goal – to explore and see something new in the data, to strengthen an argument with a visual aid, to share a data-driven idea with someone else, and more.</p></li>
+<li><p>Our design decisions can either help or hinder how effectively a data viz communicates. We tell stories with data viz (yes, even if it’s a simple visualization) using good design choices in chart type, color, labels, context, and more.</p></li>
+</ol>
+<p>There is so much we could say about data viz! It definitely won’t all fit here though, so in this Data Viz Basics lesson, we’re only talking about visualizations that are static (no moving parts or animations) and fixed (no interactivity).</p>
+<section id="from-data-type-to-chart-type" class="level3">
+<h3 class="anchored" data-anchor-id="from-data-type-to-chart-type">From Data Type to Chart Type</h3>
+<p>The first step of making a data visualization is choosing a chart type. Chart type isn’t our only tool when it comes to visualizing data, but it’s an important one for communicating about the relationship we want to show.</p>
+<p>In this context, a “relationship” in the data could mean something like…</p>
+<ol type="1">
+<li>“the shop’s sales of Gouda were higher in 2021 than any year since 2006”</li>
+<li>“30% of people ordered pizza with pineapple”</li>
+<li>“most people in the sample have a shoe size between 6 and 10.5”</li>
+<li>“as temperature increases, ice cream sales increase”</li>
+</ol>
+<p>The first example is a <code>change over time</code> – that can be perfect for a <code>line chart</code> or a <code>bar chart</code>.</p>
+<p>The second example <code>compares a part to the whole</code>: 30% of people got pizza with pineapple, out of 100% of people who ordered pizza. A <code>pie chart</code> is the classic (sometimes controversial) choice, but newer options include <code>waffle</code> and <code>donut</code> charts. Yum!</p>
+<p>The third example is a <code>distribution</code> – the spread of data points in one variable. A <code>histogram</code> is the classic choice for visualizing a distribution.</p>
+<p>The fourth example is a <code>direct comparison of two variables</code> to help understand a trend. This is perfect for a <code>scatterplot</code>, with or without a trend line.</p>
+<p>There’s often more than one possible chart we can use for a dataset. But different charts emphasize different questions, arguments, or relationships in the data, and whichever we choose should help translate that data relationship into a visual relationship.</p>
+<p>Next up, we’ll get to know these charts a little better.</p>
+</section>
+<section id="univariate-charts" class="level3">
+<h3 class="anchored" data-anchor-id="univariate-charts">Univariate Charts</h3>
+<p>One big consideration when choosing a chart type is how many variables we’re comparing. <code>Univariate</code> charts help us visualize a change in <code>one</code> variable. Often that means measuring “how much,” which can either be a count or a distribution.</p>
+<p>A common chart for counts is the bar graph. If we want to compare an amount between different categories, like “how many of each coin is in the piggy bank” or “how many birds were saved by species,” a bar chart translates the difference in count to a difference in bar height. Remember, the data relationship is translated to a visual relationship.</p>
+<p>Another common univariate chart is the histogram. Histograms measure the distribution or spread, of a variable.</p>
+<p>Histograms are a great way to show the concept of a normal (or skewed) distribution. We can visualize the answer to questions like…</p>
+<ul>
+<li>“how does foot size vary across the population?”</li>
+<li>“what is the distribution of pregnancy length across the human population?”</li>
+<li>“how is income distributed in my country?”</li>
+</ul>
+<p>A density curve also visualizes a distribution, without putting data in bins like a histogram does.</p>
+<p>A more “math-forward” way to visualize distributions is a <code>box plot</code> or <code>violin plot</code>. These visualizations make percentile and quartile values obvious.</p>
+<p>Last up, outside the counting and distribution category, let’s consider a univariate map. This would be a map where the only variable is geographic, i.e.&nbsp;a map that just shows us location and distance.</p>
+</section>
+<section id="bi--and-multivariate-charts" class="level3">
+<h3 class="anchored" data-anchor-id="bi--and-multivariate-charts">Bi- and Multivariate Charts</h3>
+<p>Next up, bivariate and multivariate charts! These charts show the relationships between two or more variables.</p>
+<p>The classic bivariate example is the scatter plot — one variable on the x-axis, another on the y-axis, and each point helps us compare the two variables by its position on the graph.</p>
+<p>Scatterplots translate the relationship between two variables in the data into an easy-to-see spatial relationship. Because we’re relying on the idea that each variable increases as we move up the X or Y axis, the scatterplot only makes sense for numeric variables, not categorical.</p>
+<p>A line chart is another common bivariate chart, often measuring a variable changing over time. A stock chart, for example, measures the value of a company over time.</p>
+<p>A line chart with multiple lines for different variables is a multivariate chart. For an example, check out the line chart that plots both imported and domestic cheese sales.</p>
+<p>Last but not least, let’s think about a bivariate map. It shows a basic geographical map plus an additional variable — this example shows roughly where different pasta shapes originated in Italy. We can also map precipitation, altitude or depth, median income, museum locations, or combinations of variables… the list is endless.</p>
+<p>Charts often rely on visual signifiers besides chart type to visualize additional variables in the data. For example, the lines on a multivariate line chart are distinguished by pattern and color, and a scatter plot can use color, shape, or dot size to make a third variable apparent. Read on for info on color, shape, and more!</p>
+</section>
+<section id="aesthetic-properties-i-the-menu" class="level3">
+<h3 class="anchored" data-anchor-id="aesthetic-properties-i-the-menu">Aesthetic Properties I: the Menu</h3>
+<p>We’ve covered how we use chart type to highlight a relationship in the data. Now we’ll talk about how we use aesthetic properties to further clarify and visualize the “details” of the data.</p>
+<p>Aesthetic properties are the attributes we use to communicate data visually:</p>
+<ul>
+<li>Position</li>
+<li>Size</li>
+<li>Shape</li>
+<li>Color / pattern</li>
+</ul>
+<p>Most of us are already familiar with this concept, even if we’ve never seen it put into words before. Let’s walk through a visualization together to see how its aesthetic properties help us understand the data story.</p>
+<p>This visualization published by The New York Times in 2012 shows different tech IPOs (initial public offering, or when a formerly-private company becomes available as a publicly traded stock).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/393b751b-8ffb-4e36-b294-4617f8f8e75a-1-8a504ad9-524b-4d11-845a-20772a7ace49.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">facebook.JPG</figcaption>
+</figure>
+</div>
+<p>Take a minute to look at the graph and see how position, size, shape, and color are used. What does it mean for a data point to be up and to the right versus down and to the left? What do bigger and smaller signify? How does shape come into play? What does color mean?</p>
+<p>Okay, let’s walk through it together now.</p>
+<p>We can start with position: from left to right (the x-axis), the graph measures time. From bottom to top (the y-axis) the graph measures company value in billions of dollars.</p>
+<p>As far as shape goes, there’s only one here – circles.</p>
+<p>Moving on to size, it looks like the size of each circle tracks with its company value. Companies with a larger IPO amount get a bigger circle.</p>
+<p>Finally, color corresponds to time. Earlier corresponds to red, and later to blue. The middle portion, around 1995, is purple. This visually separates the three decades into three general zones.</p>
+</section>
+<section id="aesthetic-properties-ii-information-redundancy" class="level3">
+<h3 class="anchored" data-anchor-id="aesthetic-properties-ii-information-redundancy">Aesthetic Properties II: Information Redundancy</h3>
+<p>Let’s take a closer look at this graph. There’s a connection here between size and y-position (how high or low a circle is): they actually tell us the same information twice!</p>
+<p>This is an example of <code>information redundancy</code>, or encoding the same information in different visual properties. We already know that Facebook has the largest company value because it’s the highest circle on the chart. Its large size gives us another way to visually compare it to the other data points.</p>
+<p>Info redundancy is also helpful for prioritizing values. There are lots and lots of smaller companies on this graph – if every circle were the size of Google’s circle, the bottom part of the graph would be an unreadable ball pit. Or, if all the circles were the size of the smallest ones, the chart would lose some of its emphasis on Facebook’s large IPO value. Information redundancy helps key data points to stand out.</p>
+<p>Color and x-position are also redundant on this graph, making the chart a little easier and faster to interpret. The three color groups in the graph help break up the three-ish decades shown, giving us a sense in one glance that red circles are part of an early group, purples are in a middle group, and blues are the latest.</p>
+<p>We’ll dive deeper into accessibility later, but for now note that information redundancy is also an important practice to ensure that colorblind viewers can access all the information in a chart.</p>
+<p>To sum up, <code>information redundancy visualizes the same information using multiple different aesthetic properties</code>. It’s important for readability, organization and prioritization of information, and accessibility.</p>
+</section>
+<section id="consider-the-audience" class="level3">
+<h3 class="anchored" data-anchor-id="consider-the-audience">Consider the Audience</h3>
+<p>The best data visualizations help us to understand what’s in the data, draw meaningful conclusions, and make decisions about the next steps. This requires context and <code>different context is appropriate for different audiences</code>.</p>
+<p>Let’s walk through an imaginary-world example:</p>
+<p>Shinji, Paola and Raj work together in an ecology lab. Their lab is applying for funding for a field research trip next year. This week, each of them will present the lab’s work and data to a different potential funder:</p>
+<ul>
+<li>Sir Avon Rattleborough, retired ecologist and expert field researcher</li>
+<li>Claude Tuber, board game developer and eccentric venture capitalist</li>
+<li>Milana Diamante, heiress and amateur biologist</li>
+</ul>
+<p>The three labmates know they’ll have to communicate differently to each of these potential funders. <code>They’ll communicate the same information, but each lab member will personalize their chart with a title and annotations that work best for their intended audience.</code></p>
+<p>With this in mind, let’s get some background on the funders and see which title and annotation is most effective for each graph…</p>
+<p>Sir Avon has over 50 years of ecology research under his belt, and lives for the details. He’s not familiar with the lab’s work specifically, but he knows the lingo. Sir Avon always wants to see proof.</p>
+<p>Claude is a big picture thinker: he’s wondering if the lab’s research can be turned into a fun and educational board game for a broad audience. He’s excited about it but knows nothing about ecology. Claude has a limited attention span.</p>
+<p>Milana is an enthusiastic citizen scientist in her free time, and is eager to support a worthy cause. She’s never done field research herself, but has some background knowledge and has been following the lab’s work for a couple years. Milana loves to ask follow-up questions.</p>
+</section>
+<section id="context-is-key" class="level3">
+<h3 class="anchored" data-anchor-id="context-is-key">Context is Key</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/ca96ceca-4cfc-4136-92be-2e650130535c-1-43926ee7-b2a3-4ecd-93ab-60a9fd397df1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">audience.JPG</figcaption>
+</figure>
+</div>
+<p>We tend to think of context as “outside” a data visualization, but Shinji, Paola and Raj had the right idea by including appropriate context using titles and annotations. Each of them also did a great job of <code>considering their specific audiences when making decisions about what context to include or not.</code></p>
+<p>Viewers need context to understand what a data visualization means and why it matters.</p>
+<p>Paola predicted that, as a scientist, Sir Avon would want to know the technical details like the amount of error in the measurements. She didn’t take up space on the graph with definitions, since she knew they weren’t necessary in this case.</p>
+<p>Shinji decided to use a question and answer format for their title to help communicate the takeaway of the graph to Claude in an accessible way. Shinji went for a more aggregated, less detailed approach to help keep the conclusion simple and digestible.</p>
+<p>Finally, Raj made good choices in his visualization for Milana: a descriptive but slightly-less-technical title, and a pointer towards definitions of terms he thinks Milana may not know and would be interested to learn.</p>
+<p>In each case, the lab member made sure to…</p>
+<ul>
+<li>Provide necessary details</li>
+<li>Include context that’s helpful for the specific audience</li>
+<li>Avoid “chart junk”: excess graphics, annotations, and general lines that don’t actually contain information</li>
+</ul>
+</section>
+<section id="accessibility-basics" class="level3">
+<h3 class="anchored" data-anchor-id="accessibility-basics">Accessibility Basics</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/f7766d1d-aa3c-4844-ae69-19b308c42d19-1-81bdb6ea-f30b-4524-b0e8-b8716c54952e.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">accessibility.JPG</figcaption>
+</figure>
+</div>
+<p>Now that we can make some visualizations, let’s talk accessibility to make sure our work reaches everyone who wants to interact with it!</p>
+<p>The most commonly discussed accessibility concern is color, since color blindness affects 1 in 12 males and 1 in 200 females. That’s more common than we tend to think! There are a few different types of color blindness: check out the images for simulations of each form.</p>
+<p>The big takeaway when designing for color accessibility is to think not only about the <code>hue</code> of a color (e.g.&nbsp;red, green, or purple), but the <code>value</code> as well (e.g.&nbsp;bright red, light green, dark purple). Good color comparisons use high contrast values, not just different hues.</p>
+<p>It’s also important to use readable fonts in readable sizes, and make sure they’re web-accessible if online. (If you don’t do this, [] [] [] [] [] [] [] will happen!)</p>
+<p>Finally, for online data visualizations, make sure to include alt text as we would for any other web image. Alt text ensures that users experiencing a visualization through a screen reader won’t miss out on whatever information it contains.</p>
+<p>To recap, here’s a checklist for baseline accessibility:</p>
+<ul>
+<li>Colorblind-friendly color palettes</li>
+<li>Large enough font size</li>
+<li>Readable, web-accessible font type</li>
+<li>Alt text on data visualization images online</li>
+</ul>
+</section>
+<section id="further-accessibility-universal-design" class="level3">
+<h3 class="anchored" data-anchor-id="further-accessibility-universal-design">Further Accessibility: Universal Design</h3>
+<p>In the last exercise we covered accessibility guidelines specifically related to vision access – using color palettes, fonts, and alt-text to ensure that people across the vision spectrum can access our work.</p>
+<p>The same accessibility goal – making our work available and easier to access for more people – is a great principle to keep in mind no matter what. (This is actually called “universal design.”)</p>
+<p>We can apply it when it comes to…</p>
+<ul>
+<li>Readability: keep the reading level to a high school level whenever possible</li>
+<li>Prior knowledge: define unfamiliar terms and avoid unnecessary jargon</li>
+<li>Information overload: introduce new information with intentional pacing and organization</li>
+</ul>
+<p>Remember the ecology lab’s pitches for funding? Each lab member took a different approach based on their audience. The difference between the pitches for Sir Avon and Milana is a perfect example of “leveling” content for the intended audience: swapping the more technical term “ecological niche” with the synonym “ecosystem role” makes the graph’s title readable with more everyday words, without changing the meaning or even sacrificing detail.</p>
+<p>Finally, with any of these practices, there may be situations where it’s not the right call. Trinh probably shouldn’t avoid all technical language on the graphs in his peer-reviewed paper, and there may be no need for Anabelle to define industry terms when presenting a chart to work colleagues in her department. But for most audiences, and especially for broad or unknown audiences, keeping accessibility in mind will help everyone get the most out of our visualizations.</p>
+</section>
+<section id="owning-the-role-of-author" class="level3">
+<h3 class="anchored" data-anchor-id="owning-the-role-of-author">Owning the Role of Author</h3>
+<p>Last up, we’re talking authorship.</p>
+<p>When Paola made the visualization for Sir Avon, at first she included fewer details and took out her annotations about points of interest. She assumed there was no way she – a student scientist – would know something that Sir Avon didn’t already know.</p>
+<p>But she was wrong! By the time Paola was able to make a data visualization about bird wing shapes, she was becoming an expert on the subject. Sir Avon, while a celebrated ecologist in general, did not share her depth of specific, current knowledge on this topic.</p>
+<p>Dr.&nbsp;Dinkle, the lab’s leader, helped Paola to own her role as the author – to recognize that the amount of time she had invested in data cleaning and data analysis, as well as data visualization, qualified her to make decisions about what should be included. It was not only worth sharing her opinion, the graph actually suffered without those annotations! Her perspective on the data helped Sir Avon to grasp the key takeaways.</p>
+<p>Paola’s experience is true for many people. It can feel unnatural to “speak for” the data, and many authors worry that they will influence their audiences by including annotations. But that’s just it! <code>Data does not speak for itself</code>, and often, the author of a data viz is the person in the best position to create insightful, helpful annotations.</p>
+<p>In fact, this context isn’t only helpful – very often, it’s the ethical way to present information. Providing context or even a written summary of what a graph shows helps to limit false conclusions, misinterpretations, and misinformation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/e70f04ee-256c-4411-b47e-f923aa872b4d-1-bbadd0fe-fb43-4f00-955a-ae891bcbb2b8.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">annotate.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>We made it! This lesson covered everything you need to know to start designing data visualizations that look great, communicate effectively, and treat data ethically.</p>
+<p>Here’s a recap of what we talked about…</p>
+<ul>
+<li>Choosing the right chart type for our data</li>
+<li>Mapping variables onto aesthetic properties to communicate using position, shape, size, color</li>
+<li>Making effective color choices for data, design, and accessibility</li>
+<li>Designing accessible visualizations</li>
+<li>Scaffolding the visualization with context for the audience</li>
+<li>Owning the role of author T hat’s a big chunk of information. Pat yourself on the back for making it to the end of this lesson, then go forth and visualize!</li>
+</ul>
+</section>
+<section id="misleading-confusing-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="misleading-confusing-graphs">Misleading &amp; Confusing Graphs</h3>
+<p>Have you ever used a map that was just… wrong? As in, “this entire building doesn’t exist on the map” wrong, or “it almost had me drive down a one-way street” wrong. You notice pretty quickly, right?</p>
+<p>What about a map where countries are the wrong size? How long do you think it would take to notice that something was off?</p>
+<p>Anyone who has ever learned geography from a map has learned something “wrong.” Mapmakers have known for hundreds of years that it’s just not possible to transfer the earth’s 3D information to a 2D map without changing the shape or size of the continents and oceans – something has to be sacrificed.</p>
+<p>(Check out this GIF showing a Mercator projection versus the actual size of countries. The Mercator projection, invented in 1569 and widely used to teach geography through the 20th century and today, severely distorts the size of land masses near the poles.)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/8ff5966e-5548-401c-8e99-ca8538871925-1-414cf3c3-426c-44f3-a11a-3e9df25062f8.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">recolored-mercator.gif</figcaption>
+</figure>
+</div>
+<p>The same idea is true in data visualization. Data visualizations take information from the living, breathing world that we inhabit and show it to us in just a few square inches of screen or paper. That always involves prioritizing speed, or accuracy, or sample size, or cost, or another factor, at the expense of something else.</p>
+<p>While the best graphs really do teach us something new, and help us understand a deeper truth using data, graphs can also be misleading, both intentionally or unintentionally. We shouldn’t ever assume that a data visualization shows us the truth, the whole truth, and nothing but the truth.</p>
+<p>This lesson will help us recognize the elements of misleading and confusing graphs so that we can avoid making them ourselves.</p>
+</section>
+<section id="axes" class="level3">
+<h3 class="anchored" data-anchor-id="axes">Axes</h3>
+<p>Axes and scaling are like the page layout and spacing of a paper book: they’re not the most exciting parts, but they do present plenty of opportunities to make it harder to read.</p>
+<p>Let’s start with axes – the x-axis (horizontal, left-right) and y-axis (vertical, top-bottom). A common misleading aspect of an axis is a <code>break</code>. A break starts the count at a number that’s not zero, or jumps ahead – this can distort the amount of difference between data points by removing context, and make small differences in data seem bigger.</p>
+<p>Here’s an illustration of that idea: it would be almost impossible to tell at a glance if there were 100, 105, or 110 people standing in a room – but you’d be able to easily tell the difference between 0, 5, and 10 people standing in a room. Using a break on an axis can have the same effect, amplifying the <code>change</code> rather than the <code>context</code> because it alters the proportions in the visualization. Check out the graphs below to see what this looks like in practice.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/49ef0510-0ab4-407a-abea-6f0076872cb6-1-cb6cb884-def3-4852-b1a5-b584ccf5ba3c.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">break.JPG</figcaption>
+</figure>
+</div>
+<p>So what to do? If you’re looking at a graph, take a second to check where the axis starts. If there’s a break, factor that in as you think about what the numbers mean.</p>
+<p>If you’re making the graph, instead of using a big break…</p>
+<ul>
+<li>Keep enough context to view differences in proportion to a meaningful amount, OR</li>
+<li>Make two graphs, one without a break and one “zoomed in”, OR</li>
+<li>Choose a visualization type that shows the change, rather than the raw numbers</li>
+</ul>
+</section>
+<section id="scaling" class="level3">
+<h3 class="anchored" data-anchor-id="scaling">Scaling</h3>
+<p>Scaling refers to the distances between numbers on an axis. Almost all graphs use a <code>linear scale</code>, where the numbers count up by a consistent interval – tenths of a centimeter or millions of dollars, if it’s the same interval, it’s a linear scale.</p>
+<p>The other scaling option is a <code>logarithmic scale</code>, a.k.a. log scale. The log scale is common for showing exponential growth that won’t fit on the page with a linear scale, but it’s almost never a good choice for a general audience. Unless people use log scales regularly, they tend to have trouble interpreting them correctly.</p>
+<p>Check out the graphs below to see how the pharmaceutical company Purdue infamously used this misinterpretation to their advantage in the early 2000s. The linear scale shows how the concentration of a painkiller drug spikes sharply in the bloodstream at higher doses – the log scale makes it look like all doses behave pretty similarly. (These are reproductions of the original graphs, but we can definitely see how differently they represent the same numbers.)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/bc3158db-d327-4f47-b0f9-5b2831289ff9-1-7cb319b9-618e-47b1-bed8-9a408771cb51.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">scaling.JPG</figcaption>
+</figure>
+</div>
+<p>In general, just like it’s always worth checking for a break, it’s always worth checking how a graph is scaled.</p>
+<p>Last thing about axes and scaling: <code>generally, we measure time horizontally</code>, putting that variable on the x-axis. For the vast majority of circumstances, this makes the most sense and helps readers to intuit what the graph measures</p>
+</section>
+<section id="color-scales" class="level3">
+<h3 class="anchored" data-anchor-id="color-scales">Color Scales</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/69f569ff-b986-4988-924a-ed5b2d1664d3-1-6417d676-5986-4bf7-a80b-2fcbd91cb235.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">color_scale.JPG</figcaption>
+</figure>
+</div>
+<p>Color is often the first thing we register when looking at data visualizations. There are three types of color scales, used for the three major types of relationships we can visualize with color.</p>
+<ul>
+<li><p><code>Sequential</code> scales are colors in a sequence – often, this is the same hue with more and more white added to or taken away from the color. Sequential scales are used to show a variable increasing or decreasing in intensity or amount, like income, depth, or percent of population that owns a chinchilla.</p></li>
+<li><p><code>Divergent</code> scales are anchored by colors from opposite sides of the color wheel, a.k.a. complementary colors. A divergent scale is used to visualize data where the middle is a baseline, and either side represents a contrasting change. For example, divergent scales do a good job of showing a positive/negative swing in voting or polling, temperatures above and below freezing, or gains and losses over time.</p></li>
+<li><p><code>Categorical</code> scales use a variety of colors to differentiate categories without assigning a rank or order to them. In other words, “purple” doesn’t necessarily mean more than “green” – the two are just different colors. Categorical scales are for categorical data, like types of vegetables in a supermarket, or different treatments tested in a controlled study, or organizational blocks on a calendar.</p></li>
+</ul>
+</section>
+<section id="color-associations" class="level3">
+<h3 class="anchored" data-anchor-id="color-associations">Color Associations</h3>
+<p>Once we’ve picked the right color scale, there are still a few more considerations to be made to reduce confusion.</p>
+<p>First up, we tend to view darker colors as “more” and lighter colors as “less.” For example, if we’re visualizing which US states have the most pet ferrets, California – with the most pet ferrets of any state – should be the darkest state on the map. When this scale is reversed, people will tend to just read the graph wrong rather than reading the legend carefully.</p>
+<p>We also come to data visualizations with pre-existing associations for certain colors. These can be culturally specific (red means bad vs.&nbsp;red means lucky), or influenced by the norms for a particular field (red means negative financial balance).</p>
+<p>Sometimes it’s good to stick with what’s recognizable: it would be confusing for US voters if a major newspaper decided to visualize Democrats in red and Republicans in blue, since these colors are overwhelmingly associated with the opposite party.</p>
+<p>But in other cases, switching up colors that have existing cultural associations can reduce harmful stereotyping. Using pink for women and blue for men reinforces an outdated, binary view of women as soft and passive, and men as strong and unemotional. This design choice will not only turn off some viewers, it may also distract on a graph where gender is a relevant variable but not the whole focus.</p>
+<p>It would be confusing to just reverse this stereotypical color palette, but there are plenty of good alternatives – check out two examples from The New York Times below. The important thing is to be consistent with the alternative palette.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/35828734-6ced-4b5a-a78a-0225caaddfef-1-1393c8be-f3f9-4dc4-863b-da958146b311.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">color_assoc.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="labels-and-titles" class="level3">
+<h3 class="anchored" data-anchor-id="labels-and-titles">Labels and Titles</h3>
+<p>A good title is one of the best and fastest tools for making a more understandable visualization. Lots of confusion can be saved with a descriptive title.</p>
+<p>If the graph doesn’t have a good title (or even a title!), viewers have to do more legwork to first figure out what each axis measures and then what the data points show.</p>
+<p>The title can be a question that visualization answers, like, “Who speaks more in Disney movies, male or female characters?”</p>
+<p>Titles can also be a statement of what the visualization shows, like “Comparing denim inseam lengths through the decades” or “Millennials really do spend more on rent than on avocados” or “The effect of hunger on mood level.”</p>
+<p>Like a good title, annotations on a graph also help the viewer to understand what’s going on. Annotations are perfect for calling out points of interest, explaining outliers, or including background information that a viewer won’t necessarily know from just looking at the graph.</p>
+<p>Check out this <em>Live Births</em> graph from FlowingData to see how much value the annotations add.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_files/figure-html/82704db3-0fa5-49c4-89ba-230a25c0e33e-1-17a9d250-3dcf-4fba-baf9-577bb2ede3fe.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">titles.JPG</figcaption>
+</figure>
+</div>
+<p>They…</p>
+<ul>
+<li>add detail to the highest and lowest points on the graph</li>
+<li>explain what the 0% baseline means</li>
+<li>provide a caveat for the 2021 data</li>
+<li>reinforce in words that the percents on the y-axis show “more births” and “fewer births”</li>
+</ul>
+<p>Just a few lines of thoughtful annotation here and there give the audience so much more ability to interpret the graph at a deeper level!</p>
+</section>
+<section id="conclusion-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-1">Conclusion</h3>
+<p>That was a short primer on some common misleading parts of data visualizations – pitfalls that get between <code>the actual truth of the data and how the viewer understands it</code>.</p>
+<p>People make misleading or confusing graphs on purpose and by accident. We’ve seen how intentional changes to the scaling can really distort what the graph seems to say, and also how going with the status quo on color palettes can be helpful or harmful. Most of us aren’t out here trying to make misleading graphs – very often, it’s just a question of making a better or worse decision while designing the data viz.</p>
+<p>And improving our design skills – knowing when to use different color palettes and how to label our axes clearly – not only makes our graphs better, <code>it also reduces bias!</code> When we follow best practices in design, we’re not “going rogue” and just making design decisions that make the graph look the most extreme, or suit our needs at that moment. We’re following established practices that help to standardize graphs so that we can focus on what the data’s really saying.</p>
+<p>Long story short: good data viz is always a combination of quality data and effective design choices. If we can avoid confusion or missteps along the way, that’ll always be a good thing!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

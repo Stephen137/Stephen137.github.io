@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Introduction to Significance Thresholds</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to Significance Thresholds</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#interpreting-a-p-value-based-on-a-significance-threshold" id="toc-interpreting-a-p-value-based-on-a-significance-threshold" class="nav-link active" data-scroll-target="#interpreting-a-p-value-based-on-a-significance-threshold">Interpreting a P-Value based on a Significance Threshold</a></li>
+  <li><a href="#error-types" id="toc-error-types" class="nav-link" data-scroll-target="#error-types">Error Types</a></li>
+  <li><a href="#setting-the-type-i-error-rate" id="toc-setting-the-type-i-error-rate" class="nav-link" data-scroll-target="#setting-the-type-i-error-rate">Setting the Type I Error Rate</a></li>
+  <li><a href="#problems-with-multiple-hypothesis-tests" id="toc-problems-with-multiple-hypothesis-tests" class="nav-link" data-scroll-target="#problems-with-multiple-hypothesis-tests">Problems with Multiple Hypothesis Tests</a></li>
+  <li><a href="#illustration-of-type-i-error-rates" id="toc-illustration-of-type-i-error-rates" class="nav-link" data-scroll-target="#illustration-of-type-i-error-rates">Illustration of Type I error rates</a></li>
+  <li><a href="#significance-thresholds-review" id="toc-significance-thresholds-review" class="nav-link" data-scroll-target="#significance-thresholds-review">Significance Thresholds Review</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Sometimes, when we run a hypothesis test, we simply report a p-value or a confidence interval and give an interpretation (eg., the p-value was 0.05, which means that there is a 5% chance of observing two or fewer heads in 10 coin flips).</p>
+<p>In other situations, we want to use our p-value to make a decision or answer a yes/no question. For example, suppose that we’re developing a new quiz question at Codecademy and want learners to have a 70% chance of getting the question right (higher would mean the question is too easy, lower would mean the question is too hard). We show our quiz question to a sample of 100 learners and 60 of them get it right. Is this significantly different from our target of 70%? If so, we want to remove the question and try to rewrite it.</p>
+<p>In order to turn a p-value, which is a probability, into a yes or no answer, data scientists often use a pre-set significance threshold.</p>
+<pre><code>The significance threshold can be any number between 0 and 1, but a common choice is 0.05. </code></pre>
+<p>P-values that are less than this threshold are considered “significant”, while larger p-values are considered “not significant”.</p>
+<section id="interpreting-a-p-value-based-on-a-significance-threshold" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-a-p-value-based-on-a-significance-threshold">Interpreting a P-Value based on a Significance Threshold</h3>
+<p>et’s return to the quiz question example from the previous exercise — we want to remove our quiz question from our website if the probability of a correct response is different from 70%. Suppose we collected data from 100 learners and ran a binomial hypothesis test with the following null and alternative hypotheses:</p>
+<ul>
+<li>Null: The probability that a learner gets the question correct is 70%.</li>
+<li>Alternative: The probability that a learner gets the question correct is not 70%.</li>
+</ul>
+<p>Assuming that we set a significance threshold of 0.05 for this test:</p>
+<ul>
+<li><p>If the p-value is less than 0.05, the p-value is significant. We will “reject the null hypothesis” and conclude that the probability of a correct answer is significantly different from 70%. This would lead us to re-rewrite the question.</p></li>
+<li><p>If the p-value is greater than 0.05, the p-value is not significant. We will not be able to reject the null hypothesis, and will conclude that the probability of a correct answer is not significantly different from 70%. This would lead us to leave the question on the site.</p></li>
+</ul>
+</section>
+<section id="error-types" class="level3">
+<h3 class="anchored" data-anchor-id="error-types">Error Types</h3>
+<p>Whenever we run a hypothesis test using a significance threshold, we expose ourselves to making two different kinds of mistakes:</p>
+<ul>
+<li><code>type I errors</code> (false positives) and</li>
+<li><code>type II errors</code> (false negatives)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Significance_Thresholds_files/figure-html/512aab7c-3cd7-4866-b211-64916888f610-1-dcccd8ec-0902-4dad-b16c-e4647e0846af.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">errors.JPG</figcaption>
+</figure>
+</div>
+<p>Consider the quiz question hypothesis test described in the previous exercises:</p>
+<ul>
+<li>Null: The probability that a learner answers a question correctly is 70%.</li>
+<li>Alternative: The probability that a learner answers a question correctly is not 70%.</li>
+</ul>
+<p>Suppose, for a moment, that the true probability of a learner answering the question correctly <strong>is</strong> 70% (if we showed the question to ALL learners, exactly 70% would answer it correctly). This puts us in the first column of the table above (the null hypothesis “is true”). If we run a test and calculate a significant p-value, we will make type I error (also called a false positive because the p-value is falsely significant), leading us to remove the question when we don’t need to.</p>
+<p>On the other hand, if the true probability of getting the question correct is <strong>not</strong> 70%, the null hypothesis “is false” (the right-most column of our table). If we run a test and calculate a non-significant p-value, we make a type II error, leading us to leave the question on our site when we should have taken it down.</p>
+<blockquote class="blockquote">
+<p>Q.Suppose that the average score on a standardized test is 50 points. A researcher wants to know whether students who take this test in an ergonomically designed chair score significantly differently from the general population of test-takers. The researcher randomly assigns 100 students to take the test in an ergonomic chair. Then, the researcher runs a hypothesis test with a significance threshold of 0.05 and the following null and alternative hypotheses - <code>Null:</code> The mean score for students who take the test in an ergonomic chair is 50 points. <code>Alternative:</code> The mean score for students who take the test in an ergonomic chair is not 50 points. Suppose that the truth (which the researcher doesn’t know) is: if every student took the test in an ergonomic chair, the average score for all test-takers would be 52 points. Based on their sample of only 100 students, the researcher calculates a p-value of 0.07.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A. This is an example of a Type II error or False Negative. The mean score is not 50, it is 52 and so our NULL hypothesis is False. However, as the p-value of 0.07 is not less than 0.05 and is therefore not significant, we would assume in error that the mean score is 50.</p>
+</blockquote>
+</section>
+<section id="setting-the-type-i-error-rate" class="level3">
+<h3 class="anchored" data-anchor-id="setting-the-type-i-error-rate">Setting the Type I Error Rate</h3>
+<p>It turns out that, when we run a hypothesis test with a significance threshold, <code>the significance threshold is equal to the type I error (false positive) rate</code> for the test. To see this, we can use a simulation.</p>
+<p>Recall our quiz question example: the null hypothesis is that the probability of getting a quiz question correct is equal to 70%. We’ll make a type I error if the null hypothesis is correct (the true probability of a correct answer is 70%), but we get a significant p-value anyways.</p>
+<p>Now, consider the following simulation code:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>false_positives <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sig_threshold <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    sim_sample <span class="op">=</span> np.random.choice([<span class="st">'correct'</span>, <span class="st">'incorrect'</span>], size<span class="op">=</span><span class="dv">100</span>, p<span class="op">=</span>[<span class="fl">0.7</span>, <span class="fl">0.3</span>])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    num_correct <span class="op">=</span> np.<span class="bu">sum</span>(sim_sample <span class="op">==</span> <span class="st">'correct'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    p_val <span class="op">=</span> binom_test(num_correct, <span class="dv">100</span>, <span class="fl">0.7</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p_val <span class="op">&lt;</span> sig_threshold:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        false_positives <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(false_positives<span class="op">/</span><span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_1730/3872515373.py:7: DeprecationWarning: 'binom_test' is deprecated in favour of 'binomtest' from version 1.7.0 and will be removed in Scipy 1.12.0.
+  p_val = binom_test(num_correct, 100, 0.7)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.064</code></pre>
+</div>
+</div>
+<p>This code does the following:</p>
+<ul>
+<li>Set the significance threshold equal to 0.05 and a counter for false positives equal to zero.</li>
+<li>Repeat these steps 1000 times:</li>
+<li>Simulate 100 learners, where each learner has a 70% chance of answering a quiz question correctly.</li>
+<li>Calculate the number of simulated learners who answered the question correctly. Note that, because each learner has a 70% chance of answering correctly, this number will likely be around 70, but will vary every time by random chance.</li>
+<li>Run a binomial test for the simulated sample where the null hypothesis is that the probability of a correct answer is 70% (0.7). Note that, every time we run this test, the null hypothesis is true because we simulated our data so that the probability of a correct answer is 70%.</li>
+<li>Add 1 to our false positives counter every time we make a type I error (the p-value is significant). -Print the proportion of our 1000 tests (on simulated samples) that resulted in a false positive.</li>
+</ul>
+<p>Note that the proportion of false positive tests is very similar to the value of the significance threshold (0.05).</p>
+<p>Let’s make one small change to our simulated learners illustration : the code to create sim_sample has been altered so that the simulated learners each have an 80% chance of answering the question correctly.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom_test</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize num_errors</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>false_positives <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set significance threshold value</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>sig_threshold <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Run binomial tests &amp; record errors</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    sim_sample <span class="op">=</span> np.random.choice([<span class="st">'correct'</span>, <span class="st">'incorrect'</span>], size<span class="op">=</span><span class="dv">100</span>, p<span class="op">=</span>[<span class="fl">0.8</span>, <span class="fl">0.2</span>])</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    num_correct <span class="op">=</span> np.<span class="bu">sum</span>(sim_sample <span class="op">==</span> <span class="st">'correct'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    p_val <span class="op">=</span> binom_test(num_correct, <span class="dv">100</span>, <span class="fl">.8</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p_val <span class="op">&lt;</span> sig_threshold:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        false_positives <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print proportion of type I errors </span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(false_positives<span class="op">/</span><span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_1730/2200219722.py:14: DeprecationWarning: 'binom_test' is deprecated in favour of 'binomtest' from version 1.7.0 and will be removed in Scipy 1.12.0.
+  p_val = binom_test(num_correct, 100, .8)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.039</code></pre>
+</div>
+</div>
+<p>The false positives represent 0.039 of the sampled observations, which is close to the significance threshold of 0.05.</p>
+<p>Now, let’s change the significance threshold to 0.01 :</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize num_errors</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>false_positives <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set significance threshold value</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>sig_threshold <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Run binomial tests &amp; record errors</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    sim_sample <span class="op">=</span> np.random.choice([<span class="st">'correct'</span>, <span class="st">'incorrect'</span>], size<span class="op">=</span><span class="dv">100</span>, p<span class="op">=</span>[<span class="fl">0.8</span>, <span class="fl">0.2</span>])</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    num_correct <span class="op">=</span> np.<span class="bu">sum</span>(sim_sample <span class="op">==</span> <span class="st">'correct'</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    p_val <span class="op">=</span> binom_test(num_correct, <span class="dv">100</span>, <span class="fl">.8</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p_val <span class="op">&lt;</span> sig_threshold:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        false_positives <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print proportion of type I errors </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(false_positives<span class="op">/</span><span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_1730/1924438070.py:10: DeprecationWarning: 'binom_test' is deprecated in favour of 'binomtest' from version 1.7.0 and will be removed in Scipy 1.12.0.
+  p_val = binom_test(num_correct, 100, .8)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.006</code></pre>
+</div>
+</div>
+<p>The false positives represent 0.006 of the sampled observations, which is close to our revised significance threshold of 0.01.</p>
+</section>
+<section id="problems-with-multiple-hypothesis-tests" class="level3">
+<h3 class="anchored" data-anchor-id="problems-with-multiple-hypothesis-tests">Problems with Multiple Hypothesis Tests</h3>
+<p>While significance thresholds allow a data scientist to control the false positive rate for a single hypothesis test, this starts to break when <code>performing multiple tests</code> as part of a single study.</p>
+<p>For example, suppose that we are writing a quiz at codecademy that is going to include 10 questions. For each question, we want to know whether the probability of a learner answering the question correctly is different from 70%. We now have to run 10 hypothesis tests, one for each question.</p>
+<p>If the null hypothesis is true for every hypothesis test (the probability of a correct answer is 70% for every question) and we use a .05 significance level for each test, then:</p>
+<ul>
+<li><p>When we run a hypothesis test for a single question, we have a 95% chance of getting the right answer (a p-value &gt; 0.05) — and a 5% chance of making a type I error.</p></li>
+<li><p>When we run hypothesis tests for two questions, we have only a 90% chance of getting the right answer for both hypothesis tests (0.95 *0.95 = 0.90) — and a 10% chance of making at least one type I error.</p></li>
+<li><p>When we run hypothesis tests for all 10 questions, we have a 60% chance of getting the right answer for all ten hypothesis tests (0.95 ^ 10 = 0.60) — and a 40% chance of making at least one type I error.</p></li>
+</ul>
+<p>To address this problem, it is important to plan research out ahead of time: decide what questions you want to address and figure out how many hypothesis tests you need to run. When running multiple tests, use a <code>lower significance threshold (eg., 0.01)</code> for each test to reduce the probability of making a type I error.</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prob of Type I error for 10 tests with significance threshold of 0.05</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.95</span><span class="op">**</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>0.5987369392383787</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prob of Type I error for 10 tests with significance threshold of 0.01</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.99</span><span class="op">**</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>0.9043820750088044</code></pre>
+</div>
+</div>
+</section>
+<section id="illustration-of-type-i-error-rates" class="level3">
+<h3 class="anchored" data-anchor-id="illustration-of-type-i-error-rates">Illustration of Type I error rates</h3>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>sig_threshold <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>num_tests <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">50</span>))</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>((<span class="dv">1</span><span class="op">-</span>sig_threshold)<span class="op">**</span>num_tests)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.plot(num_tests, probabilities)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Edit title and axis labels</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Type I Error Rate for Multiple Tests - significance threshold 0.05'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the y-axis</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability of at Least One Type I Error'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the x-axis</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Tests'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot                </span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Significance_Thresholds_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sig_threshold <span class="op">=</span> <span class="fl">0.10</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>num_tests <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">50</span>))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>((<span class="dv">1</span><span class="op">-</span>sig_threshold)<span class="op">**</span>num_tests)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.plot(num_tests, probabilities)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Edit title and axis labels</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Type I Error Rate for Multiple Tests - significance threshold 0.10'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the y-axis</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability of at Least One Type I Error'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the x-axis</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Tests'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot                </span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Significance_Thresholds_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="significance-thresholds-review" class="level3">
+<h3 class="anchored" data-anchor-id="significance-thresholds-review">Significance Thresholds Review</h3>
+<p>In this lesson you have:</p>
+<ul>
+<li>Learned to interpret a p-value using a significance threshold</li>
+<li>Explored type I and type II errors in hypothesis testing</li>
+<li>Shown that the significance threshold for a hypothesis test is equal to the type I error rate</li>
+<li>Seen how multiple hypothesis tests lead to an increased probability of a type I error</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Significance_Thresholds_files/figure-html/16b81c2e-8335-48a2-82a5-9aedc3c77876-1-669cebce-550a-41f3-8ede-d723507b146e.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

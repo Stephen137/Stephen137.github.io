@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Probability, Set Theory, and the Law of Large Numbers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Probability, Set Theory, and the Law of Large Numbers</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#probability" id="toc-probability" class="nav-link active" data-scroll-target="#probability">Probability</a></li>
+  <li><a href="#set-theory" id="toc-set-theory" class="nav-link" data-scroll-target="#set-theory">Set Theory</a></li>
+  <li><a href="#experiments-and-sample-spaces" id="toc-experiments-and-sample-spaces" class="nav-link" data-scroll-target="#experiments-and-sample-spaces">Experiments and Sample Spaces</a></li>
+  <li><a href="#law-of-large-numbers" id="toc-law-of-large-numbers" class="nav-link" data-scroll-target="#law-of-large-numbers">Law of Large Numbers</a></li>
+  <li><a href="#coding-question" id="toc-coding-question" class="nav-link" data-scroll-target="#coding-question">Coding question</a></li>
+  <li><a href="#rules-of-probability" id="toc-rules-of-probability" class="nav-link" data-scroll-target="#rules-of-probability">RULES OF PROBABILITY</a></li>
+  <li><a href="#union" id="toc-union" class="nav-link" data-scroll-target="#union">Union</a></li>
+  <li><a href="#intersection" id="toc-intersection" class="nav-link" data-scroll-target="#intersection">Intersection</a></li>
+  <li><a href="#complement" id="toc-complement" class="nav-link" data-scroll-target="#complement">Complement</a></li>
+  <li><a href="#independence-and-dependence" id="toc-independence-and-dependence" class="nav-link" data-scroll-target="#independence-and-dependence">Independence and Dependence</a></li>
+  <li><a href="#mutually-exclusive-events" id="toc-mutually-exclusive-events" class="nav-link" data-scroll-target="#mutually-exclusive-events">Mutually Exclusive Events</a></li>
+  <li><a href="#addition-rule" id="toc-addition-rule" class="nav-link" data-scroll-target="#addition-rule">Addition Rule</a></li>
+  <li><a href="#non-mutually-exclusive-events" id="toc-non-mutually-exclusive-events" class="nav-link" data-scroll-target="#non-mutually-exclusive-events">Non-mutually exclusive events</a></li>
+  <li><a href="#mutually-exclusive-events-1" id="toc-mutually-exclusive-events-1" class="nav-link" data-scroll-target="#mutually-exclusive-events-1">Mutually exclusive events</a>
+  <ul class="collapse">
+  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability">Conditional Probability</a></li>
+  <li><a href="#multiplication-rule" id="toc-multiplication-rule" class="nav-link" data-scroll-target="#multiplication-rule">Multiplication Rule</a></li>
+  <li><a href="#general-formula" id="toc-general-formula" class="nav-link" data-scroll-target="#general-formula">General Formula</a></li>
+  <li><a href="#dependent-events" id="toc-dependent-events" class="nav-link" data-scroll-target="#dependent-events">Dependent Events</a></li>
+  <li><a href="#independent-events" id="toc-independent-events" class="nav-link" data-scroll-target="#independent-events">Independent Events</a></li>
+  <li><a href="#conditional-probability-continued" id="toc-conditional-probability-continued" class="nav-link" data-scroll-target="#conditional-probability-continued">Conditional Probability Continued</a></li>
+  <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ Theorem</a></li>
+  <li><a href="#probability-distributions---random-variables" id="toc-probability-distributions---random-variables" class="nav-link" data-scroll-target="#probability-distributions---random-variables">Probability Distributions - Random Variables</a></li>
+  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables">Discrete Random Variables</a></li>
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables">Continuous Random Variables</a></li>
+  <li><a href="#probability-mass-functions-pmf" id="toc-probability-mass-functions-pmf" class="nav-link" data-scroll-target="#probability-mass-functions-pmf">Probability Mass Functions (PMF)</a></li>
+  <li><a href="#calculating-probabilities-using-python---binom.pmf" id="toc-calculating-probabilities-using-python---binom.pmf" class="nav-link" data-scroll-target="#calculating-probabilities-using-python---binom.pmf">Calculating Probabilities using Python - <code>binom.pmf()</code></a></li>
+  <li><a href="#using-the-probability-mass-function-over-a-range" id="toc-using-the-probability-mass-function-over-a-range" class="nav-link" data-scroll-target="#using-the-probability-mass-function-over-a-range">Using the Probability Mass Function Over a Range</a></li>
+  <li><a href="#probability-mass-function-pmf-over-a-range-using-python" id="toc-probability-mass-function-pmf-over-a-range-using-python" class="nav-link" data-scroll-target="#probability-mass-function-pmf-over-a-range-using-python">Probability Mass Function (pmf) Over a Range using Python</a></li>
+  <li><a href="#cumulative-distribution-function" id="toc-cumulative-distribution-function" class="nav-link" data-scroll-target="#cumulative-distribution-function">Cumulative Distribution Function</a></li>
+  <li><a href="#cumulative-distribution-function-continued" id="toc-cumulative-distribution-function-continued" class="nav-link" data-scroll-target="#cumulative-distribution-function-continued">Cumulative Distribution Function continued</a></li>
+  <li><a href="#using-the-cumulative-distribution-function-in-python---binom.cdf" id="toc-using-the-cumulative-distribution-function-in-python---binom.cdf" class="nav-link" data-scroll-target="#using-the-cumulative-distribution-function-in-python---binom.cdf">Using the Cumulative Distribution Function in Python - <code>binom.cdf()</code></a></li>
+  <li><a href="#probability-density-functions-pdf" id="toc-probability-density-functions-pdf" class="nav-link" data-scroll-target="#probability-density-functions-pdf">Probability Density Functions (pdf)</a></li>
+  <li><a href="#probability-density-functions-and-cumulative-distribution-function" id="toc-probability-density-functions-and-cumulative-distribution-function" class="nav-link" data-scroll-target="#probability-density-functions-and-cumulative-distribution-function">Probability Density Functions and Cumulative Distribution Function</a></li>
+  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example">Worked Example</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="probability" class="level3">
+<h3 class="anchored" data-anchor-id="probability">Probability</h3>
+<p><em>Probability</em> is a branch of mathematics that allows us to quantify uncertainty. In our daily lives, we often use probability to make decisions, even without thinking about it!</p>
+<p>For example, many weather reports give a percent chance that it will rain. If we hear that there is an 80 percent chance of rain, we probably are not going to make many plans outside. However, if there is only a 5 percent chance of rain, we may feel comfortable planning a picnic.</p>
+<p>In this article, we are going to build a foundation for understanding probability. To do this, we are going to explore a field of mathematics called set theory.</p>
+</section>
+<section id="set-theory" class="level3">
+<h3 class="anchored" data-anchor-id="set-theory">Set Theory</h3>
+<p><em>Set theory</em> is a branch of mathematics based around the concept of sets. In simple terms, a set is a collection of things. For example, we can use a set to represent items in a backpack. We might have:</p>
+<pre><code>{Book,Paper,Folder,Hat,Pen,Snack}</code></pre>
+<p>Notationally, mathematicians often represent sets with curly braces. Sets also follow two key rules:</p>
+<ul>
+<li>Each element in a set is distinct.</li>
+<li>The elements in a set are in no particular order.</li>
+</ul>
+<p>Therefore, we can say:</p>
+<pre><code>{1,2,3,4,5}={5,3,2,4,1}</code></pre>
+<p>When defining a set, we often use a capital letter. For example:</p>
+<pre><code>A={1,2,3,4,5}</code></pre>
+<p>Sets can also contain subsets. Set A is a subset of set B if all the elements in A exist within B. For example:</p>
+<pre><code>A={1,2,3}
+B={1,2,3,4,5}</code></pre>
+<p>Here, set A is a subset of B because all elements of A are contained within B.</p>
+</section>
+<section id="experiments-and-sample-spaces" class="level3">
+<h3 class="anchored" data-anchor-id="experiments-and-sample-spaces">Experiments and Sample Spaces</h3>
+<p>In probability, an experiment is something that produces observation(s) with some level of uncertainty. A sample point is a single possible outcome of an experiment. Finally, a sample space is the set of all possible sample points for an experiment.</p>
+<p>For example, suppose that we run an experiment where we flip a coin twice and record whether each flip results in heads or tails. There are four sample points in this experiment: two heads (HH), tails and then heads (TH), heads and then tails (HT), or two tails (TT). We can write the full sample space for this experiment as follows:</p>
+<pre><code>S={HH,TT,HT,TH}</code></pre>
+<p>Suppose we are interested in the probability of one specific outcome: HH. A specific outcome (or set of outcomes) is known as an event and is a subset of the sample space. Three events we might look at in this sample space are:</p>
+<pre><code>Getting Two Heads
+A={HH}
+
+Getting Two Tails
+B={TT}
+
+Getting Both a Heads and Tails
+C={HT,TH}</code></pre>
+<p>The frequentist definition of probability is as follows: If we run an experiment an infinite amount of times, the probability of each event is the proportion of times it occurs. Unfortunately, we don’t have the ability to flip two coins an infinite amount of times — but we can estimate probabilities by choosing some other large number, such as 1000. Let’s give it a try!</p>
+<p>Okay, we have flipped two coins 1000 times. Wasn’t that FUN? Here are each of the outcomes and the number of times we observed each one:</p>
+<ul>
+<li>{HH}: 252</li>
+<li>{TT}: 247</li>
+<li>{HT}: 256</li>
+<li>{TH}: 245</li>
+</ul>
+<p>To calculate the estimated probability of any one outcome, we use the following formula:</p>
+<pre><code>P(Event)= Number of Times Event Occurred / Total Number of Trials</code></pre>
+<p>In this scenario, a trial is a single run of our experiment (two coin flips). So, the probability of two heads on two coin flips is approximately:</p>
+<pre><code>P(HH)=252/1000 = 0.252</code></pre>
+<p>Based on these 1000 trials, we would estimate there is a 25.2 percent chance of getting two heads on two coin flips. This is great! However, if we do this same procedure over and over again, we may get slightly different results. For example, if we repeat the experiment another 1000 times, we might get two heads only 24.2 percent of the time.</p>
+<p>If we want to feel confident that we are close to the true probability of a particular event, we can leverage the law of large numbers.</p>
+</section>
+<section id="law-of-large-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="law-of-large-numbers">Law of Large Numbers</h3>
+<p>We can’t repeat our random experiment an infinite amount of times (as much FUN as that would be!). However, we can still flip both coins a large number of times. As we flip both coins more and more, the observed proportion of times each event occurs will converge to its true probability. This is called the law of large numbers.</p>
+<p>Let’s observe the law of large numbers in real-time. We will use Python to simulate flipping both coins as many times as we want and watch the proportion of two heads converge to its true probability.</p>
+<p>Let’s walk through each part of the code below one step at a time. You do not need to worry about every line of code, but understanding the overall objective will help you build your understanding of probability.</p>
+</section>
+<section id="coding-question" class="level3">
+<h3 class="anchored" data-anchor-id="coding-question">Coding question</h3>
+<p>In the code editor below, we have written out a function called <code>coin_flip_experiment()</code> that simulates flipping two fair coins. Using a for loop we run coin_flip_experiment() a specific number of times. As this loop iterates, we track how often both coins come up as heads. Finally, using matplotlib, we plot the proportion of experiments resulting in two heads after each trial.</p>
+<p>The number of times coin_flip_experiment() runs is determined by the <code>num_trials</code> variable on line 21. Currently, this variable is set to 5. Run the program a few times. On the resulting plot, the orange horizontal line is the true probability of observing two heads (0.25). The blue line is the proportion of heads we see throughout our trials. What do you notice about the blue line after each run?</p>
+<p>You should see that the proportion of two heads after five trials is inconsistent. In some experiments, we may see zero observations of two heads, while in others, we may see almost all five observations are two heads. To simulate the law of large numbers, we need to do more trials. Set the num_trials variable to different values, such as these below:</p>
+<ul>
+<li>100</li>
+<li>1000</li>
+<li>100000</li>
+</ul>
+<p>Take note of what you observe. Where does the blue line on the graph converge to after many trials?</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> coin_flip_experiment():</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># defining our two coins as lists</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  coin1 <span class="op">=</span> [<span class="st">'Heads'</span>, <span class="st">'Tails'</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  coin2 <span class="op">=</span> [<span class="st">'Heads'</span>, <span class="st">'Tails'</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "flipping" both coins randomly</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  coin1_result <span class="op">=</span> np.random.choice(coin1)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  coin2_result <span class="op">=</span> np.random.choice(coin2)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># checking if both flips are heads</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> coin1_result <span class="op">==</span> <span class="st">'Heads'</span> <span class="kw">and</span> coin2_result <span class="op">==</span> <span class="st">'Heads'</span>:</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># how many times we run the experiment</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>num_trials <span class="op">=</span> <span class="dv">100000</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>prop <span class="op">=</span> []</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>flips <span class="op">=</span> []</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># keep track of the number of times heads pops up twice</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>two_heads_counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># perform the experiment five times</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> flip <span class="kw">in</span> <span class="bu">range</span>(num_trials):</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if both coins are heads add 1 to the counter</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  two_heads_counter <span class="op">+=</span> coin_flip_experiment()</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># keep track of the proportion of two heads at each flip </span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  prop.append(two_heads_counter<span class="op">/</span>(flip<span class="op">+</span><span class="dv">1</span>))</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># keep a list for number of flips</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  flips.append(flip<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all flips and proportion of two heads</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>plt.plot(flips, prop, label<span class="op">=</span><span class="st">'Experimental Probability'</span>)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Flips'</span>)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Proportion of Two Heads'</span>)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>plt.hlines(<span class="fl">0.25</span>, <span class="dv">0</span>, num_trials, colors<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'True Probability'</span>)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Statistics_Fundamentals_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>After many trials the blue line converges to the true probability as evidenced by the above graph which represents the results of 100000 trials.</p>
+<p>After setting num_trials to large numbers, we see that the proportion of trials resulting in two heads converges to 0.25. The horizontal line at y=0.25 is completely covered after about one hundred thousand flips. By simulating a huge number of flips in Python, we have shown that the true probability of seeing two heads on two separate coin flips is equal to 0.25.</p>
+</section>
+<section id="rules-of-probability" class="level3">
+<h3 class="anchored" data-anchor-id="rules-of-probability">RULES OF PROBABILITY</h3>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>prob_coin_and_dice <span class="op">=</span> <span class="bu">round</span>(<span class="fl">0.5</span> <span class="op">*</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="op">*</span> <span class="dv">100</span>,<span class="dv">2</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>prob_coin_and_dice</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>8.33</code></pre>
+</div>
+</div>
+<p>There are 12 possible combinations of outcomes when flipping a coin and rolling a dice :</p>
+<pre><code>H 1  T 1
+H 2  T 2
+H 3  T 3
+H 4  T 4
+H 5  T 5
+H 6  T 6</code></pre>
+<p>The individual probability of each outcome is therefore 1/12 = 8.33 %. The formal representation of this is :</p>
+<pre><code>P(Coin) Head or Tail = 1 / 2 x P(Dice) 1 or 2 or 3 or 4 or 5 or 6 = 1 / 6 = 8.33%</code></pre>
+</section>
+<section id="union" class="level3">
+<h3 class="anchored" data-anchor-id="union">Union</h3>
+<p>The union of two sets encompasses any element that exists in either one or both of them. We can represent this visually as a Venn diagram.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/d3079ccc-5513-494e-bb45-95ecb0babdfe-1-f7a51e92-fb65-417e-80a2-f8c3afc57648.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>For example, let’s say we have two sets, A and B. A represents rolling an odd number with a six-sided die (the set {1, 3, 5}). B represents rolling a number greater than two (the set {3, 4, 5, 6}). The union of these two sets would be everything in either set A, set B, or both: {1, 3, 4, 5, 6}. We can write the union of two events mathematically as (A or B).</p>
+</section>
+<section id="intersection" class="level3">
+<h3 class="anchored" data-anchor-id="intersection">Intersection</h3>
+<p>The intersection of two sets encompasses any element that exists in both of the sets. Visually:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/1c35d93b-6454-4186-8ecd-44735e5cb6c6-1-9b1eba58-4b34-4d8e-8b51-3c6e179e0017.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>The intersection of the above sets (A represents rolling an odd number on a six-sided die and B represents rolling a number greater than two) includes any value that appears in both sets: {3, 5}. We can write the intersection of two events mathematically as (A and B).</p>
+</section>
+<section id="complement" class="level3">
+<h3 class="anchored" data-anchor-id="complement">Complement</h3>
+<p>Lastly, the complement of a set consists of all possible outcomes outside of the set. Visually:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/6fb3c9b1-f9e8-48e9-b455-b0c17448f670-1-8c0f6c12-3fae-4d1c-af28-4ac13953e460.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Consider set A from the above example (rolling an odd number on a 6-sided die). The complement of this set would be rolling an even number: {2, 4, 6}. We can write the complement of set A as AC. One key feature of complements is that a set and its complement cover the entire sample space. In this die roll example, the set of even numbers and odd numbers would cover all possible rolls: {1, 2, 3, 4, 5, 6}.</p>
+</section>
+<section id="independence-and-dependence" class="level3">
+<h3 class="anchored" data-anchor-id="independence-and-dependence">Independence and Dependence</h3>
+<p>Imagine that we flip a fair coin 5 times and get 5 heads in a row. Does this affect the probability of getting heads on the next flip? Even though we may feel like it’s time to see “tails”, <code>it is impossible for a past coin flip to impact a future one</code>. The fact that previous coin flips do not affect future ones is called independence. Two events are independent if the occurrence of one event does not affect the probability of the other.</p>
+<p>Are there cases where previous events DO affect the outcome of the next event? Suppose we have a bag of five marbles: two marbles are blue and three marbles are red. If we take one marble out of the bag, what is the probability that the second marble we take out is blue?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/507aeb29-fcf9-4653-af82-fd1b7c0edeec-1-bee4a18b-ded4-4e75-a6df-c3bbeb0d2f5e.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>This describes two events that are dependent. The probability of grabbing a blue marble in the second event depends on whether we take out a red or a blue marble in the first event.</p>
+<p>What if we had put back the first marble? Is the probability that we pick a blue marble second independent or dependent on what we pick out first? In this case, the events would be independent.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/507aeb29-fcf9-4653-af82-fd1b7c0edeec-2-db85ac65-c2dc-4f16-8b8a-c32c7e0d59bc.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Why do we care if events are independent or dependent? Knowing this helps us quantify the probability of events that depend on preexisting knowledge. This helps researchers understand and predict complex processes such as:</p>
+<ul>
+<li>Effectiveness of vaccines</li>
+<li>The weather on a particular day</li>
+<li>Betting odds for professional sports games</li>
+</ul>
+<p>We will explore applications of this further in the lesson!</p>
+<blockquote class="blockquote">
+<p>Q1. We pick out two cards from a standard deck of 52 cards without replacement. Event A is that we pick an Ace on the first draw. Event B is that we pick an Ace on the second draw. Are events A and B independent?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A1. Dependent. The first draw has an impact on the probability of picking an Ace on the second draw as there are less Aces to choose from.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q2. Suppose we roll a six-sided die two times. Event A is that we roll a 3 on the first roll. Event B is that we roll a 3 on the second roll. Are events A and B independent?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A2. Independent. The outcome of rolling a dice does not impact the outcome of any simultaneous or future rolls of a dice.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q3. Suppose we flip a coin ten times. Event A is that we flip all heads on the first five flips. Event B is that we flip all heads on the second five flips. Are events A and B independent?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A3. Independent. The outcome of flipping a coin does not impact the outcome of any simultaneous or future flips of a coin.</p>
+</blockquote>
+</section>
+<section id="mutually-exclusive-events" class="level3">
+<h3 class="anchored" data-anchor-id="mutually-exclusive-events">Mutually Exclusive Events</h3>
+<p>Two events are considered mutually exclusive if they cannot occur at the same time. For example, consider a single coin flip: the events “tails” and “heads” are mutually exclusive because we cannot get both tails and heads on a single flip.</p>
+<p>We can visualize two mutually exclusive events as a pair of non-overlapping circles. They do not overlap because there is no outcome for one event that is also in the sample space for the other:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/8da57e4b-f3d2-4c41-8f41-b9f8af3bf8a2-1-a09adfa3-8fd4-4ea8-b101-4992eb0be2b1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>What about events that are not mutually exclusive? If event A is rolling an odd number and event B is rolling a number greater than two, these events are not mutually exclusive. They have an intersection of {3, 5}. Any events that have a non-empty intersection are not mutually exclusive.</p>
+<blockquote class="blockquote">
+<p>Q1. We have a bag of five marbles: three are green and two are blue. Suppose that we pick one marble from the bag. Event A is that the marble is green. Event B is that the marble is blue. Are these events mutually exclusive?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A1. Mutually exclusive. The one chosen marble cannot be both green and blue.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q2. We roll a die once. Event A is rolling an odd number. Event B is rolling a number greater than four. Are these events mutually exclusive?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A2. These events have an intersection of {5}.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q3. We roll a die once. Event A is rolling an even number. Event B is rolling a number less than two. Are these events mutually exclusive?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A3. These events are mutually exclusive. There is no intersection as Event B’s outcome (1) does not meet the criteria of Event A (even).</p>
+</blockquote>
+</section>
+<section id="addition-rule" class="level3">
+<h3 class="anchored" data-anchor-id="addition-rule">Addition Rule</h3>
+<p>Now, it’s time to apply these concepts to calculate probabilities.</p>
+</section>
+<section id="non-mutually-exclusive-events" class="level1">
+<h1>Non-mutually exclusive events</h1>
+<p>Let’s go back to one of our first examples: event A is rolling an odd number on a six-sided die and event B is rolling a number greater than two. What if we want to find the probability of one or both events occurring? This is the probability of the union of A and B:</p>
+<pre><code>P(A or B)</code></pre>
+<p>The addition rule formula, which is:</p>
+<pre><code>P(A or B)= P(A) + P(B) − P(A and B) #we deduct P (A and B) because both events can happen and covered by P(A) and P(B)</code></pre>
+<p>We subtract the intersection of events A and B because it is included twice in the addition of P(A) and P(B).</p>
+</section>
+<section id="mutually-exclusive-events-1" class="level1">
+<h1>Mutually exclusive events</h1>
+<p>What if the events are mutually exclusive? On a single die roll, if event A is that the roll is less than or equal to 2 and event B is that the roll is greater than or equal to 5, then events A and B cannot both happen.</p>
+<p>For mutually exclusive events, the addition rule formula is:</p>
+<pre><code>P(A or B) = P(A) + P(B)  # note that this time we don't deduct the P(A and B) because both events can't happen</code></pre>
+<blockquote class="blockquote">
+<p>Q1. There is a function, prob_a_or_b() which calculates the addition rule. It takes in three arguments:</p>
+</blockquote>
+<pre><code>a: an event with possible outcomes represented as a set
+b: an event with possible outcomes represented as a set
+all_possible_outcomes: a set that represents all possible outcomes of a sample space</code></pre>
+<p>In prob_a_or_b(), the probability of a and b as well as the probabilty of their intersection has been calculated in the following variables:</p>
+<pre><code>prob_a
+prob_b
+prob_inter</code></pre>
+<p>Using these variables, write a return statement that returns the probability of events a or b occurring.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prob_a_or_b(a, b, all_possible_outcomes):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># probability of event a</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    prob_a <span class="op">=</span> <span class="bu">len</span>(a)<span class="op">/</span><span class="bu">len</span>(all_possible_outcomes)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># probability of event b</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    prob_b <span class="op">=</span> <span class="bu">len</span>(b)<span class="op">/</span><span class="bu">len</span>(all_possible_outcomes)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># intersection of events a and b</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    inter <span class="op">=</span> a.intersection(b)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># probability of intersection of events a and b</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    prob_inter <span class="op">=</span> <span class="bu">len</span>(inter)<span class="op">/</span><span class="bu">len</span>(all_possible_outcomes)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add return statement here</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> prob_a <span class="op">+</span> prob_b <span class="op">-</span> prob_inter <span class="co"># this is my solution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Q2. there are three different random events outlined through sets.Call prob_a_or_b() using the following variables: - evens - odds - all_possible_rolls</p>
+</blockquote>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rolling a die once and getting an even number or an odd number</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>}</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>odds <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>}</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>all_possible_rolls <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># call function here first</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_a_or_b(evens, odds, all_possible_rolls))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.0</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>A2. As expected the probability of rolling either an even or odd number is 1.0 or 100%.</p>
+</blockquote>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rolling a die once and getting an odd number or a number greater than 2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>odds <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>}</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>greater_than_two <span class="op">=</span> {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>all_possible_rolls <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>}</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># call function here second</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_a_or_b(odds, greater_than_two, all_possible_rolls))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.8333333333333333</code></pre>
+</div>
+</div>
+<p>As expected the probability of getting an odd number or a number greater than 2 (not mutually exclusive) is calculated as P(odds) = 3/6 + P(greater_than_two) = 4/6 less P(both) i.e intersection 3,5 = 2/6. This gives 3/6 + 4/6 - 2/6 = 5/6 = 83.33%.</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting a diamond card or a face card from a standard deck of cards</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>diamond_cards <span class="op">=</span> {<span class="st">'ace_diamond'</span>, <span class="st">'2_diamond'</span>, <span class="st">'3_diamond'</span>, <span class="st">'4_diamond'</span>, <span class="st">'5_diamond'</span>, <span class="st">'6_diamond'</span>, <span class="st">'7_diamond'</span>, <span class="st">'8_diamond'</span>, <span class="st">'9_diamond'</span>, <span class="st">'10_diamond'</span>, <span class="st">'jack_diamond'</span>, <span class="st">'queen_diamond'</span>, <span class="st">'king_diamond'</span>}</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>face_cards <span class="op">=</span> {<span class="st">'jack_diamond'</span>, <span class="st">'jack_spade'</span>, <span class="st">'jack_heart'</span>, <span class="st">'jack_club'</span>, <span class="st">'queen_diamond'</span>, <span class="st">'queen_spade'</span>, <span class="st">'queen_heart'</span>, <span class="st">'queen_club'</span>, <span class="st">'king_diamond'</span>, <span class="st">'king_spade'</span>, <span class="st">'king_heart'</span>, <span class="st">'king_club'</span>}</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># all cards in a deck representing the entire sample space</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>all_possible_cards <span class="op">=</span> {<span class="st">'ace_diamond'</span>, <span class="st">'2_diamond'</span>, <span class="st">'3_diamond'</span>, <span class="st">'4_diamond'</span>, <span class="st">'5_diamond'</span>, <span class="st">'6_diamond'</span>, <span class="st">'7_diamond'</span>, <span class="st">'8_diamond'</span>, <span class="st">'9_diamond'</span>, <span class="st">'10_diamond'</span>, <span class="st">'jack_diamond'</span>, <span class="st">'queen_diamond'</span>, <span class="st">'king_diamond'</span>, <span class="st">'ace_heart'</span>, <span class="st">'2_heart'</span>, <span class="st">'3_heart'</span>, <span class="st">'4_heart'</span>, <span class="st">'5_heart'</span>, <span class="st">'6_heart'</span>, <span class="st">'7_heart'</span>, <span class="st">'8_heart'</span>, <span class="st">'9_heart'</span>, <span class="st">'10_heart'</span>, <span class="st">'jack_heart'</span>, <span class="st">'queen_heart'</span>, <span class="st">'king_heart'</span>, <span class="st">'ace_spade'</span>, <span class="st">'2_spade'</span>, <span class="st">'3_spade'</span>, <span class="st">'4_spade'</span>, <span class="st">'5_spade'</span>, <span class="st">'6_spade'</span>, <span class="st">'7_spade'</span>, <span class="st">'8_spade'</span>, <span class="st">'9_spade'</span>, <span class="st">'10_spade'</span>, <span class="st">'jack_spade'</span>, <span class="st">'queen_spade'</span>, <span class="st">'king_spade'</span>, <span class="st">'ace_club'</span>, <span class="st">'2_club'</span>, <span class="st">'3_club'</span>, <span class="st">'4_club'</span>, <span class="st">'5_club'</span>, <span class="st">'6_club'</span>, <span class="st">'7_club'</span>, <span class="st">'8_club'</span>, <span class="st">'9_club'</span>, <span class="st">'10_club'</span>, <span class="st">'jack_club'</span>, <span class="st">'queen_club'</span>, <span class="st">'king_club'</span>}</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># call function here third</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_a_or_b(diamond_cards, face_cards, all_possible_cards))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.4230769230769231</code></pre>
+</div>
+</div>
+<p>As expected the probability of getting a diamond card or a face card (not mutually exclusive) is calculated as P(diamonds) = 13/52 + P(face_cards) = 12/52 less P(both) i.e intersection jqk diamonds = 3/52. This gives 13/52 + 12/52 - 3/52 = 22/52 = 42.3%.</p>
+<section id="conditional-probability" class="level3">
+<h3 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h3>
+<p>If we want to calculate the probability that a pair of dependent events both occur, we need to define conditional probability. Using a bag of marbles as an example, let’s remind ourselves of the definition of dependent events:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/91462913-a501-40f3-b423-4f4d053ad37f-1-394af54f-1efe-4efd-ba55-186abf0aff7e.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>If we pick two marbles from a bag of five marbles without replacement, the probability that the second marble is red depends on the color of the first marble. We have a special name for this: conditional probability. In short, conditional probability measures the probability of one event occurring, given that another one has already occurred.</p>
+<p>Notationally, we denote the word “given” with a vertical line. For example, if we want to represent the probability that we choose a red marble given the first marble is blue, we can write:</p>
+<pre><code>P(Red Second∣Blue First)</code></pre>
+<p>From the above diagram, we know that:</p>
+<pre><code>P(Red Second∣Blue First) = 3 / 4</code></pre>
+<p>What if we picked out two marbles with replacement? What does the conditional probability look like? Well, let’s think about this. Regardless of which marble we pick out first, it will be put back into the bag. Therefore, the probability of picking out a red marble or a blue marble second is unaffected by the first outcome.</p>
+<p>Therefore, for independent events, we can say the following:</p>
+<pre><code>P(A∣B)=P(A)
+and
+P(B∣A)=P(B)</code></pre>
+</section>
+<section id="multiplication-rule" class="level3">
+<h3 class="anchored" data-anchor-id="multiplication-rule">Multiplication Rule</h3>
+<p>We have looked at the addition rule, which describes the probability one event OR another event (or both) occurs. What if we want to calculate the probability that two events happen simultaneously? For two events, A and B, this is P(A and B) or the probability of the intersection of A and B.</p>
+</section>
+<section id="general-formula" class="level3">
+<h3 class="anchored" data-anchor-id="general-formula">General Formula</h3>
+<p>The general formula for the probability that two events occur simultaneously is:</p>
+<pre><code>P(A and B) = P(A) * P(B∣A)</code></pre>
+<p>However, for independent events, we can simplify this formula slightly.</p>
+</section>
+<section id="dependent-events" class="level3">
+<h3 class="anchored" data-anchor-id="dependent-events">Dependent Events</h3>
+<p>Let’s go back to our bag of marbles example. We have five marbles: two are blue, and three are red. We pick two marbles without replacement. What if we want to know the probability of choosing a blue marble first AND a blue marble second?</p>
+<p>Taking conditional probability into account, the multiplication rule for these two dependent events is:</p>
+<pre><code>P(Blue 1st and Blue 2nd)=P(Blue 1st) * P(Blue 2nd∣Blue 1st)
+P(Blue 1st and Blue 2nd)= 2/5 * 1/4
+P(Blue 1st and Blue 2nd)= 1/10</code></pre>
+<p>This is one potential outcome when picking two marbles out of the bag. One way to visualize all possible outcomes of a pair of events is a tree diagram.</p>
+<p>Tree diagrams have the following properties:</p>
+<ul>
+<li>Each branch represents a specific set of events.</li>
+<li>The probabilities the terminal branches (all possible sets of outcomes) sum to one.</li>
+<li>We multiply across branches (using the multiplication rule!) to calculate the probability that each branch (set of outcomes) will occur.</li>
+</ul>
+</section>
+<section id="independent-events" class="level3">
+<h3 class="anchored" data-anchor-id="independent-events">Independent Events</h3>
+<p>For two independent events, the multiplication rule becomes less complicated. The probability of two independent events occurring is:</p>
+<pre><code>P(A and B)= P(A) * P(B)</code></pre>
+<p>This is because the following is true for independent events:</p>
+<pre><code>P(B∣A)=P(B)</code></pre>
+<p>Let’s look at the simplest example: flipping a fair coin twice. Event A is that we get tails on the first flip, and event B is that we get tails on the second flip. P(A) = P(B) = 0.5, so according to our formula, the probability of getting tails on both</p>
+<pre><code>P(A and B)= 0.5 * 0.5 = 0.25</code></pre>
+<p>Visually on a tree diagram, we see:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/552eea60-9d53-47ee-b6f1-907c9158dc2a-1-635208c4-e931-442a-a614-1e5288a6ac6b.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="conditional-probability-continued" class="level3">
+<h3 class="anchored" data-anchor-id="conditional-probability-continued">Conditional Probability Continued</h3>
+<p>We have introduced conditional probability as a part of the multiplication rule for dependent events. However, let’s go a bit more in-depth with it as it is a powerful probability tool that has real-world applications.</p>
+<p>For this problem, we will follow along the tree diagram below :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/f8544739-1c6e-4255-92af-66aff7b95a9d-1-f4241058-120c-45d8-aaa0-74535340a8c4.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">prob_tree.JPG</figcaption>
+</figure>
+</div>
+<p>Suppose that the following is true (this is shown in the first set of branches in the diagram):</p>
+<ul>
+<li>20 percent of the population has strep throat.</li>
+<li>80 percent of the population does not have strep throat.</li>
+</ul>
+<p>Now suppose that we test a bunch of people for strep throat. The possible results of these tests are shown in the next set of branches:</p>
+<ul>
+<li><p>If a person has strep throat, there is an 85% chance their test will be positive and a 15% chance it will be negative. This is labeled as:</p>
+<pre><code>  P(+∣ST)=0.85
+  and
+  P(−∣ST)=0.15</code></pre></li>
+<li><p>If a person does not have strep throat, there is a 98% chance their test will be negative and a 2% chance it will be positive. This can be labeled as:</p>
+<pre><code>  P(−∣NO ST)=0.98
+  and
+  P(+∣NO ST)=0.02</code></pre></li>
+</ul>
+<p>Finally, let’s look at the four possible pairs of outcomes that form the terminal branches of our diagram:</p>
+<pre><code>P(ST and +)=0.17
+P(ST and -)=0.03
+P(NO ST and +)=0.016
+P(NO ST and -)=0.784</code></pre>
+<p>Together, these add up to one since they capture all potential outcomes after patients are tested.</p>
+<p>It’s great that we have all this information. However, we are missing something. If someone gets a positive result, what is the probability that they have strep throat? Notationally, we can write this probability as:</p>
+<pre><code>P(ST∣ +)</code></pre>
+<p>In the next exercise, we’ll explore how we can use our tree diagram to calculate this probability.</p>
+</section>
+<section id="bayes-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h3>
+<blockquote class="blockquote">
+<p>Bayes Theorem is kind of like probability working backwards. Given a particular outcome, what is the probability of one of the steps on the way ?</p>
+</blockquote>
+<p>Imagine that you are a patient who has recently tested positive for strep throat. You may want to know the probability that you HAVE strep throat, given that you tested positive:</p>
+<pre><code>P(ST ∣ +)</code></pre>
+<p>To calculate this probability, we will use something called Bayes Theorem, which states the following:</p>
+<pre><code>P(B∣A)= ( P(A∣B) * P(B) ) / P(A)</code></pre>
+<p>Using Bayes’ theorem:</p>
+<pre><code>P(ST ∣ +)= ( P(+ ∣ ST) * P(ST) ) /  P(+) </code></pre>
+<p>We know:</p>
+<pre><code>P(+ ∣ ST) = 0.85</code></pre>
+<p>We also know:</p>
+<pre><code>P(ST) = 0.20</code></pre>
+<p>What about P(+)? Is this something we know? Well, let’s think about this. There are four possible outcomes:</p>
+<ul>
+<li>Having strep throat and testing positive</li>
+<li>Having strep throat and testing negative</li>
+<li>Not having strep throat and testing positive</li>
+<li>Not having strep throat and testing negative</li>
+</ul>
+<p>We only care about the two outcomes where a patient tests positives for P(+). Therefore, we can say:</p>
+<pre><code>P(+) = P(ST and +) + P(NO ST and +)
+P(+) = 0.170 + 0.016
+P(+) = 0.186</code></pre>
+<p>Finally, if we plug all of these into the Bayes’ theorem formula, we get:</p>
+<pre><code>P(ST ∣ +) = ( 0.85 * 0.20 ) / 0.186 = 0.914</code></pre>
+<p>There is a 91.4% chance that you actually have strep throat given you test positive. This is not obvious from the information outlined in our tree diagram, but with the power of Bayes theorem, we were able to calculate it!</p>
+</section>
+<section id="probability-distributions---random-variables" class="level3">
+<h3 class="anchored" data-anchor-id="probability-distributions---random-variables">Probability Distributions - Random Variables</h3>
+<p>A random variable is, in its simplest form, a function. In probability, we often use random variables to represent random events. For example, we could use a random variable to represent the outcome of a die roll: any number between one and six.</p>
+<p>Random variables must be numeric, meaning they always take on a number rather than a characteristic or quality. If we want to use a random variable to represent an event with non-numeric outcomes, we can choose numbers to represent those outcomes. For example, we could represent a coin flip as a random variable by assigning “heads” a value of 1 and “tails” a value of 0.</p>
+<p>In this lesson, we will use</p>
+<p><code>random.choice(a, size = size, replace = True/False)</code> from the <code>numpy</code> library to simulate random variables in python. In this method:</p>
+<ul>
+<li><code>a</code> is a list or other object that has values we are sampling from</li>
+<li><code>size</code> is a number that represents how many values to choose</li>
+<li><code>replace</code> can be equal to True or False, and determines whether we keep a value in a after drawing it (replace = True) or remove it from the pool (replace = False).</li>
+</ul>
+<p>The following code simulates the outcome of rolling a fair die twice using <code>np.random.choice()</code>:</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 7 is not included in the range function</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>die_6 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co"># set number of rolls</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>num_rolls <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co"># roll the "die" the set amount of times</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>results_1 <span class="op">=</span> np.random.choice(die_6, size <span class="op">=</span> num_rolls, replace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[6 3 2 3 5 4 5 4 4 4]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create 12-sided "die"</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>die_12 <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># roll the 12-sided "die" 10 times</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>results_2 <span class="op">=</span> np.random.choice(die_12, size <span class="op">=</span> num_rolls, replace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 3  9 11  8 12  2  3  6 11  7]</code></pre>
+</div>
+</div>
+</section>
+<section id="discrete-random-variables" class="level3">
+<h3 class="anchored" data-anchor-id="discrete-random-variables">Discrete Random Variables</h3>
+<p><code>Random variables</code> with a <code>countable</code> number of possible values are called <code>discrete</code> random variables. For example, rolling a regular 6-sided die would be considered a discrete random variable because the outcome options are limited to the numbers on the die.</p>
+<p>Discrete random variables are also common when observing counting events, such as how many people entered a store on a randomly selected day. In this case, the values are countable in that they are limited to whole numbers (you can’t observe half of a person).</p>
+</section>
+<section id="continuous-random-variables" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-random-variables">Continuous Random Variables</h3>
+<p>When the possible values of a random variable are uncountable, it is called a continuous random variable. These are generally measurement variables and are uncountable because measurements can always be more precise – meters, centimeters, millimeters, etc.</p>
+<p>For example, the temperature in Los Angeles on a randomly chosen day is a continuous random variable. We can always be more precise about the temperature by expanding to another decimal place (96 degrees, 96.44 degrees, 96.437 degrees, etc.).</p>
+</section>
+<section id="probability-mass-functions-pmf" class="level3">
+<h3 class="anchored" data-anchor-id="probability-mass-functions-pmf">Probability Mass Functions (PMF)</h3>
+<p>A probability mass function (PMF) is a type of probability distribution that defines the probability of observing a particular value of a discrete random variable. For example, a PMF can be used to calculate the probability of rolling a three on a fair six-sided die.</p>
+<p>There are certain kinds of random variables (and associated probability distributions) that are relevant for many different kinds of problems. These commonly used probability distributions have names and parameters that make them adaptable for different situations.</p>
+<p>For example, suppose that we flip a fair coin some number of times and count the number of heads. The probability mass function that describes the likelihood of each possible outcome (eg., 0 heads, 1 head, 2 heads, etc.) is called the <code>binomial distribution</code>. The parameters for the binomial distribution are:</p>
+<ul>
+<li>n for the number of trials (eg., n=10 if we flip a coin 10 times)</li>
+<li>p for the probability of success in each trial (probability of observing a particular outcome in each trial. In this example, p= 0.5 because the probability of observing heads on a fair coin flip is 0.5)</li>
+</ul>
+<p>If we flip a fair coin 10 times, we say that the number of observed heads follows a Binomial(n=10, p=0.5) distribution. The graph below shows the probability mass function for this experiment. The heights of the bars represent the probability of observing each possible outcome as calculated by the PMF.</p>
+<p><img src="Statistics_Fundamentals_files/figure-html/c8e67c2c-575e-4fab-bbb2-295feb989c6b-4-b55f0da0-5842-4eb7-b901-68f8aa70a1da.JPG" class="img-fluid" alt="dice1.JPG"> <img src="Statistics_Fundamentals_files/figure-html/c8e67c2c-575e-4fab-bbb2-295feb989c6b-3-b374873b-c550-4f59-a31d-9e3d82c709d1.JPG" class="img-fluid" alt="dice2.JPG"> <img src="Statistics_Fundamentals_files/figure-html/c8e67c2c-575e-4fab-bbb2-295feb989c6b-1-2c3a1dc1-541d-4c84-96b1-cdc95e3622b0.JPG" class="img-fluid" alt="dice3.JPG"> <img src="Statistics_Fundamentals_files/figure-html/c8e67c2c-575e-4fab-bbb2-295feb989c6b-2-9500314f-91eb-4a6a-ab0d-671e5c67613b.JPG" class="img-fluid" alt="dice4.JPG"> <img src="Statistics_Fundamentals_files/figure-html/c8e67c2c-575e-4fab-bbb2-295feb989c6b-5-eaa199bc-8057-467a-8a28-185e5d0a1fb4.JPG" class="img-fluid" alt="dice5.JPG"> <img src="Statistics_Fundamentals_files/figure-html/c8e67c2c-575e-4fab-bbb2-295feb989c6b-6-fac6e7ea-d3b0-4c47-8178-5c672324f6c2.JPG" class="img-fluid" alt="dice10.JPG"></p>
+</section>
+<section id="calculating-probabilities-using-python---binom.pmf" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-probabilities-using-python---binom.pmf">Calculating Probabilities using Python - <code>binom.pmf()</code></h3>
+<p>The <code>binom.pmf()</code> method from the <code>scipy.stats</code> library can be used to calculate the PMF of the binomial distribution at any value. This method takes 3 values:</p>
+<ul>
+<li>x: the value of interest</li>
+<li>n: the number of trials</li>
+<li>p: the probability of success</li>
+</ul>
+<p>For example, suppose we flip a fair coin 10 times and count the number of heads. We can use the <code>binom.pmf()</code> function to calculate the probability of observing 6 heads as follows:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import necessary library</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># st.binom.pmf(x, n, p) - prob of observing 6 heads from 10 flips of a coin</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.binom.pmf(<span class="dv">6</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)) <span class="co"># n=6 n=10 p=0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.2050781249999999</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># st.binom.pmf(x, n, p) - prob of observing 3 heads from 10 flips of a coin</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.binom.pmf(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)) <span class="co"># n=3 n=10 p=0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.1171875</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># st.binom.pmf(x, n, p) - prob of observing 7 heads from 20 flips of a coin</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.binom.pmf(<span class="dv">7</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)) <span class="co"># n=3 n=10 p=0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.07392883300781235</code></pre>
+</div>
+</div>
+</section>
+<section id="using-the-probability-mass-function-over-a-range" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-probability-mass-function-over-a-range">Using the Probability Mass Function Over a Range</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/27729dc3-e008-47b2-ac8d-bb5baa2b62d6-1-cae3b66c-8dd5-4d4d-8d72-52b8a0c49108.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">binomial_range.JPG</figcaption>
+</figure>
+</div>
+<p>We have seen that we can calculate the probability of observing a specific value using a probability mass function. What if we want to find the probability of observing a range of values for a discrete random variable? One way we could do this is by adding up the probability of each value.</p>
+<p>For example, let’s say we flip a fair coin 5 times, and want to know the probability of getting between 1 and 3 heads. We can visualize this scenario with the probability mass function:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/8e8acc04-9b8b-4906-9c6e-e01a2d24fe4e-1-23a182bd-d23b-4cde-b88b-e0e62a8252a1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">one_to_three_heads.JPG</figcaption>
+</figure>
+</div>
+<p>We can calculate this using the following equation where P(x) is the probability of observing the number x successes (heads in this case):</p>
+<pre><code>P(1to3heads)=P(1&lt;=X&lt;=3)
+P(1to3heads)=P(X=1)+P(X=2)+P(X=3)
+P(1to3heads)=0.1562+0.3125+0.3125
+P(1to3heads)=0.7812</code></pre>
+</section>
+<section id="probability-mass-function-pmf-over-a-range-using-python" class="level3">
+<h3 class="anchored" data-anchor-id="probability-mass-function-pmf-over-a-range-using-python">Probability Mass Function (pmf) Over a Range using Python</h3>
+<p>If we want to know the probability of observing <code>8 or fewer</code> heads from 10 coin flips, we could add up the values from 0 to 8, but a quicker way is to sutract the probability of 9 and 10 heads from 1 :</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># less than or equal to 8</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>prob_1 <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (stats.binom.pmf(<span class="dv">9</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>) <span class="op">+</span> stats.binom.pmf(<span class="dv">10</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>))</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9892578125</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. Use the 1 minus the sum of some values of <code>stats.binom.pmf()</code> method to calculate the probability of observing more than 2 heads from 10 coin flips.</p>
+</blockquote>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>prob_2 <span class="op">=</span>  <span class="dv">1</span> <span class="op">-</span> (stats.binom.pmf(<span class="dv">8</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>) <span class="op">+</span> stats.binom.pmf(<span class="dv">9</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>) <span class="op">+</span> stats.binom.pmf(<span class="dv">10</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>))</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9453125</code></pre>
+</div>
+</div>
+</section>
+<section id="cumulative-distribution-function" class="level3">
+<h3 class="anchored" data-anchor-id="cumulative-distribution-function">Cumulative Distribution Function</h3>
+<p>The <code>cumulative distribution function</code> for a discrete random variable can be derived from the probability mass function. However, instead of the probability of observing a specific value, the cumulative distribution function gives the probability of observing a specific value OR LESS.</p>
+<p>As previously discussed, the probabilities for all possible values in a given probability distribution add up to 1. The value of a cumulative distribution function at a given value is equal to the sum of the probabilities lower than it, with a value of 1 for the largest possible number.</p>
+<p>Cumulative distribution functions are constantly increasing, so for two different numbers that the random variable could take on, the value of the function will always be greater for the larger number. Mathematically, this is represented as:</p>
+<pre><code>If x1 &lt; x2 → CDF(x1) &lt; CDF(x2)</code></pre>
+<p>We showed how the probability mass function can be used to calculate the probability of observing less than 3 heads out of 10 coin flips by adding up the probabilities of observing 0, 1, and 2 heads. The cumulative distribution function produces the same answer by evaluating the function at CDF(X=2). In this case, using the <code>CDF is simpler</code> than the PMF because it <code>requires one calculation</code> rather than three.</p>
+<p>The animation to the right shows the relationship between the probability mass function and the cumulative distribution function. The top plot is the PMF, while the bottom plot is the corresponding CDF. When looking at the graph of a CDF, each y-axis value is the sum of the probabilities less than or equal to it in the PMF.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/a39f56fa-4cd4-4198-993a-f2a8e83125ab-1-7c4ce636-8991-4bba-a0cc-f0971c21bed0.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pmf_v_cdf.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="cumulative-distribution-function-continued" class="level3">
+<h3 class="anchored" data-anchor-id="cumulative-distribution-function-continued">Cumulative Distribution Function continued</h3>
+<p>We can use a cumulative distribution function to calculate the probability of a specific range by taking the difference between two values from the cumulative distribution function. For example, to find the probability of observing between 3 and 6 heads, we can take the probability of observing 6 or fewer heads and subtracting the probability of observing 2 or fewer heads. This leaves a remnant of between 3 and 6 heads.</p>
+<p>The visual to the right demonstrates how this works. It is important to note that to include the lower bound in the range, the value being subtracted should be one less than the lower bound. In this example, we wanted to know the probability from 3 to 6, which includes 3. Mathematically, this looks like the following equation:</p>
+<pre><code>P (3 &lt;= X &lt;= 6) = P (X &lt;= 6) − P(X &lt; 3)
+
+or
+
+P(3 &lt;= X &lt;=6) = P (X &lt;= 6) − P(X &lt;= 2)</code></pre>
+</section>
+<section id="using-the-cumulative-distribution-function-in-python---binom.cdf" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-cumulative-distribution-function-in-python---binom.cdf">Using the Cumulative Distribution Function in Python - <code>binom.cdf()</code></h3>
+<p>We can use the<code>binom.cdf()</code> method from the scipy.stats library to calculate the cumulative distribution function. This method takes 3 values:</p>
+<ul>
+<li>x: the value of interest, looking for the probability of this value or less</li>
+<li>n: the sample size</li>
+<li>p: the probability of success</li>
+</ul>
+<p>Calculating the probability of observing <code>6 or fewer heads from 10 fair coin flips</code> (0 to 6 heads) mathematically looks like the following:</p>
+<pre><code>P(6 or fewer heads) = P(0 to 6 heads)</code></pre>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.binom.cdf(<span class="dv">6</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.828125</code></pre>
+</div>
+</div>
+<p>Calculating the probability of observing <code>between 4 and 8 heads from 10 fair coin flips</code> can be thought of as taking the difference of the value of the cumulative distribution function at 8 from the cumulative distribution function at 3:</p>
+<pre><code>P (4 to 8 Heads) = P(0 to 8 Heads) − P(0 to 3 Heads)</code></pre>
+<p>In python, we use the following code:</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.binom.cdf(<span class="dv">8</span>, <span class="dv">10</span>, <span class="fl">0.5</span>) <span class="op">-</span> stats.binom.cdf(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.8173828125</code></pre>
+</div>
+</div>
+<p>To calculate the probability of observing <code>more than 6 heads from 10 fair coin flips</code> we subtract the value of the cumulative distribution function at 6 from 1. Mathematically, this looks like the following:</p>
+<pre><code>P (more than 6 heads) = 1 − P(6 or fewer heads)</code></pre>
+<p>Note that “more than 6 heads” does not include 6. In python, we would calculate this probability using the following code:</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">-</span> stats.binom.cdf(<span class="dv">6</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.171875</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. Calculate the probability of observing <code>3 or fewer</code> heads from 10 fair coin flips using the cumulative distribution function.</p>
+</blockquote>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>prob_1 <span class="op">=</span> stats.binom.cdf(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.171875</code></pre>
+</div>
+</div>
+<p>We could also calculate using the additive probability mass function (pmf) although this is clearly more convoluted as illustrated below :</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare to pmf code (checkpoint 2)</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.binom.pmf(<span class="dv">0</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>) <span class="op">+</span> stats.binom.pmf(<span class="dv">1</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>) <span class="op">+</span> stats.binom.pmf(<span class="dv">2</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>) <span class="op">+</span> stats.binom.pmf(<span class="dv">3</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.17187500000000006</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. Calculate the probability of observing <code>more than 5</code> heads from 10 fair coin flips.</p>
+</blockquote>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>prob_2 <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> stats.binom.cdf(<span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.376953125</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. Calculate the probability of observing <code>between 2 and 5</code> heads from 10 fair coin flips.</p>
+</blockquote>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>prob_3 <span class="op">=</span> stats.binom.cdf(<span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">0.5</span>) <span class="op">-</span> stats.binom.cdf(<span class="dv">1</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6123046875</code></pre>
+</div>
+</div>
+</section>
+<section id="probability-density-functions-pdf" class="level3">
+<h3 class="anchored" data-anchor-id="probability-density-functions-pdf">Probability Density Functions (pdf)</h3>
+<p>Similar to how discrete random variables relate to probability mass functions, <code>continuous</code> random variables relate to <code>probability density functions</code>. They define the probability distributions of continuous random variables and span across all possible values that the given random variable can take on.</p>
+<p>When graphed, a probability density function is a curve across all possible values the random variable can take on, and the total area under this curve adds up to 1.</p>
+<p>The following image shows a probability density function. The highlighted area represents the probability of observing a value within the highlighted range.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/969c0746-fd59-4718-89ba-9acad91b863a-1-31622c6e-413a-4c07-9c9b-b34a15fc02c5.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Adding-Area.gif</figcaption>
+</figure>
+</div>
+<p>In a probability density function, we cannot calculate the probability at a single point. This is because the area of the curve underneath a single point is always zero. The gif below showcases this.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/969c0746-fd59-4718-89ba-9acad91b863a-2-cbc4ab20-cb7e-459f-b6df-183d0b634ef9.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Normal-Distribution-Area-to-Zero.gif</figcaption>
+</figure>
+</div>
+<p>As we can see from the visual above, as the interval becomes smaller, the width of the area under the curve becomes smaller as well. When trying to evaluate the area under the curve at a specific point, the width of that area becomes 0, and therefore the probability equals 0.</p>
+<p>We can calculate the area under the curve using the <code>cumulative distribution function</code> for the given probability distribution.</p>
+<p>For example, heights fall under a type of probability distribution called a normal distribution. The parameters for the normal distribution are the <code>mean</code> and the <code>standard deviation</code>, and we use the form Normal(mean, standard deviation) as shorthand.</p>
+<p>We know that women’s heights have a mean of 167.64 cm with a standard deviation of 8 cm, which makes them fall under the Normal(167.64, 8) distribution.</p>
+<p>Let’s say we want to know the probability that a randomly chosen woman is less than 158 cm tall. We can use the cumulative distribution function to calculate the area under the probability density function curve from 0 to 158 to find that probability.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/969c0746-fd59-4718-89ba-9acad91b863a-3-e401f789-34f5-45df-8e46-3ee78e18f80b.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>We can calculate the area of the blue region in Python using the norm.cdf() method from the scipy.stats library. This method takes on 3 values:</p>
+<ul>
+<li>x: the value of interest</li>
+<li>loc: the mean of the probability distribution</li>
+<li>scale: the standard deviation of the probability distribution</li>
+</ul>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stats.norm.cdf(x, loc, scale)</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="co"># prob that a randomly chosen woman is less than 158 cm tall</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.norm.cdf(<span class="dv">158</span>, <span class="fl">167.64</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.11410165094812996</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>prob <span class="op">=</span> stats.norm.cdf(<span class="dv">175</span>, <span class="fl">167.64</span>, <span class="dv">8</span>)</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.8212136203856288</code></pre>
+</div>
+</div>
+</section>
+<section id="probability-density-functions-and-cumulative-distribution-function" class="level3">
+<h3 class="anchored" data-anchor-id="probability-density-functions-and-cumulative-distribution-function">Probability Density Functions and Cumulative Distribution Function</h3>
+<p>We can take the difference between two overlapping ranges to calculate the probability that a random selection will be within a range of values for continuous distributions. This is essentially the same process as calculating the probability of a range of values for discrete distributions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/e175fe02-e093-4247-84bf-ea0ddab0362b-1-059008c9-87b4-4e09-a459-79955be27ead.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Normal-PDF-Range.gif</figcaption>
+</figure>
+</div>
+<p>Let’s say we wanted to calculate the probability of randomly observing a woman <code>between 165 cm to 175 cm</code>, assuming heights still follow the Normal(167.74, 8) distribution. We can calculate the probability of observing these values or less. The difference between these two probabilities will be the probability of randomly observing a woman in this given range. This can be done in python using the norm.cdf() method from the scipy.stats library. As mentioned before, this method takes on 3 values:</p>
+<ul>
+<li>x: the value of interest</li>
+<li>loc: the mean of the probability distribution</li>
+<li>scale: the standard deviation of the probability distribution</li>
+</ul>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(165 &lt; X &lt; 175) = P(X &lt; 175) - P(X &lt; 165)</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="co"># stats.norm.cdf(x, loc, scale) - stats.norm.cdf(x, loc, scale)</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.norm.cdf(<span class="dv">175</span>, <span class="fl">167.74</span>, <span class="dv">8</span>) <span class="op">-</span> stats.norm.cdf(<span class="dv">165</span>, <span class="fl">167.74</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.45194145326220503</code></pre>
+</div>
+</div>
+<p>We can also calculate the probability of randomly observing a value or greater by subtracting the probability of observing less than the given value from 1. This is possible because we know that the total area under the curve is 1, so the probability of observing something greater than a value is 1 minus the probability of observing something less than the given value.</p>
+<p>Let’s say we wanted to calculate the probability of observing a woman <code>taller than 172 centimeters</code>, assuming heights still follow the Normal(167.74, 8) distribution. We can think of this as the opposite of observing a woman shorter than 172 centimeters. We can visualize it this way:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Fundamentals_files/figure-html/c861d02b-40f5-4952-b574-d2bcb772beaa-1-99328054-43dc-4679-b64d-a771af6e88d3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>We can use the following code to calculate the blue area by taking 1 minus the red area:</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(X &gt; 172) = 1 - P(X &lt; 172)</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 - stats.norm.cdf(x, loc, scale)</span></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">-</span> stats.norm.cdf(<span class="dv">172</span>, <span class="fl">167.74</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.2971898709083267</code></pre>
+</div>
+</div>
+</section>
+<section id="worked-example" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example">Worked Example</h3>
+<blockquote class="blockquote">
+<p>Q. The weather in the Galapagos islands follows a Normal distribution with a mean of 20 degrees Celcius and a standard deviation of 3 degrees. Calculate the probability that the weather on a randomly selected day will be <code>between 18 to 25 degrees</code> Celcius using the <code>norm.cdf()</code> method.</p>
+</blockquote>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.norm.cdf(<span class="dv">25</span>, <span class="dv">20</span>, <span class="dv">3</span>) <span class="op">-</span> stats.norm.cdf(<span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6997171101802624</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. Using the same information about the Galapagos Islands, calculate the probability that the weather on a randomly selected day will be greater than 24 degrees Celsius.</p>
+</blockquote>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">-</span> stats.norm.cdf(<span class="dv">24</span>, <span class="dv">20</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.09121121972586788</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

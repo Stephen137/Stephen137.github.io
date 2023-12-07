@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2023-12-07">
+
+<title>Into the Unknown - Hypotheses Testing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Hypotheses Testing</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Data Science</div>
+                <div class="quarto-category">T-test</div>
+                <div class="quarto-category">ANOVA</div>
+                <div class="quarto-category">Tukey’s Range</div>
+                <div class="quarto-category">Chi-Square</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 7, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#heart-disease-research-project" id="toc-heart-disease-research-project" class="nav-link active" data-scroll-target="#heart-disease-research-project">Heart Disease Research Project</a>
+  <ul class="collapse">
+  <li><a href="#import-the-libraries-and-load-in-our-data" id="toc-import-the-libraries-and-load-in-our-data" class="nav-link" data-scroll-target="#import-the-libraries-and-load-in-our-data">0. Import the libraries and load in our data</a></li>
+  <li><a href="#cholesterol-level-serum-cholestorol-in-mgdl" id="toc-cholesterol-level-serum-cholestorol-in-mgdl" class="nav-link" data-scroll-target="#cholesterol-level-serum-cholestorol-in-mgdl">1. Cholesterol level (serum cholestorol in mg/dl)</a></li>
+  <li><a href="#fasting-blood-sugar-mgdl" id="toc-fasting-blood-sugar-mgdl" class="nav-link" data-scroll-target="#fasting-blood-sugar-mgdl">2. Fasting Blood Sugar (mg/dl)</a></li>
+  <li><a href="#investigation-of-thalach-maximum-heart-rate-achieved-in-exercise-test" id="toc-investigation-of-thalach-maximum-heart-rate-achieved-in-exercise-test" class="nav-link" data-scroll-target="#investigation-of-thalach-maximum-heart-rate-achieved-in-exercise-test">3. Investigation of thalach (maximum heart rate achieved in exercise test)</a></li>
+  <li><a href="#investigation-of-resting-blood-pressure-trestbps---mm-hg" id="toc-investigation-of-resting-blood-pressure-trestbps---mm-hg" class="nav-link" data-scroll-target="#investigation-of-resting-blood-pressure-trestbps---mm-hg">4. Investigation of Resting Blood Pressure (trestbps) - mm Hg</a></li>
+  <li><a href="#investigation-of-age" id="toc-investigation-of-age" class="nav-link" data-scroll-target="#investigation-of-age">5. Investigation of Age</a></li>
+  <li><a href="#chest-pain-and-max-heart-rate" id="toc-chest-pain-and-max-heart-rate" class="nav-link" data-scroll-target="#chest-pain-and-max-heart-rate">6. Chest Pain and Max Heart Rate</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">7. Conclusions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="heart-disease-research-project" class="level2">
+<h2 class="anchored" data-anchor-id="heart-disease-research-project">Heart Disease Research Project</h2>
+<p>In this project, I will investigate some data from a sample of patients who were evaluated for heart disease at the Cleveland Clinic Foundation. The data was downloaded from the <a href="https://archive.ics.uci.edu/ml/datasets/Heart+Disease">UCI Machine Learning Repository</a> and then cleaned for analysis. The principal investigators responsible for data collection were:</p>
+<ol type="1">
+<li>Hungarian Institute of Cardiology. Budapest: Andras Janosi, M.D.</li>
+<li>University Hospital, Zurich, Switzerland: William Steinbrunn, M.D.</li>
+<li>University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D.</li>
+<li>V.A. Medical Center, Long Beach and Cleveland Clinic Foundation: Robert Detrano, M.D., Ph.D.</li>
+</ol>
+<p>For this project, I will investigate the following variables, formulate hypotheses, and draw conclusions from the results of appropriate statistical testing:</p>
+<ol type="1">
+<li><code>chol</code>: serum cholestorol in mg/dl</li>
+<li><code>fbs</code>: whether the patient’s fasting blood sugar is &gt;120 mg/dl (1: yes; 0: no)</li>
+<li><code>thalach</code>: maximum heart rate achieved in exercise test</li>
+<li><code>trestbps:</code> resting blood pressure in mm Hg</li>
+<li><code>age:</code> age in years</li>
+<li><code>cp</code>: chest pain type (‘typical angina’, ‘atypical angina’, ‘non-anginal pain’, or ‘asymptomatic’)</li>
+</ol>
+<section id="import-the-libraries-and-load-in-our-data" class="level3">
+<h3 class="anchored" data-anchor-id="import-the-libraries-and-load-in-our-data">0. Import the libraries and load in our data</h3>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>heart <span class="op">=</span> pd.read_csv(<span class="st">'data/heart_disease.csv'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># data for patients WITH heart disease</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>yes_hd <span class="op">=</span> heart[heart.heart_disease <span class="op">==</span> <span class="st">'presence'</span>]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># data for patients WITHOUT heart disease</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>no_hd <span class="op">=</span> heart[heart.heart_disease <span class="op">==</span> <span class="st">'absence'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnosis heart disease</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>yes_hd.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">trestbps</th>
+<th data-quarto-table-cell-role="th">chol</th>
+<th data-quarto-table-cell-role="th">cp</th>
+<th data-quarto-table-cell-role="th">exang</th>
+<th data-quarto-table-cell-role="th">fbs</th>
+<th data-quarto-table-cell-role="th">thalach</th>
+<th data-quarto-table-cell-role="th">heart_disease</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>67</td>
+<td>male</td>
+<td>160</td>
+<td>286</td>
+<td>asymptomatic</td>
+<td>1</td>
+<td>0</td>
+<td>108</td>
+<td>presence</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>67</td>
+<td>male</td>
+<td>120</td>
+<td>229</td>
+<td>asymptomatic</td>
+<td>1</td>
+<td>0</td>
+<td>129</td>
+<td>presence</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>62</td>
+<td>female</td>
+<td>140</td>
+<td>268</td>
+<td>asymptomatic</td>
+<td>0</td>
+<td>0</td>
+<td>160</td>
+<td>presence</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>63</td>
+<td>male</td>
+<td>130</td>
+<td>254</td>
+<td>asymptomatic</td>
+<td>0</td>
+<td>0</td>
+<td>147</td>
+<td>presence</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9</td>
+<td>53</td>
+<td>male</td>
+<td>140</td>
+<td>203</td>
+<td>asymptomatic</td>
+<td>1</td>
+<td>1</td>
+<td>155</td>
+<td>presence</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnosis NO heart disease</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>no_hd.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">trestbps</th>
+<th data-quarto-table-cell-role="th">chol</th>
+<th data-quarto-table-cell-role="th">cp</th>
+<th data-quarto-table-cell-role="th">exang</th>
+<th data-quarto-table-cell-role="th">fbs</th>
+<th data-quarto-table-cell-role="th">thalach</th>
+<th data-quarto-table-cell-role="th">heart_disease</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>63</td>
+<td>male</td>
+<td>145</td>
+<td>233</td>
+<td>typical angina</td>
+<td>0</td>
+<td>1</td>
+<td>150</td>
+<td>absence</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>37</td>
+<td>male</td>
+<td>130</td>
+<td>250</td>
+<td>non-anginal pain</td>
+<td>0</td>
+<td>0</td>
+<td>187</td>
+<td>absence</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>41</td>
+<td>female</td>
+<td>130</td>
+<td>204</td>
+<td>atypical angina</td>
+<td>0</td>
+<td>0</td>
+<td>172</td>
+<td>absence</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>56</td>
+<td>male</td>
+<td>120</td>
+<td>236</td>
+<td>atypical angina</td>
+<td>0</td>
+<td>0</td>
+<td>178</td>
+<td>absence</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>57</td>
+<td>female</td>
+<td>120</td>
+<td>354</td>
+<td>asymptomatic</td>
+<td>1</td>
+<td>0</td>
+<td>163</td>
+<td>absence</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="cholesterol-level-serum-cholestorol-in-mgdl" class="level3">
+<h3 class="anchored" data-anchor-id="cholesterol-level-serum-cholestorol-in-mgdl">1. Cholesterol level (serum cholestorol in mg/dl)</h3>
+<section id="cholesterol-level---patients-with-heart-disease" class="level4">
+<h4 class="anchored" data-anchor-id="cholesterol-level---patients-with-heart-disease">1.1 Cholesterol level - patients with Heart Disease</h4>
+<p>To start, I’ll investigate cholesterol levels for patients with heart disease :</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cholesterol levels for patients with heart disease </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>chol_hd <span class="op">=</span> yes_hd.chol</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>chol_hd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>1      286
+2      229
+6      268
+8      254
+9      203
+      ... 
+297    241
+298    264
+299    193
+300    131
+301    236
+Name: chol, Length: 139, dtype: int64</code></pre>
+</div>
+</div>
+<p>In general, total cholesterol over 240 mg/dl is considered “high” (and therefore unhealthy). Let’s calculate the mean cholesterol level for patients who were diagnosed with heart disease :</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average cholesterol levels for heart disease patients</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mean_chol_hd <span class="op">=</span> np.mean(chol_hd)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_chol_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>251.4748201438849</code></pre>
+</div>
+</div>
+<p>As we can see, the mean cholesterol level for patients who were diagnosed with heart disease is over 240 mg/dl and considered “high” and therefore unhealthy. This poses the question - do people with heart disease have high cholesterol levels (greater than or equal to 240 mg/dl) on average?</p>
+<p>To obtain an answer to this question which is underpinned by statistics, let’s first formulate our hypotheses :</p>
+<ul>
+<li><code>Null:</code> People with heart disease have an average cholesterol level equal to 240 mg/dl</li>
+<li><code>Alternative:</code> People with heart disease have an average cholesterol level that is greater than 240 mg/dl</li>
+</ul>
+</section>
+<section id="cholesterol-levels-for-heart-disease-patients-1-sided-t-test" class="level4">
+<h4 class="anchored" data-anchor-id="cholesterol-levels-for-heart-disease-patients-1-sided-t-test">1.2 Cholesterol levels for heart disease patients (1-sided T-test)</h4>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_1samp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pval for cholesterol levels in heart disease patients</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tstat, pval_2sided <span class="op">=</span> ttest_1samp(chol_hd, <span class="dv">240</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print pval</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval_2sided)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.007082206781031141</code></pre>
+</div>
+</div>
+<p>Note that this is the p-value for a two-sided test, however we can calculate the p-value for the one-sided test simply by dividing the two-sided p-value in half :</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 sided pval to 1 sided</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pval_1sided <span class="op">=</span> pval_2sided <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval_1sided)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0035411033905155707</code></pre>
+</div>
+</div>
+<p>As the p-value of 0.0035411033905155707 is below our significance threshold of 0.05, we can conclude that heart disease patients have an average cholesterol level significantly greater than 240 mg/dl.</p>
+</section>
+<section id="cholesterol-level---patients-without-heart-disease" class="level4">
+<h4 class="anchored" data-anchor-id="cholesterol-level---patients-without-heart-disease">1.3 Cholesterol level - patients without Heart Disease</h4>
+<p>Let’s repeat the same steps for those patients without heart disease :</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cholesterol levels for patients without heart disease </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>chol_no_hd <span class="op">=</span> no_hd.chol</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>chol_no_hd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>0      233
+3      250
+4      204
+5      236
+7      354
+      ... 
+288    221
+289    240
+291    342
+295    157
+302    175
+Name: chol, Length: 164, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average cholesterol levels for NON heart disease patients</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mean_chol_no_hd <span class="op">=</span> np.mean(chol_no_hd)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_chol_no_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>242.640243902439</code></pre>
+</div>
+</div>
+<p>As we can see, the mean cholesterol level for patients who were diagnosed without heart disease is still over 240 mg/dl and considered “high” and therefore unhealthy. This poses the question - do people without heart disease have high cholesterol levels (greater than or equal to 240 mg/dl) on average?</p>
+</section>
+<section id="cholesterol-levels-for-non-heart-disease-patients-1-sided-t-test" class="level4">
+<h4 class="anchored" data-anchor-id="cholesterol-levels-for-non-heart-disease-patients-1-sided-t-test">1.4 Cholesterol levels for NON heart disease patients (1-sided T-test)</h4>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pval for cholesterol levels in NON heart disease patients</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tstat, pval_2sided <span class="op">=</span> ttest_1samp(chol_no_hd, <span class="dv">240</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print pval</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval_2sided)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.5279424046444101</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 sided pval to 1 sided</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pval_1sided <span class="op">=</span> pval_2sided <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval_1sided)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.26397120232220506</code></pre>
+</div>
+</div>
+<p>As the p-value of 0.26397120232220506 is above our significance threshold of 0.05, we can conclude that non-heart disease patients do not have an average cholesterol level significantly greater than 240 mg/dl.</p>
+</section>
+</section>
+<section id="fasting-blood-sugar-mgdl" class="level3">
+<h3 class="anchored" data-anchor-id="fasting-blood-sugar-mgdl">2. Fasting Blood Sugar (mg/dl)</h3>
+<p>In general, a fasting blood sugar (fbs) level over 120 mg/dl is considered “high” (and therefore unhealthy). Remember from our dataset we do not have actual fbs values, only an indication of whether the level is <code>above</code> (1) or <code>below</code> 120.</p>
+<section id="fasting-blood-sugar-fbs-analysis---patients-with-heart-disease" class="level4">
+<h4 class="anchored" data-anchor-id="fasting-blood-sugar-fbs-analysis---patients-with-heart-disease">2.1 Fasting Blood Sugar (fbs) analysis - patients with Heart Disease</h4>
+<p>Let’s first investigate the patients diagnosed with heart disease :</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate total number of patients in study</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>num_patients <span class="op">=</span> <span class="bu">len</span>(heart)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(num_patients)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>303</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate number of patients with fbs &gt; 120</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>num_highfbs_patients <span class="op">=</span> <span class="bu">len</span>(heart[heart.fbs <span class="op">==</span> <span class="dv">1</span>])</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(num_highfbs_patients)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>45</code></pre>
+</div>
+</div>
+<p>Sometimes, part of an analysis will involve comparing a sample to known population values to see if the sample appears to be representative of the general population.</p>
+<p>By some estimates, about 8% of the U.S. population had diabetes (diagnosed or undiagnosed) in 1988 when this data was collected. While there are multiple tests that contribute to a diabetes diagnosis, fasting blood sugar levels greater than 120 mg/dl can be indicative of diabetes (or at least, pre-diabetes). If this sample were representative of the population, approximately how many people would you expect to have diabetes? Calculate and print out this number.</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>expected_diabetes <span class="op">=</span> <span class="bu">round</span>(num_patients <span class="op">*</span> <span class="fl">0.08</span>,<span class="dv">0</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expected_diabetes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>24.0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The actual number of patients (</span><span class="sc">{</span>num_highfbs_patients<span class="sc">}</span><span class="ss">) with fasting blood sugar levels greater than 120 mg/dl is greater than the expected number of </span><span class="sc">{</span>expected_diabetes<span class="sc">}</span><span class="ss">.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The actual number of patients (45) with fasting blood sugar levels greater than 120 mg/dl is greater than the expected number of 24.0.</code></pre>
+</div>
+</div>
+</section>
+<section id="binomial-test---fasting-blood-sugar-fbs" class="level4">
+<h4 class="anchored" data-anchor-id="binomial-test---fasting-blood-sugar-fbs">2.2 Binomial Test - Fasting Blood Sugar (fbs)</h4>
+<p>Binomial tests are useful for comparing the frequency of some outcome in a sample to the expected probability of that outcome. In our case - does this sample come from a population in which the rate of fbs &gt; 120 mg/dl is equal to 8%?</p>
+<p>Let’s formulate our hypotheses :</p>
+<ul>
+<li><code>Null:</code> This sample was drawn from a population where 8% of people have fasting blood sugar &gt; 120 mg/dl</li>
+<li><code>Alternative:</code> This sample was drawn from a population where more than 8% of people have fasting blood sugar &gt; 120 mg/dl</li>
+</ul>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="op">=</span> binom_test(num_highfbs_patients, n<span class="op">=</span>num_patients, p<span class="op">=</span><span class="fl">0.08</span>,  alternative <span class="op">=</span> <span class="st">'greater'</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.689471951448875e-05</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_1255/443799598.py:1: DeprecationWarning: 'binom_test' is deprecated in favour of 'binomtest' from version 1.7.0 and will be removed in Scipy 1.12.0.
+  p_value = binom_test(num_highfbs_patients, n=num_patients, p=0.08,  alternative = 'greater')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The p-value of </span><span class="sc">{</span>p_value<span class="sc">}</span><span class="ss"> is below the significance threshold of 0.05 and so we can conclude that this sample was drawn from a population where more than 8% of people have fasting blood sugar &gt; 120 mg/dl.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The p-value of 4.689471951448875e-05 is below the significance threshold of 0.05 and so we can conclude that this sample was drawn from a population where more than 8% of people have fasting blood sugar &gt; 120 mg/dl.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="investigation-of-thalach-maximum-heart-rate-achieved-in-exercise-test" class="level3">
+<h3 class="anchored" data-anchor-id="investigation-of-thalach-maximum-heart-rate-achieved-in-exercise-test">3. Investigation of thalach (maximum heart rate achieved in exercise test)</h3>
+<p>Each of the patients in this dataset underwent an exercise test, during which their heart rate was monitored. For each patient, <code>thalach</code> gives us the highest heart rate that the patient achieved during this test.</p>
+<p>The question posed is - is thalach associated with whether or not a patient will ultimately be diagnosed with heart disease?</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(yes_hd.thalach.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1    108
+2    129
+6    160
+8    147
+9    155
+Name: thalach, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(no_hd.thalach.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    150
+3    187
+4    172
+5    178
+7    163
+Name: thalach, dtype: int64</code></pre>
+</div>
+</div>
+<section id="side-by-side-boxplots-of-thalach-levels-for-each-diagnosis-group" class="level4">
+<h4 class="anchored" data-anchor-id="side-by-side-boxplots-of-thalach-levels-for-each-diagnosis-group">3.1 Side by side Boxplots of thalach levels for each diagnosis group</h4>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>heart, x<span class="op">=</span><span class="st">'heart_disease'</span>, y<span class="op">=</span><span class="st">'thalach'</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Heart_Disease_Research_Project_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>From the above it would seem that patients diagnosed with heart disease have a lower mean thalach rate. Let’s save the thalach values for each class of patients.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data for patients WITH heart disease</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>thalach_hd <span class="op">=</span> yes_hd.thalach</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data for patients WITHOUT heart disease</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>thalach_no_hd <span class="op">=</span> no_hd.thalach</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="difference-in-mean-thalach-levels-between-diagnosis-groupings" class="level4">
+<h4 class="anchored" data-anchor-id="difference-in-mean-thalach-levels-between-diagnosis-groupings">3.2 Difference in mean thalach levels between diagnosis groupings</h4>
+<p>And calculate the difference in mean thalach for each diagnosis grouping :</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average thalach levels for heart disease patients</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>mean_thalach_hd <span class="op">=</span> np.mean(thalach_hd)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_thalach_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>139.25899280575538</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average thalach levels for NON-heart disease patients</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>mean_thalach_no_hd <span class="op">=</span> np.mean(thalach_no_hd)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_thalach_no_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>158.3780487804878</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>mean_thalach_diff <span class="op">=</span> mean_thalach_no_hd <span class="op">-</span> mean_thalach_hd</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_thalach_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>19.11905597473242</code></pre>
+</div>
+</div>
+</section>
+<section id="difference-in-median-thalach-levels-between-diagnosis-groupings" class="level4">
+<h4 class="anchored" data-anchor-id="difference-in-median-thalach-levels-between-diagnosis-groupings">3.3 Difference in median thalach levels between diagnosis groupings</h4>
+<p>Let’s also calculate the difference in median thalach:</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average thalach levels for heart disease patients</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>median_thalach_hd <span class="op">=</span> np.median(thalach_hd)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(median_thalach_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>142.0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average thalach levels for NON-heart disease patients</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>median_thalach_no_hd <span class="op">=</span> np.median(thalach_no_hd)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(median_thalach_no_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>161.0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>median_thalach_diff <span class="op">=</span> median_thalach_no_hd <span class="op">-</span> median_thalach_hd</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(median_thalach_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>19.0</code></pre>
+</div>
+</div>
+<p>We’d like to find out if the average thalach of a heart disease patient is significantly different from the average thalach for a person without heart disease. Let’s formulate this hypothesis :</p>
+<ul>
+<li><code>Null:</code> The average thalach for a person with heart disease is equal to the average thalach for a person without heart disease.</li>
+<li><code>Alternative:</code> The average thalach for a person with heart disease is NOT equal to the average thalach for a person without heart disease.</li>
+</ul>
+<p>And test it.</p>
+</section>
+<section id="two-sided-t-test-for-thalach-levels" class="level4">
+<h4 class="anchored" data-anchor-id="two-sided-t-test-for-thalach-levels">3.4 Two-sided t-test for thalach levels</h4>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pval for thalach levels in heart disease patients</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>tstat, pval_2sided <span class="op">=</span> ttest_ind(thalach_hd, thalach_no_hd)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print pval</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval_2sided)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.456964908430172e-14</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The p-value of </span><span class="sc">{</span>pval_2sided<span class="sc">}</span><span class="ss"> is below the significance threshold of 0.05 and so we can conclude that there is a significant difference in average thalach for people with heart disease compared to people with no heart disease.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The p-value of 3.456964908430172e-14 is below the significance threshold of 0.05 and so we can conclude that there is a significant difference in average thalach for people with heart disease compared to people with no heart disease.</code></pre>
+</div>
+</div>
+<p>Using the same process, let’s investigate some other quantitative variables to see if they are also significantly associated with heart disease.</p>
+</section>
+</section>
+<section id="investigation-of-resting-blood-pressure-trestbps---mm-hg" class="level3">
+<h3 class="anchored" data-anchor-id="investigation-of-resting-blood-pressure-trestbps---mm-hg">4. Investigation of Resting Blood Pressure (trestbps) - mm Hg</h3>
+<section id="side-by-side-boxplots-of-trestbps-for-each-diagnosis-group" class="level4">
+<h4 class="anchored" data-anchor-id="side-by-side-boxplots-of-trestbps-for-each-diagnosis-group">4.1 Side by side Boxplots of trestbps for each diagnosis group</h4>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>heart, x<span class="op">=</span><span class="st">'heart_disease'</span>, y<span class="op">=</span><span class="st">'trestbps'</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Heart_Disease_Research_Project_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>It seems that the mean resting blood pressure levels are almost identical for both groups, however for those diagnosed with heart disease, the range is wider.</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data for patients WITH heart disease</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>trestbps_hd <span class="op">=</span> yes_hd.trestbps</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data for patients WITHOUT heart disease</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>trestbps_no_hd <span class="op">=</span> no_hd.trestbps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s formulate our hypotheses :</p>
+<ul>
+<li><code>Null:</code> The average resting blood pressure for a person with heart disease is equal to the average resting blood pressure for a person without heart disease.</li>
+<li><code>Alternative:</code> The average resting blood pressure for a person with heart disease is NOT equal to the average resting blood pressure for a person without heart disease.</li>
+</ul>
+</section>
+<section id="difference-in-mean-resting-blood-pressure-between-diagnosis-groupings" class="level4">
+<h4 class="anchored" data-anchor-id="difference-in-mean-resting-blood-pressure-between-diagnosis-groupings">4.2 Difference in mean resting blood pressure between diagnosis groupings</h4>
+<p>And calculate the difference in mean trestbps :</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average trestbps levels for heart disease patients</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>mean_trestbps_hd <span class="op">=</span> np.mean(trestbps_hd)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_trestbps_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>134.568345323741</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average trestbps levels for NON-heart disease patients</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>mean_trestbps_no_hd <span class="op">=</span> np.mean(trestbps_no_hd)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_trestbps_no_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>129.25</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>mean_trestbps_diff <span class="op">=</span> mean_trestbps_hd <span class="op">-</span> mean_trestbps_no_hd</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_trestbps_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.318345323740999</code></pre>
+</div>
+</div>
+</section>
+<section id="resting-blood-pressure-2-sided-t-test" class="level4">
+<h4 class="anchored" data-anchor-id="resting-blood-pressure-2-sided-t-test">4.3 Resting blood pressure 2-sided T-test</h4>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pval for trestbps levels in heart disease patients</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>tstat, pval_2sided <span class="op">=</span> ttest_ind(trestbps_hd, trestbps_no_hd)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print pval</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval_2sided)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.008548268928594928</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f' The p-value of </span><span class="sc">{</span>pval_2sided<span class="sc">}</span><span class="ss"> is less than the significance threshold of 0.05 and so we can conclude that there is a significant difference in average resting blood pressure for people with heart disease compared to people with no heart disease.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> The p-value of 0.008548268928594928 is less than the significance threshold of 0.05 and so we can conclude that there is a significant difference in average resting blood pressure for people with heart disease compared to people with no heart disease.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="investigation-of-age" class="level3">
+<h3 class="anchored" data-anchor-id="investigation-of-age">5. Investigation of Age</h3>
+<section id="side-by-side-boxplots-of-age-for-each-diagnosis-group" class="level4">
+<h4 class="anchored" data-anchor-id="side-by-side-boxplots-of-age-for-each-diagnosis-group">5.1 Side by side Boxplots of Age for each diagnosis group</h4>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>heart, x<span class="op">=</span><span class="st">'heart_disease'</span>, y<span class="op">=</span><span class="st">'age'</span>)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Heart_Disease_Research_Project_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data for patients WITH heart disease</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>age_hd <span class="op">=</span> yes_hd.age</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data for patients WITHOUT heart disease</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>age_no_hd <span class="op">=</span> no_hd.age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s formulate our hypotheses :</p>
+<ul>
+<li><code>Null:</code> The average age of a person with heart disease is equal to the average age of a person without heart disease.</li>
+<li><code>Alternative:</code> The average age of a person with heart disease is NOT equal to the average age of a person without heart disease.</li>
+</ul>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average age for heart disease patients</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>mean_age_hd <span class="op">=</span> np.mean(age_hd)</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_age_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>56.62589928057554</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average age for NON heart disease patients</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>mean_age_no_hd <span class="op">=</span> np.mean(age_no_hd)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_age_no_hd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>52.58536585365854</code></pre>
+</div>
+</div>
+</section>
+<section id="difference-in-mean-age-between-diagnosis-groupings" class="level4">
+<h4 class="anchored" data-anchor-id="difference-in-mean-age-between-diagnosis-groupings">5.2 Difference in mean age between diagnosis groupings</h4>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>mean_age_diff <span class="op">=</span> mean_age_hd <span class="op">-</span> mean_age_no_hd</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_age_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.040533426917001</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pval for trestbps levels in heart disease patients</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>tstat, pval_2sided <span class="op">=</span> ttest_ind(age_hd, age_no_hd)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print pval</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval_2sided)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>8.955636917529706e-05</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f' The p-value of </span><span class="sc">{</span>pval_2sided<span class="sc">}</span><span class="ss"> is below the significance threshold of 0.05 and so we can conclude that there is a significant difference in average age between people with heart disease and people with no heart disease.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> The p-value of 8.955636917529706e-05 is below the significance threshold of 0.05 and so we can conclude that there is a significant difference in average age between people with heart disease and people with no heart disease.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="chest-pain-and-max-heart-rate" class="level3">
+<h3 class="anchored" data-anchor-id="chest-pain-and-max-heart-rate">6. Chest Pain and Max Heart Rate</h3>
+<p>Next, let’s investigate the relationship between thalach (maximum heart rate achieved during exercise) and the type of heart pain a person experiences, by creating a set of side-by-side box plots of thalach for each chest pain type.</p>
+<section id="side-by-side-boxplots-of-thalach-for-each-type-of-chest-pain" class="level4">
+<h4 class="anchored" data-anchor-id="side-by-side-boxplots-of-thalach-for-each-type-of-chest-pain">6.1 Side by side Boxplots of thalach for each type of chest pain</h4>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create plot</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>heart, x<span class="op">=</span><span class="st">'cp'</span>, y<span class="op">=</span><span class="st">'thalach'</span>)</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Heart_Disease_Research_Project_files/figure-html/cell-48-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>It looks as though atypical angina chest pain sufferers have a higher average thalach rate compared to the other chest pain types.</p>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>thalach_typical <span class="op">=</span> heart.thalach[heart.cp <span class="op">==</span> <span class="st">'typical angina'</span>]</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>thalach_asymptom <span class="op">=</span> heart.thalach[heart.cp <span class="op">==</span> <span class="st">'asymptomatic'</span>]</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>thalach_nonangin <span class="op">=</span> heart.thalach[heart.cp <span class="op">==</span> <span class="st">'non-anginal pain'</span>]</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>thalach_atypical <span class="op">=</span> heart.thalach[heart.cp <span class="op">==</span> <span class="st">'atypical angina'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="anova-test---chest-pain" class="level4">
+<h4 class="anchored" data-anchor-id="anova-test---chest-pain">6.2 ANOVA test - chest pain</h4>
+<p>Let’s run a single hypothesis test to address the following null and alternative hypotheses:</p>
+<ul>
+<li><code>Null:</code> People with typical angina, non-anginal pain, atypical angina, and asymptomatic people all have the same average thalach.</li>
+<li><code>Alternative:</code> People with typical angina, non-anginal pain, atypical angina, and asymptomatic people do not all have the same average thalach.</li>
+</ul>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run ANOVA</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> f_oneway</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>fstat, pval <span class="op">=</span> f_oneway(thalach_typical,thalach_asymptom,thalach_nonangin,thalach_atypical)</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.9065505247705008e-10</code></pre>
+</div>
+</div>
+<p>At a 0.05, or for that matter a 0.01 significance level, the p-value indicates that there is at least one pair of chest pain categories for which people in those categories have significantly different thalach. At this stage, however, we won’t know which pair of chest pain categories! However we can leverage Tukey’s Range Test to unveil this.</p>
+</section>
+<section id="tukeys-range-test---chest-pain" class="level4">
+<h4 class="anchored" data-anchor-id="tukeys-range-test---chest-pain">6.3 Tukey’s Range Test - chest pain</h4>
+<p>Let’s run another hypothesis test to determine which of those pairs are significantly different. We will use an overall type I error rate of 0.05 for all six comparisons.</p>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run Tukey's range test</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.multicomp <span class="im">import</span> pairwise_tukeyhsd</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>tukey_results <span class="op">=</span> pairwise_tukeyhsd(heart.thalach, heart.cp, <span class="fl">0.05</span>)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tukey_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Multiple Comparison of Means - Tukey HSD, FWER=0.05           
+=========================================================================
+     group1           group2      meandiff p-adj   lower    upper  reject
+-------------------------------------------------------------------------
+    asymptomatic  atypical angina  21.7394    0.0  12.7442 30.7347   True
+    asymptomatic non-anginal pain  14.7264    0.0   7.2583 22.1945   True
+    asymptomatic   typical angina   15.276 0.0081   2.9707 27.5812   True
+ atypical angina non-anginal pain   -7.013 0.2481 -16.7587  2.7327  False
+ atypical angina   typical angina  -6.4635 0.6213 -20.2702  7.3432  False
+non-anginal pain   typical angina   0.5495 0.9995 -12.3145 13.4136  False
+-------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>On the basis of the Tukey’s Range Test, we can conclude that there is a statistically significant difference in mean thalach levels between patients suffering from asymptomatic chest pain and the other three pain categories.</p>
+</section>
+<section id="chi-square-test---chest-pain" class="level4">
+<h4 class="anchored" data-anchor-id="chi-square-test---chest-pain">6.4 Chi-Square Test - chest pain</h4>
+<p>Finally, let’s investigate the relationship between the kind of chest pain a person experiences and whether or not they have heart disease.</p>
+<p>Our input for this test needs to be in the form of a contingency table which we can easily create using pandas .crosstab() function :</p>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create contingency table</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.crosstab(heart.heart_disease, heart.cp)</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cp             asymptomatic  atypical angina  non-anginal pain  typical angina
+heart_disease                                                                 
+absence                  39               41                68              16
+presence                105                9                18               7</code></pre>
+</div>
+</div>
+<p>Let’s now run a hypothesis test for the following null and alternative hypotheses:</p>
+<ul>
+<li><code>Null:</code> There is NOT an association between chest pain type and whether or not someone is diagnosed with heart disease.</li>
+<li><code>Alternative:</code> There is an association between chest pain type and whether or not someone is diagnosed with heart disease.</li>
+</ul>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run Chi-square test</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2_contingency</span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>chi2, pval, dof, expected <span class="op">=</span> chi2_contingency(table)</span>
+<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.2517106007837527e-17</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f' The p-value of </span><span class="sc">{</span>pval<span class="sc">}</span><span class="ss"> is below the significance threshold of 0.05 and so we can conclude that there is a significant association between chest pain type and whether or not someone is diagnosed with heart disease.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> The p-value of 1.2517106007837527e-17 is below the significance threshold of 0.05 and so we can conclude that there is a significant association between chest pain type and whether or not someone is diagnosed with heart disease.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="conclusions">7. Conclusions</h3>
+<p>The results of my analyis of the study data are summarised below :</p>
+<section id="cholesterol-levels" class="level4">
+<h4 class="anchored" data-anchor-id="cholesterol-levels">1. Cholesterol levels</h4>
+</section>
+<section id="hypotheses" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses">Hypotheses</h4>
+<ul>
+<li><code>Null:</code> People with heart disease have an average cholesterol level equal to 240 mg/dl</li>
+<li><code>Alternative:</code> People with heart disease have an average cholesterol level that is greater than 240 mg/dl</li>
+</ul>
+</section>
+<section id="conclusion" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion">Conclusion</h4>
+<p>The p-value of 0.0035411033905155707 is below the significance threshold of 0.05 and so we can conclude that <strong>heart disease patients have an average cholesterol level significantly greater than 240 mg/dl</strong>.</p>
+</section>
+<section id="fasting-blood-sugar-fbs" class="level4">
+<h4 class="anchored" data-anchor-id="fasting-blood-sugar-fbs">2. Fasting Blood Sugar (fbs)</h4>
+</section>
+<section id="hypotheses-1" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-1">Hypotheses</h4>
+<ul>
+<li><code>Null:</code> This sample was drawn from a population where 8% of people have fasting blood sugar &gt; 120 mg/dl</li>
+<li><code>Alternative:</code> This sample was drawn from a population where more than 8% of people have fasting blood sugar &gt; 120 mg/dl</li>
+</ul>
+</section>
+<section id="conclusion-1" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion-1">Conclusion</h4>
+<p>The p-value of 4.689471951448875e-05 is below the significance threshold of 0.05 and so we can conclude that <strong>this sample was drawn from a population where more than 8% of people have fasting blood sugar &gt; 120 mg/dl</strong>.</p>
+</section>
+<section id="thalach-maximum-heart-rate-achieved-in-exercise-test" class="level4">
+<h4 class="anchored" data-anchor-id="thalach-maximum-heart-rate-achieved-in-exercise-test">3. Thalach (maximum heart rate achieved in exercise test)</h4>
+</section>
+<section id="hypotheses-2" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-2">Hypotheses</h4>
+<ul>
+<li><code>Null:</code> The average thalach for a person with heart disease is equal to the average thalach for a person without heart disease.</li>
+<li><code>Alternative:</code> The average thalach for a person with heart disease is NOT equal to the average thalach for a person without heart disease.</li>
+</ul>
+</section>
+<section id="conclusion-2" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion-2">Conclusion</h4>
+<p>The p-value of 8.955636917529706e-05 is below the significance threshold of 0.05 and so we can conclude that <strong>there is a significant difference in average thalach for people with heart disease compared to people with no heart disease</strong>.</p>
+</section>
+<section id="resting-blood-pressure" class="level4">
+<h4 class="anchored" data-anchor-id="resting-blood-pressure">4. Resting blood pressure</h4>
+</section>
+<section id="hypotheses-3" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-3">Hypotheses</h4>
+<ul>
+<li><code>Null:</code> The average resting blood pressure for a person with heart disease is equal to the average resting blood pressure for a person without heart disease.</li>
+<li><code>Alternative:</code> The average resting blood pressure for a person with heart disease is NOT equal to the average resting blood pressure for a person without heart disease.</li>
+</ul>
+</section>
+<section id="conclusion-3" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion-3">Conclusion</h4>
+<p>The p-value of 0.008548268928594928 is less than the significance threshold of 0.05 and so we can conclude that <strong>there is a significant difference in average resting blood pressure for people with heart disease compared to people with no heart disease</strong>.</p>
+</section>
+<section id="age" class="level4">
+<h4 class="anchored" data-anchor-id="age">5. Age</h4>
+</section>
+<section id="hypotheses-4" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-4">Hypotheses</h4>
+<ul>
+<li><code>Null:</code> The average age of a person with heart disease is equal to the average age of a person without heart disease.</li>
+<li><code>Alternative:</code> The average age of a person with heart disease is NOT equal to the average age of a person without heart disease.</li>
+</ul>
+</section>
+<section id="conclusion-4" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion-4">Conclusion</h4>
+<p>The p-value of 8.955636917529706e-05 is below the significance threshold of 0.05 and so we can conclude that <strong>there is a significant difference in average age between people with heart disease and people with no heart disease</strong>.</p>
+</section>
+<section id="chest-pain-type" class="level4">
+<h4 class="anchored" data-anchor-id="chest-pain-type">6. Chest pain type</h4>
+</section>
+<section id="hypotheses-1-1" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-1-1">Hypotheses 1</h4>
+<ul>
+<li><code>Null:</code> People with typical angina, non-anginal pain, atypical angina, and asymptomatic people all have the same average thalach.</li>
+<li><code>Alternative:</code> People with typical angina, non-anginal pain, atypical angina, and asymptomatic people do not all have the same average thalach.</li>
+</ul>
+</section>
+<section id="conclusion-1-1" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion-1-1">Conclusion 1</h4>
+<p>On the basis of the Tukey’s Range Test, we can conclude that <strong>there is a statistically significant difference in mean thalach levels between patients suffering from asymptomatic chest pain and the other three pain categories</strong>.</p>
+</section>
+<section id="hypotheses-2-1" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-2-1">Hypotheses 2</h4>
+<ul>
+<li><code>Null:</code> There is NOT an association between chest pain type and whether or not someone is diagnosed with heart disease.</li>
+<li><code>Alternative:</code> There is an association between chest pain type and whether or not someone is diagnosed with heart disease.</li>
+</ul>
+</section>
+<section id="conclusion-2-1" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion-2-1">Conclusion 2</h4>
+<p>On the basis of the Chi-square test, the p-value of 1.2517106007837527e-17 is below the significance threshold of 0.05 and so we can conclude that <strong>there is a significant association between chest pain type and whether or not someone is diagnosed with heart disease</strong>.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

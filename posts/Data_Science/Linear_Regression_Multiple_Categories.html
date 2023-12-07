@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Linear Regression with a Categorical Predictor</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Linear Regression with a Categorical Predictor</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
+  <li><a href="#the-x-matrix" id="toc-the-x-matrix" class="nav-link" data-scroll-target="#the-x-matrix">The X Matrix</a></li>
+  <li><a href="#implementation-and-interpretation" id="toc-implementation-and-interpretation" class="nav-link" data-scroll-target="#implementation-and-interpretation">Implementation and Interpretation</a></li>
+  <li><a href="#equation-1-brooklyn" id="toc-equation-1-brooklyn" class="nav-link" data-scroll-target="#equation-1-brooklyn">Equation 1: Brooklyn</a></li>
+  <li><a href="#equation-2-manhattan" id="toc-equation-2-manhattan" class="nav-link" data-scroll-target="#equation-2-manhattan">Equation 2: Manhattan</a></li>
+  <li><a href="#equation-3-queens" id="toc-equation-3-queens" class="nav-link" data-scroll-target="#equation-3-queens">Equation 3: Queens</a></li>
+  <li><a href="#changing-the-reference-category" id="toc-changing-the-reference-category" class="nav-link" data-scroll-target="#changing-the-reference-category">Changing the Reference Category</a></li>
+  <li><a href="#other-python-libraries-for-fitting-linear-models" id="toc-other-python-libraries-for-fitting-linear-models" class="nav-link" data-scroll-target="#other-python-libraries-for-fitting-linear-models">Other Python Libraries for fitting Linear Models</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Learn how to fit and interpret a linear model with a categorical predictor that has more than two categories.</p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Linear regression is a machine learning technique that can be used to model the relationship between a quantitative variable and some other variable(s). Those other variables can be either quantitative (e.g., height or salary) or categorical (e.g., job industry or hair color). However, if we want to include categorical predictors in a linear regression model, we need to treat them a little differently than quantitative variables. This article will explore the implementation and interpretation of a single categorical predictor with more than two categories.</p>
+</section>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The Data</h3>
+<p>As an example, we’ll use a dataset from <a href="https://github.com/Codecademy/datasets/tree/master/streeteasy">StreetEasy</a> that contains information about housing rentals in New York City. For now, we’ll only focus on two columns of this dataset:</p>
+<ul>
+<li><code>rent:</code> the rental price of each apartment</li>
+<li><code>borough:</code> the borough that the apartment is located in, with three possible values (‘Manhattan’, ‘Brooklyn’, and ‘Queens’)</li>
+</ul>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rentals <span class="op">=</span> pd.read_csv(<span class="st">'data/rentals.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rentals <span class="op">=</span> rentals[[<span class="st">'rent'</span>,<span class="st">'borough'</span>]]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rentals.head(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    rent    borough
+0   2550  Manhattan
+1  11500  Manhattan
+2   3000     Queens
+3   4500  Manhattan
+4   4795  Manhattan</code></pre>
+</div>
+</div>
+</section>
+<section id="the-x-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="the-x-matrix">The X Matrix</h3>
+<p>To understand how we can fit a regression model with a categorical predictor, it’s useful to walk through what happens when we use <code>statsmodels.api.OLS.from_formula()</code> to create a model. When we pass a formula to this function (like ‘weight ~ height’ or ‘rent ~ borough’), it actually creates a new data set, which we don’t see. This new data set is often referred to as the X matrix, and it is used to fit the model.</p>
+<p>When we use a quantitative predictor, the X matrix looks similar to the original data, but with an additional column of 1s in front (the reasoning behind this column of 1s is the subject of a future article — for now, no need to worry about it!). However, when we fit the model with a categorical predictor, something else happens: we end up with additional column(s) of 1s and 0s.</p>
+<p>For example, let’s say we want to fit a regression predicting rent based on borough. We can see the X matrix for this model using <code>patsy.dmatrices()</code>, which is implemented behind the scenes in statsmodels:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> patsy</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> patsy.dmatrices(<span class="st">'rent ~ borough'</span>, rentals)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the first 5 rows of X</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X[<span class="dv">0</span>:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1. 1. 0.]
+ [1. 1. 0.]
+ [1. 0. 1.]
+ [1. 1. 0.]
+ [1. 1. 0.]]</code></pre>
+</div>
+</div>
+<p>The first column is all 1s, just like we would get for a quantitative predictor; but the second two columns were formed based on the borough variable. Remember that the first five values of the borough column looked like this:</p>
+<pre><code>borough
+Manhattan
+Manhattan
+Queens
+Manhattan
+Manhattan</code></pre>
+<p>Note that the second column of the X matrix [1, 1, 0, 1, 1] is an indicator variable for Manhattan: it is equal to 1 where the value of borough is ‘Manhattan’ and 0 otherwise. Meanwhile, the third column of the X matrix ([0, 0, 1, 0, 0]) is an indicator variable for Queens: it is equal to 1 where the value of borough is ‘Queens’ and 0 otherwise.</p>
+<p>The X matrix does not contain an indicator variable for Brooklyn. That’s because this data set only contains three possible values of borough: ‘Brooklyn’, ‘Manhattan’, and ‘Queens’. In order to recreate the borough column, we only need two indicator columns — because any apartment that is not in ‘Manhattan’ or ‘Queens’ must be ‘Brooklyn’. For example, the first row of the X matrix has 0s in both indicator columns, indicating that the apartment must be in Brooklyn. Mathematically, we say that a ‘Brooklyn’ indicator creates collinearity in the X matrix. In regular English: a ‘Brooklyn’ indicator does not add any new information.</p>
+<p>Because ‘Brooklyn’ is missing from the X matrix, it is the reference category for this model.</p>
+</section>
+<section id="implementation-and-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-and-interpretation">Implementation and Interpretation</h3>
+<p>Let’s now fit a linear regression model using statsmodels and print out the model coefficients:</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS.from_formula(<span class="st">'rent ~ borough'</span>, rentals).fit()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Intercept               3327.403751
+borough[T.Manhattan]    1811.536627
+borough[T.Queens]       -811.256430
+dtype: float64</code></pre>
+</div>
+</div>
+<p>In the output, we see two different slopes: one for borough[T.Manhattan] and one for borough[T.Queens], which are the two indicator variables we saw in the X matrix. We can use the intercept and two slopes to construct the following equation to predict rent:</p>
+<pre><code>rent = 3327.4 + 1811.5 ∗ borough[T.Manhattan] − 811.3 ∗ borough[T.Queens]</code></pre>
+<p>To understand and interpret this equation, we can construct separate equations for each borough:</p>
+</section>
+<section id="equation-1-brooklyn" class="level3">
+<h3 class="anchored" data-anchor-id="equation-1-brooklyn">Equation 1: Brooklyn</h3>
+<p>When an apartment is located in Brooklyn, both borough[T.Manhattan] and borough[T.Queens] will be equal to zero and the equation becomes:</p>
+<pre><code>rent = 3327.4 + 1811.5 ∗ 0 − 811.3 ∗ 0
+rent = 3327.4</code></pre>
+<p>In other words, the intercept is the predicted (average) rental price for an apartment in Brooklyn (the reference category).</p>
+</section>
+<section id="equation-2-manhattan" class="level3">
+<h3 class="anchored" data-anchor-id="equation-2-manhattan">Equation 2: Manhattan</h3>
+<p>When an apartment is located in Manhattan, borough[T.Manhattan] = 1 and borough[T.Queens] = 0. The equation becomes:</p>
+<pre><code>rent = 3327.4 + 1811.5 ∗ 1 − 811.3 ∗ 0
+rent = 3327.4 + 1811.5
+rent = 5138.9</code></pre>
+<p>We see that the predicted (average) rental price for an apartment in Manhattan is 3327.4 + 1811.5: the intercept (which is the average price in Brooklyn) plus the slope on borough[T.Manhattan]. We can therefore interpret the slope on borough[T.Manhattan] as the difference in average rental price between apartments in Brooklyn (the reference category) and Manhattan.</p>
+</section>
+<section id="equation-3-queens" class="level3">
+<h3 class="anchored" data-anchor-id="equation-3-queens">Equation 3: Queens</h3>
+<p>When an apartment is located in Queens, borough[T.Manhattan] = 0 and borough[T.Queens] = 1. The equation becomes:</p>
+<pre><code>rent = 3327.4 + 1811.5 ∗ 0 − 811.3 ∗ 1
+rent= 3327.4 − 811.3
+rent = 2516.1</code></pre>
+<p>We see that the predicted (average) rental price for an apartment in Queens is 3327.4 - 811.3: the intercept (which is the average price in Brooklyn) plus the slope on borough[T.Queens] (which happens to be negative because Queens apartments are less expensive than Brooklyn apartments). We can therefore interpret the slope on borough[T.Queens] as the difference in average rental price between apartments in Brooklyn (the reference category) and Queens.</p>
+<p>We can verify our understanding of all these coefficients by printing out the average rental prices by borough:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rentals.groupby(<span class="st">'borough'</span>).mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  rent
+borough               
+Brooklyn   3327.403751
+Manhattan  5138.940379
+Queens     2516.147321</code></pre>
+</div>
+</div>
+<p>The average prices in each borough come out to the exact same values that we predicted based on the linear regression model! For now, this may seem like an overly complicated way to recover mean rental prices by borough, but it is important to understand how this works in order to build up more complex linear regression models in the future.</p>
+</section>
+<section id="changing-the-reference-category" class="level3">
+<h3 class="anchored" data-anchor-id="changing-the-reference-category">Changing the Reference Category</h3>
+<p>In the example above, we saw that ‘Brooklyn’ was the default reference category (because it comes first alphabetically), but we can easily change the reference category in the model as follows:</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS.from_formula(<span class="st">'rent ~ C(borough, Treatment("Manhattan"))'</span>, rentals).fit()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Intercept                                         5138.940379
+C(borough, Treatment("Manhattan"))[T.Brooklyn]   -1811.536627
+C(borough, Treatment("Manhattan"))[T.Queens]     -2622.793057
+dtype: float64</code></pre>
+</div>
+</div>
+<p>In this example, the reference category is ‘Manhattan’. Therefore, the intercept is the mean rental price in Manhattan, and the other slopes are the mean differences for Brooklyn and Queens in comparison to Manhattan.</p>
+</section>
+<section id="other-python-libraries-for-fitting-linear-models" class="level3">
+<h3 class="anchored" data-anchor-id="other-python-libraries-for-fitting-linear-models">Other Python Libraries for fitting Linear Models</h3>
+<p>There are a few different Python libraries that can be used to fit linear regression models. It is therefore important to understand how this implementation differs for each library. In statsmodels, the creation of the X matrix happens completely “behind the scenes” once we pass in a model formula.</p>
+<p>In scikit-learn (another popular library for linear regression), we actually need to construct the indicator variables ourselves. Note that we do not have to construct the extra column of 1s that we saw in the X matrix — this also happens behind the scenes in scikit-learn.</p>
+<p>In order to construct those indicator variables, the pandas <code>get_dummies()</code> function is extremely useful. This is also often referred to as one-hot encoding:</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>rentals <span class="op">=</span> pd.get_dummies(rentals, columns <span class="op">=</span> [<span class="st">'borough'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rentals.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    rent  borough_Manhattan  borough_Queens
+0   2550                  1               0
+1  11500                  1               0
+2   3000                  0               1
+3   4500                  1               0
+4   4795                  1               0</code></pre>
+</div>
+</div>
+<p>Setting drop_first = True tells Python to drop the first indicator variable (for ‘Brooklyn’ in thie case), which is what we need for linear regression. We can then fit the exact same model using <code>scikit-learn</code> as follows:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> rentals[[<span class="st">'borough_Manhattan'</span>, <span class="st">'borough_Queens'</span>]]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> rentals[[<span class="st">'rent'</span>]]</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>regr <span class="op">=</span> LinearRegression()</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>regr.fit(X, y)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(regr.intercept_)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(regr.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[3327.40375123]
+[[1811.5366274  -811.25642981]]</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>We’ve walked through an example of how to implement and interpret categorical predictors in a linear regression model. In the process, we’ve learned a little bit about what happens behind the scenes when we fit a linear model using statsmodels or scikit-learn. This knowledge will help prepare us to fit and interpret more complex models that build upon these foundations.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

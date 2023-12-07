@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Data Viz Basics Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Viz Basics Project</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#building-effective-data-visualizations" id="toc-building-effective-data-visualizations" class="nav-link active" data-scroll-target="#building-effective-data-visualizations">Building Effective Data Visualizations</a></li>
+  <li><a href="#chart-type" id="toc-chart-type" class="nav-link" data-scroll-target="#chart-type">Chart Type</a></li>
+  <li><a href="#color-palette" id="toc-color-palette" class="nav-link" data-scroll-target="#color-palette">Color Palette</a></li>
+  <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations">Annotations</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="building-effective-data-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="building-effective-data-visualizations">Building Effective Data Visualizations</h3>
+<p>ou’ve joined Shinji, Paola, and Raj in Dr.&nbsp;Dinkle’s ecology lab! The lab is swamped with its latest project after a successful round of funding (award-winning board game designer Claude Tuber wants to turn the lab’s work into the tabletop role-playing game of a generation). They’re excited to have your data visualization skills!</p>
+<p>In a few weeks the lab will present data on birdfeeder birds to the Backyard Birders Association of nearby Dandelion City. One component is a visualization of the wingspans of the three most common backyard birds in Dandelion City: the Northern Cardinal, American Robin, and Blue Jay.</p>
+<p>The lab’s paid intern Janis is trying her chops at data visualization, and will be drafting all of the visuals for this presentation. With your knowledge of data visualization, your task is to help her make the most effective visualization of wingspan data to present to the backyard birders of Dandelion City.</p>
+<p>Here’s the data we’re working with:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_Project_files/figure-html/82bacc3f-c4fd-4538-8168-027502186c26-1-58bc644f-48b1-445d-92a0-d76592a51bb8.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">birds.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="chart-type" class="level3">
+<h3 class="anchored" data-anchor-id="chart-type">Chart Type</h3>
+<p>First up… picking the right chart type for our data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_Project_files/figure-html/be1e1416-3c1e-4c41-8af6-9d8cd2493dff-1-a80a91bd-ed74-4c5a-8b28-58d182d4d529.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">draft_viz_birds.JPG</figcaption>
+</figure>
+</div>
+<p>The range chart, option #1. It’s perfect for this kind of data because we’re dealing with, well, ranges! Strong work, Janis.</p>
+<p>#2 is the line chart – there’s a very good chance that won’t work simply because we’re not measuring a change over time. And indeed, it doesn’t make sense for this data, and having “Bottom of Range” and “Top of Range” as axis markers is pretty clunky.</p>
+<p>Finally, #3 won’t work because we can’t use a scatterplot for categorical data (like species of birds). Scatterplots need to have a continuous, numerical variable on each axis.</p>
+</section>
+<section id="color-palette" class="level3">
+<h3 class="anchored" data-anchor-id="color-palette">Color Palette</h3>
+<p>Now that we’ve gotten the chart type to align with our data, let’s move on to the next important consideration: color.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_Project_files/figure-html/9cc9364d-1912-43c0-bd00-7341a779e875-1-469abe65-2c35-4c8d-adb6-e2db4489a7d1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">color_palette.JPG</figcaption>
+</figure>
+</div>
+<p>Color palette #2. This is a categorical color palette and is colorblind friendly.</p>
+<p>Palette #1 is a categorical palette, but when we evaluate the colors based on their values (how dark or light they are), it turns out that these colors will all look very similar in black and white. They’ll also be harder to distinguish for audience members with moderate or severe partial colorblindness.</p>
+<p>Palette #3 is colorblind friendly, because its colors are in light, medium, and dark values, but this palette is sequential. Our color choices should reinforce the meaning of our data, and in this case, that means using a categorical palette for categorical data.</p>
+<p>Finally, it’s true that this particular chart will be readable basically no matter what palette we choose (in other words, there’s enough information redundancy that we’re not relying on color alone to understand the chart). But it’s also true that good color choices help audiences to understand a chart more efficiently and comprehensively, so it’s worth being thoughtful even when color is a redundant visual cue!</p>
+</section>
+<section id="annotations" class="level3">
+<h3 class="anchored" data-anchor-id="annotations">Annotations</h3>
+<p>With chart type and color palette sorted, let’s look on to annotations that will help our audience make the most of the final chart.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_Project_files/figure-html/48681708-88f0-4df6-9df8-e9379379afb0-1-3090666e-432e-45c4-850d-2fdc7e6f96bb.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">annotate_choices.JPG</figcaption>
+</figure>
+</div>
+<p>Annotations #1. For our audience, it has the best balance of necessary information and breathing room. Importantly, it tells us that the data shows wingspan ranges, and tells us the common names of the birds shown.</p>
+<p>#2 has some extra information that doesn’t improve the data argument of this chart. It’s not relevant, for example, what the Latin names of these common birds are. (It would certainly be relevant for some audiences, but we know we’re presenting to the backyard birders of Dandelion City.) Additionally, the title is wordier than needed. The number labels on the ranges could be left up to the discretion of the chart-maker: they do make the information more readily available, but they clutter the chart and the same goal could be accomplished with horizontal gridlines instead.</p>
+<p>Chart #3 is too pared back. The title doesn’t include the key word “ranges” that makes this chart make sense. And the species names aren’t listed out in full anywhere. Finally, removing the end caps from the range lines makes it harder to identify which numbers the ranges correspond to.</p>
+</section>
+<section id="design" class="level3">
+<h3 class="anchored" data-anchor-id="design">Design</h3>
+<p>And finally, let’s finish up with some design considerations :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Viz_Project_files/figure-html/ffb86713-1b56-4272-bfc6-71067ef249c2-1-2ae9ebb6-952b-4ed2-a2f0-1948c2da30a1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">design.JPG</figcaption>
+</figure>
+</div>
+<p>Janis did a great job with this one. #1 or #2 will both fly here! Some goals of good design are to let the information breathe, not get in the way of the audience’s understanding, and to create visual balance (which doesn’t necessarily mean symmetry). We’d say #1 and #2 both do this in slightly different ways.</p>
+<p>Design #1 doesn’t make any specific changes from the last round, and it doesn’t need to. The chart is on the plainer side, but that’s a great design choice for a lot of data viz.&nbsp;It’s more important to keep the visual consistent and balanced with design choices like even spacing and consistent font style/size than it is to use eye-catching or creative designs. We gotta walk before we fly!</p>
+<p>If we don’t feel like walking… Design #2 is a little more designed. A range chart can work vertically or horizontally, and Janis’s horizontal design speaks to the horizontal nature of the thing being measured: a bird’s wingspan. The background color softens the chart overall by very slightly reducing contrast between background and foreground, but it maintains enough contrast to be easily readable. Some viewers might appreciate how off-white looks more intentional than pure white. Finally, the chart is overall a little more colorful since the names of the birds are colored in this version – more colorful can make charts appear more interesting, appealing, and readable, which is nothing to sneeze at.</p>
+<p>Design #3 is a miss. Sorry Janis :/ There’s no wrong information here, but this chart incorporates design choices that don’t advance the visual argument and that make the chart harder to read. The background pattern is busy without adding any information. The title font brings the viz up to 3 fonts, which makes the typography look mismatched rather than dynamic. The fonts on the axes also swap between which is used for the axis labels and axis tick labels – this inconsistency is just sloppy design. Finally, the axis labels are also crowding the visualization a little bit – even a millimeter of space on each one would make the visualization look less cramped.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

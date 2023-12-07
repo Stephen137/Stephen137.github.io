@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Expected Value of the Binomial Distribution</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Expected Value of the Binomial Distribution</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#variance-of-the-binomial-distribution" id="toc-variance-of-the-binomial-distribution" class="nav-link active" data-scroll-target="#variance-of-the-binomial-distribution">Variance of the Binomial Distribution</a></li>
+  <li><a href="#properties-of-expectation" id="toc-properties-of-expectation" class="nav-link" data-scroll-target="#properties-of-expectation">Properties of Expectation</a></li>
+  <li><a href="#properties-of-variance" id="toc-properties-of-variance" class="nav-link" data-scroll-target="#properties-of-variance">Properties of Variance</a></li>
+  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">Review</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Other types of distributions have expected values and variances based on the given parameters, just like the Poisson distribution. Recall that the Binomial distribution has parameters</p>
+<ul>
+<li><code>n</code>, representing the number of events</li>
+<li><code>p</code> , representing the probability of “success” (or the specific outcome we are looking for occurring).</li>
+</ul>
+<p>Consider the following scenario:</p>
+<p>We flip a fair coin 10 times and count the number of heads we observe. How many heads would you expect to see? You might naturally think 5, and you would be right! What we are doing is calculating the <code>expected value</code> without even realizing it. We take the 10 coin flips and multiply it by the chance of getting heads, or one-half, getting the answer of 5 heads. And that is exactly the equation for the expected value of the binomial distribution:</p>
+<pre><code>Expected(#ofHeads)= E(X) = n × p</code></pre>
+<p>Note that if we were counting the number of heads out of 5 fair coin flips, the expected value would be:</p>
+<pre><code>5 × 0.5 = 2.5</code></pre>
+<p>It is ok for the expected value to be a fraction or have decimal values, though it would be impossible to observe 2.5 heads.</p>
+<p>Let’s look at a different example.</p>
+<p>Let’s say we forgot to study, and we are going to guess B on all 20 questions of a multiple-choice quiz. If we assume that every letter option (A, B, C, and D) has the same probability of being the right answer for each question, how many questions would we expect to get correct?</p>
+<p><code>n</code> would equal 20, because there are 20 questions -<code>p</code> would equal 0.25, because there is a 1 in 4 chance that B will be the right answer.</p>
+<p>Using the equation, we can calculate:</p>
+<pre><code>Expected(#rightanswers) = E(X) = 20 × 0.25 = 5</code></pre>
+<blockquote class="blockquote">
+<p>Q. A certain basketball player has an 85% chance of making a given free throw and takes 20 free throws. Calculate the expected value.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A. The expected value is 20 x 0.85 = 17.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q. Let’s say a student has a 98% chance of arriving early or on time (by deduction 2% chance of being late) to class. Calculate the expected number of times the student will arrive late to class throughout the 180 school days in a school year.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A. The expected value is 180 x 0.02 = 3.6</p>
+</blockquote>
+<section id="variance-of-the-binomial-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="variance-of-the-binomial-distribution">Variance of the Binomial Distribution</h3>
+<p>Variance for the Binomial distribution is similarly calculated using the n and p parameters. Let’s use the 10 fair coin flips example to try to understand how variance is calculated. Each coin flip has a certain probability of landing as heads or tails: 0.5 and 0.5, respectively.</p>
+<p>The variance of a single coin flip will be the probability that the success happens times the probability that it does not happen: p·(1-p), or 0.5 x 0.5. Because we have n = 10 number of coin flips, the variance of a single fair coin flip is multiplied by the number of flips. Thus we get the equation:</p>
+<pre><code>Variance(#ofHeads) = Var(X) = n × p × (1 − p)
+Variance(#ofHeads) = 10 × 0.5 × (1 − 0.5) = 2.5</code></pre>
+<p>Let’s consider our 20 multiple choice quiz again. The variance around getting an individual question correct would be p·(1-p), or 0.25 x 0.75. We then multiply this variance for all 20 questions in the quiz and get:</p>
+<pre><code>Variance(#ofCorrectAnswers) = 20 × 0.25 × (1 − 0.25) = 3.75</code></pre>
+<p>We would expect to get 5 correct answers, but the overall variance of the probability distribution is 3.75.</p>
+<blockquote class="blockquote">
+<p>Q. A certain basketball player has an 85% chance of making a given free throw. Calculate the variance of free throws made from 20 shots.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A. The variance is calculated as 20 X 0.85 X (1 - 0.85) = 2.55</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q. Let’s say a student has a 98% chance of arriving on time to class. Calculate the variance of days the student will arrive late to class throughout the 180 school days in a school year.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A. The variance is calculated as 180 x 0.02 x (1 - 0.02) = 3.528</p>
+</blockquote>
+</section>
+<section id="properties-of-expectation" class="level3">
+<h3 class="anchored" data-anchor-id="properties-of-expectation">Properties of Expectation</h3>
+<p>The expected value of two independent random variables is the sum of each expected value separately:</p>
+<pre><code>E(X+Y) = E(X) + E(Y)</code></pre>
+<p>For example, if we wanted to count the total number of heads between 10 fair quarter flips and 6 fair nickel flips, the expected value combined would be 5 heads (from the quarters) and 3 heads (from the nickels) so 8 heads overall.</p>
+<p>Multiplying a random variable by a constant a changes the expected value to be a times the expected value of the random variable:</p>
+<pre><code>E(aX) =aE(X)</code></pre>
+<p>For example, the expected number of heads from 10 fair coin flips is 5. If we wanted to calculate the number of heads from this event run 4 times (40 total coin flips), the expected value would now be 4 times the original expected value, or 20.</p>
+<p>Adding a constant a to the distribution changes the expected value by the value a:</p>
+<pre><code>E(X+a) = E(X) + a</code></pre>
+<p>Let’s say that a test was given and graded, and the average grade was 78 out of 100 points. If the teacher decided to curve the grade by adding 2 points to everyone’s grade, the average would now be 80 points.</p>
+</section>
+<section id="properties-of-variance" class="level3">
+<h3 class="anchored" data-anchor-id="properties-of-variance">Properties of Variance</h3>
+<p>Increasing the values in a distribution by a constant <code>a</code> does not change the variance:</p>
+<pre><code>Var(X + a) = Var(X)</code></pre>
+<p>This is because the variance of a constant is 0 (there is no range for a single number). Adding a constant to a random variable does not add any additional variance. Let’s take the previous example with the teacher curving grades: though the expected value (or average) of the test changes from 78 to 80, the spread and dispersion (or variance) of the test scores stays the same.</p>
+<p>Scaling the values of a random variable by a constant a scales the variance by the constant squared:</p>
+<pre><code>Var(aX)=a^2 Var(X)</code></pre>
+<p>The variance of the sum of two random variables is the sum of the individual variances:</p>
+<pre><code>Var(X + Y) = Var(X) + Var(Y)</code></pre>
+<p>This principle ONLY holds if the X and Y are independent random variables. Let’s say that X is the event getting a heads on a single fair coin flip, and Y is the event rolling a 2 on a fair six-sided die:</p>
+<pre><code>Var(X) = 0.5 ∗ (1 − 0.5) = 0.25
+
+Var(Y) = 0.167 ∗ (1 − 0.167) = 0.139
+
+Var(X + Y) = Var(X) + Var(Y) = 0.25 + 0.139 = 0.389</code></pre>
+<blockquote class="blockquote">
+<p>Q. At the end of the year, your company’s boss decides that the end-of-year bonus will be 8% of each employee’s salary. If the average salary in the company is $75,000, what is the expected value (or average value) of the bonuses?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A. Expected value is 75000 * 0.08 = 6000</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q. Let’s say that the number of goals a soccer team scores follows the Poisson distribution with lambda equal to four.</p>
+</blockquote>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>num_goals <span class="op">=</span> stats.poisson.rvs(<span class="dv">4</span>, size <span class="op">=</span> <span class="dv">100</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(num_goals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 7  9  2  6  4  4  4  8  3  4  1  5  3  1 10  2  3  6  3  5  4  4  3  5
+  6  4  6  9  6  1  6  1  5  5  5  4  4  3  4  4  1  2  3  6  6  7  6  2
+  6  6  4  6  3  4  4  9  6  2  4  6  3  5  7  5  3  3  2  3  5  5  7  2
+  5  6  4  3  5  7  5  1  4  3  7  0  3  7  4  1  4  2  5  5  2  1  2  4
+  3  3  2  3]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.var(num_goals))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.0971</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. Someone thinks that the soccer team is being robbed of goals each game and decides that they are going to count each goal from this team as 2 goals. Demonstrate the Var(aX)=a^2 Var(X) properties of variance.</p>
+</blockquote>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>num_goals_2 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> num_goals</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.var(num_goals_2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>16.3884</code></pre>
+</div>
+</div>
+<p>As expected the new variance is 2 squared (that is 4) times 4.0971 = 16.3884.</p>
+</section>
+<section id="review" class="level3">
+<h3 class="anchored" data-anchor-id="review">Review</h3>
+<blockquote class="blockquote">
+<p>Q1. You work at ambulance dispatch where the number of calls that come in daily follows the Poisson distribution with lambda equal to 9. There’s a rule that a team can go on no more than 12 calls a day. But how often could this happen?</p>
+</blockquote>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 9, probability of observing more than 12</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>calls <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> stats.poisson.cdf(<span class="dv">12</span>, <span class="dv">9</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.1242265708290351</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q2. Let’s say that you have to call in a backup team if you have 10 or more calls in a given day. But you don’t want to have to call in a backup team unless they really will be needed. But what is the probability that they will be called and not needed? i.e calculate the probability of observing a minimum of 10 calls, but no more than 12.</p>
+</blockquote>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected value = 9, probability of observing between 10 and 12</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>false_backup <span class="op">=</span> stats.poisson.cdf(<span class="dv">12</span>, <span class="dv">9</span>) <span class="op">-</span> stats.poisson.cdf(<span class="dv">11</span>, <span class="dv">9</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(false_backup)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.07276504664162309</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q3. A certain tennis star has a first-serve rate of 62%. Let’s say they serve 80 times in a given match. What is the expected value of the number of serves they make?</p>
+</blockquote>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>expected_serves <span class="op">=</span> <span class="dv">80</span> <span class="op">*</span> <span class="fl">0.62</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expected_serves)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>49.6</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q4. At the same first-serve rate, what is the variance of this player’s first-serves?</p>
+</blockquote>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>variance_serves <span class="op">=</span> <span class="dv">80</span> <span class="op">*</span> <span class="fl">0.62</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> <span class="fl">0.62</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(variance_serves)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>18.848000000000003</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Data Literacy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Literacy</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why" id="toc-why" class="nav-link active" data-scroll-target="#why">Why?</a></li>
+  <li><a href="#data-gaps" id="toc-data-gaps" class="nav-link" data-scroll-target="#data-gaps">Data Gaps</a></li>
+  <li><a href="#addressing-bias" id="toc-addressing-bias" class="nav-link" data-scroll-target="#addressing-bias">Addressing Bias</a></li>
+  <li><a href="#what-is-statistics" id="toc-what-is-statistics" class="nav-link" data-scroll-target="#what-is-statistics">What is Statistics</a></li>
+  <li><a href="#statistics-at-work" id="toc-statistics-at-work" class="nav-link" data-scroll-target="#statistics-at-work">Statistics At Work</a></li>
+  <li><a href="#high-stakes-visualizations" id="toc-high-stakes-visualizations" class="nav-link" data-scroll-target="#high-stakes-visualizations">High Stakes Visualizations</a></li>
+  <li><a href="#the-challenger-visualizations" id="toc-the-challenger-visualizations" class="nav-link" data-scroll-target="#the-challenger-visualizations">The Challenger Visualizations</a></li>
+  <li><a href="#critically-analysing-the-challenger-visualizations" id="toc-critically-analysing-the-challenger-visualizations" class="nav-link" data-scroll-target="#critically-analysing-the-challenger-visualizations">Critically Analysing the Challenger visualizations</a></li>
+  <li><a href="#numeracy" id="toc-numeracy" class="nav-link" data-scroll-target="#numeracy">Numeracy</a></li>
+  <li><a href="#causal-analysis-and-john-snows-cholera-theory-part-1" id="toc-causal-analysis-and-john-snows-cholera-theory-part-1" class="nav-link" data-scroll-target="#causal-analysis-and-john-snows-cholera-theory-part-1">Causal Analysis and John Snow’s cholera theory: Part 1</a></li>
+  <li><a href="#causal-analysis-and-john-snows-cholera-theory-part-2" id="toc-causal-analysis-and-john-snows-cholera-theory-part-2" class="nav-link" data-scroll-target="#causal-analysis-and-john-snows-cholera-theory-part-2">Causal Analysis and John Snow’s cholera theory: Part 2</a></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap Up</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Establishing how to think about data will set you up for success when you start analyzing it.</p>
+<pre><code>Every job is a data job!
+
+– every Data Scientist ever</code></pre>
+<p>Organizations are fueled by data, and data scientists and analysts are at the forefront of working with it. But they don’t work alone, and even the most technically sophisticated data scientist will need to communicate about data.</p>
+<p>This unit will help you build the conceptual foundation you need both to work with data yourself and present your insights to adjacent teams.</p>
+<p>There’s no programming yet, but we will get there. For now, join us on a journey to explore the building blocks of data, and establish common vocabulary and ideas.</p>
+<section id="why" class="level3">
+<h3 class="anchored" data-anchor-id="why">Why?</h3>
+<p>First things first, let’s answer a crucial question: Why is data literacy important? In other words, why should anyone aim to be data literate?</p>
+<p>There are a lot of good answers! In this lesson, we’ll see how data literacy helped 19th-century doctors end cholera epidemics and discover the root cause of the disease. We’ll explore how it has helped reveal discrimination in hard-to-measure settings like hiring practices and advance medical knowledge by improving clinical trial data quality.</p>
+<p>Data literacy also helps us to produce readable work for other people. As we’ll see, even when good data is there, the inability to tell a clear story can have dire consequences.</p>
+<p>It’s no secret that data is an incredibly powerful tool. With all that’s at stake, it’s also not a surprise that understanding a data-driven conclusion can feel overwhelming sometimes – both as an audience member and as an analyst. No matter which side we find ourselves on, data literacy is about how well we read, interpret, and communicate with data.</p>
+<p>Let’s dive in with some case studies about data literacy triumphs and failures.</p>
+</section>
+<section id="data-gaps" class="level3">
+<h3 class="anchored" data-anchor-id="data-gaps">Data Gaps</h3>
+<p><code>Garbage in, garbage out</code> is a data-world phrase that means “our data-driven conclusions are only as strong, robust, and well-supported as the data behind them.”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/fb6a34ad-6a57-4deb-9ba3-5dd3730291eb-1-36f7cc27-ebd5-4a7e-bf48-030c0d4931f4.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">garbin_garbout.JPG</figcaption>
+</figure>
+</div>
+<p>For example: we have a lot of data on heart attacks, but there’s room for improvement when it comes to data quality. Heart disease is the leading cause of death in women, but as of 2021, women account for only 38% of participants in relevant research studies.</p>
+<p>There are key differences between men’s and women’s heart attacks that impact how they’re treated, but our data doesn’t yet adequately outline those differences. This leads ultimately to worse outcomes in treatment and a higher post-heart attack mortality rate for women.</p>
+<p>How does data literacy factor in? Part of understanding and communicating with data means <code>asking the right questions so that we end up with useful, relevant data</code>. We can already answer lots of questions about heart attacks, but we won’t learn the ins and outs of women’s heart attacks by studying mostly men.</p>
+<p>Part of practicing good data literacy means asking…</p>
+<ul>
+<li>Do we have sufficient data to answer the question at hand?</li>
+<li>Can my data answer my exact question?</li>
+</ul>
+<p>Even if we have an excellent mathematical model of a situation, it can only make predictions as good as the data that goes into it. Garbage data will make garbage predictions, no matter how good the model is.</p>
+<p>Imagine having a model that can accurately predict the weather in Rio de Janeiro 90% of the time, but then using data from only United States weather stations as the input values. Or using temperature data that was collected only at noon each day. Or using wind speed data collected only by estimating with a licked finger held up in the breeze. No matter how good the model is, it will need precise and accurate data from Brazil to give a helpful output.</p>
+</section>
+<section id="addressing-bias" class="level3">
+<h3 class="anchored" data-anchor-id="addressing-bias">Addressing Bias</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/ba6540d8-37e3-4ab3-b994-52c4cc722b07-1-7dae7de3-4cda-489c-816d-2005c769c700.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">bias.JPG</figcaption>
+</figure>
+</div>
+<p>One question the data on heart attacks might prompt is “why did the trials have only 38% female participation?”</p>
+<p>In part, for historical reasons: in the 1950s, pregnant women in Europe and Canada were prescribed a drug called thalidomide for morning sickness. This drug resulted in severe birth defects and was taken off the market. As a result, in 1977 the US Food and Drug Administration (FDA) recommended excluding from early-stage clinical trials all women who could become pregnant. While intended to protect women, the recommendation put them at risk in a different way, limiting our knowledge of the effects of drugs on women’s bodies.</p>
+<p>The FDA reversed these recommendations in the 1990s, and today government-funded clinical trials <strong>must</strong> include women and other minorities. Yet, the trials don’t need to include minority groups at representative levels, and the majority of drug trials in the US aren’t government-funded anyway.</p>
+<p>In this case, participation might also be impacted by media representations. In typical TV or movie heart attacks, we almost always see a man clutching at his arm or chest. Not only do women have heart attacks too (we wouldn’t know it from watching TV), they rarely experience chest pain as a symptom.</p>
+<p>(In fact, in the top 20 “heart attack” movies* on IMDB, only two heart attacks happen to women: one is fake, and the other is a disguised murder. So… zero real heart attacks in women in a list of top 20 “heart attack” movies!)</p>
+<p>It might seem like a stretch from data literacy to TV heart attacks, but sound science means examining bias and controlling variables wherever possible.</p>
+<p>Part of practicing good data literacy means asking…</p>
+<ul>
+<li>Who participated in the data?</li>
+<li>Who is left out?</li>
+<li>Who made the data?</li>
+</ul>
+<p>*top movies with keyword “heart attack” where there is actually a heart attack mentioned or shown in the movie – not The Exorcist, which is on that list because people have had heart attacks while watching it… yikes!</p>
+</section>
+<section id="what-is-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-statistics">What is Statistics</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/3d36fb4b-1d55-4146-b43a-77392ff16e62-1-4cba5eab-b5b2-471f-995e-bdbf7dcaeade.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">stats.JPG</figcaption>
+</figure>
+</div>
+<p>Now let’s check out a case study that showcases the value of data literacy in the legal system.</p>
+<p>Big, amorphous injustices like hiring discrimination are hard to prove in court. Hiring discrimination is a pattern of biased behavior towards candidates. This bias results in qualified candidates not getting hired because of their traits.</p>
+<p>Throughout the 1900s, companies in the US were able to justify hiring on a case-by-case basis. After all, it’s legal to hire or not hire candidates based in part on soft qualities such as “fit” and “office culture.” But if these qualities are a mask for factors like a candidate’s race, gender, or religion, the company has broken anti-discrimination laws.</p>
+<p>Usually, a lawyer would have to show the many individual cases that proved a company was discriminatory. Instead, lawyer Elaine W. Shoben shifted the burden of proof to companies. How was she able to do this with data literacy? She used the power of statistics! <code>Statistics helps us test the likelihood of an event happening by random chance versus systematically</code>.</p>
+<p>What does that actually mean? For example, you’re more likely to see more cars on the road at 8am on Wednesday than at 8am on Sunday. This isn’t a random occurrence – the increase in cars is systematically explainable by the existence of rush hour due to standard business hours. It is statistically more likely to see many cars during rush hour than at other times.</p>
+<p>We’ll see in the next exercise exactly how Elaine Shoben used statistics to change how we assess bias in hiring.</p>
+</section>
+<section id="statistics-at-work" class="level3">
+<h3 class="anchored" data-anchor-id="statistics-at-work">Statistics At Work</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/30f9a213-fbe9-4464-9264-80367187fefe-1-6c299f90-5997-44d0-b3da-c853b8759893.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">logic_steps.JPG</figcaption>
+</figure>
+</div>
+<p>So how did Elaine Shoben show that discrimination was at play in hiring decisions? It’s a bit heavy on the legal jargon, but we can break it down to see how it works.</p>
+<ol type="1">
+<li>First, she said that we can use statistics to see if the hiring results of subjective interviews are so unlikely that they couldn’t have happened by chance. In other words, is it even possible (in statistical terms) that the pattern of who got the job could be based on random chance?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/7392f673-0f98-4cda-b534-2fd741de2d5b-1-378322da-23e2-4b19-aace-98e466e08dbd.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">example1.JPG</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>If the results couldn’t happen by chance, then the alternative is that they must happen by “purposeful exclusion.” In other words, it would mean people are excluded from the job by discriminatory hiring practices.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/7392f673-0f98-4cda-b534-2fd741de2d5b-3-f2b246ce-38f9-47e5-a60b-87cc3fc8bc92.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">example2.JPG</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>If the employers are aware of the “exclusionary effect,” and they continue to use that same hiring process, then they’re showing a “reckless disregard” for the rights of individual candidates not to be discriminated against in the hiring process. (Read it a few times if you need to!)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/7392f673-0f98-4cda-b534-2fd741de2d5b-4-fe395e1f-07f5-4002-b98e-8d86c0d006d8.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">example3.JPG</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Once we acknowledge that, the burden shifts to employers to show why their hiring requirements are valid and necessary. We no longer assume the hiring practices are legitimate and make job candidates prove otherwise</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/7392f673-0f98-4cda-b534-2fd741de2d5b-2-e8d0beb7-0b0a-4f87-ac05-57430ba61543.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">example4.JPG</figcaption>
+</figure>
+</div>
+<p>Statistics at work! That’s definitely a bit of legal jargon, but how cool is it to use statistics to reveal a systematic pattern of discrimination, rather than trying to piece together a case from individual experiences. That’s really what stats is all about.</p>
+</section>
+<section id="high-stakes-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="high-stakes-visualizations">High Stakes Visualizations</h3>
+<p>Okay, we’ve walked through recognizing data quality and bias in healthcare and using statistics to answer big legal questions. Where else does data literacy come into play?</p>
+<p>Data visualization is one of the most visible and obvious places we interact with data. It helps us to explore and understand data-driven arguments and is a powerful tool for communication.</p>
+<p>While most data viz we see is of the “everyday” variety, in this case study we’ll look at a highly consequential visualization: one of the charts that NASA-contracted engineers used to make the argument that the Challenger space shuttle should not take off on January 28, 1986.</p>
+<p>The Challenger space shuttle carried seven US astronauts who were supposed to deploy a satellite and study Halley’s Comet while they were in orbit. Less than two minutes after takeoff, however, the shuttle exploded, killing all seven crew members.</p>
+<p>The explosion was caused by a failure of two O-rings: small rubber rings that helped create an airtight seal between the space shuttle and its launch fuel supply. Before the launch, engineers were concerned about how the low-temperature forecast would affect the O-rings’ ability to make a proper seal.</p>
+<p>The engineers made their arguments in favor of postponing the launch using, in part, a series of data visualizations that showed launch success rates at various temperatures. Tragically, their arguments did not prevent the launch from proceeding.</p>
+</section>
+<section id="the-challenger-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="the-challenger-visualizations">The Challenger Visualizations</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/164cbf39-436a-455c-ad32-203bd92d5902-1-68823005-7595-419a-8395-f863c2322d14.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">challenger_viz.JPG</figcaption>
+</figure>
+</div>
+<p>Before we pick apart this visualization, it’s worth saying that hindsight is 20/20. If it were as simple as “obviously, the O-rings were going to fail,” then the Challenger would never have been launched. This event was the culmination of several years rather than an isolated incident, so there were many other factors at play.</p>
+<p>Following the incident, a Presidential Commission was initiated to investigate the causes of the catastrophe. The commission determined that it was directly the result of O-ring failure. However, they also concluded that management from both NASA and Morton Thiokol (the company NASA had contracted to design and maintain its rocket boosters) had ignored evidence that indicated there was significant risk of O-ring failure at lower temperature launches. Additionally, the commission noted that they had failed to adequately test the equipment they were using, despite consistent requests from engineers for several years preceding the incident.</p>
+<p>In short, it is unlikely that this particular visualization played a pivotal role in the decision-making conversation that ended with management settling to launch as scheduled.</p>
+<p>From a data literacy standpoint, though, we can definitely see how a better visualization would make the trend of the data more apparent. The engineers had the data to know that O-rings began to fail at lower temperatures. But their visualization was not created in a way that made that danger clear.</p>
+<p>The visualization of rocket launches was organized by date, which made it hard to see the pattern of launch failures at lower temperatures (see the top-right image). When Edward Tufte later organized the rockets by temperature, that pattern became much more obvious (see the lower image). Additionally, including all of the rocket symbols for decoration didn’t make the argument clearer, but instead added distracting visuals to the page.</p>
+<p>The visualization would have been easier to interpret with fewer distracting lines and a more direct link between temperature and launch failures.</p>
+<p>While most of us will (thankfully) never be in the position of making or interpreting life-or-death data visualizations, good data literacy helps us to make informed decisions everyday. Should I bring an umbrella? Should I postpone my trip to avoid public health risks? Should I buy stock in Blockbuster? Whatever the questions, improving our data literacy can help us reach the answers.</p>
+</section>
+<section id="critically-analysing-the-challenger-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="critically-analysing-the-challenger-visualizations">Critically Analysing the Challenger visualizations</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/5db9e3a3-e839-4aec-8e99-f91c1920dafe-2-c5a433d1-8706-4d67-949a-362bca069667.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">challenger_viz.JPG</figcaption>
+</figure>
+</div>
+<p>Take a minute to look through the visualization above.</p>
+<p>The top-right image was part of the original visualizations that NASA engineers presented to make their case. It shows the launches organized by date, and no pattern of launch failure is clear. What’s more, it was presented on a slide projector, without the key alongside it.</p>
+<p>Compare this to the image below which was created years later by statistician Edward Tufte by rearranging the original graph.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/5db9e3a3-e839-4aec-8e99-f91c1920dafe-1-4908cc42-2cb0-4cd2-b3aa-239593a9af05.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">rockets_temp.JPG</figcaption>
+</figure>
+</div>
+<p>Its purpose was to show that when launches are organized by temperature, we can see the cluster of launch failures at lower temperatures.</p>
+</section>
+<section id="numeracy" class="level3">
+<h3 class="anchored" data-anchor-id="numeracy">Numeracy</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/78e6a82a-adc5-4259-881d-1c6d1b919816-1-c943a7b4-39fd-4d05-a7d5-f45fc1e9b778.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">million.JPG</figcaption>
+</figure>
+</div>
+<p>Let’s kick off the final section: analysis, or turning data into useful information. The key question of analysis is, “what’s the takeaway?”</p>
+<p>Let’s start with a humble reminder that humans have some limitations when it comes to numbers.</p>
+<p>We’re generally very good when it comes to numbers we can count, or numbers we use in context. For example, money makes a lot of sense in everyday amounts like coffee, bills, or rent. We can visualize what those numbers mean and understand the consequences of them increasing or decreasing by, say, 20%.</p>
+<p>But numbers without everyday context are another story. Think about the GDP of a country, or the personal wealth of an evil billionaire. How would that number change if we added 20% to it? We can probably do the calculation without too much challenge, but what does the change in that number actually mean in real life terms?</p>
+<p>With really big (or really small) numbers, it takes extra care and attention to understand how big or how small the quantity is.</p>
+<p>On that note, powers of ten make a big difference, especially at a large scale! A million vs.&nbsp;a billion? Really different! (1 million seconds is equal to about 11 days. 1 billion seconds is equal to about 32 years 🤯 )</p>
+<blockquote class="blockquote">
+<p>Part of an analyst’s job is to provide context and clarifications to make sure that audiences are not only reading the correct numbers, but understanding what they mean.</p>
+</blockquote>
+</section>
+<section id="causal-analysis-and-john-snows-cholera-theory-part-1" class="level3">
+<h3 class="anchored" data-anchor-id="causal-analysis-and-john-snows-cholera-theory-part-1">Causal Analysis and John Snow’s cholera theory: Part 1</h3>
+<p>In the world of data, we’ll hear time and time again that “correlation does not equal causation.” In other words, while two events might be connected or related, that doesn’t mean they’re in a cause-and-effect relationship.</p>
+<p>A “causal link” means proving that one event causes another. One of the most important ways this has been applied in the last few centuries has been in epidemiology, the study of diseases. Discovering correct causal links has meant big things for the prevention and treatment of diseases.</p>
+<p>Let’s take a look at one of the earliest instances of successful causal analysis in medicine, which starts with a man called John Snow. (Not the fantasy-famous Lord of the North, but a real-life nineteenth century London doctor.)</p>
+<p>Until Dr.&nbsp;Snow’s discovery in the mid-nineteenth century, people believed that cholera was caused by vapors rising from the burial grounds of plague victims from two centuries earlier. (A good try, but cholera is actually a waterborne disease caused by bacteria found in sewage. It causes severe dehydration and has a fatality rate of over 50% when untreated.)</p>
+<p>By studying earlier cholera epidemics and organizing his data analysis around his hunch that cholera was waterborne, Dr.&nbsp;Snow was able to link an 1854 cholera outbreak in London to a contaminated water pump – effectively proving a causal relationship between contaminated water and cholera <code>before humans even knew that bacteria existed!</code></p>
+<p>How’d he do it? Let’s find out in Part 2.</p>
+</section>
+<section id="causal-analysis-and-john-snows-cholera-theory-part-2" class="level3">
+<h3 class="anchored" data-anchor-id="causal-analysis-and-john-snows-cholera-theory-part-2">Causal Analysis and John Snow’s cholera theory: Part 2</h3>
+<p>Dr.&nbsp;John Snow’s causal analysis breakthrough started with how he visualized his data: he organized cholera death records by location rather than by time, which was more common. He made a map, and discovered that the deaths centered around a water pump on Broad Street.</p>
+<p>From there, Dr.&nbsp;Snow used death records that seemed to contradict his theory to strengthen his explanation. For instance, a woman who died of cholera in a completely different neighborhood had just visited her aunt’s house near Broad Street and drunk water from the pump.</p>
+<p>Dr.&nbsp;Snow also found that a workhouse and a brewery near the pump both had few or no cholera deaths. Upon investigation, he learned that the workhouse had its own water supply, and that the brewers not only had access to a well at the brewery, but that they drank only malt liquor and never visited the Broad Street pump.</p>
+<p>Snow advised that the handle be taken off the Broad Street pump to prevent people from drinking the contaminated water. The handle was removed, and this action coincided with the end of that outbreak. The number of deaths was already trailing off (more than 75% of residents had left the area to avoid “choleric vapors”), but this public health intervention prevented the disease from recurring as people returned, and the epidemic ended.</p>
+<p>The built-in test cases helped Snow to isolate variables and prove that the key variable was that people who developed cholera had drunk water from the contaminated pump. From there, repeated studies of cholera and modern lab experiments have only confirmed the causal link he discovered.</p>
+<p>In modern lab science, we use controlled experiments to isolate variables and prove causation. Controlled experiments are often not possible outside of lab settings, though, so data scientists do the best they can to isolate and control variables and get comfortable working with some amount of error.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data_Literacy_files/figure-html/791c0d9f-deeb-4e00-be6a-ba0b68529bad-1-2c9cd447-f958-4901-9aba-35f4de18700f.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Snow-cholera-map-1.jpg</figcaption>
+</figure>
+</div>
+<p>The image above is Dr.&nbsp;Snow’s data visualization solution, a map with cholera death data visualized directly on it in a “geographically-distributed bar chart”.</p>
+<p>There’s a small dot on Broad Street, in the center of the map, labeled “PUMP.” Notice how the bars (each representing an instance of cholera) are generally concentrated around this part of the map. There are other pumps labeled on the map– for instance, one just south of Broad Street, on the corner of Brewer Street and Bridle Street. All these other pumps have fewer cases of cholera near them than the Broad Street pump.</p>
+</section>
+<section id="wrap-up" class="level3">
+<h3 class="anchored" data-anchor-id="wrap-up">Wrap Up</h3>
+<p>The road to confident data literacy is full of fascinating examples, and knowledge that helps us make sense of one of the most powerful tools of our age: data.</p>
+<p>In this lesson, we covered data quality and data ethics, and saw how interrogating data quality can lead to better outcomes in healthcare. Along with that, we saw how recognizing and addressing bias leads to stronger data and deeper truth.</p>
+<p>We learned how people have used statistics to solve important but nebulous legal problems like hiring discrimination. Knowing how to use statistics has huge consequences for learning about issues that are too big to fully address one-by-one.</p>
+<p>We saw how visualizations can make or break a data conclusion when it comes to communicating findings. While most of us aren’t making or interpreting life-or-death data viz, learning from the Challenger space shuttle explosion can help everyone to make more intentional, meaningful decisions around data visualization.</p>
+<p>Finally, we talked about data analysis. We covered the importance of context when it comes to interpreting data: not just what the numbers are, but what they mean. And we learned about correlation and causation, capping things off with a triumph for modern medicine based on good data visualization and causal analysis.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

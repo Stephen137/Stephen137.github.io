@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Sampling from a Population</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Sampling from a Population</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#random-sampling-in-python" id="toc-random-sampling-in-python" class="nav-link active" data-scroll-target="#random-sampling-in-python">Random Sampling in Python</a></li>
+  <li><a href="#sampling-distributions" id="toc-sampling-distributions" class="nav-link" data-scroll-target="#sampling-distributions">Sampling Distributions</a></li>
+  <li><a href="#central-limit-theorem-clt" id="toc-central-limit-theorem-clt" class="nav-link" data-scroll-target="#central-limit-theorem-clt">Central Limit Theorem (CLT)</a></li>
+  <li><a href="#clt-continued" id="toc-clt-continued" class="nav-link" data-scroll-target="#clt-continued">CLT Continued</a></li>
+  <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error">Standard Error</a></li>
+  <li><a href="#illustration-of-increase-in-sample-size-translating-to-a-reduction-in-standard-error" id="toc-illustration-of-increase-in-sample-size-translating-to-a-reduction-in-standard-error" class="nav-link" data-scroll-target="#illustration-of-increase-in-sample-size-translating-to-a-reduction-in-standard-error">Illustration of <code>increase</code> in <code>sample size</code> translating to a <code>reduction</code> in <code>Standard Error</code></a></li>
+  <li><a href="#illustration-of-increase-in-standard-deviation-translating-to-an-increase-in-standard-error." id="toc-illustration-of-increase-in-standard-deviation-translating-to-an-increase-in-standard-error." class="nav-link" data-scroll-target="#illustration-of-increase-in-standard-deviation-translating-to-an-increase-in-standard-error.">Illustration of <code>increase</code> in <code>standard deviation</code> translating to an <code>increase</code> in <code>Standard Error</code>.</a></li>
+  <li><a href="#biased-estimators" id="toc-biased-estimators" class="nav-link" data-scroll-target="#biased-estimators">Biased Estimators</a></li>
+  <li><a href="#calculating-probabilities" id="toc-calculating-probabilities" class="nav-link" data-scroll-target="#calculating-probabilities">Calculating Probabilities</a></li>
+  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">Review</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>In statistics, we often want to learn about a large population. Since collecting data for an entire population is often impossible, researchers may use a smaller sample of data to try to answer their questions.</p>
+<p>To do this, a researcher might calculate a statistic such as mean or median for a sample of data. Then they can use that statistic as an estimate for the population value they really care about.</p>
+<p>For example, suppose that a researcher wants to know the average weight of all Atlantic Salmon fish. It would be impossible to catch every single fish. Instead, the researchers might collect a sample of 50 fish off the coast of Nova Scotia and determine that the average weight of those fish is x. If the same researchers collected 50 new fish and took the new average weight, that average would likely be slightly different than the first sample average.</p>
+<p>Over the course of this lesson, we will go over how we can extrapolate from sample data in order to describe our uncertainty about the statistics of the full population.</p>
+<p>Generally with larger sample sizes, the sample mean is closer to the population mean. Extreme values will now have a smaller impact on our estimate of the population mean.</p>
+<section id="random-sampling-in-python" class="level3">
+<h3 class="anchored" data-anchor-id="random-sampling-in-python">Random Sampling in Python</h3>
+<p>Now that we’ve generated some random samples from a population using an applet, let’s code this ourselves in Python. The <code>numpy.random</code> package has several functions that we could use to simulate random sampling. In this exercise, we’ll use the function <code>np.random.choice()</code>, which generates a sample of some size from a given array.</p>
+<p>In the example code, we’ll pretend that we’re all-powerful and actually have a list of all the weights of Atlantic Salmon that currently exist.</p>
+<p>The example code below performs the following:</p>
+<ul>
+<li>Loads in the weights of all salmon into a dataframe called population.</li>
+<li>Plots the distribution of population and calculates the mean.</li>
+<li>Uses np.random.choice() function to generate a sample called sample of size 30 (samp_size variable is equal to 30).</li>
+</ul>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> pd.read_csv(<span class="st">"data/salmon_population.csv"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.array(population.Salmon_Weight)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>pop_mean <span class="op">=</span> <span class="bu">round</span>(np.mean(population),<span class="dv">3</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Plotting the Population Distribution</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat<span class="op">=</span><span class="st">'density'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.axvline(pop_mean,color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population Mean: </span><span class="sc">{</span>pop_mean<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Weight (lbs)"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>plt.clf() <span class="co"># close this plot</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate our random sample below</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> np.random.choice(np.array(population), samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="op">=</span> <span class="bu">round</span>(sample.mean(),<span class="dv">3</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sample_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>43.644</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Plotting the Sample Distribution</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample, stat<span class="op">=</span><span class="st">'density'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.axvline(sample_mean,color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">F"Sample Mean: </span><span class="sc">{</span>sample_mean<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Weight (lbs)"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="sampling-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="sampling-distributions">Sampling Distributions</h3>
+<p>As we saw in the last example, each time we sample from a population, we will get a slightly different sample mean. In order to understand how much variation we can expect in those sample means, we can do the following:</p>
+<ul>
+<li>Take a bunch of random samples of fish, each of the same size (50 fish in this example)</li>
+<li>Calculate the sample mean for each one</li>
+<li>Plot a histogram of all the sample means</li>
+</ul>
+<p>This process gives us an estimate of the sampling distribution of the mean for a sample size of 50 fish.</p>
+<p>The code to accomplish this is shown below:</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> pd.read_csv(<span class="st">"data/salmon_population.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>salmon_population <span class="op">=</span> population[<span class="st">'Salmon_Weight'</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># loop 500 times to get 500 random sample means</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># take a sample from the data:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  samp <span class="op">=</span> np.random.choice(salmon_population, sample_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate the mean of this sample:</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  this_sample_mean <span class="op">=</span> np.mean(samp)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># append this sample mean to a list of sample means</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  sample_means.append(this_sample_mean)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plot all the sample means to show the sampling distribution</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat<span class="op">=</span><span class="st">'density'</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Sampling Distribution of the Mean"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Note that we can look at a sampling distribution for any statistic. For example, we could estimate the sampling distribution of the maximum by calculating the maximum of each sample, rather than the mean (as shown above).</p>
+<p>Let’s estimate the sampling distribution of the mean using a population of cod fish. As we did with salmon fish, we will pretend we are all-knowing and have captured weight data on every cod fish in the ocean. In the workspace, we’ve loaded in the cod weight data.</p>
+<p>We’ve set the sample size equal to 50 and created a for loop to take 500 random samples.</p>
+<p>Inside the for loop, use the function <code>np.mean()</code> to calculate the mean of each sample. Save this to a variable called this_sample_mean.</p>
+<p>Then, still inside the for loop, append this_sample_mean to the list sample_means and run the simulation.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> pd.read_csv(<span class="st">"data/cod_population.csv"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to a separate numpy array</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> population[<span class="st">'Cod_Weight'</span>]</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  samp <span class="op">=</span> np.random.choice(population, sample_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate mean here</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  this_sample_mean <span class="op">=</span> np.mean(samp)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># append here</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  sample_means.append(this_sample_mean)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means,stat<span class="op">=</span><span class="st">'density'</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Sampling Distribution of the Mean"</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Weight (lbs)"</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="central-limit-theorem-clt" class="level3">
+<h3 class="anchored" data-anchor-id="central-limit-theorem-clt">Central Limit Theorem (CLT)</h3>
+<p>So far, we’ve defined the term <strong><em>sampling distribution</em></strong> and shown how we can simulate an approximated sampling distribution for a few different statistics (mean, maximum, variance, etc.). The Central Limit Theorem (CLT) allows us to specifically describe the sampling distribution of the mean.</p>
+<p>The CLT states that the sampling distribution of the mean is normally distributed as long as the population is not too skewed or the sample size is large enough. Using a sample size of <code>n &gt; 30</code> is usually a good rule of thumb, regardless of what the distribution of the population is like. If the distribution of the population is normal, the sample size can be smaller than that.</p>
+<p>Let’s take another look at the salmon weight to see how the CLT applies here. The first plot below shows the population distribution. The salmon weight is skewed right, meaning the tail of the distribution is longer on the right than on the left.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Sampling_files/figure-html/8b7a43af-e0e4-4db3-ac4d-1acff792c0be-2-9ceb1078-5d22-45ac-9c01-d14aab46f0c9.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Next, we’ve simulated a sampling distribution of the mean (using a sample size of 100) and super-imposed a normal distribution on top of it. Note how the estimated sampling distribution follows the normal curve almost perfectly.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Sampling_files/figure-html/8b7a43af-e0e4-4db3-ac4d-1acff792c0be-1-8e849406-4128-4c9e-bcd3-45ba6ddd1dba.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Note that the CLT only applies to the sampling distribution of the <code>mean</code> and not other statistics like maximum, minimum, and variance!</p>
+<p>In order to see the Central Limit Theorem in action, let’s look at another population of fish that is not normally distributed :</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>cod_population <span class="op">=</span> pd.read_csv(<span class="st">"data/cod_population.csv"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Save transaction times to a separate numpy array</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> cod_population[<span class="st">'Cod_Weight'</span>]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">## Checkpoint 1:</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span> )</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Population Distribution"</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Now that we have seen the skewed population distribution, let’s simulate a sampling distribution of the mean. According to the CLT, we will see a normal distribution once the sampling size is large enough. To start, we have set the sample size to 6.</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Below is our sample size</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    this_sample_mean <span class="op">=</span> np.mean(samp)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    sample_means.append(this_sample_mean)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.clf() <span class="co"># this closes the previous plot</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat <span class="op">=</span> <span class="st">'density'</span> )</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Sampling Distribution of the Mean"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Weight (lbs)"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Now lets’s change the sample size to 50 :</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Below is our sample size</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    this_sample_mean <span class="op">=</span> np.mean(samp)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    sample_means.append(this_sample_mean)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.clf() <span class="co"># this closes the previous plot</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat <span class="op">=</span> <span class="st">'density'</span> )</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Sampling Distribution of the Mean"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Weight (lbs)"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="clt-continued" class="level3">
+<h3 class="anchored" data-anchor-id="clt-continued">CLT Continued</h3>
+<p>Now that we’ve examined the CLT from a high level, let’s get into the details.</p>
+<p>The CLT not only establishes that the sampling distribution will be normally distributed, but it also allows us to describe that normal distribution quantitatively. Normal distributions are described by their mean μ (mu) and standard deviation σ (sigma).</p>
+<p>Let’s break this up:</p>
+<ul>
+<li>We take samples of size n from a population (that has a true population mean μ and standard deviation of σ) and calculate the sample mean x.</li>
+<li>Given that n is sufficiently large (n &gt; 30), the sampling distribution of the means will be normally distributed with:
+<ul>
+<li><p>mean x approximately equal to the population mean μ</p></li>
+<li><p>standard deviation equal to the population standard deviation divided by the square root of the sample size. We can write this out as:</p>
+<p>Sampling Distribution St.Dev = σ / √n</p></li>
+</ul></li>
+</ul>
+<p>We’ll focus on the first point in this exercise and the second point in the next exercise.</p>
+<p>As an example of this, let’s look again at our salmon fish population. Last exercise, we saw that the sampling distribution of the mean was normally distributed. In the plot below, we can see that the mean of the simulated sampling distribution is approximately equal to the population mean.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Sampling_files/figure-html/6a32ad77-dc74-43b9-aa8b-003316ec43f6-2-be25f57c-2182-4213-9afe-2f018bde7f40.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Sampling_files/figure-html/6a32ad77-dc74-43b9-aa8b-003316ec43f6-1-36a8df18-2e7f-49c0-9313-3a011eb75c6f.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>The following code simulates a population that has a mean of 10 and a standard deviation of 10. Sample size has been set to 50.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the population mean &amp; standard deviation:</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>population_mean <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>population_std_dev <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size:</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the population</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(population_mean, population_std_dev, size <span class="op">=</span> <span class="dv">100000</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate the samples and calculate the sampling distribution</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    sample_means.append(np.mean(samp))</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>mean_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.mean(sample_means),<span class="dv">3</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original population</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population Mean: </span><span class="sc">{</span>population_mean<span class="sc">}</span><span class="ss"> "</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot the sampling distribution</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat<span class="op">=</span><span class="st">'density'</span>)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean and SE for the probability distribution</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> np.mean(population)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> np.std(population)<span class="op">/</span>(samp_size<span class="op">**</span><span class="fl">.5</span>)</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the normal distribution with mu=popmean, sd=sd(pop)/sqrt(samp_size) on top</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(mu <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>sigma, mu <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>sigma, <span class="dv">100</span>)</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>plt.plot(x, stats.norm.pdf(x, mu, sigma), color<span class="op">=</span><span class="st">'k'</span>, label <span class="op">=</span> <span class="st">'normal PDF'</span>)</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist Mean: </span><span class="sc">{</span>mean_sampling_distribution<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Setting the sample size equal to 6 :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the population mean &amp; standard deviation:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>population_mean <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>population_std_dev <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size:</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the population</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(population_mean, population_std_dev, size <span class="op">=</span> <span class="dv">100000</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate the samples and calculate the sampling distribution</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    sample_means.append(np.mean(samp))</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>mean_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.mean(sample_means),<span class="dv">3</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original population</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population Mean: </span><span class="sc">{</span>population_mean<span class="sc">}</span><span class="ss"> "</span>)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot the sampling distribution</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat<span class="op">=</span><span class="st">'density'</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean and SE for the probability distribution</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> np.mean(population)</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> np.std(population)<span class="op">/</span>(samp_size<span class="op">**</span><span class="fl">.5</span>)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the normal distribution with mu=popmean, sd=sd(pop)/sqrt(samp_size) on top</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(mu <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>sigma, mu <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>sigma, <span class="dv">100</span>)</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>plt.plot(x, stats.norm.pdf(x, mu, sigma), color<span class="op">=</span><span class="st">'k'</span>, label <span class="op">=</span> <span class="st">'normal PDF'</span>)</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist Mean: </span><span class="sc">{</span>mean_sampling_distribution<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The CLT states that the sampling distribution of the mean is normally distributed as long as the population is not too skewed or the sample size is large enough. Using a sample size of <code>n &gt; 30</code> is usually a good rule of thumb, regardless of what the distribution of the population is like. If the distribution of the population is normal <strong><em>(as is the case here)</em></strong> , the sample size can be smaller than that.</p>
+</section>
+<section id="standard-error" class="level3">
+<h3 class="anchored" data-anchor-id="standard-error">Standard Error</h3>
+<p>The second part of the Central Limit Theorem is:</p>
+<p>The sampling distribution of the mean is normally distributed, with standard deviation equal to the population standard deviation (often denoted as the greek letter, sigma) divided by the square root of the sample size (often denoted as n):</p>
+<pre><code>σ / √n</code></pre>
+<p>The standard deviation of a sampling distribution is also known as the standard error of the estimate of the mean. In many instances, we cannot know the population standard deviation, so we estimate the standard error using the sample standard deviation:</p>
+<pre><code>standard deviation of our sample / √ sample size</code></pre>
+<p>Two important things to note about this formula is that:</p>
+<ul>
+<li>As sample size increases, the standard error will decrease.</li>
+<li>As the population standard deviation increases, so will the standard error.</li>
+</ul>
+</section>
+<section id="illustration-of-increase-in-sample-size-translating-to-a-reduction-in-standard-error" class="level3">
+<h3 class="anchored" data-anchor-id="illustration-of-increase-in-sample-size-translating-to-a-reduction-in-standard-error">Illustration of <code>increase</code> in <code>sample size</code> translating to a <code>reduction</code> in <code>Standard Error</code></h3>
+<p>Let’s illustrate this with a simulation of sample size 10 and a sample size of 50. First let’s take a look at a sample size of 10 :</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>population_mean <span class="op">=</span> <span class="dv">36</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>population_std_dev <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size:</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">### Below is code to create simulated dataset and calculate Standard Error</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the population</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(population_mean, population_std_dev, size <span class="op">=</span> <span class="dv">100000</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co">## Simulate the sampling distribution</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    sample_means.append(np.mean(samp))</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>mean_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.mean(sample_means),<span class="dv">3</span>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>std_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.std(sample_means),<span class="dv">3</span>)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>std_error <span class="op">=</span> population_std_dev <span class="op">/</span> (samp_size <span class="op">**</span><span class="fl">0.5</span>)</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population Mean: </span><span class="sc">{</span>population_mean<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Population Std Dev: </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> / sq rt(</span><span class="sc">{</span>samp_size<span class="sc">}</span><span class="ss">) </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>std_error<span class="sc">}</span><span class="ss"> "</span>)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">50</span>,<span class="dv">125</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="fl">0.045</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot the sampling distribution</span></span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean and SE for the probability distribution</span></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> np.mean(population)</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> np.std(population)<span class="op">/</span>(samp_size<span class="op">**</span><span class="fl">.5</span>)</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the normal distribution with mu=popmean, sd=sd(pop)/sqrt(samp_size) on top</span></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(mu <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>sigma, mu <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>sigma, <span class="dv">100</span>)</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>plt.plot(x, stats.norm.pdf(x, mu, sigma), color<span class="op">=</span><span class="st">'k'</span>, label <span class="op">=</span> <span class="st">'normal PDF'</span>)</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.axvline(mean_sampling_distribution,color='r',linestyle='dashed')</span></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist Mean: </span><span class="sc">{</span>mean_sampling_distribution<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Sampling Dist Standard Deviation: </span><span class="sc">{</span>std_sampling_distribution<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">20</span>,<span class="dv">50</span>)</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="fl">0.3</span>)</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Let’s increase the sample size to 50 and note the change in the shape of the sampling distribution :</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>population_mean <span class="op">=</span> <span class="dv">36</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>population_std_dev <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size:</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">### Below is code to create simulated dataset and calculate Standard Error</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the population</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(population_mean, population_std_dev, size <span class="op">=</span> <span class="dv">100000</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">## Simulate the sampling distribution</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    sample_means.append(np.mean(samp))</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>mean_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.mean(sample_means),<span class="dv">3</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>std_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.std(sample_means),<span class="dv">3</span>)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>std_error <span class="op">=</span> population_std_dev <span class="op">/</span> (samp_size <span class="op">**</span><span class="fl">0.5</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population Mean: </span><span class="sc">{</span>population_mean<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Population Std Dev: </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> / sq rt(</span><span class="sc">{</span>samp_size<span class="sc">}</span><span class="ss">) </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>std_error<span class="sc">}</span><span class="ss"> "</span>)</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">50</span>,<span class="dv">125</span>)</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="fl">0.045</span>)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot the sampling distribution</span></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean and SE for the probability distribution</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> np.mean(population)</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> np.std(population)<span class="op">/</span>(samp_size<span class="op">**</span><span class="fl">.5</span>)</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the normal distribution with mu=popmean, sd=sd(pop)/sqrt(samp_size) on top</span></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(mu <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>sigma, mu <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>sigma, <span class="dv">100</span>)</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>plt.plot(x, stats.norm.pdf(x, mu, sigma), color<span class="op">=</span><span class="st">'k'</span>, label <span class="op">=</span> <span class="st">'normal PDF'</span>)</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.axvline(mean_sampling_distribution,color='r',linestyle='dashed')</span></span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist Mean: </span><span class="sc">{</span>mean_sampling_distribution<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Sampling Dist Standard Deviation: </span><span class="sc">{</span>std_sampling_distribution<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">20</span>,<span class="dv">50</span>)</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="fl">0.3</span>)</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>A larger sample size should translate to a smaller standard error and a distribution that is taller &amp; skinnier. We can see that this is the case. With a sample size of 50 our standard error reduced to 1.41 (from 3.16 for our sample size of 10) and the above distribution is indeed taller and skinnier.</p>
+</section>
+<section id="illustration-of-increase-in-standard-deviation-translating-to-an-increase-in-standard-error." class="level3">
+<h3 class="anchored" data-anchor-id="illustration-of-increase-in-standard-deviation-translating-to-an-increase-in-standard-error.">Illustration of <code>increase</code> in <code>standard deviation</code> translating to an <code>increase</code> in <code>Standard Error</code>.</h3>
+<p>A larger standard deviation should translate to a wider and flatter population distribution, and the <code>sampling</code> distribution will also become wider and flatter because the standard error will <code>increase</code> (due to the larger numerator).</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>population_mean <span class="op">=</span> <span class="dv">36</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>population_std_dev <span class="op">=</span> <span class="dv">30</span> <span class="co">#changed to illustrate</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size:</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">### Below is code to create simulated dataset and calculate Standard Error</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the population</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(population_mean, population_std_dev, size <span class="op">=</span> <span class="dv">100000</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co">## Simulate the sampling distribution</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    sample_means.append(np.mean(samp))</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>mean_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.mean(sample_means),<span class="dv">3</span>)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>std_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.std(sample_means),<span class="dv">3</span>)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>std_error <span class="op">=</span> population_std_dev <span class="op">/</span> (samp_size <span class="op">**</span><span class="fl">0.5</span>)</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population Mean: </span><span class="sc">{</span>population_mean<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Population Std Dev: </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> / sq rt(</span><span class="sc">{</span>samp_size<span class="sc">}</span><span class="ss">) </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>std_error<span class="sc">}</span><span class="ss"> "</span>)</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">50</span>,<span class="dv">125</span>)</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="fl">0.045</span>)</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot the sampling distribution</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean and SE for the probability distribution</span></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> np.mean(population)</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> np.std(population)<span class="op">/</span>(samp_size<span class="op">**</span><span class="fl">.5</span>)</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the normal distribution with mu=popmean, sd=sd(pop)/sqrt(samp_size) on top</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(mu <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>sigma, mu <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>sigma, <span class="dv">100</span>)</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>plt.plot(x, stats.norm.pdf(x, mu, sigma), color<span class="op">=</span><span class="st">'k'</span>, label <span class="op">=</span> <span class="st">'normal PDF'</span>)</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.axvline(mean_sampling_distribution,color='r',linestyle='dashed')</span></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist Mean: </span><span class="sc">{</span>mean_sampling_distribution<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Sampling Dist Standard Deviation: </span><span class="sc">{</span>std_sampling_distribution<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">20</span>,<span class="dv">50</span>)</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="fl">0.3</span>)</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-14-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="biased-estimators" class="level3">
+<h3 class="anchored" data-anchor-id="biased-estimators">Biased Estimators</h3>
+<p>According to the Central Limit Theorem, the mean of the sampling distribution of the mean is equal to the population mean. This is the case for some, but not all, sampling distributions. Remember, you can have a sampling distribution for any sample statistic, including:</p>
+<ul>
+<li>mean</li>
+<li>median</li>
+<li>max / min</li>
+<li>variance</li>
+</ul>
+<p>Because the mean of the sampling distribution of the mean is equal to the mean of the population, we call it an <code>unbiased estimator</code>. A statistic is called an unbiased estimator of a population parameter if the mean of the sampling distribution of the statistic is equal to the value of the statistic for the population.</p>
+<p>The <code>maximum</code> is one example of a <code>biased estimator</code>, meaning that the mean of the sampling distribution of the maximum is not centered at the population maximum.</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>app_stat_text <span class="op">=</span> <span class="st">"Maximum"</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> app_statistic(x):</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">max</span>(x)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#return.np.var(x)</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">### Below calculates the statistic for this population:</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">### You don't need to change anything below </span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>mean, std_dev <span class="op">=</span> <span class="dv">50</span>, <span class="dv">15</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(mean, std_dev, <span class="dv">1000</span>) <span class="co"># mean of 50, SD of 15</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>pop_statistic <span class="op">=</span> <span class="bu">round</span>(app_statistic(population),<span class="dv">2</span>)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>plt.axvline(pop_statistic,color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>pop_statistic<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>sample_stats <span class="op">=</span> []</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    this_sample_stat <span class="op">=</span> app_statistic(samp)</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    sample_stats.append(this_sample_stat)</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_stats, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist of the </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">Mean: </span><span class="sc">{</span><span class="bu">round</span>(np.mean(sample_stats),<span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>plt.axvline(np.mean(sample_stats),color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="ss">f"Sample </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<p>This clearly illustrates that the the mean of the distribution of sample maxima is <strong>not</strong> equal to the maximum of the population, showing that it is a <strong>biased</strong> estimator. Let’s confirm that the mean of the distribution of sample variances is also a <strong>biased</strong> estimator.</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>app_stat_text <span class="op">=</span> <span class="st">"Maximum"</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> app_statistic(x):</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#return np.max(x)</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.var(x)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">### Below calculates the statistic for this population:</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">### You don't need to change anything below </span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>mean, std_dev <span class="op">=</span> <span class="dv">50</span>, <span class="dv">15</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(mean, std_dev, <span class="dv">1000</span>) <span class="co"># mean of 50, SD of 15</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>pop_statistic <span class="op">=</span> <span class="bu">round</span>(app_statistic(population),<span class="dv">2</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>plt.axvline(pop_statistic,color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>pop_statistic<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>sample_stats <span class="op">=</span> []</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    this_sample_stat <span class="op">=</span> app_statistic(samp)</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    sample_stats.append(this_sample_stat)</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_stats, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist of the </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">Mean: </span><span class="sc">{</span><span class="bu">round</span>(np.mean(sample_stats),<span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>plt.axvline(np.mean(sample_stats),color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="ss">f"Sample </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<p>Finally let’s show that the mean of the distribution of sample means is equal to the mean of the population, showing that it is an <strong>unbiased</strong> estimator.</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>app_stat_text <span class="op">=</span> <span class="st">"Maximum"</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> app_statistic(x):</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#return np.max(x)</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#return np.var(x)</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.mean(x)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">### Below calculates the statistic for this population:</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">### You don't need to change anything below </span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>mean, std_dev <span class="op">=</span> <span class="dv">50</span>, <span class="dv">15</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(mean, std_dev, <span class="dv">1000</span>) <span class="co"># mean of 50, SD of 15</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>pop_statistic <span class="op">=</span> <span class="bu">round</span>(app_statistic(population),<span class="dv">2</span>)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>plt.axvline(pop_statistic,color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>pop_statistic<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>sample_stats <span class="op">=</span> []</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>    this_sample_stat <span class="op">=</span> app_statistic(samp)</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>    sample_stats.append(this_sample_stat)</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_stats, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist of the </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">Mean: </span><span class="sc">{</span><span class="bu">round</span>(np.mean(sample_stats),<span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>plt.axvline(np.mean(sample_stats),color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="ss">f"Sample </span><span class="sc">{</span>app_stat_text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="calculating-probabilities" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-probabilities">Calculating Probabilities</h3>
+<p>Once we know the sampling distribution of the mean, we can also use it to estimate the probability of observing a particular range of sample means, given some information (either known or assumed) about the population. To do this, we can use the <em>Cumulative Distribution Function, or (CDF)</em> of the normal distribution.</p>
+<p>Let’s work through this with our salmon fish example. Let’s say we are transporting the salmon and want to make sure the crate we carry the fish in will be strong enough to hold the weight.</p>
+<ul>
+<li>Suppose we estimate that the salmon population has an average weight of 60 lbs with a standard deviation of 40 lbs.</li>
+<li>We have a crate that supports 750 lbs, and we want to be able to transport 10 fish at a time.</li>
+<li>We want to calculate the probability that the average weight of those 10 fish is less than or equal to 75 (750/10).</li>
+</ul>
+<p>Using the CLT, we first estimate that the mean weight of 10 randomly sampled salmon from this population is normally distributed with mean = 60 and standard error = 40/10^.5.</p>
+<p>Then, we can use this probability distribution to calculate the probability that 10 randomly sampled fish will have a mean weight less than or equal to 75.</p>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">75</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> <span class="dv">60</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>std_dev <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>standard_error <span class="op">=</span> std_dev <span class="op">/</span> (samp_size<span class="op">**</span><span class="fl">.5</span>) <span class="co"># square root</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remember that **.5 is raising to the power of one half, or taking the square root</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># calc prob that mean weight &lt;= 75</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>stats.norm.cdf(x,mean,standard_error) <span class="co"># value we want to est prob for, est.of pop mean, est. of pop SE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>0.8821600432854813</code></pre>
+</div>
+</div>
+<p>Let’s calculate the same probability for our cod fish population.</p>
+<p>We know that cod have an average weight of 36 lbs with a standard deviation of 20. We want to try to fit 25 cod fish into our same crate that can hold up to 750 lbs.</p>
+<p>Our first step is to calculate the standard error for a sample size of 25. Using the above information, calculate the standard error and assign it to a variable called standard_error.</p>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>std_dev <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>standard_error <span class="op">=</span> std_dev <span class="op">/</span> (samp_size<span class="op">**</span><span class="fl">.5</span>) <span class="co"># square root</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># remember that **.5 is raising to the power of one half, or taking the square root</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>standard_error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>4.0</code></pre>
+</div>
+</div>
+<p>Now that we have our standard error, we can use the normal CDF to calculate the probability that a sample of 25 fish has a mean weight of 30 lbs. Using the function <code>stats.norm.cdf()</code>, calculate this probability and assign it to a variable cod_cdf.</p>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calc prob that mean weight = 30</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> <span class="dv">36</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>cod_cdf <span class="op">=</span> stats.norm.cdf(x,mean,standard_error) <span class="co"># value we want to est prob for, est.of pop mean, est. of pop SE</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cod_cdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.06680720126885807</code></pre>
+</div>
+</div>
+</section>
+<section id="review" class="level3">
+<h3 class="anchored" data-anchor-id="review">Review</h3>
+<p>Let’s recap what we’ve learned in this lesson:</p>
+<ul>
+<li>A sampling distribution is obtained by taking a random sample of a certain size multiple times, taking a sample statistic, and plotting the distribution of this sample statistic. T- he Central Limit Theorem establishes that the sampling distribution of the mean will be normally distributed (even if the original population was not normally distributed).</li>
+<li>A statistic is called an unbiased estimator of a population parameter if the mean of the sampling distribution of the statistic is equal to the value of the statistic for the population. The mean is an unbiased estimator.</li>
+<li>We can use the Standard Error of our sample mean distribution in order to calculate probabilities of obtaining a sample with a certain statistic using the CDF.</li>
+</ul>
+<blockquote class="blockquote">
+<p>Q. Let’s say we weigh all their burgers that they cook for dinner on a given night. 64 people order quarter-pounders. What is the probability that the mean will be 0.24 lbs or less?</p>
+</blockquote>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up parameters here:</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.24</span> <span class="co"># weight of burger we are testing for</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>population_mean <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>population_std_dev <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">### Below is code to create simulated dataset and calculate Standard Error</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>standard_error <span class="op">=</span> population_std_dev <span class="op">/</span> (samp_size<span class="op">**</span><span class="fl">.5</span>)</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>this_cdf <span class="op">=</span> <span class="bu">round</span>(stats.norm.cdf(x,population_mean,standard_error),<span class="dv">3</span>)</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the population</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(population_mean, population_std_dev, size <span class="op">=</span> <span class="dv">100000</span>)</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate the sampling distribution</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    sample_means.append(np.mean(samp))</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>mean_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.mean(sample_means),<span class="dv">3</span>)</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>std_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.std(sample_means),<span class="dv">3</span>)</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>std_error <span class="op">=</span> population_std_dev <span class="op">/</span> (samp_size <span class="op">**</span><span class="fl">0.5</span>)</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population Mean: </span><span class="sc">{</span>population_mean<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Population Std Dev: </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> / sq rt(</span><span class="sc">{</span>samp_size<span class="sc">}</span><span class="ss">) </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>std_error<span class="sc">}</span><span class="ss"> "</span>)</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the sampling distribution</span></span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>plt.axvline(x,color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist Mean: </span><span class="sc">{</span>mean_sampling_distribution<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Sampling Dist Standard Deviation: </span><span class="sc">{</span>std_sampling_distribution<span class="sc">}</span><span class="ch">\n</span><span class="ss"> CDF for x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>this_cdf<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. On the next night, there’s a delicious special, and fewer people order the burger. Our sample size is now 10.</p>
+</blockquote>
+<p>Reducing the sample size should translate to an <em>increase</em> in Standard Error :</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up parameters here:</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.24</span> <span class="co"># weight of burger we are testing for</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>population_mean <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>population_std_dev <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">### Below is code to create simulated dataset and calculate Standard Error</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>standard_error <span class="op">=</span> population_std_dev <span class="op">/</span> (samp_size<span class="op">**</span><span class="fl">.5</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>this_cdf <span class="op">=</span> <span class="bu">round</span>(stats.norm.cdf(x,population_mean,standard_error),<span class="dv">3</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the population</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> np.random.normal(population_mean, population_std_dev, size <span class="op">=</span> <span class="dv">100000</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate the sampling distribution</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>sample_means <span class="op">=</span> []</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> np.random.choice(population, samp_size, replace <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    sample_means.append(np.mean(samp))</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>mean_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.mean(sample_means),<span class="dv">3</span>)</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>std_sampling_distribution <span class="op">=</span> <span class="bu">round</span>(np.std(sample_means),<span class="dv">3</span>)</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>std_error <span class="op">=</span> population_std_dev <span class="op">/</span> (samp_size <span class="op">**</span><span class="fl">0.5</span>)</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>sns.histplot(population, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Population Mean: </span><span class="sc">{</span>population_mean<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Population Std Dev: </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>population_std_dev<span class="sc">}</span><span class="ss"> / sq rt(</span><span class="sc">{</span>samp_size<span class="sc">}</span><span class="ss">) </span><span class="ch">\n</span><span class="ss"> Standard Error = </span><span class="sc">{</span>std_error<span class="sc">}</span><span class="ss"> "</span>)</span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the sampling distribution</span></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>sns.histplot(sample_means, stat <span class="op">=</span> <span class="st">'density'</span>)</span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>plt.axvline(x,color<span class="op">=</span><span class="st">'r'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Sampling Dist Mean: </span><span class="sc">{</span>mean_sampling_distribution<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Sampling Dist Standard Deviation: </span><span class="sc">{</span>std_sampling_distribution<span class="sc">}</span><span class="ch">\n</span><span class="ss"> CDF for x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>this_cdf<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Sampling_files/figure-html/cell-22-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'And this is the case. Standard Error has increased to </span><span class="sc">{</span>standard_error<span class="sc">}</span><span class="ss">. from 0.025.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>And this is the case. Standard Error has increased to 0.06324555320336758. from 0.025.</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q. Let’s say your family went to the restaurant and all 5 of you ordered the burger. What is the probability that you receive burgers with an average weight of 0.24 lbs or less?</p>
+</blockquote>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.24</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>std_dev <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>samp_size <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>standard_error <span class="op">=</span> std_dev <span class="op">/</span> (samp_size<span class="op">**</span><span class="fl">.5</span>) <span class="co"># square root</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remember that **.5 is raising to the power of one half, or taking the square root</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># calc prob that mean weight &lt;=0.24 lbs</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>burger_prob <span class="op">=</span> stats.norm.cdf(x,mean,standard_error) <span class="co"># value we want to est prob for, est.of pop mean, est. of pop SE</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(burger_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.45548964625531696</code></pre>
+</div>
+</div>
+<p>The probability that the burgers have an average weight of 0.24 lbs or less is 45.5%.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

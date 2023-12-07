@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Data Scientist: Inference Specialist</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Scientist: Inference Specialist</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#calculating-churn-rate-using-sql" id="toc-calculating-churn-rate-using-sql" class="nav-link active" data-scroll-target="#calculating-churn-rate-using-sql">Calculating Churn Rate using SQL</a></li>
+  <li><a href="#further-analysis-visualization" id="toc-further-analysis-visualization" class="nav-link" data-scroll-target="#further-analysis-visualization">Further analysis &amp; visualization</a></li>
+  <li><a href="#analyzing-data-with-pandas" id="toc-analyzing-data-with-pandas" class="nav-link" data-scroll-target="#analyzing-data-with-pandas">Analyzing Data with Pandas</a></li>
+  <li><a href="#visualizing-data-with-matplotlib-and-seaborn" id="toc-visualizing-data-with-matplotlib-and-seaborn" class="nav-link" data-scroll-target="#visualizing-data-with-matplotlib-and-seaborn">Visualizing Data with Matplotlib and Seaborn</a></li>
+  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a></li>
+  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link" data-scroll-target="#statistical-inference">Statistical Inference</a></li>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link" data-scroll-target="#machine-learning">Machine Learning</a></li>
+  <li><a href="#tableau" id="toc-tableau" class="nav-link" data-scroll-target="#tableau">Tableau</a></li>
+  <li><a href="#data-types-and-quality" id="toc-data-types-and-quality" class="nav-link" data-scroll-target="#data-types-and-quality">Data Types and Quality</a></li>
+  <li><a href="#dealing-with-messy-data" id="toc-dealing-with-messy-data" class="nav-link" data-scroll-target="#dealing-with-messy-data">Dealing with Messy Data</a></li>
+  <li><a href="#what-is-a-messy-dataset" id="toc-what-is-a-messy-dataset" class="nav-link" data-scroll-target="#what-is-a-messy-dataset">What is a messy dataset?</a></li>
+  <li><a href="#messy-data-problems" id="toc-messy-data-problems" class="nav-link" data-scroll-target="#messy-data-problems">Messy Data Problems</a></li>
+  <li><a href="#working-with-missing-data" id="toc-working-with-missing-data" class="nav-link" data-scroll-target="#working-with-missing-data">Working with Missing Data</a></li>
+  <li><a href="#missing-data---example" id="toc-missing-data---example" class="nav-link" data-scroll-target="#missing-data---example">Missing Data - Example</a></li>
+  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy">Accuracy</a></li>
+  <li><a href="#validity" id="toc-validity" class="nav-link" data-scroll-target="#validity">Validity</a></li>
+  <li><a href="#validity---example" id="toc-validity---example" class="nav-link" data-scroll-target="#validity---example">Validity - Example</a></li>
+  <li><a href="#representative-samples" id="toc-representative-samples" class="nav-link" data-scroll-target="#representative-samples">Representative Samples</a></li>
+  <li><a href="#sampling---example" id="toc-sampling---example" class="nav-link" data-scroll-target="#sampling---example">Sampling - Example</a></li>
+  <li><a href="#review-of-data-types-and-quality" id="toc-review-of-data-types-and-quality" class="nav-link" data-scroll-target="#review-of-data-types-and-quality">Review of Data Types and Quality</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>If you want to discover why things happen, and prove a case with data, this is the path for you. Inference Data Scientists design experiments, test hypotheses, and conduct causal inference in order to figure out what factors are driving outcomes. This Career Path will teach you to do just that, and along the way, you’ll build portfolio-worthy projects that will help you get job-ready.</p>
+<section id="calculating-churn-rate-using-sql" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-churn-rate-using-sql">Calculating Churn Rate using SQL</h3>
+<p>Churn rate is the percent of subscribers to a monthly service who have canceled. For example, in January, let’s say Codecademy had 1,000 learners. In February, 200 learners sign up, and 250 cancel.</p>
+<p>The churn rate for February would be:</p>
+<pre><code>cancellations / total subscribers = 250 / (1000 + 200) = 20.8%</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/fe577e97-57c5-426f-98c1-78dc3ec2218f-1-d9e9ea1f-dd1b-49ee-a30a-abbb96fca885.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">pro_users.JPG</figcaption>
+</figure>
+</div>
+<p>Write an SQL query to calculate the churn rate for March 2017:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/d45ebb1d-1263-4b16-a135-030cce8cec59-1-6e41bb8a-8359-498b-8cda-e0cba05347e2.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">churn_rate_march17.JPG</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Q. What recommendations would you make based on this analysis?</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="A">
+<li></li>
+</ol>
+</blockquote>
+<p>The opposite of churn rate is usually referred to as the <code>retention rate</code>. The calculation for churn and retention can vary on the implementation, but usually the calculation is</p>
+<pre><code>retention rate = 100% - churn rate</code></pre>
+</section>
+<section id="further-analysis-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="further-analysis-visualization">Further analysis &amp; visualization</h3>
+<p>After interacting with the database, it is time to analyze the data further and eventually visualize the data. And SQL cannot get us there.</p>
+<p>Python is a general-purpose programming language. It can do almost all of what other languages can do with comparable, or faster, speed. It is often chosen by Data Analysts and Data Scientists for prototyping, visualization, and execution of data analyses on datasets.</p>
+<p>There’s an important question here. Plenty of other programming languages, like R, can be useful in the field of data science. Why are so many people choosing Python?</p>
+<p>One major factor is Python’s versatility. There are over 125,000 third-party Python libraries. These libraries make Python more useful for specific purposes, from the traditional (e.g.&nbsp;web development, text processing) to the cutting edge (e.g.&nbsp;AI and machine learning). For example, a biologist might use the Biopython library to aid their work in genetic sequencing.</p>
+<p>Additionally, Python has become a go-to language for data analysis. With data-focused libraries like pandas, NumPy, and Matplotlib, anyone familiar with Python’s syntax and rules can use it as a powerful tool to process, manipulate, and visualize data.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>libraries <span class="op">=</span> [<span class="st">"NumPy"</span>, <span class="st">"SciPy"</span>, <span class="st">"Pandas"</span>, <span class="st">"Matplotlib"</span>, <span class="st">"Seaborn"</span>] <span class="co"># list (iterable)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">96</span>, <span class="dv">0</span>, <span class="dv">0</span>] <span class="co"># list (iterable)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>libraries.append(<span class="st">"scikit-learn"</span>) <span class="co"># add scikit-learn to the libraries list</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>completion.append(<span class="dv">0</span>) <span class="co"># add 0 to the completion list</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># zip function takes two or more iterable arguments and returns an iterator that generates tuples (pair values - immutable)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># containing elements from the input iterables, element-wise</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Lesson Completion Rates:"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gradebook)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Lesson Completion Rates:</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'gradebook' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="analyzing-data-with-pandas" class="level3">
+<h3 class="anchored" data-anchor-id="analyzing-data-with-pandas">Analyzing Data with Pandas</h3>
+<p>Python is a programming language, and pandas is a special set of commands in Python that lets us analyze spreadsheet data. Pandas can do a lot of the things that SQL can do, but it’s also backed by the power of Python, so we can easily transition from analyzing our data with pandas to visualizing it using other Python tools.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/4e97ec43-52c7-40b8-9e02-39cdc2b23145-1-137213dc-8949-4a04-86b5-7cb254643044.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">page_visits.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="visualizing-data-with-matplotlib-and-seaborn" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-data-with-matplotlib-and-seaborn">Visualizing Data with Matplotlib and Seaborn</h3>
+<p>Matplotlib lets you create line charts, bar charts, pie charts, and more. It gives you precise control over colors and labels so that you can create the perfect chart to communicate your findings.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import codecademylib3_seaborn</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>hour <span class="op">=</span> <span class="bu">range</span>(<span class="dv">24</span>) <span class="co"># 0 to 23 - exclusive and indexing starts at 0 in Python</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>viewers_hour <span class="op">=</span> [<span class="dv">30</span>, <span class="dv">17</span>, <span class="dv">34</span>, <span class="dv">29</span>, <span class="dv">19</span>, <span class="dv">14</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">48</span>, <span class="dv">62</span>, <span class="dv">58</span>, <span class="dv">40</span>, <span class="dv">51</span>, <span class="dv">69</span>, <span class="dv">55</span>, <span class="dv">76</span>, <span class="dv">81</span>, <span class="dv">102</span>, <span class="dv">120</span>, <span class="dv">71</span>, <span class="dv">63</span>]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Codecademy Learners Time Series"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Hour"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Viewers"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.plot(hour, viewers_hour)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'2015-01-01'</span>])</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.subplot()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ax.set_facecolor(<span class="st">'seashell'</span>)  <span class="co"># cosmetics</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(hour) <span class="co"># set the markers on the x-axis</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">80</span>, <span class="dv">100</span>, <span class="dv">120</span>]) <span class="co"># set the markers on the y-axis</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>y_upper <span class="op">=</span> [i <span class="op">+</span> (i<span class="op">*</span><span class="fl">0.15</span>) <span class="cf">for</span> i <span class="kw">in</span> viewers_hour] <span class="co"># define 15% buffer ABOVE viewer hours</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>y_lower <span class="op">=</span> [i <span class="op">-</span> (i<span class="op">*</span><span class="fl">0.15</span>) <span class="cf">for</span> i <span class="kw">in</span> viewers_hour] <span class="co"># define 15% buffer BELOW viewer hours</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>plt.fill_between(hour, y_lower, y_upper, alpha<span class="op">=</span><span class="fl">0.2</span>) <span class="co"># fill the buffer zone as defined above</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>plt.show() <span class="co"># create and display the plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Intro_to_Data_Science_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="probability" class="level3">
+<h3 class="anchored" data-anchor-id="probability">Probability</h3>
+<p>Calculating the probability of an event is sometimes dependent on external factors. For instance, in the birthday problem “What is the probability that two people in a room have the same birthday?” the probability is dependent on the number of people in the room :</p>
+<p><code>simulate.py</code></p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulate a room with a certain number of people</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate(num_people):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  birthdays <span class="op">=</span> []</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Here's what our room looks like:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  months <span class="op">=</span> [<span class="st">"January"</span>, <span class="st">"February"</span>, <span class="st">"March"</span>, <span class="st">"April"</span>, <span class="st">"May"</span>, <span class="st">"June"</span>, <span class="st">"July"</span>, <span class="st">"August"</span>, <span class="st">"September"</span>, <span class="st">"October"</span>, <span class="st">"November"</span>, <span class="st">"December"</span>]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Assign a random birthday to each person</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, num_people):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Choose a random month</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    month_choice <span class="op">=</span> random.choice(months)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Choose a random day based on month</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> month_choice <span class="op">==</span> <span class="st">"February"</span>:</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      day <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">29</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month_choice <span class="op">==</span> <span class="st">"April"</span> <span class="kw">or</span> month_choice <span class="op">==</span> <span class="st">"June"</span> <span class="kw">or</span> month_choice <span class="op">==</span> <span class="st">"September"</span> <span class="kw">or</span> month_choice <span class="op">==</span> <span class="st">"November"</span>:</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      day <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">30</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>      day <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">31</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    birthday <span class="op">=</span> month_choice <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> <span class="bu">str</span>(day)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Store the birthday</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    birthdays.append(birthday)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Person </span><span class="sc">{0}</span><span class="st">'s birthday: </span><span class="sc">{1}</span><span class="st">"</span>.<span class="bu">format</span>(i <span class="op">+</span> <span class="dv">1</span>, birthday))</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  calculate_probability(num_people)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  match <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Check for matching birthdays</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(birthdays)):</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> find_duplicates(birthdays, birthdays[i], i):</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      match <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">not</span> match:</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">In our simulation, no two people have the same birthday"</span>)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate the probability of there being 2 people with the same birthday</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_probability(num_people):</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Check there is at least 2 people in the room</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num_people <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">Not enough people in the room!"</span>)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Calculate the probability</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    numerator <span class="op">=</span> <span class="dv">365</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    countdown <span class="op">=</span> <span class="dv">364</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, num_people <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>      numerator <span class="op">=</span> numerator <span class="op">*</span> countdown</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>      countdown <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    denominator <span class="op">=</span> <span class="dv">365</span> <span class="op">**</span> num_people</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    probability <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> numerator<span class="op">/</span><span class="bu">float</span>(denominator)</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Change probability to percentage</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    rounded <span class="op">=</span> <span class="bu">round</span>(probability<span class="op">*</span><span class="dv">100</span>, <span class="dv">2</span>)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">The probability that two people in a room of </span><span class="sc">{0}</span><span class="st"> people have the same birthday is nearly </span><span class="sc">{1}</span><span class="st">%"</span>.<span class="bu">format</span>(num_people, rounded))</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co">#Find the same birthday within our list of birthdays</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_duplicates(birthdays_list, birthday, index):</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  people <span class="op">=</span> []</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(birthdays_list)):</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> birthdays_list[i] <span class="op">==</span> birthday <span class="kw">and</span> i <span class="op">!=</span> index:</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>      people.append(i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> people:</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    people.append(index <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">In our simulation, the following people have the same birthdays: "</span>)</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> person <span class="kw">in</span> people:</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"Person </span><span class="sc">{0}</span><span class="st">"</span>.<span class="bu">format</span>(person))</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Other times, the probability of something is constant. For instance, the probability of flipping a coin and it landing heads will always be 50%.</p>
+<p>In data science, probability is often used to simulate scenarios.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from simulate import simulate # import the function named simulate from simulate.py</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>num_people_in_room <span class="op">=</span> <span class="dv">13</span> <span class="co"># Change this number (keep it smaller than 100 to save processing power)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>simulate(num_people_in_room) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Here's what our room looks like:
+
+Person 1's birthday: May 30
+Person 2's birthday: September 27
+Person 3's birthday: December 22
+Person 4's birthday: November 4
+Person 5's birthday: October 14
+Person 6's birthday: August 9
+Person 7's birthday: November 19
+Person 8's birthday: August 31
+Person 9's birthday: June 27
+Person 10's birthday: October 24
+Person 11's birthday: December 8
+Person 12's birthday: May 6
+Person 13's birthday: January 13
+
+
+The probability that two people in a room of 13 people have the same birthday is nearly 19.44%
+
+
+In our simulation, no two people have the same birthday</code></pre>
+</div>
+</div>
+</section>
+<section id="statistical-inference" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-inference">Statistical Inference</h3>
+<p>A lot of statistics is based on the idea of a distribution. Let’s apply this to look at the distribution of learner hours on the Codecademy site.</p>
+<p>There are many different types of distributions. The one below is called a normal distribution :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/cdc30afe-1d16-4e8c-9a7c-6d7a1ba6e02e-1-00d05f8e-f457-4c34-a0eb-91890df399e8.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">normal_distribution.JPG</figcaption>
+</figure>
+</div>
+<p>These distributions are very common. In a normal distribution, the mean is the middle of the distribution and the standard deviation is the width.</p>
+<p>Increasing the mean, shifts the entire distribution to the right.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/cdc30afe-1d16-4e8c-9a7c-6d7a1ba6e02e-3-a8b40f17-9cc6-4f2a-a950-b198b777d42c.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">normal_distribution_mean3.JPG</figcaption>
+</figure>
+</div>
+<p>Increasing the standard deviation, squashes (flattens) the distribution.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/cdc30afe-1d16-4e8c-9a7c-6d7a1ba6e02e-2-96dfaa71-891b-4f3f-988b-8c5a717a8acd.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">normal_distribution_sd3.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="machine-learning" class="level3">
+<h3 class="anchored" data-anchor-id="machine-learning">Machine Learning</h3>
+<p>Machine Learning and Algorithms teams use data to make predictions and create new products using data (like recommendation systems). Today they are trying to find trends among millions of learners according to their behavior on the site. They will use a <code>cluster analysis</code>.</p>
+<p>Catherine is playing around with some sample data about penguins to learn about cluster analyses.</p>
+<p>The dataset she’s looking at is a collection of flipper and bill measurements for three different species of penguins <a href="https://allisonhorst.github.io/palmerpenguins/">collected by Dr.&nbsp;Kristen Gorman and the Palmer Station in Antarctica</a>.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries for making and displaying figures</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#import codecademylib3_seaborn</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the three penguin species data</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>adelie <span class="op">=</span> pd.read_csv(<span class="st">'data/adelie.csv'</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>adelie[<span class="st">'Species'</span>] <span class="op">=</span> <span class="st">'Adelie'</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>gentoo <span class="op">=</span> pd.read_csv(<span class="st">'data/gentoo.csv'</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>gentoo[<span class="st">'Species'</span>] <span class="op">=</span> <span class="st">'Gentoo'</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>chinstrap <span class="op">=</span> pd.read_csv(<span class="st">'data/chinstrap.csv'</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>chinstrap[<span class="st">'Species'</span>] <span class="op">=</span> <span class="st">'Chinstrap'</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the three datasets into one and select relevant columns</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.concat([adelie,gentoo,chinstrap])[[<span class="st">'Species'</span>,<span class="st">'Flipper Length (mm)'</span>,<span class="st">'Culmen Length (mm)'</span>]]</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the columns for ease of use</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>penguins.columns <span class="op">=</span> [<span class="st">'Species'</span>,<span class="st">'Flipper Length'</span>,<span class="st">'Bill Length'</span>]</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and label the scatterplots</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> penguin <span class="kw">in</span> [<span class="st">'Adelie'</span>,<span class="st">'Gentoo'</span>,<span class="st">'Chinstrap'</span>]:</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    plt.scatter(penguins[penguins[<span class="st">'Species'</span>] <span class="op">==</span> penguin][<span class="st">'Flipper Length'</span>],penguins[penguins[<span class="st">'Species'</span>]<span class="op">==</span>penguin][<span class="st">'Bill Length'</span>],alpha<span class="op">=</span><span class="fl">.75</span>,linewidths<span class="op">=</span><span class="fl">.5</span>,label<span class="op">=</span>penguin)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Flipper Length (mm)'</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Bill Length (mm)'</span>)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Penguin Flippers and Bills by Species'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>Text(0.5, 1.0, 'Penguin Flippers and Bills by Species')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Intro_to_Data_Science_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Take a look at the visualization above. You might notice that there isn’t much overlap between species on the plot. For example, Chinstrap penguins seem to usually have longer bills than Adelie penguins, and so Chinstrap penguins appear above Adelie penguins in the visualization. Regions like these that mostly feature one species over another are called <code>clusters</code>.</p>
+<p>We can use this to make predictions. For example, if we find a new penguin that has 180mm long flippers and a 35mm long bill, we might conclude (based on these clusters) that our penguin is more likely to be an Adelie penguin.</p>
+<p>Let’s build a model that can make this kind of prediction automatically :</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import a package for generating a model of a dataset</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a model of this data using the K Means algorithm</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>km_model <span class="op">=</span> KMeans(n_clusters <span class="op">=</span> <span class="dv">3</span>, random_state<span class="op">=</span><span class="dv">17</span>).fit(penguins[[<span class="st">'Flipper Length'</span>,<span class="st">'Bill Length'</span>]].dropna().values)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that uses the KMeans model to predict species</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(flipper,bill):</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plt.scatter(flipper,bill,marker='*',s=600,c='black')</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  species_name <span class="op">=</span> {<span class="dv">0</span>:<span class="st">'Adelie'</span>,<span class="dv">1</span>:<span class="st">'Gentoo'</span>,<span class="dv">2</span>:<span class="st">'Chinstrap'</span>}</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">'Prediction: this penguin belongs to the '</span> <span class="op">+</span> species_name[<span class="bu">list</span>(km_model.predict([[flipper,bill]]))[<span class="dv">0</span>]] <span class="op">+</span> <span class="st">' species!'</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/sklearn/cluster/_kmeans.py:1412: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)</code></pre>
+</div>
+</div>
+<p>Let’s new use this model to make predictions :</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change these numbers and run to predict species!</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>mystery_penguin_flipper <span class="op">=</span> <span class="dv">180</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>mystery_penguin_bill <span class="op">=</span> <span class="dv">45</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The model will use those values and the dataset to predict a species</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>predict(mystery_penguin_flipper,mystery_penguin_bill)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction: this penguin belongs to the Chinstrap species!</code></pre>
+</div>
+</div>
+</section>
+<section id="tableau" class="level3">
+<h3 class="anchored" data-anchor-id="tableau">Tableau</h3>
+<p>The Analytics team typically drive decision-making by summarizing data, asking good questions, and developing dashboards. They have the most contact with the people who use the data, and therefore focus a lot of attention on storytelling and clear communication.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/cf3a1dee-3c5e-464a-9afa-040abc138c28-1-391fa772-35cf-40b6-a632-0b6ba2c4c209.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">rotten_toms.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="data-types-and-quality" class="level3">
+<h3 class="anchored" data-anchor-id="data-types-and-quality">Data Types and Quality</h3>
+<section id="variable-types" class="level4">
+<h4 class="anchored" data-anchor-id="variable-types">Variable Types</h4>
+<p>In our tree census, we are collecting data about two types of variables: one that we measure (height) and one that we categorize (species).</p>
+<p>The difference between measuring and categorizing is so important that the data itself is termed differently:</p>
+<ul>
+<li>Variables that are measured are Numerical variables</li>
+<li>Variables that are categorized are Categorical variables.</li>
+</ul>
+</section>
+<section id="numerical-variables" class="level4">
+<h4 class="anchored" data-anchor-id="numerical-variables">Numerical variables</h4>
+<p>Numerical variables are a combination of the measurement and the unit. Without the unit, a numerical variable is just a number.</p>
+<p>Imagine I go into a cafe and ask the barista for 3. Three what? ☕? 🍩? 💵? Or my friend asks how far Toledo is and I say 300. 300 miles? Kilometers? Minutes? Without units, numbers don’t mean anything.</p>
+<p>There are two ways to get a number: by counting and measuring. Counting gives us whole numbers and <code>discrete</code> variables. Measuring gives us potentially partial values and <code>continuous</code> variables.</p>
+<p>In our tree census, we are measuring the height of our trees in feet (indicated in the variable name, ‘Height (ft)’), a continuous variable.</p>
+</section>
+<section id="categorical-variables" class="level4">
+<h4 class="anchored" data-anchor-id="categorical-variables">Categorical variables</h4>
+<p>Categorical variables describe characteristics with words or relative values.</p>
+<p>In the tree census, trees species are described with words like London Plane, Honeylocust, or Pin Oak. This is the best description and encodes all the information we need about the species. This kind of categorical variable is a <code>nominal</code> variable which literally means a named value.</p>
+<p>We also captured whether or not our trees grew alone. In our ‘Single’ variable, there were only two options: Yes and No.&nbsp;This is called a <code>dichotomous</code> variable. Dichotomous variables have only 2 logical possibilities, “on/off”, “yes/no”, “true/false”, “0/1”, there’s no middle ground and no 3rd option. If there is a logical third option, it’s not a dichotomous variable.</p>
+<p>Finally, let’s say that we wanted to capture how “pretty” we thought each tree was. This isn’t really a thing we can measure, but we can subjectively say on a scale of 1 to 5, how pretty we think each tree is. The prettiest trees are a 5, the least pretty trees are a 1.</p>
+<p>That ranking is inherently ordered and therefore called an <code>ordinal</code> variable.</p>
+<p>Ordinal variables are really popular in survey design “on a scale of 1-5 how much do you agree with this statement?” This is called a <code>likert</code> scale. They also show up in the Olympics and other competitions where someone wins 1st, 2nd, or 3rd place.</p>
+<p>Ordinal variables can get a little confusing because they are often represented as numbers. But they don’t represent measurements or counts, they represent categories. For example, let’s say an Olympian wins Gold and Bronze medals, it doesn’t make sense to say that they averaged Silver. The same is true of likert scales: there’s no average between “Very pretty” and “Pretty.”</p>
+</section>
+</section>
+<section id="dealing-with-messy-data" class="level3">
+<h3 class="anchored" data-anchor-id="dealing-with-messy-data">Dealing with Messy Data</h3>
+<pre><code>All happy datasets are alike; each unhappy dataset is unhappy in its own way.
+
+- Leo Tolstoy (if he had written a Data Science book)</code></pre>
+<p>Clean datasets are all alike, but every messy dataset is messy in its own unique way. That’s why cleaning data involves a lot of critical thinking when considering the nuances of the dataset you are working with.</p>
+<p>Fortunately, there are some patterns in what can go wrong, and the first step in cleaning data is knowing what to look for.</p>
+</section>
+<section id="what-is-a-messy-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-messy-dataset">What is a messy dataset?</h3>
+<p>Imagine we are outside collecting the data about our trees. We have our iPad and our tape measure. Our fingers are cold, we are distracted by a beautiful bird 🦜, and we’re ready for lunch 🍕, but we just have to measure and categorize these last 3 trees. The last 3 entries look like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/1f3034e0-cf8f-4592-91ed-fbc18b0498d3-3-dfb83e13-1a98-4302-83af-55e8106a5d4f.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tree_census.JPG</figcaption>
+</figure>
+</div>
+<p>Yikes! What a mess. But we’re hungry, so we decide to fix the issues after lunch. They never get fixed. Six weeks later, we are back at our desk ready to analyze our data. Oh no! We have over 10,000 observations and quite a few problems.</p>
+</section>
+<section id="messy-data-problems" class="level3">
+<h3 class="anchored" data-anchor-id="messy-data-problems">Messy Data Problems</h3>
+<p>Different problems need to be handled differently, so let’s categorize them:</p>
+<ul>
+<li>Typos like Tuuullip for Tulip</li>
+<li>Missing data like the Pin Oak (tree ID 11222) that doesn’t have a height</li>
+<li>Inconsistent coding like the Pin Oak (tree 18564)’s Prettiness value is ‘three’ rather than ‘3’ and the Single value for all of our trees is ‘no’ rather than ‘0’.</li>
+</ul>
+<p>If we don’t fix these issues, we will likely end up with problems in our analysis. For example:</p>
+<ul>
+<li>Tulip trees might be divided into 2 categories</li>
+<li>We might get an inaccurate average height for Pin Oaks because we are missing a data point</li>
+<li>Our computer might return an error message when we try to group trees into their Prettiness value or find all of the trees that grow alone.</li>
+</ul>
+<p>Finding and solving these problems requires detective work. For now, we will fix these issues manually, but know that if you work with data, you will see these issues again. We cover how to deal with these issues and more in <a href="https://www.codecademy.com/learn/practical-data-cleaning">How to Clean Data with Python</a> and in the course of our Data Scientist Career Paths.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/1f3034e0-cf8f-4592-91ed-fbc18b0498d3-1-249155aa-d04b-4e5a-8034-089141b961ea.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tree_census_dirty.JPG</figcaption>
+</figure>
+</div>
+<p>For the missing data, we actually cannot know what the value should be. One best guess is to take the mean of the other Pin Oaks.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/1f3034e0-cf8f-4592-91ed-fbc18b0498d3-2-5d31fb53-5e16-40c1-9283-a9c63c3bde47.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tree_census_clean.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="working-with-missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-missing-data">Working with Missing Data</h3>
+<p>In our dataset, we had some missing values. There are various types of “missing-ness” that affect how we treat the missing data.</p>
+<p>If we remember when we were collecting our data, we were hungry, our fingers were cold, and we were distracted. Even though there’s a reason we didn’t enter some values (we were hungry and tired), it’s not a systemic reason. There’s no deeper meaning to why the data is missing: it just wasn’t entered properly. This kind of missing is <code>Missing Completely at Random</code>.</p>
+<p>However, we don’t always know if there is a deeper meaning, so we have to treat missing data like a mystery to solve. For example, we might notice that all of the Redwood trees are missing Height values. Well, that’s interesting! We can predict if a tree is missing its Height value based on what Species it is.</p>
+<p>More generally <em>we can predict if one value is missing based on the value in another variable</em>. This kind of missing is called <code>Missing at Random</code>. It is a confusing label because it’s not really missing at “random” in the normal meaning of the word. If we dig a little deeper into how the data was collected, we might uncover a story about the data collection or about Redwoods. For example, our tape measures might have been too short to measure them.</p>
+<p>Finally, data can be structurally missing, meaning that we wouldn’t expect a value there to begin with. For example, let’s say we are also collecting data about fruit on our trees. Some trees will have visible fruit. For those trees, we can count how many fruits are visible. If there’s no visible fruit, we can’t count how many there are. The number of fruits will be <code>Structurally Missing</code>.</p>
+<p>What should I do about missing data?</p>
+<p>Well, for structurally missing data, we can just ignore it, we don’t expect there to be values there anyhow. For Missing at Random and Missing Completely at Random, there is an entire science behind what to do with these values. Learn more in our course on <a href="https://www.codecademy.com/learn/handling-missing-data">Handling Missing Data</a>.</p>
+<p>When trying to recover missing data or work around it, the most important thing to consider is that anything you do will affect your analysis. Once data goes missing, it can’t be recovered, so whatever decision you make becomes a part of your result and your analysis (even doing nothing will affect the analysis). Because of this, it is best practice to keep track of which values were missing just in case you ever need to revisit your data.</p>
+</section>
+<section id="missing-data---example" class="level3">
+<h3 class="anchored" data-anchor-id="missing-data---example">Missing Data - Example</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/d0db9316-a2b7-425c-99cf-1f68eb1f36de-1-36189378-1268-46d1-8277-fd0f827642e3.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tree_census_NAN.JPG</figcaption>
+</figure>
+</div>
+<p>Take a look at the dataset above. The ‘Distance (ft)’ variable refers to the distance between the trees that are growing in groups.</p>
+<p>Data is missing in many different ways. Some data is structurally missing while other data is Missing at Random or Missing Completely at Random.</p>
+<p>Take a moment to think about the ways that the data is missing. Is there anything that you should do about the missing values?</p>
+</section>
+<section id="accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="accuracy">Accuracy</h3>
+<p>Great! We collected our measurements, made decisions about handling missing data. Now we need to ask ourselves if the dataset we have really describes the world. We need to know if it is accurate. Accuracy is a measure of how well records reflect reality.</p>
+<p>While doing some <a href="https://www.codecademy.com/learn/eda-exploratory-data-analysis-python">Exploratory Data Analysis</a> you notice that the trees you measured are overall taller than the trees I measured. That’s interesting. You’re not really sure why that is, so we compare how we measured the trees.</p>
+<p>We realize that you measured starting from the ground and I measured starting from where the roots become the trunk. It’s not a huge difference, but it’s enough to affect the accuracy of our data. The tree heights are not accurate because we don’t know how tall each tree really is. We could also say that the height variable is not reliable. Without a standard measurement unit and standard method, comparing trees, or even getting an average tree height is impossible.</p>
+<p>Standardization is essential for accuracy – but it’s not the only way that accuracy can be compromised.</p>
+<p>There are a lot of ways a dataset can have low accuracy, but it all comes down to the question of: “are these measurements (or categorizations) correct?” It requires a critical evaluation of your specific dataset to identify what the issues are, but there are a few ways to think about it.</p>
+<ul>
+<li>First, thinking about the data against expectations and common sense is crucial for spotting issues with accuracy. You can do this by inspecting the distribution and outliers to get clues about what the data looks like.</li>
+<li>Second, critically considering how error could have crept in during the data collection process will help you group and evaluate the data to uncover systematic inconsistencies.</li>
+<li>Finally, identifying ways that duplicate values could have been created goes a long way towards ensuring that reality is only represented once in your data. A useful technique is to distinguish between what was human collected versus programmatically generated and using that distinction to segment the data.</li>
+</ul>
+<p>Holding these perspectives in mind is important for both numeric and categorical variables. In fact, they often provide clues about each other.</p>
+<p>As far as resolving accuracy issues, there’s no simple solutions, and every solution has to be tailored to that specific dataset. In the end, the only way to improve a dataset’s accuracy is to use real-world knowledge to be sure that the dataset reflects reality. But even then, the reason that we collect data is generally to learn something new about the world. Sometimes the data will surprise you, but distinguishing between a new finding and inaccuracy is the work of a skilled data scientist.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/9e80c445-e2a9-42da-8f88-5437f8e56798-1-56e2e82f-73d8-474e-98c0-396eaf10a204.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">accuracy.JPG</figcaption>
+</figure>
+</div>
+<p>Notice in the image that the measurements begin at different places. How else could inconsistencies be created during the data collection phase?</p>
+</section>
+<section id="validity" class="level3">
+<h3 class="anchored" data-anchor-id="validity">Validity</h3>
+<p>It’s not just typos, mistakes, missing data, poor measurement, and duplicated observations that make a dataset low quality. We also have to make sure that our data actually measures what we think it is measuring. This is the <code>validity</code> of our dataset.</p>
+<p>Validity is a special kind of quality measure because it’s not just about the dataset, it’s about the relationship between the dataset and its purpose. A dataset can be valid for one question and invalid for another.</p>
+<p>Let’s think again about our trees dataset. After we finished collecting the data, we thought of another question we wanted to answer: how old are our trees?</p>
+<p>We know that you can measure the age of a tree by counting the rings, but we didn’t do that. Let’s say that we did measure the width of the tree.</p>
+<p>We decide that since number of rings and width are related, we will use width as a proxy for the age. With that decision, we just compromised the <code>validity</code> of our dataset. Our data doesn’t measure age, it measures width. And even though there is a relationship between the number of rings and the width, it’s not a direct relationship and therefore cannot be substituted without affecting the validity of our dataset and measures.</p>
+<p>Now let’s say that we want to know how much our trees grow every year. We found a dataset for the same region from 20 years ago. We use the locations to match up the old and new measurements. But this data can tell us how much they grow every 20 years, not every year. If we try to use these two datasets to measure yearly growth, we will compromise the <code>validity</code> of the dataset again.</p>
+<p>Using proxies and inappropriate time spans are just two ways to compromise the validity of a dataset. There are infinite ways in which a given dataset is not valid for answering a given question. The best way to spot issues with the validity of a dataset is to ask: Does this variable measure what I think it does?</p>
+</section>
+<section id="validity---example" class="level3">
+<h3 class="anchored" data-anchor-id="validity---example">Validity - Example</h3>
+<p>Indicate which variables you would use to answer each question :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/f8f385cf-3e50-4662-b5b5-2182976b186b-5-cb15ce02-3a70-41e0-98f0-a76403d8f3a7.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">q1.JPG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/f8f385cf-3e50-4662-b5b5-2182976b186b-2-36be3182-1936-43d0-90ce-f59f00cb9c21.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">q2.JPG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/f8f385cf-3e50-4662-b5b5-2182976b186b-1-23aca1e8-b7d4-4f26-a87f-ee082b55ada0.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">q3.JPG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/f8f385cf-3e50-4662-b5b5-2182976b186b-3-3ba9831b-c7a1-4020-ac7a-93805d2a0283.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">q4.JPG</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/f8f385cf-3e50-4662-b5b5-2182976b186b-4-79ecbbc5-0b4e-448d-a162-6b2dbf581c35.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">q5.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="representative-samples" class="level3">
+<h3 class="anchored" data-anchor-id="representative-samples">Representative Samples</h3>
+<p>Great! You’ve cleaned the data, decided what to do about missing data points, resolved any accuracy issues. You’ve made sure that all the questions can be answered by the data we have and gotten all stakeholders to agree on the research questions.</p>
+<p>You are ready to do your analysis. Then you notice that all of the records are from New York State. You’ve been hired to work on the census for all of the North Atlantic. That includes multiple states in the U.S. and many regions of Canada. Where is the rest of the data?</p>
+<p>You go back to the dataset and start to think about when it was collected. Right, Spring of 2020 - the border was closed. Census takers collected data in the region that they could: the areas that were convenient. This is a <code>convenience sample</code>. It’s great for preliminary understanding, but not good for representing a broader population.</p>
+<p>If we were to create a model to predict tree prettiness based on the variables in our dataset, it might only be relevant for trees in New York. We’ve introduced <code>bias</code> into our dataset by constraining our sample.</p>
+<p>Convenience samples aren’t the only type of sampling errors, but they are common. The goal of a sample is to represent a population. Any time a sample is made that does NOT reflect the entire population, it is a sampling error.</p>
+<p>Best practice is to create a <code>sample</code> that represents the entire <code>population</code>.</p>
+<p>The <code>population</code> is all of the trees in the North Atlantic region. The <code>sample</code> is the trees that we have data about (it will almost never be all of them).</p>
+<p>The sample should look like the population in as many characteristics as possible. Therefore, our sample needs to include many different kinds of trees from many different locations.</p>
+<p>There are a lot of techniques for creating representative samples, but they all have the same goal: to find a mix of observations that contains all of the features in the larger population.</p>
+</section>
+<section id="sampling---example" class="level3">
+<h3 class="anchored" data-anchor-id="sampling---example">Sampling - Example</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/b8b2e574-04b3-45ce-b5e3-dc0c5f5680a4-1-562d047a-c9c3-4a22-9c1d-93f4f054e57d.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">population_sample.JPG</figcaption>
+</figure>
+</div>
+<p>Review the Samples above. Every card has the same population of trees, but 4 different samples were chosen.</p>
+<p>They are categorized on:</p>
+<ul>
+<li>Leaf color</li>
+<li>Trunk color</li>
+<li>Leaf type</li>
+</ul>
+<p>Review each sample and decide if each is Representative or Non-Representative. Then click on the sample to check your answer.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Intro_to_Data_Science_files/figure-html/b8b2e574-04b3-45ce-b5e3-dc0c5f5680a4-2-a12af981-3592-45eb-916c-b95a8a121f29.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sample_representative.JPG</figcaption>
+</figure>
+</div>
+</section>
+<section id="review-of-data-types-and-quality" class="level3">
+<h3 class="anchored" data-anchor-id="review-of-data-types-and-quality">Review of Data Types and Quality</h3>
+<p>We’ve done the hard work of collecting our data and preparing it for analysis. Along the way we addressed some data quality issues and considered the relationship between your data and your questions.</p>
+<p>While preparing the North Atlantic Tree Census, we:</p>
+<ul>
+<li>Defined our variables to create tidy datasets</li>
+<li>Classified the variables based on their types</li>
+<li>Reconciled messy data</li>
+<li>Decided how to deal with missing data</li>
+<li>Addressed issues of accuracy</li>
+<li>Aligned our questions to the available data to ensure validity</li>
+<li>Created representative samples</li>
+</ul>
+<p>These are important techniques for anyone working with data to always be conscious of. In the end, your human oversight and critical consideration of the data will have the biggest impact on data quality.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

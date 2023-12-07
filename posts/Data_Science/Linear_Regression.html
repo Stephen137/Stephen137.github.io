@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Into the Unknown - Introduction to Linear Regression</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to Linear Regression</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#finding-the-best-line" id="toc-finding-the-best-line" class="nav-link active" data-scroll-target="#finding-the-best-line">Finding the “Best” Line</a></li>
+  <li><a href="#fitting-a-linear-regression-model-in-python" id="toc-fitting-a-linear-regression-model-in-python" class="nav-link" data-scroll-target="#fitting-a-linear-regression-model-in-python">Fitting a Linear Regression Model in Python</a></li>
+  <li><a href="#using-a-regression-model-for-prediction" id="toc-using-a-regression-model-for-prediction" class="nav-link" data-scroll-target="#using-a-regression-model-for-prediction">Using a Regression Model for Prediction</a></li>
+  <li><a href="#interpreting-a-regression-model" id="toc-interpreting-a-regression-model" class="nav-link" data-scroll-target="#interpreting-a-regression-model">Interpreting a Regression Model</a></li>
+  <li><a href="#assumptions-of-linear-regression-part-1" id="toc-assumptions-of-linear-regression-part-1" class="nav-link" data-scroll-target="#assumptions-of-linear-regression-part-1">Assumptions of Linear Regression Part 1</a></li>
+  <li><a href="#assumptions-of-linear-regression-part-2" id="toc-assumptions-of-linear-regression-part-2" class="nav-link" data-scroll-target="#assumptions-of-linear-regression-part-2">Assumptions of Linear Regression Part 2</a></li>
+  <li><a href="#normality-assumption" id="toc-normality-assumption" class="nav-link" data-scroll-target="#normality-assumption">Normality assumption</a></li>
+  <li><a href="#homoscedasticity-assumption" id="toc-homoscedasticity-assumption" class="nav-link" data-scroll-target="#homoscedasticity-assumption">Homoscedasticity assumption</a></li>
+  <li><a href="#categorical-predictors" id="toc-categorical-predictors" class="nav-link" data-scroll-target="#categorical-predictors">Categorical Predictors</a></li>
+  <li><a href="#categorical-predictors-fit-and-interpretation" id="toc-categorical-predictors-fit-and-interpretation" class="nav-link" data-scroll-target="#categorical-predictors-fit-and-interpretation">Categorical Predictors: Fit and Interpretation</a></li>
+  <li><a href="#create-and-fit-a-regression-model-of-score-predicted-by-breakfast" id="toc-create-and-fit-a-regression-model-of-score-predicted-by-breakfast" class="nav-link" data-scroll-target="#create-and-fit-a-regression-model-of-score-predicted-by-breakfast">Create and fit a regression model of score predicted by breakfast</a></li>
+  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">Review</a></li>
+  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example">Worked Example</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Linear regression is a powerful modeling technique that can be used to understand the relationship between a quantitative variable and one or more other variables, sometimes with the goal of making predictions. For example, linear regression can help us answer questions like:</p>
+<ul>
+<li>What is the relationship between apartment size and rental price for NYC apartments?</li>
+<li>Is a mother’s height a good predictor of their child’s adult height?</li>
+</ul>
+<p>The first step before fitting a linear regression model is exploratory data analysis and data visualization: is there a relationship that we can model? For example let’s look at a fictional dataset from a group of students who were surveyed about their studying and breakfast choices prior to a math test.</p>
+<p>Let’s visualise the relationship between hours studied and test score achieved by way of a scatter plot :</p>
+<p>An estimated <code>regression</code> or line of best fit has been added to the graph:</p>
+<pre><code>predicted_score = 25 * students.hours_studied + 20</code></pre>
+<p>which takes a baseline test score of 20 and then adds an additional 25 for every hour of study.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> pd.read_csv(<span class="st">'data/test_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>students.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">score</th>
+<th data-quarto-table-cell-role="th">hours_studied</th>
+<th data-quarto-table-cell-role="th">breakfast</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>73.5</td>
+<td>2.7</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>92.2</td>
+<td>4.1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>55.4</td>
+<td>2.5</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>64.6</td>
+<td>1.6</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>66.9</td>
+<td>1.4</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative attempt at modeling linear relationship</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>predicted_score <span class="op">=</span> <span class="dv">25</span> <span class="op">*</span> students.hours_studied <span class="op">+</span> <span class="dv">20</span> <span class="co">#25 represents the slope or gradient, 20 represents the y intercept if x = 0</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(students.hours_studied, students.score)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.plot(students.hours_studied, predicted_score)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>This does not seem to approximate very well the relationship between hours studied and test score. The line appears to be too steep. Let’s see if we can improve this line so that it better fits the data. To start, let’s reduce the slope. We can do this by adjusting our slope variable :</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative attempt at modeling linear relationship</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>predicted_score <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> students.hours_studied <span class="op">+</span> <span class="dv">20</span> <span class="co"># reduce the slope variable to 10</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(students.hours_studied, students.score)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.plot(students.hours_studied, predicted_score)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The line now appears to be parallel to the points but still sits below them! Let’s leave the slope of the line equal to 10, as we are happy with this, but edit the y-intercept so that the line sits within the data :</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative attempt at modeling linear relationship</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>predicted_score <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> students.hours_studied <span class="op">+</span> <span class="dv">45</span> <span class="co"># increase the y-intercept to 45</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(students.hours_studied, students.score)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.plot(students.hours_studied, predicted_score)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="finding-the-best-line" class="level3">
+<h3 class="anchored" data-anchor-id="finding-the-best-line">Finding the “Best” Line</h3>
+<p>In the last exercise, we tried to eye-ball what the best-fit line might look like. In order to actually choose a line, we need to come up with some criteria for what “best” actually means.</p>
+<p>Depending on our ultimate goals and data, we might choose different criteria; however, a common choice for linear regression is ordinary least squares (OLS). In simple OLS regression, we assume that the relationship between two variables x and y can be modeled as:</p>
+<pre><code>y= mx + b + error</code></pre>
+<p>We define “best” as the line that minimizes the total squared error for all data points. This total squared error is called the loss function in machine learning. For example, consider the following plot:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/4538b7c1-aad4-4660-8cb7-a27212e5da5d-1-178710d4-0514-4762-94c8-db1efe9496fd.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>n this plot, we see two points on either side of a line. One of the points is one unit below the line (labeled -1). The other point is three units above the line (labeled 3). The total squared error (loss) is:</p>
+<pre><code>loss=(−1)^2 + (3)^2 = 1 + 9 = 10</code></pre>
+<p>Notice that we square each individual distance so that points below and above the line contribute equally to loss (when we square a negative number, the result is positive). To find the best-fit line, we need to find the slope and intercept of the line that minimizes loss.</p>
+</section>
+<section id="fitting-a-linear-regression-model-in-python" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-a-linear-regression-model-in-python">Fitting a Linear Regression Model in Python</h3>
+<p>There are a number of Python libraries that can be used to fit a linear regression, but in this course, we will use the <code>OLS.from_formula()</code> function from <code>statsmodels.api</code> because it uses simple syntax and provides comprehensive model summaries.</p>
+<p>Let’s leverage this library to revisit our students math test scores illustration :</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS.from_formula(<span class="st">'score ~ hours_studied'</span>, students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Intercept        43.016014
+hours_studied     9.848111
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the intercept coefficient</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.params[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>43.01601372546099</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the gradient coefficient</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.params[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>9.848111087298092</code></pre>
+</div>
+</div>
+<p>So this tells us that the best-fit intercept is 43.016014 and the best-fit slope is 43.016014. Let’s plot this line onto our scatterplot and see what it looks like :</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 'best-fit' modeling linear relationship</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>predicted_score <span class="op">=</span> results.params[<span class="dv">1</span>] <span class="op">*</span> students.hours_studied <span class="op">+</span> results.params[<span class="dv">0</span>]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(students.hours_studied, students.score)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.plot(students.hours_studied, predicted_score)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>This does look like a pretty good fit!</p>
+</section>
+<section id="using-a-regression-model-for-prediction" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-regression-model-for-prediction">Using a Regression Model for Prediction</h3>
+<p>Returning to our example let’s predict the score for a student who spent 3 hours studying :</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pred_3hr <span class="op">=</span> results.params[<span class="dv">1</span>] <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> results.params[<span class="dv">0</span>]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pred_3hr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>72.56034698735526</code></pre>
+</div>
+</div>
+<p>What is the predicted score for a student who spent 5 hours studying? Let’s use the <code>.predict()</code> method this time :</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>unseen_data <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print `pred_5hr` using the predict method:</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>pred_5hr <span class="op">=</span> results.predict({<span class="st">'hours_studied'</span>: unseen_data})</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pred_5hr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    92.256569
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="interpreting-a-regression-model" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-a-regression-model">Interpreting a Regression Model</h3>
+<p>Let’s again inspect the output for a regression that predicts weight based on height. The regression line looks something like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/b714fb42-dd1d-42c1-857a-faf27751c385-1-1e142675-34cd-4574-92eb-641671dd8afd.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Note that the units of the intercept and slope of a regression line match the units of the original variables; the intercept of this line is measured in kg, and the slope is measured in kg/cm. To make sense of the <code>intercept</code> (which we calculated previously as -21.67 kg), let’s zoom out on this plot:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/b714fb42-dd1d-42c1-857a-faf27751c385-2-bfb0e3d6-b3b8-4348-83b8-3b86068eac28.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>We see that the intercept is the predicted value of the outcome variable (weight) when the predictor variable (height) is equal to zero. In this case, the interpretation of the intercept is that a person who is 0 cm tall is expected to weigh -21 kg. This is pretty non-sensical because it’s impossible for someone to be 0 cm tall!</p>
+<p>However, in other cases, this value does make sense and is useful to interpret. For example, if we were predicting ice cream sales based on temperature, the intercept would be the expected sales when the temperature is 0 degrees.</p>
+<p>To visualize the <code>slope</code>, let’s zoom in on our plot:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/b714fb42-dd1d-42c1-857a-faf27751c385-3-d11b7998-3eaf-47ff-a831-70bcc63c47dc.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Remember that slope can be thought of as rise/run — the ratio between the vertical and horizontal distances between any two points on the line. Therefore, the slope (which we previously calculated to be 0.50 kg/cm) is the expected difference in the outcome variable (weight) for a one unit difference in the predictor variable (height). In other words, we expect that a one centimeter difference in height is associated with 0.5 additional kilograms of weight.</p>
+<p>Note that the slope gives us two pieces of information: the magnitude AND the direction of the relationship between the x and y variables. For example, suppose we had instead fit a regression of weight with minutes of exercise per day as a predictor — and calculated a slope of -.1. We would interpret this to mean that people who exercise for one additional minute per day are expected to weigh 0.1 kg LESS.</p>
+</section>
+<section id="assumptions-of-linear-regression-part-1" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-of-linear-regression-part-1">Assumptions of Linear Regression Part 1</h3>
+<p>There are a number of assumptions of simple linear regression, which are important to check if you are fitting a linear model. The first assumption is that the relationship between the outcome variable and predictor is linear (can be described by a line). We can check this before fitting the regression by simply looking at a plot of the two variables.</p>
+<p>The next two assumptions (normality and homoscedasticity) are easier to check after fitting the regression. We will learn more about these assumptions in the following exercises, but first, we need to calculate two things: fitted values and residuals.</p>
+<p>Again consider our regression model to predict weight based on height (model formula ‘weight ~ height’). The fitted values are the predicted weights for each person in the dataset that was used to fit the model, while the residuals are the differences between the predicted weight and the true weight for each person. Visually:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/407ec08d-c60d-4fd4-8518-a7475a9ffa29-1-cf41a3d0-06d1-409e-821c-729f573792d4.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>We can calculate the fitted values using <code>.predict()</code> by passing in the original data. The result is a pandas series containing predicted values for each person in the original dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fitted_values <span class="op">=</span> results.predict(body_measurements)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fitted_values.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Output:</p>
+<p>0 66.673077 1 59.100962 2 71.721154 3 70.711538 4 65.158654 dtype: float64</p>
+<p>The residuals are the differences between each of these fitted values and the true values of the outcome variable. They can be calculated by subtracting the fitted values from the actual values. We can perform this element-wise subtraction in Python by simply subtracting one python series from the other, as shown below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>residuals <span class="op">=</span> body_measurements.weight <span class="op">-</span> fitted_values</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(residuals.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Output:</p>
+<p>0 -2.673077 1 -1.100962 2 3.278846 3 -3.711538 4 2.841346 dtype: float64</p>
+<p>Let’s revisit our student scores model and calculate the fitted values:</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fitted_values <span class="op">=</span> results.predict(students)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fitted_values.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    69.605914
+1    83.393269
+2    67.636291
+3    58.772991
+4    56.803369
+dtype: float64</code></pre>
+</div>
+</div>
+<p>And now calculate the residuals :</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>residuals <span class="op">=</span> students.score <span class="op">-</span> fitted_values</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(residuals.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0     3.894086
+1     8.806731
+2   -12.236291
+3     5.827009
+4    10.096631
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="assumptions-of-linear-regression-part-2" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-of-linear-regression-part-2">Assumptions of Linear Regression Part 2</h3>
+<p>Once we’ve calculated the fitted values and residuals for a model, we can check the normality and homoscedasticity assumptions of linear regression.</p>
+</section>
+<section id="normality-assumption" class="level3">
+<h3 class="anchored" data-anchor-id="normality-assumption">Normality assumption</h3>
+<p>The normality assumption states that the <code>residuals</code> should be normally distributed. To check this assumption, we can inspect a histogram of the residuals and make sure that the distribution looks approximately normal (no skew or multiple “humps”):</p>
+<pre><code>plt.hist(residuals)
+plt.show()</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/efb664cf-2910-4d2c-ad6f-7fbb26dc7990-4-ca8be56f-753e-4c71-8286-c16ccd2226fe.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>These residuals appear normally distributed, leading us to conclude that the normality assumption is satisfied.</p>
+<p>If the plot instead looked something like the distribution below (which is skewed right), we would be concerned that the normality assumption is not met:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/efb664cf-2910-4d2c-ad6f-7fbb26dc7990-3-c8ec60e4-54da-43f2-97c0-4705a90ee7fe.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="homoscedasticity-assumption" class="level3">
+<h3 class="anchored" data-anchor-id="homoscedasticity-assumption">Homoscedasticity assumption</h3>
+<p>Homoscedasticity is a fancy way of saying that the residuals have equal variation across all values of the predictor variable. A common way to check this is by plotting the residuals against the fitted values.</p>
+<pre><code>plt.scatter(fitted_values, residuals)
+plt.show()</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/efb664cf-2910-4d2c-ad6f-7fbb26dc7990-2-1af1dded-8ba8-4aec-b701-7fd3ad481f52.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>If the homoscedasticity assumption is met, then this plot will look like a random splatter of points, centered around y=0 (as in the example above).</p>
+<p>If there are any patterns or asymmetry, that would indicate the assumption is NOT met and linear regression may not be appropriate. For example:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/efb664cf-2910-4d2c-ad6f-7fbb26dc7990-1-0795ade5-17b9-455c-9bb1-2f573095d4a1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Returning to our students example, let’s plot a histogram to check the Normality assumption :</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plt.hist(residuals)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>These residuals appear normally distributed, leading us to conclude that the normality assumption is satisfied.</p>
+<p>Let’s now check the Homoscedasticity assumption by way of a scatterplot :</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(fitted_values, residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x7f6dd242ce20&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>As we can see above the scatterplot can be described as a random splatter of points, centered around y=0 and so the Homoscedasticity assumption is also validated.</p>
+</section>
+<section id="categorical-predictors" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-predictors">Categorical Predictors</h3>
+<p>In the previous exercises, we used a <code>quantitative predictor</code> in our linear regression, but it’s important to note that we can also use categorical predictors. The simplest case of a categorical predictor is a binary variable (only two categories).</p>
+<p>For example, suppose we surveyed 100 adults and asked them to report their height in cm and whether or not they play basketball. We’ve coded the variable bball_player so that it is equal to 1 if the person plays basketball and 0 if they do not. A plot of height vs.&nbsp;bball_player is below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/f84a3544-db47-4937-84fe-81e1112c90f8-1-eb5494c8-c801-477b-acca-00a8d911d2de.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>We see that people who play basketball tend to be taller than people who do not. Just like before, we can draw a line to fit these points. Take a moment to think about what that line might look like!</p>
+<p>You might have guessed (correctly!) that the best fit line for this plot is the one that goes through the mean height for each group. To re-create the scatter plot with the best fit line, we could use the following code:</p>
+<pre><code># Calculate group means
+print(data.groupby('play_bball').mean().height)   </code></pre>
+<p>Output:</p>
+<p>play_bball 0 169.016 1 183.644</p>
+<pre><code># Create scatter plot
+plt.scatter(data.play_bball, data.height)
+
+# Add the line using calculated group means
+plt.plot([0,1], [169.016, 183.644])
+
+# Show the plot
+plt.show()</code></pre>
+<p>This will output the following plot (without the additional labels or colors):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Linear_Regression_files/figure-html/d2725cc0-0f58-44a1-9038-d27eefdf8b0a-1-350e71a7-288b-455d-a8bd-e7d2395df0f8.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>Using our dataset students, let’s plot a scatter plot of score (y-axis) against breakfast (x-axis) to see scores for students who did and did not eat breakfast.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate group means</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(students.groupby(<span class="st">'breakfast'</span>).mean().score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>breakfast
+0    61.664151
+1    73.721277
+Name: score, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatter plot here:</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(students.breakfast, students.score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x7f6dd1e0b070&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatter plot here:</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(students.breakfast, students.score)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the additional line here:</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>,<span class="dv">1</span>], [<span class="fl">61.664151</span>, <span class="fl">73.721277</span>])</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="categorical-predictors-fit-and-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-predictors-fit-and-interpretation">Categorical Predictors: Fit and Interpretation</h3>
+<p>Now that we’ve seen what a regression model with a binary predictor looks like visually, we can actually fit the model using <code>statsmodels.api.OLS.from_formula()</code>, the same way we did for a quantitative predictor:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS.from_formula(<span class="st">'height ~ play_bball'</span>, data)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.fit()</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Output:</p>
+<p>Intercept 169.016 play_bball 14.628 dtype: float64</p>
+<p>Note that this will work if the <code>play_bball</code> variable is coded with 0s and 1s, but it will also work if it is coded with Trues and Falses, or even if it is coded with strings like ‘yes’ and ‘no’ (in this case, the coefficient label will look something like play_bball[T.yes] in the params output, indicating that ‘yes’ corresponds to a 1).</p>
+<p>To interpret this output, we first need to remember that the intercept is the expected value of the outcome variable when the predictor is equal to zero. In this case, the intercept is therefore the mean height of non-basketball players.</p>
+<p>The slope is the expected difference in the outcome variable for a one unit difference in the predictor variable. In this case, a one unit difference in play_bball is the difference between not being a basketball player and being a basketball player. Therefore, the slope is the difference in mean heights for basketball players and non-basketball players.</p>
+</section>
+<section id="create-and-fit-a-regression-model-of-score-predicted-by-breakfast" class="level3">
+<h3 class="anchored" data-anchor-id="create-and-fit-a-regression-model-of-score-predicted-by-breakfast">Create and fit a regression model of score predicted by breakfast</h3>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> pd.read_csv(<span class="st">'data/test_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print group means</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>mean_score_no_breakfast <span class="op">=</span> np.mean(students.score[students.breakfast <span class="op">==</span> <span class="dv">0</span>])</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean score (no breakfast): '</span>, mean_score_no_breakfast)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean score (no breakfast):  61.664150943396216</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>mean_score_breakfast <span class="op">=</span> np.mean(students.score[students.breakfast <span class="op">==</span> <span class="dv">1</span>])</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean score (breakfast): '</span>, mean_score_breakfast)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean score (breakfast):  73.72127659574468</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model and print the coefficients</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS.from_formula(<span class="st">'score ~ breakfast'</span>, students)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.fit()</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Intercept    61.664151
+breakfast    12.057126
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print the difference in group means</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>diff_means <span class="op">=</span> mean_score_breakfast <span class="op">-</span> mean_score_no_breakfast</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(diff_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>12.057125652348468</code></pre>
+</div>
+</div>
+<p>The difference in group means equates to the slope of the model.</p>
+</section>
+<section id="review" class="level3">
+<h3 class="anchored" data-anchor-id="review">Review</h3>
+<p>As a recap, we’ve learned to:</p>
+<ul>
+<li>Fit a simple OLS linear regression model</li>
+<li>Use both quantitative and binary categorical predictors</li>
+<li>Interpret the coefficients of a regression model</li>
+<li>Check the assumptions of a regression model</li>
+</ul>
+</section>
+<section id="worked-example" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example">Worked Example</h3>
+<p>A new dataset named website contains simulated data for a sample of visitors to a website, including the amount of time in seconds they spent on the website (time_seconds), their age (age), and information about whether they accessed the website using Chrome or Safari (browser).</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>website <span class="op">=</span> pd.read_csv(<span class="st">'data/website.csv'</span>)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first five rows</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(website.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   time_seconds   age browser
+0         486.0  47.1  Safari
+1         645.7  64.6  Chrome
+2         345.0  45.4  Safari
+3         413.4  34.4  Chrome
+4         426.4  31.3  Safari</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot of time vs age</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(website.age, website.time_seconds)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scatterplot of age vs time spent on website'</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'age'</span>)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'time - seconds'</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show then clear plot</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear regression to predict time_seconds based on age</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model and print the coefficients</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>age_model <span class="op">=</span> sm.OLS.from_formula(<span class="st">'time_seconds ~ age'</span>, website)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> age_model.fit()</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Intercept    128.967945
+age            6.913758
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'So the linear model predicts a baseline time spent on the website of </span><span class="sc">{</span><span class="bu">round</span>(results.params[<span class="dv">0</span>],<span class="dv">0</span>)<span class="sc">}</span><span class="ss"> seconds with an additional </span><span class="sc">{</span><span class="bu">round</span>(results.params[<span class="dv">1</span>],<span class="dv">0</span>)<span class="sc">}</span><span class="ss"> seconds for each year of age.'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>So the linear model predicts a baseline time spent on the website of 129.0 seconds with an additional 7.0 seconds for each year of age.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the scatter plot with the line on top</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(website.age, website.time_seconds)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.plt(results.params[0], results.params[1])</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scatterplot of age vs time spent on website'</span>)</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'age'</span>)</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'time - seconds'</span>)</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show then clear plot</span></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 'best-fit' modeling linear relationship</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>predicted_time <span class="op">=</span> results.params[<span class="dv">1</span>] <span class="op">*</span> website.age <span class="op">+</span> results.params[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the scatter plot with the line on top</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(website.age, website.time_seconds)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>plt.plot(website.age, predicted_time)</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scatterplot of age vs time spent on website'</span>)</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'age'</span>)</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'time - seconds'</span>)</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show then clear plot</span></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate fitted values</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>fitted_values <span class="op">=</span> results.predict(website)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fitted_values.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    454.605928
+1    575.596686
+2    442.852540
+3    366.801206
+4    345.368558
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate residuals</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>residuals <span class="op">=</span> website.time_seconds <span class="op">-</span> fitted_values</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(residuals.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    31.394072
+1    70.103314
+2   -97.852540
+3    46.598794
+4    81.031442
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the normality assumption by plotting a histogram of the residuals.</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>residuals.hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>&lt;AxesSubplot: &gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-40-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The normality assumption is validated as the residuals are approximately normally distributed.</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the homoscedasticity assumption by plotting the residuals against the fitted values</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(residuals,fitted_values)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scatterplot of residuals vs fitted values - test of Homoscedasticity assumption'</span>)</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'residuals'</span>)</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'fitted values'</span>)</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Linear_Regression_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<p>As we can see above the scatterplot can be described as a random splatter of points, centered around y=0 and so the Homoscedasticity assumption is also validated.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predict the amount of time that a 40 year old person will spend on the website</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>unseen_data <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>pred_40_year_old <span class="op">=</span> results.predict({<span class="st">'age'</span>: unseen_data})</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pred_40_year_old)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    405.518249
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The predicted amount of time spent on the website by a </span><span class="sc">{</span>unseen_data<span class="sc">}</span><span class="ss"> year old is approximately </span><span class="sc">{</span><span class="bu">round</span>(pred_40_year_old[<span class="dv">0</span>]<span class="op">/</span><span class="dv">60</span>,<span class="dv">2</span>)<span class="sc">}</span><span class="ss"> minutes.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The predicted amount of time spent on the website by a 40 year old is approximately 6.76 minutes.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear regression to predict time_seconds based on browser</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model and print the coefficients</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>browser_model <span class="op">=</span> sm.OLS.from_formula(<span class="st">'time_seconds ~ browser'</span>, website)</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> browser_model.fit()</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Intercept            489.704255
+browser[T.Safari]    -99.057086
+dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'This model predicts an average time spent on the website of </span><span class="sc">{</span><span class="bu">round</span>(results.params[<span class="dv">0</span>]<span class="op">/</span><span class="dv">60</span>,<span class="dv">2</span>)<span class="sc">}</span><span class="ss"> minutes. The mean time spent by visitors using a Safari browser is predicted to be </span><span class="sc">{</span><span class="bu">abs</span>(<span class="bu">round</span>(results.params[<span class="dv">1</span>]<span class="op">/</span><span class="dv">60</span>,<span class="dv">2</span>))<span class="sc">}</span><span class="ss"> minutes less than that of a visitor using a Chrome broswer.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This model predicts an average time spent on the website of 8.16 minutes. The mean time spent by visitors using a Safari browser is predicted to be 1.65 minutes less than that of a visitor using a Chrome broswer.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print the group means (for comparison)</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>mean_time_safari <span class="op">=</span> np.mean(website.time_seconds[website.browser <span class="op">==</span> <span class="st">'Safari'</span>])</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean time spent (Safari broswer): '</span>, mean_time_safari)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean time spent (Safari broswer):  390.64716981132074</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print the group means (for comparison)</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>mean_time_chrome <span class="op">=</span> np.mean(website.time_seconds[website.browser <span class="op">==</span> <span class="st">'Chrome'</span>])</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean time spent (Chrome broswer): '</span>, mean_time_chrome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean time spent (Chrome broswer):  489.70425531914884</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Difference in time spent (means) between Chrome and Safari visitors</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>diff_time <span class="op">=</span> mean_time_chrome <span class="op">-</span> mean_time_safari</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(diff_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>99.0570855078281</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
