@@ -1,0 +1,4008 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Barrie">
+<meta name="dcterms.date" content="2024-01-29">
+
+<title>Into the Unknown - Customer Lifetime Value (CLV)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into the Unknown</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Stephen Barrie</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Stephen137" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/sjbarrie" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Customer Lifetime Value (CLV)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">CLV</div>
+                <div class="quarto-category">Marketing</div>
+                <div class="quarto-category">BigQuery</div>
+                <div class="quarto-category">Dash</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Stephen Barrie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 29, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">1. Project Overview</a>
+  <ul class="collapse">
+  <li><a href="#frame-the-business-problems" id="toc-frame-the-business-problems" class="nav-link" data-scroll-target="#frame-the-business-problems">Frame the business problems</a></li>
+  <li><a href="#translate-the-raw-data-into-meaningful-visualizations-and-insights" id="toc-translate-the-raw-data-into-meaningful-visualizations-and-insights" class="nav-link" data-scroll-target="#translate-the-raw-data-into-meaningful-visualizations-and-insights">Translate the raw data into meaningful visualizations and insights</a></li>
+  <li><a href="#use-the-insights-to-make-future-predictions" id="toc-use-the-insights-to-make-future-predictions" class="nav-link" data-scroll-target="#use-the-insights-to-make-future-predictions">Use the insights to make future predictions</a></li>
+  <li><a href="#communicate-using-an-interactive-dashboard" id="toc-communicate-using-an-interactive-dashboard" class="nav-link" data-scroll-target="#communicate-using-an-interactive-dashboard">Communicate using an interactive dashboard</a></li>
+  <li><a href="#move-from-insights-to-actionable-outcomes" id="toc-move-from-insights-to-actionable-outcomes" class="nav-link" data-scroll-target="#move-from-insights-to-actionable-outcomes">Move from insights to actionable outcomes</a></li>
+  </ul></li>
+  <li><a href="#customer-lifetime-value" id="toc-customer-lifetime-value" class="nav-link" data-scroll-target="#customer-lifetime-value">2. Customer Lifetime Value</a>
+  <ul class="collapse">
+  <li><a href="#economic-cashflow-approach" id="toc-economic-cashflow-approach" class="nav-link" data-scroll-target="#economic-cashflow-approach">2.1 <code>Economic / cashflow approach</code></a></li>
+  <li><a href="#machine-learning-approach" id="toc-machine-learning-approach" class="nav-link" data-scroll-target="#machine-learning-approach">2.2 <code>Machine learning approach</code></a></li>
+  <li><a href="#dataset-schema-packages" id="toc-dataset-schema-packages" class="nav-link" data-scroll-target="#dataset-schema-packages">3. Dataset, schema, packages</a></li>
+  <li><a href="#a-kind-of-magic" id="toc-a-kind-of-magic" class="nav-link" data-scroll-target="#a-kind-of-magic">3.2 A Kind of Magic</a></li>
+  <li><a href="#import-packages-and-libraries" id="toc-import-packages-and-libraries" class="nav-link" data-scroll-target="#import-packages-and-libraries">3.3 Import packages and libraries</a></li>
+  </ul></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">4. Exploratory Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#using-bigquery-to-run-sql-within-jupyter" id="toc-using-bigquery-to-run-sql-within-jupyter" class="nav-link" data-scroll-target="#using-bigquery-to-run-sql-within-jupyter">4.1 Using %%bigquery to run SQL within Jupyter</a></li>
+  <li><a href="#generate-our-master-data-for-further-analysis" id="toc-generate-our-master-data-for-further-analysis" class="nav-link" data-scroll-target="#generate-our-master-data-for-further-analysis">4.2 Generate our master data for further analysis</a></li>
+  <li><a href="#pytimetk" id="toc-pytimetk" class="nav-link" data-scroll-target="#pytimetk">4.3 PyTimeTK</a></li>
+  <li><a href="#custom-profile-function" id="toc-custom-profile-function" class="nav-link" data-scroll-target="#custom-profile-function">4.4 Custom profile function</a></li>
+  </ul></li>
+  <li><a href="#feature-pre-processing" id="toc-feature-pre-processing" class="nav-link" data-scroll-target="#feature-pre-processing">5. Feature pre-processing</a>
+  <ul class="collapse">
+  <li><a href="#subset-a-cohort" id="toc-subset-a-cohort" class="nav-link" data-scroll-target="#subset-a-cohort">5.1.1 Subset a Cohort</a></li>
+  <li><a href="#visualize-all-purchases-within-cohort" id="toc-visualize-all-purchases-within-cohort" class="nav-link" data-scroll-target="#visualize-all-purchases-within-cohort">5.1.2 Visualize all purchases within cohort</a></li>
+  <li><a href="#visualize-individual-customer-purchases" id="toc-visualize-individual-customer-purchases" class="nav-link" data-scroll-target="#visualize-individual-customer-purchases">5.1.3 Visualize individual customer purchases</a></li>
+  <li><a href="#visualize-first-10-customers-purchasing" id="toc-visualize-first-10-customers-purchasing" class="nav-link" data-scroll-target="#visualize-first-10-customers-purchasing">5.1.4 Visualize first 10 customers’ purchasing</a></li>
+  <li><a href="#temporal-splitting" id="toc-temporal-splitting" class="nav-link" data-scroll-target="#temporal-splitting">5.2 Temporal splitting</a></li>
+  <li><a href="#rfm-analysis" id="toc-rfm-analysis" class="nav-link" data-scroll-target="#rfm-analysis">5.3 RFM analysis</a></li>
+  <li><a href="#create-target-variables-from-our-90-day-data" id="toc-create-target-variables-from-our-90-day-data" class="nav-link" data-scroll-target="#create-target-variables-from-our-90-day-data">5.3.1 Create target variables from our 90-day data</a></li>
+  <li><a href="#create-recency-date-features" id="toc-create-recency-date-features" class="nav-link" data-scroll-target="#create-recency-date-features">5.3.2 Create recency (date) features</a></li>
+  <li><a href="#create-frequency-count-features" id="toc-create-frequency-count-features" class="nav-link" data-scroll-target="#create-frequency-count-features">5.3.3 Create frequency (count) features</a></li>
+  <li><a href="#create-monetary-price-features" id="toc-create-monetary-price-features" class="nav-link" data-scroll-target="#create-monetary-price-features">5.3.4 Create monetary (price) features</a></li>
+  <li><a href="#combine-all-features" id="toc-combine-all-features" class="nav-link" data-scroll-target="#combine-all-features">5.3.5 Combine all features</a></li>
+  </ul></li>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link" data-scroll-target="#machine-learning">6. Machine learning</a>
+  <ul class="collapse">
+  <li><a href="#xgboost" id="toc-xgboost" class="nav-link" data-scroll-target="#xgboost">6.1 XGBoost</a></li>
+  <li><a href="#regression-model" id="toc-regression-model" class="nav-link" data-scroll-target="#regression-model">6.2 Regression model</a></li>
+  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">6.2.2 Model evaluation</a></li>
+  <li><a href="#predicted-customer-spend-in-next-90-days" id="toc-predicted-customer-spend-in-next-90-days" class="nav-link" data-scroll-target="#predicted-customer-spend-in-next-90-days">6.2.3 Predicted customer spend ($) in next 90 days</a></li>
+  <li><a href="#classification-model" id="toc-classification-model" class="nav-link" data-scroll-target="#classification-model">6.3 Classification model</a></li>
+  <li><a href="#probability-of-customer-spend-in-the-next-90-days" id="toc-probability-of-customer-spend-in-the-next-90-days" class="nav-link" data-scroll-target="#probability-of-customer-spend-in-the-next-90-days">6.3.1 Probability of customer spend in the next 90 days</a></li>
+  <li><a href="#build-and-train-a-model-1" id="toc-build-and-train-a-model-1" class="nav-link" data-scroll-target="#build-and-train-a-model-1">6.3.2 Build and train a model</a></li>
+  <li><a href="#model-evaluation-1" id="toc-model-evaluation-1" class="nav-link" data-scroll-target="#model-evaluation-1">6.3.3 Model evaluation</a></li>
+  <li><a href="#predict-probability-of-customer-spend-next-90-days" id="toc-predict-probability-of-customer-spend-next-90-days" class="nav-link" data-scroll-target="#predict-probability-of-customer-spend-next-90-days">6.3.4 Predict probability of customer spend next-90 days</a></li>
+  <li><a href="#feature-importance" id="toc-feature-importance" class="nav-link" data-scroll-target="#feature-importance">6.4 Feature importance</a></li>
+  <li><a href="#regression-model-1" id="toc-regression-model-1" class="nav-link" data-scroll-target="#regression-model-1">6.4.1 Regression model</a></li>
+  <li><a href="#classification-model-1" id="toc-classification-model-1" class="nav-link" data-scroll-target="#classification-model-1">6.4.2 Classification model</a></li>
+  </ul></li>
+  <li><a href="#pickle-save-our-predictions-features-and-models" id="toc-pickle-save-our-predictions-features-and-models" class="nav-link" data-scroll-target="#pickle-save-our-predictions-features-and-models">7. Pickle (save) our predictions, features, and models</a></li>
+  <li><a href="#actionable-outcomes" id="toc-actionable-outcomes" class="nav-link" data-scroll-target="#actionable-outcomes">8. Actionable outcomes</a>
+  <ul class="collapse">
+  <li><a href="#q1.-which-customers-have-the-highest-spend-probability-in-next-90-days" id="toc-q1.-which-customers-have-the-highest-spend-probability-in-next-90-days" class="nav-link" data-scroll-target="#q1.-which-customers-have-the-highest-spend-probability-in-next-90-days">Q1. Which customers have the highest spend <code>probability</code> in next 90-days?</a></li>
+  <li><a href="#q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" id="toc-q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" class="nav-link" data-scroll-target="#q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30">Q2. Which customers have recently purchased (within 90 days) but are unlikely to buy (probability less than 30%)?</a></li>
+  <li><a href="#q3.-missed-opportunities-big-spenders-that-could-be-unlocked" id="toc-q3.-missed-opportunities-big-spenders-that-could-be-unlocked" class="nav-link" data-scroll-target="#q3.-missed-opportunities-big-spenders-that-could-be-unlocked">Q3. Missed opportunities: Big spenders that could be unlocked</a></li>
+  </ul></li>
+  <li><a href="#communication-of-findings" id="toc-communication-of-findings" class="nav-link" data-scroll-target="#communication-of-findings">Communication of findings</a>
+  <ul class="collapse">
+  <li><a href="#e-commerce-analytics-dashboard-using-dash-for-viewing-locally" id="toc-e-commerce-analytics-dashboard-using-dash-for-viewing-locally" class="nav-link" data-scroll-target="#e-commerce-analytics-dashboard-using-dash-for-viewing-locally">9.1 e-commerce analytics dashboard using Dash for viewing locally</a></li>
+  <li><a href="#deployment-of-dash-e-commerce-app" id="toc-deployment-of-dash-e-commerce-app" class="nav-link" data-scroll-target="#deployment-of-dash-e-commerce-app">9.2 Deployment of Dash e-commerce app</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">10. Key takeaways</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">1. Project Overview</h2>
+<p>My starting point for this project is to frame two common business problems faced by the <a href="https://shop.googlemerchandisestore.com/">Google Merchandise Store</a> and ecommerce businesses in general.</p>
+<section id="frame-the-business-problems" class="level3">
+<h3 class="anchored" data-anchor-id="frame-the-business-problems">Frame the business problems</h3>
+<ul>
+<li>What will customers spend in the next 90-days? (Regression)</li>
+<li>What is the probability that a customer will make a purchase in the next 90-days? (Classification)</li>
+</ul>
+<p>In order to provide insights to these questions, we first need to :</p>
+</section>
+<section id="translate-the-raw-data-into-meaningful-visualizations-and-insights" class="level3">
+<h3 class="anchored" data-anchor-id="translate-the-raw-data-into-meaningful-visualizations-and-insights">Translate the raw data into meaningful visualizations and insights</h3>
+<ul>
+<li>explore athe dataset to extract meaningful trends, patterns and anomalies regarding customer behaviour</li>
+<li>visualize using plotly and plotnine</li>
+<li>create additional RMF (Recency, Monetary, Frequency) to unlock hidden insights</li>
+</ul>
+</section>
+<section id="use-the-insights-to-make-future-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="use-the-insights-to-make-future-predictions">Use the insights to make future predictions</h3>
+<ul>
+<li>train a machine learnign regression mode to predict the <code>$</code> customer spend in the next-90 days</li>
+<li>train a machine learning classification model to predict the <code>likelihood</code> of customer spend in the next-90 days</li>
+</ul>
+</section>
+<section id="communicate-using-an-interactive-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="communicate-using-an-interactive-dashboard">Communicate using an interactive dashboard</h3>
+<ul>
+<li>present the findings of my analysis through an interactive dashboard</li>
+<li>share my findings through deployment of a Dash <a href="http://stephen137.pythonanywhere.com/">ecommerce customer analytics app</a></li>
+</ul>
+</section>
+<section id="move-from-insights-to-actionable-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="move-from-insights-to-actionable-outcomes">Move from insights to actionable outcomes</h3>
+<p>We can use these predictions to identify :</p>
+<ul>
+<li>Which customers have the highest spend <code>probability</code> in next 90-days?</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>target for new products similar to what they have purchased in the past</strong></p>
+</blockquote>
+<ul>
+<li>Which customers have recently purchased (within 90 days) but are <code>unlikely</code> to buy (probability less than 30%)?</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>incentivize actions to increase probability</strong><br>
+<strong>provide discounts, encourage referring a friend, nurture by letting them know what’s coming</strong></p>
+</blockquote>
+<ul>
+<li>Missed opportunities: Big spenders that could be unlocked?</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Send bundle offers encouraging volume purchases</strong><br>
+<strong>Focus on missed opportunities</strong></p>
+</blockquote>
+<p>By adopting this approach ecommerce businesses can make informed decisions to improve customer satisfaction, increase sales, and enhance overall operational efficiency.</p>
+</section>
+</section>
+<section id="customer-lifetime-value" class="level2">
+<h2 class="anchored" data-anchor-id="customer-lifetime-value">2. Customer Lifetime Value</h2>
+<p>Companies use this metric to gauge profitability and to identify which customers to focus on. In short, CLV is the estimated profit from the future relationship with a customer. There are many different approaches to modeling CLV.</p>
+<section id="economic-cashflow-approach" class="level3">
+<h3 class="anchored" data-anchor-id="economic-cashflow-approach">2.1 <code>Economic / cashflow approach</code></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Google_Merchandise_Store_files/figure-html/fc1c5629-f0ff-4ffb-92eb-a8821dd25cce-1-466d8ad5-7614-4ceb-bc45-bf3fa75522f3.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cashflow.JPG</figcaption>
+</figure>
+</div>
+<p>Challenges with this approach:</p>
+<ul>
+<li>Lifetime value is great, but more important is a pre-defined period of time, for example the next 90-days</li>
+</ul>
+</section>
+<section id="machine-learning-approach" class="level3">
+<h3 class="anchored" data-anchor-id="machine-learning-approach">2.2 <code>Machine learning approach</code></h3>
+<ul>
+<li>Step 1: Subset a cohort</li>
+<li>Step 2: Temoral splitting - use future information to develop targets</li>
+<li>Step 3: Create RFM features (Recency, Frequency, Monetary)</li>
+</ul>
+</section>
+<section id="dataset-schema-packages" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-schema-packages">3. Dataset, schema, packages</h3>
+<p>The dataset I will be analysing is the <a href="https://support.google.com/analytics/answer/7586738?hl=en&amp;ref_topic=3416089&amp;sjid=15552203920864108300-EU#zippy=%2Cin-this-article">Google Analytics sample dataset for BigQuery</a>.</p>
+<p>The sample dataset contains obfuscated Google Analytics 360 data from the <a href="https://www.googlemerchandisestore.com/shop.axd/Home?utm_source=Partners&amp;utm_medium=affiliate&amp;utm_campaign=Data%20Share%20Promo">Google Merchandise Store</a>, a real ecommerce store. The Google Merchandise Store sells Google branded merchandise. The data is typical of what you would see for an ecommerce website. It includes the following kinds of information:</p>
+<ul>
+<li><code>Traffic source data:</code> information about where website visitors originate. This includes data about organic traffic, paid search traffic, display traffic, etc.</li>
+<li><code>Content data:</code> information about the behavior of users on the site. This includes the URLs of pages that visitors look at, how they interact with content, etc.</li>
+<li><code>Transactional data:</code> information about the transactions that occur on the Google Merchandise Store website.</li>
+</ul>
+<p>The dataset covers the 366 day period 1 August 2016 to 1 August 2017.</p>
+<section id="schema" class="level4">
+<h4 class="anchored" data-anchor-id="schema">3.1 Schema</h4>
+<p>Before diving into our analysis, it is good practice to explore the dataset schema.</p>
+<p>If you take a close look at <a href="https://support.google.com/analytics/answer/3437719?hl=en">the schema</a> you will see that the structure involves nested fields. It can be extremely cost-effective (both in terms of storage and in terms of query time) to use nested fields rather than flatten out all your data. Nested, repeated fields are very powerful, but the SQL required to query them looks a bit unfamiliar. So, it’s worth spending a little time with <code>STRUCT</code>, <code>UNNEST</code> and <code>ARRAY_AGG.</code></p>
+<p>Fields which are of type INTEGER or STRING can be accessed directly. However things a bit trickier as we go deeper into the structure.</p>
+<p><code>totals</code> for example is of Type <code>RECORD</code> and includes sub-variables. In order to access these we need to use <code>dot</code> notation:</p>
+<pre><code>totals.visits</code></pre>
+<p>Things get even trickier with fields of Type <code>RECORD</code> and Mode <code>Repeated</code>, for example <code>hits</code>. In order to access the subvariable <code>hitNumber</code> we need to use the <code>UNNEST()</code> function, give it an alias, and then we can use <code>dot</code> notation :</p>
+<pre><code>SELECT
+    h.hitNumber
+FROM
+`bigquery-public-data.google_analytics_sample.ga_sessions_*`,
+UNNEST(hits) AS h</code></pre>
+<p>We can go even deeper. To access <code>hits.product.productRevenue</code> we need to first UNNEST hits and then because product is also of Type <code>RECORD</code> and Mode <code>Repeated</code> we have to UNNEST(hits.product). Expanding on the above example :</p>
+<pre><code>SELECT
+    h.hitNumber,
+    p.productRevenue
+FROM
+`bigquery-public-data.google_analytics_sample.ga_sessions_*`,
+UNNEST(hits) AS h,
+UNNEST(hits.product) AS p</code></pre>
+<p>Google cloud have <a href="https://cloud.google.com/bigquery/docs/arrays">learnng resources</a> to help you.</p>
+<p>OK, now that I’ve gotten to know the dataset a bit better it’s time to dive into some exploratory analysis.</p>
+</section>
+</section>
+<section id="a-kind-of-magic" class="level3">
+<h3 class="anchored" data-anchor-id="a-kind-of-magic">3.2 A Kind of Magic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Google_Merchandise_Store_files/figure-html/805b6eb5-7dd4-47ee-8c8f-242024855480-1-2ad74c62-2ef5-4685-9e9c-c83057e8e9ac.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">magic.jpg</figcaption>
+</figure>
+</div>
+<p>Jupyter notebooks (which i am using for this project) provide a convenient interactive computing environment for various programming languages, including Python. You might be aware of so called <code>magic</code> commands, denoted by a % or %% symbol. These are special commands that enhance the functionality and provide additional features within Jupyter notebooks. Here’s a brief summary of some commonly used magic commands:</p>
+<section id="line-magic-commands" class="level4">
+<h4 class="anchored" data-anchor-id="line-magic-commands">Line Magic Commands (%):</h4>
+<ul>
+<li><code>%run:</code> Execute a Python script as if it were a program.</li>
+<li><code>%load:</code> Load code into a cell from an external script.</li>
+<li><code>%pwd:</code> Print the current working directory.</li>
+<li><code>%cd:</code> Change the current working directory.</li>
+<li><code>%ls:</code> List the contents of the current directory.</li>
+<li><code>%matplotlib:</code> Enable interactive Matplotlib plots.</li>
+</ul>
+</section>
+<section id="cell-magic-commands" class="level4">
+<h4 class="anchored" data-anchor-id="cell-magic-commands">Cell Magic Commands (%%):</h4>
+<ul>
+<li><code>%%time:</code> Measure the time it takes for the code in the cell to run.</li>
+<li><code>%%html:</code> Render the cell content as HTML.</li>
+</ul>
+</section>
+<section id="interactive-shell-commands" class="level4">
+<h4 class="anchored" data-anchor-id="interactive-shell-commands">Interactive Shell Commands:</h4>
+<ul>
+<li><code>!:</code> Run shell commands directly from a Jupyter cell.</li>
+</ul>
+</section>
+</section>
+<section id="import-packages-and-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="import-packages-and-libraries">3.3 Import packages and libraries</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext google.cloud.bigquery </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.cloud <span class="im">import</span> bigquery</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> google.cloud.bigquery</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.oauth2 <span class="im">import</span> service_account</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="va">None</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytimetk <span class="im">as</span> tk</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> joblib </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> missingno <span class="im">import</span> matrix <span class="co"># missing data</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install plydata</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plydata.cat_tools <span class="im">as</span> cat</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> pn</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytimetk <span class="im">as</span> tk</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBClassifier, XGBRegressor</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>pn.options.dpi <span class="op">=</span> <span class="dv">300</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">4. Exploratory Data Analysis</h2>
+<section id="using-bigquery-to-run-sql-within-jupyter" class="level3">
+<h3 class="anchored" data-anchor-id="using-bigquery-to-run-sql-within-jupyter">4.1 Using %%bigquery to run SQL within Jupyter</h3>
+<p>The <strong>%%bigquery</strong> magic which allows you to run SQL queries on data held in BigQuery from the comfort of your own local Jupyter Notebook.</p>
+<p>The data is separated into daily tables but you can use <code>_*</code> to access everything, and if you specify a name after %%big query, it will return a pandas DataFrame!</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>bigquery total_days</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>SELECT COUNT(DISTINCT date) AS number_days</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>FROM `bigquery<span class="op">-</span>public<span class="op">-</span>data.google_analytics_sample.ga_sessions_<span class="op">*</span>`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"bc657b3ad64b4caba20d31b46b923a45","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"6436a5b03d154f03ae8f4010f31ba93c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>total_days</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">number_days</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>366</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(total_days)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>pandas.core.frame.DataFrame</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>bigquery</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>SELECT COUNT(<span class="op">*</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>FROM `bigquery<span class="op">-</span>public<span class="op">-</span>data.google_analytics_sample.ga_sessions_<span class="op">*</span>`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"13a042f11e8540b89110feca9a93b49b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"234101f59b2a418c81cb80c4ee8a23ef","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">f0_</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>903653</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Ok, so the dataset covers a period of 366 days and contains 903,653 rows. Let’s preview one day :</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>bigquery sample_day</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>SELECT <span class="op">*</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>FROM `bigquery<span class="op">-</span>public<span class="op">-</span>data.google_analytics_sample.ga_sessions_20170713`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"393a131d31dc4c179db61b0758812e0c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"64a4057243a04f30b3e3fd2d0c57572a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sample_day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">visitorId</th>
+<th data-quarto-table-cell-role="th">visitNumber</th>
+<th data-quarto-table-cell-role="th">visitId</th>
+<th data-quarto-table-cell-role="th">visitStartTime</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">totals</th>
+<th data-quarto-table-cell-role="th">trafficSource</th>
+<th data-quarto-table-cell-role="th">device</th>
+<th data-quarto-table-cell-role="th">geoNetwork</th>
+<th data-quarto-table-cell-role="th">customDimensions</th>
+<th data-quarto-table-cell-role="th">hits</th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">userId</th>
+<th data-quarto-table-cell-role="th">clientId</th>
+<th data-quarto-table-cell-role="th">channelGrouping</th>
+<th data-quarto-table-cell-role="th">socialEngagementType</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>&lt;NA&gt;</td>
+<td>2</td>
+<td>1500008750</td>
+<td>1500008750</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 1, 'pageviews': 1, 'time...</td>
+<td>{'referralPath': None, 'campaign': '(not set)'...</td>
+<td>{'browser': 'Firefox', 'browserVersion': 'not ...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 22, 'minu...</td>
+<td>137294517588272857</td>
+<td>None</td>
+<td>None</td>
+<td>Direct</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>&lt;NA&gt;</td>
+<td>1</td>
+<td>1499957243</td>
+<td>1499957243</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 1, 'pageviews': 1, 'time...</td>
+<td>{'referralPath': None, 'campaign': '(not set)'...</td>
+<td>{'browser': 'Chrome', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 7, 'minut...</td>
+<td>4373106646092857768</td>
+<td>None</td>
+<td>None</td>
+<td>Direct</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>&lt;NA&gt;</td>
+<td>1</td>
+<td>1499968083</td>
+<td>1499968083</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 1, 'pageviews': 1, 'time...</td>
+<td>{'referralPath': None, 'campaign': '(not set)'...</td>
+<td>{'browser': 'Safari', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 10, 'minu...</td>
+<td>160773093174680026</td>
+<td>None</td>
+<td>None</td>
+<td>Direct</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>&lt;NA&gt;</td>
+<td>2</td>
+<td>1499952856</td>
+<td>1499952856</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 1, 'pageviews': 1, 'time...</td>
+<td>{'referralPath': None, 'campaign': '(not set)'...</td>
+<td>{'browser': 'Chrome', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 6, 'minut...</td>
+<td>1117853031731048699</td>
+<td>None</td>
+<td>None</td>
+<td>Direct</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>&lt;NA&gt;</td>
+<td>4</td>
+<td>1499982847</td>
+<td>1499982847</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 1, 'pageviews': 1, 'time...</td>
+<td>{'referralPath': None, 'campaign': '(not set)'...</td>
+<td>{'browser': 'Chrome', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 14, 'minu...</td>
+<td>1319757127869798182</td>
+<td>None</td>
+<td>None</td>
+<td>Display</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2736</td>
+<td>&lt;NA&gt;</td>
+<td>1</td>
+<td>1499986111</td>
+<td>1499986111</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 73, 'pageviews': 57, 'ti...</td>
+<td>{'referralPath': None, 'campaign': '(not set)'...</td>
+<td>{'browser': 'Safari', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 15, 'minu...</td>
+<td>4100305414080508541</td>
+<td>None</td>
+<td>None</td>
+<td>Organic Search</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2737</td>
+<td>&lt;NA&gt;</td>
+<td>5</td>
+<td>1499969354</td>
+<td>1499969354</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 86, 'pageviews': 57, 'ti...</td>
+<td>{'referralPath': '/', 'campaign': '(not set)',...</td>
+<td>{'browser': 'Chrome', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 11, 'minu...</td>
+<td>806992249032686650</td>
+<td>None</td>
+<td>None</td>
+<td>Referral</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2738</td>
+<td>&lt;NA&gt;</td>
+<td>1</td>
+<td>1499931174</td>
+<td>1499931174</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 132, 'pageviews': 85, 't...</td>
+<td>{'referralPath': None, 'campaign': '(not set)'...</td>
+<td>{'browser': 'Safari', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 0, 'minut...</td>
+<td>3917496719101325275</td>
+<td>None</td>
+<td>None</td>
+<td>Direct</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2739</td>
+<td>&lt;NA&gt;</td>
+<td>1</td>
+<td>1499951313</td>
+<td>1499951315</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 156, 'pageviews': 109, '...</td>
+<td>{'referralPath': None, 'campaign': '(not set)'...</td>
+<td>{'browser': 'Chrome', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Americas', 'subContinent': 'Nor...</td>
+<td>[{'index': 4, 'value': 'North America'}]</td>
+<td>[{'hitNumber': 2, 'time': 0, 'hour': 6, 'minut...</td>
+<td>9417857471295131045</td>
+<td>None</td>
+<td>None</td>
+<td>Direct</td>
+<td>Not Socially Engaged</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2740</td>
+<td>&lt;NA&gt;</td>
+<td>1</td>
+<td>1499982367</td>
+<td>1499982367</td>
+<td>20170713</td>
+<td>{'visits': 1, 'hits': 169, 'pageviews': 86, 't...</td>
+<td>{'referralPath': '/intl/sr/yt/about/copyright/...</td>
+<td>{'browser': 'Chrome', 'browserVersion': 'not a...</td>
+<td>{'continent': 'Europe', 'subContinent': 'South...</td>
+<td>[]</td>
+<td>[{'hitNumber': 1, 'time': 0, 'hour': 14, 'minu...</td>
+<td>0707769484819212214</td>
+<td>None</td>
+<td>None</td>
+<td>Social</td>
+<td>Not Socially Engaged</td>
+</tr>
+</tbody>
+</table>
+
+<p>2741 rows × 16 columns</p>
+</div>
+</div>
+</div>
+<p>As previously discussed, a lot of nested fields to unravel.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sample_day.glimpse()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;: 2741 rows of 16 columns
+visitorId:             Int64             [&lt;NA&gt;, &lt;NA&gt;, &lt;NA&gt;, &lt;NA&gt;, &lt;NA&gt;,  ...
+visitNumber:           Int64             [2, 1, 1, 2, 4, 1, 3, 2, 1, 1,  ...
+visitId:               Int64             [1500008750, 1499957243, 149996 ...
+visitStartTime:        Int64             [1500008750, 1499957243, 149996 ...
+date:                  object            ['20170713', '20170713', '20170 ...
+totals:                object            [{'visits': 1, 'hits': 1, 'page ...
+trafficSource:         object            [{'referralPath': None, 'campai ...
+device:                object            [{'browser': 'Firefox', 'browse ...
+geoNetwork:            object            [{'continent': 'Americas', 'sub ...
+customDimensions:      object            [array([{'index': 4, 'value': ' ...
+hits:                  object            [array([{'hitNumber': 1, 'time' ...
+fullVisitorId:         object            ['137294517588272857', '4373106 ...
+userId:                object            [None, None, None, None, None,  ...
+clientId:              object            [None, None, None, None, None,  ...
+channelGrouping:       object            ['Direct', 'Direct', 'Direct',  ...
+socialEngagementType:  object            ['Not Socially Engaged', 'Not S ...</code></pre>
+</div>
+</div>
+</section>
+<section id="generate-our-master-data-for-further-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="generate-our-master-data-for-further-analysis">4.2 Generate our master data for further analysis</h3>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>bigquery google_merch_store</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>SELECT </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    fullVisitorId,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    date,    </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    product.productQuantity AS quantity,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    product.v2ProductName AS product_name,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    product.productPrice <span class="op">/</span> <span class="dv">1000000</span> AS price, </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    product.productQuantity <span class="op">*</span> product.productPrice <span class="op">/</span> <span class="dv">1000000</span> AS product_revenue,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    totals.totalTransactionRevenue <span class="op">/</span> <span class="dv">1000000</span> AS total_transaction_revenue</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    `bigquery<span class="op">-</span>public<span class="op">-</span>data.google_analytics_sample.ga_sessions_<span class="op">*</span>`, </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    UNNEST (hits) AS hits, </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    UNNEST(hits.product) AS product</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>WHERE </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    hits.eCommerceAction.action_type <span class="op">=</span> <span class="st">'6'</span> <span class="co"># Completed purchase    </span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    AND product.productQuantity <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    AND product.productPrice <span class="op">&gt;</span> <span class="dv">0</span> </span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    AND totals.totalTransactionRevenue <span class="op">&gt;</span> <span class="dv">0</span> <span class="co"># This value is 1 for sessions with interaction events.</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>ORDER BY</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"c051ff5c18124449b3e04b34fde7cd5c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"a4586cb3eaef420a891fa6b5c0765062","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>google_merch_store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">product_name</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">product_revenue</th>
+<th data-quarto-table-cell-role="th">total_transaction_revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3213840074316400693</td>
+<td>20160801</td>
+<td>20</td>
+<td>Color Changing Grip Pen</td>
+<td>1.20</td>
+<td>24.00</td>
+<td>170.40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3213840074316400693</td>
+<td>20160801</td>
+<td>20</td>
+<td>Kick Ball</td>
+<td>1.59</td>
+<td>31.80</td>
+<td>170.40</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3213840074316400693</td>
+<td>20160801</td>
+<td>20</td>
+<td>Electronics Accessory Pouch</td>
+<td>3.99</td>
+<td>79.80</td>
+<td>170.40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3213840074316400693</td>
+<td>20160801</td>
+<td>20</td>
+<td>Badge Holder</td>
+<td>1.59</td>
+<td>31.80</td>
+<td>170.40</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2976178532750719771</td>
+<td>20160801</td>
+<td>4</td>
+<td>Maze Pen</td>
+<td>0.99</td>
+<td>3.96</td>
+<td>19.93</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36741</td>
+<td>8016003971239765913</td>
+<td>20170801</td>
+<td>2</td>
+<td>Android Men's Short Sleeve Hero Tee White</td>
+<td>6.80</td>
+<td>13.60</td>
+<td>131.96</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">36742</td>
+<td>8016003971239765913</td>
+<td>20170801</td>
+<td>1</td>
+<td>Women's Performance Full Zip Jacket Black</td>
+<td>67.19</td>
+<td>67.19</td>
+<td>131.96</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36743</td>
+<td>8016003971239765913</td>
+<td>20170801</td>
+<td>1</td>
+<td>Android Men's Engineer Short Sleeve Tee Charcoal</td>
+<td>15.99</td>
+<td>15.99</td>
+<td>131.96</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">36744</td>
+<td>8016003971239765913</td>
+<td>20170801</td>
+<td>1</td>
+<td>Google Infant Short Sleeve Tee Red</td>
+<td>13.59</td>
+<td>13.59</td>
+<td>131.96</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36745</td>
+<td>8016003971239765913</td>
+<td>20170801</td>
+<td>1</td>
+<td>Android Infant Short Sleeve Tee Pewter</td>
+<td>13.59</td>
+<td>13.59</td>
+<td>131.96</td>
+</tr>
+</tbody>
+</table>
+
+<p>36746 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="pytimetk" class="level3">
+<h3 class="anchored" data-anchor-id="pytimetk">4.3 PyTimeTK</h3>
+<p>While the Python ecosystem offers tools like pandas, they sometimes can be verbose and not optimized for all operations, especially for complex time-based aggregations and visualizations. <a href="https://github.com/business-science/pytimetk">pytimetk</a> significantly simplifies the process of time series manipulation and visualization. By leveraging the polars backend, you can experience speed improvements ranging from 3X to 3500X.</p>
+<p>A usefuly feature is <code>.glimpse()</code> which does what it says on the tin :</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>google_merch_store.glimpse()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;: 36746 rows of 7 columns
+fullVisitorId:              object            ['3213840074316400693', '3 ...
+date:                       object            ['20160801', '20160801', ' ...
+quantity:                   Int64             [20, 20, 20, 20, 4, 1, 1,  ...
+product_name:               object            ['Color Changing Grip Pen' ...
+price:                      float64           [1.2, 1.59, 3.99, 1.59, 0. ...
+product_revenue:            float64           [24.0, 31.8, 79.8, 31.8, 3 ...
+total_transaction_revenue:  float64           [170.4, 170.4, 170.4, 170. ...</code></pre>
+</div>
+</div>
+</section>
+<section id="custom-profile-function" class="level3">
+<h3 class="anchored" data-anchor-id="custom-profile-function">4.4 Custom profile function</h3>
+<p>This custom function aids the EDA process and is a pseeudo hybrid of pandas <code>.info()</code> and <code>.describe()</code> :</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom profiling function</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> profile_data(data):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Panda Profiling Function</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">        data (DataFrame): A data frame to profile</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">        DataFrame: A data frame with profiled data</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.concat(</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.dtypes, name <span class="op">=</span> <span class="st">"Dtype"</span>),</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Counts</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.count(), name <span class="op">=</span> <span class="st">"Count"</span>),</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.isnull().<span class="bu">sum</span>(), name <span class="op">=</span> <span class="st">"NA Count"</span>),</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.nunique(), name <span class="op">=</span> <span class="st">"Count Unique"</span>),</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Stats</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.<span class="bu">min</span>(), name <span class="op">=</span> <span class="st">"Min"</span>),</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.<span class="bu">max</span>(), name <span class="op">=</span> <span class="st">"Max"</span>),</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.mean(), name <span class="op">=</span> <span class="st">"Mean"</span>),</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.median(), name <span class="op">=</span> <span class="st">"Median"</span>),</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>            pd.Series(data.mode().iloc[<span class="dv">0</span>], name <span class="op">=</span> <span class="st">"Mode"</span>),</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>profile_data(google_merch_store)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Dtype</th>
+<th data-quarto-table-cell-role="th">Count</th>
+<th data-quarto-table-cell-role="th">NA Count</th>
+<th data-quarto-table-cell-role="th">Count Unique</th>
+<th data-quarto-table-cell-role="th">Min</th>
+<th data-quarto-table-cell-role="th">Max</th>
+<th data-quarto-table-cell-role="th">Mean</th>
+<th data-quarto-table-cell-role="th">Median</th>
+<th data-quarto-table-cell-role="th">Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">fullVisitorId</td>
+<td>object</td>
+<td>36746</td>
+<td>0</td>
+<td>9995</td>
+<td>0000213131142648941</td>
+<td>9998996003043230595</td>
+<td>inf</td>
+<td>4.512553e+18</td>
+<td>1957458976293878100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">date</td>
+<td>object</td>
+<td>36746</td>
+<td>0</td>
+<td>365</td>
+<td>20160801</td>
+<td>20170801</td>
+<td>inf</td>
+<td>2.017013e+07</td>
+<td>20161212</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">quantity</td>
+<td>Int64</td>
+<td>36746</td>
+<td>0</td>
+<td>123</td>
+<td>1</td>
+<td>1000</td>
+<td>6.423584</td>
+<td>1.000000e+00</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">product_name</td>
+<td>object</td>
+<td>36746</td>
+<td>0</td>
+<td>490</td>
+<td>1 oz Hand Sanitizer</td>
+<td>YouTube Youth Short Sleeve Tee Red</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Google Sunglasses</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">price</td>
+<td>float64</td>
+<td>36746</td>
+<td>0</td>
+<td>264</td>
+<td>0.79</td>
+<td>250.0</td>
+<td>16.602405</td>
+<td>1.329000e+01</td>
+<td>13.59</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">product_revenue</td>
+<td>float64</td>
+<td>36746</td>
+<td>0</td>
+<td>2001</td>
+<td>0.79</td>
+<td>9495.0</td>
+<td>45.727660</td>
+<td>1.749000e+01</td>
+<td>13.59</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">total_transaction_revenue</td>
+<td>float64</td>
+<td>36746</td>
+<td>0</td>
+<td>6199</td>
+<td>1.2</td>
+<td>47082.06</td>
+<td>366.675515</td>
+<td>1.022000e+02</td>
+<td>23.99</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>So we can very quickly see that our dataset consists of <code>36,746</code> purchase transactions made by <code>9,995</code> unique customers and the common purchase was Google sunglasses.</p>
+<p>Before we progress, we need to convert date from an object type to datetime:</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the date column to datetime64 with nanosecond precision</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>google_merch_store[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(google_merch_store[<span class="st">'date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y%m</span><span class="sc">%d</span><span class="st">'</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>google_merch_store.glimpse()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;: 36746 rows of 7 columns
+fullVisitorId:              object            ['3213840074316400693', '3 ...
+date:                       datetime64[ns]    [Timestamp('2016-08-01 00: ...
+quantity:                   Int64             [20, 20, 20, 20, 4, 1, 1,  ...
+product_name:               object            ['Color Changing Grip Pen' ...
+price:                      float64           [1.2, 1.59, 3.99, 1.59, 0. ...
+product_revenue:            float64           [24.0, 31.8, 79.8, 31.8, 3 ...
+total_transaction_revenue:  float64           [170.4, 170.4, 170.4, 170. ...</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="feature-pre-processing" class="level2">
+<h2 class="anchored" data-anchor-id="feature-pre-processing">5. Feature pre-processing</h2>
+<section id="subset-a-cohort" class="level3">
+<h3 class="anchored" data-anchor-id="subset-a-cohort">5.1.1 Subset a Cohort</h3>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show only the first transaction made by each unique customer</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>cust_first_purch <span class="op">=</span> google_merch_store <span class="op">\</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    .sort_values([<span class="st">'fullVisitorId'</span>, <span class="st">'date'</span>]) <span class="op">\</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'fullVisitorId'</span>) <span class="op">\</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    .first()</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>cust_first_purch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">product_name</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">product_revenue</th>
+<th data-quarto-table-cell-role="th">total_transaction_revenue</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0000213131142648941</td>
+<td>2017-04-28</td>
+<td>1</td>
+<td>BLM Sweatshirt</td>
+<td>33.59</td>
+<td>33.59</td>
+<td>39.59</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0002871498069867123</td>
+<td>2016-08-23</td>
+<td>15</td>
+<td>Google Metallic Notebook Set</td>
+<td>5.99</td>
+<td>89.85</td>
+<td>97.35</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0003450834640354121</td>
+<td>2016-10-18</td>
+<td>1</td>
+<td>Google Laptop and Cell Phone Stickers</td>
+<td>1.99</td>
+<td>1.99</td>
+<td>59.95</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0003961110741104601</td>
+<td>2017-05-21</td>
+<td>1</td>
+<td>YouTube Custom Decals</td>
+<td>1.99</td>
+<td>1.99</td>
+<td>10.98</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">000435324061339869</td>
+<td>2016-10-20</td>
+<td>1</td>
+<td>Google Men's Zip Hoodie</td>
+<td>44.79</td>
+<td>44.79</td>
+<td>46.79</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9991633376050115277</td>
+<td>2017-02-17</td>
+<td>1</td>
+<td>BLM Sweatshirt</td>
+<td>33.59</td>
+<td>33.59</td>
+<td>35.59</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9994767073213036303</td>
+<td>2016-08-09</td>
+<td>3</td>
+<td>Electronics Accessory Pouch</td>
+<td>4.99</td>
+<td>14.97</td>
+<td>140.32</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9997409246962677759</td>
+<td>2016-12-08</td>
+<td>1</td>
+<td>Crunch Noise Dog Toy</td>
+<td>3.99</td>
+<td>3.99</td>
+<td>40.36</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9998597322098588317</td>
+<td>2016-08-01</td>
+<td>30</td>
+<td>PaperMate Ink Joy Retractable Pen</td>
+<td>1.25</td>
+<td>37.50</td>
+<td>102.20</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9998996003043230595</td>
+<td>2016-11-16</td>
+<td>1</td>
+<td>Google Vintage Henley Grey/Black</td>
+<td>29.99</td>
+<td>29.99</td>
+<td>66.98</td>
+</tr>
+</tbody>
+</table>
+
+<p>9995 rows × 6 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cust_first_purch[<span class="st">'date'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>Timestamp('2016-08-01 00:00:00')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cust_first_purch[<span class="st">'date'</span>].<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>Timestamp('2017-08-01 00:00:00')</code></pre>
+</div>
+</div>
+</section>
+<section id="visualize-all-purchases-within-cohort" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-all-purchases-within-cohort">5.1.2 Visualize all purchases within cohort</h3>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grab date values for our y axis, and price for our x axis</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>google_merch_store <span class="op">\</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    .reset_index() <span class="op">\</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    .set_index(<span class="st">'date'</span>)[[<span class="st">'price'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">price</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2016-08-01</td>
+<td>1.20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2016-08-01</td>
+<td>1.59</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2016-08-01</td>
+<td>3.99</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2016-08-01</td>
+<td>1.59</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2016-08-01</td>
+<td>0.99</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2017-08-01</td>
+<td>6.80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2017-08-01</td>
+<td>67.19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2017-08-01</td>
+<td>15.99</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2017-08-01</td>
+<td>13.59</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2017-08-01</td>
+<td>13.59</td>
+</tr>
+</tbody>
+</table>
+
+<p>36746 rows × 1 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate all customer revenue per month</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>google_merch_store<span class="op">\</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    .reset_index() <span class="op">\</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    .set_index(<span class="st">'date'</span>)[[<span class="st">'price'</span>]] <span class="op">\</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    .resample(</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        rule <span class="op">=</span> <span class="st">"MS"</span> <span class="co"># group by month</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">\</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">price</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2016-08-01</td>
+<td>68604.07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2016-09-01</td>
+<td>44910.37</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2016-10-01</td>
+<td>45032.57</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2016-11-01</td>
+<td>48906.36</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2016-12-01</td>
+<td>81358.52</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2017-01-01</td>
+<td>36202.85</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2017-02-01</td>
+<td>37402.96</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2017-03-01</td>
+<td>52514.72</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2017-04-01</td>
+<td>48165.02</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2017-05-01</td>
+<td>53689.45</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2017-06-01</td>
+<td>42449.14</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2017-07-01</td>
+<td>48436.32</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2017-08-01</td>
+<td>2399.64</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the time series</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>google_merch_store <span class="op">\</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    .reset_index() <span class="op">\</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    .set_index(<span class="st">'date'</span>)[[<span class="st">'price'</span>]] <span class="op">\</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    .resample(</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>        rule <span class="op">=</span> <span class="st">"MS"</span> <span class="co"># group by month</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">\</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>() <span class="op">\</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    .plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>&lt;AxesSubplot: xlabel='date'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Google_Merchandise_Store_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="visualize-individual-customer-purchases" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-individual-customer-purchases">5.1.3 Visualize individual customer purchases</h3>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ids <span class="op">=</span> google_merch_store[<span class="st">'fullVisitorId'</span>].unique()</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>ids</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>array(['3213840074316400693', '2976178532750719771',
+       '6569605994631186947', ..., '3101662058536674321',
+       '9308310352918219134', '8016003971239765913'], dtype=object)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select a radom slice of 10 customers</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>ids_selected <span class="op">=</span> ids[<span class="dv">989</span>:<span class="dv">999</span>]</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>google_merch_store <span class="op">\</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    [google_merch_store[<span class="st">'fullVisitorId'</span>].isin(ids_selected)] <span class="op">\</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    .groupby([<span class="st">'fullVisitorId'</span>, <span class="st">'date'</span>]) <span class="op">\</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>() <span class="op">\</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">product_revenue</th>
+<th data-quarto-table-cell-role="th">total_transaction_revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1293664043695932921</td>
+<td>2016-08-30</td>
+<td>3</td>
+<td>23.17</td>
+<td>23.17</td>
+<td>29.10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>330289116549575054</td>
+<td>2016-08-31</td>
+<td>1</td>
+<td>27.19</td>
+<td>27.19</td>
+<td>47.95</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>330289116549575054</td>
+<td>2017-01-12</td>
+<td>2</td>
+<td>73.58</td>
+<td>73.58</td>
+<td>165.16</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4019564737576499248</td>
+<td>2016-08-30</td>
+<td>38</td>
+<td>98.33</td>
+<td>335.62</td>
+<td>2878.05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4332670999936880007</td>
+<td>2016-08-31</td>
+<td>1</td>
+<td>98.99</td>
+<td>98.99</td>
+<td>123.65</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>435373542373805498</td>
+<td>2016-08-30</td>
+<td>8</td>
+<td>127.92</td>
+<td>127.92</td>
+<td>1160.80</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>435373542373805498</td>
+<td>2016-11-05</td>
+<td>1</td>
+<td>44.79</td>
+<td>44.79</td>
+<td>45.79</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>435373542373805498</td>
+<td>2016-12-01</td>
+<td>5</td>
+<td>227.15</td>
+<td>227.15</td>
+<td>1170.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>5423659711610895780</td>
+<td>2016-08-30</td>
+<td>16</td>
+<td>260.30</td>
+<td>285.48</td>
+<td>3385.14</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>5542047417982345824</td>
+<td>2016-08-30</td>
+<td>16</td>
+<td>63.51</td>
+<td>71.49</td>
+<td>921.90</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>6564820894573937867</td>
+<td>2016-08-30</td>
+<td>3</td>
+<td>36.77</td>
+<td>36.77</td>
+<td>167.88</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>6564820894573937867</td>
+<td>2016-12-21</td>
+<td>2</td>
+<td>8.79</td>
+<td>17.58</td>
+<td>25.58</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>8445777031468826793</td>
+<td>2016-08-31</td>
+<td>30</td>
+<td>0.99</td>
+<td>29.70</td>
+<td>53.56</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>9972043774359472649</td>
+<td>2016-08-31</td>
+<td>35</td>
+<td>15.19</td>
+<td>531.65</td>
+<td>680.22</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>cust_id_subset_df <span class="op">=</span> google_merch_store <span class="op">\</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    [google_merch_store[<span class="st">'fullVisitorId'</span>].isin(ids_selected)] <span class="op">\</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    .groupby([<span class="st">'fullVisitorId'</span>, <span class="st">'date'</span>]) <span class="op">\</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>() <span class="op">\</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualize-first-10-customers-purchasing" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-first-10-customers-purchasing">5.1.4 Visualize first 10 customers’ purchasing</h3>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot randomly selected 10 customers using Plotnine</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>pn.ggplot(data<span class="op">=</span>cust_id_subset_df, mapping<span class="op">=</span>pn.aes(<span class="st">'date'</span>, <span class="st">'price'</span>, group<span class="op">=</span><span class="st">'fullVisitorId'</span>)) <span class="op">\</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> pn.geom_line() <span class="op">\</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> pn.geom_point() <span class="op">\</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> pn.facet_wrap(<span class="st">'fullVisitorId'</span>) <span class="op">\</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> pn.scale_x_date(date_breaks<span class="op">=</span><span class="st">"1 year"</span>, date_labels<span class="op">=</span><span class="st">"%Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/stephen137/mambaforge/lib/python3.10/site-packages/plotnine/geoms/geom_path.py:111: PlotnineWarning: geom_path: Each group consist of only one observation. Do you need to adjust the group aesthetic?
+/home/stephen137/mambaforge/lib/python3.10/site-packages/plotnine/geoms/geom_path.py:111: PlotnineWarning: geom_path: Each group consist of only one observation. Do you need to adjust the group aesthetic?
+/home/stephen137/mambaforge/lib/python3.10/site-packages/plotnine/geoms/geom_path.py:111: PlotnineWarning: geom_path: Each group consist of only one observation. Do you need to adjust the group aesthetic?
+/home/stephen137/mambaforge/lib/python3.10/site-packages/plotnine/geoms/geom_path.py:111: PlotnineWarning: geom_path: Each group consist of only one observation. Do you need to adjust the group aesthetic?</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Google_Merchandise_Store_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>&lt;Figure Size: (1920 x 1440)&gt;</code></pre>
+</div>
+</div>
+<p>This type of plot allows us to get a quick overview of customer purchasing pattern, which could provide a good indication of future business prospects.</p>
+</section>
+<section id="temporal-splitting" class="level3">
+<h3 class="anchored" data-anchor-id="temporal-splitting">5.2 Temporal splitting</h3>
+<p>In order to be able to predict purchases in the next 90-days, we need to draw a line, and split our data into two distinct time periods.</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define cut-off period</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>n_days   <span class="op">=</span> <span class="dv">90</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>max_date <span class="op">=</span> google_merch_store[<span class="st">'date'</span>].<span class="bu">max</span>() </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>max_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>Timestamp('2017-08-01 00:00:00')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>cutoff <span class="op">=</span> max_date <span class="op">-</span> pd.to_timedelta(n_days, unit <span class="op">=</span> <span class="st">"d"</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>cutoff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>Timestamp('2017-05-03 00:00:00')</code></pre>
+</div>
+</div>
+<p>The cut-off date is 3 May 2017. The data for the period 1 August 2016 to 3 May 2017 will be used as training data by our machine learning model. Any data after this date will be used to verify the accuracy of predictions made on the prior data and is essentially therefore our held out test set.</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create our cohort dataset which covers the period up until the last 90 days</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>temporal_in_df <span class="op">=</span> google_merch_store <span class="op">\</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    [google_merch_store[<span class="st">'date'</span>] <span class="op">&lt;=</span> cutoff]</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>temporal_in_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">product_name</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">product_revenue</th>
+<th data-quarto-table-cell-role="th">total_transaction_revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3213840074316400693</td>
+<td>2016-08-01</td>
+<td>20</td>
+<td>Color Changing Grip Pen</td>
+<td>1.20</td>
+<td>24.00</td>
+<td>170.40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3213840074316400693</td>
+<td>2016-08-01</td>
+<td>20</td>
+<td>Kick Ball</td>
+<td>1.59</td>
+<td>31.80</td>
+<td>170.40</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3213840074316400693</td>
+<td>2016-08-01</td>
+<td>20</td>
+<td>Electronics Accessory Pouch</td>
+<td>3.99</td>
+<td>79.80</td>
+<td>170.40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3213840074316400693</td>
+<td>2016-08-01</td>
+<td>20</td>
+<td>Badge Holder</td>
+<td>1.59</td>
+<td>31.80</td>
+<td>170.40</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2976178532750719771</td>
+<td>2016-08-01</td>
+<td>4</td>
+<td>Maze Pen</td>
+<td>0.99</td>
+<td>3.96</td>
+<td>19.93</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">27320</td>
+<td>2346359290191771618</td>
+<td>2017-05-03</td>
+<td>1</td>
+<td>Google Tote Bag</td>
+<td>9.99</td>
+<td>9.99</td>
+<td>173.44</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27321</td>
+<td>2346359290191771618</td>
+<td>2017-05-03</td>
+<td>10</td>
+<td>Maze Pen</td>
+<td>0.99</td>
+<td>9.90</td>
+<td>173.44</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">27322</td>
+<td>2346359290191771618</td>
+<td>2017-05-03</td>
+<td>1</td>
+<td>Badge Holder</td>
+<td>1.99</td>
+<td>1.99</td>
+<td>173.44</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27323</td>
+<td>2346359290191771618</td>
+<td>2017-05-03</td>
+<td>10</td>
+<td>Galaxy Screen Cleaning Cloth</td>
+<td>1.99</td>
+<td>19.90</td>
+<td>173.44</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">27324</td>
+<td>2346359290191771618</td>
+<td>2017-05-03</td>
+<td>1</td>
+<td>Google Tube Power Bank</td>
+<td>16.99</td>
+<td>16.99</td>
+<td>173.44</td>
+</tr>
+</tbody>
+</table>
+
+<p>27325 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create our 90-day dataset</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>temporal_out_df <span class="op">=</span> google_merch_store <span class="op">\</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    [google_merch_store[<span class="st">'date'</span>] <span class="op">&gt;</span> cutoff]</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>temporal_out_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">product_name</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">product_revenue</th>
+<th data-quarto-table-cell-role="th">total_transaction_revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">27325</td>
+<td>2618320847776659905</td>
+<td>2017-05-04</td>
+<td>1</td>
+<td>Google Women's Vintage Hero Tee Black</td>
+<td>10.63</td>
+<td>10.63</td>
+<td>17.63</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27326</td>
+<td>6720643639676411949</td>
+<td>2017-05-04</td>
+<td>1</td>
+<td>Google Onesie Green</td>
+<td>19.19</td>
+<td>19.19</td>
+<td>27.19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">27327</td>
+<td>7412836405745272778</td>
+<td>2017-05-04</td>
+<td>5</td>
+<td>Google Collapsible Duffel Black</td>
+<td>17.59</td>
+<td>87.95</td>
+<td>96.95</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27328</td>
+<td>372706149688864468</td>
+<td>2017-05-04</td>
+<td>4</td>
+<td>BLM Sweatshirt</td>
+<td>33.59</td>
+<td>134.36</td>
+<td>236.13</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">27329</td>
+<td>372706149688864468</td>
+<td>2017-05-04</td>
+<td>3</td>
+<td>BLM Sweatshirt</td>
+<td>33.59</td>
+<td>100.77</td>
+<td>236.13</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36741</td>
+<td>8016003971239765913</td>
+<td>2017-08-01</td>
+<td>2</td>
+<td>Android Men's Short Sleeve Hero Tee White</td>
+<td>6.80</td>
+<td>13.60</td>
+<td>131.96</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">36742</td>
+<td>8016003971239765913</td>
+<td>2017-08-01</td>
+<td>1</td>
+<td>Women's Performance Full Zip Jacket Black</td>
+<td>67.19</td>
+<td>67.19</td>
+<td>131.96</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36743</td>
+<td>8016003971239765913</td>
+<td>2017-08-01</td>
+<td>1</td>
+<td>Android Men's Engineer Short Sleeve Tee Charcoal</td>
+<td>15.99</td>
+<td>15.99</td>
+<td>131.96</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">36744</td>
+<td>8016003971239765913</td>
+<td>2017-08-01</td>
+<td>1</td>
+<td>Google Infant Short Sleeve Tee Red</td>
+<td>13.59</td>
+<td>13.59</td>
+<td>131.96</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36745</td>
+<td>8016003971239765913</td>
+<td>2017-08-01</td>
+<td>1</td>
+<td>Android Infant Short Sleeve Tee Pewter</td>
+<td>13.59</td>
+<td>13.59</td>
+<td>131.96</td>
+</tr>
+</tbody>
+</table>
+
+<p>9421 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="rfm-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="rfm-analysis">5.3 RFM analysis</h3>
+<p>RFM analysis is a customer segmentation technique commonly used in marketing and analytics to categorize customers based on their behavior and interactions with a business. The acronym “RFM” stands for Recency, Frequency, and Monetary Value, which are three key dimensions used to evaluate and understand customer behavior. Here’s a brief overview of each component:</p>
+<section id="recency-r" class="level4">
+<h4 class="anchored" data-anchor-id="recency-r">Recency (R):</h4>
+<p><code>Definition:</code> Recency refers to how recently a customer has interacted or made a purchase.<br>
+<code>Calculation:</code> It is typically measured by the time elapsed since the customer’s last purchase, activity, or interaction.<br>
+<code>Objective:</code> Recent customers are often more engaged, so businesses may want to identify and target those who have interacted with the company recently.</p>
+</section>
+<section id="frequency-f" class="level4">
+<h4 class="anchored" data-anchor-id="frequency-f">Frequency (F):</h4>
+<p><code>Definition:</code> Frequency measures how often a customer interacts or makes purchases.<br>
+<code>Calculation:</code> It involves counting the number of transactions or interactions within a specific period.<br>
+<code>Objective:</code> Higher frequency may indicate more loyal and engaged customers. Businesses may want to reward or incentivize customers with high frequency.</p>
+</section>
+<section id="monetary-value-m" class="level4">
+<h4 class="anchored" data-anchor-id="monetary-value-m">Monetary Value (M):</h4>
+<p><code>Definition:</code> Monetary Value represents the total value of a customer’s transactions.<br>
+<code>Calculation:</code> It involves summing up the monetary value of all transactions made by a customer.<br>
+<code>Objective:</code> Identifying customers with high monetary value helps businesses focus on their most valuable segments and tailor marketing strategies accordingly.</p>
+<p>RFM analysis provides actionable insights into customer behavior, allowing businesses to develop targeted strategies for customer retention, acquisition, and overall business growth.</p>
+</section>
+</section>
+<section id="create-target-variables-from-our-90-day-data" class="level3">
+<h3 class="anchored" data-anchor-id="create-target-variables-from-our-90-day-data">5.3.1 Create target variables from our 90-day data</h3>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make Targets from out data </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>targets_df <span class="op">=</span> temporal_out_df <span class="op">\</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    .drop(<span class="st">'quantity'</span>, axis<span class="op">=</span><span class="dv">1</span>) <span class="op">\</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    .drop(<span class="st">'product_name'</span>, axis<span class="op">=</span><span class="dv">1</span>) <span class="op">\</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    .drop(<span class="st">'product_revenue'</span>, axis<span class="op">=</span><span class="dv">1</span>) <span class="op">\</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    .drop(<span class="st">'total_transaction_revenue'</span>, axis<span class="op">=</span><span class="dv">1</span>) <span class="op">\</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'fullVisitorId'</span>) <span class="op">\</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>() <span class="op">\</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    .rename({<span class="st">'price'</span>: <span class="st">'spend_90_total'</span>}, axis <span class="op">=</span> <span class="dv">1</span>) <span class="op">\</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    .assign(spend_90_flag <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>targets_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">spend_90_total</th>
+<th data-quarto-table-cell-role="th">spend_90_flag</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0003961110741104601</td>
+<td>4.98</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0006911334202687206</td>
+<td>58.50</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0010295111715775250</td>
+<td>2.39</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0012561433643490595</td>
+<td>4.39</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0014262055593378383</td>
+<td>77.30</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9973195165804180005</td>
+<td>0.99</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9973665079624172058</td>
+<td>78.95</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9974351919673138742</td>
+<td>53.60</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9982700667464896535</td>
+<td>33.59</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">99879093370825436</td>
+<td>3.50</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>2639 rows × 2 columns</p>
+</div>
+</div>
+</div>
+<p>So we can see that out of a total of 9,995 customers, only 2,639 made a purchase in the final 90 day period.</p>
+</section>
+<section id="create-recency-date-features" class="level3">
+<h3 class="anchored" data-anchor-id="create-recency-date-features">5.3.2 Create recency (date) features</h3>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>max_date <span class="op">=</span> temporal_in_df[<span class="st">'date'</span>].<span class="bu">max</span>()</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>max_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>Timestamp('2017-05-03 00:00:00')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>recency_features_df <span class="op">=</span> temporal_in_df <span class="op">\</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">'fullVisitorId'</span>, <span class="st">'date'</span>]] <span class="op">\</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'fullVisitorId'</span>) <span class="op">\</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">lambda</span> x: (x[<span class="st">'date'</span>].<span class="bu">max</span>() <span class="op">-</span> max_date) <span class="op">/</span> pd.to_timedelta(<span class="dv">1</span>, <span class="st">"day"</span>)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">\</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    .to_frame() <span class="op">\</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    .set_axis([<span class="st">"recency"</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>recency_features_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">recency</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0000213131142648941</td>
+<td>-5.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0002871498069867123</td>
+<td>-253.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0003450834640354121</td>
+<td>-197.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">000435324061339869</td>
+<td>-195.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0007617910709180468</td>
+<td>-142.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9991633376050115277</td>
+<td>-75.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9994767073213036303</td>
+<td>-267.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9997409246962677759</td>
+<td>-146.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9998597322098588317</td>
+<td>-275.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9998996003043230595</td>
+<td>-168.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>7478 rows × 1 columns</p>
+</div>
+</div>
+</div>
+<p>The above table shows, for each customer, how recent their most recent purchase was, with reference to the final purchase date of our recency dataset, 3 May 2017.</p>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>min_date <span class="op">=</span> temporal_in_df[<span class="st">'date'</span>].<span class="bu">min</span>()</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>min_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>Timestamp('2016-08-01 00:00:00')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>date_range <span class="op">=</span> max_date <span class="op">-</span> min_date</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>date_range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>Timedelta('275 days 00:00:00')</code></pre>
+</div>
+</div>
+</section>
+<section id="create-frequency-count-features" class="level3">
+<h3 class="anchored" data-anchor-id="create-frequency-count-features">5.3.3 Create frequency (count) features</h3>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>frequency_features_df <span class="op">=</span> temporal_in_df <span class="op">\</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">'fullVisitorId'</span>, <span class="st">'date'</span>]] <span class="op">\</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'fullVisitorId'</span>) <span class="op">\</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    .count() <span class="op">\</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    .set_axis([<span class="st">'frequency'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>frequency_features_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">frequency</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0000213131142648941</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0002871498069867123</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0003450834640354121</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">000435324061339869</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0007617910709180468</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9991633376050115277</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9994767073213036303</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9997409246962677759</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9998597322098588317</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9998996003043230595</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+<p>7478 rows × 1 columns</p>
+</div>
+</div>
+</div>
+<p>This shows how many purchase transactions each customer made.</p>
+</section>
+<section id="create-monetary-price-features" class="level3">
+<h3 class="anchored" data-anchor-id="create-monetary-price-features">5.3.4 Create monetary (price) features</h3>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average spend per transaction</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>price_features_df <span class="op">=</span> temporal_in_df <span class="op">\</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'fullVisitorId'</span>) <span class="op">\</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    .aggregate(</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'price'</span>: [<span class="st">"sum"</span>, <span class="st">"mean"</span>]</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">\</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    .set_axis([<span class="st">'price_sum'</span>, <span class="st">'price_mean'</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>price_features_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">price_sum</th>
+<th data-quarto-table-cell-role="th">price_mean</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0000213131142648941</td>
+<td>33.59</td>
+<td>33.590000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0002871498069867123</td>
+<td>5.99</td>
+<td>5.990000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0003450834640354121</td>
+<td>57.95</td>
+<td>11.590000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">000435324061339869</td>
+<td>44.79</td>
+<td>44.790000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0007617910709180468</td>
+<td>18.99</td>
+<td>18.990000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9991633376050115277</td>
+<td>33.59</td>
+<td>33.590000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9994767073213036303</td>
+<td>51.94</td>
+<td>8.656667</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9997409246962677759</td>
+<td>32.36</td>
+<td>6.472000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9998597322098588317</td>
+<td>3.24</td>
+<td>1.620000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9998996003043230595</td>
+<td>59.98</td>
+<td>29.990000</td>
+</tr>
+</tbody>
+</table>
+
+<p>7478 rows × 2 columns</p>
+</div>
+</div>
+</div>
+<p>This gives us the average spend per transaction for each customer.</p>
+</section>
+<section id="combine-all-features" class="level3">
+<h3 class="anchored" data-anchor-id="combine-all-features">5.3.5 Combine all features</h3>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>features_df <span class="op">=</span> pd.concat(</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    [recency_features_df, frequency_features_df, price_features_df], axis <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>) <span class="op">\</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    .merge(</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>        targets_df, </span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>        left_index  <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>        right_index <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>        how         <span class="op">=</span> <span class="st">"left"</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">\</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    .fillna(<span class="dv">0</span>) <span class="co"># where no spend populate with 0</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>features_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">recency</th>
+<th data-quarto-table-cell-role="th">frequency</th>
+<th data-quarto-table-cell-role="th">price_sum</th>
+<th data-quarto-table-cell-role="th">price_mean</th>
+<th data-quarto-table-cell-role="th">spend_90_total</th>
+<th data-quarto-table-cell-role="th">spend_90_flag</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0000213131142648941</td>
+<td>-5.0</td>
+<td>1</td>
+<td>33.59</td>
+<td>33.590000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0002871498069867123</td>
+<td>-253.0</td>
+<td>1</td>
+<td>5.99</td>
+<td>5.990000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0003450834640354121</td>
+<td>-197.0</td>
+<td>5</td>
+<td>57.95</td>
+<td>11.590000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">000435324061339869</td>
+<td>-195.0</td>
+<td>1</td>
+<td>44.79</td>
+<td>44.790000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0007617910709180468</td>
+<td>-142.0</td>
+<td>1</td>
+<td>18.99</td>
+<td>18.990000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9991633376050115277</td>
+<td>-75.0</td>
+<td>1</td>
+<td>33.59</td>
+<td>33.590000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9994767073213036303</td>
+<td>-267.0</td>
+<td>6</td>
+<td>51.94</td>
+<td>8.656667</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9997409246962677759</td>
+<td>-146.0</td>
+<td>5</td>
+<td>32.36</td>
+<td>6.472000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9998597322098588317</td>
+<td>-275.0</td>
+<td>2</td>
+<td>3.24</td>
+<td>1.620000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9998996003043230595</td>
+<td>-168.0</td>
+<td>2</td>
+<td>59.98</td>
+<td>29.990000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>7478 rows × 6 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning">6. Machine learning</h2>
+<p>Now that we have our recency, frequency and monetary features prepared, the next step is to leverage machine learning <code>regression models</code> to help us predict future customer spend based on these features.</p>
+<p>In an ecommerce context, these regression models can provide valuable insights for:</p>
+<ul>
+<li><p><code>Demand Forecasting:</code> Predicting future sales to optimize inventory levels and prevent stockouts or overstock situations.</p></li>
+<li><p><code>Pricing Strategies:</code> Analyzing the impact of different pricing models and discounts on sales to determine the most effective pricing strategy.</p></li>
+<li><p><code>Customer Segmentation:</code> Understanding customer segments based on purchasing behavior to tailor marketing messages and promotions.</p></li>
+<li><p><code>Product Recommendations:</code> Enhancing personalized product recommendations based on individual customer preferences and historical data.</p></li>
+<li><p><code>Marketing Optimization:</code> Allocating marketing budgets effectively by identifying the most influential factors driving sales.</p></li>
+</ul>
+<section id="xgboost" class="level3">
+<h3 class="anchored" data-anchor-id="xgboost">6.1 XGBoost</h3>
+<p><a href="https://xgboost.readthedocs.io/en/stable/">XGBoost (Extreme Gradient Boosting)</a> is a powerful and efficient machine learning algorithm that belongs to the gradient boosting family. It has gained popularity for its high performance and effectiveness in various predictive modeling tasks.</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBClassifier, XGBRegressor</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> features_df[[<span class="st">'recency'</span>, <span class="st">'frequency'</span>, <span class="st">'price_sum'</span>, <span class="st">'price_mean'</span>]]</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">recency</th>
+<th data-quarto-table-cell-role="th">frequency</th>
+<th data-quarto-table-cell-role="th">price_sum</th>
+<th data-quarto-table-cell-role="th">price_mean</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0000213131142648941</td>
+<td>-5.0</td>
+<td>1</td>
+<td>33.59</td>
+<td>33.590000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">0002871498069867123</td>
+<td>-253.0</td>
+<td>1</td>
+<td>5.99</td>
+<td>5.990000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0003450834640354121</td>
+<td>-197.0</td>
+<td>5</td>
+<td>57.95</td>
+<td>11.590000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">000435324061339869</td>
+<td>-195.0</td>
+<td>1</td>
+<td>44.79</td>
+<td>44.790000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0007617910709180468</td>
+<td>-142.0</td>
+<td>1</td>
+<td>18.99</td>
+<td>18.990000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9991633376050115277</td>
+<td>-75.0</td>
+<td>1</td>
+<td>33.59</td>
+<td>33.590000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9994767073213036303</td>
+<td>-267.0</td>
+<td>6</td>
+<td>51.94</td>
+<td>8.656667</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9997409246962677759</td>
+<td>-146.0</td>
+<td>5</td>
+<td>32.36</td>
+<td>6.472000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9998597322098588317</td>
+<td>-275.0</td>
+<td>2</td>
+<td>3.24</td>
+<td>1.620000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9998996003043230595</td>
+<td>-168.0</td>
+<td>2</td>
+<td>59.98</td>
+<td>29.990000</td>
+</tr>
+</tbody>
+</table>
+
+<p>7478 rows × 4 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="regression-model" class="level3">
+<h3 class="anchored" data-anchor-id="regression-model">6.2 Regression model</h3>
+<section id="build-and-train-a-model" class="level4">
+<h4 class="anchored" data-anchor-id="build-and-train-a-model">6.2.1 Build and train a model</h4>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define our target variable</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>y_spend <span class="op">=</span> features_df[<span class="st">'spend_90_total'</span>]</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression model as we are trying to predict customer spend in next-90 days</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>xgb_reg_spec <span class="op">=</span> XGBRegressor(</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    objective<span class="op">=</span><span class="st">"reg:squarederror"</span>,   </span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">123</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>xgb_reg_model <span class="op">=</span> GridSearchCV(</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>xgb_reg_spec, </span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    param_grid<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>        learning_rate <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>]</span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>    scoring <span class="op">=</span> <span class="st">'neg_mean_absolute_error'</span>,</span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>    refit   <span class="op">=</span> <span class="va">True</span>, <span class="co"># creates a 6th model which used for pred in production based on best of 5 models</span></span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>    cv      <span class="op">=</span> <span class="dv">5</span> <span class="co"># 5 fold cross-validation</span></span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train our model on the test day</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>xgb_reg_model.fit(X, y_spend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="model-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="model-evaluation">6.2.2 Model evaluation</h3>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>xgb_reg_model.best_score_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>-2.2946875595942826</code></pre>
+</div>
+</div>
+<p>The interpretation is that are model is out by around $2 per transaction, which seems pretty reasonable.</p>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>xgb_reg_model.best_params_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>{'learning_rate': 0.01}</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>xgb_reg_model.best_estimator_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="predicted-customer-spend-in-next-90-days" class="level3">
+<h3 class="anchored" data-anchor-id="predicted-customer-spend-in-next-90-days">6.2.3 Predicted customer spend ($) in next 90 days</h3>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>predictions_reg <span class="op">=</span> xgb_reg_model.predict(X)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>predictions_reg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>array([1.1863576 , 0.26471087, 0.26471087, ..., 0.26471087, 0.26471087,
+       0.26471087], dtype=float32)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(predictions_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>7478</code></pre>
+</div>
+</div>
+</section>
+<section id="classification-model" class="level3">
+<h3 class="anchored" data-anchor-id="classification-model">6.3 Classification model</h3>
+</section>
+<section id="probability-of-customer-spend-in-the-next-90-days" class="level3">
+<h3 class="anchored" data-anchor-id="probability-of-customer-spend-in-the-next-90-days">6.3.1 Probability of customer spend in the next 90 days</h3>
+<p>We will once again leverage XGBoost but this time a <code>classification</code> model is required as we are not trying to predict a $ value, but whether they will spend or not. There are a wide range of machine learning classification models, some of which are outlined below:</p>
+<ul>
+<li>Logistic Regression</li>
+<li>Decision Trees</li>
+<li>Random Forest</li>
+<li>Support Vector Machines (SVM)</li>
+<li>K-Nearest Neighbors (KNN)</li>
+<li>Naive Bayes</li>
+<li>Neural Networks</li>
+<li>Ensemble Methods</li>
+<li>Association Rule Mining (e.g., Apriori Algorithm)</li>
+</ul>
+<p>By leveraging these models, ecommerce businesses can enhance customer experiences, optimize marketing strategies, and improve overall operational efficiency.</p>
+</section>
+<section id="build-and-train-a-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="build-and-train-a-model-1">6.3.2 Build and train a model</h3>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # define our target variable</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>y_prob <span class="op">=</span> features_df[<span class="st">'spend_90_flag'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classification model as we are trying to predict whether customer spends in next-90 days or not</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>xgb_clf_spec <span class="op">=</span> XGBClassifier(</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    objective    <span class="op">=</span> <span class="st">"binary:logistic"</span>,   </span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>    random_state <span class="op">=</span> <span class="dv">123</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>xgb_clf_model <span class="op">=</span> GridSearchCV(</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>xgb_clf_spec, </span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>    param_grid<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>        learning_rate <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>]</span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>    scoring <span class="op">=</span> <span class="st">'roc_auc'</span>,</span>
+<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a>    refit   <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a>    cv      <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train our model on the test data</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>xgb_clf_model.fit(X, y_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="model-evaluation-1" class="level3">
+<h3 class="anchored" data-anchor-id="model-evaluation-1">6.3.3 Model evaluation</h3>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>xgb_clf_model.best_score_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>0.837403308391585</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>xgb_clf_model.best_params_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>{'learning_rate': 0.1}</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>xgb_clf_model.best_estimator_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="predict-probability-of-customer-spend-next-90-days" class="level3">
+<h3 class="anchored" data-anchor-id="predict-probability-of-customer-spend-next-90-days">6.3.4 Predict probability of customer spend next-90 days</h3>
+<div class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>predictions_clf <span class="op">=</span> xgb_clf_model.predict_proba(X) <span class="co"># predict prob rather than score</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>predictions_clf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>array([[9.7599518e-01, 2.4004841e-02],
+       [9.9948597e-01, 5.1402434e-04],
+       [9.9950981e-01, 4.9017661e-04],
+       ...,
+       [9.9914837e-01, 8.5162191e-04],
+       [9.9901974e-01, 9.8024833e-04],
+       [9.9941909e-01, 5.8090949e-04]], dtype=float32)</code></pre>
+</div>
+</div>
+<p>The first value in the outputed array represents the probabilty of not making a purchase, with the second value representing the reciprocal, i.e.&nbsp;the probability of making a purchase. To illustrate, the first customer has a 2.4% probability of making a purchase in the next 90-days, the second customer, 5.1%, the third 4.9% and so on.</p>
+</section>
+<section id="feature-importance" class="level3">
+<h3 class="anchored" data-anchor-id="feature-importance">6.4 Feature importance</h3>
+<p>So which customer features can give us an insight into their future spending behaviour? If we can profile our customers we can better understand their unique preferences and enhance user experience which will ultimately translate into recurring future revenue streams.</p>
+</section>
+<section id="regression-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="regression-model-1">6.4.1 Regression model</h3>
+<div class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dictionary of relative importance of features</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>imp_spend_amount_dict <span class="op">=</span> xgb_reg_model <span class="op">\</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    .best_estimator_ <span class="op">\</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>    .get_booster() <span class="op">\</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>    .get_score(importance_type <span class="op">=</span> <span class="st">'gain'</span>) </span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>imp_spend_amount_dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>{'recency': 21329.5546875,
+ 'frequency': 26971.447265625,
+ 'price_sum': 24244.16796875,
+ 'price_mean': 13376.1591796875}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a DataFrame from the dictionary</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>imp_spend_amount_df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>    data  <span class="op">=</span> {</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'feature'</span>:<span class="bu">list</span>(imp_spend_amount_dict.keys()),</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'value'</span>:<span class="bu">list</span>(imp_spend_amount_dict.values())</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>) <span class="op">\</span></span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>        feature <span class="op">=</span> <span class="kw">lambda</span> x: cat.cat_reorder(x[<span class="st">'feature'</span>] , x[<span class="st">'value'</span>])</span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>imp_spend_amount_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">feature</th>
+<th data-quarto-table-cell-role="th">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>recency</td>
+<td>21329.554688</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>frequency</td>
+<td>26971.447266</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>price_sum</td>
+<td>24244.167969</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>price_mean</td>
+<td>13376.159180</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize feature importance</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>pn.ggplot(data<span class="op">=</span>imp_spend_amount_df) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    pn.aes(x<span class="op">=</span><span class="st">'feature'</span>, y<span class="op">=</span><span class="st">'value'</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>    pn.geom_col() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>    pn.coord_flip()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Google_Merchandise_Store_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>&lt;Figure Size: (1920 x 1440)&gt;</code></pre>
+</div>
+</div>
+<p>Intuitively, frequent spenders are generally likely to be a good indicator of future spend. This is corroborated in the above feature importance plot.</p>
+</section>
+<section id="classification-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="classification-model-1">6.4.2 Classification model</h3>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dictionary of relative importance of features</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>imp_spend_prob_dict <span class="op">=</span> xgb_clf_model <span class="op">\</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>    .best_estimator_ <span class="op">\</span></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>    .get_booster() <span class="op">\</span></span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>    .get_score(importance_type <span class="op">=</span> <span class="st">'gain'</span>) </span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>imp_spend_prob_dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<pre><code>{'recency': 2.1909291744232178,
+ 'frequency': 1.2872744798660278,
+ 'price_sum': 1.2381023168563843,
+ 'price_mean': 1.1211071014404297}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a DataFrame from the dictionary</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>imp_spend_prob_df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>    data  <span class="op">=</span> {</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'feature'</span>:<span class="bu">list</span>(imp_spend_prob_dict.keys()),</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'value'</span>:<span class="bu">list</span>(imp_spend_prob_dict.values())</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>) <span class="op">\</span></span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>        feature <span class="op">=</span> <span class="kw">lambda</span> x: cat.cat_reorder(x[<span class="st">'feature'</span>] , x[<span class="st">'value'</span>])</span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a>imp_spend_prob_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">feature</th>
+<th data-quarto-table-cell-role="th">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>recency</td>
+<td>2.190929</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>frequency</td>
+<td>1.287274</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>price_sum</td>
+<td>1.238102</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>price_mean</td>
+<td>1.121107</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize feature importance</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>pn.ggplot(data <span class="op">=</span> imp_spend_prob_df) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>    pn.aes(x<span class="op">=</span><span class="st">'feature'</span>, y<span class="op">=</span><span class="st">'value'</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>    pn.geom_col() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>    pn.coord_flip() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Google_Merchandise_Store_files/figure-html/cell-58-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<pre><code>&lt;Figure Size: (1920 x 1440)&gt;</code></pre>
+</div>
+</div>
+<p>In terms of the probability of future spend, if a customer has spent recently and frequently, then these are strong indicators. The amount spent and average spend are not considered to be important by the model.</p>
+</section>
+</section>
+<section id="pickle-save-our-predictions-features-and-models" class="level2">
+<h2 class="anchored" data-anchor-id="pickle-save-our-predictions-features-and-models">7. Pickle (save) our predictions, features, and models</h2>
+<div class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine our predictions</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>predictions_df <span class="op">=</span> pd.concat(</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>        pd.DataFrame(predictions_reg).set_axis([<span class="st">'pred_spend'</span>], axis<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>        pd.DataFrame(predictions_clf)[[<span class="dv">1</span>]].set_axis([<span class="st">'pred_prob'</span>], axis<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>        features_df.reset_index()</span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>    ], </span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>predictions_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pred_spend</th>
+<th data-quarto-table-cell-role="th">pred_prob</th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">recency</th>
+<th data-quarto-table-cell-role="th">frequency</th>
+<th data-quarto-table-cell-role="th">price_sum</th>
+<th data-quarto-table-cell-role="th">price_mean</th>
+<th data-quarto-table-cell-role="th">spend_90_total</th>
+<th data-quarto-table-cell-role="th">spend_90_flag</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.186358</td>
+<td>0.024005</td>
+<td>0000213131142648941</td>
+<td>-5.0</td>
+<td>1</td>
+<td>33.59</td>
+<td>33.590000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.264711</td>
+<td>0.000514</td>
+<td>0002871498069867123</td>
+<td>-253.0</td>
+<td>1</td>
+<td>5.99</td>
+<td>5.990000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.264711</td>
+<td>0.000490</td>
+<td>0003450834640354121</td>
+<td>-197.0</td>
+<td>5</td>
+<td>57.95</td>
+<td>11.590000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.264711</td>
+<td>0.000253</td>
+<td>000435324061339869</td>
+<td>-195.0</td>
+<td>1</td>
+<td>44.79</td>
+<td>44.790000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.264711</td>
+<td>0.000409</td>
+<td>0007617910709180468</td>
+<td>-142.0</td>
+<td>1</td>
+<td>18.99</td>
+<td>18.990000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7473</td>
+<td>0.361555</td>
+<td>0.012704</td>
+<td>9991633376050115277</td>
+<td>-75.0</td>
+<td>1</td>
+<td>33.59</td>
+<td>33.590000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7474</td>
+<td>0.264711</td>
+<td>0.000526</td>
+<td>9994767073213036303</td>
+<td>-267.0</td>
+<td>6</td>
+<td>51.94</td>
+<td>8.656667</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7475</td>
+<td>0.264711</td>
+<td>0.000852</td>
+<td>9997409246962677759</td>
+<td>-146.0</td>
+<td>5</td>
+<td>32.36</td>
+<td>6.472000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7476</td>
+<td>0.264711</td>
+<td>0.000980</td>
+<td>9998597322098588317</td>
+<td>-275.0</td>
+<td>2</td>
+<td>3.24</td>
+<td>1.620000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7477</td>
+<td>0.264711</td>
+<td>0.000581</td>
+<td>9998996003043230595</td>
+<td>-168.0</td>
+<td>2</td>
+<td>59.98</td>
+<td>29.990000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>7478 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"artifacts/predictions_df.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>    pickle.dump(predictions_df, <span class="bu">file</span>, protocol<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pickle our predictions</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>predictions_df.to_pickle(<span class="st">"artifacts/predictions_df.pkl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"artifacts/imp_spend_amount_df.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>    pickle.dump(imp_spend_amount_df, <span class="bu">file</span>, protocol<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"artifacts/imp_spend_prob_df.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>    pickle.dump(imp_spend_prob_df, <span class="bu">file</span>, protocol<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Save our Feature Importances</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>imp_spend_amount_df.to_pickle(<span class="st">"artifacts/imp_spend_amount_df.pkl"</span>)</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>imp_spend_prob_df.to_pickle(<span class="st">"artifacts/imp_spend_prob_df.pkl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Save Models</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>joblib.dump(xgb_reg_model, <span class="st">'artifacts/xgb_reg_model.pkl'</span>)</span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>joblib.dump(xgb_clf_model, <span class="st">'artifacts/xgb_clf_model.pkl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> joblib.load(<span class="st">'artifacts/xgb_reg_model.pkl'</span>)</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre><code>array([1.1863576 , 0.26471087, 0.26471087, ..., 0.26471087, 0.26471087,
+       0.26471087], dtype=float32)</code></pre>
+</div>
+</div>
+</section>
+<section id="actionable-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="actionable-outcomes">8. Actionable outcomes</h2>
+<section id="q1.-which-customers-have-the-highest-spend-probability-in-next-90-days" class="level3">
+<h3 class="anchored" data-anchor-id="q1.-which-customers-have-the-highest-spend-probability-in-next-90-days">Q1. Which customers have the highest spend <code>probability</code> in next 90-days?</h3>
+<ul>
+<li>Target for new products similar to what they have purchased in the past.</li>
+</ul>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>predictions_df <span class="op">\</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'pred_prob'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pred_spend</th>
+<th data-quarto-table-cell-role="th">pred_prob</th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">recency</th>
+<th data-quarto-table-cell-role="th">frequency</th>
+<th data-quarto-table-cell-role="th">price_sum</th>
+<th data-quarto-table-cell-role="th">price_mean</th>
+<th data-quarto-table-cell-role="th">spend_90_total</th>
+<th data-quarto-table-cell-role="th">spend_90_flag</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3747</td>
+<td>103.428444</td>
+<td>0.849751</td>
+<td>4984366501121503466</td>
+<td>-23.0</td>
+<td>55</td>
+<td>320.57</td>
+<td>5.828545</td>
+<td>258.50</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6156</td>
+<td>258.405396</td>
+<td>0.836090</td>
+<td>8197879643797712877</td>
+<td>-7.0</td>
+<td>65</td>
+<td>2052.37</td>
+<td>31.574923</td>
+<td>657.03</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1430</td>
+<td>225.969971</td>
+<td>0.827522</td>
+<td>1957458976293878100</td>
+<td>-14.0</td>
+<td>109</td>
+<td>2333.35</td>
+<td>21.406881</td>
+<td>338.26</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3724</td>
+<td>34.220909</td>
+<td>0.806135</td>
+<td>4950411203281265700</td>
+<td>0.0</td>
+<td>23</td>
+<td>120.62</td>
+<td>5.244348</td>
+<td>92.35</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5888</td>
+<td>69.604485</td>
+<td>0.782023</td>
+<td>7813149961404844386</td>
+<td>0.0</td>
+<td>48</td>
+<td>1906.50</td>
+<td>39.718750</td>
+<td>175.79</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1307</td>
+<td>0.264711</td>
+<td>0.000214</td>
+<td>1799218307967476916</td>
+<td>-202.0</td>
+<td>1</td>
+<td>16.99</td>
+<td>16.990000</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2573</td>
+<td>0.264711</td>
+<td>0.000214</td>
+<td>3461504855909388246</td>
+<td>-206.0</td>
+<td>1</td>
+<td>16.99</td>
+<td>16.990000</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4435</td>
+<td>0.264711</td>
+<td>0.000214</td>
+<td>5844997119511169482</td>
+<td>-216.0</td>
+<td>1</td>
+<td>18.99</td>
+<td>18.990000</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6228</td>
+<td>0.264711</td>
+<td>0.000214</td>
+<td>8292732469404938023</td>
+<td>-227.0</td>
+<td>1</td>
+<td>16.99</td>
+<td>16.990000</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3206</td>
+<td>0.264711</td>
+<td>0.000214</td>
+<td>4259785355346404932</td>
+<td>-210.0</td>
+<td>1</td>
+<td>18.99</td>
+<td>18.990000</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>7478 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<p>We can see that the model seems to be working well in terms of identifying those customers that are likely to spend in the next-90 days. The top 5 customers above ranked by probability of spend all actually spent. Conversely, the bottom 5 customers didn’t spend.</p>
+</section>
+<section id="q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" class="level3">
+<h3 class="anchored" data-anchor-id="q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30">Q2. Which customers have recently purchased (within 90 days) but are unlikely to buy (probability less than 30%)?</h3>
+<ul>
+<li>Incentivize actions to increase probability.</li>
+<li>Provide discounts, encourage referring a friend, nurture by letting them know what’s coming.</li>
+</ul>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>predictions_df <span class="op">\</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>        predictions_df[<span class="st">'recency'</span>] <span class="op">&gt;</span> <span class="op">-</span><span class="dv">90</span></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>    ] <span class="op">\</span></span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>        predictions_df[<span class="st">'pred_prob'</span>] <span class="op">&lt;</span> <span class="fl">0.30</span></span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a>    ] <span class="op">\</span></span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'pred_prob'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pred_spend</th>
+<th data-quarto-table-cell-role="th">pred_prob</th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">recency</th>
+<th data-quarto-table-cell-role="th">frequency</th>
+<th data-quarto-table-cell-role="th">price_sum</th>
+<th data-quarto-table-cell-role="th">price_mean</th>
+<th data-quarto-table-cell-role="th">spend_90_total</th>
+<th data-quarto-table-cell-role="th">spend_90_flag</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2384</td>
+<td>2.970100</td>
+<td>0.299618</td>
+<td>3197533100947860058</td>
+<td>-33.0</td>
+<td>7</td>
+<td>153.44</td>
+<td>21.920</td>
+<td>86.54</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">419</td>
+<td>4.334545</td>
+<td>0.291470</td>
+<td>0554420125524525961</td>
+<td>-10.0</td>
+<td>3</td>
+<td>52.77</td>
+<td>17.590</td>
+<td>172.37</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3406</td>
+<td>2.242671</td>
+<td>0.291250</td>
+<td>4515197722749947898</td>
+<td>-3.0</td>
+<td>2</td>
+<td>28.78</td>
+<td>14.390</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1861</td>
+<td>2.242671</td>
+<td>0.291250</td>
+<td>2518379317255532090</td>
+<td>-3.0</td>
+<td>2</td>
+<td>28.78</td>
+<td>14.390</td>
+<td>28.78</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5688</td>
+<td>3.153815</td>
+<td>0.290945</td>
+<td>7548511681521037018</td>
+<td>-2.0</td>
+<td>4</td>
+<td>33.98</td>
+<td>8.495</td>
+<td>42.97</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6446</td>
+<td>0.594005</td>
+<td>0.001943</td>
+<td>8590369633898567459</td>
+<td>-35.0</td>
+<td>1</td>
+<td>2.39</td>
+<td>2.390</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5561</td>
+<td>0.594005</td>
+<td>0.001943</td>
+<td>7390358029425621068</td>
+<td>-35.0</td>
+<td>1</td>
+<td>1.99</td>
+<td>1.990</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2165</td>
+<td>0.361555</td>
+<td>0.001671</td>
+<td>293387037477216156</td>
+<td>-72.0</td>
+<td>1</td>
+<td>1.99</td>
+<td>1.990</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2666</td>
+<td>0.361555</td>
+<td>0.001671</td>
+<td>3573113591289892546</td>
+<td>-74.0</td>
+<td>1</td>
+<td>1.99</td>
+<td>1.990</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1490</td>
+<td>0.361555</td>
+<td>0.001671</td>
+<td>2037170738057013329</td>
+<td>-73.0</td>
+<td>1</td>
+<td>1.99</td>
+<td>1.990</td>
+<td>0.00</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>2324 rows × 9 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q3.-missed-opportunities-big-spenders-that-could-be-unlocked" class="level3">
+<h3 class="anchored" data-anchor-id="q3.-missed-opportunities-big-spenders-that-could-be-unlocked">Q3. Missed opportunities: Big spenders that could be unlocked</h3>
+<ul>
+<li>Send bundle offers encouraging volume purchases</li>
+<li>Focus on missed opportunities</li>
+</ul>
+<div class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identify those customers predicted to spend but did not</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>predictions_df <span class="op">\</span></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>        predictions_df[<span class="st">'spend_90_total'</span>] <span class="op">==</span> <span class="fl">0.0</span></span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>    ] <span class="op">\</span></span>
+<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'pred_spend'</span>, ascending<span class="op">=</span><span class="va">False</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pred_spend</th>
+<th data-quarto-table-cell-role="th">pred_prob</th>
+<th data-quarto-table-cell-role="th">fullVisitorId</th>
+<th data-quarto-table-cell-role="th">recency</th>
+<th data-quarto-table-cell-role="th">frequency</th>
+<th data-quarto-table-cell-role="th">price_sum</th>
+<th data-quarto-table-cell-role="th">price_mean</th>
+<th data-quarto-table-cell-role="th">spend_90_total</th>
+<th data-quarto-table-cell-role="th">spend_90_flag</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2955</td>
+<td>81.598740</td>
+<td>0.126212</td>
+<td>3955127543379144640</td>
+<td>-2.0</td>
+<td>8</td>
+<td>358.32</td>
+<td>44.790000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2565</td>
+<td>33.736187</td>
+<td>0.063039</td>
+<td>3449924104971285851</td>
+<td>-91.0</td>
+<td>14</td>
+<td>483.86</td>
+<td>34.561429</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5696</td>
+<td>33.736187</td>
+<td>0.085885</td>
+<td>7561014297963838461</td>
+<td>-58.0</td>
+<td>18</td>
+<td>522.82</td>
+<td>29.045556</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2927</td>
+<td>30.029305</td>
+<td>0.017011</td>
+<td>3916992730920009646</td>
+<td>-64.0</td>
+<td>7</td>
+<td>416.73</td>
+<td>59.532857</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4026</td>
+<td>30.029305</td>
+<td>0.009925</td>
+<td>5349155616428631188</td>
+<td>-76.0</td>
+<td>13</td>
+<td>391.87</td>
+<td>30.143846</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1767</td>
+<td>-0.646184</td>
+<td>0.025690</td>
+<td>2396848817613598114</td>
+<td>-59.0</td>
+<td>44</td>
+<td>1416.56</td>
+<td>32.194545</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5808</td>
+<td>-0.646184</td>
+<td>0.023305</td>
+<td>7713012430069756739</td>
+<td>-62.0</td>
+<td>18</td>
+<td>783.82</td>
+<td>43.545556</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">751</td>
+<td>-0.646184</td>
+<td>0.017749</td>
+<td>1045033759778661078</td>
+<td>-86.0</td>
+<td>22</td>
+<td>657.38</td>
+<td>29.880909</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7001</td>
+<td>-0.646184</td>
+<td>0.013225</td>
+<td>9349161317881541522</td>
+<td>-50.0</td>
+<td>29</td>
+<td>896.71</td>
+<td>30.921034</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3873</td>
+<td>-0.925417</td>
+<td>0.007162</td>
+<td>5149788969578895545</td>
+<td>-66.0</td>
+<td>9</td>
+<td>340.71</td>
+<td>37.856667</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>7356 rows × 9 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="communication-of-findings" class="level2">
+<h2 class="anchored" data-anchor-id="communication-of-findings">Communication of findings</h2>
+<section id="e-commerce-analytics-dashboard-using-dash-for-viewing-locally" class="level3">
+<h3 class="anchored" data-anchor-id="e-commerce-analytics-dashboard-using-dash-for-viewing-locally">9.1 e-commerce analytics dashboard using Dash for viewing locally</h3>
+<p>We can create an interactive analytics dashboard which can be shared with the Marketing Department to enable targeted campaigns to be launched, by following these 3 steps:</p>
+<ol type="1">
+<li><p>Create a virtual environment from the command line :</p>
+<pre><code> conda env create -f environment.yml</code></pre></li>
+</ol>
+<p>This minimizes the risk of conflicting package dependencies or dependency hell! If you do end up down there then you can refer to <a href="https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts">the documentation</a>. Good luck!</p>
+<ol start="2" type="1">
+<li><p>Activate the environment:</p>
+<pre><code> conda activate google_merch_clv (this is the name specified in the yaml file below - can change this as desired)</code></pre></li>
+<li><p>Launch the app:</p>
+<pre><code> python app.py    </code></pre></li>
+</ol>
+<p>The dashboard can then be viewed by visiting http://127.0.0.1:8050/ in your web browser.</p>
+</section>
+<section id="deployment-of-dash-e-commerce-app" class="level3">
+<h3 class="anchored" data-anchor-id="deployment-of-dash-e-commerce-app">9.2 Deployment of Dash e-commerce app</h3>
+<p>Now that we have tested our app and it runs successfully locally, it’s time to deploy it! There are a variety of platforms around, most have some kind of pay wall. <a href="https://www.pythonanywhere.com/">Python Anywhere</a> offer a basic free hosting service but tou might find you need a bit more resource. At the time of writing $7/$8 per month allows you to have two apps hosted and gives you 2000s of CPU usage and 2.0GB of file storage.</p>
+<p>It has a very user-friendly interface and after reviewing some online video tutorials and debugging using the support forums and stackoverflow, i was able to get <a href="http://stephen137.pythonanywhere.com/">my app</a> running.</p>
+</section>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">10. Key takeaways</h2>
+<p>This project demonstrated my proficiency in:</p>
+<ul>
+<li><code>business analytics</code>: the project was framed by two business problems/questions which are relevant to ecommerce businesses</li>
+<li><code>SQL:</code> transform a complex real-life BigData datset with nested fields, into meaningful insights with regard to customer behaviour</li>
+<li><code>pandas</code>: data cleansing and wrangling</li>
+<li><code>machine learning:</code> created a BASELINE regression and classification model and performed feature engineering to enhance model performance</li>
+<li><code>visualization</code>: using the plotly and plotnine libraries</li>
+<li><code>app creation</code> : deployment of an interactive Dash app</li>
+</ul>
+<p>At the time of writing I am currently working on a customer segmentation and recommendation engine project which makes use of the same dataset.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
