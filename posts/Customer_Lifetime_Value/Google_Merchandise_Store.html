@@ -192,17 +192,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">1. Project Overview</a>
   <ul class="collapse">
-  <li><a href="#frame-the-business-problems" id="toc-frame-the-business-problems" class="nav-link" data-scroll-target="#frame-the-business-problems">Frame the business problems</a></li>
-  <li><a href="#translate-the-raw-data-into-meaningful-visualizations-and-insights" id="toc-translate-the-raw-data-into-meaningful-visualizations-and-insights" class="nav-link" data-scroll-target="#translate-the-raw-data-into-meaningful-visualizations-and-insights">Translate the raw data into meaningful visualizations and insights</a></li>
-  <li><a href="#use-the-insights-to-make-future-predictions" id="toc-use-the-insights-to-make-future-predictions" class="nav-link" data-scroll-target="#use-the-insights-to-make-future-predictions">Use the insights to make future predictions</a></li>
-  <li><a href="#communicate-using-an-interactive-dashboard" id="toc-communicate-using-an-interactive-dashboard" class="nav-link" data-scroll-target="#communicate-using-an-interactive-dashboard">Communicate using an interactive dashboard</a></li>
-  <li><a href="#move-from-insights-to-actionable-outcomes" id="toc-move-from-insights-to-actionable-outcomes" class="nav-link" data-scroll-target="#move-from-insights-to-actionable-outcomes">Move from insights to actionable outcomes</a></li>
+  <li><a href="#frame-the-business-problems" id="toc-frame-the-business-problems" class="nav-link" data-scroll-target="#frame-the-business-problems">1.1 Frame the business problems</a></li>
+  <li><a href="#translate-the-raw-data-into-meaningful-visualizations-and-insights" id="toc-translate-the-raw-data-into-meaningful-visualizations-and-insights" class="nav-link" data-scroll-target="#translate-the-raw-data-into-meaningful-visualizations-and-insights">1.2 Translate the raw data into meaningful visualizations and insights</a></li>
+  <li><a href="#use-the-insights-to-make-future-predictions" id="toc-use-the-insights-to-make-future-predictions" class="nav-link" data-scroll-target="#use-the-insights-to-make-future-predictions">1.3 Use the insights to make future predictions</a></li>
+  <li><a href="#communicate-using-an-interactive-dashboard" id="toc-communicate-using-an-interactive-dashboard" class="nav-link" data-scroll-target="#communicate-using-an-interactive-dashboard">1.4 Communicate using an interactive dashboard</a></li>
+  <li><a href="#move-from-insights-to-actionable-outcomes" id="toc-move-from-insights-to-actionable-outcomes" class="nav-link" data-scroll-target="#move-from-insights-to-actionable-outcomes">1.5 Move from insights to actionable outcomes</a></li>
   </ul></li>
   <li><a href="#customer-lifetime-value" id="toc-customer-lifetime-value" class="nav-link" data-scroll-target="#customer-lifetime-value">2. Customer Lifetime Value</a>
   <ul class="collapse">
   <li><a href="#economic-cashflow-approach" id="toc-economic-cashflow-approach" class="nav-link" data-scroll-target="#economic-cashflow-approach">2.1 <code>Economic / cashflow approach</code></a></li>
   <li><a href="#machine-learning-approach" id="toc-machine-learning-approach" class="nav-link" data-scroll-target="#machine-learning-approach">2.2 <code>Machine learning approach</code></a></li>
-  <li><a href="#dataset-schema-packages" id="toc-dataset-schema-packages" class="nav-link" data-scroll-target="#dataset-schema-packages">3. Dataset, schema, packages</a></li>
+  </ul></li>
+  <li><a href="#dataset-schema-packages" id="toc-dataset-schema-packages" class="nav-link" data-scroll-target="#dataset-schema-packages">3. Dataset, schema, packages</a>
+  <ul class="collapse">
+  <li><a href="#schema" id="toc-schema" class="nav-link" data-scroll-target="#schema">3.1 Schema</a></li>
   <li><a href="#a-kind-of-magic" id="toc-a-kind-of-magic" class="nav-link" data-scroll-target="#a-kind-of-magic">3.2 A Kind of Magic</a></li>
   <li><a href="#import-packages-and-libraries" id="toc-import-packages-and-libraries" class="nav-link" data-scroll-target="#import-packages-and-libraries">3.3 Import packages and libraries</a></li>
   </ul></li>
@@ -245,11 +248,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#pickle-save-our-predictions-features-and-models" id="toc-pickle-save-our-predictions-features-and-models" class="nav-link" data-scroll-target="#pickle-save-our-predictions-features-and-models">7. Pickle (save) our predictions, features, and models</a></li>
   <li><a href="#actionable-outcomes" id="toc-actionable-outcomes" class="nav-link" data-scroll-target="#actionable-outcomes">8. Actionable outcomes</a>
   <ul class="collapse">
-  <li><a href="#q1.-which-customers-have-the-highest-spend-probability-in-next-90-days" id="toc-q1.-which-customers-have-the-highest-spend-probability-in-next-90-days" class="nav-link" data-scroll-target="#q1.-which-customers-have-the-highest-spend-probability-in-next-90-days">Q1. Which customers have the highest spend <code>probability</code> in next 90-days?</a></li>
-  <li><a href="#q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" id="toc-q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" class="nav-link" data-scroll-target="#q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30">Q2. Which customers have recently purchased (within 90 days) but are unlikely to buy (probability less than 30%)?</a></li>
-  <li><a href="#q3.-missed-opportunities-big-spenders-that-could-be-unlocked" id="toc-q3.-missed-opportunities-big-spenders-that-could-be-unlocked" class="nav-link" data-scroll-target="#q3.-missed-opportunities-big-spenders-that-could-be-unlocked">Q3. Missed opportunities: Big spenders that could be unlocked</a></li>
+  <li><a href="#which-customers-have-the-highest-spend-probability-in-next-90-days" id="toc-which-customers-have-the-highest-spend-probability-in-next-90-days" class="nav-link" data-scroll-target="#which-customers-have-the-highest-spend-probability-in-next-90-days">8.1 Which customers have the highest spend <code>probability</code> in next 90-days?</a></li>
+  <li><a href="#which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" id="toc-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" class="nav-link" data-scroll-target="#which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30">8.2 Which customers have recently purchased (within 90 days) but are unlikely to buy (probability less than 30%)?</a></li>
+  <li><a href="#missed-opportunities-big-spenders-that-could-be-unlocked" id="toc-missed-opportunities-big-spenders-that-could-be-unlocked" class="nav-link" data-scroll-target="#missed-opportunities-big-spenders-that-could-be-unlocked">8.3 Missed opportunities: Big spenders that could be unlocked</a></li>
   </ul></li>
-  <li><a href="#communication-of-findings" id="toc-communication-of-findings" class="nav-link" data-scroll-target="#communication-of-findings">Communication of findings</a>
+  <li><a href="#communication-of-findings" id="toc-communication-of-findings" class="nav-link" data-scroll-target="#communication-of-findings">9. Communication of findings</a>
   <ul class="collapse">
   <li><a href="#e-commerce-analytics-dashboard-using-dash-for-viewing-locally" id="toc-e-commerce-analytics-dashboard-using-dash-for-viewing-locally" class="nav-link" data-scroll-target="#e-commerce-analytics-dashboard-using-dash-for-viewing-locally">9.1 e-commerce analytics dashboard using Dash for viewing locally</a></li>
   <li><a href="#deployment-of-dash-e-commerce-app" id="toc-deployment-of-dash-e-commerce-app" class="nav-link" data-scroll-target="#deployment-of-dash-e-commerce-app">9.2 Deployment of Dash e-commerce app</a></li>
@@ -268,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="project-overview">1. Project Overview</h2>
 <p>My starting point for this project is to frame two common business problems faced by the <a href="https://shop.googlemerchandisestore.com/">Google Merchandise Store</a> and ecommerce businesses in general.</p>
 <section id="frame-the-business-problems" class="level3">
-<h3 class="anchored" data-anchor-id="frame-the-business-problems">Frame the business problems</h3>
+<h3 class="anchored" data-anchor-id="frame-the-business-problems">1.1 Frame the business problems</h3>
 <ul>
 <li>What will customers spend in the next 90-days? (Regression)</li>
 <li>What is the probability that a customer will make a purchase in the next 90-days? (Classification)</li>
@@ -276,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In order to provide insights to these questions, we first need to :</p>
 </section>
 <section id="translate-the-raw-data-into-meaningful-visualizations-and-insights" class="level3">
-<h3 class="anchored" data-anchor-id="translate-the-raw-data-into-meaningful-visualizations-and-insights">Translate the raw data into meaningful visualizations and insights</h3>
+<h3 class="anchored" data-anchor-id="translate-the-raw-data-into-meaningful-visualizations-and-insights">1.2 Translate the raw data into meaningful visualizations and insights</h3>
 <ul>
 <li>explore athe dataset to extract meaningful trends, patterns and anomalies regarding customer behaviour</li>
 <li>visualize using plotly and plotnine</li>
@@ -284,21 +287,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="use-the-insights-to-make-future-predictions" class="level3">
-<h3 class="anchored" data-anchor-id="use-the-insights-to-make-future-predictions">Use the insights to make future predictions</h3>
+<h3 class="anchored" data-anchor-id="use-the-insights-to-make-future-predictions">1.3 Use the insights to make future predictions</h3>
 <ul>
-<li>train a machine learnign regression mode to predict the <code>$</code> customer spend in the next-90 days</li>
-<li>train a machine learning classification model to predict the <code>likelihood</code> of customer spend in the next-90 days</li>
+<li>train a machine learning regression mode to etablish a BASELINE prediction of the <code>$</code> customer spend in the next-90 days</li>
+<li>train a machine learning classification model to establish a BASELINE prediction of the <code>likelihood</code> of customer spend in the next-90 days</li>
 </ul>
+<p>In practice we would adopt an iterative process, by trying a range of different models and choosing the one that presents the best compromise between s</p>
 </section>
 <section id="communicate-using-an-interactive-dashboard" class="level3">
-<h3 class="anchored" data-anchor-id="communicate-using-an-interactive-dashboard">Communicate using an interactive dashboard</h3>
+<h3 class="anchored" data-anchor-id="communicate-using-an-interactive-dashboard">1.4 Communicate using an interactive dashboard</h3>
 <ul>
 <li>present the findings of my analysis through an interactive dashboard</li>
 <li>share my findings through deployment of a Dash <a href="http://stephen137.pythonanywhere.com/">ecommerce customer analytics app</a></li>
 </ul>
 </section>
 <section id="move-from-insights-to-actionable-outcomes" class="level3">
-<h3 class="anchored" data-anchor-id="move-from-insights-to-actionable-outcomes">Move from insights to actionable outcomes</h3>
+<h3 class="anchored" data-anchor-id="move-from-insights-to-actionable-outcomes">1.5 Move from insights to actionable outcomes</h3>
 <p>We can use these predictions to identify :</p>
 <ul>
 <li>Which customers have the highest spend <code>probability</code> in next 90-days?</li>
@@ -347,8 +351,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Step 3: Create RFM features (Recency, Frequency, Monetary)</li>
 </ul>
 </section>
-<section id="dataset-schema-packages" class="level3">
-<h3 class="anchored" data-anchor-id="dataset-schema-packages">3. Dataset, schema, packages</h3>
+</section>
+<section id="dataset-schema-packages" class="level2">
+<h2 class="anchored" data-anchor-id="dataset-schema-packages">3. Dataset, schema, packages</h2>
 <p>The dataset I will be analysing is the <a href="https://support.google.com/analytics/answer/7586738?hl=en&amp;ref_topic=3416089&amp;sjid=15552203920864108300-EU#zippy=%2Cin-this-article">Google Analytics sample dataset for BigQuery</a>.</p>
 <p>The sample dataset contains obfuscated Google Analytics 360 data from the <a href="https://www.googlemerchandisestore.com/shop.axd/Home?utm_source=Partners&amp;utm_medium=affiliate&amp;utm_campaign=Data%20Share%20Promo">Google Merchandise Store</a>, a real ecommerce store. The Google Merchandise Store sells Google branded merchandise. The data is typical of what you would see for an ecommerce website. It includes the following kinds of information:</p>
 <ul>
@@ -357,8 +362,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>Transactional data:</code> information about the transactions that occur on the Google Merchandise Store website.</li>
 </ul>
 <p>The dataset covers the 366 day period 1 August 2016 to 1 August 2017.</p>
-<section id="schema" class="level4">
-<h4 class="anchored" data-anchor-id="schema">3.1 Schema</h4>
+<section id="schema" class="level3">
+<h3 class="anchored" data-anchor-id="schema">3.1 Schema</h3>
 <p>Before diving into our analysis, it is good practice to explore the dataset schema.</p>
 <p>If you take a close look at <a href="https://support.google.com/analytics/answer/3437719?hl=en">the schema</a> you will see that the structure involves nested fields. It can be extremely cost-effective (both in terms of storage and in terms of query time) to use nested fields rather than flatten out all your data. Nested, repeated fields are very powerful, but the SQL required to query them looks a bit unfamiliar. So, it’s worth spending a little time with <code>STRUCT</code>, <code>UNNEST</code> and <code>ARRAY_AGG.</code></p>
 <p>Fields which are of type INTEGER or STRING can be accessed directly. However things a bit trickier as we go deeper into the structure.</p>
@@ -380,7 +385,6 @@ UNNEST(hits) AS h,
 UNNEST(hits.product) AS p</code></pre>
 <p>Google cloud have <a href="https://cloud.google.com/bigquery/docs/arrays">learnng resources</a> to help you.</p>
 <p>OK, now that I’ve gotten to know the dataset a bit better it’s time to dive into some exploratory analysis.</p>
-</section>
 </section>
 <section id="a-kind-of-magic" class="level3">
 <h3 class="anchored" data-anchor-id="a-kind-of-magic">3.2 A Kind of Magic</h3>
@@ -3206,8 +3210,8 @@ total_transaction_revenue:  float64           [170.4, 170.4, 170.4, 170. ...</co
 </section>
 <section id="actionable-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="actionable-outcomes">8. Actionable outcomes</h2>
-<section id="q1.-which-customers-have-the-highest-spend-probability-in-next-90-days" class="level3">
-<h3 class="anchored" data-anchor-id="q1.-which-customers-have-the-highest-spend-probability-in-next-90-days">Q1. Which customers have the highest spend <code>probability</code> in next 90-days?</h3>
+<section id="which-customers-have-the-highest-spend-probability-in-next-90-days" class="level3">
+<h3 class="anchored" data-anchor-id="which-customers-have-the-highest-spend-probability-in-next-90-days">8.1 Which customers have the highest spend <code>probability</code> in next 90-days?</h3>
 <ul>
 <li>Target for new products similar to what they have purchased in the past.</li>
 </ul>
@@ -3375,8 +3379,8 @@ total_transaction_revenue:  float64           [170.4, 170.4, 170.4, 170. ...</co
 </div>
 <p>We can see that the model seems to be working well in terms of identifying those customers that are likely to spend in the next-90 days. The top 5 customers above ranked by probability of spend all actually spent. Conversely, the bottom 5 customers didn’t spend.</p>
 </section>
-<section id="q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" class="level3">
-<h3 class="anchored" data-anchor-id="q2.-which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30">Q2. Which customers have recently purchased (within 90 days) but are unlikely to buy (probability less than 30%)?</h3>
+<section id="which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30" class="level3">
+<h3 class="anchored" data-anchor-id="which-customers-have-recently-purchased-within-90-days-but-are-unlikely-to-buy-probability-less-than-30">8.2 Which customers have recently purchased (within 90 days) but are unlikely to buy (probability less than 30%)?</h3>
 <ul>
 <li>Incentivize actions to increase probability.</li>
 <li>Provide discounts, encourage referring a friend, nurture by letting them know what’s coming.</li>
@@ -3550,8 +3554,8 @@ total_transaction_revenue:  float64           [170.4, 170.4, 170.4, 170. ...</co
 </div>
 </div>
 </section>
-<section id="q3.-missed-opportunities-big-spenders-that-could-be-unlocked" class="level3">
-<h3 class="anchored" data-anchor-id="q3.-missed-opportunities-big-spenders-that-could-be-unlocked">Q3. Missed opportunities: Big spenders that could be unlocked</h3>
+<section id="missed-opportunities-big-spenders-that-could-be-unlocked" class="level3">
+<h3 class="anchored" data-anchor-id="missed-opportunities-big-spenders-that-could-be-unlocked">8.3 Missed opportunities: Big spenders that could be unlocked</h3>
 <ul>
 <li>Send bundle offers encouraging volume purchases</li>
 <li>Focus on missed opportunities</li>
@@ -3725,7 +3729,7 @@ total_transaction_revenue:  float64           [170.4, 170.4, 170.4, 170. ...</co
 </section>
 </section>
 <section id="communication-of-findings" class="level2">
-<h2 class="anchored" data-anchor-id="communication-of-findings">Communication of findings</h2>
+<h2 class="anchored" data-anchor-id="communication-of-findings">9. Communication of findings</h2>
 <section id="e-commerce-analytics-dashboard-using-dash-for-viewing-locally" class="level3">
 <h3 class="anchored" data-anchor-id="e-commerce-analytics-dashboard-using-dash-for-viewing-locally">9.1 e-commerce analytics dashboard using Dash for viewing locally</h3>
 <p>We can create an interactive analytics dashboard which can be shared with the Marketing Department to enable targeted campaigns to be launched, by following these 3 steps:</p>
