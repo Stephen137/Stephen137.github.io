@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Although this has all the information we need, it is not a particularly helpful way for humans to look at this data. Here is the same data cross-tabulated into a human-friendly table:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/15d1b96b-1-9cbc69a5-40ca-4406-9bde-0db7c9887870.png" class="img-fluid figure-img"></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/733d80c0-1-9cbc69a5-40ca-4406-9bde-0db7c9887870.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
@@ -364,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This is what it looks like in Microsoft Excel:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/75d187da-1-0fb84ac2-fe09-4175-a46e-943bba1ea7f1.JPG" class="img-fluid figure-img"></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/344f7b16-1-0fb84ac2-fe09-4175-a46e-943bba1ea7f1.JPG" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">latent_factors.JPG</figcaption>
 </figure>
 </div>
@@ -374,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As we’ve discussed, we can do this by simply taking the dot product of each movie with each user. If, for instance, the first latent <code>user</code> factor represents how much the user likes action movies, and the first latent <code>movie</code> factor represents if the movie has a lot of action or not, the product of those will be particularly <code>high</code> if either <code>the user likes action movies and the movie has a lot of action in it</code> or <code>the user doesn't like action movies and the movie doesn't have any action in it</code>. On the other hand, if we have a mismatch (a user loves action movies but the movie isn’t an action film, or the user doesn’t like action movies and it is one), the product will be very low.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/4af28d7d-1-7b668964-a0f6-4e7a-a92b-0cb7782686a1.JPG" class="img-fluid figure-img"></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/2b428d78-1-7b668964-a0f6-4e7a-a92b-0cb7782686a1.JPG" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">initialized.JPG</figcaption>
 </figure>
 </div>
@@ -384,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We can use any loss function that we wish; let’s pick <code>mean squared error</code> for now, since that is one reasonable way to represent the accuracy of a prediction.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/78233ec5-1-f2041a2e-e5f0-480b-b75b-d2a6a5142c3b.JPG" class="img-fluid figure-img"></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/4898d1b8-1-f2041a2e-e5f0-480b-b75b-d2a6a5142c3b.JPG" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">initialized.JPG</figcaption>
 </figure>
 </div>
@@ -394,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>That’s all we need. With this in place, we can optimize our parameters (that is, the latent factors) using stochastic gradient descent, such as to minimize the loss. At each step, the stochastic gradient descent optimizer will calculate the match between each movie and each user using the dot product, and will compare it to the actual rating that each user gave to each movie. It will then calculate the derivative of this value and will step the weights by multiplying this by the learning rate. After doing this lots of times, the loss will get better and better, and the recommendations will also get better and better.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/a3799a49-1-b9ed0766-c860-44a6-9a09-3e4a3fc86baa.JPG" class="img-fluid figure-img"></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/796e11e5-1-b9ed0766-c860-44a6-9a09-3e4a3fc86baa.JPG" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">optimized.JPG</figcaption>
 </figure>
 </div>
@@ -902,7 +902,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>That’s because at this point we only have weights; we do not have <code>biases</code>. If we have a single number for each user that we can add to our scores, and ditto for each movie, that will handle this missing piece very nicely. Let’s first look at this in Excel - we simply initialize an additional randomized <code>bias factor</code> to add to our existing <code>latent factors</code> and then optimize as before. This results in an improvement - our RMSE drops from 0.42 to 0.35 - see spreadsheet screenshot below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/986bde25-1-116f9d3a-7fa8-4c06-af73-d5f545c8db8a.JPG" class="img-fluid figure-img"></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/e77c1631-1-116f9d3a-7fa8-4c06-af73-d5f545c8db8a.JPG" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">bias.JPG</figcaption>
 </figure>
 </div>
@@ -2099,7 +2099,7 @@ TabularModel<span class="ansi-blue-fg">(</span>
 <p>It’s possible you may have heard about <code>Embeddings before</code> in the context of <code>Natural Language Processing (NLP)</code>. We can turn words into integers using an embedding matrix. Let’s use the poem [Green Eggs and Ham] to illustrate:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="collaborative-filtering-deep-dive_files/figure-html/af0fdc26-1-05150507-7e20-435c-86ab-c1f520086cba.JPG" class="img-fluid figure-img"></p>
+<p><img src="collaborative-filtering-deep-dive_files/figure-html/04028ffc-1-05150507-7e20-435c-86ab-c1f520086cba.JPG" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">embedding_NLP.JPG</figcaption>
 </figure>
 </div>
