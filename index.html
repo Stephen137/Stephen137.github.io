@@ -712,7 +712,7 @@
     <div class="contact-inner">
       <p class="section-label reveal">First Contact</p>
       <h2 class="section-title reveal">Ready to start the <em>conversation?</em></h2>
-      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <form class="contact-form reveal" action="https://formspree.io/f/mjgpeaqq" method="POST"></form>
         <div class="form-row">
           <label>
             <span class="label-text">Your Name</span>
@@ -770,11 +770,11 @@
     reveals.forEach(el => observer.observe(el));
 
     // Form demo
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('form-confirm').style.display = 'block';
-      e.target.reset();
-    }
+    // function handleSubmit(e) {
+      // e.preventDefault();
+      // document.getElementById('form-confirm').style.display = 'block';
+      // e.target.reset();
+    // }
   </script>
 </body>
 </html>
