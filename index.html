@@ -716,16 +716,16 @@
         <div class="form-row">
           <label>
             <span class="label-text">Your Name</span>
-            <input type="text" placeholder="Jan Kowalski" required />
+            <input type="text" name="name" placeholder="Jan Kowalski" required />
           </label>
           <label>
             <span class="label-text">Email Address</span>
-            <input type="email" placeholder="jan@example.com" required />
+            <input type="email" name="email" placeholder="jan@example.com" required />
           </label>
         </div>
         <label>
           <span class="label-text">Subject of Interest</span>
-          <select required>
+          <select name="subject" required>
             <option value="" disabled selected>Select a subject…</option>
             <option>Let's Talk: English</option>
             <option>Let's Talk: Mathematics</option>
@@ -737,7 +737,7 @@
         </label>
         <label>
           <span class="label-text">Your Message</span>
-          <textarea placeholder="Tell me a little about your goals and current level…"></textarea>
+          <textarea name="message" placeholder="Tell me a little about your goals and current level…"></textarea>
         </label>
         <div class="form-submit">
           <button type="submit" class="btn btn-primary">Send Message →</button>
