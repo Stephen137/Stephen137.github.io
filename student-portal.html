@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Student Resources — Let's talk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink:    #1C1409;
+  --ink2:   #2a1e0a;
+  --ink3:   #3a2a12;
+  --cream:  #FAF7F2;
+  --cream2: #F3EDE0;
+  --cream3: #EDE5D0;
+  --gold:   #B8924A;
+  --gold2:  #d4a85a;
+  --muted:  #8a7050;
+  --card:   #FEFCF7;
+  --border: #ddd0b8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);min-height:100vh;overflow-x:hidden;}
+
+/* ── SCREENS ── */
+.screen{display:none;min-height:100vh;animation:fadeIn 0.4s ease both;}
+.screen.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+
+/* ══════════════════════════════════════════
+   GATE
+══════════════════════════════════════════ */
+#screen-gate{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 20px;position:relative;overflow:hidden;background:var(--ink);
+}
+#screen-gate::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+#screen-gate::after{
+  content:'';position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(184,146,74,0.07) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+.gate-inner{position:relative;z-index:1;width:100%;max-width:400px;animation:fadeUp 0.7s ease both;}
+.gate-logo{text-align:center;margin-bottom:44px;}
+.gate-logo .wordmark{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--cream);line-height:1;}
+.gate-logo .wordmark em{font-style:italic;color:var(--gold);font-weight:400;}
+.gate-logo .sub{display:block;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-top:10px;}
+.gate-card{
+  background:rgba(42,30,10,0.65);border:1px solid var(--ink3);border-radius:14px;
+  padding:38px 34px;backdrop-filter:blur(10px);
+}
+.gate-card h2{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;margin-bottom:7px;}
+.gate-card>p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:30px;}
+.gate-card label{display:block;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:9px;}
+.gate-card input[type=password]{
+  width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--ink3);border-radius:8px;
+  padding:14px 16px;font-size:15px;font-family:'DM Sans',sans-serif;color:var(--cream);
+  outline:none;transition:border-color 0.2s;letter-spacing:0.06em;
+}
+.gate-card input[type=password]:focus{border-color:var(--gold);}
+.gate-card input[type=password]::placeholder{color:rgba(138,112,80,0.4);}
+.gate-btn{
+  width:100%;margin-top:14px;background:var(--gold);color:var(--ink);border:none;border-radius:8px;
+  padding:14px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.1s;
+}
+.gate-btn:hover{background:var(--gold2);}
+.gate-btn:active{transform:scale(0.98);}
+.gate-error{margin-top:13px;font-size:13px;color:#e07070;text-align:center;opacity:0;transition:opacity 0.3s;min-height:20px;}
+.gate-error.show{opacity:1;}
+.gate-footer{text-align:center;margin-top:28px;font-size:11.5px;color:rgba(138,112,80,0.5);}
+
+/* ══════════════════════════════════════════
+   HUB
+══════════════════════════════════════════ */
+#screen-hub{background:var(--cream2);color:var(--ink);}
+.hub-header{
+  background:var(--ink);padding:20px 32px 17px;border-bottom:3px solid var(--gold);
+  position:sticky;top:0;z-index:20;
+}
+.hub-header-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.hub-wordmark{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--cream);}
+.hub-wordmark em{font-style:italic;color:var(--gold);font-weight:400;}
+.hub-subtitle{font-size:12px;color:var(--muted);letter-spacing:0.06em;}
+.logout-btn{
+  background:none;border:1px solid var(--ink3);border-radius:5px;color:var(--muted);
+  font-size:12px;padding:5px 13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;
+}
+.logout-btn:hover{color:var(--gold);border-color:var(--gold);}
+.hub-body{max-width:1000px;margin:0 auto;padding:40px 24px 80px;}
+.welcome-bar{
+  background:var(--ink);color:var(--cream);border-radius:11px;padding:24px 28px;
+  margin-bottom:36px;border-left:4px solid var(--gold);animation:fadeUp 0.45s ease both;
+}
+.welcome-bar h1{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;margin-bottom:5px;}
+.welcome-bar p{font-size:13px;color:var(--muted);line-height:1.65;}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;animation:fadeUp 0.45s 0.05s ease both;}
+.pill{
+  background:var(--ink2);color:var(--muted);border:1px solid var(--ink3);border-radius:20px;
+  padding:6px 16px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.15s;
+  letter-spacing:0.04em;
+}
+.pill:hover,.pill.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.section-lbl{
+  font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);
+}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:44px;}
+.res-card{
+  background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:22px 22px 18px;
+  cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s,transform 0.18s;
+  animation:fadeUp 0.45s ease both;user-select:none;
+}
+.res-card:hover{border-color:var(--gold);box-shadow:0 4px 22px rgba(184,146,74,0.13);transform:translateY(-2px);}
+.res-card.soon{opacity:0.5;cursor:default;pointer-events:none;}
+.card-subj{
+  display:inline-block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+  padding:3px 9px;border-radius:3px;margin-bottom:12px;font-weight:500;
+}
+.s-english {background:#FFF0D0;color:#7a4a00;}
+.s-maths   {background:#E8F5E0;color:#2a5a10;}
+.s-business{background:#E8EEF8;color:#1a3a7a;}
+.s-chess   {background:#F0E8F8;color:#4a1a7a;}
+.s-football{background:#FDE8E8;color:#7a1a1a;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;margin-bottom:7px;line-height:1.3;color:var(--ink);}
+.card-desc{font-size:13px;color:#5a4020;line-height:1.6;margin-bottom:14px;}
+.card-meta{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--muted);flex-wrap:wrap;}
+.card-tag{display:inline-flex;align-items:center;font-size:11px;color:var(--gold);border:1px solid #e8d8b8;border-radius:4px;padding:2px 8px;}
+.meta-dot{width:3px;height:3px;background:var(--gold);border-radius:50%;}
+.tips-box{background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:26px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;}
+.tip-item .tip-icon{font-size:22px;margin-bottom:8px;}
+.tip-item .tip-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:4px;}
+.tip-item .tip-body{font-size:13px;color:#5a4020;line-height:1.6;}
+
+/* ══════════════════════════════════════════
+   EXERCISE VIEWER
+══════════════════════════════════════════ */
+#screen-exercise{background:var(--cream2);color:var(--ink);}
+.ex-header{
+  background:var(--ink);padding:0 32px;border-bottom:3px solid var(--gold);
+  position:sticky;top:0;z-index:20;
+}
+.ex-header-top{
+  max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 0 0;gap:16px;
+}
+.back-btn{
+  display:flex;align-items:center;gap:7px;background:none;border:none;
+  color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;
+  padding:4px 0;transition:color 0.2s;
+}
+.back-btn:hover{color:var(--gold);}
+.back-btn svg{transition:transform 0.2s;}
+.back-btn:hover svg{transform:translateX(-3px);}
+.ex-breadcrumb{font-size:12px;color:var(--muted);}
+.ex-breadcrumb span{color:var(--gold);}
+.ex-tabs{
+  max-width:900px;margin:0 auto;display:flex;overflow-x:auto;gap:0;
+  scrollbar-width:none;
+}
+.ex-tabs::-webkit-scrollbar{display:none;}
+.ex-tab{
+  background:none;border:none;border-bottom:3px solid transparent;
+  color:var(--muted);padding:12px 20px 10px;cursor:pointer;font-size:12.5px;
+  font-family:'DM Sans',sans-serif;letter-spacing:0.04em;white-space:nowrap;
+  transition:color 0.2s,border-color 0.2s;
+}
+.ex-tab:hover{color:var(--cream);}
+.ex-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.ex-body{max-width:900px;margin:0 auto;padding:36px 24px 80px;}
+.tab-pane{display:none;}
+.tab-pane.active{display:block;animation:fadeIn 0.3s ease both;}
+.sec-head{margin-bottom:22px;padding-bottom:15px;border-bottom:2px solid var(--border);}
+.sec-head h2{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;color:var(--ink);margin-bottom:5px;}
+.sec-head p{font-size:13px;color:#5a4020;line-height:1.6;}
+.hint-bar{font-size:13px;color:#6a4e20;font-style:italic;margin-bottom:22px;padding:10px 14px;background:#FFF8EC;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;}
+
+/* Idiom cards */
+.idiom-list{display:grid;gap:13px;}
+.idiom-card{
+  background:var(--card);border:1.5px solid var(--border);border-radius:9px;
+  padding:16px 20px;cursor:pointer;transition:all 0.2s;
+}
+.idiom-card:hover{border-color:var(--gold);}
+.idiom-card.open{background:#FFF8EC;border-color:var(--gold);}
+.idiom-card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.idiom-phrase{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;font-weight:500;color:var(--ink2);}
+.idiom-chevron{color:var(--gold);font-size:16px;transition:transform 0.2s;flex-shrink:0;}
+.idiom-card.open .idiom-chevron{transform:rotate(180deg);}
+.idiom-body{margin-top:14px;padding-top:14px;border-top:1px solid #e8d8b8;display:none;}
+.idiom-card.open .idiom-body{display:block;}
+.idiom-row{margin-bottom:8px;}
+.idiom-row .lbl{font-size:10.5px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;}
+.idiom-row .val{font-size:14px;color:var(--ink);line-height:1.6;margin-top:2px;}
+.idiom-row .val.italic{font-style:italic;color:#5a3a05;}
+.idiom-row .val.muted{color:#6a5030;}
+
+/* Gap fill */
+.gap-score{background:#FFF8EC;border:1.5px solid var(--gold);border-radius:8px;padding:11px 17px;margin-bottom:22px;font-size:14px;color:#5a3a05;}
+.gap-score strong{color:var(--ink);}
+.gap-list{display:grid;gap:17px;}
+.gap-card{background:var(--card);border:1.5px solid var(--border);border-radius:9px;padding:18px 20px;}
+.gap-qnum{font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;}
+.gap-sentence{font-size:15px;line-height:1.65;color:var(--ink);margin-bottom:14px;}
+.gap-options{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:13px;}
+.gap-opt{
+  background:#f5f0e8;border:1.5px solid #c8b898;border-radius:6px;
+  padding:7px 16px;color:#2a1a05;cursor:pointer;font-size:14px;
+  font-family:'DM Sans',sans-serif;transition:all 0.15s;
+}
+.gap-opt:hover{border-color:var(--gold);background:#FFF0D0;}
+.gap-opt.selected{background:#FFF0D0;border-color:var(--gold);color:#5a3000;}
+.gap-opt.correct{background:#e8f5e0;border-color:#6aad4a;color:#2a5a10;}
+.gap-opt.wrong{background:#fde8e8;border-color:#d06060;color:#801010;}
+.gap-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.check-btn{
+  background:var(--gold);color:var(--ink);border:none;border-radius:6px;
+  padding:7px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;
+  cursor:pointer;transition:background 0.2s;letter-spacing:0.04em;
+}
+.check-btn:hover{background:var(--gold2);}
+.check-btn:disabled{background:#ddd0b8;color:#a09080;cursor:not-allowed;}
+.gap-feedback{font-size:13px;}
+.gap-feedback.ok{color:#4a8a2a;}
+.gap-feedback.bad{color:#c04040;}
+.gap-hint{margin-top:9px;font-size:12px;color:var(--muted);font-style:italic;}
+
+/* Register */
+.reg-list{display:grid;gap:12px;}
+.reg-card{
+  background:var(--card);border:1.5px solid var(--border);border-radius:9px;
+  padding:14px 20px;cursor:pointer;transition:all 0.2s;
+}
+.reg-card:hover{border-color:var(--gold);}
+.reg-card.open{background:#FFF8EC;border-color:var(--gold);}
+.reg-card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.reg-lbl{font-size:10px;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px;}
+.reg-phrase{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--ink2);}
+.reg-chevron{color:var(--gold);font-size:16px;transition:transform 0.2s;flex-shrink:0;}
+.reg-card.open .reg-chevron{transform:rotate(180deg);}
+.reg-body{margin-top:12px;padding-top:12px;border-top:1px solid #e8d8b8;display:none;grid-template-columns:1fr 1fr;gap:12px;}
+.reg-card.open .reg-body{display:grid;}
+.reg-col-lbl{font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;}
+.reg-col-val{font-size:13.5px;color:var(--ink);line-height:1.5;}
+.reg-col-note{font-size:13px;color:#5a3a05;font-style:italic;}
+.ext-task{margin-top:26px;background:#FFF8EC;border:1.5px solid var(--gold);border-radius:9px;padding:18px 22px;}
+.ext-task-lbl{font-size:10.5px;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;}
+.ext-task p{font-size:14px;color:#2a1a05;line-height:1.7;}
+.ext-task em{color:#5a3a05;}
+
+/* Vocabulary */
+.vocab-list{display:grid;gap:13px;}
+.vocab-card{
+  background:var(--card);border:1.5px solid var(--border);border-radius:9px;
+  padding:16px 20px;cursor:pointer;transition:all 0.2s;
+}
+.vocab-card:hover{border-color:var(--gold);}
+.vocab-card.open{background:#FFF8EC;border-color:var(--gold);}
+.vocab-card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.vocab-word{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--ink2);}
+.vocab-pos{font-size:12px;color:var(--muted);margin-left:8px;}
+.vocab-chevron{color:var(--gold);font-size:16px;transition:transform 0.2s;flex-shrink:0;}
+.vocab-card.open .vocab-chevron{transform:rotate(180deg);}
+.vocab-body{margin-top:14px;padding-top:14px;border-top:1px solid #e8d8b8;display:none;}
+.vocab-card.open .vocab-body{display:block;}
+.vocab-def{font-size:14px;color:var(--ink);line-height:1.65;margin-bottom:14px;}
+.syn-ant{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;}
+.sa-lbl{font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;}
+.sa-lbl.syn{color:#6aad4a;}
+.sa-lbl.ant{color:#c04040;}
+.sa-words{font-size:13px;line-height:1.5;}
+.sa-words.syn{color:#2a4a10;}
+.sa-words.ant{color:#4a1010;}
+.vocab-note{padding:10px 14px;background:#f5f0e0;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:13px;color:#5a3a05;line-height:1.65;}
+
+/* Discussion */
+.disc-list{display:grid;gap:15px;margin-bottom:32px;}
+.disc-card{background:var(--card);border:1.5px solid var(--border);border-radius:9px;padding:20px 22px;display:flex;gap:14px;}
+.disc-num{background:var(--gold);color:var(--ink);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-family:'Cormorant Garamond',serif;flex-shrink:0;margin-top:1px;}
+.disc-q{font-size:15px;color:var(--ink);line-height:1.7;margin-bottom:10px;}
+.disc-focus{display:inline-block;font-size:11px;color:var(--gold);background:#FFF0D0;padding:3px 9px;border-radius:4px;letter-spacing:0.04em;}
+.grammar-box{background:#FFF8EC;border:1.5px solid var(--gold);border-radius:9px;padding:20px 24px;}
+.grammar-box-lbl{font-size:10.5px;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;}
+.grammar-box h3{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:var(--ink);margin-bottom:8px;}
+.grammar-box p{font-size:13.5px;color:#2a1a05;line-height:1.7;margin-bottom:10px;}
+.grammar-quote{background:#FFF0D0;border-radius:6px;padding:12px 16px;font-size:14px;font-style:italic;color:#3a2a05;line-height:1.8;}
+.grammar-q{font-size:13px;color:#5a3a05;line-height:1.7;margin-top:12px;}
+
+/* ── Responsive ── */
+@media(max-width:600px){
+  .gate-card{padding:28px 22px;}
+  .hub-header,.ex-header{padding-left:16px;padding-right:16px;}
+  .hub-body,.ex-body{padding-left:16px;padding-right:16px;}
+  .card-grid{grid-template-columns:1fr;}
+  .syn-ant,.reg-body{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SCREEN 1: GATE
+══════════════════════════════════════════ -->
+<div id="screen-gate" class="screen active">
+  <div class="gate-inner">
+    <div class="gate-logo">
+      <div class="wordmark">Let's <em>talk</em></div>
+      <span class="sub">Student Resources</span>
+    </div>
+    <div class="gate-card" id="gate-card">
+      <h2>Welcome back</h2>
+      <p>This area is for enrolled students only. Enter the access password your tutor gave you to continue.</p>
+      <label for="pw">Access Password</label>
+      <input type="password" id="pw" placeholder="Enter your password" autocomplete="current-password" autocapitalize="none"/>
+      <button class="gate-btn" onclick="tryUnlock()">Enter →</button>
+      <div class="gate-error" id="gate-error">Incorrect password — please check with your tutor.</div>
+    </div>
+    <p class="gate-footer">© 2026 Let's talk. All rights reserved.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 2: HUB
+══════════════════════════════════════════ -->
+<div id="screen-hub" class="screen">
+  <header class="hub-header">
+    <div class="hub-header-inner">
+      <div class="hub-wordmark">Let's <em>talk</em></div>
+      <span class="hub-subtitle">Student Resources</span>
+      <button class="logout-btn" onclick="logout()">Sign out</button>
+    </div>
+  </header>
+  <div class="hub-body">
+    <div class="welcome-bar">
+      <h1>Your Learning Hub</h1>
+      <p>All materials are prepared exclusively for Let's talk students. New resources are added after each session.</p>
+    </div>
+    <div class="filter-row">
+      <button class="pill active" onclick="filterCards('all',this)">All Subjects</button>
+      <button class="pill" onclick="filterCards('english',this)">English</button>
+      <button class="pill" onclick="filterCards('maths',this)">Mathematics</button>
+      <button class="pill" onclick="filterCards('business',this)">Business</button>
+      <button class="pill" onclick="filterCards('chess',this)">Chess</button>
+      <button class="pill" onclick="filterCards('football',this)">Football</button>
+    </div>
+    <p class="section-lbl">Current Materials</p>
+    <div class="card-grid" id="card-grid">
+      <div class="res-card" data-subject="english" onclick="openExercise('outnumbered-s1e2')">
+        <span class="card-subj s-english">English</span>
+        <div class="card-title">Outnumbered — Series 1, Episode 2</div>
+        <div class="card-desc">Idioms, gap fill, register, vocabulary and discussion prompts drawn directly from authentic BBC dialogue.</div>
+        <div class="card-meta">
+          <span class="card-tag">▶ Interactive</span>
+          <span class="meta-dot"></span>
+          <span>5 exercise types</span>
+          <span class="meta-dot"></span>
+          <span>Intermediate+</span>
+        </div>
+      </div>
+      <div class="res-card soon" data-subject="english">
+        <span class="card-subj s-english">English</span>
+        <div class="card-title">Outnumbered — Series 1, Episode 1</div>
+        <div class="card-desc">Idioms, reported speech and conversational tactics from the pilot episode.</div>
+        <div class="card-meta"><span class="card-tag">⏱ Coming soon</span></div>
+      </div>
+      <div class="res-card soon" data-subject="maths">
+        <span class="card-subj s-maths">Mathematics</span>
+        <div class="card-title">Euler's Identity — Unit Circle</div>
+        <div class="card-desc">Interactive visualisation of the unit circle, radians and rotation from first principles.</div>
+        <div class="card-meta"><span class="card-tag">⏱ Coming soon</span></div>
+      </div>
+      <div class="res-card soon" data-subject="business">
+        <span class="card-subj s-business">Business</span>
+        <div class="card-title">Financial Statements Walkthrough</div>
+        <div class="card-desc">P&amp;L, balance sheet and cash flow — plain-English explanations with worked examples.</div>
+        <div class="card-meta"><span class="card-tag">⏱ Coming soon</span></div>
+      </div>
+      <div class="res-card soon" data-subject="chess">
+        <span class="card-subj s-chess">Chess</span>
+        <div class="card-title">Opening Principles</div>
+        <div class="card-desc">Control the centre, develop pieces, protect the king — foundations with interactive board positions.</div>
+        <div class="card-meta"><span class="card-tag">⏱ Coming soon</span></div>
+      </div>
+      <div class="res-card soon" data-subject="football">
+        <span class="card-subj s-football">Football</span>
+        <div class="card-title">Positional Awareness — The Half-Space</div>
+        <div class="card-desc">Tactical concepts with diagrams. Space creation and movement off the ball.</div>
+        <div class="card-meta"><span class="card-tag">⏱ Coming soon</span></div>
+      </div>
+    </div>
+    <p class="section-lbl">Getting the Most from Your Sessions</p>
+    <div class="tips-box">
+      <div class="tip-item">
+        <div class="tip-icon">📺</div>
+        <div class="tip-title">Watch first</div>
+        <div class="tip-body">Watch the episode before your session. Note any words or phrases you don't understand.</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">✏️</div>
+        <div class="tip-title">Try the exercises</div>
+        <div class="tip-body">Attempt the gap fills and idiom cards before the session so we can discuss your answers together.</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-icon">💬</div>
+        <div class="tip-title">Come with questions</div>
+        <div class="tip-body">The discussion prompts are a starting point — bring your own observations too.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 3: EXERCISE VIEWER
+══════════════════════════════════════════ -->
+<div id="screen-exercise" class="screen">
+  <header class="ex-header">
+    <div class="ex-header-top">
+      <button class="back-btn" onclick="goHub()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to Hub
+      </button>
+      <div class="ex-breadcrumb">English &nbsp;›&nbsp; <span id="ex-breadcrumb-title"></span></div>
+    </div>
+    <div class="ex-tabs" id="ex-tabs">
+      <button class="ex-tab active" onclick="switchTab(0)">Idioms</button>
+      <button class="ex-tab" onclick="switchTab(1)">Gap Fill</button>
+      <button class="ex-tab" onclick="switchTab(2)">Register</button>
+      <button class="ex-tab" onclick="switchTab(3)">Vocabulary</button>
+      <button class="ex-tab" onclick="switchTab(4)">Discussion</button>
+    </div>
+  </header>
+  <div class="ex-body">
+    <div id="tab-0" class="tab-pane active"></div>
+    <div id="tab-1" class="tab-pane"></div>
+    <div id="tab-2" class="tab-pane"></div>
+    <div id="tab-3" class="tab-pane"></div>
+    <div id="tab-4" class="tab-pane"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+//  CONFIGURATION — edit only this section
+// ══════════════════════════════════════════════════════════════════════════
+const ACCESS_PASSWORD = "letstalk2026";
+// ══════════════════════════════════════════════════════════════════════════
+
+// ── AUTH ──────────────────────────────────────────────────────────────────
+const SESSION_KEY = "ltt_auth";
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (sessionStorage.getItem(SESSION_KEY) === "1") showHub();
+  document.getElementById("pw").addEventListener("keydown", e => {
+    if (e.key === "Enter") tryUnlock();
+  });
+});
+
+function tryUnlock() {
+  const val = document.getElementById("pw").value.trim();
+  const err = document.getElementById("gate-error");
+  if (val === ACCESS_PASSWORD) {
+    sessionStorage.setItem(SESSION_KEY, "1");
+    err.classList.remove("show");
+    const gate = document.getElementById("screen-gate");
+    gate.style.transition = "opacity 0.4s";
+    gate.style.opacity = "0";
+    setTimeout(showHub, 380);
+  } else {
+    err.classList.add("show");
+    document.getElementById("pw").value = "";
+    document.getElementById("pw").focus();
+    const card = document.getElementById("gate-card");
+    card.style.animation = "shake 0.25s ease";
+    card.addEventListener("animationend", () => card.style.animation = "", {once: true});
+  }
+}
+
+function showHub() {
+  document.getElementById("screen-gate").classList.remove("active");
+  document.getElementById("screen-hub").classList.add("active");
+  document.body.style.background = "var(--cream2)";
+}
+
+function logout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  document.getElementById("screen-hub").classList.remove("active");
+  document.getElementById("screen-exercise").classList.remove("active");
+  document.body.style.background = "var(--ink)";
+  const gate = document.getElementById("screen-gate");
+  gate.style.opacity = "1";
+  gate.classList.add("active");
+  document.getElementById("pw").value = "";
+}
+
+// ── HUB FILTER ────────────────────────────────────────────────────────────
+function filterCards(subject, btn) {
+  document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelectorAll(".res-card").forEach(c => {
+    c.style.display = (subject === "all" || c.dataset.subject === subject) ? "block" : "none";
+  });
+}
+
+// ── EXERCISE DATA ─────────────────────────────────────────────────────────
+const EXERCISES = {
+  "outnumbered-s1e2": {
+    title: "Outnumbered — S1E2",
+    idioms: [
+      { phrase: "kick it into the long grass", meaning: "To delay or avoid dealing with a problem; to shelve it indefinitely.", example: '"The governors will just kick it into the long grass."', context: "Pete reassuring Sue about the racism complaint." },
+      { phrase: "blow over", meaning: "For a difficult situation to pass or resolve itself without action.", example: '"Don\'t worry, it\'ll just blow over."', context: "Pete about the Kamal complaint." },
+      { phrase: "had it coming", meaning: "To deserve the negative consequence that happened.", example: '"Thompson got shot — he had it coming."', context: "Jake describing school events." },
+      { phrase: "enough on your plate", meaning: "Already dealing with too many problems or responsibilities.", example: '"I didn\'t tell you because you had enough on your plate."', context: "Pete explaining why he kept the complaint secret." },
+      { phrase: "blow out of proportion", meaning: "To greatly exaggerate the importance of something.", example: '"Kids take the tiniest thing and blow it out of proportion."', context: "Pete\'s advice about Dion\'s stories." },
+      { phrase: "drop by / drop in", meaning: "To visit someone briefly and informally, often unannounced.", example: '"She\'ll just drop by, show off her suntan, and leave."', context: "Sue, sarcastically, about Angela\'s visit." },
+      { phrase: "go off on one", meaning: "To suddenly start ranting or complaining at great length.", example: '"When you go off on one about Angela, that\'s quite a lot of the day gone."', context: "Pete to Sue." },
+      { phrase: "find herself", meaning: "To travel or reflect to discover one's identity — often used ironically.", example: '"She\'ll piss off to find herself again."', context: "Sue, wryly, about Angela." },
+      { phrase: "citizen of the world", meaning: "A person who feels at home anywhere — often used with irony.", example: '"She\'s a citizen of the world."', context: "Sue, sarcastically, about Angela." },
+      { phrase: "bluff like mad", meaning: "To pretend very hard that everything is fine when it clearly isn't.", example: '"We\'ve lost the cat. We\'ll just have to bluff like mad."', context: "Sue after realising Pusscat is missing." },
+    ],
+    gaps: [
+      { sentence: "Don't worry — the governors will just ___ it into the long grass.", blank: "kick", options: ["throw","kick","push","drop"], answer: "kick", hint: "A football metaphor." },
+      { sentence: "These things usually just ___ over. It won't be a big deal.", blank: "blow", options: ["pass","blow","roll","float"], answer: "blow", hint: "Related to wind or air." },
+      { sentence: "I didn't tell you — I thought you had enough on your ___.", blank: "plate", options: ["hands","mind","plate","shoulders"], answer: "plate", hint: "Associated with food and mealtimes." },
+      { sentence: "Kids always take the tiniest thing and ___ it out of proportion.", blank: "blow", options: ["take","blow","put","stretch"], answer: "blow", hint: "Same word as 'blow over', used differently." },
+      { sentence: "Every time you start on about Angela, that's quite a lot of the day ___.", blank: "gone", options: ["lost","gone","wasted","over"], answer: "gone", hint: "Simple past participle of 'go'." },
+      { sentence: "She'll just ___ by for an hour, show off her suntan, and leave.", blank: "drop", options: ["pop","drop","swing","come"], answer: "drop", hint: "To '___ by' means to visit briefly." },
+      { sentence: "We've lost the stuffed toy. We'll just have to ___ like mad.", blank: "bluff", options: ["lie","bluff","pretend","fake"], answer: "bluff", hint: "A term used in poker." },
+      { sentence: "Thompson was always causing trouble — he had it ___.", blank: "coming", options: ["coming","deserved","expected","earned"], answer: "coming", hint: "A present participle — it completes the fixed phrase." },
+    ],
+    register: [
+      { informal: "piss off", formal: "go away / leave", note: "Very informal — rude" },
+      { informal: "bugger off", formal: "go away / get lost", note: "Very informal — rude" },
+      { informal: "go off on one", formal: "launch into a lengthy rant", note: "Informal British English" },
+      { informal: "drop by", formal: "pay a brief visit", note: "Informal — common in speech" },
+      { informal: "as per usual", formal: "as usual / as is customary", note: "Informal, often sarcastic" },
+      { informal: "shush", formal: "please be quiet", note: "Informal / childlike" },
+      { informal: "bluff like mad", formal: "pretend convincingly", note: "Informal / idiomatic" },
+      { informal: "on the run", formal: "evading the authorities / fleeing", note: "Informal / colloquial" },
+    ],
+    vocab: [
+      { word: "effeminate", pos: "adjective", def: "Having qualities traditionally associated with women — often used disparagingly of men.", syns: ["unmanly","delicate","soft"], ants: ["masculine","robust","virile"], note: "Pete's dad used this word. Pete immediately reframes it as 'sensitive' — a more neutral, self-aware choice. Notice how word choice shapes perception." },
+      { word: "frivolously", pos: "adverb", def: "In a casual or flippant way; not seriously.", syns: ["lightly","flippantly","carelessly"], ants: ["seriously","gravely","solemnly"], note: "Pete describes his joke as 'purely frivolous' — he's minimising it. Useful for discussions of tone and intent." },
+      { word: "baseless", pos: "adjective", def: "Without any foundation in fact; completely unfounded.", syns: ["unfounded","groundless","unsubstantiated"], ants: ["justified","founded","substantiated"], note: "Pete uses this twice. A formal, precise word — notice it fits the formal context of complaints and governance." },
+      { word: "absurd", pos: "adjective", def: "Wildly unreasonable, illogical or inappropriate.", syns: ["ridiculous","preposterous","ludicrous"], ants: ["reasonable","sensible","logical"], note: "One of the most useful adjectives for expressing strong disagreement politely." },
+      { word: "traumatised", pos: "verb (past participle)", def: "Caused to experience severe psychological distress.", syns: ["scarred","distressed","damaged"], ants: ["reassured","comforted","soothed"], note: "Used here with irony — Pete implies the boy can't really have been traumatised by a joke about Ramadan." },
+      { word: "anxious", pos: "adjective", def: "Worried and nervous, especially about something uncertain.", syns: ["worried","apprehensive","nervous"], ants: ["calm","relaxed","confident"], note: "Sue says Dad 'gets anxious'. A softer, more empathetic word than 'worried' — useful for expressing concern about others." },
+    ],
+    discussion: [
+      { q: "Ben argues that lying is actually 'sarcasm'. Is he right? What IS the difference between a lie, sarcasm, and a joke?", focus: "Language & meaning — definitions, grey areas" },
+      { q: "Pete makes a joke about Ramadan to a student. Was it wrong? What makes a joke 'go too far'?", focus: "Tone, context, and register" },
+      { q: "Karen insists her bowl is wrong even though Sue replaced it with an identical one. How would you describe this situation to someone?", focus: "Narrative retelling — past tenses, reported speech" },
+      { q: "Angela announces she's moved back to look after their father. How do you think Sue really feels, despite saying 'that really is great'?", focus: "Subtext, tone, and reading between the lines" },
+      { q: "Pete immediately answers '4,615 buckets — seven hours, 22 minutes' to Ben's elephant question. What effect does this have? Why is it funny?", focus: "British deadpan humour and conversational rhythm" },
+    ],
+  }
+};
+
+// ── GAP FILL STATE ────────────────────────────────────────────────────────
+let gapState = {}; // { qIndex: { selected, checked } }
+let currentExId = null;
+
+// ── NAVIGATION ────────────────────────────────────────────────────────────
+function openExercise(id) {
+  currentExId = id;
+  gapState = {};
+  const ex = EXERCISES[id];
+  document.getElementById("ex-breadcrumb-title").textContent = ex.title;
+  // Reset tabs
+  document.querySelectorAll(".ex-tab").forEach((t,i) => t.classList.toggle("active", i===0));
+  document.querySelectorAll(".tab-pane").forEach((p,i) => p.classList.toggle("active", i===0));
+  // Render all tabs
+  renderIdioms(ex, document.getElementById("tab-0"));
+  renderGaps(ex, document.getElementById("tab-1"));
+  renderRegister(ex, document.getElementById("tab-2"));
+  renderVocab(ex, document.getElementById("tab-3"));
+  renderDiscussion(ex, document.getElementById("tab-4"));
+  // Switch screen
+  document.getElementById("screen-hub").classList.remove("active");
+  document.getElementById("screen-exercise").classList.add("active");
+  window.scrollTo(0,0);
+}
+
+function goHub() {
+  document.getElementById("screen-exercise").classList.remove("active");
+  document.getElementById("screen-hub").classList.add("active");
+  window.scrollTo(0,0);
+}
+
+function switchTab(i) {
+  document.querySelectorAll(".ex-tab").forEach((t,j) => t.classList.toggle("active", j===i));
+  document.querySelectorAll(".tab-pane").forEach((p,j) => p.classList.toggle("active", j===i));
+  window.scrollTo(0,0);
+}
+
+// ── RENDERERS ─────────────────────────────────────────────────────────────
+
+function renderIdioms(ex, pane) {
+  pane.innerHTML = `
+    <div class="sec-head">
+      <h2>Idioms &amp; Fixed Expressions</h2>
+      <p>All taken directly from this episode. Tap any card to reveal the meaning and context.</p>
+    </div>
+    <div class="hint-bar">💡 Try to guess the meaning before you reveal it — can you work it out from context?</div>
+    <div class="idiom-list">${ex.idioms.map((item,i)=>`
+      <div class="idiom-card" id="idiom-${i}" onclick="toggleIdiom(${i})">
+        <div class="idiom-card-top">
+          <span class="idiom-phrase">"${item.phrase}"</span>
+          <span class="idiom-chevron">▼</span>
+        </div>
+        <div class="idiom-body">
+          <div class="idiom-row"><div class="lbl">Meaning</div><div class="val">${item.meaning}</div></div>
+          <div class="idiom-row"><div class="lbl">From the show</div><div class="val italic">${item.example}</div></div>
+          <div class="idiom-row"><div class="lbl">Context</div><div class="val muted">${item.context}</div></div>
+        </div>
+      </div>`).join("")}
+    </div>`;
+}
+
+function toggleIdiom(i) {
+  const card = document.getElementById("idiom-"+i);
+  card.classList.toggle("open");
+}
+
+function renderGaps(ex, pane) {
+  pane.innerHTML = `
+    <div class="sec-head">
+      <h2>Gap Fill</h2>
+      <p>Choose the correct word to complete each sentence. All adapted from the episode.</p>
+    </div>
+    <div class="gap-score" id="gap-score" style="display:none"></div>
+    <div class="gap-list">${ex.gaps.map((q,i)=>`
+      <div class="gap-card" id="gap-card-${i}">
+        <div class="gap-qnum">Question ${i+1}</div>
+        <div class="gap-sentence">${q.sentence.replace("___","<strong>______</strong>")}</div>
+        <div class="gap-options">${q.options.map(opt=>`
+          <button class="gap-opt" id="gap-opt-${i}-${opt}" onclick="selectGap(${i},'${opt}')">${opt}</button>`).join("")}
+        </div>
+        <div class="gap-actions">
+          <button class="check-btn" id="gap-check-${i}" onclick="checkGap(${i})" disabled>Check</button>
+          <span class="gap-feedback" id="gap-fb-${i}"></span>
+        </div>
+        <div class="gap-hint">Hint: ${q.hint}</div>
+      </div>`).join("")}
+    </div>`;
+}
+
+function selectGap(qi, opt) {
+  const ex = EXERCISES[currentExId];
+  if (gapState[qi] && gapState[qi].checked) return;
+  // Clear previous selection visuals
+  ex.gaps[qi].options.forEach(o => {
+    const el = document.getElementById(`gap-opt-${qi}-${o}`);
+    if(el) { el.classList.remove("selected","correct","wrong"); }
+  });
+  const el = document.getElementById(`gap-opt-${qi}-${opt}`);
+  if(el) el.classList.add("selected");
+  gapState[qi] = { selected: opt, checked: false };
+  const btn = document.getElementById(`gap-check-${qi}`);
+  if(btn) btn.disabled = false;
+}
+
+function checkGap(qi) {
+  if (!gapState[qi] || gapState[qi].checked) return;
+  const ex = EXERCISES[currentExId];
+  const q = ex.gaps[qi];
+  const sel = gapState[qi].selected;
+  const correct = sel === q.answer;
+  gapState[qi].checked = true;
+  const selEl = document.getElementById(`gap-opt-${qi}-${sel}`);
+  if(selEl) { selEl.classList.remove("selected"); selEl.classList.add(correct?"correct":"wrong"); }
+  const fb = document.getElementById(`gap-fb-${qi}`);
+  if(fb) { fb.textContent = correct ? "✓ Correct!" : `✗  The answer is: "${q.answer}"`; fb.className = "gap-feedback "+(correct?"ok":"bad"); }
+  const btn = document.getElementById(`gap-check-${qi}`);
+  if(btn) btn.disabled = true;
+  updateGapScore(ex);
+}
+
+function updateGapScore(ex) {
+  const attempted = Object.values(gapState).filter(s=>s.checked).length;
+  const correct = Object.entries(gapState).filter(([i,s])=>s.checked && s.selected===ex.gaps[i].answer).length;
+  const scoreEl = document.getElementById("gap-score");
+  if(scoreEl && attempted > 0) {
+    scoreEl.style.display = "block";
+    scoreEl.innerHTML = `✅ Score so far: <strong>${correct}</strong> / ${attempted} checked`;
+  }
+}
+
+function renderRegister(ex, pane) {
+  pane.innerHTML = `
+    <div class="sec-head">
+      <h2>Register: Informal → Formal</h2>
+      <p>Outnumbered is rich with naturalistic informal speech. Tap each card to see a formal equivalent and register note.</p>
+    </div>
+    <div class="hint-bar">💡 Try to think of the formal equivalent before revealing it. An essential skill for professional and written English.</div>
+    <div class="reg-list">${ex.register.map((item,i)=>`
+      <div class="reg-card" id="reg-${i}" onclick="toggleReg(${i})">
+        <div class="reg-card-top">
+          <div>
+            <div class="reg-lbl">Informal</div>
+            <div class="reg-phrase">"${item.informal}"</div>
+          </div>
+          <span class="reg-chevron">▼</span>
+        </div>
+        <div class="reg-body">
+          <div>
+            <div class="reg-col-lbl">Formal equivalent</div>
+            <div class="reg-col-val">${item.formal}</div>
+          </div>
+          <div>
+            <div class="reg-col-lbl">Register note</div>
+            <div class="reg-col-note">${item.note}</div>
+          </div>
+        </div>
+      </div>`).join("")}
+    </div>
+    <div class="ext-task">
+      <div class="ext-task-lbl">Extension Task</div>
+      <p>Rewrite this line from the show in formal written English:<br/>
+      <em>"She'll just piss off to find herself, as per usual, and drop by for about an hour when it suits her."</em></p>
+    </div>`;
+}
+
+function toggleReg(i) {
+  document.getElementById("reg-"+i).classList.toggle("open");
+}
+
+function renderVocab(ex, pane) {
+  pane.innerHTML = `
+    <div class="sec-head">
+      <h2>Vocabulary Focus</h2>
+      <p>Six words from the episode worth knowing. Tap each card to see definition, synonyms and antonyms.</p>
+    </div>
+    <div class="vocab-list">${ex.vocab.map((item,i)=>`
+      <div class="vocab-card" id="vocab-${i}" onclick="toggleVocab(${i})">
+        <div class="vocab-card-top">
+          <div>
+            <span class="vocab-word">${item.word}</span>
+            <span class="vocab-pos">(${item.pos})</span>
+          </div>
+          <span class="vocab-chevron">▼</span>
+        </div>
+        <div class="vocab-body">
+          <div class="vocab-def">${item.def}</div>
+          <div class="syn-ant">
+            <div>
+              <div class="sa-lbl syn">Synonyms</div>
+              <div class="sa-words syn">${item.syns.join(" · ")}</div>
+            </div>
+            <div>
+              <div class="sa-lbl ant">Antonyms</div>
+              <div class="sa-words ant">${item.ants.join(" · ")}</div>
+            </div>
+          </div>
+          <div class="vocab-note">📝 ${item.note}</div>
+        </div>
+      </div>`).join("")}
+    </div>`;
+}
+
+function toggleVocab(i) {
+  document.getElementById("vocab-"+i).classList.toggle("open");
+}
+
+function renderDiscussion(ex, pane) {
+  pane.innerHTML = `
+    <div class="sec-head">
+      <h2>Discussion Prompts</h2>
+      <p>Use these for speaking practice. Each question targets a specific language skill.</p>
+    </div>
+    <div class="disc-list">${ex.discussion.map((item,i)=>`
+      <div class="disc-card">
+        <div class="disc-num">${i+1}</div>
+        <div>
+          <div class="disc-q">${item.q}</div>
+          <span class="disc-focus">Focus: ${item.focus}</span>
+        </div>
+      </div>`).join("")}
+    </div>
+    <div class="grammar-box">
+      <div class="grammar-box-lbl">Grammar Focus: Tenses in Context</div>
+      <h3>The Past Perfect in Action</h3>
+      <p>Look at how Pete justifies not telling Sue about the complaint. Notice the tense shifts:</p>
+      <div class="grammar-quote">
+        "When the last complaint thing <strong>flared up</strong>, it <strong>was</strong> just after your mum <strong>had died</strong> and I <strong>thought</strong> you <strong>had</strong> enough on your plate."
+      </div>
+      <p class="grammar-q">Can you identify the <em>past simple</em>, <em>past perfect</em>, and <em>reported thought</em>? Why does Pete use <em>had died</em> rather than <em>died</em>?</p>
+    </div>`;
+}
+</script>
+</body>
+</html>
