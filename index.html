@@ -193,10 +193,22 @@
     #services { background: var(--cream); }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5px;
       background: var(--border);
       border: 1px solid var(--border);
+    }
+    @media (min-width: 768px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-card:last-child { grid-column: 1 / -1; }
+    }
+    @media (min-width: 1100px) {
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .service-card:last-child { grid-column: span 2; }
+    }
+    @media (min-width: 1500px) {
+      .services-grid { grid-template-columns: repeat(5, 1fr); }
+      .service-card:last-child { grid-column: auto; }
     }
     .service-card {
       background: var(--card-bg);
@@ -748,7 +760,7 @@
       <div class="step reveal">
         <div class="step-num">02</div>
         <div class="step-title">Book a session</div>
-        <p class="step-desc">Use the booking tool below to choose a convenient 45-minute slot that works for your schedule.</p>
+        <p class="step-desc">Use the booking tool below to choose a convenient time that works for your schedule.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">03</div>
@@ -765,7 +777,7 @@
       Choose a time that <em>works for you</em>
     </h2>
     <p class="book-intro reveal">
-      Select a 45-minute slot and I'll come prepared. Whether it's your first session or you're picking up where we left off, just choose a time that suits you.
+      Select a time slot and I'll come prepared. Whether it's your first session or you're picking up where we left off, just choose a time that suits you.
     </p>
     <div class="calendly-wrap reveal">
       <!-- Calendly inline widget begin -->
